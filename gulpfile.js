@@ -17,18 +17,17 @@ var gulp = require('gulp'),
 
 // Compile LESS to CSS
 gulp.task('build-less', function() {
-    const lessFilter = filter(['*', '!mixins.less', '!variables.less']);
+    const fileFilter = filter(['*', '!mixins.less', '!variables.less']);
     gulp.src('./public/less/*.less') // path to less file
-        .pipe(lessFilter)
+        .pipe(fileFilter)
         .pipe(plumber())
         .pipe(less())
         .pipe(gulp.dest('./public/css/')) // path to css directory
     ;
-    gulp.src(['./public/components/bootstrap/less/theme.less']) // path to less file
+    gulp.src(['./public/components/bootstrap/less/theme.less', './public/components/bootstrap/less/bootstrap.less']) // path to less file
         .pipe(plumber())
         .pipe(less())
-        .pipe(rename({prefix: 'bootstrap-'}))
-        .pipe(gulp.dest('./public/css/')) // path to css directory
+        .pipe(gulp.dest('./public/css/bootstrap')) // path to css directory
     ;
 })
 
