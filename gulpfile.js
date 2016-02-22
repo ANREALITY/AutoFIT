@@ -11,18 +11,26 @@ var gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     plumber = require('gulp-plumber'),
     filter = require('gulp-filter'),
+    rename = require('gulp-rename'),
     path = require('path')
 
 // Compile LESS to CSS
 gulp.task('build-less', function() {
     const lessFilter = filter(['*', '!mixins.less', '!variables.less']);
-    return gulp.src('./public/less/*.less') // path to less file
+    gulp.src('./public/less/*.less') // path to less file
         .pipe(lessFilter)
         .pipe(plumber())
         .pipe(less({
             paths: ['./public/less/', './public/css/']
         }))
         .pipe(gulp.dest('./public/css/')) // path to css directory
+    ;
+    gulp.src(['./public/components/bootstrap/less/theme.less']) // path to less file
+        .pipe(plumber())
+        .pipe(less())
+        .pipe(rename({prefix: 'bootstrap-'}))
+        .pipe(gulp.dest('./public/css/')) // path to css directory
+    ;
 })
 
 // Watch all LESS files, then run build-less
