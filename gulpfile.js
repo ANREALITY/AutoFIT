@@ -24,17 +24,21 @@ gulp.task('build-less', function() {
         .pipe(less())
         .pipe(gulp.dest('./public/css/')) // path to css directory
     ;
+});
+
+// Get vendors' code
+gulp.task('build-vendors', function() {
     gulp.src(['./public/components/bootstrap/less/theme.less', './public/components/bootstrap/less/bootstrap.less']) // path to less file
         .pipe(plumber())
         .pipe(less())
         .pipe(gulp.dest('./public/css/bootstrap')) // path to css directory
     ;
-})
+});
 
 // Watch all LESS files, then run build-less
 gulp.task('watch', function() {
-    gulp.watch('public/less/*.less', ['build-less'])
+    gulp.watch('public/less/*.less', ['build-less', 'build-vendors'])
 });
 
 // Default will run the 'entry' task
-gulp.task('default', ['watch', 'build-less']);
+gulp.task('default', ['watch', 'build-less', 'build-vendors']);
