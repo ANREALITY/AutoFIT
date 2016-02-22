@@ -1,0 +1,13 @@
+{
+    "name": "AutoFIT",
+    "version": "0.0.1",
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-watch": "*",
+        "gulp-less": "*",
+        "gulp-watch": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-plumber": "*",
+        "path": "*"
+    }
+}

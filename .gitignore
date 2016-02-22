@@ -8,12 +8,10 @@ nbproject
 .settings
 .htpasswd
 composer.lock
+npm-debug.log*
 config/autoload/local.php
 config/autoload/*.local.php
 vendor
 vendor/bin
 node_modules
-bower_components
-public/node_modules
-public/bower_components
 data/cache/*
