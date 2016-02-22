@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     filter = require('gulp-filter'),
     rename = require('gulp-rename'),
     path = require('path')
+;
 
 // Compile LESS to CSS
 gulp.task('build-less', function() {
@@ -20,9 +21,7 @@ gulp.task('build-less', function() {
     gulp.src('./public/less/*.less') // path to less file
         .pipe(lessFilter)
         .pipe(plumber())
-        .pipe(less({
-            paths: ['./public/less/', './public/css/']
-        }))
+        .pipe(less())
         .pipe(gulp.dest('./public/css/')) // path to css directory
     ;
     gulp.src(['./public/components/bootstrap/less/theme.less']) // path to less file
@@ -36,7 +35,7 @@ gulp.task('build-less', function() {
 // Watch all LESS files, then run build-less
 gulp.task('watch', function() {
     gulp.watch('public/less/*.less', ['build-less'])
-})
+});
 
 // Default will run the 'entry' task
-gulp.task('default', ['watch', 'build-less'])
+gulp.task('default', ['watch', 'build-less']);
