@@ -31,7 +31,13 @@ gulp.task('build-vendors', function() {
     gulp.src(['./public/components/bootstrap/less/theme.less', './public/components/bootstrap/less/bootstrap.less']) // path to less file
         .pipe(plumber())
         .pipe(less())
-        .pipe(gulp.dest('./public/css/bootstrap')) // path to css directory
+        .pipe(rename(function (path) {
+            //rename all files except 'bootstrap.css'
+            if (path.basename + path.extname !== 'bootstrap.css') {
+                path.basename = 'bootstrap-' + path.basename;
+            }
+        }))
+        .pipe(gulp.dest('./public/css')) // path to css directory
     ;
 });
 
@@ -41,4 +47,5 @@ gulp.task('watch', function() {
 });
 
 // Default will run the 'entry' task
+// gulp.task('default', ['build-less', 'build-vendors']);
 gulp.task('default', ['watch', 'build-less', 'build-vendors']);
