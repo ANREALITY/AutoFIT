@@ -41,11 +41,13 @@ gulp.task('build-vendors', function() {
     ;
 });
 
+// Run the build process
+gulp.task('run', ['build-less', 'build-vendors']);
+
 // Watch all LESS files, then run build-less
 gulp.task('watch', function() {
-    gulp.watch('public/less/*.less', ['build-less', 'build-vendors'])
+    gulp.watch('public/less/*.less', ['run'])
 });
 
 // Default will run the 'entry' task
-// gulp.task('default', ['build-less', 'build-vendors']);
-gulp.task('default', ['watch', 'build-less', 'build-vendors']);
+gulp.task('default', ['watch', 'run']);
