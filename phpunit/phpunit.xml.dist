@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    bootstrap="Bootstrap.php"
+    cacheTokens="false"
+    colors="false"
+>
+    <testsuites>
+        <testsuite name="app-only">
+            <directory suffix="Test.php">./tests/Application</directory>
+            <!--
+            <directory suffix="Test.php">./tests/FileTransferRequest</directory>
+            <directory suffix="Test.php">./tests/DataExchange</directory>
+            <directory suffix="Test.php">./tests/Administration</directory>
+            <directory suffix="Test.php">./tests/AccesControl</directory>
+           -->
+        </testsuite>
+        <!--
+        <testsuite name="app-libs">
+            <directory suffix="Test.php">../vendor/AutoFit/tests/AutoFit</directory>
+            <directory suffix="Test.php">../vendor/DbSystel/tests/DbSystel</directory>
+        </testsuite>
+        -->
+    </testsuites>
+</phpunit>

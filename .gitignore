@@ -15,4 +15,5 @@ vendor
 vendor/bin
 node_modules
 public/components
+phpunit/phpunit.xml
 data/cache/*
