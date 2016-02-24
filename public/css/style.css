@@ -2,9 +2,6 @@ body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
-.zf-green {
-  color: #68b604;
-}
 .btn-success {
   background-color: #57a900;
   background-image: -moz-linear-gradient(top, #70d900, #57a900);
@@ -26,8 +23,58 @@ body {
 .btn-success.active {
   background-color: #57a900;
 }
-div.container a.brand {
-  background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
-  margin-left: 0;
-  padding: 8px 20px 12px 40px;
+/* bootstrap #start# */
+.navbar-inverse {
+  border: 0;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #ff0000;
+  background-color: #080808;
+}
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .container .jumbotron,
+  .container-fluid .jumbotron {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 32px;
+  }
+}
+/* bootstrap #stop# */
+/* bootstrap-theme #start# */
+.navbar-inverse {
+  background-image: -webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
+  background-image: -o-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
+  background-image: linear-gradient(to bottom, #eeeeee 0%, #cccccc 100%);
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .active > a {
+  background-image: -webkit-linear-gradient(top, #dddddd 0%, #dddddd 100%);
+  background-image: -o-linear-gradient(top, #dddddd 0%, #dddddd 100%);
+  background-image: linear-gradient(to bottom, #dddddd 0%, #dddddd 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdddddd', endColorstr='#ffdddddd', GradientType=0);
+  -webkit-box-shadow: inset 0 3px 9px rgba(100, 100, 100, 0.25);
+  box-shadow: inset 0 3px 9px rgba(100, 100, 100, 0.25);
+  font-size: 16px;
+  color: #000000;
+}
+/* bootstrap-theme #stop# */
+.appNamePartAuto {
+  color: #ff0000;
+}
+.appNamePartFIT {
+  color: #606060;
+}
+#appDescription {
+  font-size: 14px;
+  font-style: italic;
 }
