@@ -16,4 +16,6 @@ vendor/bin
 node_modules
 public/components
 phpunit/phpunit.xml
+codeception.yml
+codeception/tests/_output
 data/cache/*
