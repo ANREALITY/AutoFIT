@@ -32,6 +32,7 @@ class Module
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                    'DbSystel' => __DIR__ . '/../../vendor/db-systel/dbs-common-lib/src',
                 ),
             ),
         );

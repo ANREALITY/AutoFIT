@@ -11,8 +11,8 @@ composer.lock
 npm-debug.log*
 config/autoload/local.php
 config/autoload/*.local.php
-vendor
-vendor/bin
+vendor/*
+!vendor/db-systel
 node_modules
 public/components
 phpunit/phpunit.xml
