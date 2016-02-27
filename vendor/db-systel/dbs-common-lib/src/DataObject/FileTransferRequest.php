@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class Order
+class FileTransferRequest
 {
 
     /**
