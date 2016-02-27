@@ -45,7 +45,7 @@ class Server
 
     /**
      *
-     * @param \DbSystel\DataObject\ServerType $serverType            
+     * @param ServerType $serverType            
      */
     public function setServerType($serverType)
     {

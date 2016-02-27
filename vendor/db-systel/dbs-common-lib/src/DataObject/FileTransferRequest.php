@@ -12,6 +12,12 @@ class FileTransferRequest
 
     /**
      *
+     * @var string
+     */
+    protected $changeNumber;
+
+    /**
+     *
      * @var LogicalConnection
      */
     protected $logicalConnection;
@@ -27,6 +33,12 @@ class FileTransferRequest
      * @var ServiceInvoicePosition
      */
     protected $serviceInvoicePositionPersonal;
+
+    /**
+     *
+     * @var User
+     */
+    protected $user;
 
     /**
      *
@@ -48,6 +60,24 @@ class FileTransferRequest
 
     /**
      *
+     * @return the $changeNumber
+     */
+    public function getChangeNumber()
+    {
+        return $this->changeNumber;
+    }
+
+    /**
+     *
+     * @param string $changeNumber            
+     */
+    public function setChangeNumber($changeNumber)
+    {
+        $this->changeNumber = $changeNumber;
+    }
+
+    /**
+     *
      * @return the $logicalConnection
      */
     public function getLogicalConnection()
@@ -57,7 +87,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection            
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -75,7 +105,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param \DbSystel\DataObject\ServiceInvoicePosition $serviceInvoicePositionBasic            
+     * @param ServiceInvoicePosition $serviceInvoicePositionBasic            
      */
     public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
     {
@@ -93,10 +123,28 @@ class FileTransferRequest
 
     /**
      *
-     * @param \DbSystel\DataObject\ServiceInvoicePosition $serviceInvoicePositionPersonal            
+     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal            
      */
     public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
     {
         $this->serviceInvoicePositionPersonal = $serviceInvoicePositionPersonal;
+    }
+
+    /**
+     *
+     * @return the $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     *
+     * @param User $user            
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }

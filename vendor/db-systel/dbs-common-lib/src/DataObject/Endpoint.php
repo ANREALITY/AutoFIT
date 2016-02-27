@@ -30,6 +30,12 @@ abstract class Endpoint
 
     /**
      *
+     * @var string
+     */
+    protected $contactPerson;
+
+    /**
+     *
      * @var PhysicalConnection
      */
     protected $physicalConnection;
@@ -45,7 +51,21 @@ abstract class Endpoint
      * @var Application
      */
     protected $application;
+
     /**
+     *
+     * @var User
+     */
+    protected $user;
+
+    /**
+     *
+     * @var Customer
+     */
+    protected $customer;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -54,7 +74,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param number $id
+     *
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -62,6 +83,7 @@ abstract class Endpoint
     }
 
     /**
+     *
      * @return the $role
      */
     public function getRole()
@@ -70,7 +92,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param string $role
+     *
+     * @param string $role            
      */
     public function setRole($role)
     {
@@ -78,6 +101,7 @@ abstract class Endpoint
     }
 
     /**
+     *
      * @return the $type
      */
     public function getType()
@@ -86,7 +110,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param string $type
+     *
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -94,6 +119,7 @@ abstract class Endpoint
     }
 
     /**
+     *
      * @return the $serverPlace
      */
     public function getServerPlace()
@@ -102,7 +128,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param string $serverPlace
+     *
+     * @param string $serverPlace            
      */
     public function setServerPlace($serverPlace)
     {
@@ -110,6 +137,25 @@ abstract class Endpoint
     }
 
     /**
+     *
+     * @return the $contactPerson
+     */
+    public function getContactPerson()
+    {
+        return $this->contactPerson;
+    }
+
+    /**
+     *
+     * @param string $contactPerson            
+     */
+    public function setContactPerson($contactPerson)
+    {
+        $this->contactPerson = $contactPerson;
+    }
+
+    /**
+     *
      * @return the $physicalConnection
      */
     public function getPhysicalConnection()
@@ -118,7 +164,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param PhysicalConnection $physicalConnection
+     *
+     * @param PhysicalConnection $physicalConnection            
      */
     public function setPhysicalConnection($physicalConnection)
     {
@@ -126,6 +173,7 @@ abstract class Endpoint
     }
 
     /**
+     *
      * @return the $server
      */
     public function getServer()
@@ -134,7 +182,8 @@ abstract class Endpoint
     }
 
     /**
-     * @param Server $server
+     *
+     * @param Server $server            
      */
     public function setServer($server)
     {
@@ -142,6 +191,7 @@ abstract class Endpoint
     }
 
     /**
+     *
      * @return the $application
      */
     public function getApplication()
@@ -150,11 +200,47 @@ abstract class Endpoint
     }
 
     /**
-     * @param Application $application
+     *
+     * @param Application $application            
      */
     public function setApplication($application)
     {
         $this->application = $application;
     }
 
+    /**
+     *
+     * @return the $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     *
+     * @param User $user            
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     *
+     * @return the $customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     *
+     * @param Customer $customer            
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+    }
 }

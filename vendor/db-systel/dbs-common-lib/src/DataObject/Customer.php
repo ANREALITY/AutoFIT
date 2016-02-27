@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class PhysicalConnection
+class Customer
 {
 
     /**
@@ -12,9 +12,9 @@ abstract class PhysicalConnection
 
     /**
      *
-     * @var LogicalConnection
+     * @var string
      */
-    protected $logicalConnection;
+    protected $name;
 
     /**
      *
@@ -36,19 +36,19 @@ abstract class PhysicalConnection
 
     /**
      *
-     * @return the $logicalConnection
+     * @return the $name
      */
-    public function getLogicalConnection()
+    public function getName()
     {
-        return $this->logicalConnection;
+        return $this->name;
     }
 
     /**
      *
-     * @param LogicalConnection $logicalConnection            
+     * @param string $name            
      */
-    public function setLogicalConnection($logicalConnection)
+    public function setName($name)
     {
-        $this->logicalConnection = $logicalConnection;
+        $this->name = $name;
     }
 }

@@ -8,7 +8,7 @@ class EndpointCdTandem extends Endpoint
      *
      * @var string
      */
-    protected $user;
+    protected $username;
 
     /**
      *
@@ -18,20 +18,20 @@ class EndpointCdTandem extends Endpoint
 
     /**
      *
-     * @return the $user
+     * @return the $username
      */
-    public function getUser()
+    public function getUsername()
     {
-        return $this->user;
+        return $this->username;
     }
 
     /**
      *
-     * @param string $user            
+     * @param string $username            
      */
-    public function setUser($user)
+    public function setUsername($username)
     {
-        $this->user = $user;
+        $this->username = $username;
     }
 
     /**
