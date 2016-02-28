@@ -7,7 +7,7 @@
     backupStaticAttributes="false"
     bootstrap="Bootstrap.php"
     cacheTokens="false"
-    colors="false"
+    colors="true"
 >
     <testsuites>
         <testsuite name="app-only">
@@ -19,11 +19,8 @@
             <directory suffix="Test.php">./tests/AccesControl</directory>
            -->
         </testsuite>
-        <!--
         <testsuite name="app-libs">
-            <directory suffix="Test.php">../vendor/AutoFit/tests/AutoFit</directory>
-            <directory suffix="Test.php">../vendor/DbSystel/tests/DbSystel</directory>
+            <directory suffix="Test.php">../vendor/db-systel/dbs-common-lib/tests/Hydrator</directory>
         </testsuite>
-        -->
     </testsuites>
 </phpunit>
