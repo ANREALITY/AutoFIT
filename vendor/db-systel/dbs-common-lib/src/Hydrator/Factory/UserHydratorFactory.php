@@ -5,7 +5,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
-class ProductTypeHydratorFactory implements FactoryInterface
+class UserHydratorFactory implements FactoryInterface
 {
 
     /**
@@ -22,7 +22,7 @@ class ProductTypeHydratorFactory implements FactoryInterface
         // no strategies
 
         $nameMapping = array(
-            'long_name' => 'longName',
+            'ms_exchange_name' => 'msExchangeName',
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $productTypeHydrator->setNamingStrategy($namingStrategy);
