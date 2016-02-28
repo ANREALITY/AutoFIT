@@ -2,10 +2,10 @@
 namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Zend\Hydrator\ClassMethods;
-use DbSystel\Hydrator\Strategy\Entity\EntityStrategy;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
 class ServiceInvoiceHydratorFactory implements FactoryInterface
 {
@@ -19,15 +19,14 @@ class ServiceInvoiceHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // $parentLocator = $serviceLocator->getServiceLocator();
-        $hydrator = new ClassMethods(false);
+        $serviceInvoiceHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $hydrator->addStrategy('application', new EntityStrategy(new ClassMethods(), new Application()));
-        $hydrator->addStrategy('environment', new EntityStrategy(new ClassMethods(), new Environment()));
+        $serviceInvoiceHydrator->addStrategy('application', new GenericEntityStrategy($productTypeHydrator, new Application()));
+        $serviceInvoiceHydrator->addStrategy('environment', new GenericEntityStrategy($productTypeHydrator, new Environment()));
 
         $namingStrategy = new MapNamingStrategy(array());
-        $hydrator->setNamingStrategy($namingStrategy);
-        
-        return $hydrator;
+        $serviceInvoiceHydrator->setNamingStrategy($namingStrategy);
+
+        return $serviceInvoiceHydrator;
     }
 }

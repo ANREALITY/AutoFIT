@@ -2,11 +2,11 @@
 namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Zend\Hydrator\ClassMethods;
-use DbSystel\Hydrator\Strategy\Entity\EntityStrategy;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\ServiceInvoice;
 use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ServiceInvoicePositionStatus;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
 class ServiceInvoicePositionHydratorFactory implements FactoryInterface
 {
@@ -20,20 +20,19 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // $parentLocator = $serviceLocator->getServiceLocator();
-        $hydrator = new ClassMethods(false);
-        
-        $hydrator->addStrategy('service_invoice', new EntityStrategy(new ClassMethods(), new ServiceInvoice()));
-        $hydrator->addStrategy('article', new EntityStrategy(new ClassMethods(), new Article()));
-        $hydrator->addStrategy('service_invoice_position_status', new EntityStrategy(new ClassMethods(), new ServiceInvoicePositionStatus()));
-        
+        $serviceInvoicePositionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoice()));
+        $serviceInvoicePositionHydrator->addStrategy('article', new GenericEntityStrategy($productTypeHydrator, new Article()));
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoicePositionStatus()));
+
         $namingStrategy = new MapNamingStrategy(array(
             'order_quantity' => 'orderQuantity',
             'service_invoice' => 'serviceInvoice',
             'service_invoice_position_status' => 'serviceInvoicePositionStatus'
         ));
-        $hydrator->setNamingStrategy($namingStrategy);
-        
-        return $hydrator;
+        $serviceInvoicePositionHydrator->setNamingStrategy($namingStrategy);
+
+        return $serviceInvoicePositionHydrator;
     }
 }

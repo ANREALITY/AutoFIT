@@ -2,10 +2,10 @@
 namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Zend\Hydrator\ClassMethods;
-use DbSystel\Hydrator\Strategy\Entity\EntityStrategy;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
 class FileTransferRequestHydratorFactory implements FactoryInterface
 {
@@ -19,12 +19,11 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // $parentLocator = $serviceLocator->getServiceLocator();
-        $hydrator = new ClassMethods(false);
+        $fileTransferRequestHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $hydrator->addStrategy('logical_connection', new EntityStrategy(new ClassMethods(), new LogicalConnection()));
-        $hydrator->addStrategy('service_invoice_position_basic', new EntityStrategy(new ClassMethods(), new ServiceInvoicePosition()));
-        $hydrator->addStrategy('service_invoice_position_personal', new EntityStrategy(new ClassMethods(), new ServiceInvoicePosition()));
+        $fileTransferRequestHydrator->addStrategy('logical_connection', new GenericEntityStrategy($productTypeHydrator, new LogicalConnection()));
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_basic', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoicePosition()));
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_personal', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoicePosition()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'change_number' => 'changeNumber',
@@ -32,8 +31,8 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
             'service_invoice_position_basic' => 'serviceInvoicePositionBasic',
             'service_invoice_position_personal' => 'serviceInvoicePositionPersonal',
         ));
-        $hydrator->setNamingStrategy($namingStrategy);
-        
-        return $hydrator;
+        $fileTransferRequestHydrator->setNamingStrategy($namingStrategy);
+
+        return $fileTransferRequestHydrator;
     }
 }

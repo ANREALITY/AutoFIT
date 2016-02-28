@@ -2,13 +2,13 @@
 namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Zend\Hydrator\ClassMethods;
-use DbSystel\Hydrator\Strategy\Entity\EntityStrategy;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\PhysicalConnection;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\User;
 use DbSystel\DataObject\Customer;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
 class EndpointHydratorFactory implements FactoryInterface
 {
@@ -22,22 +22,21 @@ class EndpointHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // $parentLocator = $serviceLocator->getServiceLocator();
-        $hydrator = new ClassMethods(false);
+        $endpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $hydrator->addStrategy('physical_connection', new EntityStrategy(new ClassMethods(), new PhysicalConnection()));
-        $hydrator->addStrategy('server', new EntityStrategy(new ClassMethods(), new Server()));
-        $hydrator->addStrategy('application', new EntityStrategy(new ClassMethods(), new Application()));
-        $hydrator->addStrategy('user', new EntityStrategy(new ClassMethods(), new User()));
-        $hydrator->addStrategy('customer', new EntityStrategy(new ClassMethods(), new Customer()));
+        $endpointHydrator->addStrategy('physical_connection', new GenericEntityStrategy($productTypeHydrator, new PhysicalConnection()));
+        $endpointHydrator->addStrategy('server', new GenericEntityStrategy($productTypeHydrator, new Server()));
+        $endpointHydrator->addStrategy('application', new GenericEntityStrategy($productTypeHydrator, new Application()));
+        $endpointHydrator->addStrategy('user', new GenericEntityStrategy($productTypeHydrator, new User()));
+        $endpointHydrator->addStrategy('customer', new GenericEntityStrategy($productTypeHydrator, new Customer()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'server_place' => 'serverPlace',
             'contact_person' => 'contactPerson',
             'physical_connection' => 'physicalConnection',
         ));
-        $hydrator->setNamingStrategy($namingStrategy);
-        
-        return $hydrator;
+        $endpointHydrator->setNamingStrategy($namingStrategy);
+
+        return $endpointHydrator;
     }
 }

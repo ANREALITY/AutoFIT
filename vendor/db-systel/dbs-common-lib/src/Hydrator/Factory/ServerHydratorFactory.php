@@ -2,9 +2,9 @@
 namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Zend\Hydrator\ClassMethods;
-use DbSystel\Hydrator\Strategy\Entity\EntityStrategy;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\ServerType;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
 class ServerHydratorFactory implements FactoryInterface
 {
@@ -18,16 +18,15 @@ class ServerHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // $parentLocator = $serviceLocator->getServiceLocator();
-        $hydrator = new ClassMethods(false);
+        $serverHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $hydrator->addStrategy('server_type', new EntityStrategy(new ClassMethods(), new ServerType()));
+        $serverHydrator->addStrategy('server_type', new GenericEntityStrategy($productTypeHydrator, new ServerType()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'server_type' => 'serverType',
         ));
-        $hydrator->setNamingStrategy($namingStrategy);
-        
-        return $hydrator;
+        $serverHydrator->setNamingStrategy($namingStrategy);
+
+        return $serverHydrator;
     }
 }
