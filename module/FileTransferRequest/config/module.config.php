@@ -24,4 +24,10 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'hydrators' => array(
+        'factories' => array(
+            'DbSystel\Hydrator\ArticleHydrator' => 'DbSystel\Hydrator\Factory\ArticleHydratorFactory',
+            'DbSystel\Hydrator\ProductTypeHydrator' => 'DbSystel\Hydrator\Factory\ProductTypeHydratorFactory',
+        ),
+    ),
 );

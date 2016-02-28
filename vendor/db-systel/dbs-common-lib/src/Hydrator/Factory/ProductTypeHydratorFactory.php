@@ -8,7 +8,7 @@ use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 use DbSystel\DataObject\ProductType;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
-class ArticleHydratorFactory implements FactoryInterface
+class ProductTypeHydratorFactory implements FactoryInterface
 {
 
     /**
@@ -20,17 +20,16 @@ class ArticleHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $articleHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $productTypeHydrator = $serviceLocator->get('DbSystel\Hydrator\ProductTypeHydrator');
+        $productTypeHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $articleHydrator->addStrategy('product_type', new GenericEntityStrategy($productTypeHydrator, new ProductType()));
+        // no strategies
 
         $nameMapping = array(
-            'product_type' => 'productType'
+            'long_name' => 'longName',
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
-        $articleHydrator->setNamingStrategy($namingStrategy);
+        $productTypeHydrator->setNamingStrategy($namingStrategy);
 
-        return $articleHydrator;
+        return $productTypeHydrator;
     }
 }

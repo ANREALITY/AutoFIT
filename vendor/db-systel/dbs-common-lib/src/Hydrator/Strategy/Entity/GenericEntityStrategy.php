@@ -1,10 +1,10 @@
 <?php
 namespace DbSystel\Hydrator\Strategy\Entity;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Hydrator\Strategy\StrategyInterface;
+use Zend\Hydrator\HydratorInterface;
 
-class EntityStrategy implements StrategyInterface
+class GenericEntityStrategy implements StrategyInterface
 {
 
     /**
@@ -17,7 +17,7 @@ class EntityStrategy implements StrategyInterface
      */
     private $prototype;
 
-    public function __construct(HydratorInterface $hydrator, object $prototype)
+    public function __construct(HydratorInterface $hydrator, $prototype)
     {
         $this->setHydrator($hydrator);
         $this->setPrototype($prototype);
@@ -43,15 +43,6 @@ class EntityStrategy implements StrategyInterface
 
     /**
      *
-     * @param object $prototype            
-     */
-    public function setPrototype($prototype)
-    {
-        $this->prototype = $prototype;
-    }
-
-    /**
-     *
      * @return the $prototype
      */
     public function getPrototype()
@@ -61,13 +52,22 @@ class EntityStrategy implements StrategyInterface
 
     /**
      *
+     * @param object $prototype            
+     */
+    public function setPrototype($prototype)
+    {
+        $this->prototype = $prototype;
+    }
+
+    /**
+     *
      * {@inheritDoc}
      *
      * @see \Zend\Hydrator\Strategy\StrategyInterface::extract()
      */
-    public function extract($value)
+    public function extract($object)
     {
-        return $this->hydrator->extract($value);
+        return $this->hydrator->extract($object);
     }
 
     /**
@@ -76,8 +76,8 @@ class EntityStrategy implements StrategyInterface
      *
      * @see \Zend\Hydrator\Strategy\StrategyInterface::hydrate()
      */
-    public function hydrate($value)
+    public function hydrate($array)
     {
-        return $this->hydrator->hydrate($value, $object);
+        return $this->hydrator->hydrate($array, $this->prototype);
     }
 }
