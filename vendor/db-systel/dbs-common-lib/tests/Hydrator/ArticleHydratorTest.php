@@ -1,14 +1,13 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use Zend\Hydrator\ClassMethods;
 use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ProductType;
 
 /**
  * ArticleHydrator test case.
  */
-class ArticleHydratorTest extends \PHPUnit_Framework_TestCase
+class ArticleHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
@@ -16,15 +15,9 @@ class ArticleHydratorTest extends \PHPUnit_Framework_TestCase
         'sku' => 'FOO1234'
     ];
 
-    /**
-     *
-     * @var ClassMethods
-     */
-    private $hydrator;
-
     public function testExtract()
     {
-        $extractedData = $this->hydrator->extract($this->createFixtureObject());
+        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
         
         $this->assertArrayHasKey('sku', $extractedData);
         $this->assertEquals(static::CHEXTURE['sku'], $extractedData['sku']);
@@ -37,31 +30,13 @@ class ArticleHydratorTest extends \PHPUnit_Framework_TestCase
 
     public function testHydrate()
     {
-        $hydratedObject = $this->hydrator->hydrate($this->createFixtureArray(), new Article());
+        $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new Article());
         
         $this->assertInstanceOf('DbSystel\DataObject\Article', $hydratedObject);
         $this->assertEquals(static::CHEXTURE['sku'], $hydratedObject->getSku());
         $this->assertInstanceOf('DbSystel\DataObject\ProductType', $hydratedObject->getProductType());
         $this->assertEquals(static::CHEXTURE['product_type_name'], $hydratedObject->getProductType()
             ->getName());
-    }
-
-    /**
-     * Prepares the environment before running a test.
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->hydrator = $this->createHydrator();
-    }
-
-    /**
-     * Cleans up the environment after running a test.
-     */
-    protected function tearDown()
-    {
-        $this->hydrator = null;
-        parent::tearDown();
     }
 
     protected function createHydrator()
