@@ -21,11 +21,7 @@ class UserHydratorFactory implements FactoryInterface
 
         // no strategies
 
-        $nameMapping = array(
-            'ms_exchange_name' => 'msExchangeName',
-        );
-        $namingStrategy = new MapNamingStrategy($nameMapping);
-        $userHydrator->setNamingStrategy($namingStrategy);
+        // no naming map
 
         return $userHydrator;
     }
