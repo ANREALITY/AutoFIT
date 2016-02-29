@@ -39,7 +39,7 @@ class EndpointCdTandemHydratorFactory implements FactoryInterface
         $namingStrategy = new MapNamingStrategy(array(
             'server_place' => 'serverPlace',
             'contact_person' => 'contactPerson',
-            'physical_connection' => 'physicalConnectionCd',
+            'physical_connection' => 'physicalConnection',
         ));
         $endpointCdTandemHydrator->setNamingStrategy($namingStrategy);
 

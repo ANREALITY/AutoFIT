@@ -22,17 +22,18 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
     {
         $fileTransferRequestHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $serviceInvoicePositionHydrator = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoicePositionHydrator');
+        $serviceInvoicePositionHydratorBasic = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoicePositionHydrator');
+        $serviceInvoicePositionHydratorPersonal = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoicePositionHydrator');
 
         $fileTransferRequestHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));
-        $fileTransferRequestHydrator->addStrategy('service_invoice_position_basic', new GenericEntityStrategy($serviceInvoicePositionHydrator, new ServiceInvoicePosition()));
-        $fileTransferRequestHydrator->addStrategy('service_invoice_position_personal', new GenericEntityStrategy($serviceInvoicePositionHydrator, new ServiceInvoicePosition()));
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_basic', new GenericEntityStrategy($serviceInvoicePositionHydratorBasic, new ServiceInvoicePosition()));
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_personal', new GenericEntityStrategy($serviceInvoicePositionHydratorPersonal, new ServiceInvoicePosition()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'change_number' => 'changeNumber',
             'logical_connection' => 'logicalConnection',
             'service_invoice_position_basic' => 'serviceInvoicePositionBasic',
-            'service_invoice_position_personal' => 'serviceInvoicePositionPersonal',
+            'service_invoice_position_personal' => 'serviceInvoicePositionPersonal'
         ));
         $fileTransferRequestHydrator->setNamingStrategy($namingStrategy);
 

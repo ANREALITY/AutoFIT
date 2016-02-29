@@ -39,7 +39,7 @@ class EndpointCdAs400HydratorFactory implements FactoryInterface
         $namingStrategy = new MapNamingStrategy(array(
             'server_place' => 'serverPlace',
             'contact_person' => 'contactPerson',
-            'physical_connection' => 'physicalConnectionCd',
+            'physical_connection' => 'physicalConnection',
         ));
         $endpointCdAs400Hydrator->setNamingStrategy($namingStrategy);
 

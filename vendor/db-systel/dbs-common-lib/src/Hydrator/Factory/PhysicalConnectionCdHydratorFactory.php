@@ -26,6 +26,7 @@ class PhysicalConnectionCdHydratorFactory implements FactoryInterface
 
         $namingStrategy = new MapNamingStrategy(array(
             'logical_connection' => 'logicalConnection',
+            'secure_plus' => 'securePlus',
         ));
         $physicalConnectionCdHydrator->setNamingStrategy($namingStrategy);
 
