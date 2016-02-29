@@ -9,7 +9,6 @@ return array(
     'modules' => array(
         'Application',
         'FileTransferRequest',
-        'Blog',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
