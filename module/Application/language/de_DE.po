@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 19:00+0100\n"
-"PO-Revision-Date: 2016-02-29 19:01+0100\n"
+"POT-Creation-Date: 2016-03-01 00:12+0100\n"
+"PO-Revision-Date: 2016-03-01 00:13+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,29 +17,37 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: FileTransferRequest\n"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:24
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:20
+msgid "Billing"
+msgstr "Abrechnung"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:26
 msgid "application"
 msgstr "Verfahren"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:32
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:39
 msgid "service invoice position number (basic)"
 msgstr "LSP-S"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:40
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:47
 msgid "service invoice position number (personal)"
 msgstr "LSP-P"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:48
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:55
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:56
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:63
 msgid "username"
 msgstr "Benutzername"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:64
-msgid "FileTransferRequest Title"
-msgstr ""
+#: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:80
+msgid "application code"
+msgstr "Verfahrensnummer"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/FileTransferRequestForm.php:26
+msgid "send"
+msgstr "senden"
 
 #: Application/view/application/index/index.phtml:4
 msgid "Tool for creating, submission, and managing of file transfer requests"
@@ -133,11 +141,11 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:35
+#: Application/view/layout/layout.phtml:46
 msgid "Home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:36
+#: Application/view/layout/layout.phtml:47
 msgid "New request"
 msgstr "Neue Anfrage"
 
