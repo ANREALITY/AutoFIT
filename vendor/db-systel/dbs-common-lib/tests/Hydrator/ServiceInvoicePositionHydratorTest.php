@@ -16,32 +16,34 @@ class ServiceInvoicePositionHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'product_type_name' => 'cd',
-        'sku' => 'FOO1234'
+        'number' => 'BUZ123',
+        'service_invoice' => [
+            'number' => 'BAR123',
+            'application' => [
+                'technical_short_name' => 'QWE123'
+            ],
+            'environment' => [
+                'severity' => 40
+            ]
+        ],
+        'article' => [
+            'sku' => 'FOO1234',
+            'product_type' => [
+                'name' => 'cd'
+            ]
+        ],
+        'service_invoice_position_status' => [
+            'name' => 'YXCV'
+        ]
     ];
-
-    public function testExtract()
-    {
-        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-        
-//         $this->assertArrayHasKey('sku', $extractedData);
-//         $this->assertEquals(static::CHEXTURE['sku'], $extractedData['sku']);
-//         $this->assertArraySubset([
-//             'product_type' => [
-//                 'name' => static::CHEXTURE['product_type_name']
-//             ]
-//         ], $extractedData);
-    }
 
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new ServiceInvoicePosition());
         
-//         $this->assertInstanceOf('DbSystel\DataObject\ServiceInvoicePosition', $hydratedObject);
-//         $this->assertEquals(static::CHEXTURE['sku'], $hydratedObject->getSku());
-//         $this->assertInstanceOf('DbSystel\DataObject\ProductType', $hydratedObject->getProductType());
-//         $this->assertEquals(static::CHEXTURE['product_type_name'], $hydratedObject->getProductType()
-//             ->getName());
+        $this->assertEquals(static::CHEXTURE['service_invoice']['environment']['severity'], $hydratedObject->getServiceInvoice()
+            ->getEnvironment()
+            ->getSeverity());
     }
 
     protected function createHydrator()
@@ -62,7 +64,7 @@ class ServiceInvoicePositionHydratorTest extends AbstractHydratorTest
         $application->setTechnicalShortName('QWE123');
         $serviceInvoice->setApplication($application);
         $environment = new Environment();
-        $environment->setSeverity(10);
+        $environment->setSeverity(40);
         $serviceInvoice->setEnvironment($environment);
         $serviceInvoicePosition->setServiceInvoice($serviceInvoice);
         $article = new Article();
@@ -75,19 +77,6 @@ class ServiceInvoicePositionHydratorTest extends AbstractHydratorTest
         $serviceInvoicePositionStatus->setName('YXCV');
         $serviceInvoicePosition->setServiceInvoicePositionStatus($serviceInvoicePositionStatus);
         return $serviceInvoicePosition;
-    }
-
-    protected function createFixtureArray()
-    {
-        return [
-            'sku' => 'FOO1234',
-            'description' => 'Bar article description',
-            'type' => 'baz',
-            'product_type' => [
-                'name' => 'cd',
-                'long_name' => null
-            ]
-        ];
     }
 }
 

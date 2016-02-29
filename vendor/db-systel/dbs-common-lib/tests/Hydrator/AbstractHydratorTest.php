@@ -48,9 +48,23 @@ abstract class AbstractHydratorTest extends \PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
+    public function testExtract()
+    {
+        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
+
+        foreach (static::CHEXTURE as $key => $property) {
+            $this->assertArraySubset([$key => $property], $extractedData);
+        }
+    }
+    
+    abstract public function testHydrate();
+
     abstract protected function createHydrator();
 
     abstract protected function createFixtureObject();
 
-    abstract protected function createFixtureArray();
+    protected function createFixtureArray()
+    {
+        return static::CHEXTURE;
+    }
 }

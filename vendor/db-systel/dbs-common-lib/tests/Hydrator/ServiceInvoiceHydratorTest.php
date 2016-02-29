@@ -12,32 +12,21 @@ class ServiceInvoiceHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'product_type_name' => 'cd',
-        'sku' => 'FOO1234'
+        'number' => 'BAR123',
+        'application' => [
+            'technical_short_name' => 'QWE123'
+        ],
+        'environment' => [
+            'severity' => 30
+        ]
     ];
-
-    public function testExtract()
-    {
-        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-        
-//         $this->assertArrayHasKey('sku', $extractedData);
-//         $this->assertEquals(static::CHEXTURE['sku'], $extractedData['sku']);
-//         $this->assertArraySubset([
-//             'product_type' => [
-//                 'name' => static::CHEXTURE['product_type_name']
-//             ]
-//         ], $extractedData);
-    }
 
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new ServiceInvoice());
-        
-//         $this->assertInstanceOf('DbSystel\DataObject\ServiceInvoice', $hydratedObject);
-//         $this->assertEquals(static::CHEXTURE['sku'], $hydratedObject->getSku());
-//         $this->assertInstanceOf('DbSystel\DataObject\ProductType', $hydratedObject->getProductType());
-//         $this->assertEquals(static::CHEXTURE['product_type_name'], $hydratedObject->getProductType()
-//             ->getName());
+
+        $this->assertEquals(static::CHEXTURE['environment']['severity'], $hydratedObject->getEnvironment()
+            ->getSeverity());
     }
 
     protected function createHydrator()
@@ -56,22 +45,9 @@ class ServiceInvoiceHydratorTest extends AbstractHydratorTest
         $application->setTechnicalShortName('QWE123');
         $serviceInvoice->setApplication($application);
         $environment = new Environment();
-        $environment->setSeverity(10);
+        $environment->setSeverity(30);
         $serviceInvoice->setEnvironment($environment);
         return $serviceInvoice;
-    }
-
-    protected function createFixtureArray()
-    {
-        return [
-            'sku' => 'FOO1234',
-            'description' => 'Bar article description',
-            'type' => 'baz',
-            'product_type' => [
-                'name' => 'cd',
-                'long_name' => null
-            ]
-        ];
     }
 }
 

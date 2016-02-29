@@ -18,32 +18,62 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'product_type_name' => 'cd',
-        'sku' => 'FOO1234'
+        'id' => 123,
+        'logical_connection' => [
+            'id' => 567
+        ],
+        'service_invoice_position_basic' => [
+            'number' => 'BUZ333',
+            'service_invoice' => [
+                'number' => 'BAR333',
+                'application' => [
+                    'technical_short_name' => 'QWE333'
+                ],
+                'environment' => [
+                    'severity' => 10
+                ]
+            ],
+            'article' => [
+                'sku' => 'FOO333',
+                'product_type' => [
+                    'name' => 'cd'
+                ]
+            ],
+            'service_invoice_position_status' => [
+                'name' => 'YXCV333'
+            ]
+        ],
+        'service_invoice_position_personal' => [
+            'number' => 'BUZ555',
+            'service_invoice' => [
+                'number' => 'BAR555',
+                'application' => [
+                    'technical_short_name' => 'QWE555'
+                ],
+                'environment' => [
+                    'severity' => 20
+                ]
+            ],
+            'article' => [
+                'sku' => 'FOO555',
+                'product_type' => [
+                    'name' => 'cd'
+                ]
+            ],
+            'service_invoice_position_status' => [
+                'name' => 'YXCV555'
+            ]
+        ]
     ];
-
-    public function testExtract()
-    {
-        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-        
-//         $this->assertArrayHasKey('sku', $extractedData);
-//         $this->assertEquals(static::CHEXTURE['sku'], $extractedData['sku']);
-//         $this->assertArraySubset([
-//             'product_type' => [
-//                 'name' => static::CHEXTURE['product_type_name']
-//             ]
-//         ], $extractedData);
-    }
 
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new FileTransferRequest());
         
-//         $this->assertInstanceOf('DbSystel\DataObject\FileTransferRequest', $hydratedObject);
-//         $this->assertEquals(static::CHEXTURE['sku'], $hydratedObject->getSku());
-//         $this->assertInstanceOf('DbSystel\DataObject\ProductType', $hydratedObject->getProductType());
-//         $this->assertEquals(static::CHEXTURE['product_type_name'], $hydratedObject->getProductType()
-//             ->getName());
+        $this->assertEquals(static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'], $hydratedObject->getServiceInvoicePositionBasic()
+            ->getServiceInvoice()
+            ->getApplication()
+            ->getTechnicalShortName());
     }
 
     protected function createHydrator()
@@ -79,7 +109,7 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $article->setProductType($productType);
         $serviceInvoicePositionBasic->setArticle($article);
         $serviceInvoicePositionStatus = new ServiceInvoicePositionStatus();
-        $serviceInvoicePositionStatus->setName('YXCV');
+        $serviceInvoicePositionStatus->setName('YXCV333');
         $serviceInvoicePositionBasic->setServiceInvoicePositionStatus($serviceInvoicePositionStatus);
         $fileTransferRequest->setServiceInvoicePositionBasic($serviceInvoicePositionBasic);
         $serviceInvoicePositionPersonal = new ServiceInvoicePosition();
@@ -90,7 +120,7 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $application->setTechnicalShortName('QWE555');
         $serviceInvoice->setApplication($application);
         $environment = new Environment();
-        $environment->setSeverity(10);
+        $environment->setSeverity(20);
         $serviceInvoice->setEnvironment($environment);
         $serviceInvoicePositionPersonal->setServiceInvoice($serviceInvoice);
         $article = new Article();
@@ -100,23 +130,9 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $article->setProductType($productType);
         $serviceInvoicePositionPersonal->setArticle($article);
         $serviceInvoicePositionStatus = new ServiceInvoicePositionStatus();
-        $serviceInvoicePositionStatus->setName('YXCV');
+        $serviceInvoicePositionStatus->setName('YXCV555');
         $serviceInvoicePositionPersonal->setServiceInvoicePositionStatus($serviceInvoicePositionStatus);
         $fileTransferRequest->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal);
         return $fileTransferRequest;
     }
-
-    protected function createFixtureArray()
-    {
-        return [
-            'sku' => 'FOO1234',
-            'description' => 'Bar article description',
-            'type' => 'baz',
-            'product_type' => [
-                'name' => 'cd',
-                'long_name' => null
-            ]
-        ];
-    }
 }
-

@@ -17,32 +17,38 @@ class EndpointCdAs400HydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'product_type_name' => 'cd',
-        'sku' => 'FOO1234'
+        'id' => 123,
+        'physical_connection' => [
+            'id' => 123,
+            'secure_plus' => true,
+            'logical_connection' => [
+                'id' => 567
+            ]
+        ],
+        'server' => [
+            'name' => 'YXC123',
+            'server_type' => [
+                'id' => 567
+            ]
+        ],
+        'application' => [
+            'technical_short_name' => 'QWE123'
+        ],
+        'user' => [
+            'id' => 159
+        ],
+        'customer' => [
+            'id' => 246
+        ]
     ];
-
-    public function testExtract()
-    {
-        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-        
-//         $this->assertArrayHasKey('sku', $extractedData);
-//         $this->assertEquals(static::CHEXTURE['sku'], $extractedData['sku']);
-//         $this->assertArraySubset([
-//             'product_type' => [
-//                 'name' => static::CHEXTURE['product_type_name']
-//             ]
-//         ], $extractedData);
-    }
 
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new EndpointCdAs400());
         
-//         $this->assertInstanceOf('DbSystel\DataObject\EndpointCdAs400', $hydratedObject);
-//         $this->assertEquals(static::CHEXTURE['sku'], $hydratedObject->getSku());
-//         $this->assertInstanceOf('DbSystel\DataObject\ProductType', $hydratedObject->getProductType());
-//         $this->assertEquals(static::CHEXTURE['product_type_name'], $hydratedObject->getProductType()
-//             ->getName());
+        $this->assertEquals(static::CHEXTURE['physical_connection']['logical_connection']['id'], $hydratedObject->getPhysicalConnection()
+            ->getLogicalConnection()
+            ->getId());
     }
 
     protected function createHydrator()
@@ -59,6 +65,7 @@ class EndpointCdAs400HydratorTest extends AbstractHydratorTest
         $endpointCdAs400->setId(123);
         $physicalConnection = new PhysicalConnectionCd();
         $physicalConnection->setId(123);
+        $physicalConnection->setSecurePlus(true);
         $logicalConnection = new LogicalConnection();
         $logicalConnection->setId(567);
         $physicalConnection->setLogicalConnection($logicalConnection);
@@ -80,18 +87,4 @@ class EndpointCdAs400HydratorTest extends AbstractHydratorTest
         $endpointCdAs400->setCustomer($customer);
         return $endpointCdAs400;
     }
-
-    protected function createFixtureArray()
-    {
-        return [
-            'sku' => 'FOO1234',
-            'description' => 'Bar article description',
-            'type' => 'baz',
-            'product_type' => [
-                'name' => 'cd',
-                'long_name' => null
-            ]
-        ];
-    }
 }
-
