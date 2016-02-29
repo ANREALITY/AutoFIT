@@ -17,7 +17,7 @@ class UserHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $productTypeHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $userHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
         // no strategies
 
@@ -25,8 +25,8 @@ class UserHydratorFactory implements FactoryInterface
             'ms_exchange_name' => 'msExchangeName',
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
-        $productTypeHydrator->setNamingStrategy($namingStrategy);
+        $userHydrator->setNamingStrategy($namingStrategy);
 
-        return $productTypeHydrator;
+        return $userHydrator;
     }
 }

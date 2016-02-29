@@ -7,6 +7,7 @@ use DbSystel\DataObject\ServiceInvoice;
 use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ServiceInvoicePositionStatus;
 use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
+use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
 class ServiceInvoicePositionHydratorFactory implements FactoryInterface
 {
@@ -21,10 +22,13 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $serviceInvoicePositionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $serviceInvoiceHydrator = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoiceHydrator');
+        $articleHydrator = $serviceLocator->get('DbSystel\Hydrator\ArticleHydrator');
+        $serviceInvoicePositionStatusHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoice()));
-        $serviceInvoicePositionHydrator->addStrategy('article', new GenericEntityStrategy($productTypeHydrator, new Article()));
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status', new GenericEntityStrategy($productTypeHydrator, new ServiceInvoicePositionStatus()));
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice', new GenericEntityStrategy($serviceInvoiceHydrator, new ServiceInvoice()));
+        $serviceInvoicePositionHydrator->addStrategy('article', new GenericEntityStrategy($articleHydrator, new Article()));
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status', new GenericEntityStrategy($serviceInvoicePositionStatusHydrator, new ServiceInvoicePositionStatus()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'order_quantity' => 'orderQuantity',

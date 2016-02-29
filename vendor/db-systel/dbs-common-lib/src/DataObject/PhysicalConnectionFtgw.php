@@ -1,6 +1,6 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class PhysicalConnectionFtgw extends PhysicalConnection
+class PhysicalConnectionFtgw extends PhysicalConnection
 {
 }
