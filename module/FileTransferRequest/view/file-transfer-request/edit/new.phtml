@@ -1,0 +1,50 @@
+<?php
+use Zend\Form\FieldsetInterface;
+?>
+ <?php
+$form = $this->form;
+$form->setAttribute('action', $this->url());
+$form->prepare();
+
+$test = $this->form();
+
+echo $this->form()->openTag($form);
+// echo $this->formCollection($form);
+?>
+
+<?php foreach ($form as $element) : ?>
+    <?php if($element instanceof FieldsetInterface) : ?>
+        <?php $fieldset = $element; ?>
+            <div class="fielset-container">
+                <h3><?php echo $fieldset->getLabel(); ?></h3>
+                <?php foreach ($fieldset as $element) : ?>
+                <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                    <label><?php echo $this->translate($element->getLabel()); ?></label>
+                    <div>
+                        <?php
+                        $element->setAttribute('class', 'form-control');
+                        ?>
+                        <?php echo $this->formElement($element);
+                            if ($this->formElementErrors($element))
+                        ?>
+                        <span><?php echo $this->formElementErrors($element) ?></span>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else : ?>
+        <div class="form-group <?php if($this->formElementErrors($element)) echo "error" ?>">
+            <label class="control-label"><?php echo $element->getLabel() ?></label>
+            <div class="controls">
+                    <?php echo $this->formElement($element);
+                        if ($this->formElementErrors($element))
+                    ?>
+                <span><?php echo $this->formElementErrors($element) ?></span>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+
+<?php
+echo $this->form()->closeTag($form);
+?>
