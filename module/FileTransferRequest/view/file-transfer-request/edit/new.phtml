@@ -30,6 +30,7 @@ echo $this->form()->openTag($form);
                 </div>
                 <?php endforeach; ?>
             </div>
+            <hr />
         <?php else : ?>
         <div class="form-group <?php if($this->formElementErrors($element)) echo "error" ?>">
             <label class="control-label"><?php echo $this->translate($element->getLabel()) ?></label>

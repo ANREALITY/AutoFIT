@@ -2,12 +2,12 @@
 return array(
     'router' => array(
         'routes' => array(
-            'foo' => array(
+            'new-request' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/file-transfer-request/new',
                     'defaults' => array(
-                        'controller' => 'FileTransferRequest\Controller\FileTransferRequest',
+                        'controller' => 'FileTransferRequest\Controller\Edit',
                         'action'     => 'new',
                     ),
                 ),
@@ -16,8 +16,21 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'FileTransferRequest\Controller\FileTransferRequest' => 'FileTransferRequest\Controller\FileTransferRequestController',
         ),
+        'factories' => array(
+            'FileTransferRequest\Controller\Edit' => 'FileTransferRequest\Factory\EditControllerFactory',
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface'   => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
+            'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Factory\FileTransferRequestServiceFactory',
+            'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
+            'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
+            'FileTransferRequest\Form\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
+            'FileTransferRequest\Form\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
+            'FileTransferRequest\Form\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
+        )
     ),
     'view_manager' => array(
         'template_path_stack' => array(
