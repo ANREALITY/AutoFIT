@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-01 00:12+0100\n"
-"PO-Revision-Date: 2016-03-01 00:13+0100\n"
+"POT-Creation-Date: 2016-03-01 10:17+0100\n"
+"PO-Revision-Date: 2016-03-01 10:19+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,11 +17,17 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: FileTransferRequest\n"
 
+#: FileTransferRequest/src/FileTransferRequest/Factory/FileTransferRequestFormFactory.php:39
+msgid "send"
+msgstr "senden"
+
 #: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:20
 msgid "Billing"
 msgstr "Abrechnung"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:26
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:51
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:51
 msgid "application"
 msgstr "Verfahren"
 
@@ -34,6 +40,8 @@ msgid "service invoice position number (personal)"
 msgstr "LSP-P"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:55
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:79
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:79
 msgid "change number"
 msgstr "Change-Nummer"
 
@@ -42,12 +50,53 @@ msgid "username"
 msgstr "Benutzername"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/BillingFieldset.php:80
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:104
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:104
 msgid "application code"
 msgstr "Verfahrensnummer"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/FileTransferRequestForm.php:26
-msgid "send"
-msgstr "senden"
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:20
+msgid "Source"
+msgstr "Quelle"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:26
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:26
+msgid "contact person"
+msgstr "Ansprechpartner"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:39
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:39
+msgid "server place"
+msgstr "Serverstandort"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:41
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:41
+msgid "intranet"
+msgstr "Intranet"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:42
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:42
+msgid "internet"
+msgstr "Internet"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:59
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:59
+msgid "customer"
+msgstr "Kunde"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:67
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:67
+msgid "server plattform"
+msgstr "Server-Plattform"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/SourceFieldset.php:87
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:87
+msgid "server name"
+msgstr "Servername"
+
+#: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:20
+msgid "Target"
+msgstr "Target"
 
 #: Application/view/application/index/index.phtml:4
 msgid "Tool for creating, submission, and managing of file transfer requests"
