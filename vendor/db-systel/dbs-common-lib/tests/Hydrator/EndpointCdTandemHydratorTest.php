@@ -35,7 +35,7 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
             'technical_short_name' => 'QWE123'
         ],
         'user' => [
-            'id' => 159
+            'id' => 135
         ],
         'customer' => [
             'id' => 246
@@ -80,7 +80,7 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
         $application->setTechnicalShortName('QWE123');
         $endpointCdTandem->setApplication($application);
         $user = new User();
-        $user->setId(159);
+        $user->setId(135);
         $endpointCdTandem->setUser($user);
         $customer = new Customer();
         $customer->setId(246);

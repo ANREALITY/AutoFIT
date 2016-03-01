@@ -10,6 +10,7 @@ use DbSystel\DataObject\Environment;
 use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ProductType;
 use DbSystel\DataObject\ServiceInvoicePositionStatus;
+use DbSystel\DataObject\User;
 
 /**
  * FileTransferRequestHydrator test case.
@@ -63,14 +64,18 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
             'service_invoice_position_status' => [
                 'name' => 'YXCV555'
             ]
+        ],
+        'user' => [
+            'id' => 357
         ]
     ];
 
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new FileTransferRequest());
-        
-        $this->assertEquals(static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'], $hydratedObject->getServiceInvoicePositionBasic()
+
+        $this->assertEquals(static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'],
+            $hydratedObject->getServiceInvoicePositionBasic()
             ->getServiceInvoice()
             ->getApplication()
             ->getTechnicalShortName());
@@ -133,6 +138,9 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $serviceInvoicePositionStatus->setName('YXCV555');
         $serviceInvoicePositionPersonal->setServiceInvoicePositionStatus($serviceInvoicePositionStatus);
         $fileTransferRequest->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal);
+        $user = new User();
+        $user->setId(357);
+        $fileTransferRequest->setUser($user);
         return $fileTransferRequest;
     }
 }

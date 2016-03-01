@@ -14,7 +14,7 @@ class User
      *
      * @var string
      */
-    protected $msExchangeName;
+    protected $username;
 
     /**
      *
@@ -60,20 +60,20 @@ class User
 
     /**
      *
-     * @return the $msExchangeName
+     * @return the $username
      */
-    public function getMsExchangeName()
+    public function getUsername()
     {
-        return $this->msExchangeName;
+        return $this->username;
     }
 
     /**
      *
-     * @param string $msExchangeName            
+     * @param string $username            
      */
-    public function setMsExchangeName($msExchangeName)
+    public function setUsername($username)
     {
-        $this->msExchangeName = $msExchangeName;
+        $this->username = $username;
     }
 
     /**
