@@ -13,7 +13,7 @@ echo $this->form()->openTag($form);
 <?php foreach ($form as $element) : ?>
     <?php if($element instanceof FieldsetInterface) : ?>
         <?php $fieldset = $element; ?>
-        <div class="fielset-container">
+        <div class="fieldset-container">
             <h3><?php echo $this->translate($fieldset->getLabel()); ?></h3>
             <?php foreach ($fieldset as $element) : ?>
             <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">

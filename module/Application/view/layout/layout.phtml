@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <?php
-                        // Temporary solutions, so log we don't have a real navigation.
+                        // Temporary solutions, so long as we don't have a real navigation.
                         $routeMatch = $this
                             ->getHelperPluginManager()
                             ->getServiceLocator()
@@ -44,7 +44,7 @@
                         $currentRoute = $routeMatch->getMatchedRouteName();
                         ?>
                         <li<?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        <li<?php echo $currentRoute == 'new-request' ? ' class="active"' : null;?>><a href="<?php echo $this->url('new-request') ?>"><?php echo $this->translate('New request') ?></a></li>
+                        <li<?php echo $currentRoute == 'create-request' ? ' class="active"' : null;?>><a href="<?php echo $this->url('create-request') ?>"><?php echo $this->translate('New request') ?></a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

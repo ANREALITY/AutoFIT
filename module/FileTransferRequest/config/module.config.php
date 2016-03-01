@@ -2,13 +2,13 @@
 return array(
     'router' => array(
         'routes' => array(
-            'new-request' => array(
+            'create-request' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/file-transfer-request/new',
+                    'route'    => '/file-transfer-request/create-request',
                     'defaults' => array(
                         'controller' => 'FileTransferRequest\Controller\Edit',
-                        'action'     => 'new',
+                        'action'     => 'createRequest',
                     ),
                 ),
             ),
