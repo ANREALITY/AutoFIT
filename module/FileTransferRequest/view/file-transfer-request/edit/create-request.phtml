@@ -10,36 +10,77 @@ echo $this->form()->openTag($form);
 // echo $this->formCollection($form);
 ?>
 
+
+
+<?php
+$billingFieldset = $form->get('billing');
+$sourceFieldset = $form->get('source');
+$targetFieldset = $form->get('target');
+?>
+
+<div class="fieldset-container">
+    <h3><?php echo $this->translate($billingFieldset->getLabel()); ?></h3>
+    <?php foreach ($billingFieldset as $element) : ?>
+    <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+        <label><?php echo $this->translate($element->getLabel()); ?></label>
+        <div>
+            <?php $element->setAttribute('class', 'form-control'); ?>
+            <?php echo $this->formElement($element); ?>
+            <?php if ($this->formElementErrors($element)) : ?>
+                <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<hr />
+
+<div class="fieldset-container">
+    <h3><?php echo $this->translate($sourceFieldset->getLabel()); ?></h3>
+    <?php foreach ($sourceFieldset as $element) : ?>
+    <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+        <label><?php echo $this->translate($element->getLabel()); ?></label>
+        <div>
+            <?php $element->setAttribute('class', 'form-control'); ?>
+            <?php echo $this->formElement($element); ?>
+            <?php if ($this->formElementErrors($element)) : ?>
+                <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<hr />
+
+<div class="fieldset-container">
+    <h3><?php echo $this->translate($targetFieldset->getLabel()); ?></h3>
+    <?php foreach ($targetFieldset as $element) : ?>
+    <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+        <label><?php echo $this->translate($element->getLabel()); ?></label>
+        <div>
+            <?php $element->setAttribute('class', 'form-control'); ?>
+            <?php echo $this->formElement($element); ?>
+            <?php if ($this->formElementErrors($element)) : ?>
+                <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<hr />
+
 <?php foreach ($form as $element) : ?>
-    <?php if($element instanceof FieldsetInterface) : ?>
-        <?php $fieldset = $element; ?>
-        <div class="fieldset-container">
-            <h3><?php echo $this->translate($fieldset->getLabel()); ?></h3>
-            <?php foreach ($fieldset as $element) : ?>
-            <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
-                <label><?php echo $this->translate($element->getLabel()); ?></label>
-                <div>
-                    <?php $element->setAttribute('class', 'form-control'); ?>
-                    <?php echo $this->formElement($element); ?>
-                    <?php if ($this->formElementErrors($element)) : ?>
-                        <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        <hr />
-    <?php else : ?>
-        <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
-            <label class="control-label"><?php echo $this->translate($element->getLabel()) ?></label>
-            <div class="controls">
-                <?php echo $this->formElement($element); ?>
-                <?php if ($this->formElementErrors($element)) : ?>
-                    <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
-                <?php endif; ?>
-            </div>
-        </div>
-    <?php endif; ?>
+<?php if(!($element instanceof FieldsetInterface)) : ?>
+<div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+    <label class="control-label"><?php echo $this->translate($element->getLabel()) ?></label>
+    <div class="controls">
+        <?php echo $this->formElement($element); ?>
+        <?php if ($this->formElementErrors($element)) : ?>
+            <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
 <?php endforeach; ?>
 
 <?php
