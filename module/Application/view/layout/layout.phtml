@@ -41,7 +41,10 @@
                             ->getMvcEvent()
                             ->getRouteMatch()
                         ;
-                        $currentRoute = $routeMatch->getMatchedRouteName();
+                        $currentRoute = $routeMatch instanceof \Zend\Mvc\Router\RouteMatch
+                            ? $routeMatch->getMatchedRouteName()
+                            : null
+                        ;
                         ?>
                         <li<?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                         <li<?php echo $currentRoute == 'create-request' ? ' class="active"' : null;?>><a href="<?php echo $this->url('create-request') ?>"><?php echo $this->translate('New request') ?></a></li>
