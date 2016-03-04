@@ -1,7 +1,9 @@
 <?php
 use Zend\Form\FieldsetInterface;
+use Zend\Form\View\Helper\FormRow;
 ?>
- <?php
+
+<?php
 $form = $this->form;
 $form->setAttribute('action', $this->url());
 $form->prepare();
@@ -27,6 +29,7 @@ $targetFieldset = $form->get('target');
         <div class="panel-body">
             <?php foreach ($billingFieldset as $element) : ?>
             <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                <?php $element->setOption('label_position', FormRow::LABEL_APPEND); ?>
                 <label><?php echo $this->translate($element->getLabel()); ?></label>
                 <div>
                     <?php $element->setAttribute('class', 'form-control'); ?>
@@ -44,14 +47,15 @@ $targetFieldset = $form->get('target');
 
 <hr />
 
-<div id="fieldset-billing" class="fieldset-container col-md-6">
+<div id="fieldset-source" class="fieldset-container col-md-6">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><?php echo $this->translate($billingFieldset->getLabel()); ?></h3>
+            <h3 class="panel-title"><?php echo $this->translate($sourceFieldset->getLabel()); ?></h3>
         </div>
         <div class="panel-body">
             <?php foreach ($sourceFieldset as $element) : ?>
             <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                <?php $element->setOption('label_position', FormRow::LABEL_APPEND); ?>
                 <label><?php echo $this->translate($element->getLabel()); ?></label>
                 <div>
                     <?php $element->setAttribute('class', 'form-control'); ?>
@@ -66,7 +70,7 @@ $targetFieldset = $form->get('target');
     </div>
 </div>
 
-<div id="fieldset-billing" class="fieldset-container col-md-6">
+<div id="fieldset-target" class="fieldset-container col-md-6">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><?php echo $this->translate($targetFieldset->getLabel()); ?></h3>
@@ -74,6 +78,7 @@ $targetFieldset = $form->get('target');
         <div class="panel-body">
             <?php foreach ($targetFieldset as $element) : ?>
             <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                <?php $element->setLabelOption('label_position', FormRow::LABEL_PREPEND); ?>
                 <label><?php echo $this->translate($element->getLabel()); ?></label>
                 <div>
                     <?php $element->setAttribute('class', 'form-control'); ?>
@@ -103,7 +108,6 @@ $targetFieldset = $form->get('target');
     <?php endif; ?>
     <?php endforeach; ?>
 <?php endif; ?>
-
 
 <?php
 echo $this->form()->closeTag($form);
