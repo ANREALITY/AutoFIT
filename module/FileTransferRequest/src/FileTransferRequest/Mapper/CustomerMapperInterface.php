@@ -2,14 +2,13 @@
 namespace FileTransferRequest\Mapper;
 
 use DbSystel\DataObject\Customer;
-use DbSystel\Mapper\MapperInterface;
 
 interface CustomerMapperInterface
 {
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      * @return Customer
      * @throws \InvalidArgumentException
      */
@@ -23,7 +22,7 @@ interface CustomerMapperInterface
 
     /**
      *
-     * @param Customer $dataObject            
+     * @param Customer $dataObject
      * @return Customer
      * @throws \Exception
      */

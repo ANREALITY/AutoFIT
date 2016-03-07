@@ -15,14 +15,12 @@ class CustomerMapper implements CustomerMapperInterface
 {
 
     /**
-     *
-     * @var \Zend\Db\Adapter\AdapterInterface
+     * @var AdapterInterface
      */
     protected $dbAdapter;
 
     /**
-     *
-     * @var \Zend\Hydrator\HydratorInterface
+     * @var HydratorInterface
      */
     protected $hydrator;
 
@@ -41,7 +39,7 @@ class CustomerMapper implements CustomerMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return Customer
      * @throws \InvalidArgumentException
@@ -49,21 +47,21 @@ class CustomerMapper implements CustomerMapperInterface
     public function find($id)
     {
         /*
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('customer');
-        $select->where(array(
-            'id = ?' => $id
-        ));
-        
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            return $this->hydrator->hydrate($result->current(), $this->prototype);
-        }
-        
-        throw new \InvalidArgumentException("Customer with given ID:{$id} not found.");
-        */
+         * $sql = new Sql($this->dbAdapter);
+         * $select = $sql->select('customer');
+         * $select->where(array(
+         * 'id = ?' => $id
+         * ));
+         *
+         * $statement = $sql->prepareStatementForSqlObject($select);
+         * $result = $statement->execute();
+         *
+         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+         * return $this->hydrator->hydrate($result->current(), $this->prototype);
+         * }
+         *
+         * throw new \InvalidArgumentException("Customer with given ID:{$id} not found.");
+         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
@@ -74,26 +72,26 @@ class CustomerMapper implements CustomerMapperInterface
     public function findAll()
     {
         /*
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('customer');
-        
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-            
-            return $resultSet->initialize($result);
-        }
-        
-        return array();
-        */
+         * $sql = new Sql($this->dbAdapter);
+         * $select = $sql->select('customer');
+         *
+         * $statement = $sql->prepareStatementForSqlObject($select);
+         * $result = $statement->execute();
+         *
+         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
+         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+         *
+         * return $resultSet->initialize($result);
+         * }
+         *
+         * return array();
+         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @param Customer $dataObject            
+     * @param Customer $dataObject
      *
      * @return Customer
      * @throws \Exception
@@ -126,6 +124,6 @@ class CustomerMapper implements CustomerMapperInterface
             return $dataObject;
         }
 
-        throw new \Exception("Database error");
+        throw new \Exception('Database error in ' . __METHOD__);
     }
 }
