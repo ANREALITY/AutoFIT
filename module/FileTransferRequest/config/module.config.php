@@ -24,6 +24,7 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'FileTransferRequest\Mapper\FileTransferRequestMapperInterface'   => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
+            'FileTransferRequest\Mapper\CustomerMapperInterface'   => 'FileTransferRequest\Factory\CustomerMapperFactory',
             'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Factory\FileTransferRequestServiceFactory',
             'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
@@ -52,6 +53,7 @@ return array(
             'DbSystel\Hydrator\ServiceInvoiceHydrator' => 'DbSystel\Hydrator\Factory\ServiceInvoiceHydratorFactory',
             'DbSystel\Hydrator\ServiceInvoicePositionHydrator' => 'DbSystel\Hydrator\Factory\ServiceInvoicePositionHydratorFactory',
             'DbSystel\Hydrator\UserHydrator' => 'DbSystel\Hydrator\Factory\UserHydratorFactory',
+            'DbSystel\Hydrator\CustomerHydrator' => 'DbSystel\Hydrator\Factory\CustomerHydratorFactory',
         ),
     ),
 );
