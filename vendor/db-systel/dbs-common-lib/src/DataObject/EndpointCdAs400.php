@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class EndpointCdAs400 extends Endpoint
+class EndpointCdAs400
 {
 
     /**
@@ -15,6 +15,12 @@ class EndpointCdAs400 extends Endpoint
      * @var string
      */
     protected $folder;
+
+    /**
+     *
+     * @var Endpoint
+     */
+    protected $endpoint;
 
     /**
      *
@@ -50,5 +56,23 @@ class EndpointCdAs400 extends Endpoint
     public function setFolder($folder)
     {
         $this->folder = $folder;
+    }
+
+    /**
+     *
+     * @return the $endpoint
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\Endpoint $endpoint            
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->endpoint = $endpoint;
     }
 }

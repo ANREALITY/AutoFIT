@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class PhysicalConnectionCd extends PhysicalConnection
+class PhysicalConnectionCd
 {
 
     /**
@@ -9,6 +9,12 @@ class PhysicalConnectionCd extends PhysicalConnection
      * @var boolean
      */
     protected $securePlus;
+
+    /**
+     *
+     * @var PhysicalConnection
+     */
+    protected $physicalConnection;
 
     /**
      *
@@ -26,5 +32,23 @@ class PhysicalConnectionCd extends PhysicalConnection
     public function setSecurePlus($securePlus)
     {
         $this->securePlus = $securePlus;
+    }
+
+    /**
+     *
+     * @return the $physicalConnection
+     */
+    public function getPhysicalConnection()
+    {
+        return $this->physicalConnection;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection            
+     */
+    public function setPhysicalConnection($physicalConnection)
+    {
+        $this->physicalConnection = $physicalConnection;
     }
 }

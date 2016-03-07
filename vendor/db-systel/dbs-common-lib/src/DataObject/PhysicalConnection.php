@@ -27,7 +27,7 @@ abstract class PhysicalConnection
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -45,7 +45,7 @@ abstract class PhysicalConnection
 
     /**
      *
-     * @param LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection
      */
     public function setLogicalConnection($logicalConnection)
     {
