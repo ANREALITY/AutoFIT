@@ -23,13 +23,26 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
-            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface' => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
+            // mappers
             'FileTransferRequest\Mapper\CustomerMapperInterface' => 'FileTransferRequest\Factory\CustomerMapperFactory',
+            'FileTransferRequest\Mapper\EndpointCdAs400MapperInterface' => 'FileTransferRequest\Factory\EndpointCdAs400MapperFactory',
+            'FileTransferRequest\Mapper\EndpointCdTandemMapperInterface' => 'FileTransferRequest\Factory\EndpointCdTandemMapperFactory',
+            'FileTransferRequest\Mapper\EndpointMapperInterface' => 'FileTransferRequest\Factory\EndpointMapperFactory',
+            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface' => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
+            'FileTransferRequest\Mapper\LogicalConnectionMapperInterface' => 'FileTransferRequest\Factory\LogicalConnectionMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionCdMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionCdMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionFtgwMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionFtgwMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionMapperFactory',
+            'FileTransferRequest\Mapper\UserMapperInterface' => 'FileTransferRequest\Factory\UserMapperFactory',
+            // services
             'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Factory\FileTransferRequestServiceFactory',
+            // forms
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
+            // fieldsets
             'FileTransferRequest\Form\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
             'FileTransferRequest\Form\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
             'FileTransferRequest\Form\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
+            // Zend
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )
     ),
