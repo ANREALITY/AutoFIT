@@ -23,14 +23,14 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
-            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface'   => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
-            'FileTransferRequest\Mapper\CustomerMapperInterface'   => 'FileTransferRequest\Factory\CustomerMapperFactory',
+            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface' => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
+            'FileTransferRequest\Mapper\CustomerMapperInterface' => 'FileTransferRequest\Factory\CustomerMapperFactory',
             'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Factory\FileTransferRequestServiceFactory',
-            'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
             'FileTransferRequest\Form\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
             'FileTransferRequest\Form\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
             'FileTransferRequest\Form\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )
     ),
     'view_manager' => array(
