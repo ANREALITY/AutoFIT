@@ -14,7 +14,7 @@ class ServiceInvoiceHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ServiceLocatorInterface $serviceLocator
      *
      * @return mixed
      */

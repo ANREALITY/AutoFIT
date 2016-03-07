@@ -3,7 +3,6 @@ namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
 class CustomerHydratorFactory implements FactoryInterface
 {
@@ -11,7 +10,7 @@ class CustomerHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ServiceLocatorInterface $serviceLocator
      *
      * @return mixed
      */
