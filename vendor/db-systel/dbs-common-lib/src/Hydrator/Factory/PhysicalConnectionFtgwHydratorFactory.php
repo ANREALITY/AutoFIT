@@ -3,7 +3,7 @@ namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\PhysicalConnection;
 use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
@@ -13,19 +13,19 @@ class PhysicalConnectionFtgwHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ServiceLocatorInterface $serviceLocator
      *
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $physicalConnectionFtgwHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $physicalConnectionHydrator = $serviceLocator->get('DbSystel\Hydrator\PhysicalConnectionHydrator');
 
-        $physicalConnectionFtgwHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));
+        $physicalConnectionFtgwHydrator->addStrategy('physical_connection', new GenericEntityStrategy($physicalConnectionHydrator, new PhysicalConnection()));
 
         $namingStrategy = new MapNamingStrategy(array(
-            'logical_connection' => 'logicalConnection',
+            'physical_connection' => 'physicalConnection',
         ));
         $physicalConnectionFtgwHydrator->setNamingStrategy($namingStrategy);
 
