@@ -24,6 +24,10 @@ body {
   background-color: #57a900;
 }
 /* bootstrap #start# */
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+}
 .navbar-inverse {
   border: 0;
 }
