@@ -27,7 +27,7 @@ class LogicalConnection
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -45,7 +45,7 @@ class LogicalConnection
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {

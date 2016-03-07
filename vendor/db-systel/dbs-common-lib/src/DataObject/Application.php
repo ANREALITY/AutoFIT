@@ -27,7 +27,7 @@ class Application
 
     /**
      *
-     * @param string $technicalShortName            
+     * @param string $technicalShortName
      */
     public function setTechnicalShortName($technicalShortName)
     {
@@ -45,7 +45,7 @@ class Application
 
     /**
      *
-     * @param string $technicalId            
+     * @param string $technicalId
      */
     public function setTechnicalId($technicalId)
     {

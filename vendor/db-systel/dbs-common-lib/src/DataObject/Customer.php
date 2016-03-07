@@ -27,7 +27,7 @@ class Customer
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -45,7 +45,7 @@ class Customer
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {

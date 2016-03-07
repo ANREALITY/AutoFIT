@@ -33,7 +33,7 @@ class Environment
 
     /**
      *
-     * @param number $severity            
+     * @param number $severity
      */
     public function setSeverity($severity)
     {
@@ -51,7 +51,7 @@ class Environment
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {
@@ -69,7 +69,7 @@ class Environment
 
     /**
      *
-     * @param string $shortName            
+     * @param string $shortName
      */
     public function setShortName($shortName)
     {

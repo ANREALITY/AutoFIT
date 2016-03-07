@@ -51,7 +51,7 @@ class User
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -69,7 +69,7 @@ class User
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -87,7 +87,7 @@ class User
 
     /**
      *
-     * @param boolean $admin            
+     * @param boolean $admin
      */
     public function setAdmin($admin)
     {
@@ -105,7 +105,7 @@ class User
 
     /**
      *
-     * @param string $sex            
+     * @param string $sex
      */
     public function setSex($sex)
     {
@@ -123,7 +123,7 @@ class User
 
     /**
      *
-     * @param string $firstname            
+     * @param string $firstname
      */
     public function setFirstname($firstname)
     {
@@ -141,7 +141,7 @@ class User
 
     /**
      *
-     * @param string $lastname            
+     * @param string $lastname
      */
     public function setLastname($lastname)
     {
