@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class PhysicalConnection
+class PhysicalConnection
 {
 
     /**

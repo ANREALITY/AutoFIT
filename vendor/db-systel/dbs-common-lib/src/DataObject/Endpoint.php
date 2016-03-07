@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class Endpoint
+class Endpoint
 {
 
     /**
