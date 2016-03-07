@@ -9,7 +9,7 @@ use DbSystel\DataObject\Customer;
 
 class FooController extends AbstractActionController
 {
-    
+
     const INPUT_DATA = [
         'id' => 1,
         'name' => 'Hey Ho',

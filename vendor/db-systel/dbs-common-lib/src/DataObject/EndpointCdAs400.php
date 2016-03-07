@@ -33,7 +33,7 @@ class EndpointCdAs400
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -51,7 +51,7 @@ class EndpointCdAs400
 
     /**
      *
-     * @param string $folder            
+     * @param string $folder
      */
     public function setFolder($folder)
     {
@@ -69,7 +69,7 @@ class EndpointCdAs400
 
     /**
      *
-     * @param \DbSystel\DataObject\Endpoint $endpoint            
+     * @param \DbSystel\DataObject\Endpoint $endpoint
      */
     public function setEndpoint($endpoint)
     {

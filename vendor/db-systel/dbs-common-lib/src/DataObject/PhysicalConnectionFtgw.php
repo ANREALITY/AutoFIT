@@ -21,7 +21,7 @@ class PhysicalConnectionFtgw
 
     /**
      *
-     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection            
+     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection
      */
     public function setPhysicalConnection($physicalConnection)
     {

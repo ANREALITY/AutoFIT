@@ -20,7 +20,7 @@ class PhysicalConnectionCdHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new PhysicalConnectionCd());
-        
+
         $this->assertEquals(static::CHEXTURE['logical_connection']['id'], $hydratedObject->getLogicalConnection()
             ->getId());
     }

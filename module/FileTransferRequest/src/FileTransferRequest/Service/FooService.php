@@ -15,7 +15,7 @@ class FooService implements FooServiceInterface
 
     /**
      *
-     * @param CustomerMapperInterface $customerMapper            
+     * @param CustomerMapperInterface $customerMapper
      */
     public function __construct(CustomerMapperInterface $customerMapper)
     {

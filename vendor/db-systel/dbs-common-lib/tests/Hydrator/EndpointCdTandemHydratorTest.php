@@ -45,7 +45,7 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new EndpointCdTandem());
-        
+
         $this->assertEquals(static::CHEXTURE['physical_connection']['logical_connection']['id'], $hydratedObject->getPhysicalConnection()
             ->getLogicalConnection()
             ->getId());

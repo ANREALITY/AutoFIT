@@ -27,7 +27,7 @@ class PhysicalConnectionCd
 
     /**
      *
-     * @param boolean $securePlus            
+     * @param boolean $securePlus
      */
     public function setSecurePlus($securePlus)
     {
@@ -45,7 +45,7 @@ class PhysicalConnectionCd
 
     /**
      *
-     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection            
+     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection
      */
     public function setPhysicalConnection($physicalConnection)
     {

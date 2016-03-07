@@ -12,7 +12,7 @@ class FooControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $fooService = $realServiceLocator->get('FileTransferRequest\Service\FooService');
-        
+
         return new FooController($fooService);
     }
 }

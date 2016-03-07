@@ -20,7 +20,7 @@ class ServerHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new Server());
-        
+
         $this->assertEquals(static::CHEXTURE['server_type']['id'], $hydratedObject->getServerType()
             ->getId());
     }

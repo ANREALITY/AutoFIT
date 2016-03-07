@@ -16,9 +16,9 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
         // Hydrator and Prototype are set in the factory.
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
-        
+
         $this->setLabel(_('Source'));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'contact_person',
@@ -31,7 +31,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             */
         ));
-        
+
         $this->add(array(
             'type' => 'radio',
             'name' => 'server_place',
@@ -43,7 +43,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
                 )
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'application',
@@ -51,7 +51,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('application')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'customer_name',
@@ -59,7 +59,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('customer')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'Zend\Form\Element\MultiCheckbox',
             'name' => 'server_plattform',
@@ -71,7 +71,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
                 )
             ),
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'change_number',
@@ -79,7 +79,7 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('change number')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'server_name',

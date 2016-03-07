@@ -13,7 +13,7 @@ class EditControllerFactory implements FactoryInterface
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $fileTransferRequestService = $realServiceLocator->get('FileTransferRequest\Service\FileTransferRequestService');
         $fileTransferRequestForm = $realServiceLocator->get('FileTransferRequest\Form\FileTransferRequestForm');
-        
+
         return new EditController($fileTransferRequestService, $fileTransferRequestForm);
     }
 }

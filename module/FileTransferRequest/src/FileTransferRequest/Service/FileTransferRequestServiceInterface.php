@@ -34,4 +34,3 @@ interface FileTransferRequestServiceInterface
      */
     public function saveFileTransferRequest(FileTransferRequest $fileTransferRequestRequest);
 }
- 

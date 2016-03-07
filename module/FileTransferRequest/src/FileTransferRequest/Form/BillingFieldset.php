@@ -16,9 +16,9 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
         // Hydrator and Prototype are set in the factory.
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
-        
+
         $this->setLabel(_('Billing'));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'application',
@@ -31,7 +31,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
             ),
             */
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'service_invoice_position_basic_number',
@@ -39,7 +39,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('service invoice position number (basic)')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'service_invoice_position_personal_number',
@@ -47,7 +47,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('service invoice position number (personal)')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'change_number',
@@ -55,7 +55,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('change number')
             )
         ));
-        
+
         $this->add(array(
             'type' => 'text',
             'name' => 'username',

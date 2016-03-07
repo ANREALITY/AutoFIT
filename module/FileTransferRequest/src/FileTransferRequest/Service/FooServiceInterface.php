@@ -33,4 +33,3 @@ interface FooServiceInterface
      */
     public function saveCustomer(Customer $customer);
 }
- 
