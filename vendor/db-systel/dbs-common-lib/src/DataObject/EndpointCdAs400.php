@@ -69,9 +69,9 @@ class EndpointCdAs400
 
     /**
      *
-     * @param \DbSystel\DataObject\Endpoint $endpoint
+     * @param Endpoint $endpoint
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
     }
