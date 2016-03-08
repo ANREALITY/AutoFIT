@@ -43,7 +43,7 @@ return array(
             'FileTransferRequest\Form\Fieldset\EndpointCdFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdSourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdSourceFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdTargetFieldsetFactory',
-            // Zend
+            // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )
     ),
