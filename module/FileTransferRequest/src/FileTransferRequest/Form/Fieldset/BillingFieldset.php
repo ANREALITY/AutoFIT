@@ -34,22 +34,6 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'service_invoice_position_basic_number',
-            'options' => array(
-                'label' => _('service invoice position number (basic)')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'service_invoice_position_personal_number',
-            'options' => array(
-                'label' => _('service invoice position number (personal)')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'text',
             'name' => 'change_number',
             'options' => array(
                 'label' => _('change number')
@@ -58,9 +42,25 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(array(
             'type' => 'text',
+            'name' => 'service_invoice_position_basic_number',
+            'options' => array(
+                'label' => _('service invoice position number (basic)')
+            )
+        ));
+
+        $this->add(array(
+            'type' => 'text',
             'name' => 'username',
             'options' => array(
                 'label' => _('username')
+            )
+        ));
+
+        $this->add(array(
+            'type' => 'text',
+            'name' => 'service_invoice_position_personal_number',
+            'options' => array(
+                'label' => _('service invoice position number (personal)')
             )
         ));
     }

@@ -28,7 +28,7 @@ $targetFieldset = $form->get('target');
         </div>
         <div class="panel-body">
             <?php foreach ($billingFieldset as $element) : ?>
-            <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+            <div class="form-group col-md-6 <?php if($this->formElementErrors($element)) echo 'error' ?>">
                 <?php $element->setOption('label_position', FormRow::LABEL_APPEND); ?>
                 <label><?php echo $this->translate($element->getLabel()); ?></label>
                 <div>
