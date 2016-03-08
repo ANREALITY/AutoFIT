@@ -38,12 +38,10 @@ class FileTransferRequestFormFactory implements FactoryInterface
             ));
         $form->add(
             array(
-                'type' => 'button',
+                'type' => 'submit',
                 'name' => 'submit',
-                'options' => array(
-                    'label' => _('send')
-                ),
                 'attributes' => array(
+                    'value' => _('send'),
                     'class' => 'btn btn-default'
                 )
             ));
