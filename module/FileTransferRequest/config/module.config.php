@@ -49,6 +49,9 @@ return array(
             'FileTransferRequest\Form\Fieldset\EndpointCdFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdSourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdSourceFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdTargetFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\PhysicalConnectionFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\PhysicalConnectionFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\PhysicalConnectionCdFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\PhysicalConnectionCdFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\PhysicalConnectionFtgwFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\PhysicalConnectionFtgwFieldsetFactory',
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )

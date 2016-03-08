@@ -18,6 +18,7 @@ class FileTransferRequestFormFactory implements FactoryInterface
         $targetFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset');
         $sourceEndpointFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdAs400SourceFieldset');
         $targetEndpointFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdTandemTargetFieldset');
+        $physicalConnectionFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\PhysicalConnectionCdFieldset');
         
         $form->add(
             array(
@@ -47,6 +48,11 @@ class FileTransferRequestFormFactory implements FactoryInterface
             array(
                 'type' => 'FileTransferRequest\Form\Fieldset\EndpointCdTandemTargetFieldset',
                 'name' => 'target-endpoint'
+            ));
+        $form->add(
+            array(
+                'type' => 'FileTransferRequest\Form\Fieldset\PhysicalConnectionCdFieldset',
+                'name' => 'physical-connection'
             ));
         $form->add(
             array(
