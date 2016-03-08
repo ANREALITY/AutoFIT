@@ -24,7 +24,7 @@ class EndpointFtgwHydratorTest extends AbstractHydratorTest
     {
         $this->markTestIncomplete();
     }
-    
+
     public function testExtract()
     {
         $this->markTestIncomplete();

@@ -43,9 +43,9 @@ class Bootstrap
         if (($path = static::findParentPath('module')) !== $zf2ModulePaths[0]) {
             $zf2ModulePaths[] = $path;
         }
-        
+
         static::initAutoloader();
-        
+
         // use ModuleManager to load this module and it's dependencies
         $config = array(
             'module_listener_options' => array(
@@ -55,7 +55,7 @@ class Bootstrap
                 'JuunaConnectApi'
             )
         );
-        
+
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
         $serviceManager->get('ModuleManager')->loadModules();
@@ -92,7 +92,7 @@ class Bootstrap
     protected static function initAutoloader()
     {
         $vendorPath = static::findParentPath('vendor');
-        
+
         $zf2Path = getenv('ZF2_PATH');
         if (! $zf2Path) {
             if (defined('ZF2_PATH')) {
@@ -103,15 +103,15 @@ class Bootstrap
                 $zf2Path = $vendorPath . '/zendframework/zendframework/library';
             }
         }
-        
+
         if (! $zf2Path) {
             throw new \RuntimeException('Unable to load ZF2. Run `php composer.phar install` or' . ' define a ZF2_PATH environment variable.');
         }
-        
+
         if (file_exists($vendorPath . '/autoload.php')) {
             include $vendorPath . '/autoload.php';
         }
-        
+
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         AutoloaderFactory::factory(array(
             'Zend\Loader\StandardAutoloader' => array(
@@ -152,7 +152,7 @@ class Bootstrap
     {
         // echo "\n====START SET UP====\n";
         $config = $application->getConfig();
-        
+
         /*
          * if (isset($config['integrationTest'])) {
          * $testConfig = $config['integrationTest'];
@@ -167,21 +167,21 @@ class Bootstrap
          * echo "WARNING: no integrationTest Configuration found\n";
          * }
          */
-        
+
         // echo "\n=====END SET UP=====\n";
     }
 
     protected static function tearDown($application)
     {
         // echo "\n===START TEAR DOWN===\n";
-        
+
         /*
          * $config = $application->getConfig();
          * $dbConfig = $config['doctrine']['connection']['orm_default']['params'];
          * $em = $application->getServiceManager()->get('Doctrine\ORM\EntityManager');
          * $em->getConnection()->exec('DROP DATABASE `'.$dbConfig['dbname'].'`');
          */
-        
+
         // echo "\n====END TEAR DOWN====\n";
     }
 }
