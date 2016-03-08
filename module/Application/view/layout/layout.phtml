@@ -50,6 +50,7 @@
                         <li<?php echo $currentRoute == 'create-request' ? ' class="active"' : null;?>><a href="<?php echo $this->url('create-request') ?>"><?php echo $this->translate('New request') ?></a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
+                <div id="current-user" class="navbar-collapse collapse"><span><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : null; ?></span></div>
             </div>
         </nav>
         <div class="container">

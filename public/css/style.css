@@ -28,6 +28,9 @@ input[type="checkbox"],
 input[type="radio"] {
   display: inline-block;
 }
+.navbar-collapse {
+  float: left;
+}
 .navbar-inverse {
   border: 0;
 }
@@ -88,6 +91,10 @@ input[type="radio"] {
 #appDescription {
   font-size: 14px;
   font-style: italic;
+}
+div#current-user {
+  margin: 10px 0;
+  float: right;
 }
 div.message-error ul {
   list-style: none;
