@@ -93,21 +93,19 @@ $targetFieldset = $form->get('target');
     </div>
 </div>
 
-<?php if(false) : ?>
-    <?php foreach ($form as $element) : ?>
-    <?php if(!($element instanceof FieldsetInterface)) : ?>
-    <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
-        <label class="control-label"><?php echo $this->translate($element->getLabel()) ?></label>
-        <div class="controls">
-            <?php echo $this->formElement($element); ?>
-            <?php if ($this->formElementErrors($element)) : ?>
-                <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
-            <?php endif; ?>
-        </div>
+<?php foreach ($form as $element) : ?>
+<?php if(!($element instanceof FieldsetInterface)) : ?>
+<div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+    <label class="control-label"><?php echo $this->translate($element->getLabel()) ?></label>
+    <div class="controls">
+        <?php echo $this->formElement($element); ?>
+        <?php if ($this->formElementErrors($element)) : ?>
+            <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+        <?php endif; ?>
     </div>
-    <?php endif; ?>
-    <?php endforeach; ?>
+</div>
 <?php endif; ?>
+<?php endforeach; ?>
 
 <?php
 echo $this->form()->closeTag($form);
