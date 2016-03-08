@@ -6,7 +6,7 @@ use Zend\Form\Fieldset;
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class SourceFieldset extends Fieldset implements InputFilterProviderInterface
+class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())

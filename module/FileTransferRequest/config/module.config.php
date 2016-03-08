@@ -40,8 +40,9 @@ return array(
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Form\Factory\FileTransferRequestFormFactory',
             // fieldsets
             'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\BillingFieldsetFactory',
-            'FileTransferRequest\Form\Fieldset\SourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\SourceFieldsetFactory',
-            'FileTransferRequest\Form\Fieldset\TargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\TargetFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\EndpointCdFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\EndpointCdSourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdSourceFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdTargetFieldsetFactory',
             // Zend
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )
