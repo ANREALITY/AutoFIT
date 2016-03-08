@@ -12,7 +12,7 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
 
-        $this->setLabel(_('Target') . ' ' . _('AS400'));
+        $this->setLabel(_('Target - AS400'));
 
         $this->add(
             array(

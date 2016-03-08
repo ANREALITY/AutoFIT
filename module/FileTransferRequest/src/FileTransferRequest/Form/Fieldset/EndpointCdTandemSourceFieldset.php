@@ -11,6 +11,6 @@ class EndpointCdTandemSourceFieldset extends EndpointCdTandemFieldset
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
 
-        $this->setLabel(_('Source') . ' ' . _('AS400'));
+        $this->setLabel(_('Source - AS400'));
     }
 }
