@@ -40,6 +40,9 @@ return array(
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Form\Factory\FileTransferRequestFormFactory',
             // fieldsets
             'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\BillingFieldsetFactory',
+            'FileTransferRequest\Form\FieldsetEndpointCdAs400Fieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400FieldsetFactory',
+            'FileTransferRequest\Form\FieldsetEndpointCdAs400SourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
+            'FileTransferRequest\Form\FieldsetEndpointCdAs400TargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdSourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdSourceFieldsetFactory',
             'FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdTargetFieldsetFactory',
