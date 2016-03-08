@@ -1,7 +1,10 @@
 <?php
 namespace FileTransferRequest\Form\Fieldset;
 
-class EndpointCdTandemFieldset
+use Zend\Form\Fieldset;
+use Zend\InputFilter\InputFilterProviderInterface;
+
+class EndpointCdTandemFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())
