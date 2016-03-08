@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use FileTransferRequest\Form\Fieldset\SourceFieldset;

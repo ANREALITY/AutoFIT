@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Mapper\Factory;
 
 use FileTransferRequest\Mapper\EndpointCdAs400Mapper;
 use DbSystel\DataObject\EndpointCdAs400;

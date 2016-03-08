@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Mapper\Factory;
 
 use FileTransferRequest\Mapper\EndpointMapper;
 use DbSystel\DataObject\Endpoint;

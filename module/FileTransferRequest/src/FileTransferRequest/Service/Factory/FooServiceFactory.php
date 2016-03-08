@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Service\Factory;
 
 use FileTransferRequest\Service\FooService;
 use Zend\ServiceManager\FactoryInterface;

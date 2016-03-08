@@ -1,6 +1,6 @@
 <?php
 // Filename: /module/FileTransferRequest/src/FileTransferRequest/Factory/PostServiceFactory.php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Service\Factory;
 
 use FileTransferRequest\Service\FileTransferRequestService;
 use Zend\ServiceManager\FactoryInterface;

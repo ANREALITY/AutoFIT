@@ -1,5 +1,4 @@
 <?php
-
 namespace FileTransferRequest\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;

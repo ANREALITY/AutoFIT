@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Mapper\Factory;
 
 use FileTransferRequest\Mapper\LogicalConnectionMapper;
 use DbSystel\DataObject\LogicalConnection;

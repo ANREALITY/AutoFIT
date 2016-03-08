@@ -18,30 +18,30 @@ return array(
         'invokables' => array(
         ),
         'factories' => array(
-            'FileTransferRequest\Controller\Edit' => 'FileTransferRequest\Factory\EditControllerFactory',
+            'FileTransferRequest\Controller\Edit' => 'FileTransferRequest\Controller\Factory\EditControllerFactory',
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             // mappers
-            'FileTransferRequest\Mapper\CustomerMapperInterface' => 'FileTransferRequest\Factory\CustomerMapperFactory',
-            'FileTransferRequest\Mapper\EndpointCdAs400MapperInterface' => 'FileTransferRequest\Factory\EndpointCdAs400MapperFactory',
-            'FileTransferRequest\Mapper\EndpointCdTandemMapperInterface' => 'FileTransferRequest\Factory\EndpointCdTandemMapperFactory',
-            'FileTransferRequest\Mapper\EndpointMapperInterface' => 'FileTransferRequest\Factory\EndpointMapperFactory',
-            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface' => 'FileTransferRequest\Factory\FileTransferRequestMapperFactory',
-            'FileTransferRequest\Mapper\LogicalConnectionMapperInterface' => 'FileTransferRequest\Factory\LogicalConnectionMapperFactory',
-            'FileTransferRequest\Mapper\PhysicalConnectionCdMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionCdMapperFactory',
-            'FileTransferRequest\Mapper\PhysicalConnectionFtgwMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionFtgwMapperFactory',
-            'FileTransferRequest\Mapper\PhysicalConnectionMapperInterface' => 'FileTransferRequest\Factory\PhysicalConnectionMapperFactory',
-            'FileTransferRequest\Mapper\UserMapperInterface' => 'FileTransferRequest\Factory\UserMapperFactory',
+            'FileTransferRequest\Mapper\CustomerMapperInterface' => 'FileTransferRequest\Mapper\Factory\CustomerMapperFactory',
+            'FileTransferRequest\Mapper\EndpointCdAs400MapperInterface' => 'FileTransferRequest\Mapper\Factory\EndpointCdAs400MapperFactory',
+            'FileTransferRequest\Mapper\EndpointCdTandemMapperInterface' => 'FileTransferRequest\Mapper\Factory\EndpointCdTandemMapperFactory',
+            'FileTransferRequest\Mapper\EndpointMapperInterface' => 'FileTransferRequest\Mapper\Factory\EndpointMapperFactory',
+            'FileTransferRequest\Mapper\FileTransferRequestMapperInterface' => 'FileTransferRequest\Mapper\Factory\FileTransferRequestMapperFactory',
+            'FileTransferRequest\Mapper\LogicalConnectionMapperInterface' => 'FileTransferRequest\Mapper\Factory\LogicalConnectionMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionCdMapperInterface' => 'FileTransferRequest\Mapper\Factory\PhysicalConnectionCdMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionFtgwMapperInterface' => 'FileTransferRequest\Mapper\Factory\PhysicalConnectionFtgwMapperFactory',
+            'FileTransferRequest\Mapper\PhysicalConnectionMapperInterface' => 'FileTransferRequest\Mapper\Factory\PhysicalConnectionMapperFactory',
+            'FileTransferRequest\Mapper\UserMapperInterface' => 'FileTransferRequest\Mapper\Factory\UserMapperFactory',
             // services
-            'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Factory\FileTransferRequestServiceFactory',
+            'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Service\Factory\FileTransferRequestServiceFactory',
             // forms
-            'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
+            'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Form\Factory\FileTransferRequestFormFactory',
             // fieldsets
-            'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
-            'FileTransferRequest\Form\Fieldset\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
-            'FileTransferRequest\Form\Fieldset\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\BillingFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\SourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\SourceFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\TargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\TargetFieldsetFactory',
             // Zend
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )

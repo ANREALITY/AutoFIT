@@ -1,8 +1,8 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Mapper\Factory;
 
 use FileTransferRequest\Mapper\PhysicalConnectionCdMapper;
-use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\PhysicalConnectionFtgw;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -18,6 +18,6 @@ class PhysicalConnectionCdMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new PhysicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionHydrator'), new PhysicalConnectionCd(), $serviceLocator->get('FileTransferRequest\Mapper\PhysicalConnectionMapperInterface'));
+        return new PhysicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionHydrator'), new PhysicalConnectionFtgw(), $serviceLocator->get('FileTransferRequest\Mapper\PhysicalConnectionMapperInterface'));
     }
 }

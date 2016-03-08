@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Factory;
+namespace FileTransferRequest\Form\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use FileTransferRequest\Form\Fieldset\BillingFieldset;
