@@ -39,9 +39,9 @@ return array(
             // forms
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Factory\FileTransferRequestFormFactory',
             // fieldsets
-            'FileTransferRequest\Form\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
-            'FileTransferRequest\Form\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
-            'FileTransferRequest\Form\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Factory\BillingFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\SourceFieldset' => 'FileTransferRequest\Factory\SourceFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\TargetFieldset' => 'FileTransferRequest\Factory\TargetFieldsetFactory',
             // Zend
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         )

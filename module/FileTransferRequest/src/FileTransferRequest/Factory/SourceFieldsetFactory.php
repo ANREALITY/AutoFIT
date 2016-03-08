@@ -2,7 +2,7 @@
 namespace FileTransferRequest\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use FileTransferRequest\Form\SourceFieldset;
+use FileTransferRequest\Form\Fieldset\SourceFieldset;
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\ServiceManager\ServiceLocatorInterface;
 

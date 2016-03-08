@@ -2,7 +2,7 @@
 namespace FileTransferRequest\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use FileTransferRequest\Form\BillingFieldset;
+use FileTransferRequest\Form\Fieldset\BillingFieldset;
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use FileTransferRequest\Form\FileTransferRequestForm;
@@ -13,30 +13,31 @@ class FileTransferRequestFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $form = new FileTransferRequestForm();
-        $billingFieldset = $serviceLocator->get('FileTransferRequest\Form\BillingFieldset');
-        $sourceFieldset = $serviceLocator->get('FileTransferRequest\Form\SourceFieldset');
-        $targetFieldset = $serviceLocator->get('FileTransferRequest\Form\TargetFieldset');
+        $billingFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\BillingFieldset');
+        $sourceFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\SourceFieldset');
+        $targetFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\TargetFieldset');
 
         $form->add(array(
             'name' => 'billing',
-            'type' => 'FileTransferRequest\Form\BillingFieldset',
+            'type' => 'FileTransferRequest\Form\Fieldset\BillingFieldset',
             'options' => array(),
             'use_as_base_fieldset' => true
             // 'targetObject' =>
         ));
         $form->add(array(
-            'type' => 'FileTransferRequest\Form\SourceFieldset',
+            'type' => 'FileTransferRequest\Form\Fieldset\SourceFieldset',
             'name' => 'source',
         ));
         $form->add(array(
-            'type' => 'FileTransferRequest\Form\TargetFieldset',
+            'type' => 'FileTransferRequest\Form\Fieldset\TargetFieldset',
             'name' => 'target',
         ));
         $form->add(array(
             'type' => 'submit',
             'name' => 'submit',
             'attributes' => array(
-                'value' => _('send')
+                'value' => _('send'),
+                'class' => 'btn btn-default'
             ),
         ));
 

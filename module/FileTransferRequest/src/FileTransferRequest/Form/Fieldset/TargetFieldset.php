@@ -1,5 +1,5 @@
 <?php
-namespace FileTransferRequest\Form;
+namespace FileTransferRequest\Form\Fieldset;
 
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;

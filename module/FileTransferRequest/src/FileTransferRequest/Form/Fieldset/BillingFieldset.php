@@ -1,12 +1,12 @@
 <?php
-namespace FileTransferRequest\Form;
+namespace FileTransferRequest\Form\Fieldset;
 
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class SourceFieldset extends Fieldset implements InputFilterProviderInterface
+class BillingFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())
@@ -17,13 +17,13 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
 
-        $this->setLabel(_('Source'));
+        $this->setLabel(_('Billing'));
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'contact_person',
+            'name' => 'application',
             'options' => array(
-                'label' => _('contact person')
+                'label' => _('application')
             )
             /*,
             'attributes' => array(
@@ -33,43 +33,19 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
         ));
 
         $this->add(array(
-            'type' => 'radio',
-            'name' => 'server_place',
+            'type' => 'text',
+            'name' => 'service_invoice_position_basic_number',
             'options' => array(
-                'label' => _('server place'),
-                'value_options' => array(
-                    'intranet' => _('intranet'),
-                    'internet' => _('internet'),
-                )
+                'label' => _('service invoice position number (basic)')
             )
         ));
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'application',
+            'name' => 'service_invoice_position_personal_number',
             'options' => array(
-                'label' => _('application')
+                'label' => _('service invoice position number (personal)')
             )
-        ));
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'customer_name',
-            'options' => array(
-                'label' => _('customer')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'Zend\Form\Element\MultiCheckbox',
-            'name' => 'server_plattform',
-            'options' => array(
-                'label' => _('server plattform'),
-                'value_options' => array(
-                    'AS400' => 'AS400',
-                    'Tandem' => 'Tandem',
-                )
-            ),
         ));
 
         $this->add(array(
@@ -82,9 +58,9 @@ class SourceFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'server_name',
+            'name' => 'username',
             'options' => array(
-                'label' => _('server name')
+                'label' => _('username')
             )
         ));
     }
