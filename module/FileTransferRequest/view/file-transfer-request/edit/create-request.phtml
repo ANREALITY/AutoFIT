@@ -18,6 +18,8 @@ echo $this->form()->openTag($form);
 $billingFieldset = $form->get('billing');
 $sourceFieldset = $form->get('source');
 $targetFieldset = $form->get('target');
+$sourceEndpointFieldset = $form->get('source-endpoint');
+$targetEndpointFieldset = $form->get('target-endpoint');
 ?>
 
 
@@ -74,6 +76,52 @@ $targetFieldset = $form->get('target');
         </div>
         <div class="panel-body">
             <?php foreach ($targetFieldset as $element) : ?>
+            <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                <?php $element->setLabelOption('label_position', FormRow::LABEL_PREPEND); ?>
+                <label><?php echo $this->translate($element->getLabel()); ?></label>
+                <div>
+                    <?php $element->setAttribute('class', 'form-control'); ?>
+                    <?php echo $this->formElement($element); ?>
+                    <?php if ($this->formElementErrors($element)) : ?>
+                        <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<div id="fieldset-source-endpoint" class="fieldset-container col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $this->translate($sourceEndpointFieldset->getLabel()); ?></h3>
+        </div>
+        <div class="panel-body">
+            <?php foreach ($sourceEndpointFieldset as $element) : ?>
+            <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
+                <?php $element->setOption('label_position', FormRow::LABEL_APPEND); ?>
+                <label><?php echo $this->translate($element->getLabel()); ?></label>
+                <div>
+                    <?php $element->setAttribute('class', 'form-control'); ?>
+                    <?php echo $this->formElement($element); ?>
+                    <?php if ($this->formElementErrors($element)) : ?>
+                        <div class="message-error"><?php echo $this->formElementErrors($element) ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<div id="fieldset-target-endpoint" class="fieldset-container col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $this->translate($targetEndpointFieldset->getLabel()); ?></h3>
+        </div>
+        <div class="panel-body">
+            <?php foreach ($targetEndpointFieldset as $element) : ?>
             <div class="form-group <?php if($this->formElementErrors($element)) echo 'error' ?>">
                 <?php $element->setLabelOption('label_position', FormRow::LABEL_PREPEND); ?>
                 <label><?php echo $this->translate($element->getLabel()); ?></label>

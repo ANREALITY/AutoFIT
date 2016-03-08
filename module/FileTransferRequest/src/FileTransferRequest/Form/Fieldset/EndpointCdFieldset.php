@@ -17,7 +17,7 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
         // $this->setHydrator(new ClassMethods(false));
         // $this->setObject(new FileTransferRequest());
 
-        $this->setLabel(_('Source'));
+        $this->setLabel(_('Basic settings'));
 
         $this->add(array(
             'type' => 'text',
