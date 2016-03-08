@@ -36,7 +36,7 @@ class Endpoint
 
     /**
      *
-     * @var PhysicalConnection
+     * @var AbstractPhysicalConnection
      */
     protected $physicalConnection;
 
@@ -165,7 +165,7 @@ class Endpoint
 
     /**
      *
-     * @param PhysicalConnection $physicalConnection
+     * @param AbstractPhysicalConnection $physicalConnection
      */
     public function setPhysicalConnection($physicalConnection)
     {

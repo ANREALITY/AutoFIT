@@ -3,6 +3,7 @@ namespace DbSystel\Hydrator;
 
 use DbSystel\DataObject\PhysicalConnectionFtgw;
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\PhysicalConnection;
 
 /**
  * PhysicalConnectionFtgwHydrator test case.
@@ -11,9 +12,11 @@ class PhysicalConnectionFtgwHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'id' => 123,
-        'logical_connection' => [
-            'id' => 567
+        'physical_connection' => [
+            'id' => 123,
+            'logical_connection' => [
+                'id' => 567
+            ]
         ]
     ];
 
@@ -21,8 +24,10 @@ class PhysicalConnectionFtgwHydratorTest extends AbstractHydratorTest
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new PhysicalConnectionFtgw());
 
-        $this->assertEquals(static::CHEXTURE['logical_connection']['id'], $hydratedObject->getLogicalConnection()
-            ->getId());
+        $this->assertEquals(static::CHEXTURE['physical_connection']['logical_connection']['id'],
+            $hydratedObject->getPhysicalConnection()
+                ->getLogicalConnection()
+                ->getId());
     }
 
     protected function createHydrator()
@@ -35,11 +40,13 @@ class PhysicalConnectionFtgwHydratorTest extends AbstractHydratorTest
 
     protected function createFixtureObject()
     {
-        $physicalConnection = new PhysicalConnectionFtgw();
+        $physicalConnectionFtgw = new PhysicalConnectionFtgw();
+        $physicalConnection = new PhysicalConnection();
         $physicalConnection->setId(123);
         $logicalConnection = new LogicalConnection();
         $logicalConnection->setId(567);
         $physicalConnection->setLogicalConnection($logicalConnection);
-        return $physicalConnection;
+        $physicalConnectionFtgw->setPhysicalConnection($physicalConnection);
+        return $physicalConnectionFtgw;
     }
 }

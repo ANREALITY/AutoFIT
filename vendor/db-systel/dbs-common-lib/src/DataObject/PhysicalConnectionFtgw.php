@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class PhysicalConnectionFtgw
+class PhysicalConnectionFtgw extends AbstractPhysicalConnection
 {
 
     /**
@@ -21,7 +21,7 @@ class PhysicalConnectionFtgw
 
     /**
      *
-     * @param \DbSystel\DataObject\PhysicalConnection $physicalConnection
+     * @param PhysicalConnection $physicalConnection
      */
     public function setPhysicalConnection($physicalConnection)
     {

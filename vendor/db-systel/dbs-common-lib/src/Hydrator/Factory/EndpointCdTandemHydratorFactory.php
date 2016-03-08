@@ -19,7 +19,7 @@ class EndpointCdTandemHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $endpointCdTandemHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $endpointHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointHydrator');
+        $endpointHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointCdHydrator');
 
         $endpointCdTandemHydrator->addStrategy('endpoint', new GenericEntityStrategy($endpointHydrator, new Endpoint()));
 

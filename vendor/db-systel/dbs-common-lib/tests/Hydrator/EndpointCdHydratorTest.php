@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\EndpointCdTandem;
+use DbSystel\DataObject\Endpoint;
 use DbSystel\DataObject\PhysicalConnectionCd;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\Application;
@@ -9,52 +9,48 @@ use DbSystel\DataObject\User;
 use DbSystel\DataObject\Customer;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ServerType;
-use DbSystel\DataObject\Endpoint;
 use DbSystel\DataObject\PhysicalConnection;
 
 /**
- * EndpointCdTandemHydratorTest test case.
+ * EndpointHydratorTest test case.
  */
-class EndpointCdTandemHydratorTest extends AbstractHydratorTest
+class EndpointCdHydratorTest extends AbstractHydratorTest
 {
 
     const CHEXTURE = [
-        'endpoint' => [
-            'id' => 123,
+        'id' => 123,
+        'physical_connection' => [
+            'secure_plus' => true,
             'physical_connection' => [
-                'secure_plus' => true,
-                'physical_connection' => [
-                    'id' => 123,
-                    'logical_connection' => [
-                        'id' => 567
-                    ]
-                ]
-            ],
-            'server' => [
-                'name' => 'YXC123',
-                'server_type' => [
+                'id' => 123,
+                'logical_connection' => [
                     'id' => 567
                 ]
-            ],
-            'application' => [
-                'technical_short_name' => 'QWE123'
-            ],
-            'user' => [
-                'id' => 135
-            ],
-            'customer' => [
-                'id' => 246
             ]
+        ],
+        'server' => [
+            'name' => 'YXC123',
+            'server_type' => [
+                'id' => 567
+            ]
+        ],
+        'application' => [
+            'technical_short_name' => 'QWE123'
+        ],
+        'user' => [
+            'id' => 135
+        ],
+        'customer' => [
+            'id' => 246
         ]
     ];
 
     public function testHydrate()
     {
-        $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new EndpointCdTandem());
-
-        $this->assertEquals(static::CHEXTURE['endpoint']['physical_connection']['physical_connection']['logical_connection']['id'], 
-            $hydratedObject->getEndpoint()
-                ->getPhysicalConnection()
+        $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new Endpoint());
+        
+        $this->assertEquals(static::CHEXTURE['physical_connection']['physical_connection']['logical_connection']['id'], 
+            $hydratedObject->getPhysicalConnection()
                 ->getPhysicalConnection()
                 ->getLogicalConnection()
                 ->getId());
@@ -64,13 +60,12 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
     {
         $serviceManager = \Test\Bootstrap::getServiceManager();
         $hydratorManager = $serviceManager->get('HydratorManager');
-        $hydrator = $hydratorManager->get('DbSystel\Hydrator\EndpointCdTandemHydrator');
+        $hydrator = $hydratorManager->get('DbSystel\Hydrator\EndpointCdHydrator');
         return $hydrator;
     }
 
     protected function createFixtureObject()
     {
-        $endpointCdTandem = new EndpointCdTandem();
         $endpoint = new Endpoint();
         $endpoint->setId(123);
         $physicalConnectionCd = new PhysicalConnectionCd();
@@ -97,7 +92,6 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
         $customer = new Customer();
         $customer->setId(246);
         $endpoint->setCustomer($customer);
-        $endpointCdTandem->setEndpoint($endpoint);
-        return $endpointCdTandem;
+        return $endpoint;
     }
 }
