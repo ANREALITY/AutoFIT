@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-01 10:17+0100\n"
-"PO-Revision-Date: 2016-03-01 10:19+0100\n"
+"PO-Revision-Date: 2016-03-08 14:54+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -96,7 +96,7 @@ msgstr "Servername"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/TargetFieldset.php:20
 msgid "Target"
-msgstr "Target"
+msgstr "Ziel"
 
 #: Application/view/application/index/index.phtml:4
 msgid "Tool for creating, submission, and managing of file transfer requests"
