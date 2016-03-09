@@ -74,14 +74,6 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'change_number',
-            'options' => array(
-                'label' => _('change number')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'text',
             'name' => 'server_name',
             'options' => array(
                 'label' => _('server name')
