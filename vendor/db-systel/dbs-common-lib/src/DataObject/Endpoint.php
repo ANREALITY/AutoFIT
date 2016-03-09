@@ -54,12 +54,6 @@ class Endpoint
 
     /**
      *
-     * @var User
-     */
-    protected $user;
-
-    /**
-     *
      * @var Customer
      */
     protected $customer;
@@ -206,24 +200,6 @@ class Endpoint
     public function setApplication($application)
     {
         $this->application = $application;
-    }
-
-    /**
-     *
-     * @return the $user
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     *
-     * @param User $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
     }
 
     /**
