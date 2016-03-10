@@ -2,16 +2,16 @@
 namespace FileTransferRequest\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use FileTransferRequest\Form\Fieldset\BillingFieldset;
+use FileTransferRequest\Form\Fieldset\FileTransferRequestFieldset;
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class BillingFieldsetFactory implements FactoryInterface
+class FileTransferRequestFieldsetFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new BillingFieldset();
+        $fieldset = new FileTransferRequestFieldset();
         $hydrator = $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\FileTransferRequestHydrator');
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
