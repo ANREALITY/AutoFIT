@@ -1,3 +1,21 @@
 <?php
-echo $this->foo;
-?>
+$form->setAttribute('action', $this->url('create-order'))->prepare();
+
+echo $this->form()->openTag($form);
+
+$fileTransferRequest = $form->get('file_transfer_request');
+
+// echo $this->formRow($fileTransferRequest->get('service_invoice_position_basic'));
+// echo $this->formRow($fileTransferRequest->get('user'));
+// echo $this->formCollection($fileTransferRequest->get('categories'));
+
+// $brand = $fileTransferRequest->get('brand');
+
+// echo $this->formRow($brand->get('name'));
+// echo $this->formRow($brand->get('url'));
+
+// echo $this->formRow($fileTransferRequest->get());
+
+echo $this->formElement($form->get('submit'));
+
+echo $this->form()->closeTag();

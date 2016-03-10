@@ -26,8 +26,14 @@ return array(
             // mappers
             // services
             // forms
+            'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // data preparators
             // fieldsets
+            'Order\Form\Fieldset\FileTransferRequestFieldset' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
+            'Order\Form\Fieldset\LogicalConnectionFieldset' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
+            'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionBasicFieldsetFactory',
+            'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
+            'Order\Form\Fieldset\UserFieldset' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory',
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         ),
