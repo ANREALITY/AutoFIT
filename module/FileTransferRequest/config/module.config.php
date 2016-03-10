@@ -41,7 +41,7 @@ return array(
             // data preparators
             'FileTransferRequest\Form\DataPreparator\FileTransferRequestDataPreparator' => 'FileTransferRequest\Form\DataPreparator\Factory\FileTransferRequestDataPreparatorFactory',
             // fieldsets
-            'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\BillingFieldsetFactory',
+            'FileTransferRequest\Form\Fieldset\FileTransferRequestFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'FileTransferRequest\Form\FieldsetEndpointCdAs400Fieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400FieldsetFactory',
             'FileTransferRequest\Form\FieldsetEndpointCdAs400SourceFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
             'FileTransferRequest\Form\FieldsetEndpointCdAs400TargetFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',

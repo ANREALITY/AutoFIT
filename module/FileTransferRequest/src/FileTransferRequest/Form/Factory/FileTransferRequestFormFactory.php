@@ -13,7 +13,7 @@ class FileTransferRequestFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $form = new FileTransferRequestForm();
-        $billingFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\BillingFieldset');
+        $fileTransferRequestFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\FileTransferRequestFieldset');
         $sourceFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdSourceFieldset');
         $targetFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdTargetFieldset');
         $sourceEndpointFieldset = $serviceLocator->get('FileTransferRequest\Form\Fieldset\EndpointCdAs400SourceFieldset');
@@ -23,7 +23,7 @@ class FileTransferRequestFormFactory implements FactoryInterface
         $form->add(
             array(
                 'name' => 'billing',
-                'type' => 'FileTransferRequest\Form\Fieldset\BillingFieldset',
+                'type' => 'FileTransferRequest\Form\Fieldset\FileTransferRequestFieldset',
                 'options' => array(),
                 'use_as_base_fieldset' => true
             ))
