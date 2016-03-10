@@ -21,15 +21,10 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'application',
+            'name' => 'application_technical_short_name',
             'options' => array(
                 'label' => _('application')
             )
-            /*,
-            'attributes' => array(
-                'required' => 'required',
-            ),
-            */
         ));
 
         $this->add(array(
@@ -50,7 +45,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'username',
+            'name' => 'user_username',
             'options' => array(
                 'label' => _('username')
             )
@@ -68,7 +63,7 @@ class BillingFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return [
-            'application' => [
+            'application_technical_short_name' => [
                 'required' => true,
                 'filters' => [
                     0 => [

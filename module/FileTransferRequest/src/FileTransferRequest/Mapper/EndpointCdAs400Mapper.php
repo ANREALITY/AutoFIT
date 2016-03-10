@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class EndpointCdAs400Mapper implements EndpointCdTandemMapperInterface
+class EndpointCdAs400Mapper implements EndpointCdAs400MapperInterface
 {
 
     /**

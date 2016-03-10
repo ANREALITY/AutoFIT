@@ -45,7 +45,7 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
                     ]
                 ],
                 'validators' => [],
-                'description' => _('application code'),
+                'description' => _('username'),
                 'allow_empty' => false,
                 'continue_if_empty' => false
             ],

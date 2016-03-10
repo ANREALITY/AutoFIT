@@ -1,36 +1,39 @@
 <?php
 namespace FileTransferRequest\Form\Fieldset;
 
+use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInterface
+class ServiceInvoicePositionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-        
-        // Hydrator and Prototype are set in the factory.
-        // $this->setHydrator(new ClassMethods(false));
-        // $this->setObject(new FileTransferRequest());
-        
-        $this->setLabel(_('AS400'));
-        
-        $this->add(
-            array(
-                'type' => 'text',
-                'name' => 'username',
-                'options' => array(
-                    'label' => _('username')
-                )
-            ));
+
+        $this->setLabel(_('Service Invoice Position'));
+
+        $this->add(array(
+            'type' => 'text',
+            'name' => 'number',
+            'options' => array(
+                'label' => _('service invoice position number')
+            )
+        ));
+        $this->add(array(
+            'type' => 'text',
+            'name' => 'numbersdfgds',
+            'options' => array(
+                'label' => _('service invoice position number')
+            )
+        ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'username' => [
+            'number' => [
                 'required' => true,
                 'filters' => [
                     0 => [
@@ -39,7 +42,7 @@ class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInt
                     ]
                 ],
                 'validators' => [],
-                'description' => _('username'),
+                'description' => _('application code'),
                 'allow_empty' => false,
                 'continue_if_empty' => false
             ]

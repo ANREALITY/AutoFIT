@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class EndpointCdAs400
+class EndpointCdAs400 extends AbstractEndpoint
 {
 
     /**

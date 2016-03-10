@@ -38,6 +38,8 @@ return array(
             'FileTransferRequest\Service\FileTransferRequestService' => 'FileTransferRequest\Service\Factory\FileTransferRequestServiceFactory',
             // forms
             'FileTransferRequest\Form\FileTransferRequestForm' => 'FileTransferRequest\Form\Factory\FileTransferRequestFormFactory',
+            // data preparators
+            'FileTransferRequest\Form\DataPreparator\FileTransferRequestDataPreparator' => 'FileTransferRequest\Form\DataPreparator\Factory\FileTransferRequestDataPreparatorFactory',
             // fieldsets
             'FileTransferRequest\Form\Fieldset\BillingFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\BillingFieldsetFactory',
             'FileTransferRequest\Form\FieldsetEndpointCdAs400Fieldset' => 'FileTransferRequest\Form\Fieldset\Factory\EndpointCdAs400FieldsetFactory',
@@ -54,7 +56,9 @@ return array(
             'FileTransferRequest\Form\Fieldset\PhysicalConnectionFtgwFieldset' => 'FileTransferRequest\Form\Fieldset\Factory\PhysicalConnectionFtgwFieldsetFactory',
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
-        )
+        ),
+        'invokables' => array(
+        ),
     ),
     'view_manager' => array(
         'template_path_stack' => array(

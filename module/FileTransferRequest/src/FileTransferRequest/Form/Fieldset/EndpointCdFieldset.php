@@ -25,11 +25,6 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
             'options' => array(
                 'label' => _('contact person')
             )
-            /*,
-            'attributes' => array(
-                'required' => 'required',
-            ),
-            */
         ));
 
         $this->add(array(
@@ -46,10 +41,15 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
 
         $this->add(array(
             'type' => 'text',
-            'name' => 'application',
+            'name' => 'application_technical_short_name',
             'options' => array(
                 'label' => _('application')
             )
+        ));
+
+        $this->add(array(
+            'type' => 'hidden',
+            'name' => 'customer_id',
         ));
 
         $this->add(array(
@@ -84,7 +84,7 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
     public function getInputFilterSpecification()
     {
         return [
-            'application' => [
+            'application_technical_short_name' => [
                 'required' => true,
                 'filters' => [
                     0 => [

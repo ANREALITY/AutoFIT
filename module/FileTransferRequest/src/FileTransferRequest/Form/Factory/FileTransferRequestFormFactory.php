@@ -42,17 +42,17 @@ class FileTransferRequestFormFactory implements FactoryInterface
         $form->add(
             array(
                 'type' => 'FileTransferRequest\Form\Fieldset\EndpointCdAs400SourceFieldset',
-                'name' => 'source-endpoint'
+                'name' => 'source_endpoint'
             ));
         $form->add(
             array(
                 'type' => 'FileTransferRequest\Form\Fieldset\EndpointCdTandemTargetFieldset',
-                'name' => 'target-endpoint'
+                'name' => 'target_endpoint'
             ));
         $form->add(
             array(
                 'type' => 'FileTransferRequest\Form\Fieldset\PhysicalConnectionCdFieldset',
-                'name' => 'physical-connection'
+                'name' => 'physical_connection'
             ));
         $form->add(
             array(

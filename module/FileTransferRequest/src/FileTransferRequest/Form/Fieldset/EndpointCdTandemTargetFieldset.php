@@ -45,7 +45,7 @@ class EndpointCdTandemTargetFieldset extends EndpointCdTandemFieldset
                     ]
                 ],
                 'validators' => [],
-                'description' => _('application code'),
+                'description' => _('username'),
                 'allow_empty' => false,
                 'continue_if_empty' => false
             ],
@@ -58,7 +58,7 @@ class EndpointCdTandemTargetFieldset extends EndpointCdTandemFieldset
                     ]
                 ],
                 'validators' => [],
-                'description' => _('application code'),
+                'description' => _('folder'),
                 'allow_empty' => false,
                 'continue_if_empty' => false
             ]

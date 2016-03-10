@@ -39,7 +39,7 @@ class EndpointCdTandemFieldset extends Fieldset implements InputFilterProviderIn
                     ]
                 ],
                 'validators' => [],
-                'description' => _('application code'),
+                'description' => _('username'),
                 'allow_empty' => false,
                 'continue_if_empty' => false
             ]
