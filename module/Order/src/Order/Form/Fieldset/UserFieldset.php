@@ -1,8 +1,10 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\User;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -11,54 +13,33 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     {
         parent::__construct('user', $options);
 
-        $this->setLabel(_('user'));
+        $this->setHydrator(new ClassMethods(false))->setObject(new User());
 
         $this->add(array(
-            'type' => 'hidden',
             'name' => 'id',
-            'options' => array(
-                'label' => _('user ID')
-            )
+            'type' => 'hidden'
         ));
 
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'username',
-            'options' => array(
-                'label' => _('username')
-            )
-        ));
+        $this->add(
+            array(
+                'name' => 'username',
+                'type' => 'text',
+                'options' => array(
+                    'label' => _('username')
+                ),
+                'attributes' => array(
+                    'required' => 'required',
+                    'class' => 'form-control'
+                )
+            ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'id' => [
-                'required' => false,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('user ID'),
-                'allow_empty' => true,
-                'continue_if_empty' => true
-            ],
             'username' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('username'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
-            ],
+                'required' => true
+            ]
         ];
     }
 }

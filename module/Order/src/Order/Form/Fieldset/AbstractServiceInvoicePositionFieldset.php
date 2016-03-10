@@ -13,13 +13,14 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
 
         $this->setLabel(_('Service Invoice Position'));
 
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'number',
-            'options' => array(
-                'label' => _('service invoice position number')
-            )
-        ));
+        $this->add(
+            array(
+                'type' => 'text',
+                'name' => 'number',
+                'options' => array(
+                    'label' => _('service invoice position number')
+                )
+            ));
     }
 
     public function getInputFilterSpecification()

@@ -1,8 +1,10 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class FileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -11,65 +13,76 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
     {
         parent::__construct('file_transfer_request', $options);
 
-        $this->setLabel(_('File Transfer Request'));
+        $this->setHydrator(new ClassMethods())->setObject(new FileTransferRequest());
 
         $this->add(array(
-            'type' => 'text',
-            'name' => 'application_technical_short_name',
-            'options' => array(
-                'label' => _('application')
-            )
+            'name' => 'id',
+            'type' => 'hidden'
         ));
 
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'change_number',
-            'options' => array(
-                'label' => _('change number')
-            )
-        ));
+        $this->add(
+            array(
+                'name' => 'change_number',
+                'type' => 'text',
+                'options' => array(
+                    'label' => _('change number')
+                ),
+                'attributes' => array(
+                    'required' => 'required',
+                    'class' => 'form-control'
+                )
+            ));
 
-//         $this->add(array(
-//             'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
-//             'name' => 'service_invoice_position_basic',
-//             'options' => array(
-//                 'label' => 'service invoice position (basic)',
-//             ),
-//         ));
+        $this->add(
+            array(
+                'name' => 'user',
+                'type' => 'Order\Form\Fieldset\UserFieldset',
+                'options' => array(
+                    'label' => _('user of the file transfer request')
+                )
+            ));
 
-//         $this->add(array(
-//             'type' => 'Order\Form\Fieldset\UserFieldset',
-//             'name' => 'user',
-//             'options' => array(
-//                 'label' => 'user',
-//             ),
-//         ));
+        $this->add(
+            array(
+                'name' => 'logical_connection',
+                'type' => 'Order\Form\Fieldset\LogicalConnectionFieldset',
+                'options' => array(
+                    'label' => _('logical connection of the file transfer request')
+                )
+            ));
 
-//         $this->add(array(
-//             'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
-//             'name' => 'service_invoice_position_personal',
-//             'options' => array(
-//                 'label' => 'service invoice position (personal)',
-//             ),
-//         ));
+        // $this->add(array(
+        // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
+        // 'name' => 'service_invoice_position_basic',
+        // 'options' => array(
+        // 'label' => _('service invoice position (basic)'),
+        // ),
+        // ));
+
+        $this->add(
+            array(
+                'name' => 'application_number',
+                'type' => 'Order\Form\Fieldset\UserFieldset',
+                'options' => array(
+                    'label' => _('application')
+                )
+            ));
+
+        // $this->add(array(
+        // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
+        // 'name' => 'service_invoice_position_personal',
+        // 'options' => array(
+        // 'label' => _('service invoice position (personal)'),
+        // ),
+        // ));
     }
 
     public function getInputFilterSpecification()
     {
-        return [
-            'change_number' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('application code'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
-            ]
-        ];
+        return array(
+            'change_number' => array(
+                'required' => true
+            )
+        );
     }
 }

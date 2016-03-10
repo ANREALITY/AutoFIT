@@ -4,6 +4,9 @@ namespace DbSystel\DataObject;
 class LogicalConnection
 {
 
+    const TYPE_CD = 'CD';
+    const TYPE_FTGW = 'FTGW';
+
     /**
      *
      * @var int

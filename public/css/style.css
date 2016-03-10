@@ -112,3 +112,6 @@ div.message-error ul li {
 div.controls {
   text-align: center;
 }
+div.hidden {
+  visibility: hidden;
+}

@@ -1,8 +1,10 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\LogicalConnection;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -11,54 +13,34 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
     {
         parent::__construct('logical_connection', $options);
 
-        $this->setLabel(_('logical connection'));
+        $this->setHydrator(new ClassMethods())->setObject(new LogicalConnection());
 
         $this->add(array(
-            'type' => 'hidden',
             'name' => 'id',
-            'options' => array(
-                'label' => _('user ID')
-            )
+            'type' => 'hidden'
         ));
 
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'type',
-            'options' => array(
-                'label' => _('type')
-            )
-        ));
+        $this->add(
+            array(
+                'name' => 'type',
+                'type' => 'text',
+                'options' => array(
+                    'label' => _('type')
+                ),
+                'attributes' => array(
+                    'required' => 'required',
+                    'class' => 'form-control',
+                    'value' => LogicalConnection::TYPE_CD
+                )
+            ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'id' => [
-                'required' => false,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('logical connection ID'),
-                'allow_empty' => true,
-                'continue_if_empty' => true
-            ],
             'type' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('logical connection type'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
-            ],
+                'required' => true
+            ]
         ];
     }
 }

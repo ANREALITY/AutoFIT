@@ -10,12 +10,13 @@ class ProcessController extends AbstractActionController
 {
 
     protected $orderForm = null;
-    protected $fileTransferRequestPrototype = null;
 
-    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequestPrototype)
+    protected $fileTransferRequest = null;
+
+    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest)
     {
         $this->orderForm = $orderForm;
-        $this->fileTransferRequestPrototype = $fileTransferRequestPrototype;
+        $this->fileTransferRequest = $fileTransferRequest;
     }
 
     public function indexAction()
@@ -25,17 +26,18 @@ class ProcessController extends AbstractActionController
 
     public function createAction()
     {
-        $this->orderForm->bind($this->fileTransferRequestPrototype);
-        
+        $this->orderForm->bind($this->fileTransferRequest);
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
-            
+
             if ($this->orderForm->isValid()) {
-                var_dump($this->fileTransferRequestPrototype);
+                var_dump($this->fileTransferRequest);
+                die('#################');
             }
         }
-        
+
         return array(
             'form' => $this->orderForm
         );

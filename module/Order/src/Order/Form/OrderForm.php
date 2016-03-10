@@ -8,23 +8,24 @@ class OrderForm extends Form
 
     public function __construct()
     {
-        parent::__construct('order');
-        
+        parent::__construct('create_file_transfer_request');
+
+        $this->setAttribute('method', 'post');
+
         $this->add(
             array(
-                'name' => 'file_transfer_request',
                 'type' => 'Order\Form\Fieldset\FileTransferRequestFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true
                 )
             ));
-        
+
         $this->add(
             array(
                 'name' => 'submit',
                 'attributes' => array(
                     'type' => 'submit',
-                    'value' => 'Send'
+                    'value' => _('send')
                 )
             ));
     }
