@@ -27,17 +27,17 @@ class ProcessController extends AbstractActionController
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-
+        
         $request = $this->getRequest();
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
-
+            
             if ($this->orderForm->isValid()) {
                 var_dump($this->fileTransferRequest);
                 die('#################');
             }
         }
-
+        
         return array(
             'form' => $this->orderForm
         );

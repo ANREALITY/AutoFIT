@@ -10,10 +10,9 @@ class OrderForm extends Form
     {
         parent::__construct('create_file_transfer_request');
     }
-    
+
     public function init()
     {
-        
         $this->setAttribute('method', 'post');
         
         $this->add(

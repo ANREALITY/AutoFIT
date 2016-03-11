@@ -16,7 +16,7 @@ class ServiceInvoicePositionPersonalFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new ServiceInvoicePosition();
         $fieldset->setObject($prototype);
-
+        
         return $fieldset;
     }
 }

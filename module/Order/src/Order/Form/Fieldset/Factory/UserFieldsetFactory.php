@@ -16,7 +16,7 @@ class UserFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new User();
         $fieldset->setObject($prototype);
-
+        
         return $fieldset;
     }
 }

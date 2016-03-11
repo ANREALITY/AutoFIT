@@ -92,7 +92,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             ),
             'application_number' => array(
                 'required' => true
-            ),
+            )
         );
     }
 }

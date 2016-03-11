@@ -16,7 +16,7 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new LogicalConnection();
         $fieldset->setObject($prototype);
-
+        
         return $fieldset;
     }
 }

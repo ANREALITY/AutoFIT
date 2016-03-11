@@ -11,12 +11,11 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
     {
         parent::__construct($name, $options);
     }
-    
+
     public function init()
     {
-
         $this->setLabel(_('Service Invoice Position'));
-
+        
         $this->add(
             array(
                 'type' => 'text',

@@ -16,7 +16,7 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
         $fieldset->setObject($prototype);
-
+        
         return $fieldset;
     }
 }
