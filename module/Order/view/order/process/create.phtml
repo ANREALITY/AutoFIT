@@ -25,6 +25,14 @@ $logicalConnection = $fileTransferRequest->get('logical_connection');
                 <?php endif; ?>
             </div>
 
+            <div class="form-group col-md-6">
+                <label><?php echo $this->translate($fileTransferRequest->get('application_number')->getLabel()); ?></label>
+                <?php echo $this->formElement($fileTransferRequest->get('application_number')); ?>
+                <?php if ($this->formElementErrors($fileTransferRequest->get('application_number'))) : ?>
+                    <div class="message-error"><?php echo $this->formElementErrors($fileTransferRequest->get('application_number')) ?></div>
+                <?php endif; ?>
+            </div>
+
             <div class="hidden;"><?php echo $this->formElement($logicalConnection->get('id')); ?></div>
             <div class="form-group col-md-6">
                 <label><?php echo $this->translate($logicalConnection->get('type')->getLabel()); ?></label>

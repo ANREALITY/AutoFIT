@@ -12,14 +12,17 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
     public function __construct($name = null, $options = array())
     {
         parent::__construct('file_transfer_request', $options);
+    }
 
+    public function init()
+    {
         $this->setHydrator(new ClassMethods())->setObject(new FileTransferRequest());
-
+        
         $this->add(array(
             'name' => 'id',
             'type' => 'hidden'
         ));
-
+        
         $this->add(
             array(
                 'name' => 'change_number',
@@ -32,7 +35,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                     'class' => 'form-control'
                 )
             ));
-
+        
         $this->add(
             array(
                 'name' => 'user',
@@ -41,7 +44,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                     'label' => _('user of the file transfer request')
                 )
             ));
-
+        
         $this->add(
             array(
                 'name' => 'logical_connection',
@@ -50,7 +53,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                     'label' => _('logical connection of the file transfer request')
                 )
             ));
-
+        
         // $this->add(array(
         // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
         // 'name' => 'service_invoice_position_basic',
@@ -58,16 +61,20 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         // 'label' => _('service invoice position (basic)'),
         // ),
         // ));
-
+        
         $this->add(
             array(
                 'name' => 'application_number',
-                'type' => 'Order\Form\Fieldset\UserFieldset',
+                'type' => 'text',
                 'options' => array(
                     'label' => _('application')
+                ),
+                'attributes' => array(
+                    'required' => 'required',
+                    'class' => 'form-control'
                 )
             ));
-
+        
         // $this->add(array(
         // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
         // 'name' => 'service_invoice_position_personal',
@@ -82,7 +89,10 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         return array(
             'change_number' => array(
                 'required' => true
-            )
+            ),
+            'application_number' => array(
+                'required' => true
+            ),
         );
     }
 }
