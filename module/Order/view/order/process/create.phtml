@@ -8,6 +8,25 @@ echo $this->form()->openTag($form);
 $fileTransferRequest = $form->get('file_transfer_request');
 $user = $fileTransferRequest->get('user');
 $logicalConnection = $fileTransferRequest->get('logical_connection');
+
+$viewFieldsets = [
+    'billing' => [
+        'fileTransferRequest' => [
+            'id',
+            'change_number',
+            'application_number'
+        ],
+        'logicalConnection' => [
+            'id',
+            'type'
+        ],
+        'user' => [
+            'id',
+            'username'
+        ]
+    ]
+];
+
 ?>
 
 <div id="fieldset-billing" class="fieldset-container col-md-12">
@@ -16,45 +35,27 @@ $logicalConnection = $fileTransferRequest->get('logical_connection');
             <h3 class="panel-title"><?php echo $this->translate('Billing'); ?></h3>
         </div>
         <div class="panel-body">
-
-            <div class="hidden;"><?php echo $this->formElement($fileTransferRequest->get('id')); ?></div>
-            <div class="form-group col-md-6">
-                <label><?php echo $this->translate($fileTransferRequest->get('change_number')->getLabel()); ?></label>
-                <?php echo $this->formElement($fileTransferRequest->get('change_number')); ?>
-                <?php if ($this->formElementErrors($fileTransferRequest->get('change_number'))) : ?>
-                    <div class="message-error"><?php echo $this->formElementErrors($fileTransferRequest->get('change_number')) ?></div>
+        <?php foreach ($viewFieldsets['billing'] as $realFieldsetName => $realFieldset) : ?>
+            <?php foreach ($realFieldset as $elementName) : ?>
+                <?php if($$realFieldsetName->get($elementName)->getAttribute('type') === 'hidden') : ?>
+                    <div class="hidden;"><?php echo $this->formElement($$realFieldsetName->get($elementName)); ?></div>
+                <?php elseif($$realFieldsetName->get($elementName)->getAttribute('type') !== 'hidden') : ?>
+                    <div class="form-group col-md-6">
+                        <label><?php echo $this->translate($$realFieldsetName->get($elementName)->getLabel()); ?></label>
+                        <?php echo $this->formElement($$realFieldsetName->get($elementName)); ?>
+                        <?php if ($this->formElementErrors($$realFieldsetName->get($elementName))) : ?>
+                            <div class="message-error"><?php echo $this->formElementErrors($$realFieldsetName->get($elementName)) ?></div>
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
-            </div>
-
-            <div class="form-group col-md-6">
-                <label><?php echo $this->translate($fileTransferRequest->get('application_number')->getLabel()); ?></label>
-                <?php echo $this->formElement($fileTransferRequest->get('application_number')); ?>
-                <?php if ($this->formElementErrors($fileTransferRequest->get('application_number'))) : ?>
-                    <div class="message-error"><?php echo $this->formElementErrors($fileTransferRequest->get('application_number')) ?></div>
-                <?php endif; ?>
-            </div>
-
-            <div class="hidden;"><?php echo $this->formElement($logicalConnection->get('id')); ?></div>
-            <div class="form-group col-md-6">
-                <label><?php echo $this->translate($logicalConnection->get('type')->getLabel()); ?></label>
-                <?php echo $this->formElement($logicalConnection->get('type')); ?>
-                <?php if ($this->formElementErrors($logicalConnection->get('type'))) : ?>
-                    <div class="message-error"><?php echo $this->formElementErrors($logicalConnection->get('type')) ?></div>
-                <?php endif; ?>
-            </div>
-
-            <div class="hidden;"><?php echo $this->formElement($user->get('id')); ?></div>
-            <div class="form-group col-md-6">
-                <label><?php echo $this->translate($user->get('username')->getLabel()); ?></label>
-                <?php echo $this->formElement($user->get('username')); ?>
-                <?php if ($this->formElementErrors($user->get('username'))) : ?>
-                    <div class="message-error"><?php echo $this->formElementErrors($user->get('username')) ?></div>
-                <?php endif; ?>
-            </div>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
         </div>
     </div>
 </div>
-<div class="form-group"><div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div></div>
+<div class="form-group">
+    <div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div>
+</div>
 
 <?php
 echo $this->form()->closeTag();
