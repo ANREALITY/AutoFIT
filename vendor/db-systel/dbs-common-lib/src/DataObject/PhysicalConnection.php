@@ -18,6 +18,12 @@ class PhysicalConnection
 
     /**
      *
+     * @var AbstractEndpoint[] @relationshipInversion
+     */
+    protected $endpoints;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -50,5 +56,23 @@ class PhysicalConnection
     public function setLogicalConnection($logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
+    }
+
+    /**
+     *
+     * @return the $endpoints
+     */
+    public function getEndpoints()
+    {
+        return $this->endpoints;
+    }
+
+    /**
+     *
+     * @param AbstractEndpoint[] $endpoints
+     */
+    public function setEndpoints(array $endpoints)
+    {
+        $this->endpoints = $endpoints;
     }
 }

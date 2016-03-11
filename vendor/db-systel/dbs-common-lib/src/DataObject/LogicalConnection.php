@@ -5,6 +5,7 @@ class LogicalConnection
 {
 
     const TYPE_CD = 'CD';
+
     const TYPE_FTGW = 'FTGW';
 
     /**
@@ -18,6 +19,12 @@ class LogicalConnection
      * @var string
      */
     protected $type;
+
+    /**
+     *
+     * @var AbstractPhysicalConnection[] @relationshipInversion
+     */
+    protected $physicalConnections;
 
     /**
      *
@@ -53,5 +60,23 @@ class LogicalConnection
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     *
+     * @return the $physicalConnections
+     */
+    public function getPhysicalConnections()
+    {
+        return $this->physicalConnections;
+    }
+
+    /**
+     *
+     * @param AbstractPhysicalConnection[] $physicalConnections
+     */
+    public function setPhysicalConnections(array $physicalConnections)
+    {
+        $this->physicalConnections = $physicalConnections;
     }
 }

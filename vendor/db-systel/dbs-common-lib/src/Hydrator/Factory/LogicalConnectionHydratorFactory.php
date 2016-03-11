@@ -3,6 +3,8 @@ namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use DbSystel\Hydrator\Strategy\Entity\GenericCollectionStrategy;
+use DbSystel\DataObject\PhysicalConnection;
 
 class LogicalConnectionHydratorFactory implements FactoryInterface
 {
@@ -17,10 +19,14 @@ class LogicalConnectionHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $physicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        // no strategies
+        $logicalConnectionHydrator->addStrategy('physical_connections', new GenericCollectionStrategy($physicalConnectionHydrator, new PhysicalConnection()));
 
-        // no naming map
+        $namingStrategy = new MapNamingStrategy(array(
+            'physical_connections' => 'physicalConnections',
+        ));
+        $logicalConnectionHydrator->setNamingStrategy($namingStrategy);
 
         return $logicalConnectionHydrator;
     }

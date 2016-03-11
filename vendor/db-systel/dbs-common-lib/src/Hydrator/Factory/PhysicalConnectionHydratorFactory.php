@@ -5,7 +5,9 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
+use DbSystel\Hydrator\Strategy\Entity\GenericCollectionStrategy;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
+use DbSystel\DataObject\Endpoint;
 
 class PhysicalConnectionHydratorFactory implements FactoryInterface
 {
@@ -21,8 +23,10 @@ class PhysicalConnectionHydratorFactory implements FactoryInterface
     {
         $physicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $endpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
         $physicalConnectionHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));
+        $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new Endpoint()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'logical_connection' => 'logicalConnection',
