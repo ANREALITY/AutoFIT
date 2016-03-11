@@ -67,7 +67,7 @@ class GenericEntityStrategy implements StrategyInterface
      */
     public function extract($object)
     {
-        return $this->hydrator->extract($object);
+        return is_object($object) ? $this->hydrator->extract($object) : [];
     }
 
     /**

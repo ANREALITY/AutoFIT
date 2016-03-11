@@ -70,7 +70,9 @@ class GenericCollectionStrategy implements StrategyInterface
         $collection = [];
         if (is_array($objects) || $objects instanceof \Traversable) {
             foreach ($objects as $object) {
-                $collection[] = $this->hydrator->extract($object);
+                $prototypeClass = get_class($this->prototype);
+                $collection[] = is_object($object) && $object instanceof $prototypeClass ? $this->hydrator->extract(
+                    $object) : [];
             }
         }
         return $collection;
