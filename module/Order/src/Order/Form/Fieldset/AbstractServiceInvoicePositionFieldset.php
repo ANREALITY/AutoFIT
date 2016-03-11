@@ -7,7 +7,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
     }
@@ -17,13 +17,13 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
         $this->setLabel(_('Service Invoice Position'));
         
         $this->add(
-            array(
+            [
                 'type' => 'text',
                 'name' => 'number',
-                'options' => array(
+                'options' => [
                     'label' => _('service invoice position number')
-                )
-            ));
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

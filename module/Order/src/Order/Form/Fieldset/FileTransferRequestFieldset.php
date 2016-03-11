@@ -9,7 +9,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
 class FileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('file_transfer_request', $options);
     }
@@ -18,67 +18,67 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
     {
         $this->setHydrator(new ClassMethods())->setObject(new FileTransferRequest());
         
-        $this->add(array(
+        $this->add([
             'name' => 'id',
             'type' => 'hidden'
-        ));
+        ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'change_number',
                 'type' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => _('change number')
-                ),
-                'attributes' => array(
+                ],
+                'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
-                )
-            ));
+                ]
+            ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'user',
                 'type' => 'Order\Form\Fieldset\UserFieldset',
-                'options' => array(
+                'options' => [
                     'label' => _('user of the file transfer request')
-                )
-            ));
+                ]
+            ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'logical_connection',
                 'type' => 'Order\Form\Fieldset\LogicalConnectionFieldset',
-                'options' => array(
+                'options' => [
                     'label' => _('logical connection of the file transfer request')
-                )
-            ));
+                ]
+            ]);
         
-        // $this->add(array(
+        // $this->add([
         // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
         // 'name' => 'service_invoice_position_basic',
-        // 'options' => array(
+        // 'options' => [
         // 'label' => _('service invoice position (basic)'),
         // ),
         // ));
         
         $this->add(
-            array(
+            [
                 'name' => 'application_number',
                 'type' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => _('application')
-                ),
-                'attributes' => array(
+                ],
+                'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
-                )
-            ));
+                ]
+            ]);
         
-        // $this->add(array(
+        // $this->add([
         // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
         // 'name' => 'service_invoice_position_personal',
-        // 'options' => array(
+        // 'options' => [
         // 'label' => _('service invoice position (personal)'),
         // ),
         // ));
@@ -86,13 +86,13 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
 
     public function getInputFilterSpecification()
     {
-        return array(
-            'change_number' => array(
+        return [
+            'change_number' => [
                 'required' => true
-            ),
-            'application_number' => array(
+            ],
+            'application_number' => [
                 'required' => true
-            )
-        );
+            ]
+        ];
     }
 }

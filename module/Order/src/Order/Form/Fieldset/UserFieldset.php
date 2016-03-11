@@ -9,7 +9,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('user', $options);
     }
@@ -18,23 +18,23 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     {
         $this->setHydrator(new ClassMethods())->setObject(new User());
         
-        $this->add(array(
+        $this->add([
             'name' => 'id',
             'type' => 'hidden'
-        ));
+        ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'username',
                 'type' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => _('username')
-                ),
-                'attributes' => array(
+                ],
+                'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
-                )
-            ));
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

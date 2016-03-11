@@ -4,7 +4,7 @@ namespace Order\Form\Fieldset;
 class ServiceInvoicePositionBasicFieldset extends AbstractServiceInvoicePositionFieldset
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('service_invoice_position_basic', $options);
     }

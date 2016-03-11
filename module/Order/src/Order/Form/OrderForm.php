@@ -16,20 +16,20 @@ class OrderForm extends Form
         $this->setAttribute('method', 'post');
         
         $this->add(
-            array(
+            [
                 'type' => 'Order\Form\Fieldset\FileTransferRequestFieldset',
-                'options' => array(
+                'options' => [
                     'use_as_base_fieldset' => true
-                )
-            ));
+                ]
+            ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'submit',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'submit',
                     'value' => _('send')
-                )
-            ));
+                ]
+            ]);
     }
 }

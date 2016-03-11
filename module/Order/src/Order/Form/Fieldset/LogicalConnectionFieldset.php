@@ -9,7 +9,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
 class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('logical_connection', $options);
     }
@@ -18,24 +18,24 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
     {
         $this->setHydrator(new ClassMethods())->setObject(new LogicalConnection());
         
-        $this->add(array(
+        $this->add([
             'name' => 'id',
             'type' => 'hidden'
-        ));
+        ]);
         
         $this->add(
-            array(
+            [
                 'name' => 'type',
                 'type' => 'text',
-                'options' => array(
+                'options' => [
                     'label' => _('type')
-                ),
-                'attributes' => array(
+                ],
+                'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control',
                     'value' => LogicalConnection::TYPE_CD
-                )
-            ));
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
