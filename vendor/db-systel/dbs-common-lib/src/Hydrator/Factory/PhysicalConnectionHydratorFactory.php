@@ -25,7 +25,9 @@ class PhysicalConnectionHydratorFactory implements FactoryInterface
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $endpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $physicalConnectionHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));
+        $physicalConnectionHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));        // @todo AbstractFactory needed!!!
+        // $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new AbstractEndpoint()));
+        // $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new EndpointCdTandem()));
         $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new Endpoint()));
 
         $namingStrategy = new MapNamingStrategy(array(
