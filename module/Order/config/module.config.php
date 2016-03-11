@@ -1,27 +1,27 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'create-order' => array(
+return [
+    'router' => [
+        'routes' => [
+            'create-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/order/process/create',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'Order\Controller\Process',
                         'action' => 'create'
-                    )
-                )
-            )
-        )
-    ),
-    'controllers' => array(
-        'invokables' => array(),
-        'factories' => array(
+                    ]
+                ]
+            ]
+        ]
+    ],
+    'controllers' => [
+        'invokables' => [],
+        'factories' => [
             'Order\Controller\Process' => 'Order\Controller\Factory\ProcessControllerFactory'
-        )
-    ),
-    'service_manager' => array(
-        'factories' => array(
+        ]
+    ],
+    'service_manager' => [
+        'factories' => [
             // mappers
             // services
             // forms
@@ -29,11 +29,11 @@ return array(
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'
-        ),
-        'invokables' => array()
-    ),
-    'form_elements' => array(
-        'factories' => array()
+        ],
+        'invokables' => []
+    ],
+    'form_elements' => [
+        'factories' => []
         // fieldsets
         // This isn't working (yet).
         /*
@@ -44,13 +44,13 @@ return array(
          * 'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory',
          */
         
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
             __DIR__ . '/../view'
-        )
-    ),
-    'hydrators' => array(
-        'factories' => array()
-    )
-);
+        ]
+    ],
+    'hydrators' => [
+        'factories' => []
+    ]
+];

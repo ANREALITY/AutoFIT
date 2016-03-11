@@ -38,9 +38,9 @@ class ProcessController extends AbstractActionController
             }
         }
         
-        return array(
+        return [
             'form' => $this->orderForm
-        );
+        ];
     }
 }
 
