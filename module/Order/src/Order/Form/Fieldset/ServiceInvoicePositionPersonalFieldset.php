@@ -7,6 +7,10 @@ class ServiceInvoicePositionPersonalFieldset extends AbstractServiceInvoicePosit
     public function __construct($name = null, $options = array())
     {
         parent::__construct('service_invoice_position_personal', $options);
+    }
+    
+    public function init()
+    {
 
         $this->setLabel(_('service invoice position (personal)'));
 

@@ -12,14 +12,17 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
     public function __construct($name = null, $options = array())
     {
         parent::__construct('logical_connection', $options);
+    }
 
+    public function init()
+    {
         $this->setHydrator(new ClassMethods())->setObject(new LogicalConnection());
-
+        
         $this->add(array(
             'name' => 'id',
             'type' => 'hidden'
         ));
-
+        
         $this->add(
             array(
                 'name' => 'type',

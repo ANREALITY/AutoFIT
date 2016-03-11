@@ -12,14 +12,17 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
     public function __construct($name = null, $options = array())
     {
         parent::__construct('user', $options);
+    }
 
-        $this->setHydrator(new ClassMethods(false))->setObject(new User());
-
+    public function init()
+    {
+        $this->setHydrator(new ClassMethods())->setObject(new User());
+        
         $this->add(array(
             'name' => 'id',
             'type' => 'hidden'
         ));
-
+        
         $this->add(
             array(
                 'name' => 'username',
