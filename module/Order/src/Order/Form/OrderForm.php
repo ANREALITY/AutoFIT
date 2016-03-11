@@ -23,7 +23,8 @@ class OrderForm extends Form
                 'name' => 'submit',
                 'attributes' => [
                     'type' => 'submit',
-                    'value' => _('send')
+                    'value' => _('send'),
+                    'class' => 'btn btn-default'
                 ]
             ]);
     }
