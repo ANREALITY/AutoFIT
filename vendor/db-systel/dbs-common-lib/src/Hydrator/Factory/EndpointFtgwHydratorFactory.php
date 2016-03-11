@@ -25,7 +25,7 @@ class EndpointFtgwHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $endpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $physicalConnectionHydrator = $serviceLocator->get('DbSystel\Hydrator\PhysicalConnectionFtgwHydrator');
+        $physicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $serverHydrator = $serviceLocator->get('DbSystel\Hydrator\ServerHydrator');
         $applicationHydrator = $serviceLocator->get('DbSystel\Hydrator\ApplicationHydrator');
         $userHydrator = $serviceLocator->get('DbSystel\Hydrator\UserHydrator');

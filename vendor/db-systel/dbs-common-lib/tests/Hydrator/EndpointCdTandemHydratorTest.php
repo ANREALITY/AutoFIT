@@ -23,12 +23,6 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
             'id' => 123,
             'physical_connection' => [
                 'secure_plus' => true,
-                'physical_connection' => [
-                    'id' => 123,
-                    'logical_connection' => [
-                        'id' => 567
-                    ]
-                ]
             ],
             'server' => [
                 'name' => 'YXC123',
@@ -49,11 +43,10 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new EndpointCdTandem());
 
-        $this->assertEquals(static::CHEXTURE['endpoint']['physical_connection']['physical_connection']['logical_connection']['id'],
+        $this->assertEquals(static::CHEXTURE['endpoint']['server']['server_type']['id'],
             $hydratedObject->getEndpoint()
-                ->getPhysicalConnection()
-                ->getPhysicalConnection()
-                ->getLogicalConnection()
+                ->getServer()
+                ->getServerType()
                 ->getId());
     }
 
@@ -72,12 +65,6 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
         $endpoint->setId(123);
         $physicalConnectionCd = new PhysicalConnectionCd();
         $physicalConnectionCd->setSecurePlus(true);
-        $physicalConnection = new PhysicalConnection();
-        $physicalConnection->setId(123);
-        $logicalConnection = new LogicalConnection();
-        $logicalConnection->setId(567);
-        $physicalConnection->setLogicalConnection($logicalConnection);
-        $physicalConnectionCd->setPhysicalConnection($physicalConnection);
         $endpoint->setPhysicalConnection($physicalConnectionCd);
         $server = new Server();
         $server->setName('YXC123');

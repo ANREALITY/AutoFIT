@@ -13,6 +13,8 @@ use DbSystel\DataObject\ServiceInvoicePositionStatus;
 use DbSystel\DataObject\User;
 use DbSystel\DataObject\PhysicalConnectionCd;
 use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\EndpointCdTandem;
+use DbSystel\DataObject\Endpoint;
 
 /**
  * FileTransferRequestHydrator test case.
@@ -28,16 +30,26 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
                 [
                     'secure_plus' => 1,
                     'physical_connection' => [
-                        'id' => 1111,
+                        'id' => 1111
                     ]
                 ],
                 [
                     'secure_plus' => 0,
                     'physical_connection' => [
                         'id' => 2222,
+                        'endpoints' => [
+                            [
+                                'username' => 'foo',
+                                'folder' => '/path/to/bar',
+                                'endpoint' => [
+                                    'id' => 777,
+                                    'role' => 'target'
+                                ]
+                            ]
+                        ]
                     ]
-                ],
-            ],
+                ]
+            ]
         ],
         'service_invoice_position_basic' => [
             'number' => 'BUZ333',
@@ -86,24 +98,16 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         ]
     ];
 
-    public function testExtract()
-    {
-        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-
-        foreach (static::CHEXTURE as $key => $property) {
-            $this->assertArraySubset([$key => $property], $extractedData);
-        }
-    }
-
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new FileTransferRequest());
-
-        $this->assertEquals(static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'],
+        
+        $this->assertEquals(
+            static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'], 
             $hydratedObject->getServiceInvoicePositionBasic()
-            ->getServiceInvoice()
-            ->getApplication()
-            ->getTechnicalShortName());
+                ->getServiceInvoice()
+                ->getApplication()
+                ->getTechnicalShortName());
     }
 
     protected function createHydrator()
@@ -124,13 +128,33 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $logicalConnectionPhysicalConnectionA->setSecurePlus(1);
         $logicalConnectionPhysicalConnectionPhysicalConnectionA = new PhysicalConnection();
         $logicalConnectionPhysicalConnectionPhysicalConnectionA->setId(1111);
-        $logicalConnectionPhysicalConnectionA->setPhysicalConnection($logicalConnectionPhysicalConnectionPhysicalConnectionA);
+        $logicalConnectionPhysicalConnectionA->setPhysicalConnection(
+            $logicalConnectionPhysicalConnectionPhysicalConnectionA);
         $logicalConnectionPhysicalConnectionB = new PhysicalConnectionCd();
         $logicalConnectionPhysicalConnectionB->setSecurePlus(0);
         $logicalConnectionPhysicalConnectionPhysicalConnectionB = new PhysicalConnection();
         $logicalConnectionPhysicalConnectionPhysicalConnectionB->setId(2222);
-        $logicalConnectionPhysicalConnectionB->setPhysicalConnection($logicalConnectionPhysicalConnectionPhysicalConnectionB);
-        $physicalConnections = [$logicalConnectionPhysicalConnectionA, $logicalConnectionPhysicalConnectionB];
+        
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA = new EndpointCdTandem();
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setUsername('foo');
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setFolder('/path/to/bar');
+        $logicalConnectionPhysicalConnectionB->setPhysicalConnection(
+            $logicalConnectionPhysicalConnectionPhysicalConnectionB);
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA = new Endpoint();
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA->setId(777);
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA->setRole('target');
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setEndpoint(
+            $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA);
+        $endpoints = [
+            $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA
+        ];
+        $logicalConnectionPhysicalConnectionPhysicalConnectionB->setEndpoints($endpoints);
+        $logicalConnectionPhysicalConnectionB->setPhysicalConnection(
+            $logicalConnectionPhysicalConnectionPhysicalConnectionB);
+        $physicalConnections = [
+            $logicalConnectionPhysicalConnectionA,
+            $logicalConnectionPhysicalConnectionB
+        ];
         $logicalConnection->setPhysicalConnections($physicalConnections);
         $fileTransferRequest->setLogicalConnection($logicalConnection);
         $serviceInvoicePositionBasic = new ServiceInvoicePosition();
