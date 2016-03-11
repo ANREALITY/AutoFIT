@@ -9,11 +9,6 @@ class OrderForm extends Form
     public function __construct()
     {
         parent::__construct('create_file_transfer_request');
-    }
-
-    public function init()
-    {
-        $this->setAttribute('method', 'post');
         
         $this->add(
             [
@@ -31,5 +26,10 @@ class OrderForm extends Form
                     'value' => _('send')
                 ]
             ]);
+    }
+
+    public function init()
+    {
+        $this->setAttribute('method', 'post');
     }
 }
