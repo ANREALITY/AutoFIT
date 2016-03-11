@@ -8,7 +8,6 @@
 return array(
     'modules' => array(
         'Application',
-        'FileTransferRequest',
         'Order',
     ),
     'module_listener_options' => array(
