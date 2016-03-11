@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-10 19:22+0100\n"
-"PO-Revision-Date: 2016-03-10 19:22+0100\n"
+"POT-Creation-Date: 2016-03-11 12:03+0100\n"
+"PO-Revision-Date: 2016-03-11 12:03+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -18,6 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-2: FileTransferRequest\n"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Factory/FileTransferRequestFormFactory.php:62
+#: Order/src/Order/Form/OrderForm.php:26
 msgid "send"
 msgstr "senden"
 
@@ -28,6 +29,7 @@ msgstr ""
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ApplicationFieldset.php:26
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:46
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:26
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:71
 msgid "application"
 msgstr "Verfahren"
 
@@ -54,7 +56,7 @@ msgstr ""
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:22
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:48
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:50
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:28
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:31
 #: Storage/src/Storage/Form/Fieldset/UserFieldset.php:31
 msgid "username"
 msgstr "Benutzername"
@@ -121,14 +123,14 @@ msgid "file transfer request"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:34
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:28
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:31
 #: Storage/src/Storage/Form/Fieldset/FileTransferRequestFieldset.php:29
 msgid "change number"
 msgstr "Change-Nummer"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:42
 msgid "service invoice position number (basic)"
-msgstr "LSP-S"
+msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:58
 msgid "service invoice position number (personal)"
@@ -147,41 +149,38 @@ msgid "File Transfer Gateway connection settings"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:15
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:14
+#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:17
 msgid "Service Invoice Position"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:21
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:28
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:21
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:38
+#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:24
 msgid "service invoice position number"
-msgstr ""
+msgstr "LSP"
 
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:41
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:44
 msgid "user of the file transfer request"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:50
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:53
 msgid "logical connection of the file transfer request"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/LogicalConnectionFieldset.php:28
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:62
+#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
+msgid "service invoice position (basic)"
+msgstr "LSP-S"
+
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:84
+#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:16
+msgid "service invoice position (personal)"
+msgstr "LSP-P"
+
+#: Order/src/Order/Form/Fieldset/LogicalConnectionFieldset.php:31
 #: Storage/src/Storage/Form/Fieldset/LogicalConnectionFieldset.php:30
 msgid "type"
 msgstr "Typ"
-
-#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:11
-msgid "service invoice position (basic)"
-msgstr ""
-
-#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:11
-msgid "service invoice position (personal)"
-msgstr ""
-
-#: Order/src/Order/Form/OrderForm.php:28
-msgid "Send"
-msgstr ""
 
 #: Storage/src/Storage/Form/Fieldset/FileTransferRequestFieldset.php:21
 #: Storage/src/Storage/Form/Fieldset/LogicalConnectionFieldset.php:22
@@ -289,7 +288,7 @@ msgstr "Startseite"
 msgid "New request"
 msgstr "Neue Anfrage"
 
-#: Order/view/order/process/create.phtml:15
+#: Order/view/order/process/create.phtml:43
 msgid "Billing"
 msgstr "Abrechnung"
 

@@ -3,6 +3,8 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use DbSystel\DataObject\ServiceInvoicePosition;
+use Zend\Hydrator\ClassMethods;
 
 class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -14,14 +16,20 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
 
     public function init()
     {
+        $this->setHydrator(new ClassMethods())->setObject(new ServiceInvoicePosition());
+
         $this->setLabel(_('Service Invoice Position'));
-        
+
         $this->add(
             [
                 'type' => 'text',
                 'name' => 'number',
                 'options' => [
                     'label' => _('service invoice position number')
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
                 ]
             ]);
     }
@@ -30,17 +38,7 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
     {
         return [
             'number' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('service invoice position number'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
+                'required' => true
             ]
         ];
     }

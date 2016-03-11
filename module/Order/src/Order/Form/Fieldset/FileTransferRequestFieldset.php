@@ -54,13 +54,14 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 ]
             ]);
         
-        // $this->add([
-        // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
-        // 'name' => 'service_invoice_position_basic',
-        // 'options' => [
-        // 'label' => _('service invoice position (basic)'),
-        // ),
-        // ));
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
+                'name' => 'service_invoice_position_basic',
+                'options' => [
+                    'label' => _('service invoice position (basic)')
+                ]
+            ]);
         
         $this->add(
             [
@@ -75,13 +76,14 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 ]
             ]);
         
-        // $this->add([
-        // 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
-        // 'name' => 'service_invoice_position_personal',
-        // 'options' => [
-        // 'label' => _('service invoice position (personal)'),
-        // ),
-        // ));
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
+                'name' => 'service_invoice_position_personal',
+                'options' => [
+                    'label' => _('service invoice position (personal)')
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

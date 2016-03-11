@@ -8,21 +8,29 @@ echo $this->form()->openTag($form);
 $fileTransferRequest = $form->get('file_transfer_request');
 $user = $fileTransferRequest->get('user');
 $logicalConnection = $fileTransferRequest->get('logical_connection');
+$serviceInvoicePositionBasic = $fileTransferRequest->get('service_invoice_position_basic');
+$serviceInvoicePositionPersonal = $fileTransferRequest->get('service_invoice_position_personal');
 
 $viewFieldsets = [
     'billing' => [
         'fileTransferRequest' => [
             'id',
-            'change_number',
-            'application_number'
+            'application_number',
+            'change_number'
         ],
         'logicalConnection' => [
             'id',
             'type'
         ],
+        'serviceInvoicePositionBasic' => [
+            'number'
+        ],
         'user' => [
             'id',
             'username'
+        ],
+        'serviceInvoicePositionPersonal' => [
+            'number'
         ]
     ]
 ];
