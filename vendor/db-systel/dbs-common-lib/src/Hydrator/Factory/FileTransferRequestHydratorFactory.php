@@ -22,7 +22,7 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fileTransferRequestHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $logicalConnectionHydrator = $serviceLocator->get('DbSystel\Hydrator\LogicalConnectionHydrator');
         $serviceInvoicePositionHydratorBasicHydrator = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoicePositionHydrator');
         $serviceInvoicePositionHydratorPersonalHydrator = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoicePositionHydrator');
         $userHydrator = $serviceLocator->get('DbSystel\Hydrator\UserHydrator');

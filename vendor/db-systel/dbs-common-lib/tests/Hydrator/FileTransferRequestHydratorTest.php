@@ -11,6 +11,8 @@ use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ProductType;
 use DbSystel\DataObject\ServiceInvoicePositionStatus;
 use DbSystel\DataObject\User;
+use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\PhysicalConnection;
 
 /**
  * FileTransferRequestHydrator test case.
@@ -21,7 +23,21 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
     const CHEXTURE = [
         'id' => 123,
         'logical_connection' => [
-            'id' => 567
+            'id' => 567,
+            'physical_connections' => [
+                [
+                    'secure_plus' => 1,
+                    'physical_connection' => [
+                        'id' => 1111,
+                    ]
+                ],
+                [
+                    'secure_plus' => 0,
+                    'physical_connection' => [
+                        'id' => 2222,
+                    ]
+                ],
+            ],
         ],
         'service_invoice_position_basic' => [
             'number' => 'BUZ333',
@@ -70,6 +86,15 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         ]
     ];
 
+    public function testExtract()
+    {
+        $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
+
+        foreach (static::CHEXTURE as $key => $property) {
+            $this->assertArraySubset([$key => $property], $extractedData);
+        }
+    }
+
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new FileTransferRequest());
@@ -95,6 +120,18 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $fileTransferRequest->setId(123);
         $logicalConnection = new LogicalConnection();
         $logicalConnection->setId(567);
+        $logicalConnectionPhysicalConnectionA = new PhysicalConnectionCd();
+        $logicalConnectionPhysicalConnectionA->setSecurePlus(1);
+        $logicalConnectionPhysicalConnectionPhysicalConnectionA = new PhysicalConnection();
+        $logicalConnectionPhysicalConnectionPhysicalConnectionA->setId(1111);
+        $logicalConnectionPhysicalConnectionA->setPhysicalConnection($logicalConnectionPhysicalConnectionPhysicalConnectionA);
+        $logicalConnectionPhysicalConnectionB = new PhysicalConnectionCd();
+        $logicalConnectionPhysicalConnectionB->setSecurePlus(0);
+        $logicalConnectionPhysicalConnectionPhysicalConnectionB = new PhysicalConnection();
+        $logicalConnectionPhysicalConnectionPhysicalConnectionB->setId(2222);
+        $logicalConnectionPhysicalConnectionB->setPhysicalConnection($logicalConnectionPhysicalConnectionPhysicalConnectionB);
+        $physicalConnections = [$logicalConnectionPhysicalConnectionA, $logicalConnectionPhysicalConnectionB];
+        $logicalConnection->setPhysicalConnections($physicalConnections);
         $fileTransferRequest->setLogicalConnection($logicalConnection);
         $serviceInvoicePositionBasic = new ServiceInvoicePosition();
         $serviceInvoicePositionBasic->setNumber('BUZ333');
