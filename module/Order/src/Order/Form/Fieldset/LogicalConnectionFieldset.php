@@ -1,10 +1,9 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\LogicalConnection;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\ClassMethods;
+use DbSystel\DataObject\LogicalConnection;
 
 class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -16,8 +15,6 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
 
     public function init()
     {
-        $this->setHydrator(new ClassMethods())->setObject(new LogicalConnection());
-        
         $this->add([
             'name' => 'id',
             'type' => 'hidden'

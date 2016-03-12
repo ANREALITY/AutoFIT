@@ -3,8 +3,6 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\ServiceInvoicePosition;
-use Zend\Hydrator\ClassMethods;
 
 class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -16,8 +14,6 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
 
     public function init()
     {
-        $this->setHydrator(new ClassMethods())->setObject(new ServiceInvoicePosition());
-
         $this->setLabel(_('Service Invoice Position'));
 
         $this->add(

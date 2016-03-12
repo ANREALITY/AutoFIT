@@ -9,10 +9,15 @@ class OrderForm extends Form
     public function __construct()
     {
         parent::__construct('create_file_transfer_request');
+    }
+
+    public function init()
+    {
+        $this->setAttribute('method', 'post');
         
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\FileTransferRequestFieldset',
+                'type' => 'Order\Form\Fieldset\FileTransferRequest',
                 'options' => [
                     'use_as_base_fieldset' => true
                 ]
@@ -27,10 +32,5 @@ class OrderForm extends Form
                     'class' => 'btn btn-default'
                 ]
             ]);
-    }
-
-    public function init()
-    {
-        $this->setAttribute('method', 'post');
     }
 }

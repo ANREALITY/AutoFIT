@@ -1,10 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\ClassMethods;
 
 class FileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -16,8 +14,6 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
 
     public function init()
     {
-        $this->setHydrator(new ClassMethods())->setObject(new FileTransferRequest());
-        
         $this->add([
             'name' => 'id',
             'type' => 'hidden'
@@ -39,7 +35,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         $this->add(
             [
                 'name' => 'user',
-                'type' => 'Order\Form\Fieldset\UserFieldset',
+                'type' => 'Order\Form\Fieldset\User',
                 'options' => [
                     'label' => _('user of the file transfer request')
                 ]
@@ -48,7 +44,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         $this->add(
             [
                 'name' => 'logical_connection',
-                'type' => 'Order\Form\Fieldset\LogicalConnectionFieldset',
+                'type' => 'Order\Form\Fieldset\LogicalConnection',
                 'options' => [
                     'label' => _('logical connection of the file transfer request')
                 ]
@@ -56,7 +52,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasicFieldset',
+                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasic',
                 'name' => 'service_invoice_position_basic',
                 'options' => [
                     'label' => _('service invoice position (basic)')
@@ -78,7 +74,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonalFieldset',
+                'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonal',
                 'name' => 'service_invoice_position_personal',
                 'options' => [
                     'label' => _('service invoice position (personal)')

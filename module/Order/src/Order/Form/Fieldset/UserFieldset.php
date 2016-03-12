@@ -1,10 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\User;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\ClassMethods;
 
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -16,8 +14,6 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function init()
     {
-        $this->setHydrator(new ClassMethods())->setObject(new User());
-        
         $this->add([
             'name' => 'id',
             'type' => 'hidden'
