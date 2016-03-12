@@ -15,11 +15,6 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
 
     public function init()
     {
-        $this->add([
-            'name' => 'id',
-            'type' => 'hidden'
-        ]);
-        
         $this->add(
             [
                 'name' => 'type',
