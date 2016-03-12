@@ -18,7 +18,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
             'name' => 'id',
             'type' => 'hidden'
         ]);
-        
+
         $this->add(
             [
                 'name' => 'username',
@@ -26,8 +26,8 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'options' => [
                     'label' => _('username'),
                     'label_attributes' => [
-                        'class' => 'col-md-6',
-                    ],
+                        'class' => 'col-md-6'
+                    ]
                 ],
                 'attributes' => [
                     'required' => 'required',

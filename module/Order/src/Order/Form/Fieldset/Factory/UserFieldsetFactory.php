@@ -12,11 +12,13 @@ class UserFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new UserFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('Zend\Hydrator\ClassMethods');
+        $hydrator = $serviceLocator->getServiceLocator()
+            ->get('HydratorManager')
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new User();
         $fieldset->setObject($prototype);
-        
+
         return $fieldset;
     }
 }

@@ -18,7 +18,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             'name' => 'id',
             'type' => 'hidden'
         ]);
-        
+
         $this->add(
             [
                 'name' => 'change_number',
@@ -26,36 +26,36 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'options' => [
                     'label' => _('change number'),
                     'label_attributes' => [
-                        'class' => 'col-md-6',
-                    ],
+                        'class' => 'col-md-6'
+                    ]
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ]);
-        
+
         $this->add(
             [
                 'name' => 'user',
                 'type' => 'Order\Form\Fieldset\User',
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'name' => 'logical_connection',
                 'type' => 'Order\Form\Fieldset\LogicalConnection',
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasic',
                 'name' => 'service_invoice_position_basic',
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'name' => 'application_number',
@@ -63,15 +63,15 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'options' => [
                     'label' => _('application'),
                     'label_attributes' => [
-                        'class' => 'col-md-6',
-                    ],
+                        'class' => 'col-md-6'
+                    ]
                 ],
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
-        
+
         $this->add(
             [
                 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonal',

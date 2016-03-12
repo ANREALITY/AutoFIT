@@ -12,11 +12,13 @@ class ServiceInvoicePositionPersonalFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new ServiceInvoicePositionPersonalFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('Zend\Hydrator\ClassMethods');
+        $hydrator = $serviceLocator->getServiceLocator()
+            ->get('HydratorManager')
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new ServiceInvoicePosition();
         $fieldset->setObject($prototype);
-        
+
         return $fieldset;
     }
 }

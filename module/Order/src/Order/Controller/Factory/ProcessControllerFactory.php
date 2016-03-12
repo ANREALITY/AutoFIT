@@ -16,7 +16,7 @@ class ProcessControllerFactory implements FactoryInterface
         $orderForm = $realServiceLocator->get('FormElementManager')->get('Order\Form\OrderForm');
         $fileTransferRequestPrototype = new FileTransferRequest();
         // $orderDataPreparator = $realServiceLocator->get('Order\Form\DataPreparator\OrderDataPreparator');
-        
+
         // return new ProcessController($orderService, $orderForm, $orderDataPreparator);
         return new ProcessController($orderForm, $fileTransferRequestPrototype);
     }

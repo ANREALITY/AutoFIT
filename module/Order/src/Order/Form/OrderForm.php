@@ -14,7 +14,7 @@ class OrderForm extends Form
     public function init()
     {
         $this->setAttribute('method', 'post');
-        
+
         $this->add(
             [
                 'type' => 'Order\Form\Fieldset\FileTransferRequest',
@@ -22,7 +22,7 @@ class OrderForm extends Form
                     'use_as_base_fieldset' => true
                 ]
             ]);
-        
+
         $this->add(
             [
                 'name' => 'submit',
