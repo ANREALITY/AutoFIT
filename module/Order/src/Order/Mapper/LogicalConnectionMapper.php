@@ -102,17 +102,17 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     {
         // @todo Only for testing! The logical connection type needs to be given as input!
         $dataObject->setType('CD');
-        
+
         $data = [];
         $data['type'] = $dataObject->getType();
-        
+
         $action = new Insert('logical_connection');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

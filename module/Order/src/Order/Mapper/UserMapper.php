@@ -101,17 +101,16 @@ class UserMapper implements UserMapperInterface
     public function save(User $dataObject)
     {
         // @todo Check, if user exists!
-        
         $data = [];
         $data['username'] = $dataObject->getUsername();
-        
+
         $action = new Insert('user');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
