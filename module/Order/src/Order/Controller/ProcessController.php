@@ -5,6 +5,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Form\FormInterface;
 use DbSystel\DataObject\FileTransferRequest;
+use Order\Service\FileTransferRequestService;
 
 class ProcessController extends AbstractActionController
 {
@@ -13,10 +14,14 @@ class ProcessController extends AbstractActionController
 
     protected $fileTransferRequest = null;
 
-    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest)
+    protected $fileTransferRequestService = null;
+
+    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest, 
+        FileTransferRequestService $fileTransferRequestService)
     {
         $this->orderForm = $orderForm;
         $this->fileTransferRequest = $fileTransferRequest;
+        $this->fileTransferRequestService = $fileTransferRequestService;
     }
 
     public function indexAction()
@@ -27,16 +32,15 @@ class ProcessController extends AbstractActionController
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-
+        
         $request = $this->getRequest();
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                var_dump($this->fileTransferRequest);
-                die('#################');
+                $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
             }
         }
-
+        
         return [
             'form' => $this->orderForm
         ];
