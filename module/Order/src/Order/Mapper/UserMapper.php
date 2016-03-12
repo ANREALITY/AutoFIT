@@ -100,32 +100,24 @@ class UserMapper implements UserMapperInterface
      */
     public function save(User $dataObject)
     {
-        $userData = $this->hydrator->extract($dataObject);
-        unset($userData['id']);
-
-        if ($dataObject->getId()) {
-            $action = new Update('user');
-            $action->set($userData);
-            $action->where(array(
-                'id = ?' => $dataObject->getId()
-            ));
-        } else {
-            $action = new Insert('user');
-            $action->values($userData);
-        }
-
+        // @todo Check, if user exists!
+        
+        $data = [];
+        $data['username'] = $dataObject->getUsername();
+        
+        $action = new Insert('user');
+        $action->values($data);
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
             }
-
             return $dataObject;
         }
-
         throw new \Exception('Database error in ' . __METHOD__);
     }
 }

@@ -31,17 +31,32 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
      * @var FileTransferRequest
      */
     protected $prototype;
+    
+    /**
+     * 
+     * @var LogicalConnectionMapperInterface
+     */
+    protected $logicalConnectionMapper;
+    
+    /**
+     * 
+     * @var UserMapperInterface
+     */
+    protected $userMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype, 
+        LogicalConnectionMapperInterface $logicalConnectionMapper, UserMapperInterface $userMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->logicalConnectionMapper = $logicalConnectionMapper;
+        $this->userMapper = $userMapper;
     }
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      *
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
@@ -93,29 +108,35 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param FileTransferRequest $dataObject
+     * @param FileTransferRequest $dataObject            
      *
      * @return FileTransferRequest
      * @throws \Exception
      */
     public function save(FileTransferRequest $dataObject)
     {
-        $fileTransferRequestData = [];
-        $fileTransferRequestData['change_number'] = $dataObject->getChangeNumber();
+        $data = [];
+        $data['change_number'] = $dataObject->getChangeNumber();
+        $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
+        $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
+
+        $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
+        $dataObject->setLogicalConnection($newLogicalConnection);
+        $newUser = $this->userMapper->save($dataObject->getUser());
+        $dataObject->setUser($newUser);
+
         // @todo Only for testing! The logical connection ID needs to be retrieved from the new logical connection!
-        $fileTransferRequestData['logical_connection_id'] = 1;
-        $fileTransferRequestData['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
-        $fileTransferRequestData['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
+        $data['logical_connection_id'] = 1;
         // @todo Only for testing! The user ID needs to be retrieved from the new user!
-        $fileTransferRequestData['user_id'] = 1;
-
+        $data['user_id'] = 1;
+        
         $action = new Insert('file_transfer_request');
-        $action->values($fileTransferRequestData);
-
+        $action->values($data);
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
