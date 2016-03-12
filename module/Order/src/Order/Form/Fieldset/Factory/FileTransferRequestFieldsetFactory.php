@@ -12,7 +12,7 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new FileTransferRequestFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('Zend\Hydrator\ClassMethods');
+        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\FileTransferRequestHydrator');
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
         $fieldset->setObject($prototype);
