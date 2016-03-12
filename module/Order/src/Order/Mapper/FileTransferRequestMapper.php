@@ -108,14 +108,27 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         $fileTransferRequestData['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
         // @todo Only for testing! The user ID needs to be retrieved from the new user!
         $fileTransferRequestData['user_id'] = 1;
-        
+
         $action = new Insert('file_transfer_request');
         $action->values($fileTransferRequestData);
-        
         $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-        
+        $statement = $sql->buildSqlString($action);
+
+        $db = $this->dbAdapter->getDriver()->getConnection();
+        $db->beginTransaction();
+        try {
+            $result = $db->execute($statement);
+            $db->commit();
+        } catch (\Exception $exception) {
+            $db->rollBack();
+            $error_result = [];
+            $message = $exception->getMessage();
+            $code = $exception->getCode();
+            $error_result[0] = $message;
+            $error_result[1] = $code;
+            throw new \Exception('Database error in ' . __METHOD__ . PHP_EOL . $code . PHP_EOL . $message);
+        }
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
