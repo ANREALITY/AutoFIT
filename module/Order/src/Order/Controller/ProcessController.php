@@ -16,7 +16,7 @@ class ProcessController extends AbstractActionController
 
     protected $fileTransferRequestService = null;
 
-    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest, 
+    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
         $this->orderForm = $orderForm;
@@ -32,7 +32,7 @@ class ProcessController extends AbstractActionController
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-        
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
@@ -40,7 +40,7 @@ class ProcessController extends AbstractActionController
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
             }
         }
-        
+
         return [
             'form' => $this->orderForm
         ];

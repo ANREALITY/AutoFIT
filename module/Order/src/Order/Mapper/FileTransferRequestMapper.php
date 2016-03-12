@@ -41,7 +41,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
@@ -93,7 +93,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param FileTransferRequest $dataObject            
+     * @param FileTransferRequest $dataObject
      *
      * @return FileTransferRequest
      * @throws \Exception
@@ -108,14 +108,14 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         $fileTransferRequestData['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
         // @todo Only for testing! The user ID needs to be retrieved from the new user!
         $fileTransferRequestData['user_id'] = 1;
-        
+
         $action = new Insert('file_transfer_request');
         $action->values($fileTransferRequestData);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
