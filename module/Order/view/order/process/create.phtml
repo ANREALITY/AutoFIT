@@ -2,16 +2,14 @@
 $form->setAttribute('action', $this->url('create-order'))
     ->prepare();
 echo $this->form()->openTag($form);
-
-// echo $this->form($form);
 ?>
 
 <?php
-$fileTransferRequest = $form->get('file_transfer_request');
-$user = $fileTransferRequest->get('user');
-$logicalConnection = $fileTransferRequest->get('logical_connection');
-$serviceInvoicePositionBasic = $fileTransferRequest->get('service_invoice_position_basic');
-$serviceInvoicePositionPersonal = $fileTransferRequest->get('service_invoice_position_personal');
+$fileTransferRequestFieldset = $form->get('file_transfer_request');
+$userFieldset = $fileTransferRequestFieldset->get('user');
+$logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
+$serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
+$serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 ?>
 
 <div id="fieldset-billing" class="fieldset-container col-md-12">
@@ -20,14 +18,14 @@ $serviceInvoicePositionPersonal = $fileTransferRequest->get('service_invoice_pos
             <h3 class="panel-title"><?php echo $this->translate('Billing'); ?></h3>
         </div>
         <div class="panel-body">
-            <?php echo $this->formRow($fileTransferRequest->get('id')); ?>
-            <?php echo $this->formRow($fileTransferRequest->get('application_number')); ?>
-            <?php echo $this->formRow($fileTransferRequest->get('change_number')); ?>
-            <?php echo $this->formRow($logicalConnection->get('type')); ?>
-            <?php echo $this->formRow($serviceInvoicePositionBasic->get('number')); ?>
-            <?php echo $this->formRow($user->get('id')); ?>
-            <?php echo $this->formRow($user->get('username')); ?>
-            <?php echo $this->formRow($serviceInvoicePositionPersonal->get('number')); ?>
+            <?php echo $this->formRow($fileTransferRequestFieldset->get('id')); ?>
+            <?php echo $this->formRow($fileTransferRequestFieldset->get('application_number')); ?>
+            <?php echo $this->formRow($fileTransferRequestFieldset->get('change_number')); ?>
+            <?php echo $this->formRow($logicalConnectionFieldset->get('type')); ?>
+            <?php echo $this->formRow($serviceInvoicePositionBasicFieldset->get('number')); ?>
+            <?php echo $this->formRow($userFieldset->get('id')); ?>
+            <?php echo $this->formRow($userFieldset->get('username')); ?>
+            <?php echo $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')); ?>
         </div>
     </div>
 </div>
