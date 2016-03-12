@@ -24,11 +24,14 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'name' => 'change_number',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('change number')
+                    'label' => _('change number'),
+                    'label_attributes' => [
+                        'class' => 'col-md-6',
+                    ],
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ]
             ]);
         
@@ -36,27 +39,21 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             [
                 'name' => 'user',
                 'type' => 'Order\Form\Fieldset\User',
-                'options' => [
-                    'label' => _('user of the file transfer request')
-                ]
+                'options' => []
             ]);
         
         $this->add(
             [
                 'name' => 'logical_connection',
                 'type' => 'Order\Form\Fieldset\LogicalConnection',
-                'options' => [
-                    'label' => _('logical connection of the file transfer request')
-                ]
+                'options' => []
             ]);
         
         $this->add(
             [
                 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionBasic',
                 'name' => 'service_invoice_position_basic',
-                'options' => [
-                    'label' => _('service invoice position (basic)')
-                ]
+                'options' => []
             ]);
         
         $this->add(
@@ -64,7 +61,10 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'name' => 'application_number',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('application')
+                    'label' => _('application'),
+                    'label_attributes' => [
+                        'class' => 'col-md-6',
+                    ],
                 ],
                 'attributes' => [
                     'required' => 'required',
@@ -76,9 +76,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             [
                 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonal',
                 'name' => 'service_invoice_position_personal',
-                'options' => [
-                    'label' => _('service invoice position (personal)')
-                ]
+                'options' => []
             ]);
     }
 

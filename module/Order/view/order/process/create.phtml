@@ -2,6 +2,8 @@
 $form->setAttribute('action', $this->url('create-order'))
     ->prepare();
 echo $this->form()->openTag($form);
+
+// echo $this->form($form);
 ?>
 
 <?php
@@ -10,30 +12,6 @@ $user = $fileTransferRequest->get('user');
 $logicalConnection = $fileTransferRequest->get('logical_connection');
 $serviceInvoicePositionBasic = $fileTransferRequest->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonal = $fileTransferRequest->get('service_invoice_position_personal');
-
-$viewFieldsets = [
-    'billing' => [
-        'fileTransferRequest' => [
-            'id',
-            'application_number',
-            'change_number'
-        ],
-        'logicalConnection' => [
-            'type'
-        ],
-        'serviceInvoicePositionBasic' => [
-            'number'
-        ],
-        'user' => [
-            'id',
-            'username'
-        ],
-        'serviceInvoicePositionPersonal' => [
-            'number'
-        ]
-    ]
-];
-
 ?>
 
 <div id="fieldset-billing" class="fieldset-container col-md-12">
@@ -42,21 +20,14 @@ $viewFieldsets = [
             <h3 class="panel-title"><?php echo $this->translate('Billing'); ?></h3>
         </div>
         <div class="panel-body">
-        <?php foreach ($viewFieldsets['billing'] as $realFieldsetName => $realFieldset) : ?>
-            <?php foreach ($realFieldset as $elementName) : ?>
-                <?php if($$realFieldsetName->get($elementName)->getAttribute('type') === 'hidden') : ?>
-                    <div class="hidden;"><?php echo $this->formElement($$realFieldsetName->get($elementName)); ?></div>
-                <?php elseif($$realFieldsetName->get($elementName)->getAttribute('type') !== 'hidden') : ?>
-                    <div class="form-group col-md-6">
-                        <label><?php echo $this->translate($$realFieldsetName->get($elementName)->getLabel()); ?></label>
-                        <?php echo $this->formElement($$realFieldsetName->get($elementName)); ?>
-                        <?php if ($this->formElementErrors($$realFieldsetName->get($elementName))) : ?>
-                            <div class="message-error"><?php echo $this->formElementErrors($$realFieldsetName->get($elementName)) ?></div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endforeach; ?>
+            <?php echo $this->formRow($fileTransferRequest->get('id')); ?>
+            <?php echo $this->formRow($fileTransferRequest->get('application_number')); ?>
+            <?php echo $this->formRow($fileTransferRequest->get('change_number')); ?>
+            <?php echo $this->formRow($logicalConnection->get('type')); ?>
+            <?php echo $this->formRow($serviceInvoicePositionBasic->get('number')); ?>
+            <?php echo $this->formRow($user->get('id')); ?>
+            <?php echo $this->formRow($user->get('username')); ?>
+            <?php echo $this->formRow($serviceInvoicePositionPersonal->get('number')); ?>
         </div>
     </div>
 </div>

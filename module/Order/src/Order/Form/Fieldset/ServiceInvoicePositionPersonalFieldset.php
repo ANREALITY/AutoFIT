@@ -13,8 +13,6 @@ class ServiceInvoicePositionPersonalFieldset extends AbstractServiceInvoicePosit
     {
         parent::init();
         
-        $this->setLabel(_('service invoice position (personal)'));
-        
         $this->get('number')->setLabel('service invoice position (personal)');
     }
 }

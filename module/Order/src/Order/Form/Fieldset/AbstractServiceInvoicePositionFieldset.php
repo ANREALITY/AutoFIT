@@ -14,14 +14,15 @@ class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFi
 
     public function init()
     {
-        $this->setLabel(_('Service Invoice Position'));
-
         $this->add(
             [
                 'type' => 'text',
                 'name' => 'number',
                 'options' => [
-                    'label' => _('service invoice position number')
+                    'label' => _('service invoice position number'),
+                    'label_attributes' => [
+                        'class' => 'col-md-6',
+                    ],
                 ],
                 'attributes' => [
                     'required' => 'required',

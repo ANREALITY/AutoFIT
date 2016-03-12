@@ -24,7 +24,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'username',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('username')
+                    'label' => _('username'),
+                    'label_attributes' => [
+                        'class' => 'col-md-6',
+                    ],
                 ],
                 'attributes' => [
                     'required' => 'required',
