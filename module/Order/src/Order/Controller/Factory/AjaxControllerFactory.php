@@ -12,7 +12,11 @@ class AjaxControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $applicationService = $realServiceLocator->get('Order\Service\ApplicationService');
+        $environmentService = $realServiceLocator->get('Order\Service\EnvironmentService');
+        $serverService = $realServiceLocator->get('Order\Service\ServerService');
+        $serviceInvoicePositionService = $realServiceLocator->get('Order\Service\ServiceInvoicePositionService');
 
-        return new AjaxController($applicationService);
+        return new AjaxController($applicationService, $environmentService, $serverService,
+            $serviceInvoicePositionService);
     }
 }

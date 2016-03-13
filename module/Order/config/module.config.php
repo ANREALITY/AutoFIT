@@ -21,7 +21,37 @@ return [
                         'action' => 'provideApplications'
                     ]
                 ]
-            ]
+            ],
+            'provide-environments' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-environments',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideEnvironments'
+                    ]
+                ]
+            ],
+            'provide-servers' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-servers',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'serverApplications'
+                    ]
+                ]
+            ],
+            'provide-service-invoice-positions' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-service-invoice-positions',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'serviceInvoicePositions'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [
