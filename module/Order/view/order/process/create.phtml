@@ -5,6 +5,7 @@ echo $this->form()->openTag($form);
 ?>
 
 <?php
+// billing
 $fileTransferRequestFieldset = $form->get('file_transfer_request');
 $userFieldset = $fileTransferRequestFieldset->get('user');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
@@ -25,6 +26,26 @@ $fieldsetFormRows = [
     $this->formRow($userFieldset->get('id')),
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
+];
+echo $this->partial('/partials/fieldset', 
+    [
+        'fieldsetName' => $fieldsetName,
+        'fieldsetCssClass' => $fieldsetCssClass,
+        'fieldsetTitle' => $fieldsetTitle,
+        'formRows' => $fieldsetFormRows
+    ]);
+?>
+
+<?php
+// physical connections
+$physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
+?>
+<?php
+$fieldsetName = 'physical_connection_cd';
+$fieldsetCssClass = 'col-md-12';
+$fieldsetTitle = $this->translate('physical connection');
+$fieldsetFormRows = [
+    $this->formCollection($physicalConnectionsFieldset)
 ];
 echo $this->partial('/partials/fieldset', 
     [

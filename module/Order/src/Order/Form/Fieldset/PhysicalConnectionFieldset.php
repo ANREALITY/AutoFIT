@@ -9,9 +9,7 @@ class PhysicalConnectionFieldset extends Fieldset implements InputFilterProvider
 
     public function __construct($name = null, $options = array())
     {
-        parent::__construct($name, $options);
-
-        $this->setLabel(_('Basic settings'));
+        parent::__construct('physical_connection', $options);
     }
 
     public function getInputFilterSpecification()

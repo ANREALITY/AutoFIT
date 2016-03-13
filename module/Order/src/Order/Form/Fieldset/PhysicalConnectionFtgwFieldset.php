@@ -7,7 +7,7 @@ class PhysicalConnectionFtgwFieldset extends PhysicalConnectionFieldset
 {
     public function __construct($name = null, $options = array())
     {
-        parent::__construct($name, $options);
+        parent::__construct('physical_connection_ftgw', $options);
 
         $this->setLabel(_('File Transfer Gateway connection settings'));
     }

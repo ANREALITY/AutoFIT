@@ -8,9 +8,7 @@ class PhysicalConnectionCdFieldset extends PhysicalConnectionFieldset
 
     public function __construct($name = null, $options = array())
     {
-        parent::__construct($name, $options);
-        
-        $this->setLabel(_('ConnectDirect connection settings'));
+        parent::__construct('physical_connection_cd', $options);
         
         $this->add(array(
             'type' => 'Zend\Form\Element\Checkbox',
