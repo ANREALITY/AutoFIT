@@ -12,7 +12,7 @@ class PhysicalConnectionFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new PhysicalConnectionFieldset();
-        $hydrator = $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\FileTransferRequestHydrator');
+        $hydrator = $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionHydrator');
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
         $fieldset->setObject($prototype);
