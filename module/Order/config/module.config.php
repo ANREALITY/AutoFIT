@@ -38,7 +38,7 @@ return [
                     'route' => '/order/ajax/provide-servers',
                     'defaults' => [
                         'controller' => 'Order\Controller\Ajax',
-                        'action' => 'serverApplications'
+                        'action' => 'provideServers'
                     ]
                 ]
             ],
@@ -48,7 +48,7 @@ return [
                     'route' => '/order/ajax/provide-service-invoice-positions',
                     'defaults' => [
                         'controller' => 'Order\Controller\Ajax',
-                        'action' => 'serviceInvoicePositions'
+                        'action' => 'provideServiceInvoicePositions'
                     ]
                 ]
             ]

@@ -96,7 +96,7 @@ class ApplicationMapper implements ApplicationMapperInterface
             return $resultSet->initialize($result);
         }
 
-        return array();
+        return [];
     }
 
     /**

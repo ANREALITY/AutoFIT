@@ -73,22 +73,30 @@ class ServerMapper implements ServerMapperInterface
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('server');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return array();
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('server');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('name', $condition)) {
+                    $select->where(
+                        [
+                            'name LIKE ?' => '%' . $condition['name'] . '%'
+                        ]);
+                }
+            }
+        }
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            
+            return $resultSet->initialize($result);
+        }
+
+        return [];
     }
 
     /**

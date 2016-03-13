@@ -86,7 +86,7 @@ class UserMapper implements UserMapperInterface
          * return $resultSet->initialize($result);
          * }
          *
-         * return array();
+         * return [];
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }

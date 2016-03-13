@@ -26,4 +26,10 @@ interface ServerServiceInterface
      * @return Server
      */
     public function saveServer(Server $serverRequest);
+
+    /**
+     *
+     * @param string $name
+     */
+    public function findAllByName(string $name);
 }

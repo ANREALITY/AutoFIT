@@ -74,22 +74,30 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('service_invoice_position');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return array();
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('service_invoice_position');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('number', $condition)) {
+                    $select->where(
+                        [
+                            'number LIKE ?' => '%' . $condition['number'] . '%'
+                        ]);
+                }
+            }
+        }
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            
+            return $resultSet->initialize($result);
+        }
+
+        return [];
     }
 
     /**

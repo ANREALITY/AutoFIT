@@ -26,4 +26,10 @@ interface ServiceInvoicePositionServiceInterface
      * @return ServiceInvoicePosition
      */
     public function saveServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePositionRequest);
+
+    /**
+     *
+     * @param string $name
+     */
+    public function findAllByNumber(string $name);
 }

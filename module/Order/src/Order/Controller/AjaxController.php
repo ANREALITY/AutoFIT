@@ -36,13 +36,13 @@ class AjaxController extends AbstractActionController
     protected $serviceInvoicePositionService = null;
 
     public function __construct(ApplicationServiceInterface $applicationService,
-        EnvironmentServiceInterface $environmentService,
-        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService, ServerServiceInterface $serverService)
+        EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService,
+        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService)
     {
         $this->applicationService = $applicationService;
-        $this->environmentService = $applicationService;
-        $this->serverService = $applicationService;
-        $this->serviceInvoicePositionService = $applicationService;
+        $this->environmentService = $environmentService;
+        $this->serverService = $serverService;
+        $this->serviceInvoicePositionService = $serviceInvoicePositionService;
     }
 
     public function provideApplicationsAction()
@@ -83,7 +83,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['name']) && $data['name'] != null) {
-                $dataList = $this->serverService->findAllByName($data['name']);
+                $dataList = $this->serverService->findAllByName($data['name'])->toArray();
             }
         }
 

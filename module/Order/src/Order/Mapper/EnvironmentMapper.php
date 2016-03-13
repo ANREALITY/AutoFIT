@@ -96,7 +96,7 @@ class EnvironmentMapper implements EnvironmentMapperInterface
             return $resultSet->initialize($result);
         }
 
-        return array();
+        return [];
     }
 
     /**

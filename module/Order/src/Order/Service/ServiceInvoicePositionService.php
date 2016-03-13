@@ -51,4 +51,19 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
     {
         return $this->serviceInvoicePositionMapper->save($serviceInvoicePosition);
     }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllByNumber(string $number)
+    {
+        return $this->serviceInvoicePositionMapper->findAll(
+            [
+                [
+                    'number' => $number
+                ]
+            ]);
+    }
 }

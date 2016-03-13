@@ -51,4 +51,19 @@ class ServerService implements ServerServiceInterface
     {
         return $this->serverMapper->save($server);
     }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllByName(string $name)
+    {
+        return $this->serverMapper->findAll(
+            [
+                [
+                    'name' => $name
+                ]
+            ]);
+    }
 }
