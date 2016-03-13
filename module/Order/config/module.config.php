@@ -35,11 +35,13 @@ return [
         'factories' => [
             // services
             'Order\Service\ApplicationService' => 'Order\Service\Factory\ApplicationServiceFactory',
+            'Order\Service\EnvironmentService' => 'Order\Service\Factory\EnvironmentServiceFactory',
             'Order\Service\FileTransferRequestService' => 'Order\Service\Factory\FileTransferRequestServiceFactory',
             'Order\Service\ServerService' => 'Order\Service\Factory\ServerServiceFactory',
             'Order\Service\ServiceInvoicePositionService' => 'Order\Service\Factory\ServiceInvoicePositionServiceFactory',
             // mappers
             'Order\Mapper\ApplicationMapper' => 'Order\Mapper\Factory\ApplicationMapperFactory',
+            'Order\Mapper\EnvironmentMapper' => 'Order\Mapper\Factory\EnvironmentMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
             'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
             'Order\Mapper\ServerMapper' => 'Order\Mapper\Factory\ServerMapperFactory',
