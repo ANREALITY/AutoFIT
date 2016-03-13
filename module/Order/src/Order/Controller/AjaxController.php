@@ -53,9 +53,11 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
-                $dataList = $this->applicationService->findAllByTechnicalShortName($data['technical_short_name']);
+                $dataList = $this->applicationService->findAllByTechnicalShortName($data['technical_short_name'])->toArray();
             }
         }
+
+        $dataList = array_column($dataList, 'technical_short_name');
 
         return new JsonModel($dataList);
     }
@@ -68,7 +70,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['name']) && $data['name'] != null) {
-                $dataList = $this->environmentService->findAllByName($data['name']);
+                $dataList = $this->environmentService->findAllByName($data['name'])->toArray();
             }
         }
 
@@ -98,7 +100,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['number']) && $data['number'] != null) {
-                $dataList = $this->serviceInvoicePositionService->findAllByNumber($data['number']);
+                $dataList = $this->serviceInvoicePositionService->findAllByNumber($data['number'])->toArray();
             }
         }
 
