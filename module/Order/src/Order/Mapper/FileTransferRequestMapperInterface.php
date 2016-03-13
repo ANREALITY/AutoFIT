@@ -18,7 +18,7 @@ interface FileTransferRequestMapperInterface
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

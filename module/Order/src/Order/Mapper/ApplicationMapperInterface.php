@@ -18,7 +18,7 @@ interface ApplicationMapperInterface
      *
      * @return array|Application[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

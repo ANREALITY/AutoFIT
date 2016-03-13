@@ -10,7 +10,7 @@ interface ServerServiceInterface
      *
      * @return array|Server[]
      */
-    public function findAllServers();
+    public function findAll();
 
     /**
      *

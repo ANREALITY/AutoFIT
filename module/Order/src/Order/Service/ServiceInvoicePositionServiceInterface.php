@@ -10,7 +10,7 @@ interface ServiceInvoicePositionServiceInterface
      *
      * @return array|ServiceInvoicePosition[]
      */
-    public function findAllServiceInvoicePositions();
+    public function findAll();
 
     /**
      *

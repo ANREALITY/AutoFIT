@@ -71,24 +71,31 @@ class ApplicationMapper implements ApplicationMapperInterface
      *
      * @return array|Application[]
      */
-    public function findAll()
+    public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('application');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return array();
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('application');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('technical_short_name', $condition)) {
+                    $select->where([
+                        'technical_short_name LIKE ?' => '%' . $condition['technical_short_name'] . '%'
+                    ]);
+                }
+            }
+        }
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+
+            return $resultSet->initialize($result);
+        }
+
+        return array();
     }
 
     /**

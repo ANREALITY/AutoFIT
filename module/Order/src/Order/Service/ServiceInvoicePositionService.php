@@ -27,7 +27,7 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
      * {@inheritDoc}
      *
      */
-    public function findAllServiceInvoicePositions()
+    public function findAll()
     {
         return $this->serviceInvoicePositionMapper->findAll();
     }

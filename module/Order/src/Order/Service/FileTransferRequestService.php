@@ -27,7 +27,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      * {@inheritDoc}
      *
      */
-    public function findAllFileTransferRequests()
+    public function findAll()
     {
         return $this->fileTransferRequestMapper->findAll();
     }

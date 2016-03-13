@@ -71,7 +71,7 @@ class UserMapper implements UserMapperInterface
      *
      * @return array|User[]
      */
-    public function findAll()
+    public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);

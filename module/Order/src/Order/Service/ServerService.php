@@ -27,7 +27,7 @@ class ServerService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
-    public function findAllServers()
+    public function findAll()
     {
         return $this->serverMapper->findAll();
     }

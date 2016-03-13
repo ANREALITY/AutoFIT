@@ -18,7 +18,7 @@ interface UserMapperInterface
      *
      * @return array|User[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

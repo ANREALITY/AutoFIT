@@ -10,7 +10,7 @@ interface ApplicationServiceInterface
      *
      * @return array|Application[]
      */
-    public function findAllApplications();
+    public function findAll();
 
     /**
      *
@@ -26,4 +26,10 @@ interface ApplicationServiceInterface
      * @return Application
      */
     public function saveApplication(Application $applicationRequest);
+
+    /**
+     *
+     * @param string $technicalShortName
+     */
+    public function findAllByTechnicalShortName(string $technicalShortName);
 }

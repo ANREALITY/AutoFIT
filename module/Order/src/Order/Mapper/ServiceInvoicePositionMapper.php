@@ -32,7 +32,8 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, ServiceInvoicePosition $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
+        ServiceInvoicePosition $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
@@ -71,7 +72,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
      *
      * @return array|ServiceInvoicePosition[]
      */
-    public function findAll()
+    public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);

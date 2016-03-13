@@ -18,7 +18,7 @@ interface ServiceInvoicePositionMapperInterface
      *
      * @return array|ServiceInvoicePosition[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

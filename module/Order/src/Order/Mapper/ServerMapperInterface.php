@@ -18,7 +18,7 @@ interface ServerMapperInterface
      *
      * @return array|Server[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

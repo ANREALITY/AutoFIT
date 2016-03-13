@@ -10,7 +10,7 @@ interface FileTransferRequestServiceInterface
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllFileTransferRequests();
+    public function findAll();
 
     /**
      *

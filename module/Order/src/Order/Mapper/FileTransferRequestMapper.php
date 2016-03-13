@@ -86,7 +86,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAll()
+    public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);

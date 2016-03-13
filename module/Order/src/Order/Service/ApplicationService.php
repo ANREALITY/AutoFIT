@@ -27,9 +27,9 @@ class ApplicationService implements ApplicationServiceInterface
      * {@inheritDoc}
      *
      */
-    public function findAllApplications()
+    public function findAll()
     {
-        return $this->applicationMapper->findAll();
+        return $this->applicationMapper->findAll($criteria);
     }
 
     /**
@@ -50,5 +50,19 @@ class ApplicationService implements ApplicationServiceInterface
     public function saveApplication(Application $application)
     {
         return $this->applicationMapper->save($application);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllByTechnicalShortName(string $technicalShortName)
+    {
+        return $this->applicationMapper->findAll([
+            [
+                'technical_short_name' => $technicalShortName
+            ]
+        ]);
     }
 }

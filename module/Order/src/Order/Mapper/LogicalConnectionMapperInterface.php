@@ -18,7 +18,7 @@ interface LogicalConnectionMapperInterface
      *
      * @return array|LogicalConnection[]
      */
-    public function findAll();
+    public function findAll(array $criteria = []);
 
     /**
      *

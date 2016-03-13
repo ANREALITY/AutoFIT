@@ -71,7 +71,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
      *
      * @return array|LogicalConnection[]
      */
-    public function findAll()
+    public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);
