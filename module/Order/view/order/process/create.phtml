@@ -12,23 +12,29 @@ $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('servic
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 ?>
 
-<div id="fieldset-billing" class="fieldset-container col-md-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?php echo $this->translate('Billing'); ?></h3>
-        </div>
-        <div class="panel-body">
-            <?php echo $this->formRow($fileTransferRequestFieldset->get('id')); ?>
-            <?php echo $this->formRow($fileTransferRequestFieldset->get('application_number')); ?>
-            <?php echo $this->formRow($fileTransferRequestFieldset->get('change_number')); ?>
-            <?php echo $this->formRow($logicalConnectionFieldset->get('type')); ?>
-            <?php echo $this->formRow($serviceInvoicePositionBasicFieldset->get('number')); ?>
-            <?php echo $this->formRow($userFieldset->get('id')); ?>
-            <?php echo $this->formRow($userFieldset->get('username')); ?>
-            <?php echo $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')); ?>
-        </div>
-    </div>
-</div>
+<?php
+$fieldsetName = 'billing';
+$fieldsetCssClass = 'col-md-12';
+$fieldsetTitle = $this->translate('Billing');
+$fieldsetFormRows = [
+    $this->formRow($fileTransferRequestFieldset->get('id')),
+    $this->formRow($fileTransferRequestFieldset->get('application_number')),
+    $this->formRow($fileTransferRequestFieldset->get('change_number')),
+    $this->formRow($logicalConnectionFieldset->get('type')),
+    $this->formRow($serviceInvoicePositionBasicFieldset->get('number')),
+    $this->formRow($userFieldset->get('id')),
+    $this->formRow($userFieldset->get('username')),
+    $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
+];
+echo $this->partial('/partials/fieldset',
+    [
+        'fieldsetName' => $fieldsetName,
+        'fieldsetCssClass' => $fieldsetCssClass,
+        'fieldsetTitle' => $fieldsetTitle,
+        'formRows' => $fieldsetFormRows
+    ]);
+?>
+
 <div class="form-group">
     <div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div>
 </div>

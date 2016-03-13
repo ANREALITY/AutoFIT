@@ -1,0 +1,15 @@
+<div id="fieldset-<?php echo $fieldsetName; ?>"
+    class="fieldset-container <?php echo $fieldsetCssClass; ?>">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $fieldsetTitle; ?></h3>
+        </div>
+        <div class="panel-body">
+            <?php
+            foreach ($formRows as $formRow) {
+                echo $formRow;
+            }
+            ?>
+        </div>
+    </div>
+</div>
