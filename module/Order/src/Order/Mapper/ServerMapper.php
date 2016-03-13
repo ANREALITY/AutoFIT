@@ -92,7 +92,7 @@ class ServerMapper implements ServerMapperInterface
 
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-            
+
             return $resultSet->initialize($result);
         }
 
