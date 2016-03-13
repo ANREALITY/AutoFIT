@@ -18,7 +18,7 @@ $fieldsetCssClass = 'col-md-12';
 $fieldsetTitle = $this->translate('Billing');
 $fieldsetFormRows = [
     $this->formRow($fileTransferRequestFieldset->get('id')),
-    $this->formRow($fileTransferRequestFieldset->get('application_number')),
+    '<div class="col-md-6">' . $this->formRow($fileTransferRequestFieldset->get('application_number')) . '</div>',
     $this->formRow($fileTransferRequestFieldset->get('change_number')),
     $this->formRow($logicalConnectionFieldset->get('type')),
     $this->formRow($serviceInvoicePositionBasicFieldset->get('number')),
@@ -26,7 +26,7 @@ $fieldsetFormRows = [
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
 ];
-echo $this->partial('/partials/fieldset',
+echo $this->partial('/partials/fieldset', 
     [
         'fieldsetName' => $fieldsetName,
         'fieldsetCssClass' => $fieldsetCssClass,

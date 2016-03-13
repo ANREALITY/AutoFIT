@@ -63,12 +63,12 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'options' => [
                     'label' => _('application'),
                     'label_attributes' => [
-                        'class' => 'col-md-6'
                     ]
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'id' => $this->getName() . '_' . 'application_number'
                 ]
             ]);
 
