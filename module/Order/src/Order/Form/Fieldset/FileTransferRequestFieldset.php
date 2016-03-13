@@ -68,9 +68,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control',
-                    'autocomplete' => 'off',
-                    'list' => 'applications'
+                    'class' => 'form-control'
                 ]
             ]);
 
