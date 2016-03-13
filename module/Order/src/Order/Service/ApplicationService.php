@@ -59,10 +59,11 @@ class ApplicationService implements ApplicationServiceInterface
      */
     public function findAllByTechnicalShortName(string $technicalShortName)
     {
-        return $this->applicationMapper->findAll([
+        return $this->applicationMapper->findAll(
             [
-                'technical_short_name' => $technicalShortName
-            ]
-        ]);
+                [
+                    'technical_short_name' => $technicalShortName
+                ]
+            ]);
     }
 }

@@ -79,9 +79,10 @@ class ApplicationMapper implements ApplicationMapperInterface
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('technical_short_name', $condition)) {
-                    $select->where([
-                        'technical_short_name LIKE ?' => '%' . $condition['technical_short_name'] . '%'
-                    ]);
+                    $select->where(
+                        [
+                            'technical_short_name LIKE ?' => '%' . $condition['technical_short_name'] . '%'
+                        ]);
                 }
             }
         }

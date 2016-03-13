@@ -51,14 +51,14 @@ return [
                         'action' => 'serviceInvoicePositions'
                     ]
                 ]
-            ],
+            ]
         ]
     ],
     'controllers' => [
         'invokables' => [],
         'factories' => [
             'Order\Controller\Process' => 'Order\Controller\Factory\ProcessControllerFactory',
-            'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory',
+            'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory'
         ]
     ],
     'service_manager' => [
