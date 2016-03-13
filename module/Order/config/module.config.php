@@ -11,13 +11,24 @@ return [
                         'action' => 'create'
                     ]
                 ]
+            ],
+            'provide-applications' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-applications',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideApplications'
+                    ]
+                ]
             ]
         ]
     ],
     'controllers' => [
         'invokables' => [],
         'factories' => [
-            'Order\Controller\Process' => 'Order\Controller\Factory\ProcessControllerFactory'
+            'Order\Controller\Process' => 'Order\Controller\Factory\ProcessControllerFactory',
+            'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory',
         ]
     ],
     'service_manager' => [
@@ -55,6 +66,9 @@ return [
     'view_manager' => [
         'template_path_stack' => [
             __DIR__ . '/../view'
+        ],
+        'strategies' => [
+            'ViewJsonStrategy'
         ]
     ],
     'hydrators' => [
