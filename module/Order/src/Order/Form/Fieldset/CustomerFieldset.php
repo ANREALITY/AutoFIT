@@ -14,19 +14,25 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function init()
     {
-        $this->add([
-            'type' => 'text',
-            'name' => 'name',
-            'options' => [
-                'label' => _('customer')
-            ]
-        ]);
-
+        $this->add(
+            [
+                'type' => 'text',
+                'name' => 'name',
+                'options' => [
+                    'label' => _('customer'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
-        return [
-        ];
+        return [];
     }
 }

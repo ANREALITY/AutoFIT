@@ -13,13 +13,22 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
 
     public function init()
     {
+        parent::init();
+        
         $this->add(
             array(
                 'type' => 'text',
                 'name' => 'folder',
-                'options' => array(
-                    'label' => _('folder')
-                )
+                'options' => [
+                    'label' => _('folder'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
+                ]
             ));
 
         $this->add(

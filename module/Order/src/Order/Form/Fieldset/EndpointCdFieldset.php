@@ -19,7 +19,13 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
                 'type' => 'text',
                 'name' => 'contact_person',
                 'options' => [
-                    'label' => _('contact person')
+                    'label' => _('contact person'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control'
                 ]
             ]);
         
@@ -32,6 +38,9 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
                     'value_options' => [
                         'intranet' => _('intranet'),
                         'internet' => _('internet')
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
                     ]
                 ]
             ]);
@@ -49,7 +58,7 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
                 'type' => 'Order\Form\Fieldset\Customer',
                 'options' => []
             ]);
-        
+        /*
         $this->add(
             [
                 'type' => 'Zend\Form\Element\MultiCheckbox',
@@ -62,7 +71,7 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
                     ]
                 ]
             ]);
-        
+        */
         $this->add(
             [
                 'name' => 'server',

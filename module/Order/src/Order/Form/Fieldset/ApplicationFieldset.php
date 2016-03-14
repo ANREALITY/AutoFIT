@@ -19,7 +19,14 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
                 'type' => 'text',
                 'name' => 'technical_short_name',
                 'options' => [
-                    'label' => _('application')
+                    'label' => _('application'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
                 ]
             ));
     }

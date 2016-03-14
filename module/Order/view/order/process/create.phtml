@@ -54,7 +54,12 @@ $fieldgroupName = 'endpoint-source-basic-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - basic settings');
 $fieldgroupFormRows = [
-    
+    $this->formRow($endpointCdSourceFieldset->get('contact_person')),
+    $this->formRadio($endpointCdSourceFieldset->get('server_place')),
+    $this->formRow($endpointCdSourceFieldset->get('contact_person')),
+    $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
+    $this->formRow($customerForSourceFieldset->get('name')),
+    $this->formRow($serverForSourceFieldset->get('name')),
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
@@ -71,7 +76,12 @@ $fieldgroupName = 'endpoint-target-basic-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
-    
+    $this->formRow($endpointCdTargetFieldset->get('contact_person')),
+    $this->formRadio($endpointCdTargetFieldset->get('server_place')),
+    $this->formRow($endpointCdTargetFieldset->get('contact_person')),
+    $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
+    $this->formRow($customerForTargetFieldset->get('name')),
+    $this->formRow($serverForTargetFieldset->get('name')),
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
@@ -88,7 +98,7 @@ $fieldgroupName = 'endpoint-source-specific-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
-    
+    $this->formRow($endpointCdAs400SourceFieldset->get('username')),
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
@@ -105,7 +115,8 @@ $fieldgroupName = 'endpoint-target-specific-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - specific settings');
 $fieldgroupFormRows = [
-    
+    $this->formRow($endpointCdAs400TargetFieldset->get('username')),
+    $this->formRow($endpointCdAs400TargetFieldset->get('folder')),
 ];
 echo $this->partial('/partials/fieldgroup', 
     [

@@ -18,9 +18,16 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
             array(
                 'type' => 'text',
                 'name' => 'name',
-                'options' => array(
-                    'label' => _('server name')
-                )
+                'options' => [
+                    'label' => _('server name'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
+                ]
             ));
     }
 

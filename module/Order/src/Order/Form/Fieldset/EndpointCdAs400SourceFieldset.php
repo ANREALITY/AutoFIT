@@ -11,6 +11,8 @@ class EndpointCdAs400SourceFieldset extends EndpointCdAs400Fieldset
     }
     public function init()
     {
+        parent::init();
+        
         $this->add(
             [
                 'type' => 'Order\Form\Fieldset\EndpointCdSource',

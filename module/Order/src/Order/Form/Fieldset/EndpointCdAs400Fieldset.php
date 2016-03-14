@@ -20,9 +20,16 @@ class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInt
             array(
                 'type' => 'text',
                 'name' => 'username',
-                'options' => array(
-                    'label' => _('username')
-                )
+                'options' => [
+                    'label' => _('username'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
+                ]
             ));
     }
 
