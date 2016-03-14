@@ -78,6 +78,6 @@ class GenericEntityStrategy implements StrategyInterface
      */
     public function hydrate($array)
     {
-        return $this->hydrator->hydrate($array, $this->prototype);
+        return is_array($array) ? $this->hydrator->hydrate($array, $this->prototype) : $array;
     }
 }
