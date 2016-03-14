@@ -104,6 +104,24 @@ return [
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionBasicFieldsetFactory',
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
+        ],
+        'shared' => [
+            'Order\Form\Fieldset\Application' => false,
+            'Order\Form\Fieldset\Customer' => false,
+            'Order\Form\Fieldset\EndpointCdAs400' => false,
+            'Order\Form\Fieldset\EndpointCdAs400Source' => false,
+            'Order\Form\Fieldset\EndpointCdAs400Target' => false,
+            'Order\Form\Fieldset\EndpointCd' => false,
+            'Order\Form\Fieldset\EndpointCdSource' => false,
+            'Order\Form\Fieldset\EndpointCdTarget' => false,
+            'Order\Form\Fieldset\FileTransferRequest' => false,
+            'Order\Form\Fieldset\LogicalConnection' => false,
+            'Order\Form\Fieldset\PhysicalConnectionCd' => false,
+            'Order\Form\Fieldset\PhysicalConnectionFtgw' => false,
+            'Order\Form\Fieldset\Server' => false,
+            'Order\Form\Fieldset\ServiceInvoicePositionBasic' => false,
+            'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => false,
+            'Order\Form\Fieldset\User' => false
         ]
     ],
     'view_manager' => [
