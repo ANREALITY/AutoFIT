@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 
-class PhysicalConnectionCdFieldset extends PhysicalConnectionFieldset
+class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
 {
 
     public function __construct($name = null, $options = array())
