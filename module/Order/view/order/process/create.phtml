@@ -5,14 +5,27 @@ echo $this->form()->openTag($form);
 ?>
 
 <?php
-// billing
 $fileTransferRequestFieldset = $form->get('file_transfer_request');
 $userFieldset = $fileTransferRequestFieldset->get('user');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
+$physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
+
+$endpointCdAs400SourceFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_source');
+$endpointCdAs400TargetFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_target');
+$endpointCdSourceFieldset = $endpointCdAs400SourceFieldset->get('endpoint');
+$endpointCdTargetFieldset = $endpointCdAs400TargetFieldset->get('endpoint');
+$applicationForSourceFieldset = $endpointCdSourceFieldset->get('application');
+$customerForSourceFieldset = $endpointCdSourceFieldset->get('customer');
+$serverForSourceFieldset = $endpointCdSourceFieldset->get('server');
+$applicationForTargetFieldset = $endpointCdTargetFieldset->get('application');
+$customerForTargetFieldset = $endpointCdTargetFieldset->get('customer');
+$serverForTargetFieldset = $endpointCdTargetFieldset->get('server');
 ?>
+
 <?php
+// billing
 $fieldgroupName = 'billing';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Billing');
@@ -36,11 +49,8 @@ echo $this->partial('/partials/fieldgroup',
 ?>
 
 <?php
-// endpoint source
-
-?>
-<?php
-$fieldgroupName = 'physical_connection_cd';
+// endpoint source (basic settings)
+$fieldgroupName = 'endpoint-source-basic-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - basic settings');
 $fieldgroupFormRows = [
@@ -56,11 +66,8 @@ echo $this->partial('/partials/fieldgroup',
 ?>
 
 <?php
-// endpoint target
-
-?>
-<?php
-$fieldgroupName = 'physical_connection_cd';
+// endpoint target (basic settings)
+$fieldgroupName = 'endpoint-target-basic-settings';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
@@ -76,10 +83,41 @@ echo $this->partial('/partials/fieldgroup',
 ?>
 
 <?php
-// physical connections
-$physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
+// endpoint source (specific settings)
+$fieldgroupName = 'endpoint-source-specific-settings';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = $this->translate('Source - specific settings');
+$fieldgroupFormRows = [
+    
+];
+echo $this->partial('/partials/fieldgroup', 
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
 ?>
+
 <?php
+// endpoint target (specific settings)
+$fieldgroupName = 'endpoint-target-specific-settings';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+$fieldgroupFormRows = [
+    
+];
+echo $this->partial('/partials/fieldgroup', 
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>
+
+<?php
+// physical connections
 $fieldgroupName = 'physical_connection_cd';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Connection');

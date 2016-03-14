@@ -29,30 +29,17 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
         $this->add(
             [
                 'name' => 'endpoint_source',
-                'type' => 'Zend\Form\Element\Collection',
-                'options' => [
-                    'count' => 1,
-                    'should_create_template' => false,
-                    'allow_add' => false,
-                    'target_element' => array(
-                        'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
-                    ),
-                ]
+                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
+                'options' => []
             ]);
 
         $this->add(
             [
                 'name' => 'endpoint_target',
-                'type' => 'Zend\Form\Element\Collection',
-                'options' => [
-                    'count' => 1,
-                    'should_create_template' => false,
-                    'allow_add' => false,
-                    'target_element' => array(
-                        'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
-                    ),
-                ]
+                'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
+                'options' => []
             ]);
+        
     }
 
     public function getInputFilterSpecification()
@@ -60,16 +47,6 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
         return [
             'secure_plus' => [
                 'required' => false,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('application code'),
-                'allow_empty' => true,
-                'continue_if_empty' => true
             ]
         ];
     }
