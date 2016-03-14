@@ -3,7 +3,7 @@ namespace FileTransferRequest\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use FileTransferRequest\Form\Fieldset\EndpointCdFieldset;
-use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\EndpointCdAs400;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class EndpointCdFieldsetFactory implements FactoryInterface
@@ -14,7 +14,8 @@ class EndpointCdFieldsetFactory implements FactoryInterface
         $fieldset = new EndpointCdFieldset();
         $hydrator = $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdHydrator');
         $fieldset->setHydrator($hydrator);
-        $prototype = new FileTransferRequest();
+        // @todo make it dynamic!
+        $prototype = new EndpointCdAs400();
         $fieldset->setObject($prototype);
 
         return $fieldset;
