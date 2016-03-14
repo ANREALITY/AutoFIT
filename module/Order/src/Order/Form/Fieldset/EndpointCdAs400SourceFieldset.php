@@ -7,10 +7,6 @@ class EndpointCdAs400SourceFieldset extends EndpointCdAs400Fieldset
     {
         parent::__construct($name, $options);
 
-        // Hydrator and Prototype are set in the factory.
-        // $this->setHydrator(new ClassMethods(false));
-        // $this->setObject(new FileTransferRequest());
-
         $this->setLabel(_('Source - AS400'));
     }
 }

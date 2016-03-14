@@ -9,6 +9,11 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
     public function __construct($name = null, $options = array())
     {
         parent::__construct('physical_connection_cd', $options);
+    }
+
+    public function init()
+    {
+        parent::init();
         
         $this->add(array(
             'type' => 'Zend\Form\Element\Checkbox',
@@ -20,6 +25,13 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
                 'unchecked_value' => '0'
             )
         ));
+
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
+                'name' => 'endpoint_source',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()

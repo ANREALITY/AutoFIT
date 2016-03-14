@@ -1,9 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\FileTransferRequest;
 use Zend\Form\Fieldset;
-use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilterProviderInterface;
 
 class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterface
@@ -12,12 +10,10 @@ class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterfac
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
+    }
 
-        // Hydrator and Prototype are set in the factory.
-        // $this->setHydrator(new ClassMethods(false));
-        // $this->setObject(new FileTransferRequest());
-
-        $this->setLabel(_('Basic settings'));
+    public function init()
+    {
 
         $this->add(array(
             'type' => 'text',

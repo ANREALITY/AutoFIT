@@ -7,13 +7,12 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-
-        // Hydrator and Prototype are set in the factory.
-        // $this->setHydrator(new ClassMethods(false));
-        // $this->setObject(new FileTransferRequest());
-
+        
         $this->setLabel(_('Target - AS400'));
+    }
 
+    public function init()
+    {
         $this->add(
             array(
                 'type' => 'text',
@@ -22,7 +21,7 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
                     'label' => _('username')
                 )
             ));
-
+        
         $this->add(
             array(
                 'type' => 'text',

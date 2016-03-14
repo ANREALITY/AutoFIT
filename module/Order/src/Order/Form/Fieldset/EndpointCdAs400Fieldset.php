@@ -11,12 +11,11 @@ class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInt
     {
         parent::__construct($name, $options);
         
-        // Hydrator and Prototype are set in the factory.
-        // $this->setHydrator(new ClassMethods(false));
-        // $this->setObject(new FileTransferRequest());
-        
         $this->setLabel(_('AS400'));
-        
+    }
+
+    public function init()
+    {
         $this->add(
             array(
                 'type' => 'text',

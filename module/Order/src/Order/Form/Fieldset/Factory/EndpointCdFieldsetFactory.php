@@ -12,7 +12,7 @@ class EndpointCdFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new EndpointCdFieldset();
-        $hydrator = $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdHydrator');
+        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdHydrator');
         $fieldset->setHydrator($hydrator);
         // @todo make it dynamic!
         $prototype = new EndpointCdAs400();
