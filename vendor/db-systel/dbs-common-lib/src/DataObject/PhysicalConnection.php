@@ -24,6 +24,18 @@ class PhysicalConnection
 
     /**
      *
+     * @var AbstractEndpoint
+     */
+    protected $endpointSource;
+
+    /**
+     *
+     * @var AbstractEndpoint
+     */
+    protected $endpointTarget;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -33,7 +45,7 @@ class PhysicalConnection
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -51,7 +63,7 @@ class PhysicalConnection
 
     /**
      *
-     * @param LogicalConnection $logicalConnection
+     * @param LogicalConnection $logicalConnection            
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -69,10 +81,46 @@ class PhysicalConnection
 
     /**
      *
-     * @param AbstractEndpoint[] $endpoints
+     * @param AbstractEndpoint[] $endpoints            
      */
     public function setEndpoints(array $endpoints)
     {
         $this->endpoints = $endpoints;
+    }
+
+    /**
+     *
+     * @return the $endpointSource
+     */
+    public function getEndpointSource()
+    {
+        return $this->endpointSource;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\AbstractEndpoint $endpointSource            
+     */
+    public function setEndpointSource($endpointSource)
+    {
+        $this->endpointSource = $endpointSource;
+    }
+
+    /**
+     *
+     * @return the $endpointTarget
+     */
+    public function getEndpointTarget()
+    {
+        return $this->endpointTarget;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\AbstractEndpoint $endpointTarget            
+     */
+    public function setEndpointTarget($endpointTarget)
+    {
+        $this->endpointTarget = $endpointTarget;
     }
 }
