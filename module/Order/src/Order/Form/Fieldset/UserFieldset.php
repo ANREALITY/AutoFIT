@@ -31,7 +31,10 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'readonly' => 'readonly',
+                    // It's just a temporary fake - make it dynamic!
+                    'value' => 'foobar'
                 ]
             ]);
     }

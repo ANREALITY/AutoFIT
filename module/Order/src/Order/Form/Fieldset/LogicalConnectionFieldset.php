@@ -25,6 +25,7 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control',
+                    // @todo make it dynamic!
                     'value' => LogicalConnection::TYPE_CD
                 ]
             ]);
