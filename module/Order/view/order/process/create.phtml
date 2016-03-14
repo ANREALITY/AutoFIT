@@ -14,10 +14,10 @@ $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('ser
 ?>
 
 <?php
-$fieldsetName = 'billing';
-$fieldsetCssClass = 'col-md-12';
-$fieldsetTitle = $this->translate('Billing');
-$fieldsetFormRows = [
+$fieldgroupName = 'billing';
+$fieldgroupCssClass = 'col-md-12';
+$fieldgroupTitle = $this->translate('Billing');
+$fieldgroupFormRows = [
     $this->formRow($fileTransferRequestFieldset->get('id')),
     '<div class="col-md-6">' . $this->formRow($fileTransferRequestFieldset->get('application_number')) . '</div>',
     $this->formRow($fileTransferRequestFieldset->get('change_number')),
@@ -27,12 +27,12 @@ $fieldsetFormRows = [
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
 ];
-echo $this->partial('/partials/fieldset', 
+echo $this->partial('/partials/fieldgroup', 
     [
-        'fieldsetName' => $fieldsetName,
-        'fieldsetCssClass' => $fieldsetCssClass,
-        'fieldsetTitle' => $fieldsetTitle,
-        'formRows' => $fieldsetFormRows
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
     ]);
 ?>
 
@@ -41,18 +41,18 @@ echo $this->partial('/partials/fieldset',
 $physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
 ?>
 <?php
-$fieldsetName = 'physical_connection_cd';
-$fieldsetCssClass = 'col-md-12';
-$fieldsetTitle = $this->translate('Connection');
-$fieldsetFormRows = [
+$fieldgroupName = 'physical_connection_cd';
+$fieldgroupCssClass = 'col-md-12';
+$fieldgroupTitle = $this->translate('Connection');
+$fieldgroupFormRows = [
     $this->formRow($physicalConnectionsFieldset->getFieldsets()[0]->get('secure_plus'))
 ];
-echo $this->partial('/partials/fieldset', 
+echo $this->partial('/partials/fieldgroup', 
     [
-        'fieldsetName' => $fieldsetName,
-        'fieldsetCssClass' => $fieldsetCssClass,
-        'fieldsetTitle' => $fieldsetTitle,
-        'formRows' => $fieldsetFormRows
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
     ]);
 ?>
 
