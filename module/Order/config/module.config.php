@@ -137,6 +137,7 @@ return [
             'DbSystel\Hydrator\ApplicationHydrator' => 'DbSystel\Hydrator\Factory\ApplicationHydratorFactory',
             'DbSystel\Hydrator\ArticleHydrator' => 'DbSystel\Hydrator\Factory\ArticleHydratorFactory',
             'DbSystel\Hydrator\CustomerHydrator' => 'DbSystel\Hydrator\Factory\CustomerHydratorFactory',
+            'DbSystel\Hydrator\EndpointHydrator' => 'DbSystel\Hydrator\Factory\EndpointHydratorFactory',
             'DbSystel\Hydrator\EndpointCdAs400Hydrator' => 'DbSystel\Hydrator\Factory\EndpointCdAs400HydratorFactory',
             'DbSystel\Hydrator\EndpointCdHydrator' => 'DbSystel\Hydrator\Factory\EndpointCdHydratorFactory',
             'DbSystel\Hydrator\EndpointCdTandemHydrator' => 'DbSystel\Hydrator\Factory\EndpointCdTandemHydratorFactory',

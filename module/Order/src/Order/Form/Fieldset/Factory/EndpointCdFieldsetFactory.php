@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Order\Form\Fieldset\EndpointCdFieldset;
-use DbSystel\DataObject\EndpointCdAs400;
+use DbSystel\DataObject\Endpoint;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class EndpointCdFieldsetFactory implements FactoryInterface
@@ -15,7 +15,7 @@ class EndpointCdFieldsetFactory implements FactoryInterface
         $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdHydrator');
         $fieldset->setHydrator($hydrator);
         // @todo make it dynamic!
-        $prototype = new EndpointCdAs400();
+        $prototype = new Endpoint();
         $fieldset->setObject($prototype);
 
         return $fieldset;
