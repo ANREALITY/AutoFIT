@@ -12,6 +12,16 @@ return [
                     ]
                 ]
             ],
+            'list-orders' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/list-orders',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'listOrders'
+                    ]
+                ]
+            ],
             'provide-applications' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [

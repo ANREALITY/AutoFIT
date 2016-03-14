@@ -1,0 +1,22 @@
+<div id="flash" class="text-info" style="display: none; text-align: right;">Comming soon...</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Andtrag-ID</th>
+        <th>Change-Nummer</th>
+    </tr>
+    <?php foreach ($fileTransferRequests as $fileTransferRequest) : ?>
+    <tr>
+        <td><?php echo $fileTransferRequest['id']; ?></td>
+        <td><a href='#'><?php echo $fileTransferRequest['change_number']; ?></a></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("table a").click(function(){
+        $("#flash").toggle("slow");
+    });
+});
+</script>

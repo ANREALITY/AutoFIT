@@ -63,6 +63,7 @@
                         ?>
                         <li<?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                         <li<?php echo $currentRoute == 'create-order' ? ' class="active"' : null;?>><a href="<?php echo $this->url('create-order') ?>"><?php echo $this->translate('New request') ?></a></li>
+                        <li<?php echo $currentRoute == 'list-orders' ? ' class="active"' : null;?>><a href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('My orders') ?></a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
                 <div id="current-user" class="navbar-collapse collapse"><span><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : null; ?></span></div>
