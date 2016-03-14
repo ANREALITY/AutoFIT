@@ -4,14 +4,12 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInterface
+class ApplicationFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-        
-        $this->setLabel(_('AS400'));
     }
 
     public function init()
@@ -19,18 +17,18 @@ class EndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInt
         $this->add(
             array(
                 'type' => 'text',
-                'name' => 'username',
-                'options' => array(
-                    'label' => _('username')
-                )
+                'name' => 'technical_short_name',
+                'options' => [
+                    'label' => _('application')
+                ]
             ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'username' => [
-                'required' => true,
+            'technical_short_name' => [
+                'required' => true
             ]
         ];
     }

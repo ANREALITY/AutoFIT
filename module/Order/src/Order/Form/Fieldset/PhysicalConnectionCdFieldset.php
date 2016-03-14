@@ -28,9 +28,30 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
 
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
                 'name' => 'endpoint_source',
-                'options' => []
+                'type' => 'Zend\Form\Element\Collection',
+                'options' => [
+                    'count' => 1,
+                    'should_create_template' => false,
+                    'allow_add' => false,
+                    'target_element' => array(
+                        'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
+                    ),
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'endpoint_target',
+                'type' => 'Zend\Form\Element\Collection',
+                'options' => [
+                    'count' => 1,
+                    'should_create_template' => false,
+                    'allow_add' => false,
+                    'target_element' => array(
+                        'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
+                    ),
+                ]
             ]);
     }
 

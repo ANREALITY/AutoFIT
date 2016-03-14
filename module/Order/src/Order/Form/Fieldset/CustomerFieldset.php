@@ -1,0 +1,32 @@
+<?php
+namespace Order\Form\Fieldset;
+
+use Zend\Form\Fieldset;
+use Zend\InputFilter\InputFilterProviderInterface;
+
+class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
+{
+
+    public function __construct($name = null, $options = array())
+    {
+        parent::__construct('customer', $options);
+    }
+
+    public function init()
+    {
+        $this->add([
+            'type' => 'text',
+            'name' => 'name',
+            'options' => [
+                'label' => _('customer')
+            ]
+        ]);
+
+    }
+
+    public function getInputFilterSpecification()
+    {
+        return [
+        ];
+    }
+}

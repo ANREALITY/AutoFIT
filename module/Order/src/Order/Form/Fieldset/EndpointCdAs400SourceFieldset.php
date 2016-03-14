@@ -9,4 +9,13 @@ class EndpointCdAs400SourceFieldset extends EndpointCdAs400Fieldset
 
         $this->setLabel(_('Source - AS400'));
     }
+    public function init()
+    {
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\EndpointCdSource',
+                'name' => 'endpoint',
+                'options' => []
+            ]);
+    }
 }

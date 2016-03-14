@@ -88,6 +88,8 @@ return [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // fieldsets
+            'Order\Form\Fieldset\Application' => 'Order\Form\Fieldset\Factory\ApplicationFieldsetFactory',
+            'Order\Form\Fieldset\Customer' => 'Order\Form\Fieldset\Factory\CustomerFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400' => 'Order\Form\Fieldset\Factory\EndpointCdAs400FieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Source' => 'Order\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Target' => 'Order\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
@@ -98,6 +100,7 @@ return [
             'Order\Form\Fieldset\LogicalConnection' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionCd' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwFieldsetFactory',
+            'Order\Form\Fieldset\Server' => 'Order\Form\Fieldset\Factory\ServerFieldsetFactory',
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionBasicFieldsetFactory',
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'

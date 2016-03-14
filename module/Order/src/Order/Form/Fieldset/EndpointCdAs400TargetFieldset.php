@@ -16,50 +16,25 @@ class EndpointCdAs400TargetFieldset extends EndpointCdAs400Fieldset
         $this->add(
             array(
                 'type' => 'text',
-                'name' => 'username',
-                'options' => array(
-                    'label' => _('username')
-                )
-            ));
-        
-        $this->add(
-            array(
-                'type' => 'text',
                 'name' => 'folder',
                 'options' => array(
                     'label' => _('folder')
                 )
             ));
+
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\EndpointCdTarget',
+                'name' => 'endpoint',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'username' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('username'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
-            ],
             'folder' => [
                 'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('application code'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
             ]
         ];
     }

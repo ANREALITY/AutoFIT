@@ -7,92 +7,72 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class EndpointCdFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
     }
 
     public function init()
     {
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'contact_person',
-            'options' => array(
-                'label' => _('contact person')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'radio',
-            'name' => 'server_place',
-            'options' => array(
-                'label' => _('server place'),
-                'value_options' => array(
-                    'intranet' => _('intranet'),
-                    'internet' => _('internet'),
-                )
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'application_technical_short_name',
-            'options' => array(
-                'label' => _('application')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'hidden',
-            'name' => 'customer_id',
-        ));
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'customer_name',
-            'options' => array(
-                'label' => _('customer')
-            )
-        ));
-
-        $this->add(array(
-            'type' => 'Zend\Form\Element\MultiCheckbox',
-            'name' => 'server_plattform',
-            'options' => array(
-                'label' => _('server plattform'),
-                'value_options' => array(
-                    'AS400' => 'AS400',
-                    'Tandem' => 'Tandem',
-                )
-            ),
-        ));
-
-        $this->add(array(
-            'type' => 'text',
-            'name' => 'server_name',
-            'options' => array(
-                'label' => _('server name')
-            )
-        ));
+        $this->add(
+            [
+                'type' => 'text',
+                'name' => 'contact_person',
+                'options' => [
+                    'label' => _('contact person')
+                ]
+            ]);
+        
+        $this->add(
+            [
+                'type' => 'radio',
+                'name' => 'server_place',
+                'options' => [
+                    'label' => _('server place'),
+                    'value_options' => [
+                        'intranet' => _('intranet'),
+                        'internet' => _('internet')
+                    ]
+                ]
+            ]);
+        
+        $this->add(
+            [
+                'name' => 'application',
+                'type' => 'Order\Form\Fieldset\Application',
+                'options' => []
+            ]);
+        
+        $this->add(
+            [
+                'name' => 'customer',
+                'type' => 'Order\Form\Fieldset\Customer',
+                'options' => []
+            ]);
+        
+        $this->add(
+            [
+                'type' => 'Zend\Form\Element\MultiCheckbox',
+                'name' => 'server_plattform',
+                'options' => [
+                    'label' => _('server plattform'),
+                    'value_options' => [
+                        'AS400' => 'AS400',
+                        'Tandem' => 'Tandem'
+                    ]
+                ]
+            ]);
+        
+        $this->add(
+            [
+                'name' => 'server',
+                'type' => 'Order\Form\Fieldset\Server',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
-        return [
-            'application_technical_short_name' => [
-                'required' => true,
-                'filters' => [
-                    0 => [
-                        'name' => 'Zend\Filter\StringTrim',
-                        'options' => []
-                    ]
-                ],
-                'validators' => [],
-                'description' => _('application code'),
-                'allow_empty' => false,
-                'continue_if_empty' => false
-            ]
-        ];
+        return [];
     }
 }
