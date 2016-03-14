@@ -43,9 +43,9 @@ $physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connect
 <?php
 $fieldsetName = 'physical_connection_cd';
 $fieldsetCssClass = 'col-md-12';
-$fieldsetTitle = $this->translate('physical connection');
+$fieldsetTitle = $this->translate('Connection');
 $fieldsetFormRows = [
-    $this->formCollection($physicalConnectionsFieldset)
+    $this->formRow($physicalConnectionsFieldset->getFieldsets()[0]->get('secure_plus'))
 ];
 echo $this->partial('/partials/fieldset', 
     [
