@@ -12,7 +12,6 @@ $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connecti
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 ?>
-
 <?php
 $fieldgroupName = 'billing';
 $fieldgroupCssClass = 'col-md-12';
@@ -26,6 +25,46 @@ $fieldgroupFormRows = [
     $this->formRow($userFieldset->get('id')),
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
+];
+echo $this->partial('/partials/fieldgroup', 
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>
+
+<?php
+// endpoint source
+
+?>
+<?php
+$fieldgroupName = 'physical_connection_cd';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = $this->translate('Source - basic settings');
+$fieldgroupFormRows = [
+    
+];
+echo $this->partial('/partials/fieldgroup', 
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>
+
+<?php
+// endpoint target
+
+?>
+<?php
+$fieldgroupName = 'physical_connection_cd';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = $this->translate('Target - basic settings');
+$fieldgroupFormRows = [
+    
 ];
 echo $this->partial('/partials/fieldgroup', 
     [

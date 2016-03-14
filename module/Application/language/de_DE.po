@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 03:04+0100\n"
-"PO-Revision-Date: 2016-03-14 03:04+0100\n"
+"POT-Creation-Date: 2016-03-14 03:49+0100\n"
+"PO-Revision-Date: 2016-03-14 03:51+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -130,13 +130,15 @@ msgstr "Servername"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdSourceFieldset.php:14
 #: Order/src/Order/Form/Fieldset/EndpointCdSourceFieldset.php:14
+#: Order/view/order/process/create.phtml:45
 msgid "Source - basic settings"
-msgstr ""
+msgstr "Quellsystem (Grundeinstellungen)"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTargetFieldset.php:13
 #: Order/src/Order/Form/Fieldset/EndpointCdTargetFieldset.php:13
+#: Order/view/order/process/create.phtml:65
 msgid "Target - basic settings"
-msgstr ""
+msgstr "Zielsystem (Grundeinstellungen)"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:20
 msgid "file transfer request"
@@ -282,11 +284,11 @@ msgstr "Startseite"
 msgid "New request"
 msgstr "Neue Anfrage"
 
-#: Order/view/order/process/create.phtml:19
+#: Order/view/order/process/create.phtml:18
 msgid "Billing"
 msgstr "Abrechnung"
 
-#: Order/view/order/process/create.phtml:46
+#: Order/view/order/process/create.phtml:85
 msgid "Connection"
 msgstr "Verbindung"
 
