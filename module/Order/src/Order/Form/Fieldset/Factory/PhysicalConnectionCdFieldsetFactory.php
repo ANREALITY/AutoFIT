@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Order\Form\Fieldset\PhysicalConnectionCdFieldset;
-use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\PhysicalConnectionCd;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
@@ -14,7 +14,7 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
         $fieldset = new PhysicalConnectionCdFieldset();
         $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionCdHydrator');
         $fieldset->setHydrator($hydrator);
-        $prototype = new FileTransferRequest();
+        $prototype = new PhysicalConnectionCd();
         $fieldset->setObject($prototype);
 
         return $fieldset;
