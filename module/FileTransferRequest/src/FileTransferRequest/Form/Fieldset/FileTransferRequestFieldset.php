@@ -39,7 +39,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             'type' => 'text',
             'name' => 'service_invoice_position_basic_number',
             'options' => array(
-                'label' => _('service invoice position number (basic)')
+                'label' => _('service invoice position (basic)')
             )
         ));
 
@@ -55,7 +55,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             'type' => 'text',
             'name' => 'service_invoice_position_personal_number',
             'options' => array(
-                'label' => _('service invoice position number (personal)')
+                'label' => _('service invoice position (personal)')
             )
         ));
     }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 12:03+0100\n"
-"PO-Revision-Date: 2016-03-11 12:03+0100\n"
+"POT-Creation-Date: 2016-03-14 03:04+0100\n"
+"PO-Revision-Date: 2016-03-14 03:04+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-2: FileTransferRequest\n"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Factory/FileTransferRequestFormFactory.php:62
-#: Order/src/Order/Form/OrderForm.php:26
+#: Order/src/Order/Form/OrderForm.php:31
 msgid "send"
 msgstr "senden"
 
@@ -29,7 +29,8 @@ msgstr ""
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ApplicationFieldset.php:26
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:46
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:26
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:71
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:42
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:64
 msgid "application"
 msgstr "Verfahren"
 
@@ -39,11 +40,15 @@ msgstr "Verfahren"
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:75
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:40
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:45
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:60
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:92
+#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdFieldset.php:49
 msgid "application code"
 msgstr "Verfahrensnummer"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400Fieldset.php:18
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemFieldset.php:18
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400Fieldset.php:14
 msgid "AS400"
 msgstr ""
 
@@ -56,24 +61,30 @@ msgstr ""
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:22
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:48
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:50
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:31
-#: Storage/src/Storage/Form/Fieldset/UserFieldset.php:31
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400Fieldset.php:24
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400Fieldset.php:41
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:21
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:47
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:27
 msgid "username"
 msgstr "Benutzername"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400SourceFieldset.php:14
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemSourceFieldset.php:14
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:10
 msgid "Source - AS400"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:15
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:15
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:11
 msgid "Target - AS400"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:31
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:31
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:61
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:30
 msgid "folder"
 msgstr ""
 
@@ -83,38 +94,47 @@ msgid "Basic settings"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:26
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:22
 msgid "contact person"
 msgstr "Ansprechpartner"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:34
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:30
 msgid "server place"
 msgstr "Serverstandort"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:36
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:32
 msgid "intranet"
 msgstr "Intranet"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:37
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:33
 msgid "internet"
 msgstr "Internet"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:59
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:55
 msgid "customer"
 msgstr "Kunde"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:67
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:63
 msgid "server plattform"
 msgstr "Server-Plattform"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:79
+#: Order/src/Order/Form/Fieldset/EndpointCdFieldset.php:75
 msgid "server name"
 msgstr "Servername"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdSourceFieldset.php:14
+#: Order/src/Order/Form/Fieldset/EndpointCdSourceFieldset.php:14
 msgid "Source - basic settings"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTargetFieldset.php:13
+#: Order/src/Order/Form/Fieldset/EndpointCdTargetFieldset.php:13
 msgid "Target - basic settings"
 msgstr ""
 
@@ -123,17 +143,16 @@ msgid "file transfer request"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:34
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:31
-#: Storage/src/Storage/Form/Fieldset/FileTransferRequestFieldset.php:29
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
 msgid "change number"
 msgstr "Change-Nummer"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:42
-msgid "service invoice position number (basic)"
-msgstr ""
+msgid "service invoice position (basic)"
+msgstr "LSP-S"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:58
-msgid "service invoice position number (personal)"
+msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:14
@@ -141,6 +160,7 @@ msgid "ConnectDirect connection settings"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:20
+#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdFieldset.php:22
 msgid "Secure Plus"
 msgstr ""
 
@@ -149,44 +169,18 @@ msgid "File Transfer Gateway connection settings"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:15
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:17
 msgid "Service Invoice Position"
 msgstr ""
 
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:21
 #: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:28
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:24
+#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
 msgstr "LSP"
 
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:44
-msgid "user of the file transfer request"
-msgstr ""
-
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:53
-msgid "logical connection of the file transfer request"
-msgstr ""
-
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:62
-#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
-msgid "service invoice position (basic)"
-msgstr "LSP-S"
-
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:84
-#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:16
-msgid "service invoice position (personal)"
-msgstr "LSP-P"
-
-#: Order/src/Order/Form/Fieldset/LogicalConnectionFieldset.php:31
-#: Storage/src/Storage/Form/Fieldset/LogicalConnectionFieldset.php:30
+#: Order/src/Order/Form/Fieldset/LogicalConnectionFieldset.php:23
 msgid "type"
 msgstr "Typ"
-
-#: Storage/src/Storage/Form/Fieldset/FileTransferRequestFieldset.php:21
-#: Storage/src/Storage/Form/Fieldset/LogicalConnectionFieldset.php:22
-#: Storage/src/Storage/Form/Fieldset/UserFieldset.php:23
-msgid "ID"
-msgstr ""
 
 #: Application/view/application/index/index.phtml:4
 msgid "Tool for creating, submission, and managing of file transfer requests"
@@ -280,17 +274,27 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:49
+#: Application/view/layout/layout.phtml:64
 msgid "Home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:50
+#: Application/view/layout/layout.phtml:65
 msgid "New request"
 msgstr "Neue Anfrage"
 
-#: Order/view/order/process/create.phtml:43
+#: Order/view/order/process/create.phtml:19
 msgid "Billing"
 msgstr "Abrechnung"
+
+#: Order/view/order/process/create.phtml:46
+msgid "Connection"
+msgstr "Verbindung"
+
+#~ msgid "service invoice position number (basic)"
+#~ msgstr "LSP-S"
+
+#~ msgid "service invoice position number (personal)"
+#~ msgstr "LSP-P"
 
 #~ msgid "Source"
 #~ msgstr "Quelle"
