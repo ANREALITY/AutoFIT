@@ -12,12 +12,6 @@ class PhysicalConnectionCd extends AbstractPhysicalConnection
 
     /**
      *
-     * @var PhysicalConnection
-     */
-    protected $physicalConnection;
-
-    /**
-     *
      * @return the $securePlus
      */
     public function getSecurePlus()
@@ -27,28 +21,10 @@ class PhysicalConnectionCd extends AbstractPhysicalConnection
 
     /**
      *
-     * @param boolean $securePlus
+     * @param boolean $securePlus            
      */
     public function setSecurePlus($securePlus)
     {
         $this->securePlus = $securePlus;
-    }
-
-    /**
-     *
-     * @return the $physicalConnection
-     */
-    public function getPhysicalConnection()
-    {
-        return $this->physicalConnection;
-    }
-
-    /**
-     *
-     * @param PhysicalConnection $physicalConnection
-     */
-    public function setPhysicalConnection($physicalConnection)
-    {
-        $this->physicalConnection = $physicalConnection;
     }
 }
