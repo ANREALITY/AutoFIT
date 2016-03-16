@@ -18,12 +18,6 @@ class EndpointCdTandem extends AbstractEndpoint
 
     /**
      *
-     * @var Endpoint
-     */
-    protected $endpoint;
-
-    /**
-     *
      * @return the $username
      */
     public function getUsername()
@@ -33,7 +27,7 @@ class EndpointCdTandem extends AbstractEndpoint
 
     /**
      *
-     * @param string $username
+     * @param string $username            
      */
     public function setUsername($username)
     {
@@ -51,28 +45,10 @@ class EndpointCdTandem extends AbstractEndpoint
 
     /**
      *
-     * @param string $folder
+     * @param string $folder            
      */
     public function setFolder($folder)
     {
         $this->folder = $folder;
-    }
-
-    /**
-     *
-     * @return the $endpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
-    }
-
-    /**
-     *
-     * @param Endpoint $endpoint
-     */
-    public function setEndpoint(Endpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
     }
 }
