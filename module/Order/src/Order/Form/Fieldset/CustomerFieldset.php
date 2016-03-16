@@ -25,7 +25,6 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);

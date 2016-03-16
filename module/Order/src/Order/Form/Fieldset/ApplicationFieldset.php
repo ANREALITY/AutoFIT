@@ -25,7 +25,6 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ));
@@ -33,10 +32,6 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function getInputFilterSpecification()
     {
-        return [
-            'technical_short_name' => [
-                'required' => true
-            ]
-        ];
+        return [];
     }
 }
