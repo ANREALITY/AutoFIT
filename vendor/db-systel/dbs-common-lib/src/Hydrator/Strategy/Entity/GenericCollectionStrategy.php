@@ -87,8 +87,10 @@ class GenericCollectionStrategy implements StrategyInterface
     public function hydrate($array)
     {
         $collection = [];
-        foreach ($array as $element) {
-            $collection[] = $this->hydrator->hydrate($element, $this->prototype);
+        if (is_array($array)) {
+            foreach ($array as $element) {
+                $collection[] = is_array($element) ? $this->hydrator->hydrate($element, $this->prototype) : null;
+            }
         }
         return $collection;
     }
