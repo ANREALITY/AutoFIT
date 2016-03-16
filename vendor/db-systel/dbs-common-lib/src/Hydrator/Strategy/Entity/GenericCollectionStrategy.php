@@ -72,7 +72,7 @@ class GenericCollectionStrategy implements StrategyInterface
             foreach ($objects as $object) {
                 $prototypeClass = get_class($this->prototype);
                 $collection[] = is_object($object) && $object instanceof $prototypeClass ? $this->hydrator->extract(
-                    $object) : [];
+                    $object) : $object;
             }
         }
         return $collection;
@@ -89,7 +89,7 @@ class GenericCollectionStrategy implements StrategyInterface
         $collection = [];
         if (is_array($array)) {
             foreach ($array as $element) {
-                $collection[] = is_array($element) ? $this->hydrator->hydrate($element, $this->prototype) : null;
+                $collection[] = is_array($element) ? $this->hydrator->hydrate($element, $this->prototype) : $element;
             }
         }
         return $collection;
