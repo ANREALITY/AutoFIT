@@ -16,7 +16,7 @@ class ProcessController extends AbstractActionController
 
     protected $fileTransferRequestService = null;
 
-    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest, 
+    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
         $this->orderForm = $orderForm;
@@ -32,23 +32,32 @@ class ProcessController extends AbstractActionController
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-        
+
         $request = $this->getRequest();
-        
+
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                
+
                 // It's just a temporary fake - make it dynamic!
                 $this->fileTransferRequest->getUser()->setUsername('foobar');
-                
+
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
             }
         }
-        
+
         return [
             'form' => $this->orderForm
         ];
+    }
+
+    public function listOrdersAction()
+    {
+        $fileTransferRequests = $this->fileTransferRequestService->findAll()->toArray();
+
+        return new ViewModel([
+            'fileTransferRequests' => $fileTransferRequests
+        ]);
     }
 }
 
