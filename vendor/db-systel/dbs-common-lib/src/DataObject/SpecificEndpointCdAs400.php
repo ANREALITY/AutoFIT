@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class SpecificEndpointCdAs400 extends AbstractSpecificPhysicalConnection
+class SpecificEndpointCdAs400 extends AbstractSpecificEndpoint
 {
 
     /**
