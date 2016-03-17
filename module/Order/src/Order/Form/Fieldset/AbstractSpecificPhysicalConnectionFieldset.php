@@ -18,15 +18,8 @@ class AbstractSpecificPhysicalConnectionFieldset extends Fieldset implements Inp
         
         $this->add(
             [
-                'name' => 'specific_endpoint_source',
-                'type' => 'Order\Form\Fieldset\SpecificEndpointCdAs400Source',
-                'options' => []
-            ]);
-        
-        $this->add(
-            [
-                'name' => 'specific_endpoint_target',
-                'type' => 'Order\Form\Fieldset\SpecificEndpointCdAs400Target',
+                'name' => 'basic_physical_connection',
+                'type' => 'Order\Form\Fieldset\BasicPhysicalConnection',
                 'options' => []
             ]);
     }

@@ -106,6 +106,7 @@ return [
             'Order\Form\Fieldset\BasicEndpointCd' => 'Order\Form\Fieldset\Factory\BasicEndpointCdFieldsetFactory',
             'Order\Form\Fieldset\BasicEndpointCdSource' => 'Order\Form\Fieldset\Factory\BasicEndpointCdSourceFieldsetFactory',
             'Order\Form\Fieldset\BasicEndpointCdTarget' => 'Order\Form\Fieldset\Factory\BasicEndpointCdTargetFieldsetFactory',
+            'Order\Form\Fieldset\BasicPhysicalConnection' => 'Order\Form\Fieldset\Factory\BasicPhysicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequest' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnection' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\SpecificPhysicalConnectionCd' => 'Order\Form\Fieldset\Factory\SpecificPhysicalConnectionCdFieldsetFactory',

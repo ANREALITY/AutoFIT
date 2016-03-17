@@ -12,8 +12,8 @@ $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('servic
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 $specificPhysicalConnectionsFieldset = $logicalConnectionFieldset->get('specific_physical_connections');
 
-$specificEndpointCdAs400SourceFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get('specific_endpoint_source');
-$specificEndpointCdAs400TargetFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get('specific_endpoint_target');
+$specificEndpointCdAs400SourceFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get('basic_physical_connection')->get('specific_endpoint_source');
+$specificEndpointCdAs400TargetFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get('basic_physical_connection')->get('specific_endpoint_target');
 $basicEndpointCdSourceFieldset = $specificEndpointCdAs400SourceFieldset->get('basic_endpoint');
 $basicEndpointCdTargetFieldset = $specificEndpointCdAs400TargetFieldset->get('basic_endpoint');
 $applicationForSourceFieldset = $basicEndpointCdSourceFieldset->get('application');
