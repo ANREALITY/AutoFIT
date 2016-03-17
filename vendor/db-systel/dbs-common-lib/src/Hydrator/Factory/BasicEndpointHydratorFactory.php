@@ -3,10 +3,10 @@ namespace DbSystel\Hydrator\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use DbSystel\DataObject\Endpoint;
+use DbSystel\DataObject\BasicEndpoint;
 use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 
-class EndpointHydratorFactory implements FactoryInterface
+class BasicEndpointHydratorFactory implements FactoryInterface
 {
 
     /**
@@ -18,13 +18,13 @@ class EndpointHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $endpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $endpointHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointCdHydrator');
+        $basicEndpointHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $basicEndpointHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicEndpointCdHydrator');
 
-        $endpointHydrator->addStrategy('endpoint', new GenericEntityStrategy($endpointHydrator, new Endpoint()));
+        $basicEndpointHydrator->addStrategy('basic_endpoint', new GenericEntityStrategy($basicEndpointHydrator, new BasicEndpoint()));
 
         // no naming map
 
-        return $endpointHydrator;
+        return $basicEndpointHydrator;
     }
 }

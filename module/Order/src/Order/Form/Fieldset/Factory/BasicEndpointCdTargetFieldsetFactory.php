@@ -1,21 +1,23 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
+use Zend\ServiceManager\FactoryInterface;
+use Order\Form\Fieldset\BasicEndpointCdTargetFieldset;
+use DbSystel\DataObject\BasicEndpoint;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Order\Form\Fieldset\EndpointCdAs400TargetFieldset;
-use DbSystel\DataObject\EndpointCdAs400;
 
-class EndpointCdAs400TargetFieldsetFactory extends AbstractEndpointCdAs400FieldsetFactory
+class BasicEndpointCdTargetFieldsetFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new EndpointCdAs400TargetFieldset();
+        $fieldset = new BasicEndpointCdTargetFieldset();
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
-        $prototype = new EndpointCdAs400();
+        // @todo make it generic!
+        $prototype = new BasicEndpoint();
         $fieldset->setObject($prototype);
 
         return $fieldset;

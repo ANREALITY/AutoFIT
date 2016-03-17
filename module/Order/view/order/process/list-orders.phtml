@@ -16,7 +16,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("table a").click(function(){
-        $("#flash").toggle("slow");
+        $("#flash").fadeOut('fast');
+        $("#flash").fadeIn(1000);
     });
 });
 </script>

@@ -1,22 +1,22 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Order\Form\Fieldset\PhysicalConnectionFtgwFieldset;
-use DbSystel\DataObject\PhysicalConnectionFtgw;
+use Order\Form\Fieldset\BasicEndpointCdSourceFieldset;
+use DbSystel\DataObject\BasicEndpoint;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
+class BasicEndpointCdSourceFieldsetFactory extends AbstractBasicEndpointCdFieldsetFactory
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new PhysicalConnectionFtgwFieldset();
+        $fieldset = new BasicEndpointCdSourceFieldset();
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
-        $prototype = new PhysicalConnectionFtgw();
+        // @todo make it dynamic!
+        $prototype = new BasicEndpoint();
         $fieldset->setObject($prototype);
 
         return $fieldset;

@@ -1,15 +1,15 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\Endpoint;
-use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\BasicEndpoint;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\User;
 use DbSystel\DataObject\Customer;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ServerType;
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\BasicPhysicalConnection;
 use DbSystel\DataObject\EndpointCdTandem;
 
 /**

@@ -1,15 +1,15 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\Endpoint;
-use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\BasicEndpoint;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\User;
 use DbSystel\DataObject\Customer;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ServerType;
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\BasicPhysicalConnection;
 
 /**
  * EndpointHydratorTest test case.
@@ -56,7 +56,7 @@ class EndpointCdHydratorTest extends AbstractHydratorTest
 
     protected function createFixtureObject()
     {
-        $endpoint = new Endpoint();
+        $endpoint = new BasicEndpoint();
         $endpoint->setId(123);
         $physicalConnectionCd = new PhysicalConnectionCd();
         $physicalConnectionCd->setSecurePlus(true);

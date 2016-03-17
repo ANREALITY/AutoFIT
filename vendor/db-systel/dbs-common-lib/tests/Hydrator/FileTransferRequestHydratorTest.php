@@ -11,10 +11,10 @@ use DbSystel\DataObject\Article;
 use DbSystel\DataObject\ProductType;
 use DbSystel\DataObject\ServiceInvoicePositionStatus;
 use DbSystel\DataObject\User;
-use DbSystel\DataObject\PhysicalConnectionCd;
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
+use DbSystel\DataObject\BasicPhysicalConnection;
 use DbSystel\DataObject\EndpointCdTandem;
-use DbSystel\DataObject\Endpoint;
+use DbSystel\DataObject\BasicEndpoint;
 
 /**
  * FileTransferRequestHydrator test case.
@@ -140,7 +140,7 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setFolder('/path/to/bar');
         $logicalConnectionPhysicalConnectionB->setPhysicalConnection(
             $logicalConnectionPhysicalConnectionPhysicalConnectionB);
-        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA = new Endpoint();
+        $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA = new BasicEndpoint();
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA->setId(777);
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemEndpointBA->setRole('target');
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setEndpoint(

@@ -4,12 +4,12 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class AbstractPhysicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
+class AbstractSpecificPhysicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = array())
     {
-        parent::__construct('physical_connection', $options);
+        parent::__construct('specific_physical_connection', $options);
     }
 
     public function init()
@@ -18,15 +18,15 @@ class AbstractPhysicalConnectionFieldset extends Fieldset implements InputFilter
         
         $this->add(
             [
-                'name' => 'endpoint_source',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
+                'name' => 'specific_endpoint_source',
+                'type' => 'Order\Form\Fieldset\SpecificEndpointCdAs400Source',
                 'options' => []
             ]);
         
         $this->add(
             [
-                'name' => 'endpoint_target',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
+                'name' => 'specific_endpoint_target',
+                'type' => 'Order\Form\Fieldset\SpecificEndpointCdAs400Target',
                 'options' => []
             ]);
     }

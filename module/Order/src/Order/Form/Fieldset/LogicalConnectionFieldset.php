@@ -32,14 +32,14 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
 
         $this->add(
             [
-                'name' => 'physical_connections',
+                'name' => 'specific_physical_connections',
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
                     'count' => 1,
                     'should_create_template' => false,
                     'allow_add' => false,
                     'target_element' => array(
-                        'type' => 'Order\Form\Fieldset\PhysicalConnectionCd',
+                        'type' => 'Order\Form\Fieldset\SpecificPhysicalConnectionCd',
                     ),
                 ]
             ]);

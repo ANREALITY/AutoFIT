@@ -1,22 +1,21 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Order\Form\Fieldset\EndpointCdSourceFieldset;
-use DbSystel\DataObject\Endpoint;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use DbSystel\DataObject\SpecificEndpointCdAs400;
+use Order\Form\Fieldset\SpecificEndpointCdAs400SourceFieldset;
 
-class EndpointCdSourceFieldsetFactory extends AbstractEndpointCdFieldsetFactory
+class SpecificEndpointCdAs400SourceFieldsetFactory extends AbstractSpecificEndpointCdAs400FieldsetFactory
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new EndpointCdSourceFieldset();
+        $fieldset = new SpecificEndpointCdAs400SourceFieldset();
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
-        // @todo make it dynamic!
-        $prototype = new Endpoint();
+        $prototype = new SpecificEndpointCdAs400();
         $fieldset->setObject($prototype);
 
         return $fieldset;

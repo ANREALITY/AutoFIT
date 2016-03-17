@@ -1,27 +1,26 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use Zend\Form\Fieldset;
-use Zend\InputFilter\InputFilterProviderInterface;
-
-abstract class AbstractEndpointCdAs400Fieldset extends Fieldset implements InputFilterProviderInterface
+class SpecificEndpointCdAs400TargetFieldset extends AbstractSpecificEndpointCdAs400Fieldset
 {
 
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
         
-        $this->setLabel(_('AS400'));
+        $this->setLabel(_('Target - AS400'));
     }
 
     public function init()
     {
+        parent::init();
+        
         $this->add(
             array(
                 'type' => 'text',
-                'name' => 'username',
+                'name' => 'folder',
                 'options' => [
-                    'label' => _('username'),
+                    'label' => _('folder'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
@@ -31,12 +30,19 @@ abstract class AbstractEndpointCdAs400Fieldset extends Fieldset implements Input
                     'class' => 'form-control'
                 ]
             ));
+
+        $this->add(
+            [
+                'type' => 'Order\Form\Fieldset\BasicEndpointCdTarget',
+                'name' => 'basic_endpoint',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'username' => [
+            'folder' => [
                 'required' => true,
             ]
         ];

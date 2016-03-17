@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
+class SpecificEndpointCdAs400SourceFieldset extends AbstractSpecificEndpointCdAs400Fieldset
 {
     public function __construct($name = null, $options = array())
     {
@@ -15,8 +15,8 @@ class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
         
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\EndpointCdSource',
-                'name' => 'endpoint',
+                'type' => 'Order\Form\Fieldset\BasicEndpointCdSource',
+                'name' => 'basic_endpoint',
                 'options' => []
             ]);
     }

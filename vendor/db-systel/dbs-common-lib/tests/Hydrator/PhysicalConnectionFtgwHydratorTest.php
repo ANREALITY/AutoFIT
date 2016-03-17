@@ -1,9 +1,9 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\SpecificPhysicalConnectionFtgw;
 use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\BasicPhysicalConnection;
 
 /**
  * PhysicalConnectionFtgwHydrator test case.

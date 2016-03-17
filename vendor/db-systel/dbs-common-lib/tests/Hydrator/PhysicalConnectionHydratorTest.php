@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\BasicPhysicalConnection;
 use DbSystel\DataObject\LogicalConnection;
 
 /**

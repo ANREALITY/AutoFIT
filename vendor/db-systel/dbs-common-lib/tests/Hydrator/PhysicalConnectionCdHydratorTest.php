@@ -1,9 +1,9 @@
 <?php
 namespace DbSystel\Hydrator;
 
-use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
 use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\PhysicalConnection;
+use DbSystel\DataObject\BasicPhysicalConnection;
 
 /**
  * PhysicalConnectionCdHydrator test case.

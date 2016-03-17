@@ -4,7 +4,7 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-abstract class AbstractEndpointCdFieldset extends Fieldset implements InputFilterProviderInterface
+abstract class AbstractBasicEndpointCdFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = [])
