@@ -1,12 +1,11 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Order\Form\Fieldset\EndpointCdAs400TargetFieldset;
 use DbSystel\DataObject\EndpointCdAs400;
 
-class EndpointCdAs400TargetFieldsetFactory implements FactoryInterface
+class EndpointCdAs400TargetFieldsetFactory extends AbstractEndpointCdAs400FieldsetFactory
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
