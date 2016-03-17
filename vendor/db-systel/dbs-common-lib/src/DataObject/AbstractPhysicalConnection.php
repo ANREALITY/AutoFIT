@@ -23,7 +23,7 @@ abstract class AbstractPhysicalConnection
      *
      * @param PhysicalConnection $physicalConnection            
      */
-    public function setPhysicalConnection($physicalConnection)
+    public function setPhysicalConnection(PhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
     }
