@@ -12,7 +12,9 @@ class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new PhysicalConnectionFtgwFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionFtgwHydrator');
+        $hydrator = $serviceLocator->getServiceLocator()
+            ->get('HydratorManager')
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new PhysicalConnectionFtgw();
         $fieldset->setObject($prototype);

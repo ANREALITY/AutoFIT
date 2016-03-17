@@ -12,7 +12,9 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new PhysicalConnectionCdFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionCdHydrator');
+        $hydrator = $serviceLocator->getServiceLocator()
+            ->get('HydratorManager')
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new PhysicalConnectionCd();
         $fieldset->setObject($prototype);

@@ -14,7 +14,7 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $fieldset = new LogicalConnectionFieldset();
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
-            ->get('DbSystel\Hydrator\LogicalConnectionHydrator');
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new LogicalConnection();
         $fieldset->setObject($prototype);

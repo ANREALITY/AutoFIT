@@ -12,7 +12,9 @@ class EndpointCdAs400SourceFieldsetFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $fieldset = new EndpointCdAs400SourceFieldset();
-        $hydrator = $serviceLocator->getServiceLocator()->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdAs400Hydrator');
+        $hydrator = $serviceLocator->getServiceLocator()
+            ->get('HydratorManager')
+            ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new EndpointCdAs400();
         $fieldset->setObject($prototype);
