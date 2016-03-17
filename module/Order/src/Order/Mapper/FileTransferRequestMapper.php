@@ -117,23 +117,21 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
     public function save(FileTransferRequest $dataObject)
     {
         $data = [];
+        // data retrieved directly from the input
         $data['change_number'] = $dataObject->getChangeNumber();
         $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
         $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
-
+        // creating sub-objects
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
         $dataObject->setLogicalConnection($newLogicalConnection);
         $newUser = $this->userMapper->save($dataObject->getUser());
         $dataObject->setUser($newUser);
-
-        // @todo Only for testing! The logical connection ID needs to be retrieved from the new logical connection!
-        $data['logical_connection_id'] = 1;
-        // @todo Only for testing! The user ID needs to be retrieved from the new user!
-        $data['user_id'] = 1;
+        // data from the recently persisted objects
+        $data['logical_connection_id'] = $newLogicalConnection->getId();
+        $data['user_id'] = $newUser->getId();
 
         $action = new Insert('file_transfer_request');
         $action->values($data);
-
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
