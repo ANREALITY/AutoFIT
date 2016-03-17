@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class Endpoint
+class BasicEndpoint
 {
 
     /**
@@ -36,9 +36,9 @@ class Endpoint
 
     /**
      *
-     * @var AbstractPhysicalConnection
+     * @var AbstractSpecificPhysicalConnection
      */
-    protected $physicalConnection;
+    protected $specificPhysicalConnection;
 
     /**
      *
@@ -69,7 +69,7 @@ class Endpoint
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -87,7 +87,7 @@ class Endpoint
 
     /**
      *
-     * @param string $role
+     * @param string $role            
      */
     public function setRole($role)
     {
@@ -105,7 +105,7 @@ class Endpoint
 
     /**
      *
-     * @param string $type
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -123,7 +123,7 @@ class Endpoint
 
     /**
      *
-     * @param string $serverPlace
+     * @param string $serverPlace            
      */
     public function setServerPlace($serverPlace)
     {
@@ -141,7 +141,7 @@ class Endpoint
 
     /**
      *
-     * @param string $contactPerson
+     * @param string $contactPerson            
      */
     public function setContactPerson($contactPerson)
     {
@@ -150,20 +150,20 @@ class Endpoint
 
     /**
      *
-     * @return the $physicalConnection
+     * @return the $specificPhysicalConnection
      */
-    public function getPhysicalConnection()
+    public function getSpecificPhysicalConnection()
     {
-        return $this->physicalConnection;
+        return $this->specificPhysicalConnection;
     }
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnection
+     * @param \DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnection            
      */
-    public function setPhysicalConnection($physicalConnection)
+    public function setSpecificPhysicalConnection($specificPhysicalConnection)
     {
-        $this->physicalConnection = $physicalConnection;
+        $this->specificPhysicalConnection = $specificPhysicalConnection;
     }
 
     /**
@@ -177,7 +177,7 @@ class Endpoint
 
     /**
      *
-     * @param Server $server
+     * @param \DbSystel\DataObject\Server $server            
      */
     public function setServer($server)
     {
@@ -195,7 +195,7 @@ class Endpoint
 
     /**
      *
-     * @param Application $application
+     * @param \DbSystel\DataObject\Application $application            
      */
     public function setApplication($application)
     {
@@ -213,7 +213,7 @@ class Endpoint
 
     /**
      *
-     * @param Customer $customer
+     * @param \DbSystel\DataObject\Customer $customer            
      */
     public function setCustomer($customer)
     {
