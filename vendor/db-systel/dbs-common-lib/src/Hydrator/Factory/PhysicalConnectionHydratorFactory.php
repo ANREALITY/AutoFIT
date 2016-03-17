@@ -24,13 +24,19 @@ class PhysicalConnectionHydratorFactory implements FactoryInterface
         $physicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $endpointHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointCdAs400Hydrator');
+        $endpointSourceHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointHydrator');
+        $endpointTargetHydrator = $serviceLocator->get('DbSystel\Hydrator\EndpointHydrator');
 
         $physicalConnectionHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));        // @todo AbstractFactory needed!!!
         // $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new AbstractEndpoint()));
         $physicalConnectionHydrator->addStrategy('endpoints', new GenericCollectionStrategy($endpointHydrator, new EndpointCdAs400()));
+        $physicalConnectionHydrator->addStrategy('endpoint_source', new GenericEntityStrategy($endpointSourceHydrator, new EndpointCdAs400()));
+        $physicalConnectionHydrator->addStrategy('endpoint_target', new GenericEntityStrategy($endpointTargetHydrator, new EndpointCdAs400()));
 
         $namingStrategy = new MapNamingStrategy(array(
             'logical_connection' => 'logicalConnection',
+            'endpoint_source' => 'endpointSource',
+            'endpoint_target' => 'endpointTarget',
         ));
         $physicalConnectionHydrator->setNamingStrategy($namingStrategy);
 
