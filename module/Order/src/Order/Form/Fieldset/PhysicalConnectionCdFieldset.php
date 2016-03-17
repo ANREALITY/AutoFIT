@@ -25,20 +25,6 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
                 'unchecked_value' => '0'
             )
         ));
-
-        $this->add(
-            [
-                'name' => 'endpoint_source',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
-                'options' => []
-            ]);
-
-        $this->add(
-            [
-                'name' => 'endpoint_target',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
-                'options' => []
-            ]);
         
     }
 
