@@ -26,15 +26,19 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
         $articleHydrator = $serviceLocator->get('DbSystel\Hydrator\ArticleHydrator');
         $serviceInvoicePositionStatusHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
 
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice', new GenericEntityStrategy($serviceInvoiceHydrator, new ServiceInvoice()));
-        $serviceInvoicePositionHydrator->addStrategy('article', new GenericEntityStrategy($articleHydrator, new Article()));
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status', new GenericEntityStrategy($serviceInvoicePositionStatusHydrator, new ServiceInvoicePositionStatus()));
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice',
+            new GenericEntityStrategy($serviceInvoiceHydrator, new ServiceInvoice()));
+        $serviceInvoicePositionHydrator->addStrategy('article',
+            new GenericEntityStrategy($articleHydrator, new Article()));
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status',
+            new GenericEntityStrategy($serviceInvoicePositionStatusHydrator, new ServiceInvoicePositionStatus()));
 
-        $namingStrategy = new MapNamingStrategy(array(
-            'order_quantity' => 'orderQuantity',
-            'service_invoice' => 'serviceInvoice',
-            'service_invoice_position_status' => 'serviceInvoicePositionStatus'
-        ));
+        $namingStrategy = new MapNamingStrategy(
+            array(
+                'order_quantity' => 'orderQuantity',
+                'service_invoice' => 'serviceInvoice',
+                'service_invoice_position_status' => 'serviceInvoicePositionStatus'
+            ));
         $serviceInvoicePositionHydrator->setNamingStrategy($namingStrategy);
 
         return $serviceInvoicePositionHydrator;

@@ -21,7 +21,7 @@ class SpecificPhysicalConnectionCd extends AbstractSpecificPhysicalConnection
 
     /**
      *
-     * @param boolean $securePlus            
+     * @param boolean $securePlus
      */
     public function setSecurePlus($securePlus)
     {

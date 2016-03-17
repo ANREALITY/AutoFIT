@@ -21,7 +21,7 @@ abstract class AbstractSpecificPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\BasicPhysicalConnection $basicPhysicalConnection            
+     * @param \DbSystel\DataObject\BasicPhysicalConnection $basicPhysicalConnection
      */
     public function setBasicPhysicalConnection($basicPhysicalConnection)
     {

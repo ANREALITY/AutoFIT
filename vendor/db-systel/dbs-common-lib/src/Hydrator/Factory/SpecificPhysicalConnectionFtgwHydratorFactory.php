@@ -22,11 +22,13 @@ class SpecificPhysicalConnectionFtgwHydratorFactory implements FactoryInterface
         $specificPhysicalConnectionFtgwHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $basicPhysicalConnectionHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicPhysicalConnectionHydrator');
 
-        $specificPhysicalConnectionFtgwHydrator->addStrategy('basic_physical_connection', new GenericEntityStrategy($basicPhysicalConnectionHydrator, new BasicPhysicalConnection()));
+        $specificPhysicalConnectionFtgwHydrator->addStrategy('basic_physical_connection',
+            new GenericEntityStrategy($basicPhysicalConnectionHydrator, new BasicPhysicalConnection()));
 
-        $namingStrategy = new MapNamingStrategy(array(
-            'basic_physical_connection' => 'basicPhysicalConnection',
-        ));
+        $namingStrategy = new MapNamingStrategy(
+            array(
+                'basic_physical_connection' => 'basicPhysicalConnection'
+            ));
         $specificPhysicalConnectionFtgwHydrator->setNamingStrategy($namingStrategy);
 
         return $specificPhysicalConnectionFtgwHydrator;

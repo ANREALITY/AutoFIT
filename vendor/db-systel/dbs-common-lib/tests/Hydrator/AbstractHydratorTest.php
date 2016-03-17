@@ -53,7 +53,9 @@ abstract class AbstractHydratorTest extends \PHPUnit_Framework_TestCase
         $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
 
         foreach (static::CHEXTURE as $key => $property) {
-            $this->assertArraySubset([$key => $property], $extractedData);
+            $this->assertArraySubset([
+                $key => $property
+            ], $extractedData);
         }
     }
 

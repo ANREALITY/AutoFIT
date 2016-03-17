@@ -25,7 +25,7 @@ class ServerHydratorFactory implements FactoryInterface
         $serverHydrator->addStrategy('server_type', new GenericEntityStrategy($serverTypeHydrator, new ServerType()));
 
         $namingStrategy = new MapNamingStrategy(array(
-            'server_type' => 'serverType',
+            'server_type' => 'serverType'
         ));
         $serverHydrator->setNamingStrategy($namingStrategy);
 

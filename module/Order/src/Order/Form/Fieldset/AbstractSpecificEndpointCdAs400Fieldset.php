@@ -10,7 +10,7 @@ abstract class AbstractSpecificEndpointCdAs400Fieldset extends Fieldset implemen
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-        
+
         $this->setLabel(_('AS400'));
     }
 
@@ -37,7 +37,7 @@ abstract class AbstractSpecificEndpointCdAs400Fieldset extends Fieldset implemen
     {
         return [
             'username' => [
-                'required' => true,
+                'required' => true
             ]
         ];
     }

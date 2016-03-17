@@ -41,9 +41,10 @@ class ServiceInvoicePositionHydratorTest extends AbstractHydratorTest
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new ServiceInvoicePosition());
 
-        $this->assertEquals(static::CHEXTURE['service_invoice']['environment']['severity'], $hydratedObject->getServiceInvoice()
-            ->getEnvironment()
-            ->getSeverity());
+        $this->assertEquals(static::CHEXTURE['service_invoice']['environment']['severity'],
+            $hydratedObject->getServiceInvoice()
+                ->getEnvironment()
+                ->getSeverity());
     }
 
     protected function createHydrator()

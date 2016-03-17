@@ -101,9 +101,9 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new FileTransferRequest());
-        
+
         $this->assertEquals(
-            static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'], 
+            static::CHEXTURE['service_invoice_position_basic']['service_invoice']['application']['technical_short_name'],
             $hydratedObject->getServiceInvoicePositionBasic()
                 ->getServiceInvoice()
                 ->getApplication()
@@ -134,7 +134,7 @@ class FileTransferRequestHydratorTest extends AbstractHydratorTest
         $logicalConnectionPhysicalConnectionB->setSecurePlus(0);
         $logicalConnectionPhysicalConnectionPhysicalConnectionB = new PhysicalConnection();
         $logicalConnectionPhysicalConnectionPhysicalConnectionB->setId(2222);
-        
+
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA = new EndpointCdTandem();
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setUsername('foo');
         $logicalConnectionPhysicalConnectionPhysicalConnectionEndpointTandemBA->setFolder('/path/to/bar');

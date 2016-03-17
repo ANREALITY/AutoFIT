@@ -69,7 +69,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -87,7 +87,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param string $role            
+     * @param string $role
      */
     public function setRole($role)
     {
@@ -105,7 +105,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {
@@ -123,7 +123,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param string $serverPlace            
+     * @param string $serverPlace
      */
     public function setServerPlace($serverPlace)
     {
@@ -141,7 +141,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param string $contactPerson            
+     * @param string $contactPerson
      */
     public function setContactPerson($contactPerson)
     {
@@ -159,7 +159,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnection            
+     * @param \DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnection
      */
     public function setSpecificPhysicalConnection($specificPhysicalConnection)
     {
@@ -177,7 +177,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Server $server            
+     * @param \DbSystel\DataObject\Server $server
      */
     public function setServer($server)
     {
@@ -195,7 +195,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Application $application            
+     * @param \DbSystel\DataObject\Application $application
      */
     public function setApplication($application)
     {
@@ -213,7 +213,7 @@ class BasicEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Customer $customer            
+     * @param \DbSystel\DataObject\Customer $customer
      */
     public function setCustomer($customer)
     {

@@ -23,7 +23,7 @@ class ApplicationHydratorFactory implements FactoryInterface
 
         $nameMapping = array(
             'technical_short_name' => 'technicalShortName',
-            'technical_id' => 'technicalId',
+            'technical_id' => 'technicalId'
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $productTypeHydrator->setNamingStrategy($namingStrategy);

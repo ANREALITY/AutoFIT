@@ -28,7 +28,7 @@ abstract class AbstractBasicEndpointCdFieldset extends Fieldset implements Input
                     'class' => 'form-control'
                 ]
             ]);
-        
+
         $this->add(
             [
                 'type' => 'radio',
@@ -44,14 +44,14 @@ abstract class AbstractBasicEndpointCdFieldset extends Fieldset implements Input
                     ]
                 ]
             ]);
-        
+
         $this->add(
             [
                 'name' => 'application',
                 'type' => 'Order\Form\Fieldset\Application',
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'name' => 'customer',
@@ -59,19 +59,19 @@ abstract class AbstractBasicEndpointCdFieldset extends Fieldset implements Input
                 'options' => []
             ]);
         /*
-        $this->add(
-            [
-                'type' => 'Zend\Form\Element\MultiCheckbox',
-                'name' => 'server_plattform',
-                'options' => [
-                    'label' => _('server plattform'),
-                    'value_options' => [
-                        'AS400' => 'AS400',
-                        'Tandem' => 'Tandem'
-                    ]
-                ]
-            ]);
-        */
+         * $this->add(
+         * [
+         * 'type' => 'Zend\Form\Element\MultiCheckbox',
+         * 'name' => 'server_plattform',
+         * 'options' => [
+         * 'label' => _('server plattform'),
+         * 'value_options' => [
+         * 'AS400' => 'AS400',
+         * 'Tandem' => 'Tandem'
+         * ]
+         * ]
+         * ]);
+         */
         $this->add(
             [
                 'name' => 'server',

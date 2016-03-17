@@ -22,7 +22,7 @@ class EnvironmentHydratorFactory implements FactoryInterface
         // no strategies
 
         $nameMapping = array(
-            'short_name' => 'shortName',
+            'short_name' => 'shortName'
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $productTypeHydrator->setNamingStrategy($namingStrategy);

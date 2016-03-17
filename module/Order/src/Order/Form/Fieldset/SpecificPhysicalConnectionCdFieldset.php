@@ -14,25 +14,25 @@ class SpecificPhysicalConnectionCdFieldset extends AbstractSpecificPhysicalConne
     public function init()
     {
         parent::init();
-        
-        $this->add(array(
-            'type' => 'Zend\Form\Element\Checkbox',
-            'name' => 'secure_plus',
-            'options' => array(
-                'label' => _('Secure Plus'),
-                'use_hidden_element' => false,
-                'checked_value' => '1',
-                'unchecked_value' => '0'
-            )
-        ));
-        
+
+        $this->add(
+            array(
+                'type' => 'Zend\Form\Element\Checkbox',
+                'name' => 'secure_plus',
+                'options' => array(
+                    'label' => _('Secure Plus'),
+                    'use_hidden_element' => false,
+                    'checked_value' => '1',
+                    'unchecked_value' => '0'
+                )
+            ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
             'secure_plus' => [
-                'required' => false,
+                'required' => false
             ]
         ];
     }

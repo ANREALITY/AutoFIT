@@ -42,8 +42,8 @@ class EndpointCdAs400HydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new EndpointCdAs400());
-        
-        $this->assertEquals(static::CHEXTURE['endpoint']['server']['server_type']['id'], 
+
+        $this->assertEquals(static::CHEXTURE['endpoint']['server']['server_type']['id'],
             $hydratedObject->getEndpoint()
                 ->getServer()
                 ->getServerType()

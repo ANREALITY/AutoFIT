@@ -22,7 +22,7 @@ class EndpointCdTandemHydratorTest extends AbstractHydratorTest
         'endpoint' => [
             'id' => 123,
             'physical_connection' => [
-                'secure_plus' => true,
+                'secure_plus' => true
             ],
             'server' => [
                 'name' => 'YXC123',

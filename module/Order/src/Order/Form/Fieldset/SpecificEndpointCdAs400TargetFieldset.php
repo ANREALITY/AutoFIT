@@ -7,14 +7,14 @@ class SpecificEndpointCdAs400TargetFieldset extends AbstractSpecificEndpointCdAs
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-        
+
         $this->setLabel(_('Target - AS400'));
     }
 
     public function init()
     {
         parent::init();
-        
+
         $this->add(
             array(
                 'type' => 'text',
@@ -43,7 +43,7 @@ class SpecificEndpointCdAs400TargetFieldset extends AbstractSpecificEndpointCdAs
     {
         return [
             'folder' => [
-                'required' => true,
+                'required' => true
             ]
         ];
     }

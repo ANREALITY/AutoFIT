@@ -27,7 +27,7 @@ class SpecificEndpointCdTandem extends AbstractSpecificEndpoint
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -45,7 +45,7 @@ class SpecificEndpointCdTandem extends AbstractSpecificEndpoint
 
     /**
      *
-     * @param string $folder            
+     * @param string $folder
      */
     public function setFolder($folder)
     {

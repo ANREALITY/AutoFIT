@@ -39,8 +39,8 @@ class EndpointCdHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new Endpoint());
-        
-        $this->assertEquals(static::CHEXTURE['server']['server_type']['id'], 
+
+        $this->assertEquals(static::CHEXTURE['server']['server_type']['id'],
             $hydratedObject->getServer()
                 ->getServerType()
                 ->getId());

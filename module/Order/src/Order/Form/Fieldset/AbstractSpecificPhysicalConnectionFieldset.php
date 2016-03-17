@@ -15,7 +15,7 @@ class AbstractSpecificPhysicalConnectionFieldset extends Fieldset implements Inp
     public function init()
     {
         parent::init();
-        
+
         $this->add(
             [
                 'name' => 'basic_physical_connection',

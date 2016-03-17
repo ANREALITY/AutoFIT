@@ -24,8 +24,10 @@ class ServiceInvoiceHydratorFactory implements FactoryInterface
         $applicationHydrator = $serviceLocator->get('DbSystel\Hydrator\ApplicationHydrator');
         $environmentHydrator = $serviceLocator->get('DbSystel\Hydrator\EnvironmentHydrator');
 
-        $serviceInvoiceHydrator->addStrategy('application', new GenericEntityStrategy($applicationHydrator, new Application()));
-        $serviceInvoiceHydrator->addStrategy('environment', new GenericEntityStrategy($environmentHydrator, new Environment()));
+        $serviceInvoiceHydrator->addStrategy('application',
+            new GenericEntityStrategy($applicationHydrator, new Application()));
+        $serviceInvoiceHydrator->addStrategy('environment',
+            new GenericEntityStrategy($environmentHydrator, new Environment()));
 
         $namingStrategy = new MapNamingStrategy(array());
         $serviceInvoiceHydrator->setNamingStrategy($namingStrategy);

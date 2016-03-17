@@ -14,14 +14,13 @@ class BasicPhysicalConnectionFieldset extends Fieldset implements InputFilterPro
 
     public function init()
     {
-        
         $this->add(
             [
                 'name' => 'specific_endpoint_source',
                 'type' => 'Order\Form\Fieldset\SpecificEndpointCdAs400Source',
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'name' => 'specific_endpoint_target',

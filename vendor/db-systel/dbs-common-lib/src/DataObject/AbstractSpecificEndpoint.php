@@ -21,7 +21,7 @@ abstract class AbstractSpecificEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\BasicEndpoint $basicEndpoint            
+     * @param \DbSystel\DataObject\BasicEndpoint $basicEndpoint
      */
     public function setBasicEndpoint($basicEndpoint)
     {

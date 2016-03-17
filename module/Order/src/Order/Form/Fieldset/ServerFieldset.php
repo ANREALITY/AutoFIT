@@ -32,7 +32,6 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
 
     public function getInputFilterSpecification()
     {
-        return [
-        ];
+        return [];
     }
 }

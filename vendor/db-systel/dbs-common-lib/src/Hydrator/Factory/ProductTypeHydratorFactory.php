@@ -22,7 +22,7 @@ class ProductTypeHydratorFactory implements FactoryInterface
         // no strategies
 
         $nameMapping = array(
-            'long_name' => 'longName',
+            'long_name' => 'longName'
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $productTypeHydrator->setNamingStrategy($namingStrategy);

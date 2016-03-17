@@ -31,17 +31,20 @@ class BasicEndpointFtgwHydratorFactory implements FactoryInterface
         $userHydrator = $serviceLocator->get('DbSystel\Hydrator\UserHydrator');
         $customerHydrator = $serviceLocator->get('DbSystel\Hydrator\CustomerHydrator');
 
-        $basicEndpointHydrator->addStrategy('basic_physical_connection', new GenericEntityStrategy($basicPhysicalConnectionHydrator, new SpecificPhysicalConnectionFtgw()));
+        $basicEndpointHydrator->addStrategy('basic_physical_connection',
+            new GenericEntityStrategy($basicPhysicalConnectionHydrator, new SpecificPhysicalConnectionFtgw()));
         $basicEndpointHydrator->addStrategy('server', new GenericEntityStrategy($serverHydrator, new Server()));
-        $basicEndpointHydrator->addStrategy('application', new GenericEntityStrategy($applicationHydrator, new Application()));
+        $basicEndpointHydrator->addStrategy('application',
+            new GenericEntityStrategy($applicationHydrator, new Application()));
         $basicEndpointHydrator->addStrategy('user', new GenericEntityStrategy($userHydrator, new User()));
         $basicEndpointHydrator->addStrategy('customer', new GenericEntityStrategy($customerHydrator, new Customer()));
 
-        $namingStrategy = new MapNamingStrategy(array(
-            'server_place' => 'serverPlace',
-            'contact_person' => 'contactPerson',
-            'basic_physical_connection' => 'basicPhysicalConnection',
-        ));
+        $namingStrategy = new MapNamingStrategy(
+            array(
+                'server_place' => 'serverPlace',
+                'contact_person' => 'contactPerson',
+                'basic_physical_connection' => 'basicPhysicalConnection'
+            ));
         $basicEndpointHydrator->setNamingStrategy($namingStrategy);
 
         return $basicEndpointHydrator;

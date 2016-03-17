@@ -27,18 +27,23 @@ class BasicPhysicalConnectionHydratorFactory implements FactoryInterface
         $basicEndpointSourceHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicEndpointHydrator');
         $basicEndpointSourceHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicEndpointHydrator');
 
-        $basicPhysicalConnectionHydrator->addStrategy('logical_connection', new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));        // @todo AbstractFactory needed!!!
-        // $basicPhysicalConnectionHydrator->addStrategy('specific_endpoints', new GenericCollectionStrategy($specificEndpointHydrator, new AbstractBasicEndpoint()));
-        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoints', new GenericCollectionStrategy($specificEndpointHydrator, new SpecificEndpointCdAs400()));
-        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoint_source', new GenericEntityStrategy($basicEndpointSourceHydrator, new SpecificEndpointCdAs400()));
-        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoint_target', new GenericEntityStrategy($basicEndpointSourceHydrator, new SpecificEndpointCdAs400()));
+        $basicPhysicalConnectionHydrator->addStrategy('logical_connection',
+            new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection())); // @todo AbstractFactory needed!!!
+                                                                                                                                                                 // $basicPhysicalConnectionHydrator->addStrategy('specific_endpoints', new GenericCollectionStrategy($specificEndpointHydrator, new AbstractBasicEndpoint()));
+        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoints',
+            new GenericCollectionStrategy($specificEndpointHydrator, new SpecificEndpointCdAs400()));
+        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoint_source',
+            new GenericEntityStrategy($basicEndpointSourceHydrator, new SpecificEndpointCdAs400()));
+        $basicPhysicalConnectionHydrator->addStrategy('specific_endpoint_target',
+            new GenericEntityStrategy($basicEndpointSourceHydrator, new SpecificEndpointCdAs400()));
 
-        $namingStrategy = new MapNamingStrategy(array(
-            'logical_connection' => 'logicalConnection',
-            'specific_endpoints' => 'specificEndpoints',
-            'specific_endpoint_source' => 'specificEndpointSource',
-            'specific_endpoint_target' => 'specificEndpointTarget',
-        ));
+        $namingStrategy = new MapNamingStrategy(
+            array(
+                'logical_connection' => 'logicalConnection',
+                'specific_endpoints' => 'specificEndpoints',
+                'specific_endpoint_source' => 'specificEndpointSource',
+                'specific_endpoint_target' => 'specificEndpointTarget'
+            ));
         $basicPhysicalConnectionHydrator->setNamingStrategy($namingStrategy);
 
         return $basicPhysicalConnectionHydrator;

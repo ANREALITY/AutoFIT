@@ -21,7 +21,8 @@ class SpecificEndpointTandemHydratorFactory implements FactoryInterface
         $endpointCdTandemHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $basicEndpointHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicEndpointCdHydrator');
 
-        $endpointCdTandemHydrator->addStrategy('basic_endpoint', new GenericEntityStrategy($basicEndpointHydrator, new BasicEndpoint()));
+        $endpointCdTandemHydrator->addStrategy('basic_endpoint',
+            new GenericEntityStrategy($basicEndpointHydrator, new BasicEndpoint()));
 
         // no naming map
 

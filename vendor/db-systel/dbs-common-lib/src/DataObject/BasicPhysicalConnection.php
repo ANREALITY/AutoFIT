@@ -45,7 +45,7 @@ class BasicPhysicalConnection
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -63,7 +63,7 @@ class BasicPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection            
+     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -81,7 +81,7 @@ class BasicPhysicalConnection
 
     /**
      *
-     * @param multitype:\DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpoints            
+     * @param multitype:\DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpoints
      */
     public function setSpecificEndpoints($specificEndpoints)
     {
@@ -99,7 +99,7 @@ class BasicPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpointSource            
+     * @param \DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpointSource
      */
     public function setSpecificEndpointSource($specificEndpointSource)
     {
@@ -117,7 +117,7 @@ class BasicPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpointTarget            
+     * @param \DbSystel\DataObject\AbstractSpecificEndpoint $specificEndpointTarget
      */
     public function setSpecificEndpointTarget($specificEndpointTarget)
     {

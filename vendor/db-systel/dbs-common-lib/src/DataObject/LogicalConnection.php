@@ -37,7 +37,7 @@ class LogicalConnection
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -55,7 +55,7 @@ class LogicalConnection
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {
@@ -73,7 +73,7 @@ class LogicalConnection
 
     /**
      *
-     * @param multitype:\DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnections            
+     * @param multitype:\DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnections
      */
     public function setSpecificPhysicalConnections($specificPhysicalConnections)
     {

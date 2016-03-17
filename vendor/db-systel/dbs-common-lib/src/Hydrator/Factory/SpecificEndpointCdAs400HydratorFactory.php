@@ -21,7 +21,8 @@ class SpecificEndpointCdAs400HydratorFactory implements FactoryInterface
         $endpointCdAs400Hydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $basicEndpointHydrator = $serviceLocator->get('DbSystel\Hydrator\BasicEndpointCdHydrator');
 
-        $endpointCdAs400Hydrator->addStrategy('basic_endpoint', new GenericEntityStrategy($basicEndpointHydrator, new BasicEndpoint()));
+        $endpointCdAs400Hydrator->addStrategy('basic_endpoint',
+            new GenericEntityStrategy($basicEndpointHydrator, new BasicEndpoint()));
 
         // no naming map
 

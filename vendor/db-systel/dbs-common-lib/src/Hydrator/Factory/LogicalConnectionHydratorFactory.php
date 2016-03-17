@@ -20,16 +20,19 @@ class LogicalConnectionHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $specificPhysicalConnectionHydrator = $serviceLocator->get('DbSystel\Hydrator\SpecificPhysicalConnectionCdHydrator');
+        $specificPhysicalConnectionHydrator = $serviceLocator->get(
+            'DbSystel\Hydrator\SpecificPhysicalConnectionCdHydrator');
 
         // @todo AbstractFactory needed!!!
         // $logicalConnectionHydrator->addStrategy('specificPhysicalConnection', new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new AbstractBasicPhysicalConnection()));
         // $logicalConnectionHydrator->addStrategy('specificPhysical_connections', new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new SpecificPhysicalConnectionCd()));
-        $logicalConnectionHydrator->addStrategy('specific_physical_connections', new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new SpecificPhysicalConnectionCd()));
+        $logicalConnectionHydrator->addStrategy('specific_physical_connections',
+            new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new SpecificPhysicalConnectionCd()));
 
-        $namingStrategy = new MapNamingStrategy(array(
-            'specific_physical_connections' => 'specificPhysicalConnections',
-        ));
+        $namingStrategy = new MapNamingStrategy(
+            array(
+                'specific_physical_connections' => 'specificPhysicalConnections'
+            ));
         $logicalConnectionHydrator->setNamingStrategy($namingStrategy);
 
         return $logicalConnectionHydrator;
