@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-class EndpointCdAs400SourceFieldset extends EndpointCdAs400Fieldset
+class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
 {
     public function __construct($name = null, $options = array())
     {
