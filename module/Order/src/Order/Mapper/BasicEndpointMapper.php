@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use Zend\Db\Sql\Expression;
 
 class BasicEndpointMapper implements BasicEndpointMapperInterface
 {
@@ -132,14 +133,13 @@ class BasicEndpointMapper implements BasicEndpointMapperInterface
         $data['physical_connection_id'] = $dataObject->getSpecificPhysicalConnection()
             ->getBasicPhysicalConnection()
             ->getId();
+        $data['server_name'] = $dataObject->getServer()->getName() ?: new Expression('NULL');
+        $data['application_technical_short_name'] = $dataObject->getApplication()->getTechnicalShortName() ?: new Expression(
+            'NULL');
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
-        $newServer = $this->serverMapper->save($dataObject->getServer());
-        $newApplication = $this->applicationMapper->save($dataObject->getApplication());
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
-        $data['server_name'] = $newServer->getId();
-        $data['application_technical_short_name'] = $newApplication->getTechnicalShortName();
         $data['customer_id'] = $newCustomer->getId();
         
         $action = new Insert('endpoint');
