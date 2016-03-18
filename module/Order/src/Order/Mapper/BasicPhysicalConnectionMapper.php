@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
 
 class BasicPhysicalConnectionMapper implements BasicPhysicalConnectionMapperInterface
 {
@@ -128,7 +129,26 @@ class BasicPhysicalConnectionMapper implements BasicPhysicalConnectionMapperInte
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newSpecificEndpoints = [];
+                // @todo It's a hack! Decide between using a collection or two objects!!!
+                $dataObject->setSpecificEndpoints(
+                    [
+                        $dataObject->getSpecificEndpointSource(),
+                        $dataObject->getSpecificEndpointTarget()
+                    ]);
                 foreach ($dataObject->getSpecificEndpoints() as $specificEndpoint) {
+                    // @todo It's just a hack! Solve this another way!!!
+                    if (! $specificEndpoint->getBasicEndpoint()
+                        ->getSpecificPhysicalConnection()) {
+                        $specificEndpoint->getBasicEndpoint()
+                            ->setSpecificPhysicalConnection(new SpecificPhysicalConnectionCd());
+                    }
+                    if (! $specificEndpoint->getBasicEndpoint()
+                        ->getSpecificPhysicalConnection()
+                        ->getBasicPhysicalConnection()) {
+                        $specificEndpoint->getBasicEndpoint()
+                            ->getSpecificPhysicalConnection()
+                            ->setBasicPhysicalConnection(new BasicPhysicalConnection());
+                    }
                     $specificEndpoint->getBasicEndpoint()
                         ->getSpecificPhysicalConnection()
                         ->getBasicPhysicalConnection()
