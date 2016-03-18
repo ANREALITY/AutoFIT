@@ -87,6 +87,12 @@ return [
             'Order\Mapper\ServerMapper' => 'Order\Mapper\Factory\ServerMapperFactory',
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',
+
+            'Order\Mapper\BasicEndpointMapper' => 'Order\Mapper\Factory\BasicEndpointMapperFactory',
+            'Order\Mapper\BasicPhysicalConnectionMapper' => 'Order\Mapper\Factory\BasicPhysicalConnectionMapperFactory',
+            'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
+            'Order\Mapper\SpecificEndpointCdAs400Mapper' => 'Order\Mapper\Factory\SpecificEndpointCdAs400MapperFactory',
+            'Order\Mapper\SpecificPhysicalConnectionCdMapper' => 'Order\Mapper\Factory\SpecificPhysicalConnectionCdMapperFactory',            
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'

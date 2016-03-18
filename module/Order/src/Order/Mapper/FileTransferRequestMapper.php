@@ -122,6 +122,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
         $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
         // creating sub-objects
+        // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
         $dataObject->setLogicalConnection($newLogicalConnection);
         $newUser = $this->userMapper->save($dataObject->getUser());

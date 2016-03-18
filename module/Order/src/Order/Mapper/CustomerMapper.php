@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\User;
+use DbSystel\DataObject\Customer;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class UserMapper implements UserMapperInterface
+class CustomerMapper implements CustomerMapperInterface
 {
 
     /**
@@ -28,11 +28,11 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @var User
+     * @var Customer
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, User $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Customer $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
@@ -43,14 +43,14 @@ class UserMapper implements UserMapperInterface
      *
      * @param int|string $id
      *
-     * @return User
+     * @return Customer
      * @throws \InvalidArgumentException
      */
     public function find($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('customer');
          * $select->where(array(
          * 'id = ?' => $id
          * ));
@@ -62,20 +62,20 @@ class UserMapper implements UserMapperInterface
          * return $this->hydrator->hydrate($result->current(), $this->prototype);
          * }
          *
-         * throw new \InvalidArgumentException("User with given ID:{$id} not found.");
+         * throw new \InvalidArgumentException("Customer with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @return array|User[]
+     * @return array|Customer[]
      */
     public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('customer');
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();
@@ -93,23 +93,23 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @param User $dataObject
+     * @param Customer $dataObject
      *
-     * @return User
+     * @return Customer
      * @throws \Exception
      */
-    public function save(User $dataObject)
+    public function save(Customer $dataObject)
     {
-        // @todo Check, if user exists!
+        // @todo Check, if customer exists!
         $data = [];
         // data retrieved directly from the input
-        $data['username'] = $dataObject->getUsername();
+        $data['name'] = $dataObject->getName();
         // creating sub-objects
         // none
         // data from the recently persisted objects
         // none
 
-        $action = new Insert('user');
+        $action = new Insert('customer');
         $action->values($data);
 
         $sql = new Sql($this->dbAdapter);

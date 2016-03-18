@@ -27,16 +27,24 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     protected $hydrator;
 
     /**
+     * 
+     * @var SpecificPhysicalConnectionMapperInterface
+     */
+    protected $specificPhysicalConnectionMapper;
+    
+    /**
      *
      * @var LogicalConnection
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype,
+        SpecificPhysicalConnectionMapperInterface $specificPhysicalConnectionMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->specificPhysicalConnectionMapper = $specificPhysicalConnectionMapper;
     }
 
     /**
@@ -100,11 +108,11 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
      */
     public function save(LogicalConnection $dataObject)
     {
-        // @todo Only for testing! The logical connection type needs to be given as input!
-        $dataObject->setType('CD');
-
         $data = [];
+        // data retrieved directly from the input
         $data['type'] = $dataObject->getType();
+        // creating sub-objects
+        // data from the recently persisted objects
 
         $action = new Insert('logical_connection');
         $action->values($data);
@@ -116,6 +124,12 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
+                // creating sub-objects: in this case only now possible, since the $newId is needed
+                $newSpecificPhysicalConnections = [];
+                foreach ($dataObject->getSpecificPhysicalConnections() as $specificPhysicalConnection) {
+                    $specificPhysicalConnection->getBasicPhysicalConnection()->getLogicalConnection()->setId($newId);
+                    $newSpecificPhysicalConnections[] = $this->specificPhysicalConnectionMapper->save($specificPhysicalConnection);
+                }
             }
             return $dataObject;
         }

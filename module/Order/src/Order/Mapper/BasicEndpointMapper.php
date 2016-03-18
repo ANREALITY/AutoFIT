@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\User;
+use DbSystel\DataObject\BasicEndpoint;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class UserMapper implements UserMapperInterface
+class BasicEndpointMapper implements BasicEndpointMapperInterface
 {
 
     /**
@@ -28,29 +28,51 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @var User
+     * @var BasicEndpoint
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, User $prototype)
+    /**
+     *
+     * @var ServerMapperInterface
+     */
+    protected $serverMapper;
+
+    /**
+     *
+     * @var ApplicationMapperInterface
+     */
+    protected $applicationMapper;
+
+    /**
+     *
+     * @var CustomerMapperInterface
+     */
+    protected $customerMapper;
+
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, BasicEndpoint $prototype, 
+        ServerMapperInterface $serverMapper, ApplicationMapperInterface $applicationMapper, 
+        CustomerMapperInterface $customerMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->serverMapper = $serverMapper;
+        $this->applicationMapper = $applicationMapper;
+        $this->customerMapper = $customerMapper;
     }
 
     /**
      *
-     * @param int|string $id
+     * {@inheritDoc}
      *
-     * @return User
-     * @throws \InvalidArgumentException
+     * @see BasicEndpointMapper::find()
      */
     public function find($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          * $select->where(array(
          * 'id = ?' => $id
          * ));
@@ -62,20 +84,20 @@ class UserMapper implements UserMapperInterface
          * return $this->hydrator->hydrate($result->current(), $this->prototype);
          * }
          *
-         * throw new \InvalidArgumentException("User with given ID:{$id} not found.");
+         * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @return array|User[]
+     * @return array|BasicEndpoint[]
      */
     public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();
@@ -93,29 +115,40 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @param User $dataObject
+     * @param BasicEndpoint $dataObject            
      *
-     * @return User
+     * @return LogicalConnection
      * @throws \Exception
      */
-    public function save(User $dataObject)
+    public function save(BasicEndpoint $dataObject)
     {
-        // @todo Check, if user exists!
         $data = [];
         // data retrieved directly from the input
-        $data['username'] = $dataObject->getUsername();
+        // $data['foo'] = $dataObject->getFoo();
+        $data['role'] = $dataObject->getRole();
+        $data['type'] = $dataObject->getType();
+        $data['server_place'] = $dataObject->getServerPlace();
+        $data['contact_person'] = $dataObject->getContactPerson();
+        $data['physical_connection_id'] = $dataObject->getSpecificPhysicalConnection()
+            ->getBasicPhysicalConnection()
+            ->getId();
         // creating sub-objects
-        // none
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        $newServer = $this->serverMapper->save($dataObject->getServer());
+        $newApplication = $this->applicationMapper->save($dataObject->getApplication());
+        $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
-        // none
-
-        $action = new Insert('user');
+        $data['server_name'] = $newServer->getId();
+        $data['application_technical_short_name'] = $newApplication->getTechnicalShortName();
+        $data['customer_id'] = $newCustomer->getId();
+        
+        $action = new Insert('endpoint');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

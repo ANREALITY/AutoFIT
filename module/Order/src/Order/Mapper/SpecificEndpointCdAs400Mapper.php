@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\User;
+use DbSystel\DataObject\AbstractSpecificEndpoint;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -10,8 +10,9 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\SpecificEndpointCdAs400;
 
-class UserMapper implements UserMapperInterface
+class SpecificEndpointCdAs400Mapper extends AbstractSpecificEndpointMapper
 {
 
     /**
@@ -28,29 +29,36 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @var User
+     * @var BasicEndpoint
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, User $prototype)
+    /**
+     *
+     * @var BasicEndpointMapperInterface
+     */
+    protected $basicEndpointMapper;
+
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+        SpecificEndpointCdAs400 $prototype, BasicEndpointMapperInterface $basicEndpointMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->basicEndpointMapper = $basicEndpointMapper;
     }
 
     /**
      *
-     * @param int|string $id
+     * {@inheritDoc}
      *
-     * @return User
-     * @throws \InvalidArgumentException
+     * @see AbstractSpecificEndpointMapper::find()
      */
     public function find($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          * $select->where(array(
          * 'id = ?' => $id
          * ));
@@ -62,20 +70,20 @@ class UserMapper implements UserMapperInterface
          * return $this->hydrator->hydrate($result->current(), $this->prototype);
          * }
          *
-         * throw new \InvalidArgumentException("User with given ID:{$id} not found.");
+         * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @return array|User[]
+     * @return array|AbstractSpecificEndpoint[]
      */
     public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();
@@ -93,29 +101,31 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @param User $dataObject
+     * @param SpecificEndpointCdAs400 $dataObject            
      *
-     * @return User
+     * @return LogicalConnection
      * @throws \Exception
      */
-    public function save(User $dataObject)
+    public function save(AbstractSpecificEndpoint $dataObject)
     {
-        // @todo Check, if user exists!
         $data = [];
         // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
         $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
         // creating sub-objects
-        // none
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        $newBasicEndpoint = $this->basicEndpointMapper->save($dataObject->getBasicEndpoint());
         // data from the recently persisted objects
-        // none
-
-        $action = new Insert('user');
+        $data['endpoint_id'] = $newBasicEndpoint->getId();
+        
+        $action = new Insert('endpoint_cd_as400');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

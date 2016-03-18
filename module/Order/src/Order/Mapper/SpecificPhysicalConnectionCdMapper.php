@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\User;
+use DbSystel\DataObject\AbstractSpecificPhysicalConnection;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -10,8 +10,10 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\SpecificPhysicalConnectionCd;
+use DbSystel\DataObject\BasicPhysicalConnection;
 
-class UserMapper implements UserMapperInterface
+class SpecificPhysicalConnectionCdMapper extends AbstractSpecificPhysicalConnectionMapper
 {
 
     /**
@@ -28,29 +30,35 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @var User
+     * @var BasicPhysicalConnection
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, User $prototype)
+    /**
+     *
+     * @var BasicPhysicalConnectionMapperInterface
+     */
+    protected $basicPhysicalConnectionMapper;
+
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+        SpecificPhysicalConnectionCd $prototype, BasicPhysicalConnectionMapperInterface $basicPhysicalConnectionMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->basicPhysicalConnectionMapper = $basicPhysicalConnectionMapper;
     }
 
     /**
-     *
-     * @param int|string $id
-     *
-     * @return User
-     * @throws \InvalidArgumentException
+     * 
+     * {@inheritDoc}
+     * @see \Order\Mapper\AbstractSpecificPhysicalConnectionMapper::find()
      */
     public function find($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          * $select->where(array(
          * 'id = ?' => $id
          * ));
@@ -62,20 +70,20 @@ class UserMapper implements UserMapperInterface
          * return $this->hydrator->hydrate($result->current(), $this->prototype);
          * }
          *
-         * throw new \InvalidArgumentException("User with given ID:{$id} not found.");
+         * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @return array|User[]
+     * @return array|AbstractSpecificPhysicalConnection[]
      */
     public function findAll(array $criteria = [])
     {
         /*
          * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
+         * $select = $sql->select('logical_connection');
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();
@@ -93,23 +101,24 @@ class UserMapper implements UserMapperInterface
 
     /**
      *
-     * @param User $dataObject
+     * @param SpecificPhysicalConnectionCd $dataObject
      *
-     * @return User
+     * @return LogicalConnection
      * @throws \Exception
      */
-    public function save(User $dataObject)
+    public function save(AbstractSpecificPhysicalConnection $dataObject)
     {
-        // @todo Check, if user exists!
         $data = [];
         // data retrieved directly from the input
-        $data['username'] = $dataObject->getUsername();
+        // $data['foo'] = $dataObject->getFoo();
+        $data['secure_plus'] = $dataObject->getSecurePlus();
         // creating sub-objects
-        // none
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        $newBasicPhysicalConnection = $this->basicPhysicalConnectionMapper->save($dataObject->getBasicPhysicalConnection());
         // data from the recently persisted objects
-        // none
+        $data['physical_connection_id'] = $newBasicPhysicalConnection->getId();
 
-        $action = new Insert('user');
+        $action = new Insert('physical_connection_cd');
         $action->values($data);
 
         $sql = new Sql($this->dbAdapter);
