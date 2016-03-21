@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\AbstractPhysicalConnection;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -10,8 +10,9 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\PhysicalConnectionCd;
 
-class LogicalConnectionMapper implements LogicalConnectionMapperInterface
+abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 {
 
     /**
@@ -27,32 +28,31 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     protected $hydrator;
 
     /**
-     * 
-     * @var PhysicalConnectionMapperInterface
-     */
-    protected $physicalConnectionMapper;
-    
-    /**
      *
-     * @var LogicalConnection
+     * @var AbstractPhysicalConnection
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype,
-        PhysicalConnectionMapperInterface $physicalConnectionMapper)
+    /**
+     *
+     * @var AbstractEndpointMapper
+     */
+    protected $endpointMapper;
+
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+        AbstractPhysicalConnection $prototype, AbstractEndpointMapper $endpointMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
-        $this->physicalConnectionMapper = $physicalConnectionMapper;
+        $this->endpointMapper = $endpointMapper;
     }
 
     /**
      *
-     * @param int|string $id
+     * {@inheritDoc}
      *
-     * @return LogicalConnection
-     * @throws \InvalidArgumentException
+     * @see AbstractPhysicalConnectionMapper::find()
      */
     public function find($id)
     {
@@ -77,7 +77,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @return array|LogicalConnection[]
+     * @return array|AbstractPhysicalConnection[]
      */
     public function findAll(array $criteria = [])
     {
@@ -101,38 +101,51 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @param LogicalConnection $dataObject
+     * @param AbstractPhysicalConnection $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
      */
-    public function save(LogicalConnection $dataObject)
+    public function save(AbstractPhysicalConnection $dataObject)
     {
         $data = [];
         // data retrieved directly from the input
-        $data['type'] = $dataObject->getType();
+        // $data['foo'] = $dataObject->getFoo();
+        $data['logical_connection_id'] = $dataObject->getLogicalConnection()->getId();
         // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-
-        $action = new Insert('logical_connection');
+        // none
+        
+        $action = new Insert('physical_connection');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
-                $newPhysicalConnections = [];
-                foreach ($dataObject->getPhysicalConnections() as $physicalConnection) {
+                $newEndpoints = [];
+                // @todo It's a hack! Decide between using a collection or two objects!!!
+                $dataObject->setEndpoints(
+                    [
+                        $dataObject->getEndpointSource(),
+                        $dataObject->getEndpointTarget()
+                    ]);
+                foreach ($dataObject->getEndpoints() as $endpoint) {
                     // @todo It's just a hack! Solve this another way!!!
-                    if (!$physicalConnection->getLogicalConnection()) {
-                        $physicalConnection->setLogicalConnection(new LogicalConnection());
+                    if (! $endpoint->getPhysicalConnection()) {
+                        $endpoint->setPhysicalConnection(new PhysicalConnectionCd());
                     }
-                    $physicalConnection->getLogicalConnection()->setId($newId);
-                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save($physicalConnection);
+                    if (! $endpoint->getPhysicalConnection()) {
+                        $endpoint->getPhysicalConnection()->setAbstractPhysicalConnection(
+                            new AbstractPhysicalConnection());
+                    }
+                    $endpoint->getPhysicalConnection()->setId($newId);
+                    $newEndpoints[] = $this->endpointMapper->save($endpoint);
                 }
             }
             return $dataObject;

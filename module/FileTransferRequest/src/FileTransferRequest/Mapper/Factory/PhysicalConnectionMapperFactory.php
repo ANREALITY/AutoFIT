@@ -18,6 +18,8 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new PhysicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionHydrator'), new PhysicalConnection());
+        return new PhysicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), 
+            $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\PhysicalConnectionHydrator'), 
+            new PhysicalConnection(), $serviceLocator->get('Order\Mapper\EndpointCdAs400Mapper'));
     }
 }

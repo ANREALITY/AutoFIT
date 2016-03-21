@@ -22,9 +22,9 @@ class LogicalConnection
 
     /**
      *
-     * @var AbstractSpecificPhysicalConnection[] @relationshipInversion
+     * @var AbstractPhysicalConnection[] @relationshipInversion
      */
-    protected $specificPhysicalConnections;
+    protected $physicalConnections;
 
     /**
      *
@@ -37,7 +37,7 @@ class LogicalConnection
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -55,7 +55,7 @@ class LogicalConnection
 
     /**
      *
-     * @param string $type
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -64,19 +64,19 @@ class LogicalConnection
 
     /**
      *
-     * @return the $specificPhysicalConnections
+     * @return the $physicalConnections
      */
-    public function getSpecificPhysicalConnections()
+    public function getPhysicalConnections()
     {
-        return $this->specificPhysicalConnections;
+        return $this->physicalConnections;
     }
 
     /**
      *
-     * @param multitype:\DbSystel\DataObject\AbstractSpecificPhysicalConnection $specificPhysicalConnections
+     * @param multitype:\DbSystel\DataObject\AbstractPhysicalConnection $physicalConnections            
      */
-    public function setSpecificPhysicalConnections($specificPhysicalConnections)
+    public function setPhysicalConnections($physicalConnections)
     {
-        $this->specificPhysicalConnections = $specificPhysicalConnections;
+        $this->physicalConnections = $physicalConnections;
     }
 }

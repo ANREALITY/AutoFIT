@@ -4,7 +4,7 @@ namespace DbSystel\Hydrator\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DbSystel\Hydrator\Strategy\Entity\GenericCollectionStrategy;
-use DbSystel\DataObject\SpecificPhysicalConnectionCd;
+use DbSystel\DataObject\PhysicalConnectionCd;
 use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 
 class LogicalConnectionHydratorFactory implements FactoryInterface
@@ -20,18 +20,18 @@ class LogicalConnectionHydratorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $logicalConnectionHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $specificPhysicalConnectionHydrator = $serviceLocator->get(
-            'DbSystel\Hydrator\SpecificPhysicalConnectionCdHydrator');
+        $physicalConnectionHydrator = $serviceLocator->get(
+            'DbSystel\Hydrator\PhysicalConnectionCdHydrator');
 
         // @todo AbstractFactory needed!!!
-        // $logicalConnectionHydrator->addStrategy('specificPhysicalConnection', new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new AbstractBasicPhysicalConnection()));
-        // $logicalConnectionHydrator->addStrategy('specificPhysical_connections', new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new SpecificPhysicalConnectionCd()));
-        $logicalConnectionHydrator->addStrategy('specific_physical_connections',
-            new GenericCollectionStrategy($specificPhysicalConnectionHydrator, new SpecificPhysicalConnectionCd()));
+        // $logicalConnectionHydrator->addStrategy('physicalConnection', new GenericCollectionStrategy($physicalConnectionHydrator, new AbstractAbstractPhysicalConnection()));
+        // $logicalConnectionHydrator->addStrategy('physical_connections', new GenericCollectionStrategy($physicalConnectionHydrator, new PhysicalConnectionCd()));
+        $logicalConnectionHydrator->addStrategy('physical_connections',
+            new GenericCollectionStrategy($physicalConnectionHydrator, new PhysicalConnectionCd()));
 
         $namingStrategy = new MapNamingStrategy(
             array(
-                'specific_physical_connections' => 'specificPhysicalConnections'
+                'physical_connections' => 'physicalConnections'
             ));
         $logicalConnectionHydrator->setNamingStrategy($namingStrategy);
 

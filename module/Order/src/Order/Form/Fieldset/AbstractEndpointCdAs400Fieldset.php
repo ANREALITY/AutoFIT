@@ -4,37 +4,41 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-abstract class AbstractServiceInvoicePositionFieldset extends Fieldset implements InputFilterProviderInterface
+abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointCdFieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = [])
+    public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
+
+        $this->setLabel(_('AS400'));
     }
 
     public function init()
     {
+        parent::init();
+        
         $this->add(
-            [
+            array(
                 'type' => 'text',
-                'name' => 'number',
+                'name' => 'username',
                 'options' => [
-                    'label' => _('service invoice position number'),
+                    'label' => _('username'),
                     'label_attributes' => [
-                        'class' => 'col-md-6'
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
                 ]
-            ]);
+            ));
     }
 
     public function getInputFilterSpecification()
     {
         return [
-            'number' => [
+            'username' => [
                 'required' => true
             ]
         ];

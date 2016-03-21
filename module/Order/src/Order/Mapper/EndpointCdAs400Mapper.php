@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -11,48 +11,14 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class LogicalConnectionMapper implements LogicalConnectionMapperInterface
+class EndpointCdAs400Mapper extends AbstractEndpointMapper
 {
 
     /**
      *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
+     * {@inheritDoc}
      *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
-    /**
-     * 
-     * @var PhysicalConnectionMapperInterface
-     */
-    protected $physicalConnectionMapper;
-    
-    /**
-     *
-     * @var LogicalConnection
-     */
-    protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype,
-        PhysicalConnectionMapperInterface $physicalConnectionMapper)
-    {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
-        $this->physicalConnectionMapper = $physicalConnectionMapper;
-    }
-
-    /**
-     *
-     * @param int|string $id
-     *
-     * @return LogicalConnection
-     * @throws \InvalidArgumentException
+     * @see AbstractEndpointMapper::find()
      */
     public function find($id)
     {
@@ -77,7 +43,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @return array|LogicalConnection[]
+     * @return array|AbstractEndpoint[]
      */
     public function findAll(array $criteria = [])
     {
@@ -101,39 +67,35 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @param LogicalConnection $dataObject
+     * @param EndpointCdAs400 $dataObject            
      *
-     * @return LogicalConnection
+     * @return EndpointCdAs400
      * @throws \Exception
      */
-    public function save(LogicalConnection $dataObject)
+    public function save(AbstractEndpoint $dataObject)
     {
+        $dataObject = parent::save($dataObject);
+        
         $data = [];
         // data retrieved directly from the input
-        $data['type'] = $dataObject->getType();
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
         // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-
-        $action = new Insert('logical_connection');
+        $data['endpoint_id'] = $dataObject->getId();
+        
+        $action = new Insert('endpoint_cd_as400');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
-                // creating sub-objects: in this case only now possible, since the $newId is needed
-                $newPhysicalConnections = [];
-                foreach ($dataObject->getPhysicalConnections() as $physicalConnection) {
-                    // @todo It's just a hack! Solve this another way!!!
-                    if (!$physicalConnection->getLogicalConnection()) {
-                        $physicalConnection->setLogicalConnection(new LogicalConnection());
-                    }
-                    $physicalConnection->getLogicalConnection()->setId($newId);
-                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save($physicalConnection);
-                }
             }
             return $dataObject;
         }

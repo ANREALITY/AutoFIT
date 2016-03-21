@@ -10,19 +10,15 @@ $userFieldset = $fileTransferRequestFieldset->get('user');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
-$specificPhysicalConnectionsFieldset = $logicalConnectionFieldset->get('specific_physical_connections');
-$specificEndpointCdAs400SourceFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get(
-    'basic_physical_connection')->get('specific_endpoint_source');
-$specificEndpointCdAs400TargetFieldset = $specificPhysicalConnectionsFieldset->getFieldsets()[0]->get(
-    'basic_physical_connection')->get('specific_endpoint_target');
-$basicEndpointCdSourceFieldset = $specificEndpointCdAs400SourceFieldset->get('basic_endpoint');
-$basicEndpointCdTargetFieldset = $specificEndpointCdAs400TargetFieldset->get('basic_endpoint');
-$applicationForSourceFieldset = $basicEndpointCdSourceFieldset->get('application');
-$customerForSourceFieldset = $basicEndpointCdSourceFieldset->get('customer');
-$serverForSourceFieldset = $basicEndpointCdSourceFieldset->get('server');
-$applicationForTargetFieldset = $basicEndpointCdTargetFieldset->get('application');
-$customerForTargetFieldset = $basicEndpointCdTargetFieldset->get('customer');
-$serverForTargetFieldset = $basicEndpointCdTargetFieldset->get('server');
+$physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
+$endpointCdAs400SourceFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_source');
+$endpointCdAs400TargetFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_target');
+$applicationForSourceFieldset = $endpointCdAs400SourceFieldset->get('application');
+$customerForSourceFieldset = $endpointCdAs400SourceFieldset->get('customer');
+$serverForSourceFieldset = $endpointCdAs400SourceFieldset->get('server');
+$applicationForTargetFieldset = $endpointCdAs400TargetFieldset->get('application');
+$customerForTargetFieldset = $endpointCdAs400TargetFieldset->get('customer');
+$serverForTargetFieldset = $endpointCdAs400TargetFieldset->get('server');
 ?>
 
 <?php
@@ -41,7 +37,7 @@ $fieldgroupFormRows = [
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -56,13 +52,13 @@ $fieldgroupName = 'basic-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - basic settings');
 $fieldgroupFormRows = [
-    $this->formRow($basicEndpointCdSourceFieldset->get('contact_person')),
-    $this->formRadio($basicEndpointCdSourceFieldset->get('server_place')),
+    $this->formRow($endpointCdAs400SourceFieldset->get('contact_person')),
+    $this->formRadio($endpointCdAs400SourceFieldset->get('server_place')),
     $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($serverForSourceFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -77,13 +73,13 @@ $fieldgroupName = 'basic-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
-    $this->formRow($basicEndpointCdTargetFieldset->get('contact_person')),
-    $this->formRadio($basicEndpointCdTargetFieldset->get('server_place')),
+    $this->formRow($endpointCdAs400TargetFieldset->get('contact_person')),
+    $this->formRadio($endpointCdAs400TargetFieldset->get('server_place')),
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($serverForTargetFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -98,9 +94,9 @@ $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
-    $this->formRow($specificEndpointCdAs400SourceFieldset->get('username'))
+    $this->formRow($endpointCdAs400SourceFieldset->get('username'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -115,10 +111,10 @@ $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - specific settings');
 $fieldgroupFormRows = [
-    $this->formRow($specificEndpointCdAs400TargetFieldset->get('username')),
-    $this->formRow($specificEndpointCdAs400TargetFieldset->get('folder'))
+    $this->formRow($endpointCdAs400TargetFieldset->get('username')),
+    $this->formRow($endpointCdAs400TargetFieldset->get('folder'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -133,9 +129,9 @@ $fieldgroupName = 'physical_connection_cd';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Connection');
 $fieldgroupFormRows = [
-    $this->formRow($specificPhysicalConnectionsFieldset->getFieldsets()[0]->get('secure_plus'))
+    $this->formRow($physicalConnectionsFieldset->getFieldsets()[0]->get('secure_plus'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
