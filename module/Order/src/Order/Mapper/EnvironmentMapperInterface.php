@@ -8,7 +8,7 @@ interface EnvironmentMapperInterface
 
     /**
      *
-     * @param int|string $severity
+     * @param int|string $severity            
      * @return Environment
      * @throws \InvalidArgumentException
      */
@@ -22,7 +22,7 @@ interface EnvironmentMapperInterface
 
     /**
      *
-     * @param Environment $dataObject
+     * @param Environment $dataObject            
      * @return ServiceInvoicePosition
      * @throws \Exception
      */

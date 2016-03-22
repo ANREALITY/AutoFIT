@@ -1,5 +1,8 @@
 <?php
-$form->setAttributes(['action', $this->url('create-order')])
+$form->setAttributes([
+    'action',
+    $this->url('create-order')
+])
     ->prepare();
 echo $this->form()->openTag($form);
 ?>

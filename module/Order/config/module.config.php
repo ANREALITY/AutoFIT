@@ -8,7 +8,7 @@ return [
                     'route' => '/order/process/start',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'start',
+                        'action' => 'start'
                     ]
                 ]
             ],
@@ -21,7 +21,7 @@ return [
                         'action' => 'create',
                         'connectionType' => '',
                         'endpointSourceType' => '',
-                        'endpointTargetType' => '',
+                        'endpointTargetType' => ''
                     ]
                 ]
             ],

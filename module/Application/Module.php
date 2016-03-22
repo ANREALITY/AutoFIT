@@ -6,7 +6,6 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
@@ -15,17 +14,18 @@ use Zend\Validator\AbstractValidator;
 
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
 
-        $translator = $e->getApplication()->getServiceManager()->get('translator');
-        $translator->addTranslationFile(
-            'phpArray',
-            './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php'
-        );
+        $translator = $e->getApplication()
+            ->getServiceManager()
+            ->get('translator');
+        $translator->addTranslationFile('phpArray',
+            './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
     }
 
@@ -40,9 +40,9 @@ class Module
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'DbSystel' => __DIR__ . '/../../vendor/db-systel/dbs-common-lib/src',
-                ),
-            ),
+                    'DbSystel' => __DIR__ . '/../../vendor/db-systel/dbs-common-lib/src'
+                )
+            )
         );
     }
 }

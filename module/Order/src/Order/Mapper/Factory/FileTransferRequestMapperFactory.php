@@ -19,8 +19,8 @@ class FileTransferRequestMapperFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new FileTransferRequest(), $serviceLocator->get('Order\Mapper\LogicalConnectionMapper'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest(),
+            $serviceLocator->get('Order\Mapper\LogicalConnectionMapper'),
             $serviceLocator->get('Order\Mapper\UserMapper'));
     }
 }
