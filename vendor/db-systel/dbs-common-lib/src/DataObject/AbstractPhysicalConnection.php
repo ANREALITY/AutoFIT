@@ -18,19 +18,13 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @var AbstractEndpoint[] @relationshipInversion
-     */
-    protected $endpoints;
-
-    /**
-     *
-     * @var AbstractEndpoint
+     * @var AbstractEndpoint @relationshipInversion
      */
     protected $endpointSource;
 
     /**
      *
-     * @var AbstractEndpoint
+     * @var AbstractEndpoint @relationshipInversion
      */
     protected $endpointTarget;
 
@@ -72,24 +66,6 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @return the $endpoints
-     */
-    public function getEndpoints()
-    {
-        return $this->endpoints;
-    }
-
-    /**
-     *
-     * @param multitype:\DbSystel\DataObject\AbstractEndpoint $endpoints            
-     */
-    public function setEndpoints($endpoints)
-    {
-        $this->endpoints = $endpoints;
-    }
-
-    /**
-     *
      * @return the $endpointSource
      */
     public function getEndpointSource()
@@ -99,7 +75,7 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractEndpoint $endpointSource            
+     * @param AbstractEndpoint $endpointSource
      */
     public function setEndpointSource($endpointSource)
     {
@@ -117,7 +93,7 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractEndpoint $endpointTarget            
+     * @param AbstractEndpoint $endpointTarget
      */
     public function setEndpointTarget($endpointTarget)
     {
