@@ -19,7 +19,7 @@ class EndpointCdAs400MapperFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new EndpointCdAs400Mapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\EndpointCdAs400Hydrator'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new EndpointCdAs400(), $serviceLocator->get('Order\Mapper\ServerMapper'),
             $serviceLocator->get('Order\Mapper\ApplicationMapper'), $serviceLocator->get('Order\Mapper\CustomerMapper'));
     }

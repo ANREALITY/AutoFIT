@@ -19,6 +19,6 @@ class EnvironmentMapperFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new EnvironmentMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\EnvironmentHydrator'), new Environment());
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Environment());
     }
 }

@@ -19,7 +19,7 @@ class LogicalConnectionMapperFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new LogicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\LogicalConnectionHydrator'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new LogicalConnection(), $serviceLocator->get('Order\Mapper\PhysicalConnectionCdMapper'));
     }
 }

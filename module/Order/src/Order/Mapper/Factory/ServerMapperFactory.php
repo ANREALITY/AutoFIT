@@ -19,6 +19,6 @@ class ServerMapperFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new ServerMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('DbSystel\Hydrator\ServerHydrator'), new Server());
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Server());
     }
 }
