@@ -1,6 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\AbstractEndpoint;
 class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
 {
 
@@ -14,5 +15,15 @@ class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
     public function init()
     {
         parent::init();
+    }
+
+    public function getInputFilterSpecification()
+    {
+        return [];
+    }
+    
+    protected function getConcreteRole()
+    {
+        return AbstractEndpoint::ROLE_SOURCE;
     }
 }

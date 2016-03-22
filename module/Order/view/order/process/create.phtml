@@ -52,6 +52,7 @@ $fieldgroupName = 'basic-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - basic settings');
 $fieldgroupFormRows = [
+    $this->formRow($endpointCdAs400SourceFieldset->get('role')),
     $this->formRow($endpointCdAs400SourceFieldset->get('contact_person')),
     $this->formRadio($endpointCdAs400SourceFieldset->get('server_place')),
     $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
@@ -73,6 +74,7 @@ $fieldgroupName = 'basic-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
+    $this->formRow($endpointCdAs400TargetFieldset->get('role')),
     $this->formRow($endpointCdAs400TargetFieldset->get('contact_person')),
     $this->formRadio($endpointCdAs400TargetFieldset->get('server_place')),
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),

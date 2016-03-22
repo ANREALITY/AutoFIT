@@ -4,6 +4,10 @@ namespace DbSystel\DataObject;
 abstract class AbstractEndpoint
 {
 
+    const ROLE_SOURCE = 'source';
+
+    const ROLE_TARGET = 'target';
+
     /**
      *
      * @var int
