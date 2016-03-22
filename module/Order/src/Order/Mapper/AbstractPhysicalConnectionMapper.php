@@ -36,15 +36,23 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
      *
      * @var AbstractEndpointMapper
      */
-    protected $endpointMapper;
+    protected $endpointSourceMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        AbstractPhysicalConnection $prototype, AbstractEndpointMapper $endpointMapper)
+    /**
+     *
+     * @var AbstractEndpointMapper
+     */
+    protected $endpointTargetMapper;
+
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+        AbstractPhysicalConnection $prototype, AbstractEndpointMapper $endpointSourceMapper, 
+        AbstractEndpointMapper $endpointTargetMapper)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
-        $this->endpointMapper = $endpointMapper;
+        $this->endpointSourceMapper = $endpointSourceMapper;
+        $this->endpointTargetMapper = $endpointTargetMapper;
     }
 
     /**
@@ -100,7 +108,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
 
     /**
      *
-     * @param AbstractPhysicalConnection $dataObject
+     * @param AbstractPhysicalConnection $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -115,24 +123,24 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         // none
-
+        
         $action = new Insert('physical_connection');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newEndpoints = [];
                 $dataObject->getEndpointSource()->setPhysicalConnection($dataObject);
-                $newEndpointSource = $this->endpointMapper->save($dataObject->getEndpointSource());
+                $newEndpointSource = $this->endpointSourceMapper->save($dataObject->getEndpointSource());
                 $dataObject->setEndpointSource($newEndpointSource);
                 $dataObject->getEndpointTarget()->setPhysicalConnection($dataObject);
-                $newEndpointTarget = $this->endpointMapper->save($dataObject->getEndpointTarget());
+                $newEndpointTarget = $this->endpointTargetMapper->save($dataObject->getEndpointTarget());
                 $dataObject->setEndpointTarget($newEndpointTarget);
             }
             return $dataObject;

@@ -14,17 +14,27 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
 
     public function init()
     {
-        $this->add(
-            [
-                'name' => 'endpoint_source',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Source',
-                'options' => []
-            ]);
+        // @todo make it dynamic!
+        $endpointType = 'CdAs400';
+        if ($endpointType === 'CdAs400') {
+            $endpointSourceFieldsetServiceName = 'Order\Form\Fieldset\EndpointCdAs400Source';
+            $endpointTargetFieldsetServiceName = 'Order\Form\Fieldset\EndpointCdAs400Target';
+        } elseif ($endpointType === 'CdTandem') {
+            $endpointSourceFieldsetServiceName = 'Order\Form\Fieldset\EndpointCdTandemSource';
+            $endpointTargetFieldsetServiceName = 'Order\Form\Fieldset\EndpointCdTandemTarget';
+        } // ...
 
         $this->add(
             [
+                'name' => 'endpoint_source',
+                'type' => $endpointSourceFieldsetServiceName,
+                'options' => []
+            ]);
+        
+        $this->add(
+            [
                 'name' => 'endpoint_target',
-                'type' => 'Order\Form\Fieldset\EndpointCdAs400Target',
+                'type' => $endpointTargetFieldsetServiceName,
                 'options' => []
             ]);
     }
