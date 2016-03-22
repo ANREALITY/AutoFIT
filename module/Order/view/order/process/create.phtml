@@ -10,9 +10,9 @@ $userFieldset = $fileTransferRequestFieldset->get('user');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
-$physicalConnectionsFieldset = $logicalConnectionFieldset->get('physical_connections');
-$endpointCdAs400SourceFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_source');
-$endpointCdAs400TargetFieldset = $physicalConnectionsFieldset->getFieldsets()[0]->get('endpoint_target');
+$physicalConnectionsCollection = $logicalConnectionFieldset->get('physical_connections');
+$endpointCdAs400SourceFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_source');
+$endpointCdAs400TargetFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_target');
 $applicationForSourceFieldset = $endpointCdAs400SourceFieldset->get('application');
 $customerForSourceFieldset = $endpointCdAs400SourceFieldset->get('customer');
 $serverForSourceFieldset = $endpointCdAs400SourceFieldset->get('server');
@@ -131,7 +131,7 @@ $fieldgroupName = 'physical_connection_cd';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Connection');
 $fieldgroupFormRows = [
-    $this->formRow($physicalConnectionsFieldset->getFieldsets()[0]->get('secure_plus'))
+    $this->formRow($physicalConnectionsCollection->getFieldsets()[0]->get('secure_plus'))
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
