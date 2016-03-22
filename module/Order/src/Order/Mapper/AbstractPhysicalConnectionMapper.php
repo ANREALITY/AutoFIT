@@ -140,10 +140,6 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
                     if (! $endpoint->getPhysicalConnection()) {
                         $endpoint->setPhysicalConnection(new PhysicalConnectionCd());
                     }
-                    if (! $endpoint->getPhysicalConnection()) {
-                        $endpoint->getPhysicalConnection()->setAbstractPhysicalConnection(
-                            new AbstractPhysicalConnection());
-                    }
                     $endpoint->getPhysicalConnection()->setId($newId);
                     $newEndpoints[] = $this->endpointMapper->save($endpoint);
                 }
