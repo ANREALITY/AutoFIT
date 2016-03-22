@@ -10,7 +10,6 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
-use DbSystel\DataObject\PhysicalConnectionCd;
 
 abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 {
@@ -136,15 +135,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
                         $dataObject->getEndpointTarget()
                     ]);
                 foreach ($dataObject->getEndpoints() as $endpoint) {
-                    // @todo It's just a hack! Solve this another way!!!
-                    if (! $endpoint->getPhysicalConnection()) {
-                        $endpoint->setPhysicalConnection(new PhysicalConnectionCd());
-                    }
-                    if (! $endpoint->getPhysicalConnection()) {
-                        $endpoint->getPhysicalConnection()->setAbstractPhysicalConnection(
-                            new AbstractPhysicalConnection());
-                    }
-                    $endpoint->getPhysicalConnection()->setId($newId);
+                    $endpoint->setPhysicalConnection($dataObject);
                     $newEndpoints[] = $this->endpointMapper->save($endpoint);
                 }
             }

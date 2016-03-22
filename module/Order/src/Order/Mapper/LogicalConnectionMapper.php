@@ -127,11 +127,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newPhysicalConnections = [];
                 foreach ($dataObject->getPhysicalConnections() as $physicalConnection) {
-                    // @todo It's just a hack! Solve this another way!!!
-                    if (!$physicalConnection->getLogicalConnection()) {
-                        $physicalConnection->setLogicalConnection(new LogicalConnection());
-                    }
-                    $physicalConnection->getLogicalConnection()->setId($newId);
+                    $physicalConnection->setLogicalConnection($dataObject);
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save($physicalConnection);
                 }
             }
