@@ -14,7 +14,7 @@ class ArticleHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -22,16 +22,16 @@ class ArticleHydratorFactory implements FactoryInterface
     {
         $articleHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $productTypeHydrator = $serviceLocator->get('DbSystel\Hydrator\ProductTypeHydrator');
-
-        $articleHydrator->addStrategy('product_type',
+        
+        $articleHydrator->addStrategy('product_type', 
             new GenericEntityStrategy($productTypeHydrator, new ProductType()));
-
+        
         $nameMapping = array(
             'product_type' => 'productType'
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $articleHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $articleHydrator;
     }
 }

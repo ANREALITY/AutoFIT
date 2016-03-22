@@ -34,7 +34,7 @@ class GenericCollectionStrategy implements StrategyInterface
 
     /**
      *
-     * @param HydratorInterface $hydrator
+     * @param HydratorInterface $hydrator            
      */
     public function setHydrator($hydrator)
     {
@@ -52,7 +52,7 @@ class GenericCollectionStrategy implements StrategyInterface
 
     /**
      *
-     * @param object $prototype
+     * @param object $prototype            
      */
     public function setPrototype($prototype)
     {

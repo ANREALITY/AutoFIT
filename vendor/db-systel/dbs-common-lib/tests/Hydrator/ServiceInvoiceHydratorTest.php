@@ -24,8 +24,8 @@ class ServiceInvoiceHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new ServiceInvoice());
-
-        $this->assertEquals(static::CHEXTURE['environment']['severity'],
+        
+        $this->assertEquals(static::CHEXTURE['environment']['severity'], 
             $hydratedObject->getEnvironment()
                 ->getSeverity());
     }

@@ -39,7 +39,7 @@ class ServiceInvoice
 
     /**
      *
-     * @param string $number
+     * @param string $number            
      */
     public function setNumber($number)
     {
@@ -57,7 +57,7 @@ class ServiceInvoice
 
     /**
      *
-     * @param string $description
+     * @param string $description            
      */
     public function setDescription($description)
     {
@@ -75,7 +75,7 @@ class ServiceInvoice
 
     /**
      *
-     * @param \DataObject\Application $application
+     * @param \DataObject\Application $application            
      */
     public function setApplication($application)
     {
@@ -93,7 +93,7 @@ class ServiceInvoice
 
     /**
      *
-     * @param \DataObject\Environment $environment
+     * @param \DataObject\Environment $environment            
      */
     public function setEnvironment($environment)
     {

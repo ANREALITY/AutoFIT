@@ -90,7 +90,7 @@ return [
 
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
             'Order\Mapper\EndpointCdAs400Mapper' => 'Order\Mapper\Factory\EndpointCdAs400MapperFactory',
-            'Order\Mapper\PhysicalConnectionCdMapper' => 'Order\Mapper\Factory\PhysicalConnectionCdMapperFactory',            
+            'Order\Mapper\PhysicalConnectionCdMapper' => 'Order\Mapper\Factory\PhysicalConnectionCdMapperFactory',
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'

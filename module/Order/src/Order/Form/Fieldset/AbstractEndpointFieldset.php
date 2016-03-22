@@ -15,7 +15,6 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
 
     public function init()
     {
-        
         $this->add(
             [
                 'type' => 'text',
@@ -84,6 +83,6 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     {
         return [];
     }
-    
+
     abstract protected function getConcreteRole();
 }

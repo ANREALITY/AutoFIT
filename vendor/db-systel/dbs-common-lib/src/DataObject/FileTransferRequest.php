@@ -51,7 +51,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -69,7 +69,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param string $changeNumber
+     * @param string $changeNumber            
      */
     public function setChangeNumber($changeNumber)
     {
@@ -87,7 +87,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param LogicalConnection $logicalConnection
+     * @param LogicalConnection $logicalConnection            
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -105,7 +105,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePositionBasic
+     * @param ServiceInvoicePosition $serviceInvoicePositionBasic            
      */
     public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
     {
@@ -123,7 +123,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
+     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal            
      */
     public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
     {
@@ -141,7 +141,7 @@ class FileTransferRequest
 
     /**
      *
-     * @param User $user
+     * @param User $user            
      */
     public function setUser($user)
     {

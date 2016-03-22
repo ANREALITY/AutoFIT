@@ -17,7 +17,7 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
     public function init()
     {
         parent::init();
-        
+
         $this->add(
             array(
                 'type' => 'text',

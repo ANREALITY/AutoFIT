@@ -15,7 +15,7 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -25,14 +25,14 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
         $serviceInvoiceHydrator = $serviceLocator->get('DbSystel\Hydrator\ServiceInvoiceHydrator');
         $articleHydrator = $serviceLocator->get('DbSystel\Hydrator\ArticleHydrator');
         $serviceInvoicePositionStatusHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice',
+        
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice', 
             new GenericEntityStrategy($serviceInvoiceHydrator, new ServiceInvoice()));
-        $serviceInvoicePositionHydrator->addStrategy('article',
+        $serviceInvoicePositionHydrator->addStrategy('article', 
             new GenericEntityStrategy($articleHydrator, new Article()));
-        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status',
+        $serviceInvoicePositionHydrator->addStrategy('service_invoice_position_status', 
             new GenericEntityStrategy($serviceInvoicePositionStatusHydrator, new ServiceInvoicePositionStatus()));
-
+        
         $namingStrategy = new MapNamingStrategy(
             array(
                 'order_quantity' => 'orderQuantity',
@@ -40,7 +40,7 @@ class ServiceInvoicePositionHydratorFactory implements FactoryInterface
                 'service_invoice_position_status' => 'serviceInvoicePositionStatus'
             ));
         $serviceInvoicePositionHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $serviceInvoicePositionHydrator;
     }
 }

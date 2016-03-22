@@ -14,7 +14,7 @@ class ServiceInvoiceHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -23,15 +23,15 @@ class ServiceInvoiceHydratorFactory implements FactoryInterface
         $serviceInvoiceHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $applicationHydrator = $serviceLocator->get('DbSystel\Hydrator\ApplicationHydrator');
         $environmentHydrator = $serviceLocator->get('DbSystel\Hydrator\EnvironmentHydrator');
-
-        $serviceInvoiceHydrator->addStrategy('application',
+        
+        $serviceInvoiceHydrator->addStrategy('application', 
             new GenericEntityStrategy($applicationHydrator, new Application()));
-        $serviceInvoiceHydrator->addStrategy('environment',
+        $serviceInvoiceHydrator->addStrategy('environment', 
             new GenericEntityStrategy($environmentHydrator, new Environment()));
-
+        
         $namingStrategy = new MapNamingStrategy(array());
         $serviceInvoiceHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $serviceInvoiceHydrator;
     }
 }

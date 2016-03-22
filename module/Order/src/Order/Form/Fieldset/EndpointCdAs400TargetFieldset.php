@@ -2,6 +2,7 @@
 namespace Order\Form\Fieldset;
 
 use DbSystel\DataObject\AbstractEndpoint;
+
 class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
 {
 
@@ -41,7 +42,7 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
             ]
         ];
     }
-    
+
     protected function getConcreteRole()
     {
         return AbstractEndpoint::ROLE_TARGET;

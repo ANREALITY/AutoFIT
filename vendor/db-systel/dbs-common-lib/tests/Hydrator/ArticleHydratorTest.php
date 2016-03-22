@@ -20,8 +20,8 @@ class ArticleHydratorTest extends AbstractHydratorTest
     public function testHydrate()
     {
         $hydratedObject = $this->getHydrator()->hydrate($this->createFixtureArray(), new Article());
-
-        $this->assertEquals(static::CHEXTURE['product_type']['name'],
+        
+        $this->assertEquals(static::CHEXTURE['product_type']['name'], 
             $hydratedObject->getProductType()
                 ->getName());
     }

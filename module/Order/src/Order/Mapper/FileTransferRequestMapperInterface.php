@@ -8,7 +8,7 @@ interface FileTransferRequestMapperInterface
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
      */
@@ -22,7 +22,7 @@ interface FileTransferRequestMapperInterface
 
     /**
      *
-     * @param FileTransferRequest $dataObject
+     * @param FileTransferRequest $dataObject            
      * @return FileTransferRequest
      * @throws \Exception
      */

@@ -15,7 +15,7 @@ class ServerService implements ServerServiceInterface
 
     /**
      *
-     * @param ServerMapperInterface $serverMapper
+     * @param ServerMapperInterface $serverMapper            
      */
     public function __construct(ServerMapperInterface $serverMapper)
     {
