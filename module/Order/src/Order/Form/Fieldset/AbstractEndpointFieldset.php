@@ -3,7 +3,6 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {
