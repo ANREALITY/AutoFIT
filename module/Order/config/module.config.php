@@ -2,13 +2,26 @@
 return [
     'router' => [
         'routes' => [
-            'create-order' => [
+            'start-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
-                    'route' => '/order/process/create',
+                    'route' => '/order/process/start',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'create'
+                        'action' => 'start',
+                    ]
+                ]
+            ],
+            'create-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/create/:connectionType/:endpointSourceType/:endpointTargetType',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'create',
+                        'connectionType' => '',
+                        'endpointSourceType' => '',
+                        'endpointTargetType' => '',
                     ]
                 ]
             ],

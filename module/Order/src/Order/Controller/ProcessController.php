@@ -24,7 +24,7 @@ class ProcessController extends AbstractActionController
         $this->fileTransferRequestService = $fileTransferRequestService;
     }
 
-    public function indexAction()
+    public function startAction()
     {
         return new ViewModel();
     }
