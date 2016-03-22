@@ -15,7 +15,7 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -28,15 +28,15 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
         $serviceInvoicePositionHydratorPersonalHydrator = $serviceLocator->get(
             'DbSystel\Hydrator\ServiceInvoicePositionHydrator');
         $userHydrator = $serviceLocator->get('DbSystel\Hydrator\UserHydrator');
-
-        $fileTransferRequestHydrator->addStrategy('logical_connection',
+        
+        $fileTransferRequestHydrator->addStrategy('logical_connection', 
             new GenericEntityStrategy($logicalConnectionHydrator, new LogicalConnection()));
-        $fileTransferRequestHydrator->addStrategy('service_invoice_position_basic',
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_basic', 
             new GenericEntityStrategy($serviceInvoicePositionHydratorAbstractHydrator, new ServiceInvoicePosition()));
-        $fileTransferRequestHydrator->addStrategy('service_invoice_position_personal',
+        $fileTransferRequestHydrator->addStrategy('service_invoice_position_personal', 
             new GenericEntityStrategy($serviceInvoicePositionHydratorPersonalHydrator, new ServiceInvoicePosition()));
         $fileTransferRequestHydrator->addStrategy('user', new GenericEntityStrategy($userHydrator, new User()));
-
+        
         $namingStrategy = new MapNamingStrategy(
             array(
                 'change_number' => 'changeNumber',
@@ -45,7 +45,7 @@ class FileTransferRequestHydratorFactory implements FactoryInterface
                 'service_invoice_position_personal' => 'serviceInvoicePositionPersonal'
             ));
         $fileTransferRequestHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $fileTransferRequestHydrator;
     }
 }

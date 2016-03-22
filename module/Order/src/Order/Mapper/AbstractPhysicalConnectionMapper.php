@@ -38,7 +38,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
      */
     protected $endpointMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         AbstractPhysicalConnection $prototype, AbstractEndpointMapper $endpointMapper)
     {
         $this->dbAdapter = $dbAdapter;
@@ -100,7 +100,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
 
     /**
      *
-     * @param AbstractPhysicalConnection $dataObject            
+     * @param AbstractPhysicalConnection $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -115,14 +115,14 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         // none
-        
+
         $action = new Insert('physical_connection');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

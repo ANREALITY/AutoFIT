@@ -11,22 +11,22 @@ class ProductTypeHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $productTypeHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-
+        
         // no strategies
-
+        
         $nameMapping = array(
             'long_name' => 'longName'
         );
         $namingStrategy = new MapNamingStrategy($nameMapping);
         $productTypeHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $productTypeHydrator;
     }
 }

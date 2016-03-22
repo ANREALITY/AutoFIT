@@ -3,7 +3,6 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -15,7 +14,6 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
 
     public function init()
     {
-        
         $this->add(
             [
                 'type' => 'text',
@@ -84,6 +82,6 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     {
         return [];
     }
-    
+
     abstract protected function getConcreteRole();
 }

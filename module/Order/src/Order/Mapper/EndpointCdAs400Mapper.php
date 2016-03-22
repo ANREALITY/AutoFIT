@@ -67,7 +67,7 @@ class EndpointCdAs400Mapper extends AbstractEndpointMapper
 
     /**
      *
-     * @param EndpointCdAs400 $dataObject            
+     * @param EndpointCdAs400 $dataObject
      *
      * @return EndpointCdAs400
      * @throws \Exception
@@ -75,7 +75,7 @@ class EndpointCdAs400Mapper extends AbstractEndpointMapper
     public function save(AbstractEndpoint $dataObject)
     {
         $dataObject = parent::save($dataObject);
-        
+
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
@@ -85,14 +85,14 @@ class EndpointCdAs400Mapper extends AbstractEndpointMapper
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-        
+
         $action = new Insert('endpoint_cd_as400');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

@@ -27,18 +27,18 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     protected $hydrator;
 
     /**
-     * 
+     *
      * @var PhysicalConnectionMapperInterface
      */
     protected $physicalConnectionMapper;
-    
+
     /**
      *
      * @var LogicalConnection
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype,
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype, 
         PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
         $this->dbAdapter = $dbAdapter;
@@ -49,7 +49,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      *
      * @return LogicalConnection
      * @throws \InvalidArgumentException
@@ -101,7 +101,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @param LogicalConnection $dataObject
+     * @param LogicalConnection $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -113,14 +113,14 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
         $data['type'] = $dataObject->getType();
         // creating sub-objects
         // data from the recently persisted objects
-
+        
         $action = new Insert('logical_connection');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

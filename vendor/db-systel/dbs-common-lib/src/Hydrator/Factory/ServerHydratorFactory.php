@@ -13,7 +13,7 @@ class ServerHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -21,14 +21,14 @@ class ServerHydratorFactory implements FactoryInterface
     {
         $serverHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $serverTypeHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-
+        
         $serverHydrator->addStrategy('server_type', new GenericEntityStrategy($serverTypeHydrator, new ServerType()));
-
+        
         $namingStrategy = new MapNamingStrategy(array(
             'server_type' => 'serverType'
         ));
         $serverHydrator->setNamingStrategy($namingStrategy);
-
+        
         return $serverHydrator;
     }
 }

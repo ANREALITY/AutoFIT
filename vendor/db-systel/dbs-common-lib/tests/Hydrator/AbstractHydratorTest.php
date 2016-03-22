@@ -23,7 +23,7 @@ abstract class AbstractHydratorTest extends \PHPUnit_Framework_TestCase
 
     /**
      *
-     * @param \DbSystel\Hydrator\ClassMethods $hydrator
+     * @param \DbSystel\Hydrator\ClassMethods $hydrator            
      */
     public function setHydrator($hydrator)
     {
@@ -51,7 +51,7 @@ abstract class AbstractHydratorTest extends \PHPUnit_Framework_TestCase
     public function testExtract()
     {
         $extractedData = $this->getHydrator()->extract($this->createFixtureObject());
-
+        
         foreach (static::CHEXTURE as $key => $property) {
             $this->assertArraySubset([
                 $key => $property

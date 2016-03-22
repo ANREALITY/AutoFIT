@@ -15,7 +15,7 @@ class EnvironmentService implements EnvironmentServiceInterface
 
     /**
      *
-     * @param EnvironmentMapperInterface $environmentMapper
+     * @param EnvironmentMapperInterface $environmentMapper            
      */
     public function __construct(EnvironmentMapperInterface $environmentMapper)
     {
