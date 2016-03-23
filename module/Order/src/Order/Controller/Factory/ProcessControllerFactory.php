@@ -20,10 +20,13 @@ class ProcessControllerFactory implements FactoryInterface
         // $test2 = $request->getQuery();
         // $test3 = $request->getPost();
 
-        $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
-        $orderForm = $realServiceLocator->get('FormElementManager')->get('Order\Form\OrderForm');
-        $fileTransferRequest = new FileTransferRequest();
+        $service = new ProcessController(new FileTransferRequest(),
+            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
 
-        return new ProcessController($orderForm, $fileTransferRequest, $fileTransferRequestService);
+        $service->setOrderForm($realServiceLocator->get('FormElementManager')
+            ->get('Order\Form\OrderForm'));
+
+        return $service;
     }
+
 }

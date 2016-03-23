@@ -10,18 +10,26 @@ use Order\Service\FileTransferRequestService;
 class ProcessController extends AbstractActionController
 {
 
-    protected $orderForm = null;
-
     protected $fileTransferRequest = null;
 
     protected $fileTransferRequestService = null;
 
-    public function __construct(FormInterface $orderForm, FileTransferRequest $fileTransferRequest,
+    protected $orderForm = null;
+
+    public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
-        $this->orderForm = $orderForm;
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
+    }
+
+    /**
+     *
+     * @param FormInterface $orderForm
+     */
+    public function setOrderForm($orderForm)
+    {
+        $this->orderForm = $orderForm;
     }
 
     public function startAction()
@@ -59,5 +67,6 @@ class ProcessController extends AbstractActionController
             'fileTransferRequests' => $fileTransferRequests
         ]);
     }
+
 }
 
