@@ -39,7 +39,7 @@ class ProcessController extends AbstractActionController
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
 
-                // It's just a temporary fake - make it dynamic!
+                // It's just a temporary fake. @todo make it dynamic!
                 $this->fileTransferRequest->getUser()->setUsername('foobar');
 
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
