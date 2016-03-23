@@ -26,7 +26,7 @@ class LogicalConnectionMapperFactory implements FactoryInterface
         $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnection' . $connectionType . 'Mapper';
 
         return new LogicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection(),
-            $serviceLocator->get($physicalConnectionMapperServiceName));
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new LogicalConnection(), $serviceLocator->get($physicalConnectionMapperServiceName));
     }
 }

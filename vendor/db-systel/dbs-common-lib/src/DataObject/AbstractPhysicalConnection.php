@@ -75,7 +75,7 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @param AbstractEndpoint $endpointSource            
+     * @param AbstractEndpoint $endpointSource
      */
     public function setEndpointSource($endpointSource)
     {
@@ -93,7 +93,7 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @param AbstractEndpoint $endpointTarget            
+     * @param AbstractEndpoint $endpointTarget
      */
     public function setEndpointTarget($endpointTarget)
     {

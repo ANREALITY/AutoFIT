@@ -1,106 +1,81 @@
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
-<head>
-<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
         <?php echo $this->headTitle($this->translate('AutoFIT'))->setAutoEscape(false); ?>
 
-        <?php
-
-echo $this->headMeta()
+        <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')?>
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
 
         <!-- Le styles -->
-        <?php
-
-echo $this->headLink(
-            array(
-                'rel' => 'shortcut icon',
-                'type' => 'image/vnd.microsoft.icon',
-                'href' => $this->basePath() . '/img/favicon.ico'
-            ))
-            ->prependStylesheet($this->basePath() . '/css/style.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
-            ->appendStylesheet($this->basePath() . '/components/autocompletelikegoogle/jquery.autocomplete.css')?>
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+                        ->appendStylesheet($this->basePath() . '/components/autocompletelikegoogle/jquery.autocomplete.css')
+        ?>
 
         <!-- Scripts -->
         <?php
         echo $this->headScript()
             ->prependFile($this->basePath() . '/components/bootstrap/dist/js/bootstrap.js')
             ->prependFile($this->basePath() . '/components/jquery/dist/jquery.js')
-            ->prependFile($this->basePath() . '/components/respond/dest/respond.min.js', 'text/javascript',
-            array(
-                'conditional' => 'lt IE 9'
-            ))
-            ->prependFile($this->basePath() . '/components/html5shiv/dist/html5shiv.js', 'text/javascript',
-            array(
-                'conditional' => 'lt IE 9'
-            ));
-
-
+            ->prependFile($this->basePath() . '/components/respond/dest/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/components/html5shiv/dist/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+            
+            
+            
+        ;
         $this->headScript()->appendFile('/components/autocompletelikegoogle/jquery.autocomplete.js');
         $this->headScript()->appendFile('/js/autocomplete.js');
         echo $this->headScript();
         ?>
     </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top"
-        role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                    <span class="icon-bar"></span> <span
-                        class="icon-bar"></span> <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand"
-                    href="<?php echo $this->url('home') ?>"><img
-                    src="<?php echo $this->basePath('img/logo.png') ?>"
-                    alt="DB Systel Logo" /></a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logo.png') ?>" alt="DB Systel Logo"/></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
                         <?php
                         // Temporary solutions, so long as we don't have a real navigation.
-                        $routeMatch = $this->getHelperPluginManager()
+                        $routeMatch = $this
+                            ->getHelperPluginManager()
                             ->getServiceLocator()
                             ->get('Application')
                             ->getMvcEvent()
-                            ->getRouteMatch();
-                        $currentRoute = $routeMatch instanceof \Zend\Mvc\Router\RouteMatch ? $routeMatch->getMatchedRouteName() : null;
+                            ->getRouteMatch()
+                        ;
+                        $currentRoute = $routeMatch instanceof \Zend\Mvc\Router\RouteMatch
+                            ? $routeMatch->getMatchedRouteName()
+                            : null
+                        ;
                         ?>
-                        <li
-                        <?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    <li
-                        <?php echo $currentRoute == 'start-order' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('start-order') ?>"><?php echo $this->translate('New request') ?></a></li>
-                    <li
-                        <?php echo $currentRoute == 'list-orders' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('My orders') ?></a></li>
-                </ul>
+                        <li<?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li<?php echo $currentRoute == 'start-order' ? ' class="active"' : null;?>><a href="<?php echo $this->url('start-order') ?>"><?php echo $this->translate('New request') ?></a></li>
+                        <li<?php echo $currentRoute == 'list-orders' ? ' class="active"' : null;?>><a href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('My orders') ?></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+                <div id="current-user" class="navbar-collapse collapse"><span><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : null; ?></span></div>
             </div>
-            <!--/.nav-collapse -->
-            <div id="current-user" class="navbar-collapse collapse">
-                <span><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : null; ?></span>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
+        </nav>
+        <div class="container">
             <?php echo $this->content; ?>
             <hr>
-        <footer>
-            <p>
-                &copy; 2016
-                <!-- - <?php echo date('Y') ?> -->
-                DB Systel
-            </p>
-        </footer>
-    </div>
-    <!-- /container -->
+            <footer>
+                <p>&copy; 2016 <!-- - <?php echo date('Y') ?> --> DB Systel</p>
+            </footer>
+        </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>
 </html>
