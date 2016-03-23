@@ -12,7 +12,7 @@ class FileTransferRequestMapperFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ServiceLocatorInterface $serviceLocator            
      *
      * @return mixed
      */
@@ -21,13 +21,17 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $router = $serviceLocator->get('router');
         $request = $serviceLocator->get('request');
         $routerMatch = $router->match($request);
-
+        
         $connectionType = $routerMatch->getParam('connectionType');
         $logicalConnectionMapperServiceName = 'Order\Mapper\LogicalConnection' . $connectionType . 'Mapper';
-
-        return new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new FileTransferRequest(), $serviceLocator->get($logicalConnectionMapperServiceName),
-            $serviceLocator->get('Order\Mapper\UserMapper'));
+        
+        $service = new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), 
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
+        
+        $service->setLogicalConnectionMapper($serviceLocator->get($logicalConnectionMapperServiceName));
+        $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
+        
+        return $service;
     }
+
 }

@@ -21,15 +21,19 @@ class PhysicalConnectionCdMapperFactory implements FactoryInterface
         $router = $serviceLocator->get('router');
         $request = $serviceLocator->get('request');
         $routerMatch = $router->match($request);
-
+        
         $endpointSourceType = $routerMatch->getParam('endpointSourceType');
         $endpointSourceFieldsetServiceName = 'Order\Mapper\Endpoint' . $endpointSourceType . 'Mapper';
         $endpointTargetType = $routerMatch->getParam('endpointTargetType');
         $endpointTargetFieldsetServiceName = 'Order\Mapper\Endpoint' . $endpointTargetType . 'Mapper';
-
-        return new PhysicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), 
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new PhysicalConnectionCd(), 
-            $serviceLocator->get($endpointSourceFieldsetServiceName), 
-            $serviceLocator->get($endpointTargetFieldsetServiceName));
+        
+        $service = new PhysicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'), 
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new PhysicalConnectionCd());
+        
+        $service->setEndpointSourceMapper($serviceLocator->get($endpointSourceFieldsetServiceName));
+        $service->setEndpointTargetMapper($serviceLocator->get($endpointTargetFieldsetServiceName));
+        
+        return $service;
     }
+
 }

@@ -44,13 +44,28 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
      */
     protected $userMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype, 
-        LogicalConnectionMapperInterface $logicalConnectionMapper, UserMapperInterface $userMapper)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\LogicalConnectionMapperInterface $logicalConnectionMapper            
+     */
+    public function setLogicalConnectionMapper($logicalConnectionMapper)
+    {
         $this->logicalConnectionMapper = $logicalConnectionMapper;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\UserMapperInterface $userMapper            
+     */
+    public function setUserMapper($userMapper)
+    {
         $this->userMapper = $userMapper;
     }
 
@@ -145,4 +160,5 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

@@ -51,15 +51,37 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
      */
     protected $customerMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, AbstractEndpoint $prototype,
-        ServerMapperInterface $serverMapper, ApplicationMapperInterface $applicationMapper,
-        CustomerMapperInterface $customerMapper)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, AbstractEndpoint $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\ServerMapperInterface $serverMapper            
+     */
+    public function setServerMapper($serverMapper)
+    {
         $this->serverMapper = $serverMapper;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\ApplicationMapperInterface $applicationMapper            
+     */
+    public function setApplicationMapper($applicationMapper)
+    {
         $this->applicationMapper = $applicationMapper;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\CustomerMapperInterface $customerMapper            
+     */
+    public function setCustomerMapper($customerMapper)
+    {
         $this->customerMapper = $customerMapper;
     }
 
@@ -116,7 +138,7 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param AbstractEndpoint $dataObject
+     * @param AbstractEndpoint $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -139,14 +161,14 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
-
+        
         $action = new Insert('endpoint');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
@@ -155,4 +177,5 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

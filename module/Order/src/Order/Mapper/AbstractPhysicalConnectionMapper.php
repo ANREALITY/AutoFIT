@@ -45,13 +45,28 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
     protected $endpointTargetMapper;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
-        AbstractPhysicalConnection $prototype, AbstractEndpointMapper $endpointSourceMapper, 
-        AbstractEndpointMapper $endpointTargetMapper)
+        AbstractPhysicalConnection $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\AbstractEndpointMapper $endpointSourceMapper            
+     */
+    public function setEndpointSourceMapper($endpointSourceMapper)
+    {
         $this->endpointSourceMapper = $endpointSourceMapper;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\AbstractEndpointMapper $endpointTargetMapper            
+     */
+    public function setEndpointTargetMapper($endpointTargetMapper)
+    {
         $this->endpointTargetMapper = $endpointTargetMapper;
     }
 
@@ -147,4 +162,5 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

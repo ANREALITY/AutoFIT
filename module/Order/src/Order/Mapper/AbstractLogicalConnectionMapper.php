@@ -28,15 +28,15 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
 
     /**
      *
-     * @var PhysicalConnectionMapperInterface
-     */
-    protected $physicalConnectionMapper;
-
-    /**
-     *
      * @var LogicalConnection
      */
     protected $prototype;
+
+    /**
+     *
+     * @var PhysicalConnectionMapperInterface
+     */
+    protected $physicalConnectionMapper;
 
     /**
      *
@@ -44,12 +44,19 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
      */
     protected $type;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype, 
-        PhysicalConnectionMapperInterface $physicalConnectionMapper)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+    }
+
+    /**
+     *
+     * @param \Order\Mapper\PhysicalConnectionMapperInterface $physicalConnectionMapper            
+     */
+    public function setPhysicalConnectionMapper($physicalConnectionMapper)
+    {
         $this->physicalConnectionMapper = $physicalConnectionMapper;
     }
 
@@ -141,4 +148,5 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }
