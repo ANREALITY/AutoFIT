@@ -18,13 +18,12 @@ class LogicalConnectionMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // @todo make it dynamic!
-        $connectionType = LogicalConnection::TYPE_CD;
-        if ($connectionType === LogicalConnection::TYPE_CD) {
-            $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnectionCdMapper';
-        } elseif ($connectionType === LogicalConnection::TYPE_FTGW) {
-            $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnectionFtgwMapper';
-        }
+        $router = $serviceLocator->get('router');
+        $request = $serviceLocator->get('request');
+        $routerMatch = $router->match($request);
+
+        $connectionType = $routerMatch->getParam('connectionType');
+        $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnection' . $connectionType . 'Mapper';
 
         return new LogicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection(),
