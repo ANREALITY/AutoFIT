@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class LogicalConnectionMapper implements LogicalConnectionMapperInterface
+class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterface
 {
 
     /**
@@ -37,6 +37,12 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
      * @var LogicalConnection
      */
     protected $prototype;
+
+    /**
+     *
+     * @var type
+     */
+    protected $type;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype, 
         PhysicalConnectionMapperInterface $physicalConnectionMapper)
@@ -110,7 +116,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     {
         $data = [];
         // data retrieved directly from the input
-        $data['type'] = $dataObject->getType();
+        $data['type'] = $this->type;
         // creating sub-objects
         // data from the recently persisted objects
         

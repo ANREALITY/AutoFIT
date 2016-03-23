@@ -96,7 +96,7 @@ return [
             'Order\Mapper\ApplicationMapper' => 'Order\Mapper\Factory\ApplicationMapperFactory',
             'Order\Mapper\EnvironmentMapper' => 'Order\Mapper\Factory\EnvironmentMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
-            'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
+            'Order\Mapper\LogicalConnectionCdMapper' => 'Order\Mapper\Factory\LogicalConnectionCdMapperFactory',
             'Order\Mapper\ServerMapper' => 'Order\Mapper\Factory\ServerMapperFactory',
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',

@@ -1,12 +1,12 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Order\Mapper\LogicalConnectionMapper;
+use Order\Mapper\LogicalConnectionCdMapper;
 use DbSystel\DataObject\LogicalConnection;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class LogicalConnectionMapperFactory implements FactoryInterface
+class LogicalConnectionCdMapperFactory implements FactoryInterface
 {
 
     /**
@@ -25,7 +25,7 @@ class LogicalConnectionMapperFactory implements FactoryInterface
         $connectionType = $routerMatch->getParam('connectionType');
         $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnection' . $connectionType . 'Mapper';
 
-        return new LogicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+        return new LogicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new LogicalConnection(), $serviceLocator->get($physicalConnectionMapperServiceName));
     }
