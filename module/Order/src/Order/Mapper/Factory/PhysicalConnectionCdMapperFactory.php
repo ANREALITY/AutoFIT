@@ -18,19 +18,14 @@ class PhysicalConnectionCdMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // @todo make it dynamic!
-        $endpointSourceType = 'CdAs400';
-        if ($endpointSourceType === 'CdAs400') {
-            $endpointSourceFieldsetServiceName = 'Order\Mapper\EndpointCdAs400Mapper';
-        } elseif ($endpointSourceType === 'CdTandem') {
-            $endpointSourceFieldsetServiceName = 'Order\Mapper\EndpointCdTandemMapper';
-        } // ...
-        $endpointTargetType = 'CdAs400';
-        if ($endpointTargetType === 'CdAs400') {
-            $endpointTargetFieldsetServiceName = 'Order\Mapper\EndpointCdAs400Mapper';
-        } elseif ($endpointTargetType === 'CdTandem') {
-            $endpointTargetFieldsetServiceName = 'Order\Mapper\EndpointCdTandemMapper';
-        } // ...
+        $router = $serviceLocator->get('router');
+        $request = $serviceLocator->get('request');
+        $routerMatch = $router->match($request);
+
+        $endpointSourceType = $routerMatch->getParam('endpointSourceType');
+        $endpointSourceFieldsetServiceName = 'Order\Mapper\Endpoint' . $endpointSourceType . 'Mapper';
+        $endpointTargetType = $routerMatch->getParam('endpointTargetType');
+        $endpointTargetFieldsetServiceName = 'Order\Mapper\Endpoint' . $endpointTargetType . 'Mapper';
 
         return new PhysicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new PhysicalConnectionCd(),
