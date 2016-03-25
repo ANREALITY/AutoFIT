@@ -13,12 +13,12 @@ class ProcessControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
 
+        $service = new ProcessController(new FileTransferRequest(),
+            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
+
         $router = $realServiceLocator->get('router');
         $request = $realServiceLocator->get('request');
         $routerMatch = $router->match($request);
-
-        $service = new ProcessController(new FileTransferRequest(),
-            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
 
         $routerMatchParamsForOrderForm = [
             'connectionType',

@@ -18,12 +18,12 @@ class FileTransferRequestMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $service = new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
+
         $router = $serviceLocator->get('router');
         $request = $serviceLocator->get('request');
         $routerMatch = $router->match($request);
-
-        $service = new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
 
         $routerMatchParamsForOrderForm = [
             'connectionType',
