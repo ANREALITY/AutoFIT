@@ -11,7 +11,18 @@ class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new PhysicalConnectionFtgwFieldset();
+        $realServiceLocator = $serviceLocator->getServiceLocator();
+
+        $router = $realServiceLocator->get('router');
+        $request = $realServiceLocator->get('request');
+        $routerMatch = $router->match($request);
+
+        $endpointSourceType = $routerMatch->getParam('endpointSourceType');
+        $endpointSourceFieldsetServiceName = 'Order\Form\Fieldset\Endpoint' . $endpointSourceType . 'Source';
+        $endpointTargetType = $routerMatch->getParam('endpointTargetType');
+        $endpointTargetFieldsetServiceName = 'Order\Form\Fieldset\Endpoint' . $endpointTargetType . 'Target';
+
+        $fieldset = new PhysicalConnectionFtgwFieldset(null, [], $endpointSourceFieldsetServiceName, $endpointTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
