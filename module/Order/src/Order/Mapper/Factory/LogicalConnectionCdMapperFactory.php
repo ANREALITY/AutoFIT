@@ -18,15 +18,11 @@ class LogicalConnectionCdMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $router = $serviceLocator->get('router');
-        $request = $serviceLocator->get('request');
-        $routerMatch = $router->match($request);
-
         $service = new LogicalConnectionCdMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection());
 
-        $connectionType = $routerMatch->getParam('connectionType');
-        $physicalConnectionMapperServiceName = 'Order\Mapper\PhysicalConnection' . $connectionType . 'Mapper';
+        $properServiceNameDetector = $serviceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $physicalConnectionMapperServiceName = $properServiceNameDetector->getPhysicalConnectionMapperServiceName();
 
         $service->setPhysicalConnectionMapper($serviceLocator->get($physicalConnectionMapperServiceName));
 

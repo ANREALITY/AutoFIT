@@ -1,18 +1,23 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
+use Zend\ServiceManager\FactoryInterface;
 use Order\Form\Fieldset\PhysicalConnectionFtgwFieldset;
 use DbSystel\DataObject\PhysicalConnectionFtgw;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PhysicalConnectionFtgwFieldsetFactory extends AbstractPhysicalConnectionFieldsetFactory
+class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new PhysicalConnectionFtgwFieldset(null, [], 
-            $this->detectProperEndpointSourceFieldsetServiceName($serviceLocator), 
-            $this->detectProperEndpointTargetFieldsetServiceName($serviceLocator));
+        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
+            'Order\Utility\ProperServiceNameDetector');
+        $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
+        $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
+        
+        $fieldset = new PhysicalConnectionFtgwFieldset(null, [], $endpointSourceFieldsetServiceName, 
+            $endpointTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
