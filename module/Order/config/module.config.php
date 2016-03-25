@@ -102,6 +102,7 @@ return [
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
             'Order\Mapper\EndpointCdAs400Mapper' => 'Order\Mapper\Factory\EndpointCdAs400MapperFactory',
+            'Order\Mapper\EndpointCdTandemMapper' => 'Order\Mapper\Factory\EndpointCdTandemMapperFactory',
             'Order\Mapper\PhysicalConnectionCdMapper' => 'Order\Mapper\Factory\PhysicalConnectionCdMapperFactory',
             // data preparators
             // adapters
@@ -122,6 +123,9 @@ return [
             'Order\Form\Fieldset\EndpointCdAs400' => 'Order\Form\Fieldset\Factory\EndpointCdAs400FieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Source' => 'Order\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Target' => 'Order\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
+            'Order\Form\Fieldset\EndpointCdTandem' => 'Order\Form\Fieldset\Factory\EndpointCdTandemFieldsetFactory',
+            'Order\Form\Fieldset\EndpointCdTandemSource' => 'Order\Form\Fieldset\Factory\EndpointCdTandemSourceFieldsetFactory',
+            'Order\Form\Fieldset\EndpointCdTandemTarget' => 'Order\Form\Fieldset\Factory\EndpointCdTandemTargetFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequest' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnection' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionCd' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdFieldsetFactory',
@@ -137,6 +141,9 @@ return [
             'Order\Form\Fieldset\EndpointCdAs400' => false,
             'Order\Form\Fieldset\EndpointCdAs400Source' => false,
             'Order\Form\Fieldset\EndpointCdAs400Target' => false,
+            'Order\Form\Fieldset\EndpointCdTandem' => false,
+            'Order\Form\Fieldset\EndpointCdTandemSource' => false,
+            'Order\Form\Fieldset\EndpointCdTandemTarget' => false,
             'Order\Form\Fieldset\FileTransferRequest' => false,
             'Order\Form\Fieldset\LogicalConnection' => false,
             'Order\Form\Fieldset\PhysicalConnectionCd' => false,
