@@ -6,7 +6,7 @@ use Zend\Form\Fieldset;
 class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('physical_connection_cd', $options);
     }

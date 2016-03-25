@@ -7,7 +7,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
 

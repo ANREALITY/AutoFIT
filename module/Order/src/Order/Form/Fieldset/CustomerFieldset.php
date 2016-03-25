@@ -7,7 +7,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct('customer', $options);
     }
