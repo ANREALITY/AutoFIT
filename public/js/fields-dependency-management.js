@@ -31,34 +31,34 @@ $(document).ready(function() {
 function toggleEndpointSourceServerPlaceDependentFields(value) {
 	if (value == 'intranet') {
 		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('fast');
-		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeIn('fast');
+		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeIn('slow');
 	}
 	if (value == 'internet') {
 		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('slow');
 		$('input[name=' + fieldNameEndpointSourceName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeIn('fast');
+		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeIn('slow');
 	}
 }
 function toggleEndpointTargetServerPlaceDependentFields(value) {
 	if (value == 'intranet') {
 		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('fast');
-		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeIn('fast');
+		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeIn('slow');
 	}
 	if (value == 'internet') {
 		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
 		$('input[name=' + fieldNameEndpointTargetName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeOut('fast');
+		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeIn('fast');
+		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeIn('slow');
 	}
 }
