@@ -22,6 +22,12 @@ interface FileTransferRequestMapperInterface
 
     /**
      *
+     * @return array|FileTransferRequest[]
+     */
+    public function findAllWithBuldledData(array $criteria = []);
+
+    /**
+     *
      * @param FileTransferRequest $dataObject
      * @return FileTransferRequest
      * @throws \Exception

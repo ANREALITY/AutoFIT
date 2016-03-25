@@ -14,6 +14,12 @@ interface FileTransferRequestServiceInterface
 
     /**
      *
+     * @return array|FileTransferRequest[]
+     */
+    public function findAllWithBuldledData();
+
+    /**
+     *
      * @param int $id
      *            Identifier of the FileTransferRequest that should be returned
      * @return FileTransferRequest

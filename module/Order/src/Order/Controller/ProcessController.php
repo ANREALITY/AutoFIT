@@ -61,7 +61,7 @@ class ProcessController extends AbstractActionController
 
     public function listOrdersAction()
     {
-        $fileTransferRequests = $this->fileTransferRequestService->findAll()->toArray();
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
 
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests

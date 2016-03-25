@@ -37,6 +37,16 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      * {@inheritDoc}
      *
      */
+    public function findAllWithBuldledData()
+    {
+        return $this->fileTransferRequestMapper->findAllWithBuldledData();
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function findFileTransferRequest($id)
     {
         return $this->fileTransferRequestMapper->find($id);

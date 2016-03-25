@@ -124,6 +124,31 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
+     * @return array|FileTransferRequest[]
+     */
+    public function findAllWithBuldledData(array $criteria = [])
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('file_transfer_request');
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+
+            $return = $resultSet->initialize($result);
+
+            return $return;
+        }
+
+        return [];
+
+        throw new \Exception('Method not implemented: ' . __METHOD__);
+    }
+
+    /**
+     *
      * @param FileTransferRequest $dataObject
      *
      * @return FileTransferRequest
