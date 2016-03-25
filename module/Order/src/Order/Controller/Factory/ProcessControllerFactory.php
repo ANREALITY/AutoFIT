@@ -17,16 +17,16 @@ class ProcessControllerFactory implements FactoryInterface
         $request = $realServiceLocator->get('request');
         $routerMatch = $router->match($request);
 
-        $routerMathParamsForOrderForm = [
+        $service = new ProcessController(new FileTransferRequest(),
+            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
+
+        $routerMatchParamsForOrderForm = [
             'connectionType',
             'endpointSourceType',
             'endpointTargetType'
         ];
-        $isOrderRequest = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
-             count($routerMathParamsForOrderForm);
-
-        $service = new ProcessController(new FileTransferRequest(),
-            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
+        $isOrderRequest = count(array_intersect($routerMatchParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
+             count($routerMatchParamsForOrderForm);
 
         if ($isOrderRequest) {
             $service->setOrderForm(
