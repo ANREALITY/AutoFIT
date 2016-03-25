@@ -93,9 +93,9 @@ class Article
 
     /**
      *
-     * @param \DataObject\ProductType $productType            
+     * @param ProductType $productType            
      */
-    public function setProductType($productType)
+    public function setProductType(ProductType $productType)
     {
         $this->productType = $productType;
     }

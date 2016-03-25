@@ -53,18 +53,18 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param \Order\Mapper\LogicalConnectionMapperInterface $logicalConnectionMapper            
+     * @param LogicalConnectionMapperInterface $logicalConnectionMapper            
      */
-    public function setLogicalConnectionMapper($logicalConnectionMapper)
+    public function setLogicalConnectionMapper(LogicalConnectionMapperInterface $logicalConnectionMapper)
     {
         $this->logicalConnectionMapper = $logicalConnectionMapper;
     }
 
     /**
      *
-     * @param \Order\Mapper\UserMapperInterface $userMapper            
+     * @param UserMapperInterface $userMapper            
      */
-    public function setUserMapper($userMapper)
+    public function setUserMapper(UserMapperInterface $userMapper)
     {
         $this->userMapper = $userMapper;
     }

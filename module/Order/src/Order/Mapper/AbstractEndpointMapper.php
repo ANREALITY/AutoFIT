@@ -60,27 +60,27 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param \Order\Mapper\ServerMapperInterface $serverMapper            
+     * @param ServerMapperInterface $serverMapper            
      */
-    public function setServerMapper($serverMapper)
+    public function setServerMapper(ServerMapperInterface $serverMapper)
     {
         $this->serverMapper = $serverMapper;
     }
 
     /**
      *
-     * @param \Order\Mapper\ApplicationMapperInterface $applicationMapper            
+     * @param ApplicationMapperInterface $applicationMapper            
      */
-    public function setApplicationMapper($applicationMapper)
+    public function setApplicationMapper(ApplicationMapperInterface $applicationMapper)
     {
         $this->applicationMapper = $applicationMapper;
     }
 
     /**
      *
-     * @param \Order\Mapper\CustomerMapperInterface $customerMapper            
+     * @param CustomerMapperInterface $customerMapper            
      */
-    public function setCustomerMapper($customerMapper)
+    public function setCustomerMapper(CustomerMapperInterface $customerMapper)
     {
         $this->customerMapper = $customerMapper;
     }

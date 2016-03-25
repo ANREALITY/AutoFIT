@@ -53,9 +53,9 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
 
     /**
      *
-     * @param \Order\Mapper\PhysicalConnectionMapperInterface $physicalConnectionMapper            
+     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper            
      */
-    public function setPhysicalConnectionMapper($physicalConnectionMapper)
+    public function setPhysicalConnectionMapper(PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
         $this->physicalConnectionMapper = $physicalConnectionMapper;
     }

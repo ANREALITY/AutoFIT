@@ -105,9 +105,9 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param \DataObject\ServiceInvoice $serviceInvoice            
+     * @param ServiceInvoice $serviceInvoice            
      */
-    public function setServiceInvoice($serviceInvoice)
+    public function setServiceInvoice(ServiceInvoice $serviceInvoice)
     {
         $this->serviceInvoice = $serviceInvoice;
     }
@@ -123,9 +123,9 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param \DataObject\Article $article            
+     * @param Article $article            
      */
-    public function setArticle($article)
+    public function setArticle(Article $article)
     {
         $this->article = $article;
     }
@@ -141,9 +141,9 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param \DataObject\ServiceInvoicePositionStatus $serviceInvoicePositionStatus            
+     * @param ServiceInvoicePositionStatus $serviceInvoicePositionStatus            
      */
-    public function setServiceInvoicePositionStatus($serviceInvoicePositionStatus)
+    public function setServiceInvoicePositionStatus(ServiceInvoicePositionStatus $serviceInvoicePositionStatus)
     {
         $this->serviceInvoicePositionStatus = $serviceInvoicePositionStatus;
     }

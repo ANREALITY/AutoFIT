@@ -163,9 +163,9 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractPhysicalConnection $physicalConnection            
+     * @param AbstractPhysicalConnection $physicalConnection            
      */
-    public function setPhysicalConnection($physicalConnection)
+    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
     }
@@ -181,9 +181,9 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Server $server            
+     * @param Server $server            
      */
-    public function setServer($server)
+    public function setServer(Server $server)
     {
         $this->server = $server;
     }
@@ -199,9 +199,9 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Application $application            
+     * @param Application $application            
      */
-    public function setApplication($application)
+    public function setApplication(Application $application)
     {
         $this->application = $application;
     }
@@ -217,9 +217,9 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param \DbSystel\DataObject\Customer $customer            
+     * @param Customer $customer            
      */
-    public function setCustomer($customer)
+    public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
     }

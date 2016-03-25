@@ -57,9 +57,9 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection            
      */
-    public function setLogicalConnection($logicalConnection)
+    public function setLogicalConnection(LogicalConnection $logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
     }

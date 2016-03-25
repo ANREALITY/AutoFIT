@@ -75,9 +75,9 @@ class ServiceInvoice
 
     /**
      *
-     * @param \DataObject\Application $application            
+     * @param Application $application            
      */
-    public function setApplication($application)
+    public function setApplication(Application $application)
     {
         $this->application = $application;
     }
@@ -93,9 +93,9 @@ class ServiceInvoice
 
     /**
      *
-     * @param \DataObject\Environment $environment            
+     * @param Environment $environment            
      */
-    public function setEnvironment($environment)
+    public function setEnvironment(Environment $environment)
     {
         $this->environment = $environment;
     }
