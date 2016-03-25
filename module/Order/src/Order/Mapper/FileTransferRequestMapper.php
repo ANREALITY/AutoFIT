@@ -118,8 +118,6 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         }
 
         return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
@@ -143,8 +141,6 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         }
 
         return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
