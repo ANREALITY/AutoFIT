@@ -7,9 +7,16 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = [])
+    /**
+     * @var string
+     */
+    protected $physicalConnectionServiceName;
+
+    public function __construct($name = null, $options = [], string $physicalConnectionServiceName)
     {
         parent::__construct('logical_connection', $options);
+
+        $this->physicalConnectionServiceName = $physicalConnectionServiceName;
     }
 
     public function init()
@@ -23,10 +30,10 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
                     'should_create_template' => false,
                     'allow_add' => false,
                     'target_element' => [
-                        'type' => 'Order\Form\Fieldset\PhysicalConnectionCd'
+                        'type' => $this->physicalConnectionServiceName
                     ]
                 ]
-            ]); // @todo make it dynamic!
+            ]);
     }
 
     public function getInputFilterSpecification()

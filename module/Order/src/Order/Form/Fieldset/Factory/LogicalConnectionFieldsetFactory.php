@@ -11,7 +11,16 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new LogicalConnectionFieldset();
+        $realServiceLocator = $serviceLocator->getServiceLocator();
+
+        $router = $realServiceLocator->get('router');
+        $request = $realServiceLocator->get('request');
+        $routerMatch = $router->match($request);
+
+        $connectionType = $routerMatch->getParam('connectionType');
+        $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' . $connectionType;
+
+        $fieldset = new LogicalConnectionFieldset(null, [], $physicalConnectionFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
