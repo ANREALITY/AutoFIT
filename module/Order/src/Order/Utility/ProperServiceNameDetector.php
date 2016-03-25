@@ -15,6 +15,17 @@ class ProperServiceNameDetector
         $this->routerMatchParams = $routerMatchParams;
     }
 
+    public function getLogicalConnectionMapperServiceName()
+    {
+        if (! empty($this->routerMatchParams['connectionType'])) {
+            $serviceName = 'Order\Mapper\LogicalConnection' . $this->routerMatchParams['connectionType'] . 'Mapper';
+        } else {
+            throw new \Exception('No source endpoint type defined!');
+        }
+        
+        return $serviceName;
+    }
+
     public function getPhysicalConnectionMapperServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {

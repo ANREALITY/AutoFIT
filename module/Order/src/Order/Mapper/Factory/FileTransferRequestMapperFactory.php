@@ -21,21 +21,12 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $service = new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
 
-        $router = $serviceLocator->get('router');
-        $request = $serviceLocator->get('request');
-        $routerMatch = $router->match($request);
-
-        $routerMatchParamsForOrderForm = [
-            'connectionType',
-            'endpointSourceType',
-            'endpointTargetType'
-        ];
-        $isOrderRequest = count(array_intersect($routerMatchParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
-             count($routerMatchParamsForOrderForm);
+        $requestAnalyzer = $serviceLocator->get('Order\Utility\RequestAnalyzer');
+        $isOrderRequest = $requestAnalyzer->isOrderRequest();
 
         if ($isOrderRequest) {
-            $connectionType = $routerMatch->getParam('connectionType');
-            $logicalConnectionMapperServiceName = 'Order\Mapper\LogicalConnection' . $connectionType . 'Mapper';
+            $properServiceNameDetector = $serviceLocator->get('Order\Utility\ProperServiceNameDetector');
+            $logicalConnectionMapperServiceName = $properServiceNameDetector->getLogicalConnectionMapperServiceName();
 
             $service->setLogicalConnectionMapper($serviceLocator->get($logicalConnectionMapperServiceName));
             $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
