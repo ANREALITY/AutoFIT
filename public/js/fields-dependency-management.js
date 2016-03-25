@@ -9,7 +9,6 @@ fieldNameEndpointSourceName = '"file_transfer_request[logical_connection][physic
 
 $(document).ready(function() {
 	fieldEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNameEndpointSourceServerPlace + ']');
-	toggleEndpointSourceServerPlaceDependentFields(fieldEndpointSourceServerPlace.value);
 	fieldEndpointSourceServerPlace.change(function() {
 		toggleEndpointSourceServerPlaceDependentFields(this.value);
 	});
@@ -22,13 +21,7 @@ fieldNameEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[l
 fieldNameEndpointTargetName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_target][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNameEndpointSourceServerPlace + ']');
-	toggleEndpointSourceServerPlaceDependentFields(fieldEndpointSourceServerPlace.value);
-	fieldEndpointSourceServerPlace.change(function() {
-		toggleEndpointSourceServerPlaceDependentFields(this.value);
-	});
 	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNameEndpointTargetServerPlace + ']');
-	toggleEndpointTargetServerPlaceDependentFields(fieldEndpointTargetServerPlace.value);
 	fieldEndpointTargetServerPlace.change(function() {
 		toggleEndpointTargetServerPlaceDependentFields(this.value);
 	});
