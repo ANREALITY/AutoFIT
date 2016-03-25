@@ -27,4 +27,5 @@ interface ApplicationMapperInterface
      * @throws \Exception
      */
     public function save(Application $dataObject);
+
 }

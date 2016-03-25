@@ -8,7 +8,7 @@ interface ServerMapperInterface
 
     /**
      *
-     * @param int|string $name            
+     * @param int|string $name
      * @return Server
      * @throws \InvalidArgumentException
      */
@@ -22,9 +22,10 @@ interface ServerMapperInterface
 
     /**
      *
-     * @param Server $dataObject            
+     * @param Server $dataObject
      * @return Server
      * @throws \Exception
      */
     public function save(Server $dataObject);
+
 }

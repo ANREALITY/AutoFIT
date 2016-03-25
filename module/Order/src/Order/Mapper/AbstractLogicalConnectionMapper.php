@@ -53,7 +53,7 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
 
     /**
      *
-     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper            
+     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper
      */
     public function setPhysicalConnectionMapper(PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
@@ -62,7 +62,7 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return LogicalConnection
      * @throws \InvalidArgumentException
@@ -114,7 +114,7 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
 
     /**
      *
-     * @param LogicalConnection $dataObject            
+     * @param LogicalConnection $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -126,14 +126,14 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
         $data['type'] = $this->type;
         // creating sub-objects
         // data from the recently persisted objects
-        
+
         $action = new Insert('logical_connection');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

@@ -8,7 +8,7 @@ interface ServiceInvoicePositionMapperInterface
 
     /**
      *
-     * @param int|string $number            
+     * @param int|string $number
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
      */
@@ -22,9 +22,10 @@ interface ServiceInvoicePositionMapperInterface
 
     /**
      *
-     * @param ServiceInvoicePosition $dataObject            
+     * @param ServiceInvoicePosition $dataObject
      * @return ServiceInvoicePosition
      * @throws \Exception
      */
     public function save(ServiceInvoicePosition $dataObject);
+
 }

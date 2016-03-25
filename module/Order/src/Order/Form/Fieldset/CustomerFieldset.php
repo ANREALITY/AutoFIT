@@ -34,4 +34,5 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
     {
         return [];
     }
+
 }

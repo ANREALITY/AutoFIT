@@ -8,7 +8,7 @@ interface PhysicalConnectionMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      * @return AbstractPhysicalConnection
      * @throws \InvalidArgumentException
      */
@@ -22,9 +22,10 @@ interface PhysicalConnectionMapperInterface
 
     /**
      *
-     * @param AbstractPhysicalConnection $dataObject            
+     * @param AbstractPhysicalConnection $dataObject
      * @return AbstractPhysicalConnection
      * @throws \Exception
      */
     public function save(AbstractPhysicalConnection $dataObject);
+
 }

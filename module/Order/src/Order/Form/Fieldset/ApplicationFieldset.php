@@ -34,4 +34,5 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
     {
         return [];
     }
+
 }

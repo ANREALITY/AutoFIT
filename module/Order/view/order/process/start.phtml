@@ -1,17 +1,17 @@
 <?php echo _('Create your File Transfer Request'); ?>
 <ul>
-    <li>
-        <span><?php echo _('Connect Direct'); ?></span>
+    <li><span><?php echo _('Connect Direct'); ?></span>
         <ul>
-            <li><a href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdas400', 'endpointTargetType' => 'cdas400']); ?>">AS400 -> AS400</a></li>
-            <li><a href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdtandem', 'endpointTargetType' => 'cdtandem']); ?>">Tandem -> Tandem</a></li>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdas400', 'endpointTargetType' => 'cdas400']); ?>">AS400
+                    -> AS400</a></li>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdtandem', 'endpointTargetType' => 'cdtandem']); ?>">Tandem
+                    -> Tandem</a></li>
             <li>...</li>
-        </ul>
-    </li>
-    <li>
-        <span><?php echo _('File Transfer Gateway'); ?></span>
+        </ul></li>
+    <li><span><?php echo _('File Transfer Gateway'); ?></span>
         <ul>
             <li>...</li>
-        </ul>
-    </li>
+        </ul></li>
 </ul>

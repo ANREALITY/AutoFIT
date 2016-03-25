@@ -34,4 +34,5 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
     {
         return [];
     }
+
 }

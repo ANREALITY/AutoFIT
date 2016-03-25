@@ -84,4 +84,5 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     }
 
     abstract protected function getConcreteRole();
+
 }

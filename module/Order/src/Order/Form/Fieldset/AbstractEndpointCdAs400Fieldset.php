@@ -43,4 +43,5 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
             ]
         ];
     }
+
 }

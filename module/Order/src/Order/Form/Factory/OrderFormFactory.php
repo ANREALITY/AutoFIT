@@ -18,4 +18,5 @@ class OrderFormFactory implements FactoryInterface
             ->setInputFilter(new InputFilter());
         return $form;
     }
+
 }

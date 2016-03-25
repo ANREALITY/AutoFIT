@@ -68,7 +68,7 @@ class PhysicalConnectionCdMapper extends AbstractPhysicalConnectionMapper
 
     /**
      *
-     * @param PhysicalConnectionCd $dataObject            
+     * @param PhysicalConnectionCd $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -76,7 +76,7 @@ class PhysicalConnectionCdMapper extends AbstractPhysicalConnectionMapper
     public function save(AbstractPhysicalConnection $dataObject)
     {
         $dataObject = parent::save($dataObject);
-        
+
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
@@ -85,14 +85,14 @@ class PhysicalConnectionCdMapper extends AbstractPhysicalConnectionMapper
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
-        
+
         $action = new Insert('physical_connection_cd');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
@@ -101,4 +101,5 @@ class PhysicalConnectionCdMapper extends AbstractPhysicalConnectionMapper
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

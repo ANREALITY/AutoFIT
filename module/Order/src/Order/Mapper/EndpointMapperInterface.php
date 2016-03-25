@@ -27,4 +27,5 @@ interface EndpointMapperInterface
      * @throws \Exception
      */
     public function save(AbstractEndpoint $dataObject);
+
 }

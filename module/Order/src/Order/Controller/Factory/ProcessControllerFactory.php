@@ -12,7 +12,7 @@ class ProcessControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
-        
+
         $router = $realServiceLocator->get('router');
         $request = $realServiceLocator->get('request');
         $routerMatch = $router->match($request);
@@ -24,15 +24,16 @@ class ProcessControllerFactory implements FactoryInterface
         ];
         $formNeeded = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
              count($routerMathParamsForOrderForm);
-        
-        $service = new ProcessController(new FileTransferRequest(), 
+
+        $service = new ProcessController(new FileTransferRequest(),
             $realServiceLocator->get('Order\Service\FileTransferRequestService'));
 
         if ($formNeeded) {
-            $service->setOrderForm($realServiceLocator->get('FormElementManager')
-                ->get('Order\Form\OrderForm'));
+            $service->setOrderForm(
+                $realServiceLocator->get('FormElementManager')
+                    ->get('Order\Form\OrderForm'));
         }
-        
+
         return $service;
     }
 

@@ -90,4 +90,5 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
             ]
         ];
     }
+
 }

@@ -27,7 +27,7 @@ class ProductType
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {
@@ -45,10 +45,11 @@ class ProductType
 
     /**
      *
-     * @param string $longName            
+     * @param string $longName
      */
     public function setLongName($longName)
     {
         $this->longName = $longName;
     }
+
 }

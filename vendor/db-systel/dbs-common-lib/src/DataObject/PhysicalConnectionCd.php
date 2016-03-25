@@ -21,10 +21,11 @@ class PhysicalConnectionCd extends AbstractPhysicalConnection
 
     /**
      *
-     * @param boolean $securePlus            
+     * @param boolean $securePlus
      */
     public function setSecurePlus($securePlus)
     {
         $this->securePlus = $securePlus;
     }
+
 }

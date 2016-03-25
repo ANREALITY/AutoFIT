@@ -73,7 +73,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -91,7 +91,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param string $role            
+     * @param string $role
      */
     public function setRole($role)
     {
@@ -109,7 +109,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {
@@ -127,7 +127,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param string $serverPlace            
+     * @param string $serverPlace
      */
     public function setServerPlace($serverPlace)
     {
@@ -145,7 +145,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param string $contactPerson            
+     * @param string $contactPerson
      */
     public function setContactPerson($contactPerson)
     {
@@ -163,7 +163,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnection            
+     * @param AbstractPhysicalConnection $physicalConnection
      */
     public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
@@ -181,7 +181,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param Server $server            
+     * @param Server $server
      */
     public function setServer(Server $server)
     {
@@ -199,7 +199,7 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param Application $application            
+     * @param Application $application
      */
     public function setApplication(Application $application)
     {
@@ -217,10 +217,11 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @param Customer $customer            
+     * @param Customer $customer
      */
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
     }
+
 }

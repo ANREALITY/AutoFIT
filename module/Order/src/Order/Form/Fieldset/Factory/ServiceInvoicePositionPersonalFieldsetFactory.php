@@ -21,4 +21,5 @@ class ServiceInvoicePositionPersonalFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

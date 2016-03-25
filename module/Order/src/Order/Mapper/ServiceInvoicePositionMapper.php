@@ -32,7 +32,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         ServiceInvoicePosition $prototype)
     {
         $this->dbAdapter = $dbAdapter;
@@ -42,7 +42,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
 
     /**
      *
-     * @param int|string $number            
+     * @param int|string $number
      *
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
@@ -76,7 +76,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('service_invoice_position');
-        
+
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('number', $condition)) {
@@ -87,22 +87,22 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-            
+
             return $resultSet->initialize($result);
         }
-        
+
         return [];
     }
 
     /**
      *
-     * @param ServiceInvoicePosition $dataObject            
+     * @param ServiceInvoicePosition $dataObject
      *
      * @return ServiceInvoicePosition
      * @throws \Exception
@@ -111,4 +111,5 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
     {
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
+
 }

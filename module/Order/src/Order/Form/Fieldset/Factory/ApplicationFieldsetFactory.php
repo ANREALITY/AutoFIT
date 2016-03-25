@@ -21,4 +21,5 @@ class ApplicationFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

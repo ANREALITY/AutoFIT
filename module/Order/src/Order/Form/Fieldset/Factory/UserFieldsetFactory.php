@@ -21,4 +21,5 @@ class UserFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

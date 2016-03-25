@@ -27,7 +27,7 @@ class ServerType
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -45,10 +45,11 @@ class ServerType
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {
         $this->name = $name;
     }
+
 }

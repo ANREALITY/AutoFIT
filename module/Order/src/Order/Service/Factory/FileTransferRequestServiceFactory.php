@@ -11,11 +11,12 @@ class FileTransferRequestServiceFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ServiceLocatorInterface $serviceLocator
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new FileTransferRequestService($serviceLocator->get('Order\Mapper\FileTransferRequestMapper'));
     }
+
 }

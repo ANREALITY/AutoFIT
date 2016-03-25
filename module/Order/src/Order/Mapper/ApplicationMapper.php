@@ -110,4 +110,5 @@ class ApplicationMapper implements ApplicationMapperInterface
     {
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
+
 }

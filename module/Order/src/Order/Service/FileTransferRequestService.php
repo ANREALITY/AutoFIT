@@ -15,7 +15,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
 
     /**
      *
-     * @param FileTransferRequestMapperInterface $fileTransferRequestMapper            
+     * @param FileTransferRequestMapperInterface $fileTransferRequestMapper
      */
     public function __construct(FileTransferRequestMapperInterface $fileTransferRequestMapper)
     {
@@ -51,4 +51,5 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
     {
         return $this->fileTransferRequestMapper->save($fileTransferRequest);
     }
+
 }

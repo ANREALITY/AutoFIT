@@ -8,7 +8,7 @@ interface LogicalConnectionMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      * @return LogicalConnection
      * @throws \InvalidArgumentException
      */
@@ -22,9 +22,10 @@ interface LogicalConnectionMapperInterface
 
     /**
      *
-     * @param LogicalConnection $dataObject            
+     * @param LogicalConnection $dataObject
      * @return LogicalConnection
      * @throws \Exception
      */
     public function save(LogicalConnection $dataObject);
+
 }

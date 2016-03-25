@@ -21,4 +21,5 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

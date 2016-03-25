@@ -51,7 +51,7 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param string $number            
+     * @param string $number
      */
     public function setNumber($number)
     {
@@ -69,7 +69,7 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param string $orderQuantity            
+     * @param string $orderQuantity
      */
     public function setOrderQuantity($orderQuantity)
     {
@@ -87,7 +87,7 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param string $description            
+     * @param string $description
      */
     public function setDescription($description)
     {
@@ -105,7 +105,7 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param ServiceInvoice $serviceInvoice            
+     * @param ServiceInvoice $serviceInvoice
      */
     public function setServiceInvoice(ServiceInvoice $serviceInvoice)
     {
@@ -123,7 +123,7 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param Article $article            
+     * @param Article $article
      */
     public function setArticle(Article $article)
     {
@@ -141,10 +141,11 @@ class ServiceInvoicePosition
 
     /**
      *
-     * @param ServiceInvoicePositionStatus $serviceInvoicePositionStatus            
+     * @param ServiceInvoicePositionStatus $serviceInvoicePositionStatus
      */
     public function setServiceInvoicePositionStatus(ServiceInvoicePositionStatus $serviceInvoicePositionStatus)
     {
         $this->serviceInvoicePositionStatus = $serviceInvoicePositionStatus;
     }
+
 }

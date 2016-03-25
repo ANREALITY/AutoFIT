@@ -33,7 +33,7 @@ class User
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -51,7 +51,7 @@ class User
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -69,10 +69,11 @@ class User
 
     /**
      *
-     * @param boolean $admin            
+     * @param boolean $admin
      */
     public function setAdmin($admin)
     {
         $this->admin = $admin;
     }
+
 }

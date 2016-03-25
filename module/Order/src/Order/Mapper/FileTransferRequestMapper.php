@@ -53,7 +53,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param LogicalConnectionMapperInterface $logicalConnectionMapper            
+     * @param LogicalConnectionMapperInterface $logicalConnectionMapper
      */
     public function setLogicalConnectionMapper(LogicalConnectionMapperInterface $logicalConnectionMapper)
     {
@@ -62,7 +62,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param UserMapperInterface $userMapper            
+     * @param UserMapperInterface $userMapper
      */
     public function setUserMapper(UserMapperInterface $userMapper)
     {
@@ -71,7 +71,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
@@ -105,26 +105,26 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-            
+
             $return = $resultSet->initialize($result);
-            
+
             return $return;
         }
-        
+
         return [];
-        
+
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @param FileTransferRequest $dataObject            
+     * @param FileTransferRequest $dataObject
      *
      * @return FileTransferRequest
      * @throws \Exception
@@ -145,13 +145,13 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         // data from the recently persisted objects
         $data['logical_connection_id'] = $newLogicalConnection->getId();
         $data['user_id'] = $newUser->getId();
-        
+
         $action = new Insert('file_transfer_request');
         $action->values($data);
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

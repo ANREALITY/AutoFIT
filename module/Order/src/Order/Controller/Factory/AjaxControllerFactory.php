@@ -19,4 +19,5 @@ class AjaxControllerFactory implements FactoryInterface
         return new AjaxController($applicationService, $environmentService, $serverService,
             $serviceInvoicePositionService);
     }
+
 }

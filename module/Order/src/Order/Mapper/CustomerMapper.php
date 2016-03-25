@@ -124,4 +124,5 @@ class CustomerMapper implements CustomerMapperInterface
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

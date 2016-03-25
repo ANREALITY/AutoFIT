@@ -101,4 +101,5 @@ class EndpointCdAs400Mapper extends AbstractEndpointMapper
         }
         throw new \Exception('Database error in ' . __METHOD__);
     }
+
 }

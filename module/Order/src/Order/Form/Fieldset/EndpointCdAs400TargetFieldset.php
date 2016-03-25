@@ -47,4 +47,5 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
     {
         return AbstractEndpoint::ROLE_TARGET;
     }
+
 }

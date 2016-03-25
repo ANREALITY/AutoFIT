@@ -60,7 +60,7 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ServerMapperInterface $serverMapper            
+     * @param ServerMapperInterface $serverMapper
      */
     public function setServerMapper(ServerMapperInterface $serverMapper)
     {
@@ -69,7 +69,7 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ApplicationMapperInterface $applicationMapper            
+     * @param ApplicationMapperInterface $applicationMapper
      */
     public function setApplicationMapper(ApplicationMapperInterface $applicationMapper)
     {
@@ -78,7 +78,7 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param CustomerMapperInterface $customerMapper            
+     * @param CustomerMapperInterface $customerMapper
      */
     public function setCustomerMapper(CustomerMapperInterface $customerMapper)
     {
@@ -138,7 +138,7 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param AbstractEndpoint $dataObject            
+     * @param AbstractEndpoint $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -161,14 +161,14 @@ abstract class AbstractEndpointMapper implements EndpointMapperInterface
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
-        
+
         $action = new Insert('endpoint');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);

@@ -39,4 +39,5 @@ abstract class AbstractServiceInvoicePositionFieldset extends Fieldset implement
             ]
         ];
     }
+
 }

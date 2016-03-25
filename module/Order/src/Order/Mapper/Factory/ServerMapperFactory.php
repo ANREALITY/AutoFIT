@@ -21,4 +21,5 @@ class ServerMapperFactory implements FactoryInterface
         return new ServerMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Server());
     }
+
 }

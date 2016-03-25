@@ -106,5 +106,6 @@ class AjaxController extends AbstractActionController
 
         return new JsonModel($dataList);
     }
+
 }
 

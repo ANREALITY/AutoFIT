@@ -21,4 +21,5 @@ class EndpointCdAs400TargetFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

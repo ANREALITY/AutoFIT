@@ -1,5 +1,8 @@
 <?php
-$form->setAttributes(['action', $this->url('create-order')])
+$form->setAttributes([
+    'action',
+    $this->url('create-order')
+])
     ->prepare();
 echo $this->form()->openTag($form);
 ?>
@@ -36,7 +39,7 @@ $fieldgroupFormRows = [
     $this->formRow($userFieldset->get('username')),
     $this->formRow($serviceInvoicePositionPersonalFieldset->get('number'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -58,7 +61,7 @@ $fieldgroupFormRows = [
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($serverForSourceFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -80,7 +83,7 @@ $fieldgroupFormRows = [
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($serverForTargetFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -97,7 +100,7 @@ $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointCdAs400SourceFieldset->get('username'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -115,7 +118,7 @@ $fieldgroupFormRows = [
     $this->formRow($endpointCdAs400TargetFieldset->get('username')),
     $this->formRow($endpointCdAs400TargetFieldset->get('folder'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -132,7 +135,7 @@ $fieldgroupTitle = $this->translate('Connection');
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionsCollection->getFieldsets()[0]->get('secure_plus'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,

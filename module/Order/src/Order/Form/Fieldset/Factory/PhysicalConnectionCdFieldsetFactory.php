@@ -21,4 +21,5 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

@@ -27,4 +27,5 @@ interface CustomerMapperInterface
      * @throws \Exception
      */
     public function save(Customer $dataObject);
+
 }

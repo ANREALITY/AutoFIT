@@ -10,4 +10,5 @@ class PhysicalConnectionFtgwFieldset extends AbstractPhysicalConnectionFieldset
     {
         parent::__construct('physical_connection_ftgw', $options);
     }
+
 }

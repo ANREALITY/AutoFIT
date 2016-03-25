@@ -21,4 +21,5 @@ class CustomerMapperFactory implements FactoryInterface
         return new CustomerMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Customer());
     }
+
 }

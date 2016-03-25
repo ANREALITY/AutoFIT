@@ -21,4 +21,5 @@ class CustomerFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

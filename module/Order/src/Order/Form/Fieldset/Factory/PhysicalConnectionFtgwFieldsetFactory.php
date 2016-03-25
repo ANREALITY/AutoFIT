@@ -21,4 +21,5 @@ class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
 
         return $fieldset;
     }
+
 }

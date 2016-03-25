@@ -30,7 +30,7 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
                 'type' => $endpointSourceFieldsetServiceName,
                 'options' => []
             ]);
-        
+
         $this->add(
             [
                 'name' => 'endpoint_target',
@@ -43,4 +43,5 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
     {
         return [];
     }
+
 }

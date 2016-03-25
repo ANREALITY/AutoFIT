@@ -27,4 +27,5 @@ class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
     {
         return AbstractEndpoint::ROLE_SOURCE;
     }
+
 }
