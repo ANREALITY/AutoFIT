@@ -5,6 +5,7 @@ class ProperServiceNameDetector
 {
 
     /**
+     *
      * @var array
      */
     protected $routerMatchParams;
@@ -17,8 +18,7 @@ class ProperServiceNameDetector
     public function getPhysicalConnectionMapperServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
-            $serviceName = 'Order\Mapper\PhysicalConnection' .
-                 $this->routerMatchParams['connectionType'] . 'Mapper';
+            $serviceName = 'Order\Mapper\PhysicalConnection' . $this->routerMatchParams['connectionType'] . 'Mapper';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
@@ -29,8 +29,7 @@ class ProperServiceNameDetector
     public function getEndpointSourceMapperServiceName()
     {
         if (! empty($this->routerMatchParams['endpointSourceType'])) {
-            $serviceName = 'Order\Mapper\Endpoint' .
-                 $this->routerMatchParams['endpointSourceType'] . 'Mapper';
+            $serviceName = 'Order\Mapper\Endpoint' . $this->routerMatchParams['endpointSourceType'] . 'Mapper';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
@@ -41,8 +40,7 @@ class ProperServiceNameDetector
     public function getEndpointTargetMapperServiceName()
     {
         if (! empty($this->routerMatchParams['endpointTargetType'])) {
-            $serviceName = 'Order\Mapper\Endpoint' .
-                 $this->routerMatchParams['endpointTargetType'] . 'Mapper';
+            $serviceName = 'Order\Mapper\Endpoint' . $this->routerMatchParams['endpointTargetType'] . 'Mapper';
         } else {
             throw new \Exception('No target endpoint type defined!');
         }
@@ -65,8 +63,7 @@ class ProperServiceNameDetector
     public function getEndpointSourceFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['endpointSourceType'])) {
-            $serviceName = 'Order\Form\Fieldset\Endpoint' .
-                 $this->routerMatchParams['endpointSourceType'] . 'Source';
+            $serviceName = 'Order\Form\Fieldset\Endpoint' . $this->routerMatchParams['endpointSourceType'] . 'Source';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
@@ -77,8 +74,7 @@ class ProperServiceNameDetector
     public function getEndpointTargetFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['endpointTargetType'])) {
-            $serviceName = 'Order\Form\Fieldset\Endpoint' .
-                 $this->routerMatchParams['endpointTargetType'] . 'Target';
+            $serviceName = 'Order\Form\Fieldset\Endpoint' . $this->routerMatchParams['endpointTargetType'] . 'Target';
         } else {
             throw new \Exception('No target endpoint type defined!');
         }

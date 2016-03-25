@@ -15,7 +15,7 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
 
     /**
      *
-     * @param ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper
+     * @param ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper            
      */
     public function __construct(ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper)
     {

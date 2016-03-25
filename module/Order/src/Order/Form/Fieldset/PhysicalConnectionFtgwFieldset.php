@@ -6,9 +6,11 @@ use Zend\Form\Fieldset;
 class PhysicalConnectionFtgwFieldset extends AbstractPhysicalConnectionFieldset
 {
 
-    public function __construct($name = null, $options = [], string $endpointSourceFieldsetServiceName, string $endpointTargetFieldsetServiceName)
+    public function __construct($name = null, $options = [], string $endpointSourceFieldsetServiceName,
+        string $endpointTargetFieldsetServiceName)
     {
-        parent::__construct('physical_connection_ftgw', $options, $endpointSourceFieldsetServiceName, $endpointTargetFieldsetServiceName);
+        parent::__construct('physical_connection_ftgw', $options, $endpointSourceFieldsetServiceName,
+            $endpointTargetFieldsetServiceName);
     }
 
 }

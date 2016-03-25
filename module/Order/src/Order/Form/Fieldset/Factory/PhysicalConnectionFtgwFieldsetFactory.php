@@ -15,8 +15,8 @@ class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
             'Order\Utility\ProperServiceNameDetector');
         $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
         $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
-        
-        $fieldset = new PhysicalConnectionFtgwFieldset(null, [], $endpointSourceFieldsetServiceName, 
+
+        $fieldset = new PhysicalConnectionFtgwFieldset(null, [], $endpointSourceFieldsetServiceName,
             $endpointTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
@@ -24,7 +24,7 @@ class PhysicalConnectionFtgwFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new PhysicalConnectionFtgw();
         $fieldset->setObject($prototype);
-        
+
         return $fieldset;
     }
 

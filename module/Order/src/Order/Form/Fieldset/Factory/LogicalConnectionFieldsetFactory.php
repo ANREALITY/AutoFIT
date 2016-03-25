@@ -11,7 +11,8 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get('Order\Utility\ProperServiceNameDetector');
+        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
+            'Order\Utility\ProperServiceNameDetector');
         $physicalConnectionFieldsetServiceName = $properServiceNameDetector->getPhysicalConnectionFieldsetServiceName();
 
         $fieldset = new LogicalConnectionFieldset(null, [], $physicalConnectionFieldsetServiceName);

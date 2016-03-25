@@ -15,8 +15,8 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
             'Order\Utility\ProperServiceNameDetector');
         $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
         $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
-        
-        $fieldset = new PhysicalConnectionCdFieldset(null, [], $endpointSourceFieldsetServiceName, 
+
+        $fieldset = new PhysicalConnectionCdFieldset(null, [], $endpointSourceFieldsetServiceName,
             $endpointTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
@@ -24,7 +24,7 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new PhysicalConnectionCd();
         $fieldset->setObject($prototype);
-        
+
         return $fieldset;
     }
 

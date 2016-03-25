@@ -8,6 +8,7 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
 {
 
     /**
+     *
      * @var string
      */
     protected $physicalConnectionServiceName;
