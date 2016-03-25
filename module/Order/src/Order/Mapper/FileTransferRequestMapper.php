@@ -81,9 +81,9 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('file_transfer_request');
-         * $select->where(array(
+         * $select->where([
          * 'id = ?' => $id
-         * ));
+         * ]);
          *
          * $stmt = $sql->prepareStatementForSqlObject($select);
          * $result = $stmt->execute();

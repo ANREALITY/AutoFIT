@@ -15,7 +15,7 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
     public function init()
     {
         $this->add(
-            array(
+            [
                 'type' => 'text',
                 'name' => 'technical_short_name',
                 'options' => [
@@ -27,7 +27,7 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
                 'attributes' => [
                     'class' => 'form-control'
                 ]
-            ));
+            ]);
     }
 
     public function getInputFilterSpecification()

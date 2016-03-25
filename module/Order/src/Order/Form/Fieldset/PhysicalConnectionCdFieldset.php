@@ -16,16 +16,16 @@ class PhysicalConnectionCdFieldset extends AbstractPhysicalConnectionFieldset
         parent::init();
 
         $this->add(
-            array(
+            [
                 'type' => 'Zend\Form\Element\Checkbox',
                 'name' => 'secure_plus',
-                'options' => array(
+                'options' => [
                     'label' => _('Secure Plus'),
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
-                )
-            ));
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

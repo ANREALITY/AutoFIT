@@ -51,9 +51,9 @@ class EnvironmentMapper implements EnvironmentMapperInterface
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('environment');
-         * $select->where(array(
+         * $select->where([
          * 'severity = ?' => $severity
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();

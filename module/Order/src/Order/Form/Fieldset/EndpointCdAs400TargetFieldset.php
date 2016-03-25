@@ -18,7 +18,7 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
         parent::init();
 
         $this->add(
-            array(
+            [
                 'type' => 'text',
                 'name' => 'folder',
                 'options' => [
@@ -31,7 +31,7 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
                     'required' => 'required',
                     'class' => 'form-control'
                 ]
-            ));
+            ]);
     }
 
     public function getInputFilterSpecification()

@@ -51,9 +51,9 @@ class ApplicationMapper implements ApplicationMapperInterface
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('application');
-         * $select->where(array(
+         * $select->where([
          * 'technical_short_name = ?' => $technicalShortName
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();

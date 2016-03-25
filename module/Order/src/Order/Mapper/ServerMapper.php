@@ -51,9 +51,9 @@ class ServerMapper implements ServerMapperInterface
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('server');
-         * $select->where(array(
+         * $select->where([
          * 'technical_short_name = ?' => $name
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();

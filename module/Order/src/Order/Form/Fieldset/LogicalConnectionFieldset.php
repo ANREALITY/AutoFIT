@@ -22,9 +22,9 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
                     'count' => 1,
                     'should_create_template' => false,
                     'allow_add' => false,
-                    'target_element' => array(
+                    'target_element' => [
                         'type' => 'Order\Form\Fieldset\PhysicalConnectionCd'
-                    )
+                    ]
                 ]
             ]); // @todo make it dynamic!
     }

@@ -15,7 +15,7 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
     public function init()
     {
         $this->add(
-            array(
+            [
                 'type' => 'text',
                 'name' => 'name',
                 'options' => [
@@ -27,7 +27,7 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
                 'attributes' => [
                     'class' => 'form-control'
                 ]
-            ));
+            ]);
     }
 
     public function getInputFilterSpecification()

@@ -19,7 +19,7 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
         parent::init();
 
         $this->add(
-            array(
+            [
                 'type' => 'text',
                 'name' => 'username',
                 'options' => [
@@ -32,7 +32,7 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
                     'required' => 'required',
                     'class' => 'form-control'
                 ]
-            ));
+            ]);
     }
 
     public function getInputFilterSpecification()

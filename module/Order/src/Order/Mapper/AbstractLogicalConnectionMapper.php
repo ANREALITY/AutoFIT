@@ -72,9 +72,9 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
-         * $select->where(array(
+         * $select->where([
          * 'id = ?' => $id
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();

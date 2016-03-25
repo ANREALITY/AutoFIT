@@ -52,9 +52,9 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('service_invoice_position');
-         * $select->where(array(
+         * $select->where([
          * 'number = ?' => $number
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();

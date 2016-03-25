@@ -51,9 +51,9 @@ class UserMapper implements UserMapperInterface
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('user');
-         * $select->where(array(
+         * $select->where([
          * 'id = ?' => $id
-         * ));
+         * ]);
          *
          * $statement = $sql->prepareStatementForSqlObject($select);
          * $result = $statement->execute();
