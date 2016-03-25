@@ -22,13 +22,13 @@ class ProcessControllerFactory implements FactoryInterface
             'endpointSourceType',
             'endpointTargetType'
         ];
-        $formNeeded = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
+        $isOrderRequest = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
              count($routerMathParamsForOrderForm);
 
         $service = new ProcessController(new FileTransferRequest(),
             $realServiceLocator->get('Order\Service\FileTransferRequestService'));
 
-        if ($formNeeded) {
+        if ($isOrderRequest) {
             $service->setOrderForm(
                 $realServiceLocator->get('FormElementManager')
                     ->get('Order\Form\OrderForm'));

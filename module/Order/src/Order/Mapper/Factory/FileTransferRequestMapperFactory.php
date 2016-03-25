@@ -30,10 +30,10 @@ class FileTransferRequestMapperFactory implements FactoryInterface
             'endpointSourceType',
             'endpointTargetType'
         ];
-        $formNeeded = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
+        $isOrderRequest = count(array_intersect($routerMathParamsForOrderForm, array_keys($routerMatch->getParams()))) ===
              count($routerMathParamsForOrderForm);
 
-        if ($formNeeded) {
+        if ($isOrderRequest) {
             $connectionType = $routerMatch->getParam('connectionType');
             $logicalConnectionMapperServiceName = 'Order\Mapper\LogicalConnection' . $connectionType . 'Mapper';
 
