@@ -31,6 +31,12 @@ interface ServiceInvoicePositionServiceInterface
      *
      * @param string $name            
      */
-    public function findAllByNumber(string $name);
+    public function findAllBasicByNumberAndApplication(string $number, string $applicationTechnicalShortName);
+
+    /**
+     *
+     * @param string $name            
+     */
+    public function findAllPersonalByNumberAndApplication(string $number, string $applicationTechnicalShortName);
 
 }

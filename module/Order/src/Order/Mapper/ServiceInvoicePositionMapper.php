@@ -32,7 +32,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
         ServiceInvoicePosition $prototype)
     {
         $this->dbAdapter = $dbAdapter;
@@ -42,7 +42,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
 
     /**
      *
-     * @param int|string $number
+     * @param int|string $number            
      *
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
@@ -76,33 +76,49 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('service_invoice_position');
-
+        
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('number', $condition)) {
                     $select->where(
                         [
-                            'number LIKE ?' => '%' . $condition['number'] . '%'
+                            'service_invoice_position.number LIKE ?' => '%' . $condition['number'] . '%'
                         ]);
+                }
+                if (array_key_exists('article_type', $condition)) {
+                    $select->join('article', 'article.sku = service_invoice_position.article_sku', []);
+                    $select->where(
+                        [
+                            'article.type' => $condition['article_type']
+                        ]);
+                }
+                if (array_key_exists('application_technical_short_name', $condition)) {
+                    $select->join('service_invoice', 
+                        'service_invoice.number = service_invoice_position.service_invoice_number', [])->join('application', 
+                        'application.technical_short_name = service_invoice.application_technical_short_name', []);
+                    $select->where([
+                        'application_technical_short_name = ?' => $condition['application_technical_short_name']
+                    ]
+                    );
                 }
             }
         }
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             return $resultSet->initialize($result);
         }
-
+        
         return [];
     }
 
     /**
      *
-     * @param ServiceInvoicePosition $dataObject
+     * @param ServiceInvoicePosition $dataObject            
      *
      * @return ServiceInvoicePosition
      * @throws \Exception

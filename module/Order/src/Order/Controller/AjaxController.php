@@ -35,8 +35,8 @@ class AjaxController extends AbstractActionController
      */
     protected $serviceInvoicePositionService = null;
 
-    public function __construct(ApplicationServiceInterface $applicationService,
-        EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService,
+    public function __construct(ApplicationServiceInterface $applicationService, 
+        EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService, 
         ServiceInvoicePositionServiceInterface $serviceInvoicePositionService)
     {
         $this->applicationService = $applicationService;
@@ -49,16 +49,16 @@ class AjaxController extends AbstractActionController
     {
         $request = $this->getRequest();
         $dataList = [];
-
+        
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
                 $dataList = $this->applicationService->findAllByTechnicalShortName($data['technical_short_name'])->toArray();
             }
         }
-
+        
         $dataList = array_column($dataList, 'technical_short_name');
-
+        
         return new JsonModel($dataList);
     }
 
@@ -66,14 +66,14 @@ class AjaxController extends AbstractActionController
     {
         $request = $this->getRequest();
         $dataList = [];
-
+        
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['name']) && $data['name'] != null) {
                 $dataList = $this->environmentService->findAllByName($data['name'])->toArray();
             }
         }
-
+        
         return new JsonModel($dataList);
     }
 
@@ -81,29 +81,32 @@ class AjaxController extends AbstractActionController
     {
         $request = $this->getRequest();
         $dataList = [];
-
+        
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['name']) && $data['name'] != null) {
                 $dataList = $this->serverService->findAllByName($data['name'])->toArray();
             }
         }
-
+        
         return new JsonModel($dataList);
     }
 
-    public function provideServiceInvoicePositionsAction()
+    public function provideServiceInvoicePositionsBasicAction()
     {
         $request = $this->getRequest();
         $dataList = [];
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            if (isset($data['number']) && $data['number'] != null) {
-                $dataList = $this->serviceInvoicePositionService->findAllByNumber($data['number'])->toArray();
+            if (!empty($data['number']) && !empty($data['application_technical_short_name'])) {
+                $dataList = $this->serviceInvoicePositionService->findAllBasicByNumberAndApplication($data['number'], 
+                    $data['application_technical_short_name'])->toArray();
             }
         }
-
+        
+        $dataList = array_column($dataList, 'number');
+        
         return new JsonModel($dataList);
     }
 

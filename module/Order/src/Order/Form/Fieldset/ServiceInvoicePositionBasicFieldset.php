@@ -14,7 +14,7 @@ class ServiceInvoicePositionBasicFieldset extends AbstractServiceInvoicePosition
         parent::init();
 
         $this->get('number')->setLabel('service invoice position (basic)');
-        $this->get('number')->setAttribute('id', 'service-invoice-position-basic-number');
+        $this->get('number')->setAttribute('id', 'order-service-invoice-position-basic-number');
     }
 
 }

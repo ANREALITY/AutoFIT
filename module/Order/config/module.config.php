@@ -45,6 +45,16 @@ return [
                     ]
                 ]
             ],
+            'provide-service-invoice-positions-basic' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-service-invoice-positions-basic',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServiceInvoicePositionsBasic'
+                    ]
+                ]
+            ],
             'provide-environments' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [

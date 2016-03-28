@@ -3,6 +3,7 @@ namespace Order\Service;
 
 use Order\Mapper\ServiceInvoicePositionMapperInterface;
 use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\Article;
 
 class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInterface
 {
@@ -57,12 +58,31 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
      * {@inheritDoc}
      *
      */
-    public function findAllByNumber(string $number)
+    public function findAllBasicByNumberAndApplication(string $number, string $applicationTechnicalShortName)
     {
         return $this->serviceInvoicePositionMapper->findAll(
             [
                 [
-                    'number' => $number
+                    'number' => $number,
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'article_type' => Article::TYPE_BASIC,
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllPersonalByNumberAndApplication(string $number, string $applicationTechnicalShortName)
+    {
+        return $this->serviceInvoicePositionMapper->findAll(
+            [
+                [
+                    'number' => $number,
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'article_type' => Article::TYPE_PERSONAL,
                 ]
             ]);
     }
