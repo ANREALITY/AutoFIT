@@ -29,3 +29,21 @@ $(function() {
 		}],	 
 	});
 });
+/**
+ * Autocompletion fro the field order-service-invoice-position-personal-number.
+ */
+$(function() {
+	$("#order-service-invoice-position-personal-number").autocomplete({
+		minLength: 3,
+		limit: 5,
+		appendMethod:'replace',
+		closeOnBlur: true,
+		source : [
+		    function(query, add) {
+		    	orderApplicationNumber = $('#order-application-number').val();
+				$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
+					add(response);
+				})
+		}],	 
+	});
+});

@@ -110,5 +110,22 @@ class AjaxController extends AbstractActionController
         return new JsonModel($dataList);
     }
 
-}
+    public function provideServiceInvoicePositionsPersonalAction()
+    {
+        $request = $this->getRequest();
+        $dataList = [];
 
+        if (true || $request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            if (!empty($data['number']) && !empty($data['application_technical_short_name'])) {
+                $dataList = $this->serviceInvoicePositionService->findAllPersonalByNumberAndApplication($data['number'], 
+                    $data['application_technical_short_name'])->toArray();
+            }
+        }
+        
+        $dataList = array_column($dataList, 'number');
+        
+        return new JsonModel($dataList);
+    }
+
+}

@@ -55,6 +55,16 @@ return [
                     ]
                 ]
             ],
+            'provide-service-invoice-positions-personal' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-service-invoice-positions-personal',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServiceInvoicePositionsPersonal'
+                    ]
+                ]
+            ],
             'provide-environments' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
