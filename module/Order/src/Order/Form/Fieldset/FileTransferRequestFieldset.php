@@ -83,7 +83,16 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
     {
         return [
             'change_number' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[A-Z][0-9]{8}/',
+                            'message' => _('Change numbers have the format 1 capital letter and 8 digits ("C12345678").')
+                        ]
+                    ]
+                ]
             ],
             'application_number' => [
                 'required' => true

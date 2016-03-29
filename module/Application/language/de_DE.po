@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 10:56+0100\n"
-"PO-Revision-Date: 2016-03-22 10:57+0100\n"
+"POT-Creation-Date: 2016-03-29 11:07+0200\n"
+"PO-Revision-Date: 2016-03-29 11:08+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -15,181 +15,100 @@ msgstr ""
 "X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SearchPath-0: Application\n"
 "X-Poedit-SearchPath-1: .\n"
-"X-Poedit-SearchPath-2: FileTransferRequest\n"
+"X-Poedit-SearchPath-2: Order\n"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Factory/FileTransferRequestFormFactory.php:62
-#: Order/src/Order/Form/OrderForm.php:31
-msgid "send"
-msgstr "senden"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ApplicationFieldset.php:20
-msgid "Application"
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:14
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:14
+msgid "AS400"
 msgstr ""
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ApplicationFieldset.php:26
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:46
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:26
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:26
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:26
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:27
+msgid "username"
+msgstr "Benutzername"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:22
+msgid "contact person"
+msgstr "Ansprechpartner"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:37
+msgid "server place"
+msgstr "Serverstandort"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:39
+msgid "intranet"
+msgstr "Intranet"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:40
+msgid "internet"
+msgstr "Internet"
+
+#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
+msgid "service invoice position number"
+msgstr "LSP"
+
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
 #: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:64
 msgid "application"
 msgstr "Verfahren"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ApplicationFieldset.php:43
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:61
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:96
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:75
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:40
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:45
-msgid "application code"
-msgstr "Verfahrensnummer"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400Fieldset.php:18
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemFieldset.php:18
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:14
-msgid "AS400"
-msgstr ""
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400Fieldset.php:25
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400Fieldset.php:42
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:22
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:48
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemFieldset.php:25
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemFieldset.php:42
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:22
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:48
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:50
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:26
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:27
-msgid "username"
-msgstr "Benutzername"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400SourceFieldset.php:10
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemSourceFieldset.php:14
-#: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:13
-msgid "Source - AS400"
-msgstr ""
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:15
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:15
-#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:13
-msgid "Target - AS400"
-msgstr ""
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdAs400TargetFieldset.php:31
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:31
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTandemTargetFieldset.php:61
-#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
-msgid "folder"
-msgstr ""
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:20
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionFieldset.php:15
-msgid "Basic settings"
-msgstr ""
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:26
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:22
-msgid "contact person"
-msgstr "Ansprechpartner"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:34
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:37
-msgid "server place"
-msgstr "Serverstandort"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:36
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:39
-msgid "intranet"
-msgstr "Intranet"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:37
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:40
-msgid "internet"
-msgstr "Internet"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:59
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
 msgid "customer"
 msgstr "Kunde"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:67
-msgid "server plattform"
-msgstr "Server-Plattform"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdFieldset.php:79
-#: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
-msgid "server name"
-msgstr "Servername"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdSourceFieldset.php:14
-#: Order/view/order/process/create.phtml:53
-msgid "Source - basic settings"
-msgstr "Quellsystem (Grundeinstellungen)"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/EndpointCdTargetFieldset.php:13
-#: Order/view/order/process/create.phtml:75
-msgid "Target - basic settings"
-msgstr "Zielsystem (Grundeinstellungen)"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:20
-msgid "file transfer request"
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:13
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
+msgid "Source - AS400"
 msgstr ""
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:34
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:13
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:13
+msgid "Target - AS400"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
+msgid "folder"
+msgstr ""
+
 #: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:42
-msgid "service invoice position (basic)"
-msgstr "LSP-S"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/FileTransferRequestFieldset.php:58
-msgid "service invoice position (personal)"
-msgstr "LSP-P"
-
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:14
-msgid "ConnectDirect connection settings"
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:92
+msgid ""
+"Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
+"Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionCdFieldset.php:20
-#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdFieldset.php:23
+#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdFieldset.php:25
 msgid "Secure Plus"
 msgstr ""
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/PhysicalConnectionFtgwFieldset.php:13
-msgid "File Transfer Gateway connection settings"
-msgstr ""
+#: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
+msgid "server name"
+msgstr "Servername"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:15
-msgid "Service Invoice Position"
-msgstr ""
+#: Order/src/Order/Form/OrderForm.php:31
+msgid "send"
+msgstr "senden"
 
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:21
-#: FileTransferRequest/src/FileTransferRequest/Form/Fieldset/ServiceInvoicePositionFieldset.php:28
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
-msgid "service invoice position number"
-msgstr "LSP"
-
-#: Order/src/Order/Form/Fieldset/LogicalConnectionFieldset.php:23
-msgid "type"
-msgstr "Typ"
-
-#: Application/view/application/index/index.phtml:4
+#: Application/view/application/index/index.phtml:5
 msgid "Tool for creating, submission, and managing of file transfer requests"
 msgstr ""
 "Anwendung zur Erstellung, Einreichung und Verwaltung von File-Transfer-"
 "Anträgen"
 
-#: Application/view/application/index/index.phtml:14
+#: Application/view/application/index/index.phtml:15
 msgid "Foo"
 msgstr ""
 
-#: Application/view/application/index/index.phtml:27
+#: Application/view/application/index/index.phtml:28
 msgid "Bar"
 msgstr ""
 
-#: Application/view/application/index/index.phtml:40
+#: Application/view/application/index/index.phtml:41
 msgid "Buz"
 msgstr ""
 
@@ -202,60 +121,60 @@ msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
-#: Application/view/error/404.phtml:13
+#: Application/view/error/404.phtml:14
 msgid ""
 "The requested controller could not be mapped to an existing controller class."
 msgstr ""
 "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
 "werden."
 
-#: Application/view/error/404.phtml:16
+#: Application/view/error/404.phtml:17
 msgid "The requested controller was not dispatchable."
 msgstr "Der angeforderte Controller ist nicht aufrufbar."
 
-#: Application/view/error/404.phtml:19
+#: Application/view/error/404.phtml:20
 msgid "The requested URL could not be matched by routing."
 msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
 
-#: Application/view/error/404.phtml:22
+#: Application/view/error/404.phtml:23
 msgid "We cannot determine at this time why a 404 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
 "Fehler aufgetreten ist."
 
-#: Application/view/error/404.phtml:34
+#: Application/view/error/404.phtml:35
 msgid "Controller"
 msgstr "Controller"
 
-#: Application/view/error/404.phtml:41
+#: Application/view/error/404.phtml:40
 #, php-format
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: Application/view/error/404.phtml:53 Application/view/error/index.phtml:8
+#: Application/view/error/404.phtml:52 Application/view/error/index.phtml:8
 msgid "Additional information"
 msgstr "Zusätzliche Information"
 
-#: Application/view/error/404.phtml:56 Application/view/error/404.phtml:80
+#: Application/view/error/404.phtml:55 Application/view/error/404.phtml:79
 #: Application/view/error/index.phtml:11 Application/view/error/index.phtml:35
 msgid "File"
 msgstr "Datei"
 
-#: Application/view/error/404.phtml:60 Application/view/error/404.phtml:84
+#: Application/view/error/404.phtml:59 Application/view/error/404.phtml:83
 #: Application/view/error/index.phtml:15 Application/view/error/index.phtml:39
 msgid "Message"
 msgstr "Meldung"
 
-#: Application/view/error/404.phtml:64 Application/view/error/404.phtml:88
+#: Application/view/error/404.phtml:63 Application/view/error/404.phtml:87
 #: Application/view/error/index.phtml:19 Application/view/error/index.phtml:43
 msgid "Stack trace"
 msgstr "Stapelüberwachung"
 
-#: Application/view/error/404.phtml:74 Application/view/error/index.phtml:29
+#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:29
 msgid "Previous exceptions"
 msgstr "Vorherige Ausnahme"
 
-#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:58
+#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:59
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
@@ -267,33 +186,86 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:64
+#: Application/view/layout/layout.phtml:77
 msgid "Home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:65
+#: Application/view/layout/layout.phtml:80
 msgid "New request"
 msgstr "Neue Anfrage"
 
-#: Application/view/layout/layout.phtml:66
+#: Application/view/layout/layout.phtml:83
 msgid "My orders"
 msgstr "Meine Anfragen"
 
-#: Order/view/order/process/create.phtml:28
+#: Order/view/order/process/create.phtml:31
 msgid "Billing"
 msgstr "Abrechnung"
 
-#: Order/view/order/process/create.phtml:97
+#: Order/view/order/process/create.phtml:54
+msgid "Source - basic settings"
+msgstr "Quellsystem (Grundeinstellungen)"
+
+#: Order/view/order/process/create.phtml:76
+msgid "Target - basic settings"
+msgstr "Zielsystem (Grundeinstellungen)"
+
+#: Order/view/order/process/create.phtml:100
 msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
-#: Order/view/order/process/create.phtml:114
+#: Order/view/order/process/create.phtml:117
 msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"
 
-#: Order/view/order/process/create.phtml:132
+#: Order/view/order/process/create.phtml:137
 msgid "Connection"
 msgstr "Verbindung"
+
+#: Order/view/order/process/start.phtml:1
+msgid "Create your File Transfer Request"
+msgstr ""
+
+#: Order/view/order/process/start.phtml:3
+msgid "Connect Direct"
+msgstr ""
+
+#: Order/view/order/process/start.phtml:19
+msgid "File Transfer Gateway"
+msgstr ""
+
+#~ msgid ""
+#~ "A change number consists of a capital letter and eight digits, e.g. "
+#~ "\"C12345678\"."
+#~ msgstr ""
+#~ "Eine Change-Nummer besteht aus einem Großbuchstaben und acht Ziffern, z."
+#~ "B. \"C12345678\"."
+
+#~ msgid ""
+#~ "A change number consists of a capital letter and eight digits, e.g. "
+#~ "C12345678."
+#~ msgstr ""
+#~ "Eine Change-Nummer besteht aus einem Großbuchstaben und acht Ziffern, z."
+#~ "B. \"C12345678\"."
+
+#~ msgid "A change number consists of a capital letter and eight digits."
+#~ msgstr ""
+#~ "Eine Change-Nummer besteht aus einem Großbuchstaben und acht Ziffern."
+
+#~ msgid "application code"
+#~ msgstr "Verfahrensnummer"
+
+#~ msgid "server plattform"
+#~ msgstr "Server-Plattform"
+
+#~ msgid "service invoice position (basic)"
+#~ msgstr "LSP-S"
+
+#~ msgid "service invoice position (personal)"
+#~ msgstr "LSP-P"
+
+#~ msgid "type"
+#~ msgstr "Typ"
 
 #~ msgid "service invoice position number (basic)"
 #~ msgstr "LSP-S"
