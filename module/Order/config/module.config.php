@@ -182,6 +182,11 @@ return [
             'ViewJsonStrategy'
         ]
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors'
+        ]
+    ],
     'hydrators' => [
         'factories' => []
     ]
