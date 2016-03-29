@@ -22,11 +22,12 @@ $(function() {
 		closeOnBlur: true,
 		source : [
 		    function(query, add) {
-		    	orderApplicationNumber = $('#order-application-number').val();
+				orderApplicationNumber = $('#order-application-number').val();
 				$.getJSON("/order/ajax/provide-service-invoice-positions-basic?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
 					add(response);
-				})
-		}],	 
+				});
+			}
+		],
 	});
 });
 /**
@@ -39,11 +40,12 @@ $(function() {
 		appendMethod:'replace',
 		closeOnBlur: true,
 		source : [
-		    function(query, add) {
-		    	orderApplicationNumber = $('#order-application-number').val();
+			function(query, add) {
+				orderApplicationNumber = $('#order-application-number').val();
 				$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
 					add(response);
-				})
-		}],	 
+				});
+			}
+		],
 	});
 });
