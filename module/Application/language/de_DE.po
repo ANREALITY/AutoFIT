@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-29 11:47+0200\n"
-"PO-Revision-Date: 2016-03-29 11:47+0200\n"
+"POT-Creation-Date: 2016-03-29 15:24+0200\n"
+"PO-Revision-Date: 2016-03-29 15:25+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -70,7 +70,7 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
 msgid "folder"
-msgstr ""
+msgstr "Verzeichnis"
 
 #: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
 msgid "change number"
@@ -232,7 +232,7 @@ msgstr "Verbindung"
 
 #: Order/view/order/process/start.phtml:1
 msgid "Create your File Transfer Request"
-msgstr ""
+msgstr "File Transfer Request erstellen"
 
 #: Order/view/order/process/start.phtml:3
 msgid "Connect Direct"
