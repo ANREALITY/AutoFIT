@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-29 11:07+0200\n"
-"PO-Revision-Date: 2016-03-29 11:08+0200\n"
+"POT-Creation-Date: 2016-03-29 11:47+0200\n"
+"PO-Revision-Date: 2016-03-29 11:47+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -89,6 +89,14 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
 msgid "server name"
 msgstr "Servername"
+
+#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
+msgid "service invoice position (basic)"
+msgstr "LSP-S"
+
+#: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:16
+msgid "service invoice position (personal)"
+msgstr "LSP-P"
 
 #: Order/src/Order/Form/OrderForm.php:31
 msgid "send"
@@ -232,7 +240,7 @@ msgstr ""
 
 #: Order/view/order/process/start.phtml:19
 msgid "File Transfer Gateway"
-msgstr ""
+msgstr "File Transfer Gateway"
 
 #~ msgid ""
 #~ "A change number consists of a capital letter and eight digits, e.g. "
@@ -257,12 +265,6 @@ msgstr ""
 
 #~ msgid "server plattform"
 #~ msgstr "Server-Plattform"
-
-#~ msgid "service invoice position (basic)"
-#~ msgstr "LSP-S"
-
-#~ msgid "service invoice position (personal)"
-#~ msgstr "LSP-P"
 
 #~ msgid "type"
 #~ msgstr "Typ"
