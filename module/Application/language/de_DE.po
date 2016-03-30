@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-29 15:24+0200\n"
-"PO-Revision-Date: 2016-03-29 15:25+0200\n"
+"POT-Creation-Date: 2016-03-30 09:04+0200\n"
+"PO-Revision-Date: 2016-03-30 09:05+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -54,8 +54,8 @@ msgid "application"
 msgstr "Verfahren"
 
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
-msgid "customer"
-msgstr "Kunde"
+msgid "external partner"
+msgstr "externer Partner"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:13
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
@@ -73,6 +73,7 @@ msgid "folder"
 msgstr "Verzeichnis"
 
 #: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
+#: Order/view/order/process/list-orders.phtml:4
 msgid "change number"
 msgstr "Change-Nummer"
 
@@ -230,6 +231,10 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Connection"
 msgstr "Verbindung"
 
+#: Order/view/order/process/list-orders.phtml:3
+msgid "request ID"
+msgstr "Antrag-ID"
+
 #: Order/view/order/process/start.phtml:1
 msgid "Create your File Transfer Request"
 msgstr "File Transfer Request erstellen"
@@ -241,6 +246,9 @@ msgstr ""
 #: Order/view/order/process/start.phtml:19
 msgid "File Transfer Gateway"
 msgstr "File Transfer Gateway"
+
+#~ msgid "customer"
+#~ msgstr "Kunde"
 
 #~ msgid ""
 #~ "A change number consists of a capital letter and eight digits, e.g. "
