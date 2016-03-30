@@ -22,20 +22,20 @@ interface ServiceInvoicePositionServiceInterface
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePosition            
+     * @param ServiceInvoicePosition $serviceInvoicePosition
      * @return ServiceInvoicePosition
      */
     public function saveServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePositionRequest);
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function findAllBasicByNumberAndApplication(string $number, string $applicationTechnicalShortName);
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function findAllPersonalByNumberAndApplication(string $number, string $applicationTechnicalShortName);
 

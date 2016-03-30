@@ -31,14 +31,17 @@ $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = _('Billing');
 $fieldgroupFormRows = [
     $this->formRow($fileTransferRequestFieldset->get('id')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow($fileTransferRequestFieldset->get('application_number')) . '</div>',
+    '<div class="form-field-wrapper col-md-6">' . $this->formRow(
+        $fileTransferRequestFieldset->get('application_number')) . '</div>',
     $this->formRow($fileTransferRequestFieldset->get('change_number')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionBasicFieldset->get('number')) . '</div>',
-    $this->formRow($userFieldset->get('id')),
-    $this->formRow($userFieldset->get('username')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')) . '</div>'
+    '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionBasicFieldset->get('number')) .
+         '</div>',
+        $this->formRow($userFieldset->get('id')),
+        $this->formRow($userFieldset->get('username')),
+        '<div class="form-field-wrapper col-md-6">' .
+         $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')) . '</div>'
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -60,7 +63,7 @@ $fieldgroupFormRows = [
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($serverForSourceFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -82,7 +85,7 @@ $fieldgroupFormRows = [
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($serverForTargetFieldset->get('name'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -101,7 +104,7 @@ $fieldgroupTitle = _('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointCdAs400SourceFieldset->get('username'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -119,7 +122,7 @@ $fieldgroupFormRows = [
     $this->formRow($endpointCdAs400TargetFieldset->get('username')),
     $this->formRow($endpointCdAs400TargetFieldset->get('folder'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -138,7 +141,7 @@ $fieldgroupTitle = _('Connection');
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionsCollection->getFieldsets()[0]->get('secure_plus'))
 ];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,

@@ -19,7 +19,7 @@ class ProperServiceNameDetectorFactory implements FactoryInterface
         $router = $serviceLocator->get('router');
         $request = $serviceLocator->get('request');
         $routerMatch = $router->match($request);
-        
+
         return new ProperServiceNameDetector($routerMatch->getParams());
     }
 

@@ -28,7 +28,7 @@ interface FileTransferRequestServiceInterface
 
     /**
      *
-     * @param FileTransferRequest $fileTransferRequest            
+     * @param FileTransferRequest $fileTransferRequest
      * @return FileTransferRequest
      */
     public function saveFileTransferRequest(FileTransferRequest $fileTransferRequestRequest);

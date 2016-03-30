@@ -22,14 +22,14 @@ interface ApplicationServiceInterface
 
     /**
      *
-     * @param Application $application            
+     * @param Application $application
      * @return Application
      */
     public function saveApplication(Application $applicationRequest);
 
     /**
      *
-     * @param string $technicalShortName            
+     * @param string $technicalShortName
      */
     public function findAllByTechnicalShortName(string $technicalShortName);
 

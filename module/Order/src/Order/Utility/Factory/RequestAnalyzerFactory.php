@@ -23,7 +23,7 @@ class RequestAnalyzerFactory implements FactoryInterface
         $routerMatchParams = $routerMatch->getParams();
         $requestQuery = $request->getQuery()->toArray();
         $requestPost = $request->getPost();
-        
+
         return new RequestAnalyzer($routerMatchParams, $requestQuery, $requestPost->toArray());
     }
 

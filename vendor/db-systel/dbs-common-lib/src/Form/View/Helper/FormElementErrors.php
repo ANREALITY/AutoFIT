@@ -6,8 +6,11 @@ use Zend\Form\ElementInterface;
 
 class FormElementErrors extends ZendFormElementErrors
 {
-    protected $messageCloseString     = '</span></div>';
-    protected $messageOpenFormat      = '<div class="error-message-container"%s><span>';
+
+    protected $messageCloseString = '</span></div>';
+
+    protected $messageOpenFormat = '<div class="error-message-container"%s><span>';
+
     protected $messageSeparatorString = '</span><span>';
 
 }

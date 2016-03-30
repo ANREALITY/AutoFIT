@@ -15,7 +15,7 @@ class ApplicationService implements ApplicationServiceInterface
 
     /**
      *
-     * @param ApplicationMapperInterface $applicationMapper            
+     * @param ApplicationMapperInterface $applicationMapper
      */
     public function __construct(ApplicationMapperInterface $applicationMapper)
     {

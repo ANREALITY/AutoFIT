@@ -36,11 +36,12 @@ class RequestAnalyzer
             'endpointSourceType',
             'endpointTargetType'
         ];
-        
-        $allParamsForOrderFormGiven = count(array_intersect($paramsNeededForOrderForm, array_keys($this->routerMatchParams))) ===
+
+        $allParamsForOrderFormGiven = count(
+            array_intersect($paramsNeededForOrderForm, array_keys($this->routerMatchParams))) ===
              count($paramsNeededForOrderForm);
 
-         return $allParamsForOrderFormGiven;
+        return $allParamsForOrderFormGiven;
     }
 
 }

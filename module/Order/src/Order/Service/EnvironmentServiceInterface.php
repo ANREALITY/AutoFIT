@@ -22,14 +22,14 @@ interface EnvironmentServiceInterface
 
     /**
      *
-     * @param Environment $environment            
+     * @param Environment $environment
      * @return Environment
      */
     public function saveEnvironment(Environment $environmentRequest);
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function findAllByName(string $name);
 

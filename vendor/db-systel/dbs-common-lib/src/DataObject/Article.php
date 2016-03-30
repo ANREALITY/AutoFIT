@@ -5,7 +5,9 @@ class Article
 {
 
     const TYPE_BASIC = 'basic';
+
     const TYPE_PERSONAL = 'personal';
+
     const TYPE_ON_DEMAND = 'on-demand';
 
     /**

@@ -22,14 +22,14 @@ interface ServerServiceInterface
 
     /**
      *
-     * @param Server $server            
+     * @param Server $server
      * @return Server
      */
     public function saveServer(Server $serverRequest);
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function findAllByName(string $name);
 

@@ -89,7 +89,8 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                         'name' => 'Regex',
                         'options' => [
                             'pattern' => '/^[A-Z][0-9]{8}/',
-                            'message' => _('Change numbers have the format 1 capital letter and 8 digits ("C12345678").')
+                            'message' => _(
+                                'Change numbers have the format 1 capital letter and 8 digits ("C12345678").')
                         ]
                     ]
                 ]
