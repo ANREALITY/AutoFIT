@@ -1,3 +1,9 @@
+// global variable
+var keyPressed = new Date();
+// call where you're watching for pressed keys.
+var updateKeyPressed = function() {
+	keyPressed = new Date();
+}
 /**
  * Autocompletion fro the field order-application-number.
  */
@@ -21,11 +27,17 @@ $(function() {
 		appendMethod:'replace',
 		closeOnBlur: true,
 		source : [
-		    function(query, add) {
-				orderApplicationNumber = $('#order-application-number').val();
-				$.getJSON("/order/ajax/provide-service-invoice-positions-basic?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
-					add(response);
-				});
+			function(query, add) {
+				var currentDate = new Date();
+				setInterval(function() {
+					if (currentDate.getTime() > keyPressed.getTime()) {
+						orderApplicationNumber = $('#order-application-number').val();
+						$.getJSON("/order/ajax/provide-service-invoice-positions-basic?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
+							add(response);
+						});
+						updateKeyPressed();
+					}
+				}, 1000);
 			}
 		],
 	});
@@ -41,10 +53,16 @@ $(function() {
 		closeOnBlur: true,
 		source : [
 			function(query, add) {
-				orderApplicationNumber = $('#order-application-number').val();
-				$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
-					add(response);
-				});
+				var currentDate = new Date();
+				setInterval(function() {
+					if (currentDate.getTime() > keyPressed.getTime()) {
+						orderApplicationNumber = $('#order-application-number').val();
+						$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
+							add(response);
+						});
+						updateKeyPressed();
+					}
+				}, 1000);
 			}
 		],
 	});
