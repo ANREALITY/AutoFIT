@@ -4,7 +4,7 @@
 	<target name="lint">
 		<apply executable="php" failonerror="true">
 			<arg value="-l" />
-			<fileset dir="${basedir}/src/module/Order/src/Order">
+			<fileset dir="${basedir}/module/Order/src/Order">
 				<include name="**/*.php" />
 			</fileset>
 		</apply>
