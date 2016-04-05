@@ -7,6 +7,7 @@ nbproject
 .project
 .settings
 .htpasswd
+build.xml
 composer.lock
 npm-debug.log*
 config/autoload/local.php
