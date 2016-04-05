@@ -1,8 +1,11 @@
-<target name="lint">
-	<apply executable="php" failonerror="true">
-		<arg value="-l" />
-		<fileset dir="${basedir}/src">
-			<include name="./module/Order/src/Order/**/*.php" />
-		</fileset>
-	</apply>
-</target>
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="name-of-project" default="full-build">
+	<target name="lint">
+		<apply executable="php" failonerror="true">
+			<arg value="-l" />
+			<fileset dir="${basedir}/src">
+				<include name="./module/Order/src/Order/**/*.php" />
+			</fileset>
+		</apply>
+	</target>
+</project>
