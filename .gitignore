@@ -23,4 +23,6 @@ codeception/tests/_output
 data/cache/*
 ci/*/config.xml
 ci/*/logs/*
+!ci/*/logs/empty
 ci/*/output/*
+!ci/*/output/empty
