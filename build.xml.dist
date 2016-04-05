@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AutoFIT" default="full-build">
+	<target name="full-build" depends="lint" description="Performs static analysis, runs the tests, and generates project documentation"/>
 	<target name="lint">
 		<apply executable="php" failonerror="true">
 			<arg value="-l" />
