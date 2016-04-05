@@ -21,7 +21,6 @@ phpunit/phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
-data/metrics/pdepend/summary.xml
-data/metrics/pdepend/jdepend.svg
-data/metrics/pdepend/pyramid.svg
-
+ci/*/*.dist
+ci/*/logs/*
+ci/*/output/*
