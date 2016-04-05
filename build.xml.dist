@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AutoFIT" default="full-build">
-	<target name="full-build" depends="lint, phpcs" description="Performs static analysis, runs the tests, and generates project documentation"/>
-	<target name="lint, phpcs, phpdox, phpunit" unless="lint.done" description="Perform syntax check of sourcecode files">
+	<target name="full-build" depends="lint, phpcs, phpdox, phpunit" description="Performs static analysis, runs the tests, and generates project documentation"/>
+	<target name="lint" description="Perform syntax check of sourcecode files">
 		<apply executable="php" taskname="lint" failonerror="true">
 			<arg value="-l" />
 			<fileset dir="${basedir}/module/**/src">
