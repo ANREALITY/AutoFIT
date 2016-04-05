@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
@@ -13,7 +12,7 @@
         <testsuite name="app-only">
             <directory suffix="Test.php">./tests/Application</directory>
             <!--
-            <directory suffix="Test.php">./tests/FileTransferRequest</directory>
+            <directory suffix="Test.php">./tests/Order</directory>
             <directory suffix="Test.php">./tests/DataExchange</directory>
             <directory suffix="Test.php">./tests/Administration</directory>
             <directory suffix="Test.php">./tests/AccesControl</directory>
@@ -23,4 +22,10 @@
             <directory suffix="Test.php">../vendor/db-systel/dbs-common-lib/tests/Hydrator</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <log type="coverage-html" target="../ci/phpunit/output/coverage"/>
+        <log type="coverage-clover" target="../ci/phpunit/logs/clover.xml"/>
+        <log type="coverage-crap4j" target="../ci/phpunit/logs/crap4j.xml"/>
+        <log type="junit" target="../ci/phpunit/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
 </phpunit>

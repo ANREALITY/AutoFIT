@@ -21,6 +21,6 @@ phpunit/phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
-ci/*/*.dist
+ci/*/config.xml
 ci/*/logs/*
 ci/*/output/*

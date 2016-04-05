@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AutoFIT" default="full-build">
-	<target name="full-build" depends="lint" description="Performs static analysis, runs the tests, and generates project documentation"/>
-	<target name="lint">
-		<apply executable="php" failonerror="true">
+	<target name="full-build" depends="lint, phpcs" description="Performs static analysis, runs the tests, and generates project documentation"/>
+	<target name="lint, phpcs, phpdox, phpunit" unless="lint.done" description="Perform syntax check of sourcecode files">
+		<apply executable="php" taskname="lint" failonerror="true">
 			<arg value="-l" />
-			<fileset dir="${basedir}/module/Order/src/Order">
+			<fileset dir="${basedir}/module/**/src">
+				<include name="**/*.php" />
+			</fileset>
+			<fileset dir="${basedir}/phpunit/tests">
 				<include name="**/*.php" />
 			</fileset>
 		</apply>
+	</target>
+	<target name="phpcs">
+		<exec executable="phpcs">
+			<arg value="--report=checkstyle" />
+			<arg value="--report-file=${basedir}/ci/php_codesniffer/logs/checkstyle.xml" />
+			<arg value="--standard=${basedir}/ci/php_codesniffer/config.xml" />
+			<arg path="${basedir}/module/**/src" />
+		</exec>
+	</target>
+	<target name="phpdox" depends="phpcs" description="Generate project documentation using phpDox">
+		<exec executable="${phpdox}" dir="${basedir}/ci/phpdox" taskname="phpdox"/>
+	</target>
+	<target name="phpunit" description="Run unit tests with PHPUnit">
+		<exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
+			<arg value="--configuration"/>
+			<arg path="${basedir}/phpunit/phpunit.xml"/>
+		</exec>
 	</target>
 </project>
