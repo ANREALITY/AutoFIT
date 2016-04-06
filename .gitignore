@@ -7,8 +7,10 @@ nbproject
 .project
 .settings
 .htpasswd
+build.xml
 composer.lock
 npm-debug.log*
+web.config
 config/autoload/local.php
 config/autoload/*.local.php
 vendor/*
@@ -19,3 +21,8 @@ phpunit/phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
+ci/*/config.xml
+ci/*/logs/*
+!ci/*/logs/empty
+ci/*/output/*
+!ci/*/output/empty

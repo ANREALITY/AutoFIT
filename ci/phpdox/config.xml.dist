@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpdox>
+	<project name="jenkins" source="${basedir}/module/**/src" workdir="${basedir}/ci/phpdox">
+		<collector publiconly="false">
+			<include mask="*.php" />
+		</collector>
+		<generator output="${basedir}/ci/phpdox/output">
+			<build engine="html" enabled="true" output="api">
+				<file extension="html" />
+			</build>
+		</generator>
+	</project>
+</phpdox>
