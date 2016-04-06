@@ -24,7 +24,7 @@ $(function() {
 						});
 						updateKeyPressed();
 					}
-				}, 1000);
+				}, 500);
 			}
 		],
 	});
@@ -50,7 +50,7 @@ $(function() {
 						});
 						updateKeyPressed();
 					}
-				}, 1000);
+				}, 500);
 			}
 		],
 	});
@@ -75,7 +75,7 @@ $(function() {
 						});
 						updateKeyPressed();
 					}
-				}, 1000);
+				}, 500);
 			}
 		],
 	});
