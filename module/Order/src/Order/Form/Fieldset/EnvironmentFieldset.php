@@ -16,7 +16,10 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
     {
         $this->add([
             'name' => 'severity',
-            'type' => 'hidden'
+            'type' => 'hidden',
+            'attributes' => [
+                'id' => 'order' . '-' . 'environment-severity'
+            ]
         ]);
 
         $this->add(
@@ -24,13 +27,11 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
                 'type' => 'text',
                 'name' => 'name',
                 'options' => [
-                    'label' => _('environment'),
-                    'label_attributes' => [
-                        'class' => 'col-md-6'
-                    ]
+                    'label' => _('environment')
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'id' => 'order' . '-' . 'environment-name'
                 ]
             ]);
     }

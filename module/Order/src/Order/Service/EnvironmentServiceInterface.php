@@ -29,8 +29,9 @@ interface EnvironmentServiceInterface
 
     /**
      *
+     * @param string $applicationTechnicalShortName
      * @param string $name
      */
-    public function findAllByName(string $name);
+    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null);
 
 }

@@ -41,7 +41,7 @@ class EnvironmentMapper implements EnvironmentMapperInterface
 
     /**
      *
-     * @param int|string $severity
+     * @param int|string $severity            
      *
      * @return Environment
      * @throws \InvalidArgumentException
@@ -75,33 +75,42 @@ class EnvironmentMapper implements EnvironmentMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('environment');
-
+        
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (array_key_exists('name', $condition)) {
+                if (!empty($condition['name'])) {
                     $select->where(
                         [
                             'name LIKE ?' => '%' . $condition['name'] . '%'
                         ]);
                 }
+                if (!empty($condition['application_technical_short_name'])) {
+                    $select->join('service_invoice', 'service_invoice.environment_severity = environment.severity', []);
+                    $select->join('application', 
+                        'application.technical_short_name = service_invoice.application_technical_short_name', []);
+                    $select->where(
+                        [
+                            'application.technical_short_name = ?' => $condition['application_technical_short_name']
+                        ]);
+                }
             }
         }
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             return $resultSet->initialize($result);
         }
-
+        
         return [];
     }
 
     /**
      *
-     * @param Environment $dataObject
+     * @param Environment $dataObject            
      *
      * @return Environment
      * @throws \Exception

@@ -57,14 +57,14 @@ class EnvironmentService implements EnvironmentServiceInterface
      * {@inheritDoc}
      *
      */
-    public function findAllByName(string $name)
+    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null)
     {
         return $this->environmentMapper->findAll(
             [
                 [
-                    'name' => $name
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'application_technical_short_name' => $name,
                 ]
             ]);
     }
-
 }

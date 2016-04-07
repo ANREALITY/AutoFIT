@@ -24,6 +24,42 @@ $(function() {
 	});
 });
 /**
+ * Autocompletion for the field order-environment-name.
+ */
+$(function() {
+	$("#order-environment-name")
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/order/ajax/provide-environments?"
+					+ "data[application_technical_short_name]=" + $('#order-application-number').val()
+					+ "&data[name]=" + request.term,
+					{},
+					function(data) {
+						response($.map(data, function(item) {
+							return {
+								label : item.name,
+								value : item.severity
+							}
+						}));
+					}
+				);
+			},
+			select: function (event, ui) {
+		         $('#order-environment-name').val(ui.item.label);
+		         $('#order-environment-severity').val(ui.item.value);
+		         return false;
+		     },
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});
+/**
  * Autocompletion for the field order-service-invoice-position-basic-number.
  */
 $(function() {
