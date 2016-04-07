@@ -22,7 +22,8 @@
             ))
             ->prependStylesheet($this->basePath() . '/css/style.css')
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')?>
+            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+            ->appendStylesheet($this->basePath() . '/components/jquery-ui/themes/smoothness/jquery-ui.css')?>
 
         <!-- Scripts -->
         <?php
@@ -38,6 +39,7 @@
                 'conditional' => 'lt IE 9'
             ));
 
+        $this->headScript()->appendFile('/components/jquery-ui/jquery-ui.js');
         $this->headScript()->appendFile('/js/autocomplete.js');
         $this->headScript()->appendFile('/js/fields-dependency-management.js');
         echo $this->headScript();
