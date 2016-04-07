@@ -10,6 +10,7 @@ echo $this->form()->openTag($form);
 <?php
 $fileTransferRequestFieldset = $form->get('file_transfer_request');
 $userFieldset = $fileTransferRequestFieldset->get('user');
+$environmentFieldset = $fileTransferRequestFieldset->get('environment');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
@@ -33,13 +34,15 @@ $fieldgroupFormRows = [
     $this->formRow($fileTransferRequestFieldset->get('id')),
     '<div class="form-field-wrapper col-md-6">' . $this->formRow(
         $fileTransferRequestFieldset->get('application_number')) . '</div>',
+    $this->formRow($environmentFieldset->get('severity')),
+    $this->formRow($environmentFieldset->get('name')),
     $this->formRow($fileTransferRequestFieldset->get('change_number')),
     '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionBasicFieldset->get('number')) .
          '</div>',
         $this->formRow($userFieldset->get('id')),
         $this->formRow($userFieldset->get('username')),
         '<div class="form-field-wrapper col-md-6">' .
-         $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')) . '</div>'
+         $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')) . '</div>',
 ];
 echo $this->partial('/partials/fieldgroup',
     [

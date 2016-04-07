@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 09:04+0200\n"
-"PO-Revision-Date: 2016-03-30 09:05+0200\n"
+"POT-Creation-Date: 2016-04-07 17:03+0200\n"
+"PO-Revision-Date: 2016-04-07 17:03+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -72,12 +72,16 @@ msgstr ""
 msgid "folder"
 msgstr "Verzeichnis"
 
+#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:27
+msgid "environment"
+msgstr "Umgebung"
+
 #: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
 #: Order/view/order/process/list-orders.phtml:4
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:92
+#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:100
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
@@ -130,60 +134,60 @@ msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
-#: Application/view/error/404.phtml:14
+#: Application/view/error/404.phtml:13
 msgid ""
 "The requested controller could not be mapped to an existing controller class."
 msgstr ""
 "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
 "werden."
 
-#: Application/view/error/404.phtml:17
+#: Application/view/error/404.phtml:16
 msgid "The requested controller was not dispatchable."
 msgstr "Der angeforderte Controller ist nicht aufrufbar."
 
-#: Application/view/error/404.phtml:20
+#: Application/view/error/404.phtml:19
 msgid "The requested URL could not be matched by routing."
 msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
 
-#: Application/view/error/404.phtml:23
+#: Application/view/error/404.phtml:22
 msgid "We cannot determine at this time why a 404 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
 "Fehler aufgetreten ist."
 
-#: Application/view/error/404.phtml:35
+#: Application/view/error/404.phtml:34
 msgid "Controller"
 msgstr "Controller"
 
-#: Application/view/error/404.phtml:40
+#: Application/view/error/404.phtml:39
 #, php-format
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: Application/view/error/404.phtml:52 Application/view/error/index.phtml:8
+#: Application/view/error/404.phtml:51 Application/view/error/index.phtml:8
 msgid "Additional information"
 msgstr "Zusätzliche Information"
 
-#: Application/view/error/404.phtml:55 Application/view/error/404.phtml:79
+#: Application/view/error/404.phtml:54 Application/view/error/404.phtml:78
 #: Application/view/error/index.phtml:11 Application/view/error/index.phtml:35
 msgid "File"
 msgstr "Datei"
 
-#: Application/view/error/404.phtml:59 Application/view/error/404.phtml:83
+#: Application/view/error/404.phtml:58 Application/view/error/404.phtml:82
 #: Application/view/error/index.phtml:15 Application/view/error/index.phtml:39
 msgid "Message"
 msgstr "Meldung"
 
-#: Application/view/error/404.phtml:63 Application/view/error/404.phtml:87
+#: Application/view/error/404.phtml:62 Application/view/error/404.phtml:86
 #: Application/view/error/index.phtml:19 Application/view/error/index.phtml:43
 msgid "Stack trace"
 msgstr "Stapelüberwachung"
 
-#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:29
+#: Application/view/error/404.phtml:72 Application/view/error/index.phtml:29
 msgid "Previous exceptions"
 msgstr "Vorherige Ausnahme"
 
-#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:59
+#: Application/view/error/404.phtml:102 Application/view/error/index.phtml:59
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
@@ -207,27 +211,27 @@ msgstr "Neue Anfrage"
 msgid "My orders"
 msgstr "Meine Anfragen"
 
-#: Order/view/order/process/create.phtml:31
+#: Order/view/order/process/create.phtml:32
 msgid "Billing"
 msgstr "Abrechnung"
 
-#: Order/view/order/process/create.phtml:54
+#: Order/view/order/process/create.phtml:60
 msgid "Source - basic settings"
 msgstr "Quellsystem (Grundeinstellungen)"
 
-#: Order/view/order/process/create.phtml:76
+#: Order/view/order/process/create.phtml:82
 msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
-#: Order/view/order/process/create.phtml:100
+#: Order/view/order/process/create.phtml:106
 msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
-#: Order/view/order/process/create.phtml:117
+#: Order/view/order/process/create.phtml:123
 msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"
 
-#: Order/view/order/process/create.phtml:137
+#: Order/view/order/process/create.phtml:143
 msgid "Connection"
 msgstr "Verbindung"
 

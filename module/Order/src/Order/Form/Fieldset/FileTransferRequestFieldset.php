@@ -77,6 +77,13 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
                 'name' => 'service_invoice_position_personal',
                 'options' => []
             ]);
+
+        $this->add(
+            [
+                'name' => 'environment',
+                'type' => 'Order\Form\Fieldset\Environment',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()

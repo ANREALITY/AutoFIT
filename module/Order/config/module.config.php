@@ -146,6 +146,7 @@ return [
             'Order\Form\Fieldset\EndpointCdTandem' => 'Order\Form\Fieldset\Factory\EndpointCdTandemFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdTandemSource' => 'Order\Form\Fieldset\Factory\EndpointCdTandemSourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdTandemTarget' => 'Order\Form\Fieldset\Factory\EndpointCdTandemTargetFieldsetFactory',
+            'Order\Form\Fieldset\Environment' => 'Order\Form\Fieldset\Factory\EnvironmentFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequest' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnection' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionCd' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdFieldsetFactory',
