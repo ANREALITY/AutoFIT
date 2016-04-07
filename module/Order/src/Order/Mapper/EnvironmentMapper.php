@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use Zend\Db\Sql\Select;
 
 class EnvironmentMapper implements EnvironmentMapperInterface
 {
@@ -75,6 +76,7 @@ class EnvironmentMapper implements EnvironmentMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('environment');
+        $select->quantifier(Select::QUANTIFIER_DISTINCT);
         
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
