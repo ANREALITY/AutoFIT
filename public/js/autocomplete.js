@@ -15,16 +15,10 @@ $(function() {
 		closeOnBlur: true,
 		source : [
 			function(query, add) {
-				var currentDate = new Date();
-				setInterval(function() {
-					if (currentDate.getTime() > keyPressed.getTime()) {
-						orderApplicationNumber = $('#order-application-number').val();
-						$.getJSON("/order/ajax/provide-applications?data[technical_short_name]=" + query, function(response) {
-							add(response);
-						});
-						updateKeyPressed();
-					}
-				}, 500);
+				orderApplicationNumber = $('#order-application-number').val();
+				$.getJSON("/order/ajax/provide-applications?data[technical_short_name]=" + query, function(response) {
+					add(response);
+				});
 			}
 		],
 	});
@@ -41,16 +35,10 @@ $(function() {
 		closeOnBlur: true,
 		source : [
 			function(query, add) {
-				var currentDate = new Date();
-				setInterval(function() {
-					if (currentDate.getTime() > keyPressed.getTime()) {
-						orderApplicationNumber = $('#order-application-number').val();
-						$.getJSON("/order/ajax/provide-service-invoice-positions-basic?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
-							add(response);
-						});
-						updateKeyPressed();
-					}
-				}, 500);
+				orderApplicationNumber = $('#order-application-number').val();
+				$.getJSON("/order/ajax/provide-service-invoice-positions-basic?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
+					add(response);
+				});
 			}
 		],
 	});
@@ -66,16 +54,10 @@ $(function() {
 		closeOnBlur: true,
 		source : [
 			function(query, add) {
-				var currentDate = new Date();
-				setInterval(function() {
-					if (currentDate.getTime() > keyPressed.getTime()) {
-						orderApplicationNumber = $('#order-application-number').val();
-						$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
-							add(response);
-						});
-						updateKeyPressed();
-					}
-				}, 500);
+				orderApplicationNumber = $('#order-application-number').val();
+				$.getJSON("/order/ajax/provide-service-invoice-positions-personal?data[number]=" + query + "&data[application_technical_short_name]=" + orderApplicationNumber, function(response) {
+					add(response);
+				});
 			}
 		],
 	});
