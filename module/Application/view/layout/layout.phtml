@@ -22,8 +22,7 @@
             ))
             ->prependStylesheet($this->basePath() . '/css/style.css')
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
-            ->appendStylesheet($this->basePath() . '/components/autocompletelikegoogle/jquery.autocomplete.css')?>
+            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')?>
 
         <!-- Scripts -->
         <?php
@@ -39,7 +38,6 @@
                 'conditional' => 'lt IE 9'
             ));
 
-        $this->headScript()->appendFile('/components/autocompletelikegoogle/jquery.autocomplete.js');
         $this->headScript()->appendFile('/js/autocomplete.js');
         $this->headScript()->appendFile('/js/fields-dependency-management.js');
         echo $this->headScript();
