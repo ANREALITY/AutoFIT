@@ -99,7 +99,7 @@ class AjaxController extends AbstractActionController
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            if (! empty($data['number']) && ! empty($data['application_technical_short_name'])) {
+            if (! empty($data['application_technical_short_name'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllBasicByNumberAndApplication($data['number'],
                     $data['application_technical_short_name'])->toArray();
             }
@@ -117,7 +117,7 @@ class AjaxController extends AbstractActionController
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            if (! empty($data['number']) && ! empty($data['application_technical_short_name'])) {
+            if (! empty($data['application_technical_short_name'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllPersonalByNumberAndApplication($data['number'],
                     $data['application_technical_short_name'])->toArray();
             }
