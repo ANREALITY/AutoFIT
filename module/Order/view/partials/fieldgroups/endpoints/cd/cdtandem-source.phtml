@@ -1,0 +1,15 @@
+<?php
+$fieldgroupName = 'specific-endpoint-source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Source - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('username'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>

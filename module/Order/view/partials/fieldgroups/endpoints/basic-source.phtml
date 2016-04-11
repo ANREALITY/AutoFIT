@@ -1,0 +1,20 @@
+<?php
+$fieldgroupName = 'basic-endpoint-source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Source - basic settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('role')),
+    $this->formRow($endpointSourceFieldset->get('contact_person')),
+    $this->formRadio($endpointSourceFieldset->get('server_place')),
+    $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
+    $this->formRow($customerForSourceFieldset->get('name')),
+    $this->formRow($serverForSourceFieldset->get('name'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>

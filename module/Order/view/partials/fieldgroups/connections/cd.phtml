@@ -1,0 +1,15 @@
+<?php
+$fieldgroupName = 'physical_connection_cd';
+$fieldgroupCssClass = 'col-md-12';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($physicalConnectionFieldset->get('secure_plus'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>
