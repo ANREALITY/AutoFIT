@@ -10,7 +10,7 @@ class EndpointCdTandemTargetFieldset extends AbstractEndpointCdTandemFieldset
     {
         parent::__construct($name, $options);
 
-        $this->setLabel(_('Target - AS400'));
+        $this->setLabel(_('Target - Tandem'));
     }
 
     public function init()

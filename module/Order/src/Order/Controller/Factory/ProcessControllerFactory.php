@@ -20,9 +20,9 @@ class ProcessControllerFactory implements FactoryInterface
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
 
         if ($isOrderRequest) {
-            $service->setOrderForm(
-                $realServiceLocator->get('FormElementManager')
-                    ->get('Order\Form\OrderForm'));
+            $formElementManager = $realServiceLocator->get('FormElementManager');
+            $orderForm = $formElementManager->get('Order\Form\OrderForm');
+            $service->setOrderForm($orderForm);
         }
 
         return $service;

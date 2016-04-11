@@ -11,7 +11,7 @@ abstract class AbstractEndpointCdTandemFieldset extends AbstractEndpointFieldset
     {
         parent::__construct($name, $options);
 
-        $this->setLabel(_('AS400'));
+        $this->setLabel(_('Tandem'));
     }
 
     public function init()

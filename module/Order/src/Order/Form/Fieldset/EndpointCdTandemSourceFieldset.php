@@ -10,7 +10,7 @@ class EndpointCdTandemSourceFieldset extends AbstractEndpointCdTandemFieldset
     {
         parent::__construct($name, $options);
 
-        $this->setLabel(_('Source - AS400'));
+        $this->setLabel(_('Source - Tandem'));
     }
 
     public function init()
