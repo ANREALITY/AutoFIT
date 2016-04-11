@@ -15,14 +15,14 @@ $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connecti
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 $physicalConnectionsCollection = $logicalConnectionFieldset->get('physical_connections');
-$endpointCdAs400SourceFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_source');
-$endpointCdAs400TargetFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_target');
-$applicationForSourceFieldset = $endpointCdAs400SourceFieldset->get('application');
-$customerForSourceFieldset = $endpointCdAs400SourceFieldset->get('customer');
-$serverForSourceFieldset = $endpointCdAs400SourceFieldset->get('server');
-$applicationForTargetFieldset = $endpointCdAs400TargetFieldset->get('application');
-$customerForTargetFieldset = $endpointCdAs400TargetFieldset->get('customer');
-$serverForTargetFieldset = $endpointCdAs400TargetFieldset->get('server');
+$endpointSourceFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_source');
+$endpointTargetFieldset = $physicalConnectionsCollection->getFieldsets()[0]->get('endpoint_target');
+$applicationForSourceFieldset = $endpointSourceFieldset->get('application');
+$customerForSourceFieldset = $endpointSourceFieldset->get('customer');
+$serverForSourceFieldset = $endpointSourceFieldset->get('server');
+$applicationForTargetFieldset = $endpointTargetFieldset->get('application');
+$customerForTargetFieldset = $endpointTargetFieldset->get('customer');
+$serverForTargetFieldset = $endpointTargetFieldset->get('server');
 ?>
 
 <?php
@@ -59,9 +59,9 @@ $fieldgroupName = 'basic-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Source - basic settings');
 $fieldgroupFormRows = [
-    $this->formRow($endpointCdAs400SourceFieldset->get('role')),
-    $this->formRow($endpointCdAs400SourceFieldset->get('contact_person')),
-    $this->formRadio($endpointCdAs400SourceFieldset->get('server_place')),
+    $this->formRow($endpointSourceFieldset->get('role')),
+    $this->formRow($endpointSourceFieldset->get('contact_person')),
+    $this->formRadio($endpointSourceFieldset->get('server_place')),
     $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($serverForSourceFieldset->get('name'))
@@ -81,9 +81,9 @@ $fieldgroupName = 'basic-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Target - basic settings');
 $fieldgroupFormRows = [
-    $this->formRow($endpointCdAs400TargetFieldset->get('role')),
-    $this->formRow($endpointCdAs400TargetFieldset->get('contact_person')),
-    $this->formRadio($endpointCdAs400TargetFieldset->get('server_place')),
+    $this->formRow($endpointTargetFieldset->get('role')),
+    $this->formRow($endpointTargetFieldset->get('contact_person')),
+    $this->formRadio($endpointTargetFieldset->get('server_place')),
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($serverForTargetFieldset->get('name'))
@@ -105,7 +105,7 @@ $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Source - specific settings');
 $fieldgroupFormRows = [
-    $this->formRow($endpointCdAs400SourceFieldset->get('username'))
+    $this->formRow($endpointSourceFieldset->get('username'))
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
@@ -122,8 +122,8 @@ $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Target - specific settings');
 $fieldgroupFormRows = [
-    $this->formRow($endpointCdAs400TargetFieldset->get('username')),
-    $this->formRow($endpointCdAs400TargetFieldset->get('folder'))
+    $this->formRow($endpointTargetFieldset->get('username')),
+    $this->formRow($endpointTargetFieldset->get('folder'))
 ];
 echo $this->partial('/partials/fieldgroup', 
     [
