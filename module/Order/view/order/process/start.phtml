@@ -15,9 +15,23 @@
                 href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdtandem', 'endpointTargetType' => 'cdtandem']); ?>">Tandem
                     -> Tandem</a></li>
             <li>...</li>
-        </ul></li>
+        </ul>
+    </li>
     <li><span><?php echo _('File Transfer Gateway'); ?></span>
         <ul>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwwindows', 'endpointTargetType' => 'ftgwwindows']); ?>">Windows
+                    -> Windows</a></li>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwwindows', 'endpointTargetType' => 'ftgwselfservice']); ?>">Windows
+                    -> Self-Service</a></li>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwselfservice', 'endpointTargetType' => 'ftgwwindows']); ?>">Self-Service
+                    -> Windows</a></li>
+            <li><a
+                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwselfservice', 'endpointTargetType' => 'ftgwselfservice']); ?>">Self-Service
+                    -> Self-Service</a></li>
             <li>...</li>
-        </ul></li>
+        </ul>
+    </li>
 </ul>
