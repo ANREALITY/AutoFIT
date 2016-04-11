@@ -72,7 +72,8 @@ $(function() {
 				$.get(
 					"/order/ajax/provide-service-invoice-positions-basic?"
 					+ "data[number]=" + request.term
-					+ "&data[application_technical_short_name]=" + $('#order-application-number').val(),
+					+ "&data[application_technical_short_name]=" + $('#order-application-number').val()
+					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
 						response(data.slice(0, 10));
@@ -98,7 +99,8 @@ $(function() {
 				$.get(
 					"/order/ajax/provide-service-invoice-positions-personal?"
 					+ "data[number]=" + request.term
-					+ "&data[application_technical_short_name]=" + $('#order-application-number').val(),
+					+ "&data[application_technical_short_name]=" + $('#order-application-number').val()
+					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
 						response(data.slice(0, 10));

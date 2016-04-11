@@ -29,14 +29,18 @@ interface ServiceInvoicePositionServiceInterface
 
     /**
      *
-     * @param string $name
+     * @param string $number
+     * @param string $applicationTechnicalShortName
+     * @param integer $environmentSeverity
      */
-    public function findAllBasicByNumberAndApplication(string $number, string $applicationTechnicalShortName);
+    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity);
 
     /**
      *
-     * @param string $name
+     * @param string $number
+     * @param string $applicationTechnicalShortName
+     * @param integer $environmentSeverity
      */
-    public function findAllPersonalByNumberAndApplication(string $number, string $applicationTechnicalShortName);
+    public function findAllPersonalByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity);
 
 }

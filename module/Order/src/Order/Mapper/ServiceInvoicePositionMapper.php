@@ -93,13 +93,23 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
                         ]);
                 }
                 if (array_key_exists('application_technical_short_name', $condition)) {
-                    $select->join('service_invoice',
-                        'service_invoice.number = service_invoice_position.service_invoice_number', [])->join(
+                    $select->join(['service_invoice_for_application' => 'service_invoice'],
+                        'service_invoice_for_application.number = service_invoice_position.service_invoice_number', [])->join(
                         'application',
-                        'application.technical_short_name = service_invoice.application_technical_short_name', []);
+                        'application.technical_short_name = service_invoice_for_application.application_technical_short_name', []);
                     $select->where(
                         [
-                            'application_technical_short_name = ?' => $condition['application_technical_short_name']
+                            'application.technical_short_name = ?' => $condition['application_technical_short_name']
+                        ]);
+                }
+                if (array_key_exists('environment_severity', $condition)) {
+                    $select->join(['service_invoice_for_environment' => 'service_invoice'],
+                        'service_invoice_for_environment.number = service_invoice_position.service_invoice_number', [])->join(
+                        'environment',
+                        'environment.severity = service_invoice_for_environment.environment_severity', []);
+                    $select->where(
+                        [
+                            'environment.severity = ?' => $condition['environment_severity']
                         ]);
                 }
             }
