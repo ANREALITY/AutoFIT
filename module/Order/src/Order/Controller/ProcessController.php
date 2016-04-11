@@ -6,6 +6,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Form\FormInterface;
 use DbSystel\DataObject\FileTransferRequest;
 use Order\Service\FileTransferRequestService;
+use Order\Utility\RequestAnalyzer;
 
 class ProcessController extends AbstractActionController
 {
@@ -16,16 +17,26 @@ class ProcessController extends AbstractActionController
 
     protected $orderForm = null;
 
-    public function __construct(FileTransferRequest $fileTransferRequest,
-        FileTransferRequestService $fileTransferRequestService)
+    protected $connectionType;
+
+    protected $endpointSourceType;
+
+    protected $endpointTargetType;
+
+    public function __construct(FileTransferRequest $fileTransferRequest, 
+        FileTransferRequestService $fileTransferRequestService, string $connectionType, string $endpointSourceType, 
+        string $endpointTargetType)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
+        $this->connectionType = $connectionType;
+        $this->endpointSourceType = $endpointSourceType;
+        $this->endpointTargetType = $endpointTargetType;
     }
 
     /**
      *
-     * @param FormInterface $orderForm
+     * @param FormInterface $orderForm            
      */
     public function setOrderForm($orderForm)
     {
@@ -40,29 +51,32 @@ class ProcessController extends AbstractActionController
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-
+        
         $request = $this->getRequest();
-
+        
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-
+                
                 // It's just a temporary fake. @todo make it dynamic!
                 $this->fileTransferRequest->getUser()->setUsername('foobar');
-
+                
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
             }
         }
-
+        
         return [
-            'form' => $this->orderForm
+            'form' => $this->orderForm,
+            'connectionType' => $this->connectionType,
+            'endpointSourceType' => $this->endpointSourceType,
+            'endpointTargetType' => $this->endpointTargetType,
         ];
     }
 
     public function listOrdersAction()
     {
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
-
+        
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests
         ]);
