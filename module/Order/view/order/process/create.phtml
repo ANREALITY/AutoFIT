@@ -27,73 +27,35 @@ $serverForTargetFieldset = $endpointTargetFieldset->get('server');
 
 <?php
 // billing
-$fieldgroupName = 'billing';
-$fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = _('Billing');
-$fieldgroupFormRows = [
-    $this->formRow($fileTransferRequestFieldset->get('id')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow(
-        $fileTransferRequestFieldset->get('application_number')) . '</div>',
-    $this->formRow($environmentFieldset->get('severity')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow($environmentFieldset->get('name')) . '</div>',
-    $this->formRow($fileTransferRequestFieldset->get('change_number')),
-    '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionBasicFieldset->get('number')) .
-         '</div>',
-        $this->formRow($userFieldset->get('id')),
-        $this->formRow($userFieldset->get('username')),
-        '<div class="form-field-wrapper col-md-6">' .
-         $this->formRow($serviceInvoicePositionPersonalFieldset->get('number')) . '</div>'
-];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroups/billing',
     [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
+        'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
+        'userFieldset' => $userFieldset,
+        'environmentFieldset' => $environmentFieldset,
+        'serviceInvoicePositionBasicFieldset' => $serviceInvoicePositionBasicFieldset,
+        'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset,
     ]);
 ?>
 
 <?php
 // endpoint source (basic settings)
-$fieldgroupName = 'basic-endpoint-source';
-$fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = _('Source - basic settings');
-$fieldgroupFormRows = [
-    $this->formRow($endpointSourceFieldset->get('role')),
-    $this->formRow($endpointSourceFieldset->get('contact_person')),
-    $this->formRadio($endpointSourceFieldset->get('server_place')),
-    $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
-    $this->formRow($customerForSourceFieldset->get('name')),
-    $this->formRow($serverForSourceFieldset->get('name'))
-];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
     [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
+        'endpointSourceFieldset' => $endpointSourceFieldset,
+        'applicationForSourceFieldset' => $applicationForSourceFieldset,
+        'customerForSourceFieldset' => $customerForSourceFieldset,
+        'serverForSourceFieldset' => $serverForSourceFieldset,
     ]);
 ?>
 
 <?php
 // endpoint target (basic settings)
-$fieldgroupName = 'basic-endpoint-target';
-$fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = _('Target - basic settings');
-$fieldgroupFormRows = [
-    $this->formRow($endpointTargetFieldset->get('role')),
-    $this->formRow($endpointTargetFieldset->get('contact_person')),
-    $this->formRadio($endpointTargetFieldset->get('server_place')),
-    $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
-    $this->formRow($customerForTargetFieldset->get('name')),
-    $this->formRow($serverForTargetFieldset->get('name'))
-];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
     [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
+        'endpointTargetFieldset' => $endpointTargetFieldset,
+        'applicationForTargetFieldset' => $applicationForTargetFieldset,
+        'customerForTargetFieldset' => $customerForTargetFieldset,
+        'serverForTargetFieldset' => $serverForTargetFieldset,
     ]);
 ?>
 
@@ -101,36 +63,17 @@ echo $this->partial('/partials/fieldgroup',
 
 <?php
 // endpoint source (specific settings)
-$fieldgroupName = 'specific-endpoint-source';
-$fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = _('Source - specific settings');
-$fieldgroupFormRows = [
-    $this->formRow($endpointSourceFieldset->get('username'))
-];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source',
     [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
+        'endpointSourceFieldset' => $endpointSourceFieldset,
     ]);
 ?>
 
 <?php
 // endpoint target (specific settings)
-$fieldgroupName = 'specific-endpoint-target';
-$fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = _('Target - specific settings');
-$fieldgroupFormRows = [
-    $this->formRow($endpointTargetFieldset->get('username')),
-    $this->formRow($endpointTargetFieldset->get('folder'))
-];
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
     [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
+        'endpointTargetFieldset' => $endpointTargetFieldset,
     ]);
 ?>
 
@@ -138,19 +81,21 @@ echo $this->partial('/partials/fieldgroup',
 
 <?php
 // physical connections
-$fieldgroupName = 'physical_connection_cd';
-$fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = _('Connection');
-$fieldgroupFormRows = [
-    $this->formRow($physicalConnectionsCollection->getFieldsets()[0]->get('secure_plus'))
-];
-echo $this->partial('/partials/fieldgroup', 
-    [
-        'fieldgroupName' => $fieldgroupName,
-        'fieldgroupCssClass' => $fieldgroupCssClass,
-        'fieldgroupTitle' => $fieldgroupTitle,
-        'formRows' => $fieldgroupFormRows
-    ]);
+if ($connectionType == 'cd') {
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
+        [
+            'physicalConnectionFieldset' => $physicalConnectionsCollection->getFieldsets()[0],
+        ]);
+} elseif ($connectionType == 'ftgw') {
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
+        [
+            'physicalConnectionFieldset' => $physicalConnectionsCollection->getFieldsets()[0],
+        ]);
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
+        [
+            'physicalConnectionFieldset' => $physicalConnectionsCollection->getFieldsets()[1],
+        ]);
+}
 ?>
 
 <div class="clearer"></div>

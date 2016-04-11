@@ -1,9 +1,9 @@
 <?php
-$fieldgroupName = 'physical_connection_cd';
-$fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = _('Connection');
+$fieldgroupName = 'specific-endpoint-source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Source - specific settings');
 $fieldgroupFormRows = [
-    $this->formRow($physicalConnectionFieldset->get('secure_plus'))
+    $this->formRow($endpointSourceFieldset->get('username'))
 ];
 echo $this->partial('/partials/fieldgroup',
     [
