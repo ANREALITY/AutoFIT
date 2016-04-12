@@ -139,9 +139,13 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newPhysicalConnections = [];
-                foreach ($dataObject->getPhysicalConnections() as $physicalConnection) {
-                    $physicalConnection->setLogicalConnection($dataObject);
-                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save($physicalConnection);
+                if ($dataObject->getPhysicalConnectionSource()) {
+                    $dataObject->getPhysicalConnectionSource()->setLogicalConnection($dataObject);
+                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save($dataObject->getPhysicalConnectionSource());
+                }
+                if ($dataObject->getPhysicalConnectionTarget()) {
+                    $dataObject->getPhysicalConnectionTarget()->setLogicalConnection($dataObject);
+                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save($dataObject->getPhysicalConnectionTarget());
                 }
             }
             return $dataObject;

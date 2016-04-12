@@ -22,9 +22,15 @@ class LogicalConnection
 
     /**
      *
-     * @var AbstractPhysicalConnection[] @relationshipInversion
+     * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnections;
+    protected $physicalConnectionSource;
+
+    /**
+     *
+     * @var AbstractPhysicalConnection @relationshipInversion
+     */
+    protected $physicalConnectionTarget;
 
     /**
      *
@@ -64,20 +70,38 @@ class LogicalConnection
 
     /**
      *
-     * @return the $physicalConnections
+     * @return the $physicalConnectionSource
      */
-    public function getPhysicalConnections()
+    public function getPhysicalConnectionSource()
     {
-        return $this->physicalConnections;
+        return $this->physicalConnectionSource;
     }
 
     /**
      *
-     * @param multitype:\DbSystel\DataObject\AbstractPhysicalConnection $physicalConnections
+     * @param \DbSystel\DataObject\AbstractPhysicalConnection $physicalConnectionSource
      */
-    public function setPhysicalConnections($physicalConnections)
+    public function setPhysicalConnectionSource($physicalConnectionSource)
     {
-        $this->physicalConnections = $physicalConnections;
+        $this->physicalConnectionSource = $physicalConnectionSource;
+    }
+
+    /**
+     *
+     * @return the $physicalConnectionTarget
+     */
+    public function getPhysicalConnectionTarget()
+    {
+        return $this->physicalConnectionTarget;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\AbstractPhysicalConnection $physicalConnectionTarget
+     */
+    public function setPhysicalConnectionTarget($physicalConnectionTarget)
+    {
+        $this->physicalConnectionTarget = $physicalConnectionTarget;
     }
 
 }
