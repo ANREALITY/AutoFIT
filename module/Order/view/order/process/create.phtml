@@ -91,12 +91,12 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 
 <?php
 // physical connections
-if ($connectionType == 'cd') {
+if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
             'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset
         ]);
-} elseif ($connectionType == 'ftgw') {
+} elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
             'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset,
