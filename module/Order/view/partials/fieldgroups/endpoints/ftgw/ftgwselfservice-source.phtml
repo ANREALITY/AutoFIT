@@ -1,0 +1,21 @@
+<?php
+$fieldgroupName = 'specific-endpoint-source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Source - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('notification_success')),
+    $this->formRow($endpointSourceFieldset->get('email_success')),
+    $this->formRow($endpointSourceFieldset->get('notification_failure')),
+    $this->formRow($endpointSourceFieldset->get('email_failure')),
+    $this->formRow($endpointSourceFieldset->get('protocol')),
+    $this->formRow($endpointSourceFieldset->get('ftgw_username')),
+    $this->formRow($endpointSourceFieldset->get('mailbox'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>

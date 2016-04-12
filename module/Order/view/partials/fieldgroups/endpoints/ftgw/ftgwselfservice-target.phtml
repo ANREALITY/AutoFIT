@@ -1,0 +1,17 @@
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Target - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('protocol')),
+    $this->formRow($endpointTargetFieldset->get('ftgw_username')),
+    $this->formRow($endpointTargetFieldset->get('mailbox'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>

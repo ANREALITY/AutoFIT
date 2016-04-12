@@ -38,7 +38,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'type' => 'text',
                 'name' => 'ftgw_username',
                 'options' => [
-                    'label' => _('FTWG User'),
+                    'label' => _('FTWG user'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
