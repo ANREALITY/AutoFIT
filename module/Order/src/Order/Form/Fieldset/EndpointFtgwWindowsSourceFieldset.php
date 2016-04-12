@@ -23,6 +23,9 @@ class EndpointFtgwWindowsSourceFieldset extends AbstractEndpointFtgwWindowsField
                 'name' => 'notification_success',
                 'options' => [
                     'label' => _('notification on success'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ],
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
@@ -32,9 +35,9 @@ class EndpointFtgwWindowsSourceFieldset extends AbstractEndpointFtgwWindowsField
         $this->add(
             [
                 'type' => 'text',
-                'name' => 'notification_success',
+                'name' => 'email_success',
                 'options' => [
-                    'label' => _('mail for success notification'),
+                    'label' => _('email for success notification'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
@@ -50,6 +53,9 @@ class EndpointFtgwWindowsSourceFieldset extends AbstractEndpointFtgwWindowsField
                 'name' => 'notification_failure',
                 'options' => [
                     'label' => _('notification on failure'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ],
                     'use_hidden_element' => false,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
@@ -59,9 +65,9 @@ class EndpointFtgwWindowsSourceFieldset extends AbstractEndpointFtgwWindowsField
         $this->add(
             [
                 'type' => 'text',
-                'name' => 'notification_failure',
+                'name' => 'email_failure',
                 'options' => [
-                    'label' => _('mail for failure notification'),
+                    'label' => _('email for failure notification'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
