@@ -19,8 +19,8 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
      */
     protected $endpointTargetFieldsetServiceName;
 
-    public function __construct($name = null, $options = [], string $endpointSourceFieldsetServiceName,
-        string $endpointTargetFieldsetServiceName)
+    public function __construct($name = null, $options = [], string $endpointSourceFieldsetServiceName = null,
+        string $endpointTargetFieldsetServiceName = null)
     {
         parent::__construct('physical_connection', $options);
 
@@ -30,19 +30,23 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
 
     public function init()
     {
-        $this->add(
-            [
-                'name' => 'endpoint_source',
-                'type' => $this->endpointSourceFieldsetServiceName,
-                'options' => []
-            ]);
+        if ($this->endpointSourceFieldsetServiceName) {
+            $this->add(
+                [
+                    'name' => 'endpoint_source',
+                    'type' => $this->endpointSourceFieldsetServiceName,
+                    'options' => []
+                ]);
+        }
 
-        $this->add(
-            [
-                'name' => 'endpoint_target',
-                'type' => $this->endpointTargetFieldsetServiceName,
-                'options' => []
-            ]);
+        if ($this->endpointTargetFieldsetServiceName) {
+            $this->add(
+                [
+                    'name' => 'endpoint_target',
+                    'type' => $this->endpointTargetFieldsetServiceName,
+                    'options' => []
+                ]);
+        }
     }
 
     public function getInputFilterSpecification()

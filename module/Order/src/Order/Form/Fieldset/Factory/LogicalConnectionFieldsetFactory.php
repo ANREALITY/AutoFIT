@@ -13,13 +13,13 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
     {
         $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
             'Order\Utility\ProperServiceNameDetector');
-        $physicalConnectionSourceFieldsetServiceName = $properServiceNameDetector->getPhysicalConnectionFieldsetServiceName();
+        $physicalConnectionSourceFieldsetServiceName = $properServiceNameDetector->getPhysicalConnectionSourceFieldsetServiceName();
 
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $connectionType = $requestAnalyzer->getConnectionType();
-        $physicalConnectionTargetFieldsetServiceName = $isOrderRequest && strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0  ? $properServiceNameDetector->getPhysicalConnectionFieldsetServiceName() : null;
+        $physicalConnectionTargetFieldsetServiceName = $isOrderRequest && strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0  ? $properServiceNameDetector->getPhysicalConnectionTargetFieldsetServiceName() : null;
 
         $fieldset = new LogicalConnectionFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()

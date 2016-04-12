@@ -59,11 +59,23 @@ class ProperServiceNameDetector
         return $serviceName;
     }
 
-    public function getPhysicalConnectionFieldsetServiceName()
+    public function getPhysicalConnectionSourceFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
             $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' .
-                 $this->routerMatchParams['connectionType'];
+                 $this->routerMatchParams['connectionType'] . 'Source';
+        } else {
+            throw new \Exception('No source endpoint type defined!');
+        }
+
+        return $physicalConnectionFieldsetServiceName;
+    }
+
+    public function getPhysicalConnectionTargetFieldsetServiceName()
+    {
+        if (! empty($this->routerMatchParams['connectionType'])) {
+            $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' .
+                 $this->routerMatchParams['connectionType'] . 'Target';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
