@@ -1,4 +1,7 @@
 <?php
+use DbSystel\DataObject\LogicalConnection;
+?>
+<?php
 $form->setAttributes([
     'action',
     $this->url('create-order')
@@ -14,11 +17,11 @@ $environmentFieldset = $fileTransferRequestFieldset->get('environment');
 $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connection');
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
-if ($connectionType == 'cd') {
+if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     $physicalConnectionSourceFieldset = $logicalConnectionFieldset->get('physical_connection_source');
     $endpointSourceFieldset = $physicalConnectionSourceFieldset->get('endpoint_source');
     $endpointTargetFieldset = $physicalConnectionSourceFieldset->get('endpoint_target');
-} elseif ($connectionType == 'ftgw') {
+} elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     $physicalConnectionSourceFieldset = $logicalConnectionFieldset->get('physical_connection_source');
     $endpointSourceFieldset = $physicalConnectionSourceFieldset->get('endpoint_source');
     $physicalConnectionTargetFieldset = $logicalConnectionFieldset->get('physical_connection_target');
