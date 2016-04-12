@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\EndpointFtgwWindows;
 
 class EndpointFtgwWindowsMapper extends AbstractEndpointMapper
 {
@@ -79,8 +80,10 @@ class EndpointFtgwWindowsMapper extends AbstractEndpointMapper
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
-        $data['username'] = $dataObject->getUsername();
-        $data['folder'] = $dataObject->getFolder();
+        $data['notification_success'] = $dataObject->getNotificationSuccess();
+        $data['email_success'] = $dataObject->getEmailSuccess();
+        $data['notification_failure'] = $dataObject->getNotificationFailure();
+        $data['email_failure'] = $dataObject->getEmailFailure();
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects

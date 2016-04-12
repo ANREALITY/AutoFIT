@@ -79,8 +79,13 @@ class EndpointFtgwSelfServiceMapper extends AbstractEndpointMapper
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
-        $data['username'] = $dataObject->getUsername();
-        $data['folder'] = $dataObject->getFolder();
+        $data['notification_success'] = $dataObject->getNotificationSuccess();
+        $data['email_success'] = $dataObject->getEmailSuccess();
+        $data['notification_failure'] = $dataObject->getNotificationFailure();
+        $data['email_failure'] = $dataObject->getEmailFailure();
+        $data['protocol'] = $dataObject->getProtocol();
+        $data['ftgw_username'] = $dataObject->getFtgwUsername();
+        $data['mailbox'] = $dataObject->getMailbox();
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
