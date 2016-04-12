@@ -26,9 +26,12 @@ class EndpointFtgwSelfServiceSourceFieldset extends AbstractEndpointFtgwSelfServ
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ],
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
+                ],
+                'attributes' => [
+                     'value' => '0'
                 ]
             ]);
 
@@ -56,9 +59,12 @@ class EndpointFtgwSelfServiceSourceFieldset extends AbstractEndpointFtgwSelfServ
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ],
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
+                ],
+                'attributes' => [
+                     'value' => '0'
                 ]
             ]);
 
@@ -80,7 +86,14 @@ class EndpointFtgwSelfServiceSourceFieldset extends AbstractEndpointFtgwSelfServ
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'notification_success' => [
+                'required' => false
+            ],
+            'notification_failure' => [
+                'required' => false
+            ]
+        ];
     }
 
     protected function getConcreteRole()
