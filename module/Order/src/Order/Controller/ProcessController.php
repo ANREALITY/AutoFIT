@@ -6,7 +6,6 @@ use Zend\View\Model\ViewModel;
 use Zend\Form\FormInterface;
 use DbSystel\DataObject\FileTransferRequest;
 use Order\Service\FileTransferRequestService;
-use Order\Utility\RequestAnalyzer;
 
 class ProcessController extends AbstractActionController
 {
