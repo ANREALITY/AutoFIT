@@ -150,13 +150,16 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
-                $newEndpoints = [];
-                $dataObject->getEndpointSource()->setPhysicalConnection($dataObject);
-                $newEndpointSource = $this->endpointSourceMapper->save($dataObject->getEndpointSource());
-                $dataObject->setEndpointSource($newEndpointSource);
-                $dataObject->getEndpointTarget()->setPhysicalConnection($dataObject);
-                $newEndpointTarget = $this->endpointTargetMapper->save($dataObject->getEndpointTarget());
-                $dataObject->setEndpointTarget($newEndpointTarget);
+                if ($dataObject->getEndpointSource()) {
+                    $dataObject->getEndpointSource()->setPhysicalConnection($dataObject);
+                    $newEndpointSource = $this->endpointSourceMapper->save($dataObject->getEndpointSource());
+                    $dataObject->setEndpointSource($newEndpointSource);
+                }
+                if ($dataObject->getEndpointTarget()) {
+                    $dataObject->getEndpointTarget()->setPhysicalConnection($dataObject);
+                    $newEndpointTarget = $this->endpointTargetMapper->save($dataObject->getEndpointTarget());
+                    $dataObject->setEndpointTarget($newEndpointTarget);
+                }
             }
             return $dataObject;
         }

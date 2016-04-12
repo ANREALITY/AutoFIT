@@ -80,7 +80,6 @@ class PhysicalConnectionFtgwMapper extends AbstractPhysicalConnectionMapper
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
-        $data['secure_plus'] = $dataObject->getSecurePlus();
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects

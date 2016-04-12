@@ -21,6 +21,10 @@ class EndpointFtgwWindowsMapperFactory implements FactoryInterface
         $service = new EndpointFtgwWindowsMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointFtgwWindows());
 
+        $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
+        $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
+        $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
+
         return $service;
     }
 

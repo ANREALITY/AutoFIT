@@ -21,6 +21,10 @@ class EndpointFtgwSelfServiceMapperFactory implements FactoryInterface
         $service = new EndpointFtgwSelfServiceMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointFtgwSelfService());
 
+        $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
+        $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
+        $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
+
         return $service;
     }
 
