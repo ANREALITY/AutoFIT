@@ -24,14 +24,10 @@ class ProcessController extends AbstractActionController
     protected $endpointTargetType;
 
     public function __construct(FileTransferRequest $fileTransferRequest, 
-        FileTransferRequestService $fileTransferRequestService, string $connectionType, string $endpointSourceType, 
-        string $endpointTargetType)
+        FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
-        $this->connectionType = $connectionType;
-        $this->endpointSourceType = $endpointSourceType;
-        $this->endpointTargetType = $endpointTargetType;
     }
 
     /**
@@ -41,6 +37,30 @@ class ProcessController extends AbstractActionController
     public function setOrderForm($orderForm)
     {
         $this->orderForm = $orderForm;
+    }
+
+    /**
+     * @param string $connectionType
+     */
+    public function setConnectionType($connectionType)
+    {
+        $this->connectionType = $connectionType;
+    }
+
+    /**
+     * @param string $endpointSourceType
+     */
+    public function setEndpointSourceType($endpointSourceType)
+    {
+        $this->endpointSourceType = $endpointSourceType;
+    }
+
+    /**
+     * @param string $endpointTargetType
+     */
+    public function setEndpointTargetType($endpointTargetType)
+    {
+        $this->endpointTargetType = $endpointTargetType;
     }
 
     public function startAction()
