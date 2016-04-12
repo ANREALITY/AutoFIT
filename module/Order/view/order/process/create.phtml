@@ -96,11 +96,10 @@ if ($connectionType == 'cd') {
 } elseif ($connectionType == 'ftgw') {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
-            'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset
-        ]);
-    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
-        [
-            'physicalConnectionTargetFieldset' => $physicalConnectionTargetFieldset
+            'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset,
+            'physicalConnectionTargetFieldset' => $physicalConnectionTargetFieldset,
+            'endpointSourceType' => $endpointSourceType,
+            'endpointTargetType' => $endpointTargetType,
         ]);
 }
 ?>
