@@ -2,11 +2,11 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
-use Order\Form\Fieldset\PhysicalConnectionCdFieldset;
+use Order\Form\Fieldset\PhysicalConnectionCdSourceFieldset;
 use DbSystel\DataObject\PhysicalConnectionCd;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
+class PhysicalConnectionCdSourceFieldsetFactory implements FactoryInterface
 {
 
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -16,7 +16,7 @@ class PhysicalConnectionCdFieldsetFactory implements FactoryInterface
         $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
         $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
 
-        $fieldset = new PhysicalConnectionCdFieldset(null, [], $endpointSourceFieldsetServiceName,
+        $fieldset = new PhysicalConnectionCdSourceFieldset(null, [], $endpointSourceFieldsetServiceName,
             $endpointTargetFieldsetServiceName);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
