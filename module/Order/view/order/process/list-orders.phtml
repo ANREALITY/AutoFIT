@@ -2,11 +2,13 @@
     <tr>
         <th><?php echo _('request ID'); ?></th>
         <th><?php echo _('change number'); ?></th>
+        <th><?php echo _('request summary'); ?></th>
     </tr>
     <?php foreach ($fileTransferRequests as $fileTransferRequest) : ?>
     <tr>
         <td><?php echo $fileTransferRequest->getId(); ?></td>
         <td><a href='#'><?php echo $fileTransferRequest->getChangeNumber(); ?></a></td>
+        <td><?php echo $this->partial('/partials/list/summary', ['fileTransferRequest' => $fileTransferRequest]); ?></td>
     </tr>
     <?php endforeach; ?>
 </table>
