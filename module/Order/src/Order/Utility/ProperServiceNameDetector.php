@@ -15,26 +15,6 @@ class ProperServiceNameDetector
         $this->routerMatchParams = $routerMatchParams;
     }
 
-    public function getLogicalConnectionMapperServiceName()
-    {
-        return 'Order\Mapper\LogicalConnectionMapper';
-    }
-
-    public function getPhysicalConnectionMapperServiceName()
-    {
-        return 'Order\Mapper\PhysicalConnectionMapper';
-    }
-
-    public function getEndpointSourceMapperServiceName()
-    {
-        return 'Order\Mapper\EndpointMapper';
-    }
-
-    public function getEndpointTargetMapperServiceName()
-    {
-        return 'Order\Mapper\EndpointMapper';
-    }
-
     public function getPhysicalConnectionSourceFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
