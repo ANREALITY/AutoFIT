@@ -2,6 +2,8 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\AbstractPhysicalConnection;
+use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\PhysicalConnectionCd;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -11,7 +13,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMapperInterface
+class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 {
 
     /**
@@ -19,39 +21,37 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
      * @var AdapterInterface
      */
     protected $dbAdapter;
-
+    
     /**
      *
      * @var HydratorInterface
      */
     protected $hydrator;
-
+    
     /**
      *
      * @var AbstractPhysicalConnection
      */
     protected $prototype;
-
+    
     /**
      *
      * @var AbstractEndpointMapper
      */
     protected $endpointSourceMapper;
-
+    
     /**
      *
      * @var AbstractEndpointMapper
      */
     protected $endpointTargetMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        AbstractPhysicalConnection $prototype)
+    
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
     }
-
+    
     /**
      *
      * @param EndpointMapperInterface $endpointSourceMapper
@@ -60,7 +60,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
     {
         $this->endpointSourceMapper = $endpointSourceMapper;
     }
-
+    
     /**
      *
      * @param EndpointMapperInterface $endpointTargetMapper
@@ -69,7 +69,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
     {
         $this->endpointTargetMapper = $endpointTargetMapper;
     }
-
+    
     /**
      *
      * {@inheritDoc}
@@ -78,6 +78,8 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
      */
     public function find($id)
     {
+        // $this->prototype = new Endpoint{CONCRETE_TYPE}();
+
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -96,13 +98,15 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
-
+    
     /**
      *
      * @return array|AbstractPhysicalConnection[]
      */
     public function findAll(array $criteria = [])
     {
+        // $this->prototype = new Endpoint{CONCRETE_TYPE}(); 
+
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -120,7 +124,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
-
+    
     /**
      *
      * @param AbstractPhysicalConnection $dataObject
@@ -133,20 +137,21 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
         $data = [];
         // data retrieved directly from the input
         $data['role'] = $dataObject->getRole();
+        $data['type'] = $dataObject->getType();
         // $data['foo'] = $dataObject->getFoo();
         $data['logical_connection_id'] = $dataObject->getLogicalConnection()->getId();
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         // none
-
+    
         $action = new Insert('physical_connection');
         $action->values($data);
-
+    
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+    
         if ($result instanceof ResultInterface) {
             if ($newId = $result->getGeneratedValue()) {
                 $dataObject->setId($newId);
@@ -161,6 +166,76 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
                     $newEndpointTarget = $this->endpointTargetMapper->save($dataObject->getEndpointTarget());
                     $dataObject->setEndpointTarget($newEndpointTarget);
                 }
+            }
+            $concreteSaveMethod = 'save' . $data['type'];
+            $concreteDataObject = $this->$concreteSaveMethod($dataObject);
+            return $concreteDataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param PhysicalConnectionCd $dataObject
+     *
+     * @return PhysicalConnectionCd
+     * @throws \Exception
+     */
+    public function saveCd(AbstractPhysicalConnection $dataObject)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['secure_plus'] = $dataObject->getSecurePlus();
+        // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['physical_connection_id'] = $dataObject->getId();
+    
+        $action = new Insert('physical_connection_cd');
+        $action->values($data);
+    
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+    
+        if ($result instanceof ResultInterface) {
+            if ($newId = $result->getGeneratedValue()) {
+                $dataObject->setId($newId);
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+
+    /**
+     *
+     * @param PhysicalConnectionFtgw $dataObject
+     *
+     * @return PhysicalConnectionFtgw
+     * @throws \Exception
+     */
+    public function saveFtgw(AbstractPhysicalConnection $dataObject)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['physical_connection_id'] = $dataObject->getId();
+    
+        $action = new Insert('physical_connection_ftgw');
+        $action->values($data);
+    
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+    
+        if ($result instanceof ResultInterface) {
+            if ($newId = $result->getGeneratedValue()) {
+                $dataObject->setId($newId);
             }
             return $dataObject;
         }

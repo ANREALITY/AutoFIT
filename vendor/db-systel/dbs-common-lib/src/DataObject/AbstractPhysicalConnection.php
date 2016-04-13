@@ -22,6 +22,12 @@ abstract class AbstractPhysicalConnection
 
     /**
      *
+     * @var string
+     */
+    protected $type;
+
+    /**
+     *
      * @var LogicalConnection
      */
     protected $logicalConnection;
@@ -73,6 +79,24 @@ abstract class AbstractPhysicalConnection
     {
         $this->role = $role;
     }
+
+    /**
+     * @return the $type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 
     /**
      *

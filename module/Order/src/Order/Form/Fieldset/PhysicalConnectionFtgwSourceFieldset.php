@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use DbSystel\DataObject\AbstractPhysicalConnection;
+use DbSystel\DataObject\LogicalConnection;
 
 class PhysicalConnectionFtgwSourceFieldset extends AbstractPhysicalConnectionFieldset
 {
@@ -15,6 +16,11 @@ class PhysicalConnectionFtgwSourceFieldset extends AbstractPhysicalConnectionFie
     protected function getConcreteRole()
     {
         return AbstractPhysicalConnection::ROLE_SOURCE;
+    }
+
+    protected function getConcreteType()
+    {
+        return LogicalConnection::TYPE_FTGW;
     }
 
 }

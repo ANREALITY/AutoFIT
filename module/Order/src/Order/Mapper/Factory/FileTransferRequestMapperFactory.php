@@ -24,10 +24,8 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $requestAnalyzer = $serviceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
 
-        if ($isOrderRequest) {
-            $service->setLogicalConnectionMapper($serviceLocator->get('Order\Mapper\LogicalConnectionMapper'));
-            $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
-        }
+        $service->setLogicalConnectionMapper($serviceLocator->get('Order\Mapper\LogicalConnectionMapper'));
+        $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
 
         return $service;
     }

@@ -1,12 +1,11 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Order\Mapper\PhysicalConnectionFtgwMapper;
-use DbSystel\DataObject\PhysicalConnectionFtgw;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Order\Mapper\PhysicalConnectionMapper;
 
-class PhysicalConnectionFtgwMapperFactory implements FactoryInterface
+class PhysicalConnectionMapperFactory implements FactoryInterface
 {
 
     /**
@@ -18,12 +17,12 @@ class PhysicalConnectionFtgwMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new PhysicalConnectionFtgwMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new PhysicalConnectionFtgw());
+        $service = new PhysicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
 
         $service->setEndpointSourceMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
         $service->setEndpointTargetMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
-
+    
         return $service;
     }
 

@@ -17,46 +17,22 @@ class ProperServiceNameDetector
 
     public function getLogicalConnectionMapperServiceName()
     {
-        if (! empty($this->routerMatchParams['connectionType'])) {
-            $serviceName = 'Order\Mapper\LogicalConnection' . $this->routerMatchParams['connectionType'] . 'Mapper';
-        } else {
-            throw new \Exception('No source endpoint type defined!');
-        }
-
-        return $serviceName;
+        return 'Order\Mapper\LogicalConnectionMapper';
     }
 
     public function getPhysicalConnectionMapperServiceName()
     {
-        if (! empty($this->routerMatchParams['connectionType'])) {
-            $serviceName = 'Order\Mapper\PhysicalConnection' . $this->routerMatchParams['connectionType'] . 'Mapper';
-        } else {
-            throw new \Exception('No source endpoint type defined!');
-        }
-
-        return $serviceName;
+        return 'Order\Mapper\PhysicalConnectionMapper';
     }
 
     public function getEndpointSourceMapperServiceName()
     {
-        if (! empty($this->routerMatchParams['endpointSourceType'])) {
-            $serviceName = 'Order\Mapper\EndpointMapper';
-        } else {
-            throw new \Exception('No source endpoint type defined!');
-        }
-
-        return $serviceName;
+        return 'Order\Mapper\EndpointMapper';
     }
 
     public function getEndpointTargetMapperServiceName()
     {
-        if (! empty($this->routerMatchParams['endpointTargetType'])) {
-            $serviceName = 'Order\Mapper\EndpointMapper';
-        } else {
-            throw new \Exception('No target endpoint type defined!');
-        }
-
-        return $serviceName;
+        return 'Order\Mapper\EndpointMapper';
     }
 
     public function getPhysicalConnectionSourceFieldsetServiceName()

@@ -17,38 +17,42 @@ echo $this->partial('/partials/fieldgroup',
     ]);
 ?>
 <?php
+$fieldgroupName = 'physical_connection_source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($physicalConnectionSourceFieldset->get('type')),
+    $this->formRow($physicalConnectionSourceFieldset->get('role'))
+];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupName = 'physical_connection_source';
-    $fieldgroupCssClass = 'col-md-6';
-    $fieldgroupTitle = _('Connection');
-    $fieldgroupFormRows = [
-        $this->formRow($physicalConnectionSourceFieldset->get('role'))
-    ];
-    echo $this->partial('/partials/fieldgroup',
-        [
-            'fieldgroupName' => $fieldgroupName,
-            'fieldgroupCssClass' => $fieldgroupCssClass,
-            'fieldgroupTitle' => $fieldgroupTitle,
-            'formRows' => $fieldgroupFormRows
-        ]);
+    $fieldgroupFormRows[] = $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'));
 }
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
 ?>
 <?php
+$fieldgroupName = 'physical_connection_target';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($physicalConnectionTargetFieldset->get('type')),
+    $this->formRow($physicalConnectionTargetFieldset->get('role'))
+];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupName = 'physical_connection_target';
-    $fieldgroupCssClass = 'col-md-6';
-    $fieldgroupTitle = _('Connection');
-    $fieldgroupFormRows = [
-        $this->formRow($physicalConnectionTargetFieldset->get('role'))
-    ];
-    echo $this->partial('/partials/fieldgroup',
-        [
-            'fieldgroupName' => $fieldgroupName,
-            'fieldgroupCssClass' => $fieldgroupCssClass,
-            'fieldgroupTitle' => $fieldgroupTitle,
-            'formRows' => $fieldgroupFormRows
-        ]);
+    $fieldgroupFormRows[] = $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'));
 }
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
 ?>

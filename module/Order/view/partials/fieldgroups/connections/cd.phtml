@@ -18,6 +18,7 @@ $fieldgroupName = 'physical_connection_source';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = _('Connection');
 $fieldgroupFormRows = [
+    $this->formRow($physicalConnectionSourceFieldset->get('type')),
     $this->formRow($physicalConnectionSourceFieldset->get('role')),
     $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'))
 ];

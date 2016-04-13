@@ -122,8 +122,7 @@ return [
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
-            'Order\Mapper\PhysicalConnectionCdMapper' => 'Order\Mapper\Factory\PhysicalConnectionCdMapperFactory',
-            'Order\Mapper\PhysicalConnectionFtgwMapper' => 'Order\Mapper\Factory\PhysicalConnectionFtgwMapperFactory',
+            'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
