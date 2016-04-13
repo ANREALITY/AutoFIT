@@ -20,13 +20,9 @@ class PhysicalConnectionFtgwMapperFactory implements FactoryInterface
     {
         $service = new PhysicalConnectionFtgwMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new PhysicalConnectionFtgw());
-        
-        $properServiceNameDetector = $serviceLocator->get('Order\Utility\ProperServiceNameDetector');
-        $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceMapperServiceName();
-        $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetMapperServiceName();
 
-        $service->setEndpointSourceMapper($serviceLocator->get($endpointSourceFieldsetServiceName));
-        $service->setEndpointTargetMapper($serviceLocator->get($endpointTargetFieldsetServiceName));
+        $service->setEndpointSourceMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
+        $service->setEndpointTargetMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
 
         return $service;
     }

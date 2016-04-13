@@ -3,6 +3,7 @@ $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Source - specific settings');
 $fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('username'))
 ];
 echo $this->partial('/partials/fieldgroup',

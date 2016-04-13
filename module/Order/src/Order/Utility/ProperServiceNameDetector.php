@@ -40,7 +40,7 @@ class ProperServiceNameDetector
     public function getEndpointSourceMapperServiceName()
     {
         if (! empty($this->routerMatchParams['endpointSourceType'])) {
-            $serviceName = 'Order\Mapper\Endpoint' . $this->routerMatchParams['endpointSourceType'] . 'Mapper';
+            $serviceName = 'Order\Mapper\EndpointMapper';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
@@ -51,7 +51,7 @@ class ProperServiceNameDetector
     public function getEndpointTargetMapperServiceName()
     {
         if (! empty($this->routerMatchParams['endpointTargetType'])) {
-            $serviceName = 'Order\Mapper\Endpoint' . $this->routerMatchParams['endpointTargetType'] . 'Mapper';
+            $serviceName = 'Order\Mapper\EndpointMapper';
         } else {
             throw new \Exception('No target endpoint type defined!');
         }

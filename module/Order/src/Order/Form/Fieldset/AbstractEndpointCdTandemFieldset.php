@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use DbSystel\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointCdTandemFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
@@ -42,6 +43,11 @@ abstract class AbstractEndpointCdTandemFieldset extends AbstractEndpointFieldset
                 'required' => true
             ]
         ];
+    }
+
+    protected function getConcreteType()
+    {
+        return AbstractEndpoint::TYPE_CD_TANDEM;
     }
 
 }

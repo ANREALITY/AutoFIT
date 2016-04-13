@@ -3,6 +3,7 @@ $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Source - specific settings');
 $fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('notification_success')),
     $this->formRow($endpointSourceFieldset->get('email_success')),
     $this->formRow($endpointSourceFieldset->get('notification_failure')),

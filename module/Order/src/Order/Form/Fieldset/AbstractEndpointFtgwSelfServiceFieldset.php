@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use DbSystel\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
@@ -67,6 +68,11 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
     public function getInputFilterSpecification()
     {
         return [];
+    }
+
+    protected function getConcreteType()
+    {
+        return AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
     }
 
 }

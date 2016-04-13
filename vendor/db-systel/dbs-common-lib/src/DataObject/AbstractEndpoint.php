@@ -3,9 +3,12 @@ namespace DbSystel\DataObject;
 
 abstract class AbstractEndpoint
 {
+    const TYPE_CD_AS400 = 'CdAs400';
+    const TYPE_CD_TANDEM = 'CdTandem';
+    const TYPE_FTGW_WINDOWS = 'FtgwWindows';
+    const TYPE_FTGW_SELF_SERVICE = 'FtgwSelfService';
 
     const ROLE_SOURCE = 'source';
-
     const ROLE_TARGET = 'target';
 
     /**

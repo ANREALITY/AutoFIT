@@ -76,6 +76,17 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     'value' => $this->getConcreteRole()
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'type',
+                'type' => 'hidden',
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control',
+                    'value' => $this->getConcreteType()
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
@@ -84,5 +95,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     }
 
     abstract protected function getConcreteRole();
+    
+    abstract protected function getConcreteType();
 
 }

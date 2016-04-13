@@ -3,6 +3,7 @@ $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = _('Target - specific settings');
 $fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
     $this->formRow($endpointTargetFieldset->get('username')),
     $this->formRow($endpointTargetFieldset->get('folder'))
 ];

@@ -154,15 +154,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
             foreach ($return as $fileTransferRequest) {
                 $data = $result->current();
-//                 if (strcasecmp($data['logical_connection_type'], LogicalConnection::TYPE_CD) === 0) {
-//                     $logicalConnection = $this->logicalConnectionMapperCd->findWithBuldledData($data['logical_connection_id']);
-//                 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-//                     $logicalConnection = $this->logicalConnectionMapperFtgw->findWithBuldledData($data['logical_connection_id']);
-//                 }
-                
-                
-                
-                
+                $fileTransferRequest->setLogicalConnection($this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequests[] = $fileTransferRequest;
             }
 

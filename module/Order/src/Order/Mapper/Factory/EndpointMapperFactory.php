@@ -1,14 +1,12 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Order\Mapper\EndpointFtgwWindowsMapper;
-use DbSystel\DataObject\EndpointFtgwWindows;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Order\Mapper\EndpointMapper;
 
-class EndpointFtgwWindowsMapperFactory implements FactoryInterface
+class EndpointMapperFactory implements FactoryInterface
 {
-
     /**
      * Create service
      *
@@ -18,14 +16,13 @@ class EndpointFtgwWindowsMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new EndpointFtgwWindowsMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointFtgwWindows());
-
+        $service = new EndpointMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
+    
         $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
         $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
         $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
-
+    
         return $service;
     }
-
 }

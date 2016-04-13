@@ -54,18 +54,18 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
 
     /**
      *
-     * @param AbstractEndpointMapper $endpointSourceMapper
+     * @param EndpointMapperInterface $endpointSourceMapper
      */
-    public function setEndpointSourceMapper(AbstractEndpointMapper $endpointSourceMapper)
+    public function setEndpointSourceMapper(EndpointMapperInterface $endpointSourceMapper)
     {
         $this->endpointSourceMapper = $endpointSourceMapper;
     }
 
     /**
      *
-     * @param AbstractEndpointMapper $endpointTargetMapper
+     * @param EndpointMapperInterface $endpointTargetMapper
      */
-    public function setEndpointTargetMapper(AbstractEndpointMapper $endpointTargetMapper)
+    public function setEndpointTargetMapper(EndpointMapperInterface $endpointTargetMapper)
     {
         $this->endpointTargetMapper = $endpointTargetMapper;
     }

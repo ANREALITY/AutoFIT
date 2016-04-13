@@ -121,10 +121,7 @@ return [
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
-            'Order\Mapper\EndpointCdAs400Mapper' => 'Order\Mapper\Factory\EndpointCdAs400MapperFactory',
-            'Order\Mapper\EndpointCdTandemMapper' => 'Order\Mapper\Factory\EndpointCdTandemMapperFactory',
-            'Order\Mapper\EndpointFtgwWindowsMapper' => 'Order\Mapper\Factory\EndpointFtgwWindowsMapperFactory',
-            'Order\Mapper\EndpointFtgwSelfServiceMapper' => 'Order\Mapper\Factory\EndpointFtgwSelfServiceMapperFactory',
+            'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\PhysicalConnectionCdMapper' => 'Order\Mapper\Factory\PhysicalConnectionCdMapperFactory',
             'Order\Mapper\PhysicalConnectionFtgwMapper' => 'Order\Mapper\Factory\PhysicalConnectionFtgwMapperFactory',
             // data preparators
