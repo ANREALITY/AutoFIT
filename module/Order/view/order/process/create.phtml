@@ -94,11 +94,13 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
+            'logicalConnectionFieldset' => $logicalConnectionFieldset,
             'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset
         ]);
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
+            'logicalConnectionFieldset' => $logicalConnectionFieldset,
             'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset,
             'physicalConnectionTargetFieldset' => $physicalConnectionTargetFieldset,
             'endpointSourceType' => $endpointSourceType,

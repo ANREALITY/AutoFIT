@@ -44,12 +44,11 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
      */
     protected $type;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype, $type)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
-        $this->type = $type;
     }
 
     /**
@@ -115,54 +114,24 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
-     * @return array|LogicalConnection[]
+     * @return LogicalConnection
      */
-    public function findAllWithBuldledData(array $criteria = [])
+    public function findWithBuldledData($id)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('logical_connection');
+        $select->where([
+            'id = ?' => $id
+        ]);
 
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-        
-            $return = $resultSet->initialize($result);
-        
-            $fileTransferRequests = [];
-        
-            /**
-             * @var FileTransferRequest $fileTransferRequest
-             */
-            $fileTransferRequest;
-        
-            foreach ($return as $fileTransferRequest) {
-                $data = $result->current();
-                $fileTransferRequest->setLogicalConnection(new LogicalConnection());
-                $fileTransferRequest->getLogicalConnection()->setType($data['logical_connection_type']);
-                if ($data['logical_connection_type'] == LogicalConnection::TYPE_CD) {
-                    $physicalConnectionSource = new PhysicalConnectionCd();
-                    // $physicalConnectionSource->
-                    $fileTransferRequest->getLogicalConnection()->setPhysicalConnectionSource($physicalConnectionSource);
-                }
-                if ($data['logical_connection_type'] == LogicalConnection::TYPE_FTGW) {
-                    $physicalConnectionTarget = new PhysicalConnectionFtgw();
-                    $fileTransferRequest->getLogicalConnection()->setPhysicalConnectionTarget($physicalConnectionTarget);
-                }
-        
-                if ($data['id'] == 226) {
-                    $breakpoint = null;
-                }
-        
-        
-                $fileTransferRequests[] = $fileTransferRequest;
-            }
-        
-            return $fileTransferRequests;
+
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            return $this->hydrator->hydrate($result->current(), $this->prototype);
         }
-        
-        return [];
+
+        throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
     }
 
     /**
@@ -176,7 +145,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     {
         $data = [];
         // data retrieved directly from the input
-        $data['type'] = $this->type;
+        $data['type'] = $dataObject->getType();
         // creating sub-objects
         // data from the recently persisted objects
 

@@ -2,6 +2,21 @@
 use DbSystel\DataObject\LogicalConnection;
 ?>
 <?php
+$fieldgroupName = 'logical_connection';
+$fieldgroupCssClass = 'col-md-12';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($logicalConnectionFieldset->get('type'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
+?>
+<?php
 // for FTGW CD connections only (e.g. FTGW CD Windows)
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
     $fieldgroupName = 'physical_connection_source';
