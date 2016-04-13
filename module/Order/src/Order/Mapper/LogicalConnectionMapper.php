@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterface
+class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 {
 
     /**
@@ -44,11 +44,12 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
      */
     protected $type;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype, $type)
     {
         $this->dbAdapter = $dbAdapter;
         $this->hydrator = $hydrator;
         $this->prototype = $prototype;
+        $this->type = $type;
     }
 
     /**
@@ -110,6 +111,58 @@ class AbstractLogicalConnectionMapper implements LogicalConnectionMapperInterfac
          * return [];
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @return array|LogicalConnection[]
+     */
+    public function findAllWithBuldledData(array $criteria = [])
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('logical_connection');
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+        
+            $return = $resultSet->initialize($result);
+        
+            $fileTransferRequests = [];
+        
+            /**
+             * @var FileTransferRequest $fileTransferRequest
+             */
+            $fileTransferRequest;
+        
+            foreach ($return as $fileTransferRequest) {
+                $data = $result->current();
+                $fileTransferRequest->setLogicalConnection(new LogicalConnection());
+                $fileTransferRequest->getLogicalConnection()->setType($data['logical_connection_type']);
+                if ($data['logical_connection_type'] == LogicalConnection::TYPE_CD) {
+                    $physicalConnectionSource = new PhysicalConnectionCd();
+                    // $physicalConnectionSource->
+                    $fileTransferRequest->getLogicalConnection()->setPhysicalConnectionSource($physicalConnectionSource);
+                }
+                if ($data['logical_connection_type'] == LogicalConnection::TYPE_FTGW) {
+                    $physicalConnectionTarget = new PhysicalConnectionFtgw();
+                    $fileTransferRequest->getLogicalConnection()->setPhysicalConnectionTarget($physicalConnectionTarget);
+                }
+        
+                if ($data['id'] == 226) {
+                    $breakpoint = null;
+                }
+        
+        
+                $fileTransferRequests[] = $fileTransferRequest;
+            }
+        
+            return $fileTransferRequests;
+        }
+        
+        return [];
     }
 
     /**

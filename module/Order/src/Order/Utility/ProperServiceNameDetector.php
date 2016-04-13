@@ -105,4 +105,15 @@ class ProperServiceNameDetector
         return $serviceName;
     }
 
+    public function getFileTransferRequestFieldsetServiceName()
+    {
+        if (! empty($this->routerMatchParams['connectionType'])) {
+            $serviceName = 'Order\Form\Fieldset\FileTransferRequest' . $this->routerMatchParams['connectionType'];
+        } else {
+            throw new \Exception('No connection type defined!');
+        }
+
+        return $serviceName;
+    }
+
 }

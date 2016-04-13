@@ -4,7 +4,7 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class FileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
+abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = [])
@@ -45,7 +45,7 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         $this->add(
             [
                 'name' => 'logical_connection',
-                'type' => 'Order\Form\Fieldset\LogicalConnection',
+                'type' => 'Order\Form\Fieldset\LogicalConnection' . $this->getConcreteType(),
                 'options' => []
             ]);
 
@@ -108,4 +108,5 @@ class FileTransferRequestFieldset extends Fieldset implements InputFilterProvide
         ];
     }
 
+    abstract protected function getConcreteType();
 }

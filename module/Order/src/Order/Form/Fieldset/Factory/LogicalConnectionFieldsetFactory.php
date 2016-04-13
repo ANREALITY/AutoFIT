@@ -5,6 +5,8 @@ use Zend\ServiceManager\FactoryInterface;
 use Order\Form\Fieldset\LogicalConnectionFieldset;
 use DbSystel\DataObject\LogicalConnection;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Order\Form\Fieldset\LogicalConnectionCdFieldset;
+use Order\Form\Fieldset\LogicalConnectionFtgwFieldset;
 
 class LogicalConnectionFieldsetFactory implements FactoryInterface
 {
@@ -19,9 +21,15 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $connectionType = $requestAnalyzer->getConnectionType();
+
         $physicalConnectionTargetFieldsetServiceName = $isOrderRequest && strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0  ? $properServiceNameDetector->getPhysicalConnectionTargetFieldsetServiceName() : null;
 
-        $fieldset = new LogicalConnectionFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
+        if (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_CD) === 0) {
+            $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
+        } elseif (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_FTGW) === 0) {
+            $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
+        }
+
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');

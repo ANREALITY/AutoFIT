@@ -4,7 +4,7 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
-class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
+abstract class AbstractLogicalConnectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     /**
@@ -45,11 +45,24 @@ class LogicalConnectionFieldset extends Fieldset implements InputFilterProviderI
                     'options' => []
                 ]);
         }
+
+        $this->add(
+            [
+                'name' => 'type',
+                'type' => 'hidden',
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control',
+                    'value' => $this->getConcreteType()
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
         return [];
     }
+    
+    abstract protected function getConcreteType();
 
 }
