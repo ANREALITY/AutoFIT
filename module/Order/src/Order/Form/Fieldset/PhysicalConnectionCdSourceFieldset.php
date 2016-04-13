@@ -2,6 +2,7 @@
 namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
+use DbSystel\DataObject\AbstractPhysicalConnection;
 
 class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionFieldset
 {
@@ -37,6 +38,11 @@ class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionField
                 'required' => false
             ]
         ];
+    }
+
+    protected function getConcreteRole()
+    {
+        return AbstractPhysicalConnection::ROLE_SOURCE;
     }
 
 }

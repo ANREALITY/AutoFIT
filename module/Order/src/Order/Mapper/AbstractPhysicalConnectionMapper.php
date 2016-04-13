@@ -132,6 +132,7 @@ abstract class AbstractPhysicalConnectionMapper implements PhysicalConnectionMap
     {
         $data = [];
         // data retrieved directly from the input
+        $data['role'] = $dataObject->getRole();
         // $data['foo'] = $dataObject->getFoo();
         $data['logical_connection_id'] = $dataObject->getLogicalConnection()->getId();
         // creating sub-objects

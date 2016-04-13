@@ -4,11 +4,21 @@ namespace DbSystel\DataObject;
 abstract class AbstractPhysicalConnection
 {
 
+    const ROLE_SOURCE = 'source';
+
+    const ROLE_TARGET = 'target';
+
     /**
      *
      * @var int
      */
     protected $id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $role;
 
     /**
      *
@@ -44,6 +54,24 @@ abstract class AbstractPhysicalConnection
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     *
+     * @return the $role
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     *
+     * @param string $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     /**

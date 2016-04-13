@@ -47,6 +47,17 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
                     'options' => []
                 ]);
         }
+
+        $this->add(
+            [
+                'name' => 'role',
+                'type' => 'hidden',
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control',
+                    'value' => $this->getConcreteRole()
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

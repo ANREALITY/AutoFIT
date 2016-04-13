@@ -2,36 +2,32 @@
 use DbSystel\DataObject\LogicalConnection;
 ?>
 <?php
-if (strpos($endpointSourceType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupName = 'physical_connection_source';
-    $fieldgroupCssClass = 'col-md-6';
-    $fieldgroupTitle = _('Connection');
-    $fieldgroupFormRows = [
-        $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'))
-    ];
-    echo $this->partial('/partials/fieldgroup',
-        [
-            'fieldgroupName' => $fieldgroupName,
-            'fieldgroupCssClass' => $fieldgroupCssClass,
-            'fieldgroupTitle' => $fieldgroupTitle,
-            'formRows' => $fieldgroupFormRows
-        ]);
-}
+$fieldgroupName = 'physical_connection_source';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($physicalConnectionSourceFieldset->get('role'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);             
 ?>
 <?php
-if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupName = 'physical_connection_target';
-    $fieldgroupCssClass = 'col-md-6';
-    $fieldgroupTitle = _('Connection');
-    $fieldgroupFormRows = [
-        $this->formRow($physicalConnectionTargetFieldset->get('secure_plus'))
-    ];
-    echo $this->partial('/partials/fieldgroup',
-        [
-            'fieldgroupName' => $fieldgroupName,
-            'fieldgroupCssClass' => $fieldgroupCssClass,
-            'fieldgroupTitle' => $fieldgroupTitle,
-            'formRows' => $fieldgroupFormRows
-        ]);
-}
+$fieldgroupName = 'physical_connection_target';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = _('Connection');
+$fieldgroupFormRows = [
+    $this->formRow($physicalConnectionTargetFieldset->get('role'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows
+    ]);
 ?>
