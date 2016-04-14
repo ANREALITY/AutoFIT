@@ -10,12 +10,12 @@ nbproject
 build.xml
 composer.lock
 npm-debug.log*
-web.config
 config/autoload/local.php
 config/autoload/*.local.php
 vendor/*
 !vendor/db-systel
 node_modules
+public/web.config
 public/components
 phpunit/phpunit.xml
 codeception.yml
