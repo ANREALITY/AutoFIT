@@ -15,6 +15,7 @@ use DbSystel\DataObject\EndpointCdAs400;
 use DbSystel\DataObject\EndpointCdTandem;
 use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
+use DbSystel\DataObject\Server;
 
 class EndpointMapper implements EndpointMapperInterface
 {
@@ -129,6 +130,8 @@ class EndpointMapper implements EndpointMapperInterface
             'endpoint.id = ?' => $id
         ]);
 
+        $select->join('server', 'server.name = endpoint.server_name', ['server_name' => 'name']);
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
@@ -145,6 +148,9 @@ class EndpointMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwWindows();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+                
+                $return->setServer(new Server());
+                $return->getServer()->setName($data['server_name']);
             } else {
                 $return = null;
             }

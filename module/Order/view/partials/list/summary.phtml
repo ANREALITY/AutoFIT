@@ -1,16 +1,32 @@
+<?php
+/**
+ * @var \DbSystel\DataObject\FileTransferRequest $fileTransferRequest
+ */
+$fileTransferRequest;
+
+$physicalConnectionSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionSource();
+$endpointSource = $physicalConnectionSource ? $physicalConnectionSource->getEndpointSource() : null;
+$endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
+$endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
+
+$physicalConnectionTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionTarget();
+$endpointTarget = $physicalConnectionTarget ? $physicalConnectionTarget->getEndpointTarget() : null;
+$endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
+$endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
+?>
 <ul>
     <li><?php echo _('application') . ': ' . '###application###'; ?></li>
     <li><?php echo _('environment') . ': ' . '###environment###'; ?></li>
     <li>
         <?php echo _('endpoint') . ' ' . '(' . _('source') . ')'; ?>
         <ul>
-            <li><?php echo _('server name') . ': ' . '###server_name###'; ?></li>
+            <li><?php echo _('server name') . ': ' . $endpointSourceServerName; ?></li>
         </ul>
     </li>
     <li>
         <?php echo _('endpoint') . ' ' . '(' . _('target') . ')'; ?>
         <ul>
-            <li><?php echo _('server name') . ': ' . '###server_name###'; ?></li>
+            <li><?php echo _('server name') . ': ' . $endpointTargetServerName; ?></li>
         </ul>
     </li>
 </ul>
