@@ -12,6 +12,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\LogicalConnection;
 
 class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 {
@@ -97,6 +98,39 @@ class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @return AbstractPhysicalConnection
+     */
+    public function findWithBuldledData($id)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('physical_connection');
+        $select->where([
+            'physical_connection.id = ?' => $id
+        ]);
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            $data = $result->current();
+
+            if (!empty($data['type'])) {
+                if (strcasecmp($data['type'], LogicalConnection::TYPE_CD) === 0) {
+                    $this->prototype = new PhysicalConnectionCd();
+                } elseif (strcasecmp($data['type'], LogicalConnection::TYPE_FTGW) === 0) {
+                    $this->prototype = new PhysicalConnectionFtgw();
+                }
+                $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+            } else {
+                $return = null;
+            }
+
+            return $return;
+        }
     }
     
     /**
