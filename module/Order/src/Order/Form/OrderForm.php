@@ -32,7 +32,7 @@ class OrderForm extends Form
                 'name' => 'submit',
                 'attributes' => [
                     'type' => 'submit',
-                    'value' => _('send'),
+                    'value' => _('binding order'),
                     'class' => 'btn btn-default'
                 ]
             ]);

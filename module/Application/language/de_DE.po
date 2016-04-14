@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 17:03+0200\n"
-"PO-Revision-Date: 2016-04-07 17:03+0200\n"
+"POT-Creation-Date: 2016-04-14 12:05+0200\n"
+"PO-Revision-Date: 2016-04-14 12:06+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,16 +17,19 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:14
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:14
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:15
 msgid "AS400"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:26
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:26
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:27
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:27
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:27
 msgid "username"
 msgstr "Benutzername"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
+msgid "Tandem"
+msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:22
 msgid "contact person"
@@ -44,26 +47,56 @@ msgstr "Intranet"
 msgid "internet"
 msgstr "Internet"
 
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:15
+msgid "Self-Service"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:27
+msgid "protocol"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:42
+msgid "FTWG user"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:57
+msgid "mailbox"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:15
+msgid "Windows"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:27
+#: Order/view/order/process/list-orders.phtml:4
+msgid "change number"
+msgstr "Change-Nummer"
+
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:64
+#: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
+#: Order/view/partials/list/summary.phtml:18
+msgid "application"
+msgstr "Verfahren"
+
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:100
+msgid ""
+"Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
+msgstr ""
+"Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
+
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
 msgstr "LSP"
-
-#: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:64
-msgid "application"
-msgstr "Verfahren"
 
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
 msgid "external partner"
 msgstr "externer Partner"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:13
-#: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 msgid "Source - AS400"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:13
-#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:13
 msgid "Target - AS400"
 msgstr ""
 
@@ -72,26 +105,62 @@ msgstr ""
 msgid "folder"
 msgstr "Verzeichnis"
 
-#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:27
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
+msgid "Source - Tandem"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:13
+msgid "Target - Tandem"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:13
+msgid "Source - Self-Service"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:25
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:25
+msgid "notification on success"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:43
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:43
+msgid "email for success notification"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:58
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:58
+msgid "notification on failure"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:76
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:76
+msgid "email for failure notification"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceTargetFieldset.php:13
+msgid "Target - Self-Service"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:13
+msgid "Source - Windows"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsTargetFieldset.php:13
+msgid "Target - Windows"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:30
+#: Order/view/partials/list/summary.phtml:19
 msgid "environment"
 msgstr "Umgebung"
 
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:27
-#: Order/view/order/process/list-orders.phtml:4
-msgid "change number"
-msgstr "Change-Nummer"
-
-#: Order/src/Order/Form/Fieldset/FileTransferRequestFieldset.php:100
-msgid ""
-"Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
-msgstr ""
-"Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
-
-#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdFieldset.php:25
+#: Order/src/Order/Form/Fieldset/PhysicalConnectionCdSourceFieldset.php:27
 msgid "Secure Plus"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
+#: Order/view/partials/list/summary.phtml:23
+#: Order/view/partials/list/summary.phtml:29
 msgid "server name"
 msgstr "Servername"
 
@@ -103,9 +172,9 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:31
-msgid "send"
-msgstr "senden"
+#: Order/src/Order/Form/OrderForm.php:35
+msgid "binding order"
+msgstr "verbindlich bestellen"
 
 #: Application/view/application/index/index.phtml:5
 msgid "Tool for creating, submission, and managing of file transfer requests"
@@ -211,33 +280,13 @@ msgstr "Neue Anfrage"
 msgid "My orders"
 msgstr "Meine Anfragen"
 
-#: Order/view/order/process/create.phtml:32
-msgid "Billing"
-msgstr "Abrechnung"
-
-#: Order/view/order/process/create.phtml:60
-msgid "Source - basic settings"
-msgstr "Quellsystem (Grundeinstellungen)"
-
-#: Order/view/order/process/create.phtml:82
-msgid "Target - basic settings"
-msgstr "Zielsystem (Grundeinstellungen)"
-
-#: Order/view/order/process/create.phtml:106
-msgid "Source - specific settings"
-msgstr "Quellsystem (spezifische Einstellungen)"
-
-#: Order/view/order/process/create.phtml:123
-msgid "Target - specific settings"
-msgstr "Zielsystem (spezifische Einstellungen)"
-
-#: Order/view/order/process/create.phtml:143
-msgid "Connection"
-msgstr "Verbindung"
-
 #: Order/view/order/process/list-orders.phtml:3
 msgid "request ID"
 msgstr "Antrag-ID"
+
+#: Order/view/order/process/list-orders.phtml:5
+msgid "request summary"
+msgstr ""
 
 #: Order/view/order/process/start.phtml:1
 msgid "Create your File Transfer Request"
@@ -247,9 +296,59 @@ msgstr "File Transfer Request erstellen"
 msgid "Connect Direct"
 msgstr ""
 
-#: Order/view/order/process/start.phtml:19
+#: Order/view/order/process/start.phtml:20
 msgid "File Transfer Gateway"
 msgstr "File Transfer Gateway"
+
+#: Order/view/partials/fieldgroups/billing.phtml:4
+msgid "Billing"
+msgstr "Abrechnung"
+
+#: Order/view/partials/fieldgroups/connections/cd.phtml:4
+#: Order/view/partials/fieldgroups/connections/cd.phtml:19
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:7
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:22
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:42
+msgid "Connection"
+msgstr "Verbindung"
+
+#: Order/view/partials/fieldgroups/endpoints/basic-source.phtml:4
+msgid "Source - basic settings"
+msgstr "Quellsystem (Grundeinstellungen)"
+
+#: Order/view/partials/fieldgroups/endpoints/basic-target.phtml:4
+msgid "Target - basic settings"
+msgstr "Zielsystem (Grundeinstellungen)"
+
+#: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
+msgid "Source - specific settings"
+msgstr "Quellsystem (spezifische Einstellungen)"
+
+#: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
+msgid "Target - specific settings"
+msgstr "Zielsystem (spezifische Einstellungen)"
+
+#: Order/view/partials/list/summary.phtml:21
+#: Order/view/partials/list/summary.phtml:27
+msgid "endpoint"
+msgstr ""
+
+#: Order/view/partials/list/summary.phtml:21
+msgid "source"
+msgstr ""
+
+#: Order/view/partials/list/summary.phtml:27
+msgid "target"
+msgstr ""
+
+#~ msgid "send"
+#~ msgstr "senden"
 
 #~ msgid "customer"
 #~ msgstr "Kunde"
