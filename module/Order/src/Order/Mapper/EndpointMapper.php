@@ -11,6 +11,10 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Expression;
+use DbSystel\DataObject\EndpointCdAs400;
+use DbSystel\DataObject\EndpointCdTandem;
+use DbSystel\DataObject\EndpointFtgwWindows;
+use DbSystel\DataObject\EndpointFtgwSelfService;
 
 class EndpointMapper implements EndpointMapperInterface
 {
@@ -111,6 +115,42 @@ class EndpointMapper implements EndpointMapperInterface
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
          */
         throw new \Exception('Method not implemented: ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @return AbstractEndpoint
+     */
+    public function findWithBuldledData($id)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('endpoint');
+        $select->where([
+            'endpoint.id = ?' => $id
+        ]);
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            $data = $result->current();
+            if (!empty($data['type'])) {
+                if (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_AS400) === 0) {
+                    $this->prototype = new EndpointCdAs400();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_TANDEM) === 0) {
+                    $this->prototype = new EndpointCdTandem();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_SELF_SERVICE) === 0) {
+                    $this->prototype = new EndpointFtgwSelfService();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
+                    $this->prototype = new EndpointFtgwWindows();
+                }
+                $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+            } else {
+                $return = null;
+            }
+
+            return $return;
+        }
     }
     
     /**

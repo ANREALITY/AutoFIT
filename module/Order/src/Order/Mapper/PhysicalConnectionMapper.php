@@ -13,6 +13,9 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\AbstractEndpoint;
+use Zend\Db\Sql\Expression;
+use Zend\Db\Sql\Select;
 
 class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 {
@@ -112,12 +115,29 @@ class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
             'physical_connection.id = ?' => $id
         ]);
 
+        $select->join([
+            'endpoint_source' => 'endpoint'
+        ], 
+            new Expression(
+                'endpoint_source.physical_connection_id = physical_connection.id AND endpoint_source.role = ' .
+                     '"' . AbstractEndpoint::ROLE_SOURCE . '"'), [
+                'endpoint_source_id' => 'id'
+            ], Select::JOIN_LEFT);
+
+        $select->join([
+            'endpoint_target' => 'endpoint'
+        ], 
+            new Expression(
+                'endpoint_target.physical_connection_id = physical_connection.id AND endpoint_target.role = ' .
+                     '"' . AbstractEndpoint::ROLE_TARGET . '"'), [
+                'endpoint_target_id' => 'id'
+            ], Select::JOIN_LEFT);
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $data = $result->current();
-
             if (!empty($data['type'])) {
                 if (strcasecmp($data['type'], LogicalConnection::TYPE_CD) === 0) {
                     $this->prototype = new PhysicalConnectionCd();
@@ -125,6 +145,14 @@ class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
                     $this->prototype = new PhysicalConnectionFtgw();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+
+                if (!empty($data['endpoint_source_id'])) {
+                    $return->setEndpointSource($this->endpointSourceMapper->findWithBuldledData($data['endpoint_source_id']));
+                }
+                if (!empty($data['endpoint_target_id'])) {
+                    $return->setEndpointTarget($this->endpointTargetMapper->findWithBuldledData($data['endpoint_target_id']));
+                }
+                
             } else {
                 $return = null;
             }
