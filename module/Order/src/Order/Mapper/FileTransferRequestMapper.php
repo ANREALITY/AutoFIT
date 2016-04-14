@@ -16,6 +16,10 @@ use DbSystel\DataObject\PhysicalConnectionCd;
 use DbSystel\DataObject\PhysicalConnectionFtgw;
 use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Db\Sql\Expression;
+use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\ServiceInvoice;
+use DbSystel\DataObject\Application;
+use DbSystel\DataObject\Environment;
 
 class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 {
@@ -136,6 +140,11 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
         $select = $sql->select('file_transfer_request');
 
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id', ['logical_connection_type' => 'type'], Select::JOIN_LEFT);
+        $select->join(['service_invoice_position_basic' => 'service_invoice_position'], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number', [], Select::JOIN_LEFT);
+        $select->join(['service_invoice_position_personal' => 'service_invoice_position'], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number', [], Select::JOIN_LEFT);
+        $select->join('service_invoice', 'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number', [], Select::JOIN_LEFT);
+        $select->join('application', 'application.technical_short_name = service_invoice.application_technical_short_name', ['application_technical_short_name' => 'technical_short_name'], Select::JOIN_LEFT);
+        $select->join('environment', 'environment.severity = service_invoice.environment_severity', ['environment_severity' => 'severity', 'environment_name' => 'name'], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
@@ -154,7 +163,23 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
             foreach ($return as $fileTransferRequest) {
                 $data = $result->current();
+
                 $fileTransferRequest->setLogicalConnection($this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
+                $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
+                $fileTransferRequest->getServiceInvoicePositionBasic()->setServiceInvoice(new ServiceInvoice());
+                $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->setApplication(new Application());
+                $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->setEnvironment(new Environment());
+                $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->setTechnicalShortName($data['application_technical_short_name']);
+                $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->setName($data['environment_name']);
+
+                $fileTransferRequest->setLogicalConnection($this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
+                $fileTransferRequest->setServiceInvoicePositionPersonal(new ServiceInvoicePosition());
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->setServiceInvoice(new ServiceInvoice());
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->getServiceInvoice()->setApplication(new Application());
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->getServiceInvoice()->setEnvironment(new Environment());
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->getServiceInvoice()->getApplication()->setTechnicalShortName($data['application_technical_short_name']);
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->getServiceInvoice()->getEnvironment()->setName($data['environment_name']);
+
                 $fileTransferRequests[] = $fileTransferRequest;
             }
 

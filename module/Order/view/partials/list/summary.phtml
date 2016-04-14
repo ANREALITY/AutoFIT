@@ -15,8 +15,8 @@ $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
 $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
 ?>
 <ul>
-    <li><?php echo _('application') . ': ' . '###application###'; ?></li>
-    <li><?php echo _('environment') . ': ' . '###environment###'; ?></li>
+    <li><?php echo _('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>
+    <li><?php echo _('environment') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></li>
     <li>
         <?php echo _('endpoint') . ' ' . '(' . _('source') . ')'; ?>
         <ul>
