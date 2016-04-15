@@ -20,7 +20,7 @@ if (!empty($_SERVER['AUTH_USER'])) {
         : $_SERVER['AUTH_USER']
     ;
 } else {
-    $_SESSION['username'] = 'Foo Bar';
+    $_SESSION['username'] = 'undefined';
 }
 
 // Run the application!
