@@ -1,64 +1,94 @@
 /**
  * Enabling/disabling of fields.
  */
-// endpoint source basic #start#
-fieldNameEndpointSourceServerPlace = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_source][server_place]"';
-fieldNameEndpointSourceCustomerName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_source][customer][name]"';
-fieldNameEndpointSourceApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_source][application][technical_short_name]"';
-fieldNameEndpointSourceName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_source][server][name]"';
+// PhysicalConnectionSource.EndpointSource basic #start#
+fieldNamePhysicalConnectionSourceEndpointSourceServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server_place]"';
+fieldNamePhysicalConnectionSourceEndpointSourceCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][customer][name]"';
+fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][application][technical_short_name]"';
+fieldNamePhysicalConnectionSourceEndpointSourceName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNameEndpointSourceServerPlace + ']');
+	fieldEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointSourceServerPlace + ']');
 	fieldEndpointSourceServerPlace.change(function() {
-		toggleEndpointSourceServerPlaceDependentFields(this.value);
+		togglePhysicalConnectionSourceEndpointSourceDependentFields(this.value);
 	});
 });
-// endpoint source basic #stop#
-// endpoint target basic #start#
-fieldNameEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_target][server_place]"';
-fieldNameEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_target][customer][name]"';
-fieldNameEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_target][application][technical_short_name]"';
-fieldNameEndpointTargetName = '"file_transfer_request[logical_connection][physical_connections][0][endpoint_target][server][name]"';
+// PhysicalConnectionSource.EndpointSource basic #stop#
+// PhysicalConnectionSource.EndpointTarget basic #start#
+fieldNamePhysicalConnectionSourceEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server_place]"';
+fieldNamePhysicalConnectionSourceEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][customer][name]"';
+fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][application][technical_short_name]"';
+fieldNamePhysicalConnectionSourceEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_source][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNameEndpointTargetServerPlace + ']');
+	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointTargetServerPlace + ']');
 	fieldEndpointTargetServerPlace.change(function() {
-		toggleEndpointTargetServerPlaceDependentFields(this.value);
+		togglePhysicalConnectionSourceEndpointTargetDependentFields(this.value);
 	});
 });
-//endpoint target basic #stop#
+// PhysicalConnectionSource.EndpointTarget basic #stop#
+// PhysicalConnectionTarget.EndpointTarget basic #start#
+fieldNamePhysicalConnectionTargetEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server_place]"';
+fieldNamePhysicalConnectionTargetEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][customer][name]"';
+fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][application][technical_short_name]"';
+fieldNamePhysicalConnectionTargetEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server][name]"';
 
-function toggleEndpointSourceServerPlaceDependentFields(value) {
+$(document).ready(function() {
+	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionTargetEndpointTargetServerPlace + ']');
+	fieldEndpointTargetServerPlace.change(function() {
+		togglePhysicalConnectionTargetEndpointTargetDependentFields(this.value);
+	});
+});
+// PhysicalConnectionTarget.EndpointTarget basic #stop#
+
+function togglePhysicalConnectionSourceEndpointSourceDependentFields(value) {
 	if (value == 'intranet') {
-		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('slow');
-		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').parent().fadeIn('slow');
 	}
 	if (value == 'internet') {
-		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('slow');
-		$('input[name=' + fieldNameEndpointSourceName + ']').val('');
-		$('input[name=' + fieldNameEndpointSourceName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointSourceCustomerName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').parent().fadeIn('slow');
 	}
 }
-function toggleEndpointTargetServerPlaceDependentFields(value) {
+function togglePhysicalConnectionSourceEndpointTargetDependentFields(value) {
 	if (value == 'intranet') {
-		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
-		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').parent().fadeIn('slow');
 	}
 	if (value == 'internet') {
-		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
-		$('input[name=' + fieldNameEndpointTargetName + ']').val('');
-		$('input[name=' + fieldNameEndpointTargetName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').parent().fadeOut('slow');
 
-		$('input[name=' + fieldNameEndpointTargetCustomerName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').parent().fadeIn('slow');
+	}
+}
+function togglePhysicalConnectionTargetEndpointTargetDependentFields(value) {
+	if (value == 'intranet') {
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeOut('slow');
+
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').parent().fadeIn('slow');
+	}
+	if (value == 'internet') {
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').val('');
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').parent().fadeOut('slow');
+
+		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeIn('slow');
 	}
 }
