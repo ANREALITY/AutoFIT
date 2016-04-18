@@ -1,6 +1,6 @@
-<?php echo _('Create your File Transfer Request'); ?>
+<?php echo $this->translate('Create your File Transfer Request'); ?>
 <ul>
-    <li><span><?php echo _('Connect Direct'); ?></span>
+    <li><span><?php echo $this->translate('Connect Direct'); ?></span>
         <ul>
             <li><a
                 href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdas400', 'endpointTargetType' => 'cdas400']); ?>">AS400
@@ -17,7 +17,7 @@
             <li>...</li>
         </ul>
     </li>
-    <li><span><?php echo _('File Transfer Gateway'); ?></span>
+    <li><span><?php echo $this->translate('File Transfer Gateway'); ?></span>
         <ul>
             <li><a
                 href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwwindows', 'endpointTargetType' => 'ftgwwindows']); ?>">Windows

@@ -15,18 +15,18 @@ $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
 $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
 ?>
 <ul>
-    <li><?php echo _('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>
-    <li><?php echo _('environment') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></li>
+    <li><?php echo $this->translate('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>
+    <li><?php echo $this->translate('environment') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></li>
     <li>
-        <?php echo _('endpoint') . ' ' . '(' . _('source') . ')'; ?>
+        <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('source') . ')'; ?>
         <ul>
-            <li><?php echo _('server name') . ': ' . $endpointSourceServerName; ?></li>
+            <li><?php echo $this->translate('server name') . ': ' . $endpointSourceServerName; ?></li>
         </ul>
     </li>
     <li>
-        <?php echo _('endpoint') . ' ' . '(' . _('target') . ')'; ?>
+        <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('target') . ')'; ?>
         <ul>
-            <li><?php echo _('server name') . ': ' . $endpointTargetServerName; ?></li>
+            <li><?php echo $this->translate('server name') . ': ' . $endpointTargetServerName; ?></li>
         </ul>
     </li>
 </ul>

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-        <?php echo $this->headTitle(_('AutoFIT'))->setAutoEscape(false); ?>
+        <?php echo $this->headTitle($this->translate('AutoFIT'))->setAutoEscape(false); ?>
 
         <?php
 
@@ -74,13 +74,13 @@
                         ?>
                         <li
                         <?php echo $currentRoute == 'home' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('home') ?>"><?php echo _('Home') ?></a></li>
+                        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                     <li
                         <?php echo $currentRoute == 'start-order' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('start-order') ?>"><?php echo _('New request') ?></a></li>
+                        href="<?php echo $this->url('start-order') ?>"><?php echo $this->translate('New request') ?></a></li>
                     <li
                         <?php echo $currentRoute == 'list-orders' ? ' class="active"' : null;?>><a
-                        href="<?php echo $this->url('list-orders') ?>"><?php echo _('My orders') ?></a></li>
+                        href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('My orders') ?></a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

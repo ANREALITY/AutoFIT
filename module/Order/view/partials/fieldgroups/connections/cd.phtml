@@ -1,7 +1,7 @@
 <?php
 $fieldgroupName = 'logical_connection';
 $fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = _('Connection');
+$fieldgroupTitle = $this->translate('Connection');
 $fieldgroupFormRows = [
     $this->formRow($logicalConnectionFieldset->get('type'))
 ];
@@ -16,7 +16,7 @@ echo $this->partial('/partials/fieldgroup',
 <?php
 $fieldgroupName = 'physical_connection_source';
 $fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = _('Connection');
+$fieldgroupTitle = $this->translate('Connection');
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionSourceFieldset->get('type')),
     $this->formRow($physicalConnectionSourceFieldset->get('role')),
