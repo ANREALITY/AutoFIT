@@ -109,10 +109,24 @@ class UserMapper implements UserMapperInterface
         // data from the recently persisted objects
         // none
 
-        $action = new Insert('user');
-        $action->values($data);
-
         $sql = new Sql($this->dbAdapter);
+        $select = $select = $sql->select('user');
+        $select->where([
+            'username = ?' => $data['username']
+        ]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            $dataObject = $this->hydrator->hydrate($result->current(), $this->prototype);
+            $action = new Update('user');
+            $action->set($data);
+            $action->where(['username' => $data['username']]);
+        } else {
+            $action = new Insert('user');
+            $action->values($data);
+        }
+
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
