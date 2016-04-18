@@ -34,6 +34,12 @@ class LogicalConnection
 
     /**
      *
+     * @var Notification[]
+     */
+    protected $notifications;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -43,7 +49,7 @@ class LogicalConnection
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -61,7 +67,7 @@ class LogicalConnection
 
     /**
      *
-     * @param string $type
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -79,7 +85,7 @@ class LogicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractPhysicalConnection $physicalConnectionSource
+     * @param AbstractPhysicalConnection $physicalConnectionSource            
      */
     public function setPhysicalConnectionSource($physicalConnectionSource)
     {
@@ -97,11 +103,27 @@ class LogicalConnection
 
     /**
      *
-     * @param \DbSystel\DataObject\AbstractPhysicalConnection $physicalConnectionTarget
+     * @param AbstractPhysicalConnection $physicalConnectionTarget            
      */
     public function setPhysicalConnectionTarget($physicalConnectionTarget)
     {
         $this->physicalConnectionTarget = $physicalConnectionTarget;
+    }
+
+    /**
+     * @return the $notifications
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param multitype:Notification $notifications
+     */
+    public function setNotifications(array $notifications)
+    {
+        $this->notifications = $notifications;
     }
 
 }
