@@ -40,7 +40,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [
-                        'class' => 'col-md-1'
+                        'class' => 'col-md-1 notification-checkbox'
                     ]
                 ]
             ]);
@@ -55,7 +55,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [
-                        'class' => 'col-md-1'
+                        'class' => 'col-md-1 notification-checkbox'
                     ]
                 ]
             ]);
