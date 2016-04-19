@@ -26,7 +26,6 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control',
                 ]
             ]);
@@ -37,7 +36,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 'name' => 'event_success',
                 'options' => [
                     'label' => _('successful transfer'),
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [
@@ -52,7 +51,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 'name' => 'event_failure',
                 'options' => [
                     'label' => _('failed transfer'),
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [

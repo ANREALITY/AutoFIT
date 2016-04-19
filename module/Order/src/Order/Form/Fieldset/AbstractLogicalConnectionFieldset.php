@@ -51,7 +51,6 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                 'name' => 'type',
                 'type' => 'hidden',
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control',
                     'value' => $this->getConcreteType()
                 ]
