@@ -33,7 +33,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
         $this->add(
             [
                 'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'event_success',
+                'name' => 'success',
                 'options' => [
                     'label' => _('successful transfer'),
                     'use_hidden_element' => true,
@@ -48,7 +48,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
         $this->add(
             [
                 'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'event_failure',
+                'name' => 'failure',
                 'options' => [
                     'label' => _('failed transfer'),
                     'use_hidden_element' => true,

@@ -4,10 +4,6 @@ namespace DbSystel\DataObject;
 class Notification
 {
 
-    const EVENT_SUCCESS = 'success';
-
-    const EVENT_FAILURE = 'failure';
-
     /**
      *
      * @var int
@@ -18,13 +14,25 @@ class Notification
      *
      * @var string
      */
-    protected $type;
+    protected $email;
 
     /**
      *
-     * @var string
+     * @var boolean
      */
-    protected $email;
+    protected $success;
+
+    /**
+     *
+     * @var boolean
+     */
+    protected $failure;
+
+    /**
+     *
+     * @var LogicalConnection
+     */
+    protected $logicalConnection;
 
     /**
      *
@@ -46,24 +54,6 @@ class Notification
 
     /**
      *
-     * @return the $type
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     *
-     * @param string $type            
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     *
      * @return the $email
      */
     public function getEmail()
@@ -73,11 +63,65 @@ class Notification
 
     /**
      *
-     * @param string $email
+     * @param string $email            
      */
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     *
+     * @return the $success
+     */
+    public function getSuccess()
+    {
+        return $this->success;
+    }
+
+    /**
+     *
+     * @param boolean $success            
+     */
+    public function setSuccess($success)
+    {
+        $this->success = $success;
+    }
+
+    /**
+     *
+     * @return the $failure
+     */
+    public function getFailure()
+    {
+        return $this->failure;
+    }
+
+    /**
+     *
+     * @param boolean $failure            
+     */
+    public function setFailure($failure)
+    {
+        $this->failure = $failure;
+    }
+
+    /**
+     *
+     * @return the $logicalConnection
+     */
+    public function getLogicalConnection()
+    {
+        return $this->logicalConnection;
+    }
+
+    /**
+     *
+     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection            
+     */
+    public function setLogicalConnection($logicalConnection)
+    {
+        $this->logicalConnection = $logicalConnection;
     }
 
 }
