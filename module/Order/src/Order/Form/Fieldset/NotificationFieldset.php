@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Validator\EmailAddress;
 
 class NotificationFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -63,7 +64,17 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'email' => [
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'Zend\Filter\StringTrim'],
+                ],
+                'validators' => [
+                    new EmailAddress()
+                ],
+            ]
+        ];
     }
 
 }
