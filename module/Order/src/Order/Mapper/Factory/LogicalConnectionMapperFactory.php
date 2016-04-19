@@ -24,6 +24,7 @@ class LogicalConnectionMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection());
         
         $service->setPhysicalConnectionMapper($serviceLocator->get('Order\Mapper\PhysicalConnectionMapper'));
+        $service->setNotificationMapper($serviceLocator->get('Order\Mapper\NotificationMapper'));
         
         return $service;
     }

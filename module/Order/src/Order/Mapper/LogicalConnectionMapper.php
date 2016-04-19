@@ -43,6 +43,12 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     /**
      *
+     * @var NotificationMapperInterface
+     */
+    protected $notificationMapper;
+
+    /**
+     *
      * @var type
      */
     protected $type;
@@ -61,6 +67,15 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
     public function setPhysicalConnectionMapper(PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
         $this->physicalConnectionMapper = $physicalConnectionMapper;
+    }
+
+    /**
+     *
+     * @param NotificationMapperInterface $notificationMapper            
+     */
+    public function setNotificationMapper(NotificationMapperInterface $notificationMapper)
+    {
+        $this->notificationMapper = $notificationMapper;
     }
 
     /**
@@ -201,6 +216,13 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
                     $dataObject->getPhysicalConnectionTarget()->setLogicalConnection($dataObject);
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
                         $dataObject->getPhysicalConnectionTarget());
+                }
+                $newNotifications = [];
+                foreach ($dataObject->getNotifications() as $notification) {
+                    if ($notification->getEmail()) {
+                        $notification->setLogicalConnection($dataObject);
+                        $newNotifications[] = $this->notificationMapper->save($notification);
+                    }
                 }
             }
             return $dataObject;
