@@ -123,6 +123,7 @@ return [
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
+            'Order\Mapper\NotificationMapper' => 'Order\Mapper\Factory\NotificationMapperFactory',
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
