@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:16+0200\n"
-"PO-Revision-Date: 2016-04-19 10:22+0200\n"
+"POT-Creation-Date: 2016-04-19 11:26+0200\n"
+"PO-Revision-Date: 2016-04-19 11:26+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -84,10 +84,6 @@ msgid ""
 msgstr ""
 "Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
 
-#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:83
-msgid "add a notification"
-msgstr ""
-
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
 msgstr "LSP"
@@ -142,11 +138,11 @@ msgstr "Umgebung"
 msgid "email"
 msgstr "Email"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:39
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:38
 msgid "successful transfer"
 msgstr "erfolreiche Übertragung"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:54
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:53
 msgid "failed transfer"
 msgstr "fehlgeschlagene Übertragung"
 
@@ -302,8 +298,10 @@ msgstr "Abrechnung"
 
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:7
+msgid "Technical connection"
+msgstr "Technische Verbindung"
+
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:27
-#: Order/view/partials/fieldgroups/logical-connection.phtml:4
 msgid "Connection"
 msgstr "Verbindung"
 
@@ -329,6 +327,10 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"
 
+#: Order/view/partials/fieldgroups/logical-connection.phtml:4
+msgid "Logical connection"
+msgstr "Logische Verbindung"
+
 #: Order/view/partials/list/summary.phtml:21
 #: Order/view/partials/list/summary.phtml:27
 msgid "endpoint"
@@ -341,6 +343,9 @@ msgstr "Quellsystem"
 #: Order/view/partials/list/summary.phtml:27
 msgid "target"
 msgstr "Zielsystem"
+
+#~ msgid "Physical connection"
+#~ msgstr "Physicalische Verbindung"
 
 #~ msgid "send"
 #~ msgstr "senden"
