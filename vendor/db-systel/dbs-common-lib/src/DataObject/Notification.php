@@ -75,7 +75,7 @@ class Notification
      *
      * @param string $email
      */
-    public function setEmail($email1)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
