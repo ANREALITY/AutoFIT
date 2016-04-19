@@ -1,7 +1,7 @@
 <?php
 $fieldgroupName = 'physical_connection_source';
 $fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = $this->translate('Technical connection');
+$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('directly from the source to the target') . ')';
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionSourceFieldset->get('type')),
     $this->formRow($physicalConnectionSourceFieldset->get('role')),
