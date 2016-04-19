@@ -18,7 +18,7 @@ $(document).ready(function() {
 fieldNamePhysicalConnectionSourceEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server_place]"';
 fieldNamePhysicalConnectionSourceEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][customer][name]"';
 fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][application][technical_short_name]"';
-fieldNamePhysicalConnectionSourceEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_source][server][name]"';
+fieldNamePhysicalConnectionSourceEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server][name]"';
 
 $(document).ready(function() {
 	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointTargetServerPlace + ']');
