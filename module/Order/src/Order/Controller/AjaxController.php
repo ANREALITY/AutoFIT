@@ -85,10 +85,10 @@ class AjaxController extends AbstractActionController
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            if (isset($data['name']) && $data['name'] != null) {
-                $dataList = $this->serverService->findAllByName($data['name'])->toArray();
-            }
+            $dataList = $this->serverService->findAllByName($data['name'])->toArray();
         }
+
+        $dataList = array_column($dataList, 'name');
 
         return new JsonModel($dataList);
     }

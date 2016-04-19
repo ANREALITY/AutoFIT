@@ -191,3 +191,81 @@ $(function() {
 		$(this).autocomplete("search", this.value);
 	});
 });
+/**
+ * Autocompletion for the field physical-connection-source-endpoint-source-server-name.
+ */
+$(function() {
+	var physicalConnectionSourceEndpointSourceServerName = $('input[name="file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server][name]"]');
+	physicalConnectionSourceEndpointSourceServerName
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/order/ajax/provide-servers?"
+					+ "data[name]=" + request.term,
+					{},
+					function(data) {
+						response(data.slice(0, 10));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});
+/**
+ * Autocompletion for the field physical-connection-source-endpoint-source-server-number.
+ */
+$(function() {
+	var physicalConnectionSourceEndpointTargetServerName = $('input[name="file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server][name]"]');
+	physicalConnectionSourceEndpointTargetServerName
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/order/ajax/provide-servers?"
+					+ "data[name]=" + request.term,
+					{},
+					function(data) {
+						response(data.slice(0, 10));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});
+/**
+ * Autocompletion for the field physical-connection-target-endpoint-target-server-number.
+ */
+$(function() {
+	var physicalConnectionTargetEndpointTargetServerName = $('input[name="file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server][name]"]');
+	physicalConnectionTargetEndpointTargetServerName
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/order/ajax/provide-servers?"
+					+ "data[name]=" + request.term,
+					{},
+					function(data) {
+						response(data.slice(0, 10));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});
