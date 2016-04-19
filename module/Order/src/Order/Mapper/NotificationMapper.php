@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use Zend\Db\Sql\Delete;
 
 class NotificationMapper implements NotificationMapperInterface
 {
@@ -73,21 +74,30 @@ class NotificationMapper implements NotificationMapperInterface
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('notification');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return [];
-         */
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('notification');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (!empty($condition['logical_connection_id'])) {
+                    $select->where(
+                        [
+                            'logical_connection_id = ?' => $condition['logical_connection_id']
+                        ]);
+                }
+            }
+        }
+        
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            return $resultSet->initialize($result);
+        }
+        
+        return [];
+
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
@@ -125,6 +135,37 @@ class NotificationMapper implements NotificationMapperInterface
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    public function deleteAll(array $criteria)
+    {
+        $action = new Delete('notification');
+
+        $return = false;
+        $conditionGiven = false;
+
+        if (!empty($criteria)) {
+            foreach ($criteria as $condition) {
+                if (is_array($condition)) {
+                    if (!empty($condition['logical_connection_id'])) {
+                        $action->where(
+                            [
+                                'logical_connection_id = ?' => $condition['logical_connection_id']
+                            ]
+                        );
+                        $conditionGiven = true;
+                    }
+                }
+            }
+        }
+        if ($conditionGiven) {
+            $sql    = new Sql($this->dbAdapter);
+            $stmt   = $sql->prepareStatementForSqlObject($action);
+            $result = $stmt->execute();
+            $return = (bool) $result->getAffectedRows();
+        }
+
+        return $return;
     }
 
 }

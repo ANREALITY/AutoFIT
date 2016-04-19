@@ -28,4 +28,11 @@ interface NotificationMapperInterface
      */
     public function save(Notification $dataObject);
 
+    /**
+     *
+     * @param array $criteria
+     * @throws \Exception
+     */
+    public function deleteAll(array $criteria);
+
 }

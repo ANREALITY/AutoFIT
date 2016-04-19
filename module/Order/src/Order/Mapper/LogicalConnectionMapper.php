@@ -217,6 +217,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
                         $dataObject->getPhysicalConnectionTarget());
                 }
+                $this->notificationMapper->deleteAll([['logical_connection_id' => $dataObject->getId()]]);
                 $newNotifications = [];
                 foreach ($dataObject->getNotifications() as $notification) {
                     if ($notification->getEmail()) {
