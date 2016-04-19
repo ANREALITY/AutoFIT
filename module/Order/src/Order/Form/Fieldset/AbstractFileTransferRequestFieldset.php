@@ -3,13 +3,27 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Db\Adapter\AdapterInterface;
 
 abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
+    
+    /**
+     * @var AdapterInterface
+     */
+    protected $dbAdapter;
 
     public function __construct($name = null, $options = [])
     {
         parent::__construct('file_transfer_request', $options);
+    }
+
+    /**
+     * @param AdapterInterface $dbAdapter
+     */
+    public function setDbAdapter(AdapterInterface $dbAdapter)
+    {
+        $this->dbAdapter = $dbAdapter;
     }
 
     public function init()
@@ -98,6 +112,14 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                             'pattern' => '/^[A-Z][0-9]{8}/',
                             'message' => _(
                                 'Change numbers have the format 1 capital letter and 8 digits ("C12345678").')
+                        ]
+                    ],
+                    [
+                        'name' => 'Zend\Validator\Db\NoRecordExists',
+                        'options' => [
+                            'table' => 'file_transfer_request',
+                            'field' => 'change_number',
+                            'adapter' => $this->dbAdapter
                         ]
                     ]
                 ]

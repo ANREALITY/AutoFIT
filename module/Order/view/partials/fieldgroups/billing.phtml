@@ -8,7 +8,7 @@ $fieldgroupFormRows = [
         $fileTransferRequestFieldset->get('application_number')) . '</div>',
     $this->formRow($environmentFieldset->get('severity')),
     '<div class="form-field-wrapper col-md-6">' . $this->formRow($environmentFieldset->get('name')) . '</div>',
-    $this->formRow($fileTransferRequestFieldset->get('change_number')),
+    $this->formRow($fileTransferRequestFieldset->get('change_number'), null, false),
     '<div class="form-field-wrapper col-md-6">' . $this->formRow($serviceInvoicePositionBasicFieldset->get('number')) .
          '</div>',
         $this->formRow($userFieldset->get('id')),

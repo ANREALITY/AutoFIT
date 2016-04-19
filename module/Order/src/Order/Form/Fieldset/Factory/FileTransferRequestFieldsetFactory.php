@@ -30,6 +30,8 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
         $fieldset->setObject($prototype);
+        $dbAdapter = $realServiceLocator->get('Zend\Db\Adapter\Adapter');
+        $fieldset->setDbAdapter($dbAdapter);
 
         return $fieldset;
     }

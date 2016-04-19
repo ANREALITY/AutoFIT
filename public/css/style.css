@@ -101,6 +101,9 @@ form .error-message-container {
 form #fieldgroup-logical_connection .notification-checkbox {
   margin-right: 50px;
 }
+form input.input-error {
+  color: #ff0000;
+}
 /* order form #stop# */
 .appNamePartAuto {
   color: #ff0000;
