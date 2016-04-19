@@ -56,6 +56,38 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                     'value' => $this->getConcreteType()
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'notifications',
+                'type' => 'Zend\Form\Element\Collection',
+                'options' => [
+                    'count' => 3,
+                    'should_create_template' => true,
+                    'template_placeholder' => '__placeholder__',
+                    'allow_add' => true,
+                    'target_element' => array(
+                        'type' => 'Order\Form\Fieldset\Notification',
+                    ),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'add-notification',
+                'type' => 'button',
+                'options' => [
+                    'label' => _('add a notification')
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default',
+                    'onclick' => 'return addNotification();',
+                    // 'value' => _('add a notification')
+                ],
+            ]);
     }
 
     public function getInputFilterSpecification()
