@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 14:35+0200\n"
-"PO-Revision-Date: 2016-04-19 14:35+0200\n"
+"POT-Creation-Date: 2016-04-20 23:16+0200\n"
+"PO-Revision-Date: 2016-04-20 23:16+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:27
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:27
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:27
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
 msgid "username"
 msgstr "Benutzername"
 
@@ -67,22 +67,26 @@ msgstr "Mailbox"
 msgid "Windows"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:27
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:41
 #: Order/view/order/process/list-orders.phtml:4
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:64
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:78
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
 #: Order/view/partials/list/summary.phtml:18
 msgid "application"
 msgstr "Verfahren"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:100
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:114
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
 "Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
+
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:64
+msgid "notifications"
+msgstr "Benachrichtigungen"
 
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
@@ -134,15 +138,23 @@ msgstr "Zielsystem - Windows"
 msgid "environment"
 msgstr "Umgebung"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:23
+#: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:23
+msgid " "
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:17
+msgid "include parameters"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:24
 msgid "email"
 msgstr "Email"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:38
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:39
 msgid "successful transfer"
 msgstr "erfolreiche Übertragung"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:53
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:54
 msgid "failed transfer"
 msgstr "fehlgeschlagene Übertragung"
 

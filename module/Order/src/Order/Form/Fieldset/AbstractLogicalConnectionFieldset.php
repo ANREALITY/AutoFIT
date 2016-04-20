@@ -61,13 +61,14 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                 'name' => 'notifications',
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
+                    'label' => _('notifications'),
                     'count' => 5,
                     'should_create_template' => true,
                     'template_placeholder' => '__placeholder__',
                     'allow_add' => true,
-                    'target_element' => array(
+                    'target_element' => [
                         'type' => 'Order\Form\Fieldset\Notification',
-                    ),
+                    ],
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
