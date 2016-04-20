@@ -81,6 +81,7 @@ abstract class AbstractPhysicalConnection
     }
 
     /**
+     *
      * @return the $type
      */
     public function getType()
@@ -88,15 +89,14 @@ abstract class AbstractPhysicalConnection
         return $this->type;
     }
 
-
     /**
+     *
      * @param string $type
      */
     public function setType($type)
     {
         $this->type = $type;
     }
-
 
     /**
      *

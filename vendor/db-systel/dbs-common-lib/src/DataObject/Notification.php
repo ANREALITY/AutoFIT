@@ -45,7 +45,7 @@ class Notification
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -63,7 +63,7 @@ class Notification
 
     /**
      *
-     * @param string $email            
+     * @param string $email
      */
     public function setEmail($email)
     {
@@ -81,7 +81,7 @@ class Notification
 
     /**
      *
-     * @param boolean $success            
+     * @param boolean $success
      */
     public function setSuccess($success)
     {
@@ -99,7 +99,7 @@ class Notification
 
     /**
      *
-     * @param boolean $failure            
+     * @param boolean $failure
      */
     public function setFailure($failure)
     {
@@ -117,7 +117,7 @@ class Notification
 
     /**
      *
-     * @param \DbSystel\DataObject\LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection
      */
     public function setLogicalConnection($logicalConnection)
     {
