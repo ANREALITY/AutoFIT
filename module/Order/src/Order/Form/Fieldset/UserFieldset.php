@@ -7,9 +7,17 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = [])
+    /**
+     * 
+     * @var string
+     */
+    protected $username;
+
+    public function __construct($name = null, $options = [], $username)
     {
         parent::__construct('user', $options);
+
+        $this->username = $username;
     }
 
     public function init()
@@ -33,8 +41,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
                     'required' => 'required',
                     'class' => 'form-control',
                     'readonly' => 'readonly',
-                    // It's just a temporary fake - make it dynamic!
-                    'value' => 'foobar'
+                    'value' => $this->username
                 ]
             ]);
     }

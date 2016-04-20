@@ -11,7 +11,7 @@ class UserFieldsetFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fieldset = new UserFieldset();
+        $fieldset = new UserFieldset(null, [], $_SESSION['username']);
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
