@@ -151,6 +151,8 @@ return [
             'Order\Form\Fieldset\Environment' => 'Order\Form\Fieldset\Factory\EnvironmentFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestCd' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
+            'Order\Form\Fieldset\IncludeParameter' => 'Order\Form\Fieldset\Factory\IncludeParameterFieldsetFactory',
+            'Order\Form\Fieldset\IncludeParameterSet' => 'Order\Form\Fieldset\Factory\IncludeParameterSetFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\Notification' => 'Order\Form\Fieldset\Factory\NotificationFieldsetFactory',
