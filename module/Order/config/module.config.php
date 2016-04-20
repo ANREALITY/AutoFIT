@@ -177,6 +177,8 @@ return [
             'Order\Form\Fieldset\EndpointFtgwWindowsTarget' => false,
             'Order\Form\Fieldset\FileTransferRequestCd' => false,
             'Order\Form\Fieldset\FileTransferRequestFtgw' => false,
+            'Order\Form\Fieldset\IncludeParameter' => false,
+            'Order\Form\Fieldset\IncludeParameterSet' => false,
             'Order\Form\Fieldset\LogicalConnectionCd' => false,
             'Order\Form\Fieldset\LogicalConnectionFtgw' => false,
             'Order\Form\Fieldset\Notification' => false,

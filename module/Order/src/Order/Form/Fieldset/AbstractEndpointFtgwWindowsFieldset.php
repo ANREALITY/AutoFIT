@@ -19,13 +19,6 @@ abstract class AbstractEndpointFtgwWindowsFieldset extends AbstractEndpointField
     public function init()
     {
         parent::init();
-        
-        $this->add(
-            [
-                'name' => 'include_parameter_set',
-                'type' => 'Order\Form\Fieldset\IncludeParameterSetFieldset',
-                'options' => []
-            ]);
     }
 
     public function getInputFilterSpecification()

@@ -20,7 +20,7 @@ class IncludeParameter
      *
      * @var IncludeParameterSet
      */
-    protected $ncludeParameterSet;
+    protected $includeParameterSet;
 
     /**
      *
@@ -53,27 +53,27 @@ class IncludeParameter
      *
      * @param string $expression
      */
-    public function setExpression(string $expression)
+    public function setExpression($expression)
     {
         $this->expression = $expression;
     }
 
     /**
      *
-     * @return the $ncludeParameterSet
+     * @return the $includeParameterSet
      */
-    public function getNcludeParameterSet()
+    public function getIncludeParameterSet()
     {
-        return $this->ncludeParameterSet;
+        return $this->includeParameterSet;
     }
 
     /**
      *
-     * @param IncludeParameterSet $ncludeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      */
-    public function setNcludeParameterSet(IncludeParameterSet $ncludeParameterSet)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
-        $this->ncludeParameterSet = $ncludeParameterSet;
+        $this->includeParameterSet = $includeParameterSet;
     }
 
 }

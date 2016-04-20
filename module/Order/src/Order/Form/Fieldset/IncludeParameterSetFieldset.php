@@ -7,6 +7,11 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class IncludeParameterSetFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
+    public function __construct($name = null, $options = [])
+    {
+        parent::__construct('include_parameter_set', $options);
+    }
+
     public function init()
     {
         $this->add(

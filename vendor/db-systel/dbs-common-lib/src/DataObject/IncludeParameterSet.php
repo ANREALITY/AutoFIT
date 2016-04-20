@@ -53,7 +53,7 @@ class IncludeParameterSet
      *
      * @param AbstractEndpoint $endpoint
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(AbstractEndpoint $endpoint)
     {
         $this->endpoint = $endpoint;
     }
@@ -69,7 +69,7 @@ class IncludeParameterSet
 
     /**
      *
-     * @param IncludeParameter[] $includeParameters
+     * @param multitype:IncludeParameter $includeParameters
      */
     public function setIncludeParameters(array $includeParameters)
     {
