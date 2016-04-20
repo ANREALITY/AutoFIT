@@ -72,12 +72,6 @@ abstract class AbstractEndpoint
 
     /**
      *
-     * @var IncludeParameterSet
-     */
-    protected $includeParameterSet;
-
-    /**
-     *
      * @return the $id
      */
     public function getId()
@@ -236,24 +230,6 @@ abstract class AbstractEndpoint
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
-    }
-
-    /**
-     *
-     * @return the $includeParameterSet
-     */
-    public function getIncludeParameterSet()
-    {
-        return $this->includeParameterSet;
-    }
-
-    /**
-     *
-     * @param IncludeParameterSet $includeParameterSet
-     */
-    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
-    {
-        $this->includeParameterSet = $includeParameterSet;
     }
 
 }
