@@ -18,8 +18,10 @@ class UserMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new UserMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+        $service = new UserMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new User());
+
+        return $service;
     }
 
 }

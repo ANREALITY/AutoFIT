@@ -18,8 +18,10 @@ class ApplicationMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new ApplicationMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+        $service = new ApplicationMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Application());
+
+        return $service;
     }
 
 }

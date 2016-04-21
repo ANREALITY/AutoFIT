@@ -18,8 +18,10 @@ class NotificationMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new NotificationMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+        $service = new NotificationMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new Notification());
+
+        return $service;
     }
 
 }

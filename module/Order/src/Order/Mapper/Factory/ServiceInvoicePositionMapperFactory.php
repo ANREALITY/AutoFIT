@@ -18,8 +18,10 @@ class ServiceInvoicePositionMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new ServiceInvoicePositionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
+        $service = new ServiceInvoicePositionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ServiceInvoicePosition());
+
+        return $service;
     }
 
 }
