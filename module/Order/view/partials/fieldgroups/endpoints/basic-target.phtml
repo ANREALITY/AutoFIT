@@ -5,7 +5,7 @@ $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('role')),
     $this->formRow($endpointTargetFieldset->get('contact_person')),
-    $this->formRadio($endpointTargetFieldset->get('server_place')),
+    $this->formRow($endpointTargetFieldset->get('server_place')),
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($serverForTargetFieldset->get('name'))
