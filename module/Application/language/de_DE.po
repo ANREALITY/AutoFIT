@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 23:16+0200\n"
-"PO-Revision-Date: 2016-04-20 23:26+0200\n"
+"POT-Creation-Date: 2016-04-21 17:16+0200\n"
+"PO-Revision-Date: 2016-04-21 17:16+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -22,10 +22,21 @@ msgid "AS400"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:27
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:27
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:27
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:35
 msgid "username"
 msgstr "Benutzername"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:15
+msgid "LinuxUnix"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:43
+#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
+#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
+msgid "folder"
+msgstr "Verzeichnis"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
 msgid "Tandem"
@@ -63,7 +74,7 @@ msgstr "FTGW User"
 msgid "mailbox"
 msgstr "Mailbox"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:15
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
 msgid "Windows"
 msgstr ""
 
@@ -104,10 +115,21 @@ msgstr "Quellsystem - AS400"
 msgid "Target - AS400"
 msgstr "Zielsystem - AS400"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
-#: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
-msgid "folder"
-msgstr "Verzeichnis"
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:14
+msgid "Source - LinuxUnix"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
+msgid "transmission type"
+msgstr "Übertragungsart"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:42
+msgid "transmission interval"
+msgstr "Sendeintervall"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
+msgid "Target - LinuxUnix"
+msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 msgid "Source - Tandem"
@@ -142,7 +164,7 @@ msgstr "Umgebung"
 msgid " "
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:17
+#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
 msgid "include parameters"
 msgstr "Include-Parameter"
 
@@ -300,7 +322,7 @@ msgstr "File Transfer Request erstellen"
 msgid "Connect Direct"
 msgstr ""
 
-#: Order/view/order/process/start.phtml:20
+#: Order/view/order/process/start.phtml:23
 msgid "File Transfer Gateway"
 msgstr "File Transfer Gateway"
 
@@ -335,6 +357,7 @@ msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
@@ -342,6 +365,7 @@ msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
