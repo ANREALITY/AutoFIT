@@ -129,7 +129,8 @@ class NotificationMapper implements NotificationMapperInterface
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             return $dataObject;

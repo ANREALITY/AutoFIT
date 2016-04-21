@@ -203,7 +203,8 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newPhysicalConnections = [];

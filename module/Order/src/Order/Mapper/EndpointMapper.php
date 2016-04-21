@@ -219,7 +219,8 @@ class EndpointMapper implements EndpointMapperInterface
         $result = $statement->execute();
     
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             $concreteSaveMethod = 'save' . $data['type'];
@@ -256,7 +257,8 @@ class EndpointMapper implements EndpointMapperInterface
         $result = $statement->execute();
     
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             return $dataObject;
@@ -291,7 +293,8 @@ class EndpointMapper implements EndpointMapperInterface
         $result = $statement->execute();
     
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             return $dataObject;
@@ -327,7 +330,8 @@ class EndpointMapper implements EndpointMapperInterface
         $result = $statement->execute();
     
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             return $dataObject;
@@ -360,7 +364,8 @@ class EndpointMapper implements EndpointMapperInterface
         $result = $statement->execute();
     
         if ($result instanceof ResultInterface) {
-            if ($newId = $result->getGeneratedValue()) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
                 $dataObject->setId($newId);
             }
             return $dataObject;
