@@ -63,7 +63,7 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
     protected function getConcreteType()
     {
-        return AbstractEndpoint::TYPE_CD_TANDEM;
+        return AbstractEndpoint::TYPE_CD_LINUX_UNIX;
     }
 
 }
