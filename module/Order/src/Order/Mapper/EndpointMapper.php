@@ -16,6 +16,7 @@ use DbSystel\DataObject\EndpointCdTandem;
 use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
+use DbSystel\DataObject\EndpointCdLinuxUnix;
 
 class EndpointMapper implements EndpointMapperInterface
 {
@@ -159,6 +160,8 @@ class EndpointMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointCdAs400();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_TANDEM) === 0) {
                     $this->prototype = new EndpointCdTandem();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_LINUX_UNIX) === 0) {
+                    $this->prototype = new EndpointCdLinuxUnix();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_SELF_SERVICE) === 0) {
                     $this->prototype = new EndpointFtgwSelfService();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
@@ -303,6 +306,48 @@ class EndpointMapper implements EndpointMapperInterface
         $data['endpoint_id'] = $dataObject->getId();
 
         $action = new Insert('endpoint_cd_tandem');
+        $action->values($data);
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newId = $result->getGeneratedValue();
+            if ($newId) {
+                $dataObject->setId($newId);
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointCdLinuxUnix $dataObject
+     *
+     * @return EndpointCdLinuxUnix
+     * @throws \Exception
+     */
+    protected function saveCdLinuxUnix(EndpointCdLinuxUnix $dataObject)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+
+        $action = new Insert('endpoint_cd_linux_unix');
         $action->values($data);
 
         $sql = new Sql($this->dbAdapter);
