@@ -161,8 +161,8 @@ class NotificationMapper implements NotificationMapperInterface
         }
         if ($conditionGiven) {
             $sql    = new Sql($this->dbAdapter);
-            $stmt   = $sql->prepareStatementForSqlObject($action);
-            $result = $stmt->execute();
+            $statement   = $sql->prepareStatementForSqlObject($action);
+            $result = $statement->execute();
             $return = (bool) $result->getAffectedRows();
         }
 

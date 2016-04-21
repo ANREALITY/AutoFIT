@@ -95,8 +95,8 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
          * 'id = ?' => $id
          * ]);
          *
-         * $stmt = $sql->prepareStatementForSqlObject($select);
-         * $result = $stmt->execute();
+         * $statement = $sql->prepareStatementForSqlObject($select);
+         * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
          * return $this->hydrator->hydrate($result->current(), $this->prototype);
