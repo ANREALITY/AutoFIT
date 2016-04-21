@@ -8,6 +8,8 @@ abstract class AbstractEndpoint
 
     const TYPE_CD_TANDEM = 'CdTandem';
 
+    const TYPE_CD_LINUX_UNIX = 'CdLinuxUnix';
+
     const TYPE_FTGW_WINDOWS = 'FtgwWindows';
 
     const TYPE_FTGW_SELF_SERVICE = 'FtgwSelfService';
