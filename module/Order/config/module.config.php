@@ -114,16 +114,16 @@ return [
             'Order\Service\ServiceInvoicePositionService' => 'Order\Service\Factory\ServiceInvoicePositionServiceFactory',
             // mappers
             'Order\Mapper\ApplicationMapper' => 'Order\Mapper\Factory\ApplicationMapperFactory',
+            'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
+            'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\EnvironmentMapper' => 'Order\Mapper\Factory\EnvironmentMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
             'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
+            'Order\Mapper\NotificationMapper' => 'Order\Mapper\Factory\NotificationMapperFactory',
+            'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
             'Order\Mapper\ServerMapper' => 'Order\Mapper\Factory\ServerMapperFactory',
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             'Order\Mapper\UserMapper' => 'Order\Mapper\Factory\UserMapperFactory',
-            'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
-            'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
-            'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
-            'Order\Mapper\NotificationMapper' => 'Order\Mapper\Factory\NotificationMapperFactory',
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
