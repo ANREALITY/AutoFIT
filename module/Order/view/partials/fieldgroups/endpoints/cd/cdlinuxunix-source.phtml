@@ -6,6 +6,8 @@ $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('username')),
     $this->formRow($endpointSourceFieldset->get('folder')),
+    $this->formRow($endpointSourceFieldset->get('transmission_type')),
+    $this->formRow($endpointSourceFieldset->get('transmission_interval')),
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')),
 ];
 echo $this->partial('/partials/fieldgroup',

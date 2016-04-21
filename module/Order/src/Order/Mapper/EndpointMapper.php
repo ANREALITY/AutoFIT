@@ -336,10 +336,12 @@ class EndpointMapper implements EndpointMapperInterface
         // $data['foo'] = $dataObject->getFoo();
         $data['username'] = $dataObject->getUsername();
         $data['folder'] = $dataObject->getFolder();
+        $data['transmission_type'] = $dataObject->getTransmissionType();
+        $data['transmission_interval'] = $dataObject->getTransmissionInterval();
+        // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
         }
-        // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();

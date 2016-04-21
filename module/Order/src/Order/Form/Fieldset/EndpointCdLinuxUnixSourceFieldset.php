@@ -2,6 +2,7 @@
 namespace Order\Form\Fieldset;
 
 use DbSystel\DataObject\AbstractEndpoint;
+use DbSystel\DataObject\EndpointCdLinuxUnix;
 
 class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixFieldset
 {
@@ -16,6 +17,38 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
     public function init()
     {
         parent::init();
+
+        $this->add(
+            [
+                'type' => 'radio',
+                'name' => 'transmission_type',
+                'options' => [
+                    'label' => _('transmission type'),
+                    'value_options' => [
+                        EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT => EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT,
+                        EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN => EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN,
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'type' => 'text',
+                'name' => 'transmission_interval',
+                'options' => [
+                    'label' => _('transmission interval'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control'
+                ]
+            ]);
         
         $this->add(
             [
