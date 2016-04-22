@@ -25,8 +25,15 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                 'options' => [
                     'label' => _('transmission type'),
                     'value_options' => [
-                        EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT => EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT,
-                        EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN => EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN,
+                        [
+                            'value' => EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT,
+                            'label' => EndpointCdLinuxUnix::TRANSMISSION_TYPE_TXT,
+                            'selected' => true
+                        ],
+                        [
+                            'value' => EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN,
+                            'label' => EndpointCdLinuxUnix::TRANSMISSION_TYPE_BIN
+                        ]
                     ],
                     'label_attributes' => [
                         'class' => 'col-md-12'
@@ -49,7 +56,7 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                     'class' => 'form-control'
                 ]
             ]);
-        
+
         $this->add(
             [
                 'name' => 'include_parameter_set',

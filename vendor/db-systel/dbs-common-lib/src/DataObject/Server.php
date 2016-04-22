@@ -4,6 +4,10 @@ namespace DbSystel\DataObject;
 class Server
 {
 
+    const PLACE_INTRANET = 'intranet';
+
+    const PLACE_INTERNET = 'internet';
+
     /**
      *
      * @var string

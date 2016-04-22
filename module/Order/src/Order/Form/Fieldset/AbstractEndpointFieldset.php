@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use DbSystel\DataObject\Server;
 
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -36,8 +37,15 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                 'options' => [
                     'label' => _('server place'),
                     'value_options' => [
-                        'intranet' => _('intranet'),
-                        'internet' => _('internet')
+                        [
+                            'value' => Server::PLACE_INTRANET,
+                            'label' => _('intranet'),
+                            'selected' => true
+                        ],
+                        [
+                            'value' => Server::PLACE_INTERNET,
+                            'label' => _('internet')
+                        ]
                     ],
                     'label_attributes' => [
                         'class' => 'col-md-12'
@@ -95,7 +103,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     }
 
     abstract protected function getConcreteRole();
-    
+
     abstract protected function getConcreteType();
 
 }
