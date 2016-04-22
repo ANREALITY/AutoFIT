@@ -5,7 +5,9 @@ $fieldgroupTitle = $this->translate('Target - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('type')),
     $this->formRow($endpointTargetFieldset->get('username')),
-    $this->formRow($endpointTargetFieldset->get('folder'))
+    $this->formRow($endpointTargetFieldset->get('folder')),
+    $this->formRow($endpointTargetFieldset->get('cluster_toggle')),
+    $this->formRow($endpointTargetFieldset->get('cluster')->get('address'))
 ];
 echo $this->partial('/partials/fieldgroup', 
     [

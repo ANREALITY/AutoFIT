@@ -114,6 +114,7 @@ return [
             'Order\Service\ServiceInvoicePositionService' => 'Order\Service\Factory\ServiceInvoicePositionServiceFactory',
             // mappers
             'Order\Mapper\ApplicationMapper' => 'Order\Mapper\Factory\ApplicationMapperFactory',
+            'Order\Mapper\ClusterMapper' => 'Order\Mapper\Factory\ClusterMapperFactory',
             'Order\Mapper\CustomerMapper' => 'Order\Mapper\Factory\CustomerMapperFactory',
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\EnvironmentMapper' => 'Order\Mapper\Factory\EnvironmentMapperFactory',
@@ -141,6 +142,7 @@ return [
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // fieldsets
             'Order\Form\Fieldset\Application' => 'Order\Form\Fieldset\Factory\ApplicationFieldsetFactory',
+            'Order\Form\Fieldset\Cluster' => 'Order\Form\Fieldset\Factory\ClusterFieldsetFactory',
             'Order\Form\Fieldset\Customer' => 'Order\Form\Fieldset\Factory\CustomerFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Source' => 'Order\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Target' => 'Order\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
@@ -170,6 +172,7 @@ return [
         ],
         'shared' => [
             'Order\Form\Fieldset\Application' => false,
+            'Order\Form\Fieldset\Cluster' => false,
             'Order\Form\Fieldset\Customer' => false,
             'Order\Form\Fieldset\EndpointCdAs400Source' => false,
             'Order\Form\Fieldset\EndpointCdAs400Target' => false,

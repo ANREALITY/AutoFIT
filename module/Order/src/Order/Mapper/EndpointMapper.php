@@ -17,6 +17,7 @@ use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\Cluster;
 
 class EndpointMapper implements EndpointMapperInterface
 {
@@ -63,6 +64,12 @@ class EndpointMapper implements EndpointMapperInterface
      */
     protected $includeParameterSetMapper;
 
+    /**
+     *
+     * @var ClusterMapperInterface
+     */
+    protected $clusterMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
         $this->dbAdapter = $dbAdapter;
@@ -103,6 +110,15 @@ class EndpointMapper implements EndpointMapperInterface
     public function setIncludeParameterSetMapper(IncludeParameterSetMapperInterface $includeParameterSetMapper)
     {
         $this->includeParameterSetMapper = $includeParameterSetMapper;
+    }
+
+    /**
+     *
+     * @param ClusterMapperInterface $clusterMapper
+     */
+    public function setClusterMapper(ClusterMapperInterface $clusterMapper)
+    {
+        $this->clusterMapper = $clusterMapper;
     }
 
     /**
@@ -341,6 +357,12 @@ class EndpointMapper implements EndpointMapperInterface
         // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
+            if ($dataObject->getCluster() instanceof Cluster && !empty($dataObject->getCluster()->getAddress())) {
+                $newCluster = $this->clusterMapper->save($dataObject->getCluster());
+                $data['cluster_id'] = $newCluster->getId();
+            }
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects

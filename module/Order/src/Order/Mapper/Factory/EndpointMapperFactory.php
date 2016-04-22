@@ -23,6 +23,7 @@ class EndpointMapperFactory implements FactoryInterface
         $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
         $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
         $service->setIncludeParameterSetMapper($serviceLocator->get('Order\Mapper\IncludeParameterSetMapper'));
+        $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
     
         return $service;
     }

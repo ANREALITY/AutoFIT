@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-21 17:16+0200\n"
-"PO-Revision-Date: 2016-04-21 17:16+0200\n"
+"POT-Creation-Date: 2016-04-22 15:33+0200\n"
+"PO-Revision-Date: 2016-04-22 15:34+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -103,6 +103,10 @@ msgstr "Benachrichtigungen"
 msgid "service invoice position number"
 msgstr "LSP"
 
+#: Order/src/Order/Form/Fieldset/ClusterFieldset.php:22
+msgid "server name / IP of the load balancer"
+msgstr "Servername / IP des Lastverteilers"
+
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
 msgid "external partner"
 msgstr "externer Partner"
@@ -130,6 +134,10 @@ msgstr "Sendeintervall"
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
 msgid "Target - LinuxUnix"
 msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
+msgid "cluster"
+msgstr "Cluster"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 msgid "Source - Tandem"

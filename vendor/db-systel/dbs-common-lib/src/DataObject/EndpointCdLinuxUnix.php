@@ -40,6 +40,12 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
+     * @var Cluster
+     */
+    protected $cluster;
+
+    /**
+     *
      * @return the $username
      */
     public function getUsername()
@@ -49,7 +55,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @param string $username            
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -67,7 +73,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @param string $folder            
+     * @param string $folder
      */
     public function setFolder($folder)
     {
@@ -85,7 +91,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @param string $transmissionType            
+     * @param string $transmissionType
      */
     public function setTransmissionType($transmissionType)
     {
@@ -103,7 +109,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @param string $transmissionInterval            
+     * @param string $transmissionInterval
      */
     public function setTransmissionInterval($transmissionInterval)
     {
@@ -126,6 +132,24 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
+    }
+
+    /**
+     *
+     * @return the $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
+    }
+
+    /**
+     *
+     * @param Cluster $cluster
+     */
+    public function setCluster($cluster)
+    {
+        $this->cluster = $cluster;
     }
 
 }
