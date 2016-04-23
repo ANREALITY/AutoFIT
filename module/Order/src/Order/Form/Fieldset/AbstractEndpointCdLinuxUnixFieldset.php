@@ -50,6 +50,40 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     'class' => 'form-control'
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'servers',
+                'type' => 'Zend\Form\Element\Collection',
+                'options' => [
+                    'label' => _('multiple servers'),
+                    'count' => 5,
+                    'should_create_template' => true,
+                    'template_placeholder' => '__placeholder__',
+                    'allow_add' => true,
+                    'target_element' => [
+                        'type' => 'Order\Form\Fieldset\Server',
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'type' => 'text',
+                'name' => 'service_address',
+                'options' => [
+                    'label' => _('service address (IP / server name)'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control'
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

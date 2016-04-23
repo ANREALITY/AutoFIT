@@ -20,7 +20,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                 'name' => 'expression',
                 'type' => 'text',
                 'options' => [
-                    'label' => _(' '),
+                    'label' => _('expression'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]

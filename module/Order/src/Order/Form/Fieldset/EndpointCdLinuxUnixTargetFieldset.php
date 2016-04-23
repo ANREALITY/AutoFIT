@@ -32,9 +32,17 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
 
         $this->add(
             [
-                'type' => 'Order\Form\Fieldset\Cluster',
+                'type' => 'text',
                 'name' => 'cluster',
-                'options' => []
+                'options' => [
+                    'label' => _('server name / IP of the load balancer'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control'
+                ]
             ]);
     }
 

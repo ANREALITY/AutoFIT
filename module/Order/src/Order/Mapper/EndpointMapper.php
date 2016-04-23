@@ -64,12 +64,6 @@ class EndpointMapper implements EndpointMapperInterface
      */
     protected $includeParameterSetMapper;
 
-    /**
-     *
-     * @var ClusterMapperInterface
-     */
-    protected $clusterMapper;
-
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
         $this->dbAdapter = $dbAdapter;
@@ -78,7 +72,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ServerMapperInterface $serverMapper
+     * @param ServerMapperInterface $serverMapper            
      */
     public function setServerMapper(ServerMapperInterface $serverMapper)
     {
@@ -87,7 +81,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ApplicationMapperInterface $applicationMapper
+     * @param ApplicationMapperInterface $applicationMapper            
      */
     public function setApplicationMapper(ApplicationMapperInterface $applicationMapper)
     {
@@ -96,7 +90,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param CustomerMapperInterface $customerMapper
+     * @param CustomerMapperInterface $customerMapper            
      */
     public function setCustomerMapper(CustomerMapperInterface $customerMapper)
     {
@@ -105,20 +99,11 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param IncludeParameterSetMapperInterface $includeParameterSetMapper
+     * @param IncludeParameterSetMapperInterface $includeParameterSetMapper            
      */
     public function setIncludeParameterSetMapper(IncludeParameterSetMapperInterface $includeParameterSetMapper)
     {
         $this->includeParameterSetMapper = $includeParameterSetMapper;
-    }
-
-    /**
-     *
-     * @param ClusterMapperInterface $clusterMapper
-     */
-    public function setClusterMapper(ClusterMapperInterface $clusterMapper)
-    {
-        $this->clusterMapper = $clusterMapper;
     }
 
     /**
@@ -130,7 +115,7 @@ class EndpointMapper implements EndpointMapperInterface
     public function find($id)
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
+        
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -161,14 +146,14 @@ class EndpointMapper implements EndpointMapperInterface
         $select->where([
             'endpoint.id = ?' => $id
         ]);
-
+        
         $select->join('server', 'server.name = endpoint.server_name', [
             'server_name' => 'name'
         ]);
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $data = $result->current();
             if (! empty($data['type'])) {
@@ -184,13 +169,13 @@ class EndpointMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwWindows();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->prototype);
-
+                
                 $return->setServer(new Server());
                 $return->getServer()->setName($data['server_name']);
             } else {
                 $return = null;
             }
-
+            
             return $return;
         }
     }
@@ -202,7 +187,7 @@ class EndpointMapper implements EndpointMapperInterface
     public function findAll(array $criteria = [])
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
+        
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -223,7 +208,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param AbstractEndpoint $dataObject
+     * @param AbstractEndpoint $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -246,14 +231,14 @@ class EndpointMapper implements EndpointMapperInterface
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
-
+        
         $action = new Insert('endpoint');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -268,7 +253,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdAs400 $dataObject
+     * @param EndpointCdAs400 $dataObject            
      *
      * @return EndpointCdAs400
      * @throws \Exception
@@ -284,19 +269,15 @@ class EndpointMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-
+        
         $action = new Insert('endpoint_cd_as400');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
@@ -304,7 +285,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdTandem $dataObject
+     * @param EndpointCdTandem $dataObject            
      *
      * @return EndpointCdTandem
      * @throws \Exception
@@ -320,19 +301,15 @@ class EndpointMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-
+        
         $action = new Insert('endpoint_cd_tandem');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
@@ -340,7 +317,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdLinuxUnix $dataObject
+     * @param EndpointCdLinuxUnix $dataObject            
      *
      * @return EndpointCdLinuxUnix
      * @throws \Exception
@@ -354,15 +331,13 @@ class EndpointMapper implements EndpointMapperInterface
         $data['folder'] = $dataObject->getFolder();
         $data['transmission_type'] = $dataObject->getTransmissionType();
         $data['transmission_interval'] = $dataObject->getTransmissionInterval();
+        $data['service_address'] = $dataObject->getServiceAddress();
         // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
         }
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
-            if ($dataObject->getCluster() instanceof Cluster && !empty($dataObject->getCluster()->getAddress())) {
-                $newCluster = $this->clusterMapper->save($dataObject->getCluster());
-                $data['cluster_id'] = $newCluster->getId();
-            }
+            $data['cluster'] = $dataObject->getCluster();
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
@@ -370,18 +345,38 @@ class EndpointMapper implements EndpointMapperInterface
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
-
+        
         $action = new Insert('endpoint_cd_linux_unix');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
-            if ($newId) {
-                $dataObject->setId($newId);
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newId is needed
+                $sql = <<<SQL
+DELETE FROM
+    endpoint_cd_linux_unix_server
+WHERE
+    endpoint_cd_linux_unix_endpoint_id = $newEndpointId
+SQL;
+                foreach ($dataObject->getServers() as $server) {
+                    if ($server->getName()) {
+                        $sql = <<<SQL
+INSERT INTO
+    endpoint_cd_linux_unix_server
+(endpoint_cd_linux_unix_endpoint_id, server_name)
+VALUES ('$newEndpointId', '{$server->getName()}');
+SQL;
+                        $result = $this->dbAdapter->getDriver()
+                            ->getConnection()
+                            ->execute($sql);
+                        ;
+                    }
+                }
             }
             return $dataObject;
         }
@@ -390,7 +385,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointFtgwSelfService $dataObject
+     * @param EndpointFtgwSelfService $dataObject            
      *
      * @return EndpointFtgwSelfService
      * @throws \Exception
@@ -407,19 +402,15 @@ class EndpointMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-
+        
         $action = new Insert('endpoint_ftgw_self_service');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
@@ -427,7 +418,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointFtgwWindows $dataObject
+     * @param EndpointFtgwWindows $dataObject            
      *
      * @return EndpointFtgwWindows
      * @throws \Exception
@@ -447,19 +438,15 @@ class EndpointMapper implements EndpointMapperInterface
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
-
+        
         $action = new Insert('endpoint_ftgw_windows');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);

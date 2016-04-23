@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-22 15:33+0200\n"
-"PO-Revision-Date: 2016-04-22 15:34+0200\n"
+"POT-Creation-Date: 2016-04-23 13:33+0200\n"
+"PO-Revision-Date: 2016-04-23 13:34+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -38,23 +38,31 @@ msgstr ""
 msgid "folder"
 msgstr "Verzeichnis"
 
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:59
+msgid "multiple servers"
+msgstr "Mehrere Server"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:78
+msgid "service address (IP / server name)"
+msgstr "Service-Adresse (IP / Server-Name)"
+
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
 msgid "Tandem"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:22
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:23
 msgid "contact person"
 msgstr "Ansprechpartner"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:37
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:38
 msgid "server place"
 msgstr "Serverstandort"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:39
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:42
 msgid "intranet"
 msgstr "Intranet"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:40
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:47
 msgid "internet"
 msgstr "Internet"
 
@@ -103,10 +111,6 @@ msgstr "Benachrichtigungen"
 msgid "service invoice position number"
 msgstr "LSP"
 
-#: Order/src/Order/Form/Fieldset/ClusterFieldset.php:22
-msgid "server name / IP of the load balancer"
-msgstr "Servername / IP des Lastverteilers"
-
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
 msgid "external partner"
 msgstr "externer Partner"
@@ -127,7 +131,7 @@ msgstr ""
 msgid "transmission type"
 msgstr "Übertragungsart"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:42
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
@@ -138,6 +142,10 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
 msgid "cluster"
 msgstr "Cluster"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:38
+msgid "server name / IP of the load balancer"
+msgstr "Servername / IP des Lastverteilers"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 msgid "Source - Tandem"
@@ -169,8 +177,8 @@ msgid "environment"
 msgstr "Umgebung"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:23
-msgid " "
-msgstr ""
+msgid "expression"
+msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
 msgid "include parameters"

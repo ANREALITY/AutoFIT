@@ -34,15 +34,27 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
+     * @var string
+     */
+    protected $cluster;
+
+    /**
+     *
+     * @var string
+     */
+    protected $serviceAddress;
+
+    /**
+     *
      * @var IncludeParameterSet
      */
     protected $includeParameterSet;
 
     /**
      *
-     * @var Cluster
+     * @var Server[]
      */
-    protected $cluster;
+    protected $servers;
 
     /**
      *
@@ -118,6 +130,42 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
+     * @return the $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
+    }
+
+    /**
+     *
+     * @param string $cluster
+     */
+    public function setCluster($cluster)
+    {
+        $this->cluster = $cluster;
+    }
+
+    /**
+     *
+     * @return the $serviceAddress
+     */
+    public function getServiceAddress()
+    {
+        return $this->serviceAddress;
+    }
+
+    /**
+     *
+     * @param string $serviceAddress
+     */
+    public function setServiceAddress($serviceAddress)
+    {
+        $this->serviceAddress = $serviceAddress;
+    }
+
+    /**
+     *
      * @return the $includeParameterSet
      */
     public function getIncludeParameterSet()
@@ -136,20 +184,20 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return the $cluster
+     * @return the $servers
      */
-    public function getCluster()
+    public function getServers()
     {
-        return $this->cluster;
+        return $this->servers;
     }
 
     /**
      *
-     * @param Cluster $cluster
+     * @param multitype:Server $servers
      */
-    public function setCluster($cluster)
+    public function setServers(array $servers)
     {
-        $this->cluster = $cluster;
+        $this->servers = $servers;
     }
 
 }
