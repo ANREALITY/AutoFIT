@@ -136,7 +136,7 @@ function toggleFieldServiceAddressSource(field) {
 	}
 }
 // Linux/Unix Source #stop#
-//Linux/Unix Target #start#
+// Linux/Unix Target #start#
 $(document).ready(function() {
 	fieldServerTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-server');
 	fieldTheServerTarget = $('#fieldgroup-basic-endpoint-target .input-server');
@@ -144,6 +144,8 @@ $(document).ready(function() {
 	fieldsetMultipleServersTarget = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers');
 	fieldServiceAddressTarget = $('#fieldgroup-specific-endpoint-target .field-service-address');
 	fieldServiceAddressToggle = $('#fieldgroup-specific-endpoint-target .toggle-service-address');
+	fieldClusterTarget = $('#fieldgroup-specific-endpoint-target .field-cluster');
+	fieldClusterToggle = $('#fieldgroup-specific-endpoint-target .toggle-cluster');
 
 	fieldServerTargetToggle.change(function() {
 		toggleFieldServerTarget(this.value);
@@ -151,9 +153,13 @@ $(document).ready(function() {
 	fieldServiceAddressToggle.change(function() {
 		toggleFieldServiceAddressTarget(this);
 	});
+	fieldClusterToggle.change(function() {
+		toggleFieldClusterTarget(this);
+	});
 
 	fieldServerTargetToggle.filter(':checked').trigger('change');
 	fieldServiceAddressToggle.trigger('change');
+	fieldClusterToggle.trigger('change');
 });
 function toggleFieldServerTarget(value) {
 	if (value == 'single_server') {
@@ -176,6 +182,13 @@ function toggleFieldServiceAddressTarget(field) {
 		fieldServiceAddressTarget.parent().fadeIn('slow');
 	} else {
 		fieldServiceAddressTarget.parent().fadeOut('slow');
+	}
+}
+function toggleFieldClusterTarget(field) {
+	if ($(field).prop('checked')) {
+		fieldClusterTarget.parent().fadeIn('slow');
+	} else {
+		fieldClusterTarget.parent().fadeOut('slow');
 	}
 }
 // Linux/Unix Target #stop#

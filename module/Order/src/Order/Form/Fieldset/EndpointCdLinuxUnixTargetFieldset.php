@@ -27,6 +27,9 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
+                ],
+                'attributes' => [
+                    'class' => 'toggle-cluster'
                 ]
             ]);
 
@@ -41,7 +44,7 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control field-cluster'
                 ]
             ]);
     }
