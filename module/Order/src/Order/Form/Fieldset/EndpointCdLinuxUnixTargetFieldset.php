@@ -51,11 +51,13 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
 
     public function getInputFilterSpecification()
     {
-        return [
+        $parentInputFilterSpecification = parent::getInputFilterSpecification();
+        $thisInputFilterSpecification = [
             'cluster_toggle' => [
                 'required' => false
             ]
         ];
+        return array_merge($parentInputFilterSpecification, $thisInputFilterSpecification);
     }
 
     protected function getConcreteRole()

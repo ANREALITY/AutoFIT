@@ -133,6 +133,12 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
         return [
             'username' => [
                 'required' => true
+            ],
+            'server_toggle' => [
+                'required' => false
+            ],
+            'service_address_toggle' => [
+                'required' => false
             ]
         ];
     }
