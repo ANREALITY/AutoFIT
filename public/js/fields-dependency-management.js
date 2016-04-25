@@ -122,7 +122,6 @@ function toggleFieldServerSource(value) {
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		fieldsetMultipleServersSource.fadeIn('slow');
-		fieldServiceAddressSource.val('');
 		fieldServiceAddressToggle.prop('checked', false);
 		fieldServiceAddressToggle.trigger('change');
 		fieldServiceAddressToggle.parent().fadeOut('slow');
@@ -132,6 +131,7 @@ function toggleFieldServiceAddressSource(field) {
 	if ($(field).prop('checked')) {
 		fieldServiceAddressSource.parent().fadeIn('slow');
 	} else {
+		fieldServiceAddressSource.val('');
 		fieldServiceAddressSource.parent().fadeOut('slow');
 	}
 }
@@ -167,20 +167,24 @@ function toggleFieldServerTarget(value) {
 		fieldAServerTarget.val('');
 		fieldsetMultipleServersTarget.fadeOut('slow');
 		fieldServiceAddressToggle.parent().fadeIn('slow');
+		fieldClusterToggle.prop('checked', false);
+		fieldClusterToggle.trigger('change');
+		fieldClusterToggle.parent().fadeOut('slow');
 	} else if (value == 'multiple_servers') {
 		fieldTheServerTarget.val('');
 		fieldTheServerTarget.parent().fadeOut('slow');
 		fieldsetMultipleServersTarget.fadeIn('slow');
-		fieldServiceAddressTarget.val('');
 		fieldServiceAddressToggle.prop('checked', false);
 		fieldServiceAddressToggle.trigger('change');
 		fieldServiceAddressToggle.parent().fadeOut('slow');
+		fieldClusterToggle.parent().fadeIn('slow');
 	}
 }
 function toggleFieldServiceAddressTarget(field) {
 	if ($(field).prop('checked')) {
 		fieldServiceAddressTarget.parent().fadeIn('slow');
 	} else {
+		fieldServiceAddressTarget.val('');
 		fieldServiceAddressTarget.parent().fadeOut('slow');
 	}
 }
@@ -188,6 +192,7 @@ function toggleFieldClusterTarget(field) {
 	if ($(field).prop('checked')) {
 		fieldClusterTarget.parent().fadeIn('slow');
 	} else {
+		fieldClusterTarget.val('');
 		fieldClusterTarget.parent().fadeOut('slow');
 	}
 }
