@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-23 13:33+0200\n"
-"PO-Revision-Date: 2016-04-23 13:34+0200\n"
+"POT-Creation-Date: 2016-04-25 14:59+0200\n"
+"PO-Revision-Date: 2016-04-25 14:59+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -39,12 +39,25 @@ msgid "folder"
 msgstr "Verzeichnis"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:59
-msgid "multiple servers"
-msgstr "Mehrere Server"
+msgid "server variant"
+msgstr "Server-Vatiante"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:78
-msgid "service address (IP / server name)"
-msgstr "Service-Adresse (IP / Server-Name)"
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:63
+msgid "single server (s. basic settings)"
+msgstr "einziger Server (s. Basis-Einstellungen)"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:68
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:85
+msgid "multiple servers"
+msgstr "mehrere Server"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:104
+msgid "service address"
+msgstr "Service-Adresse"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:120
+msgid "IP / server name service address"
+msgstr "IP / Server-Name der Service-Adresse"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
 msgid "Tandem"
@@ -404,6 +417,21 @@ msgstr "Quellsystem"
 #: Order/view/partials/list/summary.phtml:27
 msgid "target"
 msgstr "Zielsystem"
+
+#~ msgid "service address (IP / server name)"
+#~ msgstr "Service-Adresse (IP / Server-Name)"
+
+#~ msgid "single server"
+#~ msgstr "einziger Server"
+
+#~ msgid "multiple servers (s. basic settings)"
+#~ msgstr "mehrere Server (s. Basis-Einstellungen)"
+
+#~ msgid "(s. basic settings)"
+#~ msgstr "Mehrere Server (s. Basis-Einstellungen)"
+
+#~ msgid "(see basic settings)"
+#~ msgstr "(siehe Basis-Einstellungen)"
 
 #~ msgid "direct"
 #~ msgstr "direkt"

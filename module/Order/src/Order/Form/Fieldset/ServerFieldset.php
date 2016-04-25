@@ -25,7 +25,7 @@ class ServerFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control autocomplete-server'
+                    'class' => 'form-control input-server autocomplete-server'
                 ]
             ]);
     }

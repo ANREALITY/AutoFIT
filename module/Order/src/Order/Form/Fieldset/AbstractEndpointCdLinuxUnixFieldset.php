@@ -53,6 +53,32 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
         $this->add(
             [
+                'type' => 'radio',
+                'name' => 'server_toggle',
+                'options' => [
+                    'label' => _('server variant'),
+                    'value_options' => [
+                        [
+                            'value' => 'single_server',
+                            'label' => _('single server (s. basic settings)'),
+                            'selected' => true
+                        ],
+                        [
+                            'value' => 'multiple_servers',
+                            'label' => _('multiple servers')
+                        ]
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'toggle-server'
+                ]
+            ]);
+
+        $this->add(
+            [
                 'name' => 'servers',
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
@@ -65,8 +91,24 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                         'type' => 'Order\Form\Fieldset\Server',
                     ],
                     'label_attributes' => [
+                        'class' => 'col-md-12 fieldset-multiple-servers'
+                    ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'type' => 'Zend\Form\Element\Checkbox',
+                'name' => 'service_address_toggle',
+                'options' => [
+                    'label' => _('service address'),
+                    'use_hidden_element' => false,
+                    'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
+                ],
+                'attributes' => [
+                    'class' => 'toggle-service-address'
                 ]
             ]);
 
@@ -75,13 +117,13 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                 'type' => 'text',
                 'name' => 'service_address',
                 'options' => [
-                    'label' => _('service address (IP / server name)'),
+                    'label' => _('IP / server name service address'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control field-service-address'
                 ]
             ]);
     }

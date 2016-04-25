@@ -92,3 +92,47 @@ function togglePhysicalConnectionTargetEndpointTargetDependentFields(value) {
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeIn('slow');
 	}
 }
+
+//Linux/Unix #start#
+$(document).ready(function() {
+	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
+	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
+	fieldAServerSource = $('#fieldgroup-specific-endpoint-source .input-server');
+	fieldsetMultipleServersSource = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers');
+	fieldServiceAddressSource = $('.field-service-address');
+	fieldServiceAddressToggle = $('#fieldgroup-specific-endpoint-source .toggle-service-address');
+
+	fieldServerSourceToggle.change(function() {
+		toggleFieldServerSource(this.value);
+	});
+	fieldServiceAddressToggle.change(function() {
+		toggleFieldServiceAddressSource(this);
+	});
+
+	fieldServerSourceToggle.filter(':checked').trigger('change');
+	fieldServiceAddressToggle.trigger('change');
+});
+function toggleFieldServerSource(value) {
+	if (value == 'single_server') {
+		fieldTheServerSource.parent().fadeIn('slow');
+		fieldAServerSource.val('');
+		fieldsetMultipleServersSource.fadeOut('slow');
+		fieldServiceAddressToggle.parent().fadeIn('slow');
+	} else if (value == 'multiple_servers') {
+		fieldTheServerSource.val('');
+		fieldTheServerSource.parent().fadeOut('slow');
+		fieldsetMultipleServersSource.fadeIn('slow');
+		fieldServiceAddressSource.val('');
+		fieldServiceAddressToggle.prop('checked', false);
+		fieldServiceAddressToggle.trigger('change');
+		fieldServiceAddressToggle.parent().fadeOut('slow');
+	}
+}
+function toggleFieldServiceAddressSource(field) {
+	if ($(field).prop('checked')) {
+		fieldServiceAddressSource.parent().fadeIn('slow');
+	} else {
+		fieldServiceAddressSource.parent().fadeOut('slow');
+	}
+}
+//Linux/Unix #stop#
