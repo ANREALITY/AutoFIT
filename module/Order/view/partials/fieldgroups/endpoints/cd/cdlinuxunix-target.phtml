@@ -9,6 +9,7 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('servers')),
     $this->formRow($endpointTargetFieldset->get('cluster_toggle')),
     $this->formRow($endpointTargetFieldset->get('cluster')),
+    $this->formRow($endpointSourceFieldset->get('service_address_toggle')),
     $this->formRow($endpointTargetFieldset->get('service_address'))
 ];
 echo $this->partial('/partials/fieldgroup', 
