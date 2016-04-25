@@ -110,18 +110,21 @@ $(document).ready(function() {
 	});
 
 	fieldServerSourceToggle.filter(':checked').trigger('change');
-	fieldServiceAddressToggle.trigger('change');
+	// fieldServiceAddressToggle.trigger('change');
 });
 function toggleFieldServerSource(value) {
 	if (value == 'single_server') {
 		fieldTheServerSource.parent().fadeIn('slow');
 		fieldAServerSource.val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
+		
 		fieldServiceAddressToggle.parent().fadeIn('slow');
+		fieldServiceAddressToggle.trigger('change');
 	} else if (value == 'multiple_servers') {
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		fieldsetMultipleServersSource.fadeIn('slow');
+		
 		fieldServiceAddressToggle.prop('checked', false);
 		fieldServiceAddressToggle.trigger('change');
 		fieldServiceAddressToggle.parent().fadeOut('slow');
@@ -158,15 +161,18 @@ $(document).ready(function() {
 	});
 
 	fieldServerTargetToggle.filter(':checked').trigger('change');
-	fieldServiceAddressToggle.trigger('change');
-	fieldClusterToggle.trigger('change');
+	// fieldServiceAddressToggle.trigger('change');
+	// fieldClusterToggle.trigger('change');
 });
 function toggleFieldServerTarget(value) {
 	if (value == 'single_server') {
 		fieldTheServerTarget.parent().fadeIn('slow');
 		fieldAServerTarget.val('');
 		fieldsetMultipleServersTarget.fadeOut('slow');
+		
 		fieldServiceAddressToggle.parent().fadeIn('slow');
+		fieldServiceAddressToggle.trigger('change');
+		
 		fieldClusterToggle.prop('checked', false);
 		fieldClusterToggle.trigger('change');
 		fieldClusterToggle.parent().fadeOut('slow');
@@ -174,10 +180,13 @@ function toggleFieldServerTarget(value) {
 		fieldTheServerTarget.val('');
 		fieldTheServerTarget.parent().fadeOut('slow');
 		fieldsetMultipleServersTarget.fadeIn('slow');
+		
 		fieldServiceAddressToggle.prop('checked', false);
 		fieldServiceAddressToggle.trigger('change');
 		fieldServiceAddressToggle.parent().fadeOut('slow');
+		
 		fieldClusterToggle.parent().fadeIn('slow');
+		fieldClusterToggle.trigger('change');
 	}
 }
 function toggleFieldServiceAddressTarget(field) {
