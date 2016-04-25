@@ -78,6 +78,7 @@ class ProcessController extends AbstractActionController
             if ($this->orderForm->isValid()) {
                 $this->fileTransferRequest->getUser()->setUsername($_SESSION['username']);
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
+                return $this->forward()->dispatch('Order\Controller\Process', ['action' => 'received']);
             }
         }
         
@@ -87,6 +88,11 @@ class ProcessController extends AbstractActionController
             'endpointSourceType' => $this->endpointSourceType,
             'endpointTargetType' => $this->endpointTargetType,
         ];
+    }
+
+    public function receivedAction()
+    {
+        return new ViewModel();
     }
 
     public function listOrdersAction()
