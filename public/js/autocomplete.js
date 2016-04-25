@@ -195,7 +195,7 @@ $(function() {
  * Autocompletion for the field physical-connection-source-endpoint-source-server-name.
  */
 $(function() {
-	var physicalConnectionSourceEndpointSourceServerName = $('input[name="file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server][name]"]');
+	var physicalConnectionSourceEndpointSourceServerName = $('.autocomplete-server');
 	physicalConnectionSourceEndpointSourceServerName
 		.autocomplete({
 			autoFocus : true,
