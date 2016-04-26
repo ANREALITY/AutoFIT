@@ -29,6 +29,19 @@ class RequestAnalyzer
         $this->requestPost = $requestPost;
     }
 
+    public function isStartRequest()
+    {
+        $paramsNeededForStart = [
+            'connectionType'
+        ];
+        
+        $allParamsForStartGiven = count(
+            array_intersect($paramsNeededForStart, array_keys($this->routerMatchParams))) ===
+             count($paramsNeededForStart);
+        
+        return $allParamsForStartGiven;
+    }
+
     public function isOrderRequest()
     {
         $paramsNeededForOrderForm = [

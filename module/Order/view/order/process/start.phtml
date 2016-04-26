@@ -1,3 +1,21 @@
+<?php
+use DbSystel\DataObject\LogicalConnection;
+?>
+<?php
+if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
+    echo $this->partial('/partials/start/cd', ['connectionType' => $connectionType]);
+} elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
+    echo $this->partial('/partials/start/ftgw', ['connectionType' => $connectionType]);
+}
+?>
+
+<div class="row">
+
+</div>
+
+
+
+<!--
 <?php echo $this->translate('Create your File Transfer Request'); ?>
 <ul>
     <li><span><?php echo $this->translate('Connect Direct'); ?></span>
@@ -38,3 +56,4 @@
         </ul>
     </li>
 </ul>
+-->

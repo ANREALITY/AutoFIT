@@ -64,7 +64,9 @@ class ProcessController extends AbstractActionController
 
     public function startAction()
     {
-        return new ViewModel();
+        return [
+            'connectionType' => $this->connectionType,
+        ];
     }
 
     public function createAction()

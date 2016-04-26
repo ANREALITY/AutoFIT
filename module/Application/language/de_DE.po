@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-25 18:38+0200\n"
-"PO-Revision-Date: 2016-04-25 18:38+0200\n"
+"POT-Creation-Date: 2016-04-26 11:51+0200\n"
+"PO-Revision-Date: 2016-04-26 11:51+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -231,23 +231,11 @@ msgstr "LSP-P"
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
-#: Application/view/application/index/index.phtml:5
+#: Application/view/application/index/index.phtml:6
 msgid "Tool for creating, submission, and managing of file transfer requests"
 msgstr ""
 "Anwendung zur Erstellung, Einreichung und Verwaltung von File-Transfer-"
 "Anträgen"
-
-#: Application/view/application/index/index.phtml:15
-msgid "Foo"
-msgstr ""
-
-#: Application/view/application/index/index.phtml:28
-msgid "Bar"
-msgstr ""
-
-#: Application/view/application/index/index.phtml:41
-msgid "Buz"
-msgstr ""
 
 #: Application/view/error/404.phtml:1
 msgid "A 404 error occurred"
@@ -351,15 +339,15 @@ msgstr "Wie haben das Formular erhalten."
 msgid "Thanks for your request!"
 msgstr "Danke für Ihre Anfrage!"
 
-#: Order/view/order/process/start.phtml:1
+#: Order/view/order/process/start.phtml:19
 msgid "Create your File Transfer Request"
 msgstr "File Transfer Request erstellen"
 
-#: Order/view/order/process/start.phtml:3
+#: Order/view/order/process/start.phtml:21
 msgid "Connect Direct"
 msgstr ""
 
-#: Order/view/order/process/start.phtml:23
+#: Order/view/order/process/start.phtml:41
 msgid "File Transfer Gateway"
 msgstr "File Transfer Gateway"
 
@@ -419,12 +407,18 @@ msgid "endpoint"
 msgstr "Endpoint"
 
 #: Order/view/partials/list/summary.phtml:21
+#: Order/view/partials/start/cd.phtml:14
 msgid "source"
 msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:27
+#: Order/view/partials/start/cd.phtml:24
 msgid "target"
 msgstr "Zielsystem"
+
+#: Order/view/partials/start/cd.phtml:34
+msgid "to the order"
+msgstr "zur Bestellung"
 
 #~ msgid "Thanks for your request."
 #~ msgstr "Danke für Ihre Anfrage!"

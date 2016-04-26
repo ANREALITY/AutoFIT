@@ -1,0 +1,57 @@
+<?php
+$endpointTypes = [
+    'cdlinuxunix' => 'Linux',
+    'cdtandem' => 'Tandem',
+    'cdas400' => 'AS400',
+];
+?>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <span><b>Sie haben sich für eine Filetransfer-Schnittstelle per Connect:Direct entschieden.</b></span><br />
+        <span><b>Wählen Sie nun die Betriebssystem-Plattform der Datenquelle und des Filetransfer-Ziels aus:</b></span>
+    </div>
+    <div class="col-md-6 centered">
+        <h3 class="semi-title"><span><?php echo $this->translate('source'); ?></span></h3>
+        <div class="col-md-12 centered">
+            <select id="endpoint-source" class="form-control">
+                <option value=""><?php echo $this->translate('source'); ?></option>
+                <?php foreach ($endpointTypes as $key => $value) : ?>
+                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6 centered">
+        <h3 class="semi-title"><span><?php echo $this->translate('target'); ?></span></h3>
+        <div class="col-md-12 centered">
+            <select id="endpoint-target" class="form-control">
+                <option value=""><?php echo $this->translate('target'); ?></option>
+                <?php foreach ($endpointTypes as $key => $value) : ?>
+                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12 centered">
+        <div class="create-link-container"><a id="create-link-cd" class="btn btn-default create-link" href="#" role="button"><span><?php echo $this->translate('to the order'); ?></span></a></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+linkHref = '<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'endpointSourceType', 'endpointTargetType' => 'endpointTargetType']); ?>';
+$(document).ready(function(){
+    $('select').change(function() {
+        if ($('#endpoint-source').val() === '' || $('#endpoint-target').val() === '') {
+			$('.create-link-container').fadeOut('slow');
+		} else {
+			endpointSourceType = $('#endpoint-source').val();
+			endpointTargetType = $('#endpoint-target').val();
+			linkHref = '/order/process/create/cd/' + endpointSourceType + '/' + endpointTargetType;
+            $('#create-link-cd').attr('href', linkHref);
+            $('.create-link-container').fadeOut('fast');
+			$('.create-link-container').fadeIn('slow');
+		}
+    });
+});
+</script>
+

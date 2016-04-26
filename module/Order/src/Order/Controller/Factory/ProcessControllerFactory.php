@@ -18,6 +18,7 @@ class ProcessControllerFactory implements FactoryInterface
 
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
+        $isStartRequest = $requestAnalyzer->isStartRequest();
         
         if ($isOrderRequest) {
             $formElementManager = $realServiceLocator->get('FormElementManager');
@@ -26,6 +27,8 @@ class ProcessControllerFactory implements FactoryInterface
             $service->setConnectionType($requestAnalyzer->getConnectionType());
             $service->setEndpointSourceType($requestAnalyzer->getEndpointSourceType());
             $service->setEndpointTargetType($requestAnalyzer->getEndpointTargetType());
+        } elseif ($isStartRequest) {
+            $service->setConnectionType($requestAnalyzer->getConnectionType());
         }
         
         return $service;
