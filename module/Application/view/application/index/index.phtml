@@ -1,50 +1,84 @@
 <div class="jumbotron">
+    <!--
     <h1>
         <span class="appNamePartAuto">Auto</span><span
             class="appNamePartFIT">FIT</span><br> <span
             id="appDescription"><?php echo $this->translate('Tool for creating, submission, and managing of file transfer requests'); ?></span>
     </h1>
+    -->
+    <h2>Willkommen auf dem Bestellportal für Filetransfer-Schnittstellen</h2>
 </div>
 
 <div class="row">
-
-    <!--
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Foo') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p></p>
-            </div>
+    <div class="col-md-12 centered">
+        <span>Für den Dateiaustausch zwischen IT-Systemen bieten wir Ihnen die folgenden beiden Filetransfer-Produkte an:</span>
+    </div>
+    <div class="col-md-6">
+        <h3 class="semi-title"><span><b>C</b>onnect:<b>D</b>irect</span></h3>
+        <div class="panel-body">
+            <ul>
+                <li><span>Filetransfer zwischen zwei IT-Systemen im Intranet der DB (Konzernnetz)</span></li>
+                <li><span>direkter Punkt-zu-Punkt-Filetransfer vom sendenden IT-System (Quelle) zum empfangenden IT-System (Ziel)</span></li>
+            </ul>
         </div>
     </div>
-    -->
-
-    <!--
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Bar') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p></p>
-            </div>
+    <div class="col-md-6">
+        <h3 class="semi-title"><span><b>F</b>iletransfer<b>G</b>ate<b>W</b>ay</span></h3>
+        <div class="panel-body">
+            <ul>
+                <li><span>Filetransfer zwischen zwei IT-Systemen</span>
+                    <ul class="list-unstyled">
+                        <li><span>a) im Intranet der DB (Konzernnetz)</span></li>
+                        <li><span>b) im Internet und im Intranet der DB (Konzernnetz)</span></li>
+                        <li><span>c) im Internet</span></li>
+                    </ul>
+                </li>
+                <li><span>Filetransfer erfolgt über eine Zentrale, das FiletransferGateway, dabei wird die Datei vom sendenden IT-System (Quelle) zunächst zum FGW übertragen und vom FGW dann dem Empfänger (Ziel) bereitgestellt</span></li>
+            </ul>
         </div>
     </div>
-    -->
-
-    <!--
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Buz') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p></p>
-            </div>
+</div>
+<div class="row">
+    <h3 class="semi-title">
+        <span>Leistungsbeschreibungen und Preise</span>
+        <br />
+        <span class="title-addition">&rarr; laut "<a target="_blank" href="https://dbsystel.intranet.deutschebahn.com/file/intra-dbsystel/2129504/msQgmvn5zQWG2g2O-WNxwfDPDI8/9402020/data/ICT_Angebotskatalog_2016_V_1.2.pdf">ICT Angebotskatalog V 1.2</a>"</span>
+    </h3>
+    <div class="panel-body">
+        <div class="col-md-6"><span>4.6.1 Middleware – Spezial /anwendungsintegriert</span></div>
+        <div class="col-md-6"><span>4.6.2 Middleware – Filetransfer Gateway</span></div>
+    </div>
+</div>
+<div class="row">
+    <h3 class="semi-title">
+        <span>Technische Beschreibung</span>
+        <br />
+        <span class="title-addition">&rarr; finden Sie in der TDV</span>
+    </h3>
+    <div class="panel-body">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <ul class="list-unstyled">
+                <li><span><a target="_blank" href="https://athene.intranet.deutschebahn.com/atheneger/livelink?func=ll&objId=12150515&objAction=browse">C:D</a></span></li>
+                <li><span><a target="_blank" href="https://athene.intranet.deutschebahn.com/atheneger/livelink?func=ll&objId=13242447&objAction=Open&nexturl=%2Fatheneger%2Flivelink%3Ffunc%3Dll%26objId%3D12150515%26objAction%3Dbrowse">TDV ConnectDirect (DE)</a></span></li>
+                <li><span><a target="_blank" href="https://athene.intranet.deutschebahn.com/atheneger/livelink?func=ll&objId=15463264&objAction=Open&nexturl=%2Fatheneger%2Flivelink%3Ffunc%3Dll%26objId%3D12150515%26objAction%3Dbrowse">TDS ConnectDirect (EN)</a></span></li>
+            </ul>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <ul class="list-unstyled">
+                <li><span><a target="_blank" href="https://mw-doku1.noncd.rz.db.de/mwbf/htmlmw/mw1/fgw/TDV_Filetransfergateway.doc">FGW</a></span></li>
+                <li><span><a target="_blank" href="https://mw-doku1.noncd.rz.db.de/mwbf/htmlmw/mw1/fgw/PR-FGW_LB_2011.pdf">Technische Details</a></span></li>
+            </ul>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-12">
+            <h3 class="semi-title">
+                <span>Wählen Sie nun das gewünschte Filetransfer-Produkt aus</span>
+            </h3>
+            <div class="col-md-6"><div class="start-link-container"><a id="start-link-cd" class="btn btn-default start-link" href="<?php echo $this->url('start-order', ['connectionType' => 'cd']); ?>" role="button"><span><b>C</b>onnect:<b>D</b>irect</span></a></div></div>
+            <div class="col-md-6"><div class="start-link-container"><a id="start-link-ftgw" class="btn btn-default start-link" href="<?php echo $this->url('start-order', ['connectionType' => 'ftgw']); ?>" role="button"><span><b>F</b>iletransfer<b>G</b>ate<b>W</b>ay</span></a></div></div>
         </div>
     </div>
-    -->
-
 </div>

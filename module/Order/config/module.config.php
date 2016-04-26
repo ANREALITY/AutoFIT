@@ -3,12 +3,13 @@ return [
     'router' => [
         'routes' => [
             'start-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
-                    'route' => '/order/process/start',
+                    'route' => '/order/process/start[/:connectionType]',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'start'
+                        'action' => 'start',
+                        'connectionType' => '',
                     ]
                 ]
             ],
