@@ -8,10 +8,11 @@ fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName = '
 fieldNamePhysicalConnectionSourceEndpointSourceName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointSourceServerPlace + ']');
-	fieldEndpointSourceServerPlace.change(function() {
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointSourceServerPlace + ']');
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace.change(function() {
 		togglePhysicalConnectionSourceEndpointSourceDependentFields(this.value);
 	});
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace.filter(':checked').trigger('change');
 });
 // PhysicalConnectionSource.EndpointSource basic #stop#
 // PhysicalConnectionSource.EndpointTarget basic #start#
@@ -21,10 +22,11 @@ fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName = '
 fieldNamePhysicalConnectionSourceEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointTargetServerPlace + ']');
-	fieldEndpointTargetServerPlace.change(function() {
+	fieldPhysicalConnectionSourceEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointTargetServerPlace + ']');
+	fieldPhysicalConnectionSourceEndpointTargetServerPlace.change(function() {
 		togglePhysicalConnectionSourceEndpointTargetDependentFields(this.value);
 	});
+	fieldPhysicalConnectionSourceEndpointTargetServerPlace.filter(':checked').trigger('change');
 });
 // PhysicalConnectionSource.EndpointTarget basic #stop#
 // PhysicalConnectionTarget.EndpointTarget basic #start#
@@ -34,22 +36,23 @@ fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName = '
 fieldNamePhysicalConnectionTargetEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server][name]"';
 
 $(document).ready(function() {
-	fieldEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionTargetEndpointTargetServerPlace + ']');
-	fieldEndpointTargetServerPlace.change(function() {
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionTargetEndpointTargetServerPlace + ']');
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace.change(function() {
 		togglePhysicalConnectionTargetEndpointTargetDependentFields(this.value);
 	});
+	fieldPhysicalConnectionSourceEndpointSourceServerPlace.filter(':checked').trigger('change');
 });
 // PhysicalConnectionTarget.EndpointTarget basic #stop#
 
 function togglePhysicalConnectionSourceEndpointSourceDependentFields(value) {
-	if (value == 'intranet') {
+	if (value == 'internal') {
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').parent().fadeOut('slow');
 
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('slow');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').parent().fadeIn('slow');
 	}
-	if (value == 'internet') {
+	if (value == 'external') {
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('slow');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').val('');
@@ -59,14 +62,14 @@ function togglePhysicalConnectionSourceEndpointSourceDependentFields(value) {
 	}
 }
 function togglePhysicalConnectionSourceEndpointTargetDependentFields(value) {
-	if (value == 'intranet') {
+	if (value == 'internal') {
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').parent().fadeOut('slow');
 
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').parent().fadeIn('slow');
 	}
-	if (value == 'internet') {
+	if (value == 'external') {
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
 		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').val('');
@@ -76,14 +79,14 @@ function togglePhysicalConnectionSourceEndpointTargetDependentFields(value) {
 	}
 }
 function togglePhysicalConnectionTargetEndpointTargetDependentFields(value) {
-	if (value == 'intranet') {
+	if (value == 'internal') {
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeOut('slow');
 
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').parent().fadeIn('slow');
 	}
-	if (value == 'internet') {
+	if (value == 'external') {
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').val('');
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
 		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').val('');
