@@ -4,7 +4,7 @@ use DbSystel\DataObject\LogicalConnection;
 <?php
 $fieldgroupName = 'physical_connection_source';
 $fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('from the source to the FTGW server') . ')';
+$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the source to the FTGW server') . ')';
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionSourceFieldset->get('type')),
     $this->formRow($physicalConnectionSourceFieldset->get('role'))
@@ -24,7 +24,7 @@ echo $this->partial('/partials/fieldgroup',
 <?php
 $fieldgroupName = 'physical_connection_target';
 $fieldgroupCssClass = 'col-md-6';
-$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('from the FTGW server to the target') . ')';
+$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the FTGW server to the target') . ')';
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionTargetFieldset->get('type')),
     $this->formRow($physicalConnectionTargetFieldset->get('role'))
