@@ -2,11 +2,11 @@
 use DbSystel\DataObject\LogicalConnection;
 ?>
 <?php
-$form->setAttributes([
-    'action',
-    $this->url('create-order')
-])
-    ->prepare();
+$formClass = strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0 ? 'cd' : 'ftgw';
+$form->setAttribute(
+    'class',
+    $formClass
+)->prepare();
 echo $this->form()->openTag($form);
 ?>
 
@@ -93,7 +93,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 // logical connection
 echo $this->partial('/partials/fieldgroups/logical-connection', 
     [
-        'logicalConnectionFieldset' => $logicalConnectionFieldset,
+        'logicalConnectionFieldset' => $logicalConnectionFieldset
     ]);
 ?>
 
@@ -112,7 +112,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset,
             'physicalConnectionTargetFieldset' => $physicalConnectionTargetFieldset,
             'endpointSourceType' => $endpointSourceType,
-            'endpointTargetType' => $endpointTargetType,
+            'endpointTargetType' => $endpointTargetType
         ]);
 }
 ?>
