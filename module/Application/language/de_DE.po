@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-26 11:51+0200\n"
-"PO-Revision-Date: 2016-04-26 11:51+0200\n"
+"POT-Creation-Date: 2016-04-26 17:47+0200\n"
+"PO-Revision-Date: 2016-04-26 17:47+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -24,9 +24,8 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:27
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:27
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:27
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
-msgid "username"
-msgstr "Benutzername"
+msgid "application user"
+msgstr "Verfahrensuser"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:15
 msgid "LinuxUnix"
@@ -72,12 +71,12 @@ msgid "server place"
 msgstr "Serverstandort"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:42
-msgid "intranet"
-msgstr "Intranet"
+msgid "internal"
+msgstr "intern"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:47
-msgid "internet"
-msgstr "Internet"
+msgid "external"
+msgstr "extern"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:15
 msgid "Self-Service"
@@ -203,7 +202,7 @@ msgstr "Email"
 
 #: Order/src/Order/Form/Fieldset/NotificationFieldset.php:39
 msgid "successful transfer"
-msgstr "erfolreiche Übertragung"
+msgstr "erfolgreiche Übertragung"
 
 #: Order/src/Order/Form/Fieldset/NotificationFieldset.php:54
 msgid "failed transfer"
@@ -226,6 +225,10 @@ msgstr "LSP-S"
 #: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:16
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
+
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
+msgid "username"
+msgstr "Benutzername"
 
 #: Order/src/Order/Form/OrderForm.php:35
 msgid "binding order"
@@ -316,12 +319,12 @@ msgid "Home"
 msgstr "Startseite"
 
 #: Application/view/layout/layout.phtml:80
-msgid "New request"
-msgstr "Neue Anfrage"
+msgid "New order"
+msgstr "Neue Bestellung"
 
 #: Application/view/layout/layout.phtml:83
 msgid "My orders"
-msgstr "Meine Anfragen"
+msgstr "Meine Bestellunge"
 
 #: Order/view/order/process/list-orders.phtml:3
 msgid "request ID"
@@ -336,8 +339,8 @@ msgid "We have received the form."
 msgstr "Wie haben das Formular erhalten."
 
 #: Order/view/order/process/received.phtml:3
-msgid "Thanks for your request!"
-msgstr "Danke für Ihre Anfrage!"
+msgid "Thanks for your order!"
+msgstr "Danke für Ihre Bestellung!"
 
 #: Order/view/order/process/start.phtml:19
 msgid "Create your File Transfer Request"
@@ -351,13 +354,17 @@ msgstr ""
 msgid "File Transfer Gateway"
 msgstr "File Transfer Gateway"
 
+#: Order/view/partials/fieldgroup.phtml:15
+msgid "No settings needed for this area."
+msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
+
 #: Order/view/partials/fieldgroups/billing.phtml:4
 msgid "Billing"
 msgstr "Abrechnung"
 
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:7
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:27
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:28
 msgid "Technical connection"
 msgstr "Technische Verbindung"
 
@@ -369,7 +376,7 @@ msgstr "direkt vom Quell- zum Zielsystem"
 msgid "from the source to the FTGW server"
 msgstr "vom Quellsystem zum FTGW-Server"
 
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:27
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:28
 msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
@@ -407,18 +414,35 @@ msgid "endpoint"
 msgstr "Endpoint"
 
 #: Order/view/partials/list/summary.phtml:21
-#: Order/view/partials/start/cd.phtml:14
+#: Order/view/partials/start/cd.phtml:14 Order/view/partials/start/cd.phtml:17
+#: Order/view/partials/start/ftgw.phtml:13
+#: Order/view/partials/start/ftgw.phtml:16
 msgid "source"
 msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:27
-#: Order/view/partials/start/cd.phtml:24
+#: Order/view/partials/start/cd.phtml:25 Order/view/partials/start/cd.phtml:28
+#: Order/view/partials/start/ftgw.phtml:24
+#: Order/view/partials/start/ftgw.phtml:27
 msgid "target"
 msgstr "Zielsystem"
 
-#: Order/view/partials/start/cd.phtml:34
+#: Order/view/partials/start/cd.phtml:36
+#: Order/view/partials/start/ftgw.phtml:35
 msgid "to the order"
 msgstr "zur Bestellung"
+
+#~ msgid "Thanks for your request!"
+#~ msgstr "Danke für Ihre Anfrage!"
+
+#~ msgid "New request"
+#~ msgstr "Neue Anfrage"
+
+#~ msgid "intranet"
+#~ msgstr "Intranet"
+
+#~ msgid "internet"
+#~ msgstr "Internet"
 
 #~ msgid "Thanks for your request."
 #~ msgstr "Danke für Ihre Anfrage!"

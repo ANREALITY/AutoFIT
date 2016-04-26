@@ -4,9 +4,9 @@ namespace DbSystel\DataObject;
 class Server
 {
 
-    const PLACE_INTRANET = 'intranet';
+    const PLACE_INTERNAL = 'internal';
 
-    const PLACE_INTERNET = 'internet';
+    const PLACE_EXTERNAL = 'external';
 
     /**
      *

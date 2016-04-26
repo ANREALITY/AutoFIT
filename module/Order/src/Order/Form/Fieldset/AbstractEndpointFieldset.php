@@ -38,13 +38,13 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     'label' => _('server place'),
                     'value_options' => [
                         [
-                            'value' => Server::PLACE_INTRANET,
-                            'label' => _('intranet'),
+                            'value' => Server::PLACE_INTERNAL,
+                            'label' => _('internal'),
                             'selected' => true
                         ],
                         [
-                            'value' => Server::PLACE_INTERNET,
-                            'label' => _('internet')
+                            'value' => Server::PLACE_EXTERNAL,
+                            'label' => _('external')
                         ]
                     ],
                     'label_attributes' => [

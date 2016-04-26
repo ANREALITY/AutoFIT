@@ -24,7 +24,7 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
                 'type' => 'text',
                 'name' => 'username',
                 'options' => [
-                    'label' => _('username'),
+                    'label' => _('application user'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
