@@ -36,6 +36,16 @@ $endpointTypes = [
         <div class="create-link-container"><a id="create-link-cd" class="btn btn-default create-link" href="#" role="button"><span><?php echo $this->translate('to the order'); ?></span></a></div>
     </div>
 </div>
+<div class="col-md-12">
+    <br />
+    <span><b>Musterchanges zum Beantragen von C:D-Filetransfer-Schnittstellen im PSC:</b></span>
+    <ul class="list-unstyled">
+        <li><span>C30109518 zur Einrichtung eines neuen C:D-Filetransfers</span></li>
+        <li><span>C30464504 für die Anpassung der Zugriffsrechte auf ein ConnectDirect Windows SHARE</span></li>
+        <li><span>C30367371 für den Umzug eines bestehenden C:D-Filetransfers wegen Umzug des Verfahrens auf neuen Server</span></li>
+        <li><span>C30366792 für die Abbestellung aller C:D-Filetransfer-Channel eines Verfahrens auf einem Server bzw. Cluster-Server (für den Abbau aller auf einem Knoten laufenden SST / Stoppen von C:D)</span></li>
+    </ul>
+</div>
 
 <script type="text/javascript">
 linkHref = '<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'endpointSourceType', 'endpointTargetType' => 'endpointTargetType']); ?>';
