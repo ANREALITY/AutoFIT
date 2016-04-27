@@ -25,7 +25,7 @@ class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionField
                 'name' => 'secure_plus',
                 'options' => [
                     'label' => _('Secure Plus'),
-                    'use_hidden_element' => false,
+                    'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0'
                 ]
@@ -36,7 +36,7 @@ class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionField
     {
         return [
             'secure_plus' => [
-                'required' => false
+                'required' => true
             ]
         ];
     }
