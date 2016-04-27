@@ -5,7 +5,7 @@ return [
             'start-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
-                    'route' => '/order/process/start[/:connectionType]',
+                    'route' => '/order/process/start-order[/:connectionType]',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
                         'action' => 'start',

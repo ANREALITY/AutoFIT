@@ -1,59 +1,16 @@
 <?php
 use DbSystel\DataObject\LogicalConnection;
 ?>
-<?php
-if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
-    echo $this->partial('/partials/start/cd', ['connectionType' => $connectionType]);
-} elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-    echo $this->partial('/partials/start/ftgw', ['connectionType' => $connectionType]);
-}
-?>
-
-<div class="row">
-
+<?php if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) : ?>
+<?php echo $this->partial('/partials/start/cd', ['connectionType' => $connectionType]); ?>
+<?php elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) : ?>
+<?php echo $this->partial('/partials/start/ftgw', ['connectionType' => $connectionType]); ?>
+<?php else : ?>
+<div class="col-md-12">
+    <h3 class="semi-title">
+        <span><?php echo $this->translate('Please choose a file transfer product'); ?></span>
+    </h3>
+    <div class="col-md-6"><div class="start-link-container"><a id="start-link-cd" class="btn btn-default start-link" href="<?php echo $this->url('start-order', ['connectionType' => 'cd']); ?>" role="button"><span><b>C</b>onnect:<b>D</b>irect</span></a></div></div>
+    <div class="col-md-6"><div class="start-link-container"><a id="start-link-ftgw" class="btn btn-default start-link" href="<?php echo $this->url('start-order', ['connectionType' => 'ftgw']); ?>" role="button"><span><b>F</b>iletransfer<b>G</b>ate<b>W</b>ay</span></a></div></div>
 </div>
-
-
-
-<!--
-<?php echo $this->translate('Create your File Transfer Request'); ?>
-<ul>
-    <li><span><?php echo $this->translate('Connect Direct'); ?></span>
-        <ul>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdas400', 'endpointTargetType' => 'cdas400']); ?>">AS400
-                    -> AS400</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdas400', 'endpointTargetType' => 'cdtandem']); ?>">AS400
-                    -> Tandem</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdtandem', 'endpointTargetType' => 'cdas400']); ?>">Tandem
-                    -> AS400</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdtandem', 'endpointTargetType' => 'cdtandem']); ?>">Tandem
-                    -> Tandem</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'cdlinuxunix', 'endpointTargetType' => 'cdlinuxunix']); ?>">LinuxUnix
-                    -> LinuxUnix</a></li>
-            <li>...</li>
-        </ul>
-    </li>
-    <li><span><?php echo $this->translate('File Transfer Gateway'); ?></span>
-        <ul>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwwindows', 'endpointTargetType' => 'ftgwwindows']); ?>">Windows
-                    -> Windows</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwwindows', 'endpointTargetType' => 'ftgwselfservice']); ?>">Windows
-                    -> Self-Service</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwselfservice', 'endpointTargetType' => 'ftgwwindows']); ?>">Self-Service
-                    -> Windows</a></li>
-            <li><a
-                href="<?php echo $this->url('create-order', ['connectionType' => 'ftgw', 'endpointSourceType' => 'ftgwselfservice', 'endpointTargetType' => 'ftgwselfservice']); ?>">Self-Service
-                    -> Self-Service</a></li>
-            <li>...</li>
-        </ul>
-    </li>
-</ul>
--->
+<?php endif; ?>
