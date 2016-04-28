@@ -62,7 +62,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
                     'label' => _('notifications'),
-                    'count' => 5,
+                    'count' => 1,
                     'should_create_template' => true,
                     'template_placeholder' => '__placeholder__',
                     'allow_add' => true,
@@ -73,6 +73,20 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                         'class' => 'col-md-12'
                     ]
                 ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'add-notification',
+                'type' => 'button',
+                'options' => [
+                    'label' => _('+')
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default',
+                    'id' => 'add-notification-button',
+                    'value' => _('add a notification')
+                ],
             ]);
     }
 
