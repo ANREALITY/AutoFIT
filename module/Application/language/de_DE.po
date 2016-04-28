@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 11:10+0200\n"
-"PO-Revision-Date: 2016-04-27 11:11+0200\n"
+"POT-Creation-Date: 2016-04-28 16:41+0200\n"
+"PO-Revision-Date: 2016-04-28 16:41+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -118,6 +118,14 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:64
 msgid "notifications"
 msgstr "Benachrichtigungen"
+
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:83
+msgid "+"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:88
+msgid "add a notification"
+msgstr "Benachrichtigung hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
@@ -314,11 +322,11 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:77
+#: Application/view/layout/layout.phtml:78
 msgid "Home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:80
+#: Application/view/layout/layout.phtml:81
 msgid "My orders"
 msgstr "Meine Bestellungen"
 
