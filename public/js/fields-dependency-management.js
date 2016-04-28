@@ -1,6 +1,46 @@
 /**
- * Enabling/disabling of fields.
+ * Clearing and enabling/disabling of fields dependending on other fields.
  */
+// Billing
+$(document).ready(function() {
+	fieldApplicationTechnicalShortName = $('#order-application-number');
+	fieldEnvironmentSeverity = $("#order-environment-severity");
+	fieldEnvironmentName = $("#order-environment-name");
+	fieldInvoicePositionBasic = $("#order-service-invoice-position-basic-number");
+	fieldInvoicePositionPersonal = $("#order-service-invoice-position-personal-number");
+});
+
+$(document).ready(function() {
+	fieldApplicationTechnicalShortName.on('autocompletechange', function() {
+		console.log('autocompletechange');
+		fieldApplicationTechnicalShortName.trigger('change');
+	});
+	fieldApplicationTechnicalShortName.change(function() {
+		console.log('change');
+		updateApplicationDependentFields(this.value);
+	});
+	fieldEnvironmentName.on('autocompletechange', function() {
+		console.log('autocompletechange');
+		fieldEnvironmentSeverity.trigger('change');
+	});
+	fieldEnvironmentSeverity.change(function() {
+		console.log('change');
+		updateEnvironmentDependentFields(this.value);
+	});
+});
+
+function updateApplicationDependentFields(value) {
+	fieldEnvironmentSeverity.val('');
+	fieldEnvironmentName.val('');
+	fieldInvoicePositionBasic.val('');
+	fieldInvoicePositionPersonal.val('');
+}
+
+function updateEnvironmentDependentFields(value) {
+	fieldInvoicePositionBasic.val('');
+	fieldInvoicePositionPersonal.val('');
+}
+
 // PhysicalConnectionSource.EndpointSource basic #start#
 fieldNamePhysicalConnectionSourceEndpointSourceServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server_place]"';
 fieldNamePhysicalConnectionSourceEndpointSourceCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][customer][name]"';
