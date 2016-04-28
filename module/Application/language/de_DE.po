@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 16:41+0200\n"
-"PO-Revision-Date: 2016-04-28 16:41+0200\n"
+"POT-Creation-Date: 2016-04-28 16:53+0200\n"
+"PO-Revision-Date: 2016-04-28 16:53+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -120,6 +120,7 @@ msgid "notifications"
 msgstr "Benachrichtigungen"
 
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:83
+#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
 
@@ -203,6 +204,10 @@ msgstr "Ausdruck"
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
 msgid "include parameters"
 msgstr "Include-Parameter"
+
+#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:46
+msgid "add an include parameter"
+msgstr "Include-Parameter hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/NotificationFieldset.php:24
 msgid "email"

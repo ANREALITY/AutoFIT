@@ -20,17 +20,31 @@ class IncludeParameterSetFieldset extends Fieldset implements InputFilterProvide
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
                     'label' => _('include parameters'),
-                    'count' => 5,
+                    'count' => 1,
                     'should_create_template' => true,
-                    'template_placeholder' => '__placeholder__',
+                    'template_placeholder' => '__index__',
                     'allow_add' => true,
                     'target_element' => array(
                         'type' => 'Order\Form\Fieldset\IncludeParameter'
                     ),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 include-parameters',
                     ]
                 ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'add_include_parameter',
+                'type' => 'button',
+                'options' => [
+                    'label' => _('+')
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default',
+                    'id' => 'add-include-parameter-button',
+                    'value' => _('add an include parameter')
+                ],
             ]);
     }
 
