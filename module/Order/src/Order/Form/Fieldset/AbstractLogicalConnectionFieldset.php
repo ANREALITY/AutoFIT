@@ -77,7 +77,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
 
         $this->add(
             [
-                'name' => 'add-notification',
+                'name' => 'add_notification',
                 'type' => 'button',
                 'options' => [
                     'label' => _('+')
