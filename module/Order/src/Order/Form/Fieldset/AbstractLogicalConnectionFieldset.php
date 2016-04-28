@@ -64,7 +64,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                     'label' => _('notifications'),
                     'count' => 1,
                     'should_create_template' => true,
-                    'template_placeholder' => '__placeholder__',
+                    'template_placeholder' => '__index__',
                     'allow_add' => true,
                     'target_element' => [
                         'type' => 'Order\Form\Fieldset\Notification',
