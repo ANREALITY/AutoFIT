@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 16:53+0200\n"
-"PO-Revision-Date: 2016-04-28 16:53+0200\n"
+"POT-Creation-Date: 2016-04-29 09:07+0200\n"
+"PO-Revision-Date: 2016-04-29 09:07+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -214,12 +214,12 @@ msgid "email"
 msgstr "Email"
 
 #: Order/src/Order/Form/Fieldset/NotificationFieldset.php:39
-msgid "successful transfer"
-msgstr "erfolgreiche Übertragung"
+msgid "successful"
+msgstr "erfolgreich"
 
 #: Order/src/Order/Form/Fieldset/NotificationFieldset.php:54
-msgid "failed transfer"
-msgstr "fehlgeschlagene Übertragung"
+msgid "failed"
+msgstr "fehlgeschlagen"
 
 #: Order/src/Order/Form/Fieldset/PhysicalConnectionCdSourceFieldset.php:27
 msgid "Secure Plus"
@@ -432,6 +432,12 @@ msgstr "Zielsystem"
 #: Order/view/partials/start/ftgw.phtml:35
 msgid "to the order"
 msgstr "zur Bestellung"
+
+#~ msgid "successful transfer"
+#~ msgstr "erfolgreiche Übertragung"
+
+#~ msgid "failed transfer"
+#~ msgstr "fehlgeschlagene Übertragung"
 
 #~ msgid "New order"
 #~ msgstr "Neue Bestellung"

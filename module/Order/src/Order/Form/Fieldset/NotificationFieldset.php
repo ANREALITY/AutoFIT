@@ -36,12 +36,12 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 'type' => 'Zend\Form\Element\Checkbox',
                 'name' => 'success',
                 'options' => [
-                    'label' => _('successful transfer'),
+                    'label' => _('successful'),
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [
-                        'class' => 'col-md-1 notification-checkbox'
+                        'class' => 'col-md-2 notification-checkbox'
                     ]
                 ]
             ]);
@@ -51,12 +51,12 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 'type' => 'Zend\Form\Element\Checkbox',
                 'name' => 'failure',
                 'options' => [
-                    'label' => _('failed transfer'),
+                    'label' => _('failed'),
                     'use_hidden_element' => true,
                     'checked_value' => '1',
                     'unchecked_value' => '0',
                     'label_attributes' => [
-                        'class' => 'col-md-1 notification-checkbox'
+                        'class' => 'col-md-2 notification-checkbox'
                     ]
                 ]
             ]);
