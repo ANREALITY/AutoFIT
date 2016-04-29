@@ -6,14 +6,12 @@
         <?php echo $this->headTitle($this->translate('AutoFIT'))->setAutoEscape(false); ?>
 
         <?php
-
         echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')?>
 
         <!-- Le styles -->
         <?php
-
         echo $this->headLink(
             array(
                 'rel' => 'shortcut icon',
@@ -23,7 +21,8 @@
             ->prependStylesheet($this->basePath() . '/css/style.css')
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
             ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
-            ->appendStylesheet($this->basePath() . '/components/jquery-ui/themes/smoothness/jquery-ui.css')?>
+            ->appendStylesheet($this->basePath() . '/components/jquery-ui/themes/smoothness/jquery-ui.css')
+        ?>
 
         <!-- Scripts -->
         <?php
@@ -43,6 +42,7 @@
         $this->headScript()->appendFile('/js/autocomplete.js');
         $this->headScript()->appendFile('/js/fields-dependency-management.js');
         $this->headScript()->appendFile('/js/input-lists-management.js');
+        $this->headScript()->appendFile('/js/form-ftgw-self-service.js');
         echo $this->headScript();
         ?>
     </head>
