@@ -5,13 +5,12 @@
             <h3 class="panel-title"><?php echo $fieldgroupTitle; ?></h3>
         </div>
         <div class="panel-body">
-            <?php if(!$emptyView) : ?>
             <?php
             foreach ($formRows as $formRow) {
                 echo $formRow;
             }
             ?>
-            <?php else : ?>
+            <?php if($emptyView) : ?>
             <span><?php echo $this->translate('No settings needed for this area.'); ?></span>
             <?php endif; ?>
         </div>
