@@ -169,11 +169,6 @@ return [
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
         ],
-        'invokables' => [
-            // elements
-            // 'Zend\Form\Element\Checkbox' => 'DbSystel\Form\Element\Checkbox',
-            // 'Zend\Form\Element\MultiCheckbox' => 'DbSystel\Form\Element\MultiCheckbox',            
-        ],
         'shared' => [
             'Order\Form\Fieldset\Application' => false,
             'Order\Form\Fieldset\Customer' => false,
@@ -213,8 +208,7 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors',
-            // 'formmulticheckbox' => 'DbSystel\Form\View\Helper\FormMultiCheckbox'
+            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors'
         ]
     ],
     'hydrators' => [
