@@ -45,7 +45,8 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                     'label_attributes' => [
                         'class' => 'col-md-2',
                     ],
-                    'value_options' => $this->getValueOptions()
+                    'value_options' => $this->getValueOptions(),
+                    'selected' => 'dummy',
                 ],
             ]);
 
@@ -72,7 +73,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                     'label' => _('mailbox'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
-                    ]
+                    ],
                 ],
                 'attributes' => [
                     'class' => 'form-control'
@@ -83,10 +84,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
     public function getInputFilterSpecification()
     {
         return [
-            'protocols' => [
-                'required' => false,
-                'allow_empty' => true,
-            ]
+            'protocols' => []
         ];
     }
 
@@ -99,8 +97,19 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
     {
         $valueOptions = [];
         foreach (Protocol::PROTOCOLS as $key => $value) {
-            $valueOptions[] = ['value' => $key, 'label' => $value];
+            $valueOptions[] = [
+                'value' => $key,
+                'label' => $value,
+            ];
         }
+        $valueOptions[] = [
+            'value' => 0,
+            'label' => 'dummy',
+            'selected' => true,
+            'label_attributes' => [
+                'class' => 'checkboxdummy'
+            ]
+        ];
         return $valueOptions;
     }
 
