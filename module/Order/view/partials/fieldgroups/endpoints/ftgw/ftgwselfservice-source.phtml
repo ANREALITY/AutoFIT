@@ -1,10 +1,16 @@
 <?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
 $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('protocol')),
+    '<fieldset>' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocols')->getLabel()) . '</legend>' . '<div class="clearer"></div>'
+        . $this->formMultiCheckbox($endpointSourceFieldset->get('protocols'), FormMultiCheckbox::LABEL_PREPEND)
+    . '</fieldset>',
     $this->formRow($endpointSourceFieldset->get('ftgw_username')),
     $this->formRow($endpointSourceFieldset->get('mailbox'))
 ];

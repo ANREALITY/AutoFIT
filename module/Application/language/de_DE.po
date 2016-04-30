@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 09:07+0200\n"
-"PO-Revision-Date: 2016-04-29 09:07+0200\n"
+"POT-Creation-Date: 2016-04-30 12:46+0200\n"
+"PO-Revision-Date: 2016-04-30 12:46+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -78,19 +78,23 @@ msgstr "intern"
 msgid "external"
 msgstr "extern"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:15
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:16
 msgid "Self-Service"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:27
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:28
 msgid "protocol"
 msgstr "Protokoll"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:42
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:43
+msgid "protocols"
+msgstr "Protokolle"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:69
 msgid "FTWG user"
 msgstr "FTGW User"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:57
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:84
 msgid "mailbox"
 msgstr "Mailbox"
 
@@ -355,7 +359,7 @@ msgstr "Danke für Ihre Bestellung!"
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
 
-#: Order/view/partials/fieldgroup.phtml:15
+#: Order/view/partials/fieldgroup.phtml:14
 msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
@@ -392,7 +396,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
@@ -400,7 +404,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"

@@ -4,6 +4,8 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use DbSystel\DataObject\AbstractEndpoint;
+use Zend\Form\View\Helper\FormMultiCheckbox;
+use DbSystel\DataObject\Protocol;
 
 abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
@@ -32,6 +34,19 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'attributes' => [
                     'class' => 'form-control'
                 ]
+            ]);
+
+        $this->add(
+            [
+                'type' => 'multi_checkbox',
+                'name' => 'protocols',
+                'options' => [
+                    'label' => _('protocols'),
+                    'label_attributes' => [
+                        'class' => 'col-md-2',
+                    ],
+                    'value_options' => $this->getValueOptions()
+                ],
             ]);
 
         $this->add(
@@ -67,12 +82,26 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'protocols' => [
+                'required' => false,
+                'allow_empty' => true,
+            ]
+        ];
     }
 
     protected function getConcreteType()
     {
         return AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
+    }
+
+    protected function getValueOptions()
+    {
+        $valueOptions = [];
+        foreach (Protocol::PROTOCOLS as $key => $value) {
+            $valueOptions[] = ['value' => $key, 'label' => $value];
+        }
+        return $valueOptions;
     }
 
 }

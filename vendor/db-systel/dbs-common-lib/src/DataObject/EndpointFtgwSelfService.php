@@ -12,6 +12,12 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
+     * @var Protocol[]
+     */
+    protected $protocols;
+
+    /**
+     *
      * @var string
      */
     protected $ftgwUsername;
@@ -38,6 +44,24 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setProtocol($protocol)
     {
         $this->protocol = $protocol;
+    }
+
+    /**
+     *
+     * @return the $protocols
+     */
+    public function getProtocols()
+    {
+        return $this->protocols;
+    }
+
+    /**
+     *
+     * @param multitype:Protocol $protocols
+     */
+    public function setProtocols(array $protocols)
+    {
+        $this->protocols = $protocols;
     }
 
     /**
