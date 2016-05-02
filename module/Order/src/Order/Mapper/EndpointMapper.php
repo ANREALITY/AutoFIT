@@ -18,6 +18,7 @@ use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\Cluster;
+use DbSystel\DataObject\Protocol;
 
 class EndpointMapper implements EndpointMapperInterface
 {
@@ -356,7 +357,7 @@ class EndpointMapper implements EndpointMapperInterface
         if ($result instanceof ResultInterface) {
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
-                // creating sub-objects: in this case only now possible, since the $newId is needed
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
                 $sql = <<<SQL
 DELETE FROM
     endpoint_cd_linux_unix_server
@@ -411,6 +412,37 @@ SQL;
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                $dataObject->setId($newEndpointId);
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+                $sql = <<<SQL
+DELETE FROM
+    endpoint_ftgw_self_service_protocol
+WHERE
+    endpoint_ftgw_self_service_endpoint_id = $newEndpointId
+SQL;
+                $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
+                foreach ($dataObject->getProtocols() as $protocol) {
+                    $protocolId = null;
+                    if (is_object($protocol) && $protocol instanceof Protocol) {
+                        $protocolId = $protocol->getId();
+                    } elseif (is_numeric($protocol)) {
+                        $protocolId = $protocol;
+                    }
+                    if (!empty($protocolId) && key_exists($protocolId, Protocol::PROTOCOLS)) {
+                        $sql = <<<SQL
+INSERT INTO
+    endpoint_ftgw_self_service_protocol
+    (endpoint_ftgw_self_service_endpoint_id, protocol_id)
+VALUES
+    ('$newEndpointId', '{$protocolId}')
+;
+SQL;
+                        $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
+                    }
+                }
+            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);

@@ -4,6 +4,9 @@ namespace DbSystel\DataObject;
 class Protocol
 {
 
+    /**
+     * @var array
+     */
     const PROTOCOLS = [
         1 => 'FTP',
         2 => 'FTPs',
