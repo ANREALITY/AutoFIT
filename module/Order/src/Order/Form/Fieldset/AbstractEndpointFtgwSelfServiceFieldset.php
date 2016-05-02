@@ -10,6 +10,10 @@ use DbSystel\DataObject\Protocol;
 abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
 
+    const PROTOCOLS_DUMMY_VALUE = 0;
+
+    const PROTOCOLS_DUMMY_LABEL = 'dummy';
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
@@ -43,10 +47,10 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('protocols'),
                     'label_attributes' => [
-                        'class' => 'col-md-2',
+                        'class' => 'col-md-1 protocol-field',
                     ],
                     'value_options' => $this->getValueOptions(),
-                    'selected' => 0,
+                    'selected' => static::PROTOCOLS_DUMMY_VALUE,
                 ],
             ]);
 
@@ -103,8 +107,8 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
             ];
         }
         $valueOptions[] = [
-            'value' => 0,
-            'label' => 'dummy',
+            'value' => static::PROTOCOLS_DUMMY_VALUE,
+            'label' => static::PROTOCOLS_DUMMY_LABEL,
             'selected' => true,
             'label_attributes' => [
                 'class' => 'checkboxdummy'

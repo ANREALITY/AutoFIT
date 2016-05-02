@@ -172,6 +172,9 @@ form .add-button-container {
 form .checkboxdummy {
   display: none;
 }
+form .protocol-field {
+  margin: 0 0 0 15px;
+}
 /* the checkbox labels */
 form #fieldgroup-logical_connection .notification-checkbox {
   margin-top: 20px;
