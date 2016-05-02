@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-30 12:46+0200\n"
-"PO-Revision-Date: 2016-04-30 12:46+0200\n"
+"POT-Creation-Date: 2016-05-02 13:34+0200\n"
+"PO-Revision-Date: 2016-05-02 13:34+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -71,32 +71,34 @@ msgid "server place"
 msgstr "Serverstandort"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:42
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:82
 msgid "internal"
 msgstr "intern"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:47
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:87
 msgid "external"
 msgstr "extern"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:16
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:22
 msgid "Self-Service"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:28
-msgid "protocol"
-msgstr "Protokoll"
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:43
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:34
 msgid "protocols"
 msgstr "Protokolle"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:69
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:48
 msgid "FTWG user"
 msgstr "FTGW User"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:84
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:63
 msgid "mailbox"
 msgstr "Mailbox"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:78
+msgid "connection type"
+msgstr "Verbindungstyp"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
 msgid "Windows"
@@ -436,6 +438,9 @@ msgstr "Zielsystem"
 #: Order/view/partials/start/ftgw.phtml:35
 msgid "to the order"
 msgstr "zur Bestellung"
+
+#~ msgid "protocol"
+#~ msgstr "Protokoll"
 
 #~ msgid "successful transfer"
 #~ msgstr "erfolgreiche Übertragung"

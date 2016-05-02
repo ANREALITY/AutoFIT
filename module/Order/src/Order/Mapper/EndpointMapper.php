@@ -396,6 +396,7 @@ SQL;
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
+        $data['connection_type'] = $dataObject->getConnectionType();
         $data['ftgw_username'] = $dataObject->getFtgwUsername();
         $data['mailbox'] = $dataObject->getMailbox();
         // creating sub-objects

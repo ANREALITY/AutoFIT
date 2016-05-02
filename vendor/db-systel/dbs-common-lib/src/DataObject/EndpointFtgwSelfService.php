@@ -3,6 +3,11 @@ namespace DbSystel\DataObject;
 
 class EndpointFtgwSelfService extends AbstractEndpoint
 {
+
+    const CONNECTION_TYPE_INTERNAL = 'internal';
+
+    const CONNECTION_TYPE_EXTERNAL = 'external';
+
     /**
      *
      * @var Protocol[]
@@ -20,6 +25,12 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @var string
      */
     protected $mailbox;
+
+    /**
+     *
+     * @var string
+     */
+    protected $connectionType;
 
     /**
      *
@@ -73,6 +84,24 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setMailbox($mailbox)
     {
         $this->mailbox = $mailbox;
+    }
+
+    /**
+     *
+     * @return the $connectionType
+     */
+    public function getConnectionType()
+    {
+        return $this->connectionType;
+    }
+
+    /**
+     *
+     * @param string $connectionType
+     */
+    public function setConnectionType($connectionType)
+    {
+        $this->connectionType = $connectionType;
     }
 
 }

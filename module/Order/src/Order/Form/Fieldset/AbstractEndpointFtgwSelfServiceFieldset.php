@@ -6,6 +6,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Form\View\Helper\FormMultiCheckbox;
 use DbSystel\DataObject\Protocol;
+use DbSystel\DataObject\EndpointFtgwSelfService;
 
 abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
 {
@@ -66,6 +67,29 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 ],
                 'attributes' => [
                     'class' => 'form-control'
+                ]
+            ]);
+
+        $this->add(
+            [
+                'type' => 'radio',
+                'name' => 'connection_type',
+                'options' => [
+                    'label' => _('connection type'),
+                    'value_options' => [
+                        [
+                            'value' => EndpointFtgwSelfService::CONNECTION_TYPE_INTERNAL,
+                            'label' => _('internal'),
+                            'selected' => true
+                        ],
+                        [
+                            'value' => EndpointFtgwSelfService::CONNECTION_TYPE_EXTERNAL,
+                            'label' => _('external')
+                        ]
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
                 ]
             ]);
     }
