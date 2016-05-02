@@ -3,13 +3,6 @@ namespace DbSystel\DataObject;
 
 class EndpointFtgwSelfService extends AbstractEndpoint
 {
-
-    /**
-     *
-     * @var string
-     */
-    protected $protocol;
-
     /**
      *
      * @var Protocol[]
@@ -27,24 +20,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @var string
      */
     protected $mailbox;
-
-    /**
-     *
-     * @return the $protocol
-     */
-    public function getProtocol()
-    {
-        return $this->protocol;
-    }
-
-    /**
-     *
-     * @param string $protocol
-     */
-    public function setProtocol($protocol)
-    {
-        $this->protocol = $protocol;
-    }
 
     /**
      *

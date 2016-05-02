@@ -7,7 +7,6 @@ $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('type')),
-    $this->formRow($endpointTargetFieldset->get('protocol')),
     '<fieldset>' . '<legend>' . $this->translate($endpointTargetFieldset->get('protocols')->getLabel()) . '</legend>' . '<div class="clearer"></div>'
         . $this->formMultiCheckbox($endpointTargetFieldset->get('protocols'), FormMultiCheckbox::LABEL_PREPEND)
     . '</fieldset>',

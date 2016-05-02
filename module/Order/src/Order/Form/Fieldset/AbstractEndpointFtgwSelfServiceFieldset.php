@@ -27,21 +27,6 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
 
         $this->add(
             [
-                'type' => 'text',
-                'name' => 'protocol',
-                'options' => [
-                    'label' => _('protocol'),
-                    'label_attributes' => [
-                        'class' => 'col-md-12'
-                    ]
-                ],
-                'attributes' => [
-                    'class' => 'form-control'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'type' => 'multi_checkbox',
                 'name' => 'protocols',
                 'options' => [
