@@ -123,6 +123,7 @@ return [
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
             'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
             'Order\Mapper\NotificationMapper' => 'Order\Mapper\Factory\NotificationMapperFactory',
+            'Order\Mapper\ProtocolMapper' => 'Order\Mapper\Factory\ProtocolMapperFactory',
             'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
             'Order\Mapper\ServerMapper' => 'Order\Mapper\Factory\ServerMapperFactory',
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
