@@ -5,11 +5,11 @@ class Protocol
 {
 
     const PROTOCOLS = [
-        0 => 'FTP',
-        1 => 'FTPs',
-        2 => 'HTTP',
-        3 => 'HTTPs',
-        4 => 'WebDAV',
+        1 => 'FTP',
+        2 => 'FTPs',
+        3 => 'HTTP',
+        4 => 'HTTPs',
+        5 => 'WebDAV',
     ];
 
     /**

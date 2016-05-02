@@ -46,7 +46,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                         'class' => 'col-md-2',
                     ],
                     'value_options' => $this->getValueOptions(),
-                    'selected' => 'dummy',
+                    'selected' => 0,
                 ],
             ]);
 
