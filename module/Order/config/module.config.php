@@ -136,8 +136,6 @@ return [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // fieldsets
-            'Order\Form\Fieldset\Application' => 'Order\Form\Fieldset\Factory\ApplicationFieldsetFactory',
-            'Order\Form\Fieldset\Customer' => 'Order\Form\Fieldset\Factory\CustomerFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Source' => 'Order\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdAs400Target' => 'Order\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
             'Order\Form\Fieldset\EndpointCdLinuxUnixSource' => 'Order\Form\Fieldset\Factory\EndpointCdLinuxUnixSourceFieldsetFactory',
@@ -148,21 +146,20 @@ return [
             'Order\Form\Fieldset\EndpointFtgwSelfServiceTarget' => 'Order\Form\Fieldset\Factory\EndpointFtgwSelfServiceTargetFieldsetFactory',
             'Order\Form\Fieldset\EndpointFtgwWindowsSource' => 'Order\Form\Fieldset\Factory\EndpointFtgwWindowsSourceFieldsetFactory',
             'Order\Form\Fieldset\EndpointFtgwWindowsTarget' => 'Order\Form\Fieldset\Factory\EndpointFtgwWindowsTargetFieldsetFactory',
-            'Order\Form\Fieldset\Environment' => 'Order\Form\Fieldset\Factory\EnvironmentFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestCd' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
-            'Order\Form\Fieldset\IncludeParameter' => 'Order\Form\Fieldset\Factory\IncludeParameterFieldsetFactory',
-            'Order\Form\Fieldset\IncludeParameterSet' => 'Order\Form\Fieldset\Factory\IncludeParameterSetFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
-            'Order\Form\Fieldset\Notification' => 'Order\Form\Fieldset\Factory\NotificationFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionCdSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdSourceFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionFtgwSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwSourceFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionFtgwTarget' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwTargetFieldsetFactory',
-            'Order\Form\Fieldset\Server' => 'Order\Form\Fieldset\Factory\ServerFieldsetFactory',
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionBasicFieldsetFactory',
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
+        ],
+        'abstract_factories' => [
+            // fieldsets
+            'Order\Form\Fieldset\Factory\AbstractCommonFieldsetFactory',
         ],
         'shared' => [
             'Order\Form\Fieldset\Application' => false,
