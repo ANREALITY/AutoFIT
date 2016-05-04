@@ -17,11 +17,23 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         'Server'
     ];
 
-    protected $classNamePartFieldset = 'Fieldset';
+    /**
+     *
+     * @var string
+     */
+    const NAME_PART_FIEDLSET = 'Fieldset';
 
-    protected $namespaceFieldset = 'Order\Form\Fieldset';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_FIELDSET = 'Order\Form\Fieldset';
 
-    protected $namespacePrototype = 'DbSystel\DataObject';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
 
     /**
      *
@@ -34,10 +46,10 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $canCreateServiceWithName = false;
 
         $matches = [];
-        $pattern = '^(' . preg_quote($this->namespaceFieldset . '\\') . '(' . implode('|', self::COMMON_FIELDSETS) . ')' . ')$';
+        $pattern = '^(' . preg_quote(self::NAMESPACE_FIELDSET . '\\') . '(' . implode('|', self::COMMON_FIELDSETS) . ')' . ')$';
         preg_match('/' . $pattern . '/', $requestedName, $matches);
 
-        if (!empty($matches) && class_exists($requestedName . 'Fieldset')) {
+        if (!empty($matches) && class_exists($requestedName . self::NAME_PART_FIEDLSET)) {
             $canCreateServiceWithName = true;
         }
 
@@ -52,9 +64,9 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $prototypeClassName = str_replace($this->namespaceFieldset . '\\', '', $requestedName);
-        $prototypeQualifiedClassName = $this->namespacePrototype . '\\' . $prototypeClassName;
-        $fieldsetQualifiedClassName = $requestedName . 'Fieldset';
+        $prototypeClassName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
+        $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
+        $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $fieldset = new $fieldsetQualifiedClassName();
         $hydrator = $serviceLocator->getServiceLocator()

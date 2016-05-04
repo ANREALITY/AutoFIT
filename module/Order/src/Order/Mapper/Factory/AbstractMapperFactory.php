@@ -7,11 +7,23 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 class AbstractMapperFactory implements AbstractFactoryInterface
 {
 
-    protected $classNamePartMapper = 'Mapper';
+    /**
+     *
+     * @var string
+     */
+    const NAME_PART_MAPPER = 'Mapper';
 
-    protected $namespaceMapper = 'Order\Mapper';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_MAPPER = 'Order\Mapper';
 
-    protected $namespacePrototype = 'DbSystel\DataObject';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
 
     /**
      *
@@ -24,7 +36,7 @@ class AbstractMapperFactory implements AbstractFactoryInterface
         $canCreateServiceWithName = false;
         $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
 
-        if ($stringProcessor->endsWith($requestedName, $this->classNamePartMapper) && class_exists($requestedName)) {
+        if ($stringProcessor->endsWith($requestedName, self::NAME_PART_MAPPER) && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
 
@@ -39,9 +51,9 @@ class AbstractMapperFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $classNameMapper = str_replace($this->namespaceMapper . '\\', '', $requestedName);
-        $prototypeClassName = str_replace($this->classNamePartMapper, '', $classNameMapper);
-        $prototypeQualifiedClassName = $this->namespacePrototype . '\\' . $prototypeClassName;
+        $classNameMapper = str_replace(self::NAMESPACE_MAPPER . '\\', '', $requestedName);
+        $prototypeClassName = str_replace(self::NAME_PART_MAPPER, '', $classNameMapper);
+        $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
 
         $service = new $requestedName($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),

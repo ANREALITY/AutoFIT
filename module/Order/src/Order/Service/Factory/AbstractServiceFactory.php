@@ -7,13 +7,29 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 class AbstractServiceFactory implements AbstractFactoryInterface
 {
 
-    protected $classNamePartService = 'Service';
+    /**
+     *
+     * @var string
+     */
+    const NAME_PART_SERVICE = 'Service';
 
-    protected $classNamePartMapper = 'Mapper';
+    /**
+     *
+     * @var string
+     */
+    const NAME_PART_MAPPER = 'Mapper';
 
-    protected $namespaceService = 'Order\Service';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_SERVICE = 'Order\Service';
 
-    protected $namespaceMapper = 'Order\Mapper';
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_MAPPER = 'Order\Mapper';
 
     /**
      *
@@ -26,7 +42,7 @@ class AbstractServiceFactory implements AbstractFactoryInterface
         $canCreateServiceWithName = false;
         $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
 
-        if ($stringProcessor->endsWith($requestedName, $this->classNamePartService) && class_exists($requestedName)) {
+        if ($stringProcessor->endsWith($requestedName, self::NAME_PART_SERVICE) && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
 
@@ -43,10 +59,10 @@ class AbstractServiceFactory implements AbstractFactoryInterface
     {
         $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
 
-        $classNameService = str_replace($this->namespaceService . '\\', '', $requestedName);
-        $prototypeClassName = $stringProcessor->strReplaceLast($this->classNamePartService, '', $classNameService);
-        $classNameMapper = $prototypeClassName . $this->classNamePartMapper;
-        $mapperQualifiedClassName = $this->namespaceMapper . '\\' . $classNameMapper;
+        $classNameService = str_replace(self::NAMESPACE_SERVICE . '\\', '', $requestedName);
+        $prototypeClassName = $stringProcessor->strReplaceLast(self::NAME_PART_SERVICE, '', $classNameService);
+        $classNameMapper = $prototypeClassName . self::NAME_PART_MAPPER;
+        $mapperQualifiedClassName = self::NAMESPACE_MAPPER . '\\' . $classNameMapper;
 
         $service = new $requestedName($serviceLocator->get($mapperQualifiedClassName));
 
