@@ -108,11 +108,6 @@ return [
     'service_manager' => [
         'factories' => [
             // services
-            'Order\Service\ApplicationService' => 'Order\Service\Factory\ApplicationServiceFactory',
-            'Order\Service\EnvironmentService' => 'Order\Service\Factory\EnvironmentServiceFactory',
-            'Order\Service\FileTransferRequestService' => 'Order\Service\Factory\FileTransferRequestServiceFactory',
-            'Order\Service\ServerService' => 'Order\Service\Factory\ServerServiceFactory',
-            'Order\Service\ServiceInvoicePositionService' => 'Order\Service\Factory\ServiceInvoicePositionServiceFactory',
             // mappers
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
@@ -132,6 +127,8 @@ return [
         'abstract_factories' => [
             // mappers
             'Order\Mapper\Factory\AbstractMapperFactory',
+            // services
+            'Order\Service\Factory\AbstractServiceFactory',
         ],
     ],
     'form_elements' => [
