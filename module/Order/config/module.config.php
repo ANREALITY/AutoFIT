@@ -143,14 +143,13 @@ return [
             'Order\Form\Fieldset\PhysicalConnectionCdSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdSourceFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionFtgwSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwSourceFieldsetFactory',
             'Order\Form\Fieldset\PhysicalConnectionFtgwTarget' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwTargetFieldsetFactory',
-            'Order\Form\Fieldset\ServiceInvoicePositionBasic' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionBasicFieldsetFactory',
-            'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => 'Order\Form\Fieldset\Factory\ServiceInvoicePositionPersonalFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
         ],
         'abstract_factories' => [
             // fieldsets
             'Order\Form\Fieldset\Factory\AbstractCommonFieldsetFactory',
-            'Order\Form\Fieldset\Factory\AbstractEndpointFieldsetFactory'
+            'Order\Form\Fieldset\Factory\AbstractEndpointFieldsetFactory',
+            'Order\Form\Fieldset\Factory\AbstractServiceInvoicePositionFieldsetFactory'
         ],
         'shared' => [
             'Order\Form\Fieldset\Application' => false,
