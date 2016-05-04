@@ -140,15 +140,13 @@ return [
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
-            'Order\Form\Fieldset\PhysicalConnectionCdSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionCdSourceFieldsetFactory',
-            'Order\Form\Fieldset\PhysicalConnectionFtgwSource' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwSourceFieldsetFactory',
-            'Order\Form\Fieldset\PhysicalConnectionFtgwTarget' => 'Order\Form\Fieldset\Factory\PhysicalConnectionFtgwTargetFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
         ],
         'abstract_factories' => [
             // fieldsets
             'Order\Form\Fieldset\Factory\AbstractCommonFieldsetFactory',
             'Order\Form\Fieldset\Factory\AbstractEndpointFieldsetFactory',
+            'Order\Form\Fieldset\Factory\AbstractPhysicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\Factory\AbstractServiceInvoicePositionFieldsetFactory'
         ],
         'shared' => [
