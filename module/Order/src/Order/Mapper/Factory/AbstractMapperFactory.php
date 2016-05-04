@@ -34,9 +34,12 @@ class AbstractMapperFactory implements AbstractFactoryInterface
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $canCreateServiceWithName = false;
-        $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
+        
+        $matches = [];
+        $pattern = '[a-zA-z0-9]+' . self::NAME_PART_MAPPER . '$';
+        preg_match('/' . $pattern . '/', $requestedName, $matches);
 
-        if ($stringProcessor->endsWith($requestedName, self::NAME_PART_MAPPER) && class_exists($requestedName)) {
+        if (!empty($matches[0]) && $matches[0] === $requestedName && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
 
@@ -51,8 +54,8 @@ class AbstractMapperFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $classNameMapper = str_replace(self::NAMESPACE_MAPPER . '\\', '', $requestedName);
-        $prototypeClassName = str_replace(self::NAME_PART_MAPPER, '', $classNameMapper);
+        $mapperClassName = str_replace(self::NAMESPACE_MAPPER . '\\', '', $requestedName);
+        $prototypeClassName = str_replace(self::NAME_PART_MAPPER, '', $mapperClassName);
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
 
         $service = new $requestedName($serviceLocator->get('Zend\Db\Adapter\Adapter'),

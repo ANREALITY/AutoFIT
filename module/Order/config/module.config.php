@@ -122,7 +122,6 @@ return [
             'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory'
         ],
         'invokables' => [
-            'Order\Utility\StringProcessor' => 'Order\Utility\StringProcessor'
         ],
         'abstract_factories' => [
             // mappers

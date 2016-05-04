@@ -40,9 +40,12 @@ class AbstractServiceFactory implements AbstractFactoryInterface
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $canCreateServiceWithName = false;
-        $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
 
-        if ($stringProcessor->endsWith($requestedName, self::NAME_PART_SERVICE) && class_exists($requestedName)) {
+        $matches = [];
+        $pattern = '[a-zA-z0-9]+' . self::NAME_PART_SERVICE . '$';
+        preg_match('/' . $pattern . '/', $requestedName, $matches);
+
+        if (!empty($matches[0]) && $matches[0] === $requestedName && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
 
@@ -57,12 +60,10 @@ class AbstractServiceFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $stringProcessor = $serviceLocator->get('Order\Utility\StringProcessor');
-
-        $classNameService = str_replace(self::NAMESPACE_SERVICE . '\\', '', $requestedName);
-        $prototypeClassName = $stringProcessor->strReplaceLast(self::NAME_PART_SERVICE, '', $classNameService);
-        $classNameMapper = $prototypeClassName . self::NAME_PART_MAPPER;
-        $mapperQualifiedClassName = self::NAMESPACE_MAPPER . '\\' . $classNameMapper;
+        $serviceClassName = str_replace(self::NAMESPACE_SERVICE . '\\', '', $requestedName);
+        $prototypeClassName = preg_replace('/' . self::NAME_PART_SERVICE . '$/', '', $serviceClassName);
+        $mapperClassName = $prototypeClassName . self::NAME_PART_MAPPER;
+        $mapperQualifiedClassName = self::NAMESPACE_MAPPER . '\\' . $mapperClassName;
 
         $service = new $requestedName($serviceLocator->get($mapperQualifiedClassName));
 

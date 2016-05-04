@@ -66,15 +66,15 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
-        $fieldset = new $fieldsetQualifiedClassName();
+        $service = new $fieldsetQualifiedClassName();
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
-        $fieldset->setHydrator($hydrator);
+        $service->setHydrator($hydrator);
         $prototype = new $prototypeQualifiedClassName();
-        $fieldset->setObject($prototype);
+        $service->setObject($prototype);
 
-        return $fieldset;
+        return $service;
     }
 
 }

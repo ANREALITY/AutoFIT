@@ -89,25 +89,25 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
         if (strcasecmp($this->connectionType, LogicalConnection::TYPE_CD) === 0) {
             $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
             $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
-            $fieldset = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName,
+            $service = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName,
                 $endpointTargetFieldsetServiceName);
         } elseif (strcasecmp($this->connectionType, LogicalConnection::TYPE_FTGW) === 0) {
             if (strcasecmp($this->role, AbstractEndpoint::ROLE_SOURCE) === 0) {
                 $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
-                $fieldset = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName);
+                $service = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName);
             } elseif (strcasecmp($this->role, AbstractEndpoint::ROLE_TARGET) === 0) {
                 $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
-                $fieldset = new $fieldsetQualifiedClassName(null, [], $endpointTargetFieldsetServiceName);
+                $service = new $fieldsetQualifiedClassName(null, [], $endpointTargetFieldsetServiceName);
             }
         }
         $hydrator = $serviceLocator->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
-        $fieldset->setHydrator($hydrator);
+        $service->setHydrator($hydrator);
         $prototype = new $prototypeQualifiedClassName();
-        $fieldset->setObject($prototype);
+        $service->setObject($prototype);
 
-        return $fieldset;
+        return $service;
     }
 
 }
