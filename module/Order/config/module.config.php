@@ -136,16 +136,6 @@ return [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // fieldsets
-            'Order\Form\Fieldset\EndpointCdAs400Source' => 'Order\Form\Fieldset\Factory\EndpointCdAs400SourceFieldsetFactory',
-            'Order\Form\Fieldset\EndpointCdAs400Target' => 'Order\Form\Fieldset\Factory\EndpointCdAs400TargetFieldsetFactory',
-            'Order\Form\Fieldset\EndpointCdLinuxUnixSource' => 'Order\Form\Fieldset\Factory\EndpointCdLinuxUnixSourceFieldsetFactory',
-            'Order\Form\Fieldset\EndpointCdLinuxUnixTarget' => 'Order\Form\Fieldset\Factory\EndpointCdLinuxUnixTargetFieldsetFactory',
-            'Order\Form\Fieldset\EndpointCdTandemSource' => 'Order\Form\Fieldset\Factory\EndpointCdTandemSourceFieldsetFactory',
-            'Order\Form\Fieldset\EndpointCdTandemTarget' => 'Order\Form\Fieldset\Factory\EndpointCdTandemTargetFieldsetFactory',
-            'Order\Form\Fieldset\EndpointFtgwSelfServiceSource' => 'Order\Form\Fieldset\Factory\EndpointFtgwSelfServiceSourceFieldsetFactory',
-            'Order\Form\Fieldset\EndpointFtgwSelfServiceTarget' => 'Order\Form\Fieldset\Factory\EndpointFtgwSelfServiceTargetFieldsetFactory',
-            'Order\Form\Fieldset\EndpointFtgwWindowsSource' => 'Order\Form\Fieldset\Factory\EndpointFtgwWindowsSourceFieldsetFactory',
-            'Order\Form\Fieldset\EndpointFtgwWindowsTarget' => 'Order\Form\Fieldset\Factory\EndpointFtgwWindowsTargetFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestCd' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
@@ -160,6 +150,7 @@ return [
         'abstract_factories' => [
             // fieldsets
             'Order\Form\Fieldset\Factory\AbstractCommonFieldsetFactory',
+            'Order\Form\Fieldset\Factory\AbstractEndpointFieldsetFactory'
         ],
         'shared' => [
             'Order\Form\Fieldset\Application' => false,
