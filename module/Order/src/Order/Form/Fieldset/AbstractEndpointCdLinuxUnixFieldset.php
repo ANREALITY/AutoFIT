@@ -5,7 +5,8 @@ use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use DbSystel\DataObject\AbstractEndpoint;
 
-abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
+abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointFieldset implements
+    InputFilterProviderInterface
 {
 
     public function __construct($name = null, $options = [])
@@ -88,7 +89,7 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     'template_placeholder' => '__placeholder__',
                     'allow_add' => true,
                     'target_element' => [
-                        'type' => 'Order\Form\Fieldset\Server',
+                        'type' => 'Order\Form\Fieldset\Server'
                     ],
                     'label_attributes' => [
                         'class' => 'col-md-12 fieldset-multiple-servers'

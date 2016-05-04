@@ -1,16 +1,20 @@
 <?php
 $endpointTypes = [
     'ftgwwindows' => 'Windows',
-    'ftgwselfservice' => 'Self-Service',
+    'ftgwselfservice' => 'Self-Service'
 ];
 ?>
 <div class="col-md-12">
     <div class="col-md-12">
-        <span><b>Sie haben sich für eine Filetransfer-Schnittstelle per FiletransferGateWay entschieden.</b></span><br />
-        <span><b>Wählen Sie nun die Betriebssystem-Plattform der Datenquelle und des Filetransfer-Ziels aus:</b></span>
+        <span><b>Sie haben sich für eine Filetransfer-Schnittstelle per
+                FiletransferGateWay entschieden.</b></span><br /> <span><b>Wählen
+                Sie nun die Betriebssystem-Plattform der Datenquelle und
+                des Filetransfer-Ziels aus:</b></span>
     </div>
     <div class="col-md-6 centered">
-        <h3 class="semi-title"><span><?php echo $this->translate('source'); ?></span></h3>
+        <h3 class="semi-title">
+            <span><?php echo $this->translate('source'); ?></span>
+        </h3>
         <div class="col-md-12 centered">
             <select id="endpoint-source" class="form-control">
                 <option value=""><?php echo $this->translate('source'); ?></option>
@@ -21,7 +25,9 @@ $endpointTypes = [
         </div>
     </div>
     <div class="col-md-6 centered">
-        <h3 class="semi-title"><span><?php echo $this->translate('target'); ?></span></h3>
+        <h3 class="semi-title">
+            <span><?php echo $this->translate('target'); ?></span>
+        </h3>
         <div class="col-md-12 centered">
             <select id="endpoint-target" class="form-control">
                 <option value=""><?php echo $this->translate('target'); ?></option>
@@ -32,12 +38,15 @@ $endpointTypes = [
         </div>
     </div>
     <div class="col-md-12 centered">
-        <div class="create-link-container"><a id="create-link-ftgw" class="btn btn-default create-link" href="#" role="button"><span><?php echo $this->translate('to the order'); ?></span></a></div>
+        <div class="create-link-container">
+            <a id="create-link-ftgw" class="btn btn-default create-link"
+                href="#" role="button"><span><?php echo $this->translate('to the order'); ?></span></a>
+        </div>
     </div>
 </div>
 <div class="col-md-12">
-    <br />
-    <span><b>Musterchanges zum Beantragen von FGW-Filetransfer-Schnittstellen im PSC:</b></span>
+    <br /> <span><b>Musterchanges zum Beantragen von
+            FGW-Filetransfer-Schnittstellen im PSC:</b></span>
     <ul class="list-unstyled">
         <li><span>C30483063 Neukonfiguration FileGateway-Schnittstelle</span></li>
     </ul>

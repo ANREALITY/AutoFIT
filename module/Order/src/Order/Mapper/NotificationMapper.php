@@ -79,7 +79,7 @@ class NotificationMapper implements NotificationMapperInterface
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (!empty($condition['logical_connection_id'])) {
+                if (! empty($condition['logical_connection_id'])) {
                     $select->where(
                         [
                             'logical_connection_id = ?' => $condition['logical_connection_id']
@@ -87,15 +87,15 @@ class NotificationMapper implements NotificationMapperInterface
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
             return $resultSet->initialize($result);
         }
-        
+
         return [];
 
         throw new \Exception('Method not implemented: ' . __METHOD__);
@@ -145,23 +145,22 @@ class NotificationMapper implements NotificationMapperInterface
         $return = false;
         $conditionGiven = false;
 
-        if (!empty($criteria)) {
+        if (! empty($criteria)) {
             foreach ($criteria as $condition) {
                 if (is_array($condition)) {
-                    if (!empty($condition['logical_connection_id'])) {
+                    if (! empty($condition['logical_connection_id'])) {
                         $action->where(
                             [
                                 'logical_connection_id = ?' => $condition['logical_connection_id']
-                            ]
-                        );
+                            ]);
                         $conditionGiven = true;
                     }
                 }
             }
         }
         if ($conditionGiven) {
-            $sql    = new Sql($this->dbAdapter);
-            $statement   = $sql->prepareStatementForSqlObject($action);
+            $sql = new Sql($this->dbAdapter);
+            $statement = $sql->prepareStatementForSqlObject($action);
             $result = $statement->execute();
             $return = (bool) $result->getAffectedRows();
         }

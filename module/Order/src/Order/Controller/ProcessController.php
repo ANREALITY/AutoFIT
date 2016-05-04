@@ -22,7 +22,7 @@ class ProcessController extends AbstractActionController
 
     protected $endpointTargetType;
 
-    public function __construct(FileTransferRequest $fileTransferRequest, 
+    public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
@@ -31,7 +31,7 @@ class ProcessController extends AbstractActionController
 
     /**
      *
-     * @param FormInterface $orderForm            
+     * @param FormInterface $orderForm
      */
     public function setOrderForm($orderForm)
     {
@@ -39,6 +39,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $connectionType
      */
     public function setConnectionType($connectionType)
@@ -47,6 +48,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $endpointSourceType
      */
     public function setEndpointSourceType($endpointSourceType)
@@ -55,6 +57,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $endpointTargetType
      */
     public function setEndpointTargetType($endpointTargetType)
@@ -65,30 +68,32 @@ class ProcessController extends AbstractActionController
     public function startAction()
     {
         return [
-            'connectionType' => $this->connectionType,
+            'connectionType' => $this->connectionType
         ];
     }
 
     public function createAction()
     {
         $this->orderForm->bind($this->fileTransferRequest);
-        
+
         $request = $this->getRequest();
-        
+
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
                 $this->fileTransferRequest->getUser()->setUsername($_SESSION['username']);
                 $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
-                return $this->forward()->dispatch('Order\Controller\Process', ['action' => 'received']);
+                return $this->forward()->dispatch('Order\Controller\Process', [
+                    'action' => 'received'
+                ]);
             }
         }
-        
+
         return [
             'form' => $this->orderForm,
             'connectionType' => $this->connectionType,
             'endpointSourceType' => $this->endpointSourceType,
-            'endpointTargetType' => $this->endpointTargetType,
+            'endpointTargetType' => $this->endpointTargetType
         ];
     }
 
@@ -100,7 +105,7 @@ class ProcessController extends AbstractActionController
     public function listOrdersAction()
     {
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
-        
+
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests
         ]);

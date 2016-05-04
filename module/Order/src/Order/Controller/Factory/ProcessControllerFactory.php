@@ -12,14 +12,14 @@ class ProcessControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
-        
-        $service = new ProcessController(new FileTransferRequest(), 
+
+        $service = new ProcessController(new FileTransferRequest(),
             $realServiceLocator->get('Order\Service\FileTransferRequestService'));
 
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $isStartRequest = $requestAnalyzer->isStartRequest();
-        
+
         if ($isOrderRequest) {
             $formElementManager = $realServiceLocator->get('FormElementManager');
             $orderForm = $formElementManager->get('Order\Form\OrderForm');
@@ -30,7 +30,7 @@ class ProcessControllerFactory implements FactoryInterface
         } elseif ($isStartRequest) {
             $service->setConnectionType($requestAnalyzer->getConnectionType());
         }
-        
+
         return $service;
     }
 

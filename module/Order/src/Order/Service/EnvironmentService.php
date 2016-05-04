@@ -63,8 +63,9 @@ class EnvironmentService implements EnvironmentServiceInterface
             [
                 [
                     'application_technical_short_name' => $applicationTechnicalShortName,
-                    'name' => $name,
+                    'name' => $name
                 ]
             ]);
     }
+
 }

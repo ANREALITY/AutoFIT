@@ -28,7 +28,7 @@ class IncludeParameterSetFieldset extends Fieldset implements InputFilterProvide
                         'type' => 'Order\Form\Fieldset\IncludeParameter'
                     ),
                     'label_attributes' => [
-                        'class' => 'col-md-12 include-parameters',
+                        'class' => 'col-md-12 include-parameters'
                     ]
                 ]
             ]);
@@ -44,7 +44,7 @@ class IncludeParameterSetFieldset extends Fieldset implements InputFilterProvide
                     'class' => 'btn btn-default',
                     'id' => 'add-include-parameter-button',
                     'value' => _('add an include parameter')
-                ],
+                ]
             ]);
     }
 

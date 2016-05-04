@@ -75,7 +75,7 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
     {
         return [];
     }
-    
+
     abstract protected function getConcreteType();
 
 }

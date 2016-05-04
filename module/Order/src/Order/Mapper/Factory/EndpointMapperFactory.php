@@ -7,6 +7,7 @@ use Order\Mapper\EndpointMapper;
 
 class EndpointMapperFactory implements FactoryInterface
 {
+
     /**
      * Create service
      *
@@ -18,12 +19,13 @@ class EndpointMapperFactory implements FactoryInterface
     {
         $service = new EndpointMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
-    
+
         $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
         $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
         $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
         $service->setIncludeParameterSetMapper($serviceLocator->get('Order\Mapper\IncludeParameterSetMapper'));
-    
+
         return $service;
     }
+
 }

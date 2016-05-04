@@ -71,7 +71,8 @@ class AjaxController extends AbstractActionController
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name'])) {
                 $data['name'] = isset($data['name']) ? $data['name'] : null;
-                $dataList = $this->environmentService->findAllByApplicationAndName($data['application_technical_short_name'], $data['name'])->toArray();
+                $dataList = $this->environmentService->findAllByApplicationAndName(
+                    $data['application_technical_short_name'], $data['name'])->toArray();
             }
         }
 
@@ -101,8 +102,8 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
-                $dataList = $this->serviceInvoicePositionService->findAllBasicByNumberApplicationAndEnvironment($data['number'],
-                    $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $dataList = $this->serviceInvoicePositionService->findAllBasicByNumberApplicationAndEnvironment(
+                    $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
             }
         }
 
@@ -119,8 +120,8 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
-                $dataList = $this->serviceInvoicePositionService->findAllPersonalByNumberApplicationAndEnvironment($data['number'],
-                    $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $dataList = $this->serviceInvoicePositionService->findAllPersonalByNumberApplicationAndEnvironment(
+                    $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
             }
         }
 

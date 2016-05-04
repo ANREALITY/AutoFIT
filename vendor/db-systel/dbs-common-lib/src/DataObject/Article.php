@@ -45,7 +45,7 @@ class Article
 
     /**
      *
-     * @param string $sku
+     * @param string $sku            
      */
     public function setSku($sku)
     {
@@ -63,7 +63,7 @@ class Article
 
     /**
      *
-     * @param string $description
+     * @param string $description            
      */
     public function setDescription($description)
     {
@@ -81,7 +81,7 @@ class Article
 
     /**
      *
-     * @param string $type
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -99,7 +99,7 @@ class Article
 
     /**
      *
-     * @param ProductType $productType
+     * @param ProductType $productType            
      */
     public function setProductType(ProductType $productType)
     {

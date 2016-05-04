@@ -49,7 +49,7 @@ class LogicalConnection
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -67,7 +67,7 @@ class LogicalConnection
 
     /**
      *
-     * @param string $type
+     * @param string $type            
      */
     public function setType($type)
     {
@@ -85,7 +85,7 @@ class LogicalConnection
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnectionSource
+     * @param AbstractPhysicalConnection $physicalConnectionSource            
      */
     public function setPhysicalConnectionSource($physicalConnectionSource)
     {
@@ -103,7 +103,7 @@ class LogicalConnection
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnectionTarget
+     * @param AbstractPhysicalConnection $physicalConnectionTarget            
      */
     public function setPhysicalConnectionTarget($physicalConnectionTarget)
     {
@@ -121,7 +121,7 @@ class LogicalConnection
 
     /**
      *
-     * @param multitype:Notification $notifications
+     * @param multitype:Notification $notifications            
      */
     public function setNotifications(array $notifications)
     {

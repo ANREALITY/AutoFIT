@@ -7,8 +7,9 @@ use Zend\Db\Adapter\AdapterInterface;
 
 abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    
+
     /**
+     *
      * @var AdapterInterface
      */
     protected $dbAdapter;
@@ -19,6 +20,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
     }
 
     /**
+     *
      * @param AdapterInterface $dbAdapter
      */
     public function setDbAdapter(AdapterInterface $dbAdapter)
@@ -131,4 +133,5 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
     }
 
     abstract protected function getConcreteType();
+
 }

@@ -14,13 +14,14 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function init()
     {
-        $this->add([
-            'name' => 'severity',
-            'type' => 'hidden',
-            'attributes' => [
-                'id' => 'order' . '-' . 'environment-severity'
-            ]
-        ]);
+        $this->add(
+            [
+                'name' => 'severity',
+                'type' => 'hidden',
+                'attributes' => [
+                    'id' => 'order' . '-' . 'environment-severity'
+                ]
+            ]);
 
         $this->add(
             [

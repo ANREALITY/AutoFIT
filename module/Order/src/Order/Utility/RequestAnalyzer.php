@@ -34,11 +34,10 @@ class RequestAnalyzer
         $paramsNeededForStart = [
             'connectionType'
         ];
-        
-        $allParamsForStartGiven = count(
-            array_intersect($paramsNeededForStart, array_keys($this->routerMatchParams))) ===
+
+        $allParamsForStartGiven = count(array_intersect($paramsNeededForStart, array_keys($this->routerMatchParams))) ===
              count($paramsNeededForStart);
-        
+
         return $allParamsForStartGiven;
     }
 
@@ -49,11 +48,11 @@ class RequestAnalyzer
             'endpointSourceType',
             'endpointTargetType'
         ];
-        
+
         $allParamsForOrderFormGiven = count(
             array_intersect($paramsNeededForOrderForm, array_keys($this->routerMatchParams))) ===
              count($paramsNeededForOrderForm);
-        
+
         return $allParamsForOrderFormGiven;
     }
 

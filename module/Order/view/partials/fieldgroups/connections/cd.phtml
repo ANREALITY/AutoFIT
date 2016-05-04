@@ -1,13 +1,14 @@
 <?php
 $fieldgroupName = 'physical_connection_source';
 $fieldgroupCssClass = 'col-md-12';
-$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('directly from the source to the target') . ')';
+$fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('directly from the source to the target') .
+     ')';
 $fieldgroupFormRows = [
     $this->formRow($physicalConnectionSourceFieldset->get('type')),
     $this->formRow($physicalConnectionSourceFieldset->get('role')),
     $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'))
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,

@@ -5,9 +5,10 @@ $fieldgroupTitle = $this->translate('Logical connection');
 $fieldgroupFormRows = [
     $this->formRow($logicalConnectionFieldset->get('type')),
     $this->formRow($logicalConnectionFieldset->get('notifications')),
-    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow($logicalConnectionFieldset->get('add_notification')) . '</div>',
+    '<div class="form-field-wrapper col-md-6 add-button-container">' .
+         $this->formRow($logicalConnectionFieldset->get('add_notification')) . '</div>'
 ];
-echo $this->partial('/partials/fieldgroup',
+echo $this->partial('/partials/fieldgroup', 
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,

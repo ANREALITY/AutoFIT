@@ -9,7 +9,7 @@ return [
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
                         'action' => 'start',
-                        'connectionType' => '',
+                        'connectionType' => ''
                     ]
                 ]
             ],
@@ -128,8 +128,8 @@ return [
             // mappers
             'Order\Mapper\Factory\AbstractMapperFactory',
             // services
-            'Order\Service\Factory\AbstractServiceFactory',
-        ],
+            'Order\Service\Factory\AbstractServiceFactory'
+        ]
     ],
     'form_elements' => [
         'factories' => [

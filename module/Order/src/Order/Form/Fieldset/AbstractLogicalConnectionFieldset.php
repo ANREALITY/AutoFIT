@@ -19,11 +19,11 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
      */
     protected $physicalConnectionTargetFieldsetServiceName;
 
-    public function __construct($name = null, $options = [], string $physicalConnectionSourceFieldsetServiceName, 
+    public function __construct($name = null, $options = [], string $physicalConnectionSourceFieldsetServiceName,
         string $physicalConnectionTargetFieldsetServiceName = null)
     {
         parent::__construct('logical_connection', $options);
-        
+
         $this->physicalConnectionSourceFieldsetServiceName = $physicalConnectionSourceFieldsetServiceName;
         $this->physicalConnectionTargetFieldsetServiceName = $physicalConnectionTargetFieldsetServiceName;
     }
@@ -36,7 +36,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                 'type' => $this->physicalConnectionSourceFieldsetServiceName,
                 'options' => []
             ]);
-        
+
         if ($this->physicalConnectionTargetFieldsetServiceName) {
             $this->add(
                 [
@@ -67,7 +67,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                     'template_placeholder' => '__index__',
                     'allow_add' => true,
                     'target_element' => [
-                        'type' => 'Order\Form\Fieldset\Notification',
+                        'type' => 'Order\Form\Fieldset\Notification'
                     ],
                     'label_attributes' => [
                         'class' => 'col-md-12'
@@ -86,7 +86,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                     'class' => 'btn btn-default',
                     'id' => 'add-notification-button',
                     'value' => _('add a notification')
-                ],
+                ]
             ]);
     }
 
@@ -94,7 +94,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
     {
         return [];
     }
-    
+
     abstract protected function getConcreteType();
 
 }

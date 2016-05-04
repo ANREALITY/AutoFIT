@@ -8,7 +8,8 @@ use Zend\Form\View\Helper\FormMultiCheckbox;
 use DbSystel\DataObject\Protocol;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 
-abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements InputFilterProviderInterface
+abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements
+    InputFilterProviderInterface
 {
 
     const PROTOCOLS_DUMMY_VALUE = 0;
@@ -33,11 +34,11 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('protocols'),
                     'label_attributes' => [
-                        'class' => 'col-md-1 protocol-field',
+                        'class' => 'col-md-1 protocol-field'
                     ],
                     'value_options' => $this->getValueOptions(),
-                    'selected' => static::PROTOCOLS_DUMMY_VALUE,
-                ],
+                    'selected' => static::PROTOCOLS_DUMMY_VALUE
+                ]
             ]);
 
         $this->add(
@@ -63,7 +64,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                     'label' => _('mailbox'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
-                    ],
+                    ]
                 ],
                 'attributes' => [
                     'class' => 'form-control'
@@ -112,7 +113,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
         foreach (Protocol::PROTOCOLS as $key => $value) {
             $valueOptions[] = [
                 'value' => $key,
-                'label' => $value,
+                'label' => $value
             ];
         }
         $valueOptions[] = [

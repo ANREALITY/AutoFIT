@@ -22,7 +22,7 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
 
         $service->setEndpointSourceMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
         $service->setEndpointTargetMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
-    
+
         return $service;
     }
 

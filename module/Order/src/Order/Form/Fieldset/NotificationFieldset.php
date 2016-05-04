@@ -15,7 +15,6 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
 
     public function init()
     {
-
         $this->add(
             [
                 'name' => 'email',
@@ -27,7 +26,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ]);
 
@@ -67,12 +66,14 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
         return [
             'email' => [
                 'required' => false,
-                'filters'  => [
-                    ['name' => 'Zend\Filter\StringTrim'],
+                'filters' => [
+                    [
+                        'name' => 'Zend\Filter\StringTrim'
+                    ]
                 ],
                 'validators' => [
                     new EmailAddress()
-                ],
+                ]
             ]
         ];
     }

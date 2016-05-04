@@ -14,7 +14,6 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
 
     public function init()
     {
-
         $this->add(
             [
                 'name' => 'expression',
@@ -26,7 +25,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ]);
     }

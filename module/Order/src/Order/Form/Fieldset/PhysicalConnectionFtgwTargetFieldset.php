@@ -10,8 +10,7 @@ class PhysicalConnectionFtgwTargetFieldset extends AbstractPhysicalConnectionFie
 
     public function __construct($name = null, $options = [], string $endpointTargetFieldsetServiceName)
     {
-        parent::__construct('physical_connection_ftgw_target', $options, null,
-            $endpointTargetFieldsetServiceName);
+        parent::__construct('physical_connection_ftgw_target', $options, null, $endpointTargetFieldsetServiceName);
     }
 
     protected function getConcreteRole()

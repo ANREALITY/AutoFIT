@@ -31,7 +31,7 @@ class Server
 
     /**
      *
-     * @param string $name
+     * @param string $name            
      */
     public function setName($name)
     {
@@ -49,7 +49,7 @@ class Server
 
     /**
      *
-     * @param ServerType $serverType
+     * @param ServerType $serverType            
      */
     public function setServerType($serverType)
     {

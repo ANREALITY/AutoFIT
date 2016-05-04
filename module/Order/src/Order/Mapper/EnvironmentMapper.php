@@ -42,7 +42,7 @@ class EnvironmentMapper implements EnvironmentMapperInterface
 
     /**
      *
-     * @param int|string $severity            
+     * @param int|string $severity
      *
      * @return Environment
      * @throws \InvalidArgumentException
@@ -77,18 +77,18 @@ class EnvironmentMapper implements EnvironmentMapperInterface
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('environment');
         $select->quantifier(Select::QUANTIFIER_DISTINCT);
-        
+
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (!empty($condition['name'])) {
+                if (! empty($condition['name'])) {
                     $select->where(
                         [
                             'name LIKE ?' => '%' . $condition['name'] . '%'
                         ]);
                 }
-                if (!empty($condition['application_technical_short_name'])) {
+                if (! empty($condition['application_technical_short_name'])) {
                     $select->join('service_invoice', 'service_invoice.environment_severity = environment.severity', []);
-                    $select->join('application', 
+                    $select->join('application',
                         'application.technical_short_name = service_invoice.application_technical_short_name', []);
                     $select->where(
                         [
@@ -97,22 +97,22 @@ class EnvironmentMapper implements EnvironmentMapperInterface
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-            
+
             return $resultSet->initialize($result);
         }
-        
+
         return [];
     }
 
     /**
      *
-     * @param Environment $dataObject            
+     * @param Environment $dataObject
      *
      * @return Environment
      * @throws \Exception

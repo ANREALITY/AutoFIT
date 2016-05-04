@@ -79,7 +79,7 @@ class IncludeParameterMapper implements IncludeParameterMapperInterface
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (!empty($condition['include_parameter_set_id'])) {
+                if (! empty($condition['include_parameter_set_id'])) {
                     $select->where(
                         [
                             'include_parameter_set_id = ?' => $condition['include_parameter_set_id']
@@ -87,15 +87,15 @@ class IncludeParameterMapper implements IncludeParameterMapperInterface
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
             return $resultSet->initialize($result);
         }
-        
+
         return [];
 
         throw new \Exception('Method not implemented: ' . __METHOD__);
@@ -143,23 +143,22 @@ class IncludeParameterMapper implements IncludeParameterMapperInterface
         $return = false;
         $conditionGiven = false;
 
-        if (!empty($criteria)) {
+        if (! empty($criteria)) {
             foreach ($criteria as $condition) {
                 if (is_array($condition)) {
-                    if (!empty($condition['include_parameter_set_id'])) {
+                    if (! empty($condition['include_parameter_set_id'])) {
                         $action->where(
                             [
                                 'include_parameter_set_id = ?' => $condition['include_parameter_set_id']
-                            ]
-                        );
+                            ]);
                         $conditionGiven = true;
                     }
                 }
             }
         }
         if ($conditionGiven) {
-            $sql    = new Sql($this->dbAdapter);
-            $statement   = $sql->prepareStatementForSqlObject($action);
+            $sql = new Sql($this->dbAdapter);
+            $statement = $sql->prepareStatementForSqlObject($action);
             $result = $statement->execute();
             $return = (bool) $result->getAffectedRows();
         }

@@ -16,7 +16,7 @@ class EndpointFtgwWindowsSourceFieldset extends AbstractEndpointFtgwWindowsField
     public function init()
     {
         parent::init();
-        
+
         $this->add(
             [
                 'name' => 'include_parameter_set',

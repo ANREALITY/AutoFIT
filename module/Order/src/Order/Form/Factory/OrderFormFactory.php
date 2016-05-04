@@ -15,7 +15,7 @@ class OrderFormFactory implements FactoryInterface
         $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
             'Order\Utility\ProperServiceNameDetector');
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
-        
+
         $form = new OrderForm(null, [], $fileTransferRequestFieldsetServiceName);
         $form->setAttribute('method', 'post')
             ->setHydrator(new ClassMethods())

@@ -56,7 +56,7 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
 
     /**
      *
-     * @param IncludeParameterMapperInterface $includeParameterMapper            
+     * @param IncludeParameterMapperInterface $includeParameterMapper
      */
     public function setIncludeParameterMapper(IncludeParameterMapperInterface $includeParameterMapper)
     {
@@ -65,7 +65,7 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return IncludeParameterSet
      * @throws \InvalidArgumentException
@@ -126,23 +126,23 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
         $select->where([
             'include_parameter_set.id = ?' => $id
         ]);
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $return = $this->hydrator->hydrate($result->current(), $this->prototype);
             $data = $result->current();
-            
+
             return $return;
         }
-        
+
         throw new \InvalidArgumentException("IncludeParameterSet with given ID:{$id} not found.");
     }
 
     /**
      *
-     * @param IncludeParameterSet $dataObject            
+     * @param IncludeParameterSet $dataObject
      *
      * @return IncludeParameterSet
      * @throws \Exception
@@ -155,18 +155,21 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
         // data from the recently persisted objects
 
         $sql = 'INSERT INTO include_parameter_set VALUES ();';
-        $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
-        
+        $result = $this->dbAdapter->getDriver()
+            ->getConnection()
+            ->execute($sql);
+
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
-                $this->includeParameterMapper->deleteAll([
+                $this->includeParameterMapper->deleteAll(
                     [
-                        'include_parameter_set_id' => $dataObject->getId()
-                    ]
-                ]);
+                        [
+                            'include_parameter_set_id' => $dataObject->getId()
+                        ]
+                    ]);
                 $newIncludeParameters = [];
                 foreach ($dataObject->getIncludeParameters() as $includeParameter) {
                     if ($includeParameter->getExpression()) {
@@ -189,12 +192,13 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
      */
     public function delete($id)
     {
-        $this->includeParameterMapper->deleteAll([
+        $this->includeParameterMapper->deleteAll(
             [
-                'include_parameter_set_id' => $id
-            ]
-        ]);
-        
+                [
+                    'include_parameter_set_id' => $id
+                ]
+            ]);
+
         $action = new Delete('include_parameter_set');
         $action->where([
             'id = ?' => $id
@@ -203,7 +207,7 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
         $return = (bool) $result->getAffectedRows();
-        
+
         return $return;
     }
 

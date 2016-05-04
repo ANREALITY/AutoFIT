@@ -10,7 +10,8 @@
             $reasonMessage = $this->translate('The requested controller was unable to dispatch the request.');
             break;
         case 'error-controller-not-found':
-            $reasonMessage = $this->translate('The requested controller could not be mapped to an existing controller class.');
+            $reasonMessage = $this->translate(
+                'The requested controller could not be mapped to an existing controller class.');
             break;
         case 'error-controller-invalid':
             $reasonMessage = $this->translate('The requested controller was not dispatchable.');

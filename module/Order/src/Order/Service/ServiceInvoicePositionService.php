@@ -58,7 +58,8 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
      * {@inheritDoc}
      *
      */
-    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity)
+    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
+        int $environmentSeverity)
     {
         return $this->serviceInvoicePositionMapper->findAll(
             [
@@ -76,7 +77,8 @@ class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInte
      * {@inheritDoc}
      *
      */
-    public function findAllPersonalByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity)
+    public function findAllPersonalByNumberApplicationAndEnvironment(string $number,
+        string $applicationTechnicalShortName, int $environmentSeverity)
     {
         return $this->serviceInvoicePositionMapper->findAll(
             [

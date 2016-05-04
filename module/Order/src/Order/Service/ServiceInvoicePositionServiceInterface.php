@@ -33,7 +33,8 @@ interface ServiceInvoicePositionServiceInterface
      * @param string $applicationTechnicalShortName
      * @param integer $environmentSeverity
      */
-    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity);
+    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
+        int $environmentSeverity);
 
     /**
      *
@@ -41,6 +42,7 @@ interface ServiceInvoicePositionServiceInterface
      * @param string $applicationTechnicalShortName
      * @param integer $environmentSeverity
      */
-    public function findAllPersonalByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, int $environmentSeverity);
+    public function findAllPersonalByNumberApplicationAndEnvironment(string $number,
+        string $applicationTechnicalShortName, int $environmentSeverity);
 
 }

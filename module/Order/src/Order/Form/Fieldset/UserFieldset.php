@@ -8,7 +8,7 @@ class UserFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     /**
-     * 
+     *
      * @var string
      */
     protected $username;

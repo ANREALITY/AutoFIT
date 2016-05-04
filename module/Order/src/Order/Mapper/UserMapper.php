@@ -121,7 +121,9 @@ class UserMapper implements UserMapperInterface
             $dataObject = $this->hydrator->hydrate($result->current(), $this->prototype);
             $action = new Update('user');
             $action->set($data);
-            $action->where(['username' => $data['username']]);
+            $action->where([
+                'username' => $data['username']
+            ]);
         } else {
             $action = new Insert('user');
             $action->values($data);

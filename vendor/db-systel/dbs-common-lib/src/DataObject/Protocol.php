@@ -5,6 +5,7 @@ class Protocol
 {
 
     /**
+     *
      * @var array
      */
     const PROTOCOLS = [
@@ -12,7 +13,7 @@ class Protocol
         2 => 'FTPs',
         3 => 'HTTP',
         4 => 'HTTPs',
-        5 => 'WebDAV',
+        5 => 'WebDAV'
     ];
 
     /**
@@ -38,7 +39,7 @@ class Protocol
 
     /**
      *
-     * @param number $id
+     * @param number $id            
      */
     public function setId($id)
     {
@@ -56,7 +57,7 @@ class Protocol
 
     /**
      *
-     * @param string $name
+     * @param string $name            
      */
     public function setName($name)
     {

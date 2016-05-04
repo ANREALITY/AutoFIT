@@ -73,7 +73,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ServerMapperInterface $serverMapper            
+     * @param ServerMapperInterface $serverMapper
      */
     public function setServerMapper(ServerMapperInterface $serverMapper)
     {
@@ -82,7 +82,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ApplicationMapperInterface $applicationMapper            
+     * @param ApplicationMapperInterface $applicationMapper
      */
     public function setApplicationMapper(ApplicationMapperInterface $applicationMapper)
     {
@@ -91,7 +91,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param CustomerMapperInterface $customerMapper            
+     * @param CustomerMapperInterface $customerMapper
      */
     public function setCustomerMapper(CustomerMapperInterface $customerMapper)
     {
@@ -100,7 +100,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param IncludeParameterSetMapperInterface $includeParameterSetMapper            
+     * @param IncludeParameterSetMapperInterface $includeParameterSetMapper
      */
     public function setIncludeParameterSetMapper(IncludeParameterSetMapperInterface $includeParameterSetMapper)
     {
@@ -116,7 +116,7 @@ class EndpointMapper implements EndpointMapperInterface
     public function find($id)
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-        
+
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -147,14 +147,14 @@ class EndpointMapper implements EndpointMapperInterface
         $select->where([
             'endpoint.id = ?' => $id
         ]);
-        
+
         $select->join('server', 'server.name = endpoint.server_name', [
             'server_name' => 'name'
         ]);
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $data = $result->current();
             if (! empty($data['type'])) {
@@ -170,13 +170,13 @@ class EndpointMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwWindows();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->prototype);
-                
+
                 $return->setServer(new Server());
                 $return->getServer()->setName($data['server_name']);
             } else {
                 $return = null;
             }
-            
+
             return $return;
         }
     }
@@ -188,7 +188,7 @@ class EndpointMapper implements EndpointMapperInterface
     public function findAll(array $criteria = [])
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-        
+
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -209,7 +209,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param AbstractEndpoint $dataObject            
+     * @param AbstractEndpoint $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -232,14 +232,14 @@ class EndpointMapper implements EndpointMapperInterface
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
-        
+
         $action = new Insert('endpoint');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -254,7 +254,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdAs400 $dataObject            
+     * @param EndpointCdAs400 $dataObject
      *
      * @return EndpointCdAs400
      * @throws \Exception
@@ -270,14 +270,14 @@ class EndpointMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-        
+
         $action = new Insert('endpoint_cd_as400');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             return $dataObject;
         }
@@ -286,7 +286,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdTandem $dataObject            
+     * @param EndpointCdTandem $dataObject
      *
      * @return EndpointCdTandem
      * @throws \Exception
@@ -302,14 +302,14 @@ class EndpointMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-        
+
         $action = new Insert('endpoint_cd_tandem');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             return $dataObject;
         }
@@ -318,7 +318,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param EndpointCdLinuxUnix $dataObject            
+     * @param EndpointCdLinuxUnix $dataObject
      *
      * @return EndpointCdLinuxUnix
      * @throws \Exception
@@ -346,14 +346,14 @@ class EndpointMapper implements EndpointMapperInterface
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
-        
+
         $action = new Insert('endpoint_cd_linux_unix');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
@@ -386,7 +386,7 @@ SQL;
 
     /**
      *
-     * @param EndpointFtgwSelfService $dataObject            
+     * @param EndpointFtgwSelfService $dataObject
      *
      * @return EndpointFtgwSelfService
      * @throws \Exception
@@ -403,14 +403,14 @@ SQL;
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
-        
+
         $action = new Insert('endpoint_ftgw_self_service');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
@@ -422,7 +422,9 @@ DELETE FROM
 WHERE
     endpoint_ftgw_self_service_endpoint_id = $newEndpointId
 SQL;
-                $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
+                $result = $this->dbAdapter->getDriver()
+                    ->getConnection()
+                    ->execute($sql);
                 foreach ($dataObject->getProtocols() as $protocol) {
                     $protocolId = null;
                     if (is_object($protocol) && $protocol instanceof Protocol) {
@@ -430,7 +432,7 @@ SQL;
                     } elseif (is_numeric($protocol)) {
                         $protocolId = $protocol;
                     }
-                    if (!empty($protocolId) && key_exists($protocolId, Protocol::PROTOCOLS)) {
+                    if (! empty($protocolId) && key_exists($protocolId, Protocol::PROTOCOLS)) {
                         $sql = <<<SQL
 INSERT INTO
     endpoint_ftgw_self_service_protocol
@@ -439,7 +441,9 @@ VALUES
     ('$newEndpointId', '{$protocolId}')
 ;
 SQL;
-                        $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
+                        $result = $this->dbAdapter->getDriver()
+                            ->getConnection()
+                            ->execute($sql);
                     }
                 }
             }
@@ -450,7 +454,7 @@ SQL;
 
     /**
      *
-     * @param EndpointFtgwWindows $dataObject            
+     * @param EndpointFtgwWindows $dataObject
      *
      * @return EndpointFtgwWindows
      * @throws \Exception
@@ -470,14 +474,14 @@ SQL;
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
-        
+
         $action = new Insert('endpoint_ftgw_windows');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             return $dataObject;
         }

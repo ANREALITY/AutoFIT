@@ -22,12 +22,15 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $connectionType = $requestAnalyzer->getConnectionType();
 
-        $physicalConnectionTargetFieldsetServiceName = $isOrderRequest && strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0  ? $properServiceNameDetector->getPhysicalConnectionTargetFieldsetServiceName() : null;
+        $physicalConnectionTargetFieldsetServiceName = $isOrderRequest &&
+             strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0 ? $properServiceNameDetector->getPhysicalConnectionTargetFieldsetServiceName() : null;
 
         if (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_CD) === 0) {
-            $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
+            $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionSourceFieldsetServiceName,
+                $physicalConnectionTargetFieldsetServiceName);
         } elseif (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_FTGW) === 0) {
-            $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionSourceFieldsetServiceName, $physicalConnectionTargetFieldsetServiceName);
+            $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionSourceFieldsetServiceName,
+                $physicalConnectionTargetFieldsetServiceName);
         }
 
         $hydrator = $serviceLocator->getServiceLocator()
@@ -36,7 +39,7 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new LogicalConnection();
         $fieldset->setObject($prototype);
-        
+
         return $fieldset;
     }
 
