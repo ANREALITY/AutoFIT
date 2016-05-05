@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class IncludeParameterSet
+class IncludeParameterSet extends AbstractDataObject
 {
 
     /**

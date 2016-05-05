@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class ServerType
+class ServerType extends AbstractDataObject
 {
 
     /**

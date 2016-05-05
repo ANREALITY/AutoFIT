@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class Server
+class Server extends AbstractDataObject
 {
 
     const PLACE_INTERNAL = 'internal';

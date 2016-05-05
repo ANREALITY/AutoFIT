@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class LogicalConnection
+class LogicalConnection extends AbstractDataObject
 {
 
     const TYPE_CD = 'CD';

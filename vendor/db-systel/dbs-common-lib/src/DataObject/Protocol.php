@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class Protocol
+class Protocol extends AbstractDataObject
 {
 
     /**

@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class AbstractPhysicalConnection
+abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
 
     const ROLE_SOURCE = 'source';

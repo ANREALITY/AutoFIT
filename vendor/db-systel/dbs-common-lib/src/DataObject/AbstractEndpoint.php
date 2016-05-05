@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-abstract class AbstractEndpoint
+abstract class AbstractEndpoint extends AbstractDataObject
 {
 
     const TYPE_CD_AS400 = 'CdAs400';

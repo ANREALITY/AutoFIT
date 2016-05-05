@@ -1,7 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
-class Article
+class Article extends AbstractDataObject
 {
 
     const TYPE_BASIC = 'basic';
