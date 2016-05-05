@@ -4,7 +4,7 @@ namespace Order\Service;
 use Order\Mapper\ApplicationMapperInterface;
 use DbSystel\DataObject\Application;
 
-class ApplicationService implements ApplicationServiceInterface
+class ApplicationService extends AbstractService implements ApplicationServiceInterface
 {
 
     /**

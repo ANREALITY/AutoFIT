@@ -4,7 +4,7 @@ namespace Order\Service;
 use Order\Mapper\EnvironmentMapperInterface;
 use DbSystel\DataObject\Environment;
 
-class EnvironmentService implements EnvironmentServiceInterface
+class EnvironmentService extends AbstractService implements EnvironmentServiceInterface
 {
 
     /**

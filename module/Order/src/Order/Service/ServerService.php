@@ -4,7 +4,7 @@ namespace Order\Service;
 use Order\Mapper\ServerMapperInterface;
 use DbSystel\DataObject\Server;
 
-class ServerService implements ServerServiceInterface
+class ServerService extends AbstractService implements ServerServiceInterface
 {
 
     /**

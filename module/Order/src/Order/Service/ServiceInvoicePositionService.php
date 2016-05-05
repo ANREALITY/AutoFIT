@@ -5,7 +5,7 @@ use Order\Mapper\ServiceInvoicePositionMapperInterface;
 use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\Article;
 
-class ServiceInvoicePositionService implements ServiceInvoicePositionServiceInterface
+class ServiceInvoicePositionService extends AbstractService implements ServiceInvoicePositionServiceInterface
 {
 
     /**

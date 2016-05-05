@@ -4,7 +4,7 @@ namespace Order\Service;
 use Order\Mapper\FileTransferRequestMapperInterface;
 use DbSystel\DataObject\FileTransferRequest;
 
-class FileTransferRequestService implements FileTransferRequestServiceInterface
+class FileTransferRequestService extends AbstractService implements FileTransferRequestServiceInterface
 {
 
     /**
