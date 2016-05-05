@@ -15,13 +15,6 @@ interface ServiceInvoicePositionServiceInterface
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePosition
-     * @return ServiceInvoicePosition
-     */
-    public function saveOne(ServiceInvoicePosition $serviceInvoicePositionRequest);
-
-    /**
-     *
      * @param string $number
      * @param string $applicationTechnicalShortName
      * @param integer $environmentSeverity
@@ -37,5 +30,12 @@ interface ServiceInvoicePositionServiceInterface
      */
     public function findAllPersonalByNumberApplicationAndEnvironment(string $number,
         string $applicationTechnicalShortName, int $environmentSeverity);
+
+    /**
+     *
+     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @return ServiceInvoicePosition
+     */
+    public function saveOne(ServiceInvoicePosition $serviceInvoicePositionRequest);
 
 }

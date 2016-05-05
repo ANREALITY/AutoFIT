@@ -12,6 +12,12 @@ interface EnvironmentServiceInterface
      * @return Environment
      */
     public function findOne($id);
+    /**
+     *
+     * @param string $applicationTechnicalShortName
+     * @param string $name
+     */
+    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null);
 
     /**
      *
@@ -20,11 +26,5 @@ interface EnvironmentServiceInterface
      */
     public function saveOne(Environment $environmentRequest);
 
-    /**
-     *
-     * @param string $applicationTechnicalShortName
-     * @param string $name
-     */
-    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null);
 
 }

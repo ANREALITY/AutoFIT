@@ -27,16 +27,6 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
      * {@inheritDoc}
      *
      */
-    public function saveOne(Environment $environment)
-    {
-        return $this->mapper->save($environment);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null)
     {
         return $this->mapper->findAll(
@@ -46,6 +36,16 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
                     'name' => $name
                 ]
             ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function saveOne(Environment $environment)
+    {
+        return $this->mapper->save($environment);
     }
 
 }

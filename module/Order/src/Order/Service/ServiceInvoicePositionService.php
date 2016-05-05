@@ -28,16 +28,6 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function saveOne(ServiceInvoicePosition $serviceInvoicePosition)
-    {
-        return $this->mapper->save($serviceInvoicePosition);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
         int $environmentSeverity)
     {
@@ -69,6 +59,16 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'article_type' => Article::TYPE_PERSONAL
                 ]
             ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function saveOne(ServiceInvoicePosition $serviceInvoicePosition)
+    {
+        return $this->mapper->save($serviceInvoicePosition);
     }
 
 }

@@ -5,11 +5,6 @@ use DbSystel\DataObject\FileTransferRequest;
 
 interface FileTransferRequestServiceInterface
 {
-    /**
-     *
-     * @return array|FileTransferRequest[]
-     */
-    public function findAllWithBuldledData();
 
     /**
      *
@@ -18,6 +13,12 @@ interface FileTransferRequestServiceInterface
      * @return FileTransferRequest
      */
     public function findOne($id);
+
+    /**
+     *
+     * @return array|FileTransferRequest[]
+     */
+    public function findAllWithBuldledData();
 
     /**
      *

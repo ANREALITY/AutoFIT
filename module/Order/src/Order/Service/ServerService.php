@@ -27,16 +27,6 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
-    public function saveOne(Server $server)
-    {
-        return $this->mapper->save($server);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function findAllByName(string $name)
     {
         return $this->mapper->findAll(
@@ -45,6 +35,16 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'name' => $name
                 ]
             ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function saveOne(Server $server)
+    {
+        return $this->mapper->save($server);
     }
 
 }
