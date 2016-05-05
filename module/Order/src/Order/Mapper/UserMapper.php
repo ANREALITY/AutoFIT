@@ -11,20 +11,8 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class UserMapper implements UserMapperInterface
+class UserMapper extends AbstractMapper implements UserMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
 
     /**
      *
@@ -34,9 +22,7 @@ class UserMapper implements UserMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, User $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

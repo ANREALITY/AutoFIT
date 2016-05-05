@@ -14,20 +14,8 @@ use DbSystel\DataObject\AbstractPhysicalConnection;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
 
-class LogicalConnectionMapper implements LogicalConnectionMapperInterface
+class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectionMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
 
     /**
      *
@@ -55,9 +43,7 @@ class LogicalConnectionMapper implements LogicalConnectionMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

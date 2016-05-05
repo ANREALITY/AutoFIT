@@ -12,21 +12,8 @@ use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Delete;
 
-class IncludeParameterMapper implements IncludeParameterMapperInterface
+class IncludeParameterMapper extends AbstractMapper implements IncludeParameterMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
     /**
      *
      * @var IncludeParameter
@@ -35,9 +22,7 @@ class IncludeParameterMapper implements IncludeParameterMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, IncludeParameter $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

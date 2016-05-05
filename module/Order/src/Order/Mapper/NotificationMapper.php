@@ -12,21 +12,8 @@ use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Delete;
 
-class NotificationMapper implements NotificationMapperInterface
+class NotificationMapper extends AbstractMapper implements NotificationMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
     /**
      *
      * @var Notification
@@ -35,9 +22,7 @@ class NotificationMapper implements NotificationMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Notification $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

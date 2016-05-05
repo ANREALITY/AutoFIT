@@ -17,21 +17,8 @@ use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
 
-class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
+class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
     /**
      *
      * @var AbstractPhysicalConnection
@@ -52,8 +39,7 @@ class PhysicalConnectionMapper implements PhysicalConnectionMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
+        parent::__construct($dbAdapter, $hydrator);
     }
 
     /**

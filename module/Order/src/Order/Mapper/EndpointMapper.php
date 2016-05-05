@@ -20,21 +20,8 @@ use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Protocol;
 
-class EndpointMapper implements EndpointMapperInterface
+class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
     /**
      *
      * @var AbstractEndpoint
@@ -67,8 +54,7 @@ class EndpointMapper implements EndpointMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
+        parent::__construct($dbAdapter, $hydrator);
     }
 
     /**

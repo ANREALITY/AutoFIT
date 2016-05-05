@@ -11,20 +11,8 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterface
+class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvoicePositionMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
 
     /**
      *
@@ -35,9 +23,7 @@ class ServiceInvoicePositionMapper implements ServiceInvoicePositionMapperInterf
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         ServiceInvoicePosition $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

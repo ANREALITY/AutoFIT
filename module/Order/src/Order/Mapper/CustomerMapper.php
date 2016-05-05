@@ -11,32 +11,18 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 
-class CustomerMapper implements CustomerMapperInterface
+class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
 {
 
     /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
-    /**
-     *
+     * 
      * @var Customer
      */
     protected $prototype;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Customer $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

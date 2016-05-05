@@ -12,32 +12,18 @@ use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Select;
 
-class EnvironmentMapper implements EnvironmentMapperInterface
+class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInterface
 {
 
     /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
-    /**
-     *
+     * 
      * @var Environment
      */
     protected $prototype;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Environment $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

@@ -14,20 +14,8 @@ use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Delete;
 
-class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
+class IncludeParameterSetMapper extends AbstractMapper implements IncludeParameterSetMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
 
     /**
      *
@@ -49,9 +37,7 @@ class IncludeParameterSetMapper implements IncludeParameterSetMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, IncludeParameterSet $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**

@@ -21,21 +21,8 @@ use DbSystel\DataObject\ServiceInvoice;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
 
-class FileTransferRequestMapper implements FileTransferRequestMapperInterface
+class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
-
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
     /**
      *
      * @var FileTransferRequest
@@ -56,9 +43,7 @@ class FileTransferRequestMapper implements FileTransferRequestMapperInterface
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype)
     {
-        $this->dbAdapter = $dbAdapter;
-        $this->hydrator = $hydrator;
-        $this->prototype = $prototype;
+        parent::__construct($dbAdapter, $hydrator, $prototype);
     }
 
     /**
