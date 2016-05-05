@@ -27,16 +27,6 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      * {@inheritDoc}
      *
      */
-    public function findAll()
-    {
-        return $this->mapper->findAll();
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function findAllWithBuldledData()
     {
         return $this->mapper->findAllWithBuldledData();

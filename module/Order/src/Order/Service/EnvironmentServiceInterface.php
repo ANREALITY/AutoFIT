@@ -5,13 +5,6 @@ use DbSystel\DataObject\Environment;
 
 interface EnvironmentServiceInterface
 {
-
-    /**
-     *
-     * @return array|Environment[]
-     */
-    public function findAll();
-
     /**
      *
      * @param int $id

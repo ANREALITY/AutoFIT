@@ -5,13 +5,6 @@ use DbSystel\DataObject\ServiceInvoicePosition;
 
 interface ServiceInvoicePositionServiceInterface
 {
-
-    /**
-     *
-     * @return array|ServiceInvoicePosition[]
-     */
-    public function findAll();
-
     /**
      *
      * @param int $id

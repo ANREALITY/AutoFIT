@@ -5,13 +5,6 @@ use DbSystel\DataObject\FileTransferRequest;
 
 interface FileTransferRequestServiceInterface
 {
-
-    /**
-     *
-     * @return array|FileTransferRequest[]
-     */
-    public function findAll();
-
     /**
      *
      * @return array|FileTransferRequest[]

@@ -27,16 +27,6 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAll()
-    {
-        return $this->mapper->findAll($criteria);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function findApplication($id)
     {
         return $this->mapper->find($id);

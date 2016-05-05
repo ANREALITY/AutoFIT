@@ -5,13 +5,6 @@ use DbSystel\DataObject\Application;
 
 interface ApplicationServiceInterface
 {
-
-    /**
-     *
-     * @return array|Application[]
-     */
-    public function findAll();
-
     /**
      *
      * @param int $id
