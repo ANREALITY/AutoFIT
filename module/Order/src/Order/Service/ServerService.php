@@ -27,7 +27,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
-    public function saveServer(Server $server)
+    public function saveOne(Server $server)
     {
         return $this->mapper->save($server);
     }

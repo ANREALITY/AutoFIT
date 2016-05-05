@@ -27,7 +27,7 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
      * {@inheritDoc}
      *
      */
-    public function saveEnvironment(Environment $environment)
+    public function saveOne(Environment $environment)
     {
         return $this->mapper->save($environment);
     }

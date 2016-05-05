@@ -82,7 +82,7 @@ class ProcessController extends AbstractActionController
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
                 $this->fileTransferRequest->getUser()->setUsername($_SESSION['username']);
-                $this->fileTransferRequestService->saveFileTransferRequest($this->fileTransferRequest);
+                $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process', [
                     'action' => 'received'
                 ]);

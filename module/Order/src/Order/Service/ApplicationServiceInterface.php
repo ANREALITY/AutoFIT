@@ -18,7 +18,7 @@ interface ApplicationServiceInterface
      * @param Application $application
      * @return Application
      */
-    public function saveApplication(Application $applicationRequest);
+    public function saveOne(Application $applicationRequest);
 
     /**
      *

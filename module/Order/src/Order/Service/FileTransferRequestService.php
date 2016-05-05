@@ -37,7 +37,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      * {@inheritDoc}
      *
      */
-    public function saveFileTransferRequest(FileTransferRequest $fileTransferRequest)
+    public function saveOne(FileTransferRequest $fileTransferRequest)
     {
         return $this->mapper->save($fileTransferRequest);
     }

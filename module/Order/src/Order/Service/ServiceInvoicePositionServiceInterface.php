@@ -18,7 +18,7 @@ interface ServiceInvoicePositionServiceInterface
      * @param ServiceInvoicePosition $serviceInvoicePosition
      * @return ServiceInvoicePosition
      */
-    public function saveServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePositionRequest);
+    public function saveOne(ServiceInvoicePosition $serviceInvoicePositionRequest);
 
     /**
      *

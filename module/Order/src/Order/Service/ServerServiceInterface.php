@@ -18,7 +18,7 @@ interface ServerServiceInterface
      * @param Server $server
      * @return Server
      */
-    public function saveServer(Server $serverRequest);
+    public function saveOne(Server $serverRequest);
 
     /**
      *

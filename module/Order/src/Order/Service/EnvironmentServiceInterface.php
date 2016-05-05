@@ -18,7 +18,7 @@ interface EnvironmentServiceInterface
      * @param Environment $environment
      * @return Environment
      */
-    public function saveEnvironment(Environment $environmentRequest);
+    public function saveOne(Environment $environmentRequest);
 
     /**
      *
