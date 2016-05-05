@@ -11,7 +11,7 @@ interface EnvironmentServiceInterface
      *            Identifier of the Environment that should be returned
      * @return Environment
      */
-    public function findEnvironment($id);
+    public function findOne($id);
 
     /**
      *

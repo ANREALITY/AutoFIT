@@ -28,7 +28,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function findServiceInvoicePosition($id)
+    public function findOne($id)
     {
         return $this->mapper->find($id);
     }

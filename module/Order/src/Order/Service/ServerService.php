@@ -27,7 +27,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
-    public function findServer($id)
+    public function findOne($id)
     {
         return $this->mapper->find($id);
     }

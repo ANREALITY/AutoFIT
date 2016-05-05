@@ -11,7 +11,7 @@ interface ServiceInvoicePositionServiceInterface
      *            Identifier of the ServiceInvoicePosition that should be returned
      * @return ServiceInvoicePosition
      */
-    public function findServiceInvoicePosition($id);
+    public function findOne($id);
 
     /**
      *

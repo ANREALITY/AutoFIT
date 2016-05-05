@@ -17,7 +17,7 @@ interface FileTransferRequestServiceInterface
      *            Identifier of the FileTransferRequest that should be returned
      * @return FileTransferRequest
      */
-    public function findFileTransferRequest($id);
+    public function findOne($id);
 
     /**
      *

@@ -11,7 +11,7 @@ interface ApplicationServiceInterface
      *            Identifier of the Application that should be returned
      * @return Application
      */
-    public function findApplication($id);
+    public function findOne($id);
 
     /**
      *

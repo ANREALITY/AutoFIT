@@ -11,7 +11,7 @@ interface ServerServiceInterface
      *            Identifier of the Server that should be returned
      * @return Server
      */
-    public function findServer($id);
+    public function findOne($id);
 
     /**
      *
