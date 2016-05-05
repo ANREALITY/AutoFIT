@@ -11,15 +11,15 @@ class ServerService implements ServerServiceInterface
      *
      * @var ServerMapperInterface
      */
-    protected $serverMapper;
+    protected $mapper;
 
     /**
      *
-     * @param ServerMapperInterface $serverMapper
+     * @param ServerMapperInterface $mapper
      */
-    public function __construct(ServerMapperInterface $serverMapper)
+    public function __construct(ServerMapperInterface $mapper)
     {
-        $this->serverMapper = $serverMapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -29,7 +29,7 @@ class ServerService implements ServerServiceInterface
      */
     public function findAll()
     {
-        return $this->serverMapper->findAll();
+        return $this->mapper->findAll();
     }
 
     /**
@@ -39,7 +39,7 @@ class ServerService implements ServerServiceInterface
      */
     public function findServer($id)
     {
-        return $this->serverMapper->find($id);
+        return $this->mapper->find($id);
     }
 
     /**
@@ -49,7 +49,7 @@ class ServerService implements ServerServiceInterface
      */
     public function saveServer(Server $server)
     {
-        return $this->serverMapper->save($server);
+        return $this->mapper->save($server);
     }
 
     /**
@@ -59,7 +59,7 @@ class ServerService implements ServerServiceInterface
      */
     public function findAllByName(string $name)
     {
-        return $this->serverMapper->findAll(
+        return $this->mapper->findAll(
             [
                 [
                     'name' => $name

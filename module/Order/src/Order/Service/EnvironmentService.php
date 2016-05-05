@@ -11,15 +11,15 @@ class EnvironmentService implements EnvironmentServiceInterface
      *
      * @var EnvironmentMapperInterface
      */
-    protected $environmentMapper;
+    protected $mapper;
 
     /**
      *
-     * @param EnvironmentMapperInterface $environmentMapper
+     * @param EnvironmentMapperInterface $mapper
      */
-    public function __construct(EnvironmentMapperInterface $environmentMapper)
+    public function __construct(EnvironmentMapperInterface $mapper)
     {
-        $this->environmentMapper = $environmentMapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -29,7 +29,7 @@ class EnvironmentService implements EnvironmentServiceInterface
      */
     public function findAll()
     {
-        return $this->environmentMapper->findAll($criteria);
+        return $this->mapper->findAll($criteria);
     }
 
     /**
@@ -39,7 +39,7 @@ class EnvironmentService implements EnvironmentServiceInterface
      */
     public function findEnvironment($id)
     {
-        return $this->environmentMapper->find($id);
+        return $this->mapper->find($id);
     }
 
     /**
@@ -49,7 +49,7 @@ class EnvironmentService implements EnvironmentServiceInterface
      */
     public function saveEnvironment(Environment $environment)
     {
-        return $this->environmentMapper->save($environment);
+        return $this->mapper->save($environment);
     }
 
     /**
@@ -59,7 +59,7 @@ class EnvironmentService implements EnvironmentServiceInterface
      */
     public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null)
     {
-        return $this->environmentMapper->findAll(
+        return $this->mapper->findAll(
             [
                 [
                     'application_technical_short_name' => $applicationTechnicalShortName,

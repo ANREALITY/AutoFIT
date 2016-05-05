@@ -11,15 +11,15 @@ class ApplicationService implements ApplicationServiceInterface
      *
      * @var ApplicationMapperInterface
      */
-    protected $applicationMapper;
+    protected $mapper;
 
     /**
      *
-     * @param ApplicationMapperInterface $applicationMapper
+     * @param ApplicationMapperInterface $mapper
      */
-    public function __construct(ApplicationMapperInterface $applicationMapper)
+    public function __construct(ApplicationMapperInterface $mapper)
     {
-        $this->applicationMapper = $applicationMapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -29,7 +29,7 @@ class ApplicationService implements ApplicationServiceInterface
      */
     public function findAll()
     {
-        return $this->applicationMapper->findAll($criteria);
+        return $this->mapper->findAll($criteria);
     }
 
     /**
@@ -39,7 +39,7 @@ class ApplicationService implements ApplicationServiceInterface
      */
     public function findApplication($id)
     {
-        return $this->applicationMapper->find($id);
+        return $this->mapper->find($id);
     }
 
     /**
@@ -49,7 +49,7 @@ class ApplicationService implements ApplicationServiceInterface
      */
     public function saveApplication(Application $application)
     {
-        return $this->applicationMapper->save($application);
+        return $this->mapper->save($application);
     }
 
     /**
@@ -59,7 +59,7 @@ class ApplicationService implements ApplicationServiceInterface
      */
     public function findAllByTechnicalShortName(string $technicalShortName)
     {
-        return $this->applicationMapper->findAll(
+        return $this->mapper->findAll(
             [
                 [
                     'technical_short_name' => $technicalShortName

@@ -11,15 +11,15 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      *
      * @var FileTransferRequestMapperInterface
      */
-    protected $fileTransferRequestMapper;
+    protected $mapper;
 
     /**
      *
-     * @param FileTransferRequestMapperInterface $fileTransferRequestMapper
+     * @param FileTransferRequestMapperInterface $mapper
      */
-    public function __construct(FileTransferRequestMapperInterface $fileTransferRequestMapper)
+    public function __construct(FileTransferRequestMapperInterface $mapper)
     {
-        $this->fileTransferRequestMapper = $fileTransferRequestMapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -29,7 +29,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      */
     public function findAll()
     {
-        return $this->fileTransferRequestMapper->findAll();
+        return $this->mapper->findAll();
     }
 
     /**
@@ -39,7 +39,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      */
     public function findAllWithBuldledData()
     {
-        return $this->fileTransferRequestMapper->findAllWithBuldledData();
+        return $this->mapper->findAllWithBuldledData();
     }
 
     /**
@@ -49,7 +49,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      */
     public function findFileTransferRequest($id)
     {
-        return $this->fileTransferRequestMapper->find($id);
+        return $this->mapper->find($id);
     }
 
     /**
@@ -59,7 +59,7 @@ class FileTransferRequestService implements FileTransferRequestServiceInterface
      */
     public function saveFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
-        return $this->fileTransferRequestMapper->save($fileTransferRequest);
+        return $this->mapper->save($fileTransferRequest);
     }
 
 }
