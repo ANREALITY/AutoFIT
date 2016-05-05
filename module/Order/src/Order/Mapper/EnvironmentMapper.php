@@ -16,7 +16,7 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
 {
 
     /**
-     * 
+     *
      * @var Environment
      */
     protected $prototype;

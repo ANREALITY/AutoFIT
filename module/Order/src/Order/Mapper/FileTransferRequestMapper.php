@@ -23,6 +23,7 @@ use DbSystel\DataObject\Environment;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
+
     /**
      *
      * @var FileTransferRequest

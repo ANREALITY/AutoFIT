@@ -14,6 +14,7 @@ use Zend\Db\Sql\Delete;
 
 class IncludeParameterMapper extends AbstractMapper implements IncludeParameterMapperInterface
 {
+
     /**
      *
      * @var IncludeParameter

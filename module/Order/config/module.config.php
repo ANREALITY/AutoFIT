@@ -121,8 +121,7 @@ return [
             'Order\Utility\ProperServiceNameDetector' => 'Order\Utility\Factory\ProperServiceNameDetectorFactory',
             'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory'
         ],
-        'invokables' => [
-        ],
+        'invokables' => [],
         'abstract_factories' => [
             // mappers
             'Order\Mapper\Factory\AbstractMapperFactory',

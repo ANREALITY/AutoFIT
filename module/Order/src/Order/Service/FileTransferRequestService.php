@@ -15,7 +15,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
 
     /**
      *
-     * @param FileTransferRequestMapperInterface $mapper
+     * @param FileTransferRequestMapperInterface $mapper            
      */
     public function __construct(FileTransferRequestMapperInterface $mapper)
     {

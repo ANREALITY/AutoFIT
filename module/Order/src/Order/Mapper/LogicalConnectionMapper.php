@@ -48,7 +48,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper
+     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper            
      */
     public function setPhysicalConnectionMapper(PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
@@ -57,7 +57,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param NotificationMapperInterface $notificationMapper
+     * @param NotificationMapperInterface $notificationMapper            
      */
     public function setNotificationMapper(NotificationMapperInterface $notificationMapper)
     {
@@ -66,7 +66,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      *
      * @return LogicalConnection
      * @throws \InvalidArgumentException
@@ -127,34 +127,34 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $select->where([
             'logical_connection.id = ?' => $id
         ]);
-
+        
         $select->join([
             'physical_connection_source' => 'physical_connection'
-        ],
+        ], 
             new Expression(
                 'physical_connection_source.logical_connection_id = logical_connection.id AND physical_connection_source.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_SOURCE . '"'),
+                     '"' . AbstractPhysicalConnection::ROLE_SOURCE . '"'), 
             [
                 'physical_connection_source_id' => 'id'
             ], Select::JOIN_LEFT);
-
+        
         $select->join([
             'physical_connection_target' => 'physical_connection'
-        ],
+        ], 
             new Expression(
                 'physical_connection_target.logical_connection_id = logical_connection.id AND physical_connection_target.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_TARGET . '"'),
+                     '"' . AbstractPhysicalConnection::ROLE_TARGET . '"'), 
             [
                 'physical_connection_target_id' => 'id'
             ], Select::JOIN_LEFT);
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $return = $this->hydrator->hydrate($result->current(), $this->prototype);
             $data = $result->current();
-
+            
             if (! empty($data['physical_connection_source_id'])) {
                 $return->setPhysicalConnectionSource(
                     $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_source_id']));
@@ -163,16 +163,16 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 $return->setPhysicalConnectionTarget(
                     $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_target_id']));
             }
-
+            
             return $return;
         }
-
+        
         throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
     }
 
     /**
      *
-     * @param LogicalConnection $dataObject
+     * @param LogicalConnection $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -184,14 +184,14 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $data['type'] = $dataObject->getType();
         // creating sub-objects
         // data from the recently persisted objects
-
+        
         $action = new Insert('logical_connection');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -208,11 +208,12 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
                         $dataObject->getPhysicalConnectionTarget());
                 }
-                $this->notificationMapper->deleteAll([
+                $this->notificationMapper->deleteAll(
                     [
-                        'logical_connection_id' => $dataObject->getId()
-                    ]
-                ]);
+                        [
+                            'logical_connection_id' => $dataObject->getId()
+                        ]
+                    ]);
                 $newNotifications = [];
                 foreach ($dataObject->getNotifications() as $notification) {
                     if ($notification->getEmail()) {

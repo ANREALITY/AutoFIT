@@ -27,7 +27,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      *
      * @return User
      * @throws \InvalidArgumentException
@@ -79,7 +79,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
 
     /**
      *
-     * @param User $dataObject
+     * @param User $dataObject            
      *
      * @return User
      * @throws \Exception
@@ -94,7 +94,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         // none
         // data from the recently persisted objects
         // none
-
+        
         $sql = new Sql($this->dbAdapter);
         $select = $select = $sql->select('user');
         $select->where([
@@ -102,7 +102,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         ]);
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $dataObject = $this->hydrator->hydrate($result->current(), $this->prototype);
             $action = new Update('user');
@@ -114,10 +114,10 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
             $action = new Insert('user');
             $action->values($data);
         }
-
+        
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {

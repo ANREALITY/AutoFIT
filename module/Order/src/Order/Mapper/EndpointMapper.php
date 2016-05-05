@@ -22,6 +22,7 @@ use DbSystel\DataObject\Protocol;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
+
     /**
      *
      * @var AbstractEndpoint

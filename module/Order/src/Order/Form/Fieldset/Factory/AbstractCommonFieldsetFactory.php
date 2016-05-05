@@ -46,10 +46,11 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $canCreateServiceWithName = false;
 
         $matches = [];
-        $pattern = '^(' . preg_quote(self::NAMESPACE_FIELDSET . '\\') . '(' . implode('|', self::COMMON_FIELDSETS) . ')' . ')$';
+        $pattern = '^(' . preg_quote(self::NAMESPACE_FIELDSET . '\\') . '(' . implode('|', self::COMMON_FIELDSETS) . ')' .
+             ')$';
         preg_match('/' . $pattern . '/', $requestedName, $matches);
 
-        if (!empty($matches) && class_exists($requestedName . self::NAME_PART_FIEDLSET)) {
+        if (! empty($matches) && class_exists($requestedName . self::NAME_PART_FIEDLSET)) {
             $canCreateServiceWithName = true;
         }
 
@@ -75,9 +76,8 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $service->setHydrator($hydrator);
         $prototype = new $prototypeQualifiedClassName();
         $service->setObject($prototype);
-        
+
         return $service;
-        
     }
 
 }

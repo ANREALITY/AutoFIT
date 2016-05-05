@@ -20,7 +20,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
      */
     protected $prototype;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, 
         ServiceInvoicePosition $prototype)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype);
@@ -28,7 +28,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
 
     /**
      *
-     * @param int|string $number
+     * @param int|string $number            
      *
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
@@ -62,7 +62,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('service_invoice_position');
-
+        
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('number', $condition)) {
@@ -79,11 +79,12 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                         ]);
                 }
                 if (array_key_exists('application_technical_short_name', $condition)) {
-                    $select->join([
-                        'service_invoice_for_application' => 'service_invoice'
-                    ], 'service_invoice_for_application.number = service_invoice_position.service_invoice_number', [])->join(
-                        'application',
-                        'application.technical_short_name = service_invoice_for_application.application_technical_short_name',
+                    $select->join(
+                        [
+                            'service_invoice_for_application' => 'service_invoice'
+                        ], 'service_invoice_for_application.number = service_invoice_position.service_invoice_number', 
+                        [])->join('application', 
+                        'application.technical_short_name = service_invoice_for_application.application_technical_short_name', 
                         []);
                     $select->where(
                         [
@@ -91,10 +92,12 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                         ]);
                 }
                 if (array_key_exists('environment_severity', $condition)) {
-                    $select->join([
-                        'service_invoice_for_environment' => 'service_invoice'
-                    ], 'service_invoice_for_environment.number = service_invoice_position.service_invoice_number', [])->join(
-                        'environment', 'environment.severity = service_invoice_for_environment.environment_severity', []);
+                    $select->join(
+                        [
+                            'service_invoice_for_environment' => 'service_invoice'
+                        ], 'service_invoice_for_environment.number = service_invoice_position.service_invoice_number', 
+                        [])->join('environment', 
+                        'environment.severity = service_invoice_for_environment.environment_severity', []);
                     $select->where(
                         [
                             'environment.severity = ?' => $condition['environment_severity']
@@ -102,22 +105,22 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                 }
             }
         }
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             return $resultSet->initialize($result);
         }
-
+        
         return [];
     }
 
     /**
      *
-     * @param ServiceInvoicePosition $dataObject
+     * @param ServiceInvoicePosition $dataObject            
      *
      * @return ServiceInvoicePosition
      * @throws \Exception

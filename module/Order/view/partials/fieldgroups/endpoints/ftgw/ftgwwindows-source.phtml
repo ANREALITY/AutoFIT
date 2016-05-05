@@ -6,8 +6,8 @@ $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')
         ->get('include_parameters')),
-    '<div class="form-field-wrapper col-md-6 add-button-container">' .
-         $this->formRow($endpointSourceFieldset->get('include_parameter_set')
+    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
+        $endpointSourceFieldset->get('include_parameter_set')
             ->get('add_include_parameter')) . '</div>'
 ];
 echo $this->partial('/partials/fieldgroup', 

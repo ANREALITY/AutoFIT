@@ -5,6 +5,7 @@ use DbSystel\DataObject\Environment;
 
 interface EnvironmentServiceInterface
 {
+
     /**
      *
      * @param int $id
@@ -12,19 +13,19 @@ interface EnvironmentServiceInterface
      * @return Environment
      */
     public function findOne($id);
+
     /**
      *
-     * @param string $applicationTechnicalShortName
-     * @param string $name
+     * @param string $applicationTechnicalShortName            
+     * @param string $name            
      */
     public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null);
 
     /**
      *
-     * @param Environment $environment
+     * @param Environment $environment            
      * @return Environment
      */
     public function saveOne(Environment $environmentRequest);
-
 
 }

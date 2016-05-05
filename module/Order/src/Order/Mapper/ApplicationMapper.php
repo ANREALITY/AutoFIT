@@ -15,7 +15,7 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
 {
 
     /**
-     * 
+     *
      * @var Application
      */
     protected $prototype;

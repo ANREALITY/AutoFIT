@@ -15,7 +15,7 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
 {
 
     /**
-     * 
+     *
      * @var Customer
      */
     protected $prototype;

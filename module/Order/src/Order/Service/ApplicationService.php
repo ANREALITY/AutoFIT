@@ -15,7 +15,7 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
 
     /**
      *
-     * @param ApplicationMapperInterface $mapper
+     * @param ApplicationMapperInterface $mapper            
      */
     public function __construct(ApplicationMapperInterface $mapper)
     {

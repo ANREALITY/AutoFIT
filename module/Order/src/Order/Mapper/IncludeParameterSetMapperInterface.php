@@ -8,7 +8,7 @@ interface IncludeParameterSetMapperInterface
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      * @return IncludeParameterSet
      * @throws \InvalidArgumentException
      */
@@ -22,7 +22,7 @@ interface IncludeParameterSetMapperInterface
 
     /**
      *
-     * @param IncludeParameterSet $dataObject
+     * @param IncludeParameterSet $dataObject            
      * @return IncludeParameterSet
      * @throws \Exception
      */
@@ -30,7 +30,7 @@ interface IncludeParameterSetMapperInterface
 
     /**
      *
-     * @param integer $id
+     * @param integer $id            
      */
     public function delete($id);
 

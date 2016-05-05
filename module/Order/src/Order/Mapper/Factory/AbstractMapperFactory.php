@@ -34,12 +34,12 @@ class AbstractMapperFactory implements AbstractFactoryInterface
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $canCreateServiceWithName = false;
-        
+
         $matches = [];
         $pattern = '[a-zA-z0-9]+' . self::NAME_PART_MAPPER . '$';
         preg_match('/' . $pattern . '/', $requestedName, $matches);
 
-        if (!empty($matches[0]) && $matches[0] === $requestedName && class_exists($requestedName)) {
+        if (! empty($matches[0]) && $matches[0] === $requestedName && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
 

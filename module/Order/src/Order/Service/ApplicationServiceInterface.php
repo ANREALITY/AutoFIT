@@ -5,6 +5,7 @@ use DbSystel\DataObject\Application;
 
 interface ApplicationServiceInterface
 {
+
     /**
      *
      * @param int $id
@@ -15,13 +16,13 @@ interface ApplicationServiceInterface
 
     /**
      *
-     * @param string $technicalShortName
+     * @param string $technicalShortName            
      */
     public function findAllByTechnicalShortName(string $technicalShortName);
 
     /**
      *
-     * @param Application $application
+     * @param Application $application            
      * @return Application
      */
     public function saveOne(Application $applicationRequest);

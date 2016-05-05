@@ -19,6 +19,7 @@ use Zend\Db\Sql\Select;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
+
     /**
      *
      * @var AbstractPhysicalConnection
@@ -44,7 +45,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param EndpointMapperInterface $endpointSourceMapper
+     * @param EndpointMapperInterface $endpointSourceMapper            
      */
     public function setEndpointSourceMapper(EndpointMapperInterface $endpointSourceMapper)
     {
@@ -53,7 +54,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param EndpointMapperInterface $endpointTargetMapper
+     * @param EndpointMapperInterface $endpointTargetMapper            
      */
     public function setEndpointTargetMapper(EndpointMapperInterface $endpointTargetMapper)
     {
@@ -69,7 +70,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
     public function find($id)
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
+        
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -100,30 +101,30 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         $select->where([
             'physical_connection.id = ?' => $id
         ]);
-
+        
         $select->join([
             'endpoint_source' => 'endpoint'
-        ],
+        ], 
             new Expression(
                 'endpoint_source.physical_connection_id = physical_connection.id AND endpoint_source.role = ' . '"' .
-                     AbstractEndpoint::ROLE_SOURCE . '"'),
+                     AbstractEndpoint::ROLE_SOURCE . '"'), 
             [
                 'endpoint_source_id' => 'id'
             ], Select::JOIN_LEFT);
-
+        
         $select->join([
             'endpoint_target' => 'endpoint'
-        ],
+        ], 
             new Expression(
                 'endpoint_target.physical_connection_id = physical_connection.id AND endpoint_target.role = ' . '"' .
-                     AbstractEndpoint::ROLE_TARGET . '"'),
+                     AbstractEndpoint::ROLE_TARGET . '"'), 
             [
                 'endpoint_target_id' => 'id'
             ], Select::JOIN_LEFT);
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $data = $result->current();
             if (! empty($data['type'])) {
@@ -133,7 +134,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                     $this->prototype = new PhysicalConnectionFtgw();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->prototype);
-
+                
                 if (! empty($data['endpoint_source_id'])) {
                     $return->setEndpointSource(
                         $this->endpointSourceMapper->findWithBuldledData($data['endpoint_source_id']));
@@ -145,7 +146,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             } else {
                 $return = null;
             }
-
+            
             return $return;
         }
     }
@@ -157,7 +158,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
     public function findAll(array $criteria = [])
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
+        
         /*
          * $sql = new Sql($this->dbAdapter);
          * $select = $sql->select('logical_connection');
@@ -178,7 +179,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param AbstractPhysicalConnection $dataObject
+     * @param AbstractPhysicalConnection $dataObject            
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -195,14 +196,14 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         // none
-
+        
         $action = new Insert('physical_connection');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -228,7 +229,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param PhysicalConnectionCd $dataObject
+     * @param PhysicalConnectionCd $dataObject            
      *
      * @return PhysicalConnectionCd
      * @throws \Exception
@@ -243,14 +244,14 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
-
+        
         $action = new Insert('physical_connection_cd');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -263,7 +264,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param PhysicalConnectionFtgw $dataObject
+     * @param PhysicalConnectionFtgw $dataObject            
      *
      * @return PhysicalConnectionFtgw
      * @throws \Exception
@@ -277,14 +278,14 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
-
+        
         $action = new Insert('physical_connection_ftgw');
         $action->values($data);
-
+        
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {

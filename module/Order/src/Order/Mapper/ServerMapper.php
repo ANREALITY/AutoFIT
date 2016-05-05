@@ -13,6 +13,7 @@ use Zend\Hydrator\HydratorInterface;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
+
     /**
      *
      * @var Server
@@ -26,7 +27,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
 
     /**
      *
-     * @param int|string $name
+     * @param int|string $name            
      *
      * @return Server
      * @throws \InvalidArgumentException
@@ -60,7 +61,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('server');
-
+        
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('name', $condition)) {
@@ -71,22 +72,22 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                 }
             }
         }
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             return $resultSet->initialize($result);
         }
-
+        
         return [];
     }
 
     /**
      *
-     * @param Server $dataObject
+     * @param Server $dataObject            
      *
      * @return Server
      * @throws \Exception

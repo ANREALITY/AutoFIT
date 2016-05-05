@@ -15,7 +15,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
 
     /**
      *
-     * @param ServerMapperInterface $mapper
+     * @param ServerMapperInterface $mapper            
      */
     public function __construct(ServerMapperInterface $mapper)
     {
