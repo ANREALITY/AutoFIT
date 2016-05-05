@@ -27,9 +27,9 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      * {@inheritDoc}
      *
      */
-    public function findAllWithBuldledData()
+    public function findFileTransferRequest($id)
     {
-        return $this->mapper->findAllWithBuldledData();
+        return $this->mapper->find($id);
     }
 
     /**
@@ -37,9 +37,9 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      * {@inheritDoc}
      *
      */
-    public function findFileTransferRequest($id)
+    public function findAllWithBuldledData()
     {
-        return $this->mapper->find($id);
+        return $this->mapper->findAllWithBuldledData();
     }
 
     /**
