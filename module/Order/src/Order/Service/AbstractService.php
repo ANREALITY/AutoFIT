@@ -12,4 +12,14 @@ class AbstractService
      */
     protected $mapper;
 
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findOne($id)
+    {
+        return $this->mapper->find($id);
+    }
+
 }

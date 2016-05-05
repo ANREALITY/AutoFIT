@@ -27,16 +27,6 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
      * {@inheritDoc}
      *
      */
-    public function findOne($id)
-    {
-        return $this->mapper->find($id);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function saveEnvironment(Environment $environment)
     {
         return $this->mapper->save($environment);
