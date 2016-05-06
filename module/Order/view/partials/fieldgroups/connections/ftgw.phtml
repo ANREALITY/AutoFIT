@@ -2,18 +2,17 @@
 use DbSystel\DataObject\LogicalConnection;
 ?>
 <?php
-
-$fieldgroupName = 'physical_connection_source';
+$fieldgroupName = 'physical_connection_end_to_middle';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' .
      $this->translate('from the source to the FTGW server') . ')';
 $fieldgroupFormRows = [
-    $this->formRow($physicalConnectionSourceFieldset->get('type')),
-    $this->formRow($physicalConnectionSourceFieldset->get('role'))
+    $this->formRow($physicalConnectionEndToMiddleFieldset->get('type')),
+    $this->formRow($physicalConnectionEndToMiddleFieldset->get('role'))
 ];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupFormRows[] = $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'));
+    $fieldgroupFormRows[] = $this->formRow($physicalConnectionEndToMiddleFieldset->get('secure_plus'));
 }
 echo $this->partial('/partials/fieldgroup', 
     [
@@ -25,18 +24,17 @@ echo $this->partial('/partials/fieldgroup',
     ]);
 ?>
 <?php
-
-$fieldgroupName = 'physical_connection_target';
+$fieldgroupName = 'physical_connection_middle_to_end';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' .
      $this->translate('from the FTGW server to the target') . ')';
 $fieldgroupFormRows = [
-    $this->formRow($physicalConnectionTargetFieldset->get('type')),
-    $this->formRow($physicalConnectionTargetFieldset->get('role'))
+    $this->formRow($physicalConnectionMiddleToEndFieldset->get('type')),
+    $this->formRow($physicalConnectionMiddleToEndFieldset->get('role'))
 ];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
-    $fieldgroupFormRows[] = $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'));
+    $fieldgroupFormRows[] = $this->formRow($physicalConnectionMiddleToEndFieldset->get('secure_plus'));
 }
 echo $this->partial('/partials/fieldgroup', 
     [

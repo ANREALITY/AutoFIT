@@ -24,13 +24,19 @@ class LogicalConnection extends AbstractDataObject
      *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnectionSource;
+    protected $physicalConnectionEndToEnd;
 
     /**
      *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnectionTarget;
+    protected $physicalConnectionEndToMiddle;
+
+    /**
+     *
+     * @var AbstractPhysicalConnection @relationshipInversion
+     */
+    protected $physicalConnectionMiddleToEnd;
 
     /**
      *
@@ -49,7 +55,7 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -67,7 +73,7 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {
@@ -76,38 +82,56 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $physicalConnectionSource
+     * @return the $physicalConnectionEndToEnd
      */
-    public function getPhysicalConnectionSource()
+    public function getPhysicalConnectionEndToEnd()
     {
-        return $this->physicalConnectionSource;
+        return $this->physicalConnectionEndToEnd;
     }
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnectionSource            
+     * @param AbstractPhysicalConnection $physicalConnectionEndToEnd
      */
-    public function setPhysicalConnectionSource($physicalConnectionSource)
+    public function setPhysicalConnectionEndToEnd($physicalConnectionEndToEnd)
     {
-        $this->physicalConnectionSource = $physicalConnectionSource;
+        $this->physicalConnectionEndToEnd = $physicalConnectionEndToEnd;
     }
 
     /**
      *
-     * @return the $physicalConnectionTarget
+     * @return the $physicalConnectionEndToMiddle
      */
-    public function getPhysicalConnectionTarget()
+    public function getPhysicalConnectionEndToMiddle()
     {
-        return $this->physicalConnectionTarget;
+        return $this->physicalConnectionEndToMiddle;
     }
 
     /**
      *
-     * @param AbstractPhysicalConnection $physicalConnectionTarget            
+     * @param AbstractPhysicalConnection $physicalConnectionEndToMiddle
      */
-    public function setPhysicalConnectionTarget($physicalConnectionTarget)
+    public function setPhysicalConnectionEndToMiddle($physicalConnectionEndToMiddle)
     {
-        $this->physicalConnectionTarget = $physicalConnectionTarget;
+        $this->physicalConnectionEndToMiddle = $physicalConnectionEndToMiddle;
+    }
+
+    /**
+     *
+     * @return the $physicalConnectionMiddleToEnd
+     */
+    public function getPhysicalConnectionMiddleToEnd()
+    {
+        return $this->physicalConnectionMiddleToEnd;
+    }
+
+    /**
+     *
+     * @param AbstractPhysicalConnection $physicalConnectionMiddleToEnd
+     */
+    public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
+    {
+        $this->physicalConnectionMiddleToEnd = $physicalConnectionMiddleToEnd;
     }
 
     /**
@@ -121,9 +145,9 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param multitype:Notification $notifications            
+     * @param multitype:Notification $notifications
      */
-    public function setNotifications(array $notifications)
+    public function setNotifications($notifications)
     {
         $this->notifications = $notifications;
     }

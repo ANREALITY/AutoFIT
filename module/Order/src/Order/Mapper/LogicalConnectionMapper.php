@@ -129,23 +129,33 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         ]);
         
         $select->join([
-            'physical_connection_source' => 'physical_connection'
+            'physical_connection_end_to_end' => 'physical_connection'
         ], 
             new Expression(
-                'physical_connection_source.logical_connection_id = logical_connection.id AND physical_connection_source.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_SOURCE . '"'), 
+                'physical_connection_end_to_end.logical_connection_id = logical_connection.id AND physical_connection_end_to_end.role = ' .
+                     '"' . AbstractPhysicalConnection::ROLE_END_TO_END . '"'), 
             [
-                'physical_connection_source_id' => 'id'
+                'physical_connection_end_to_end_id' => 'id'
             ], Select::JOIN_LEFT);
         
         $select->join([
-            'physical_connection_target' => 'physical_connection'
+            'physical_connection_end_to_middle' => 'physical_connection'
         ], 
             new Expression(
-                'physical_connection_target.logical_connection_id = logical_connection.id AND physical_connection_target.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_TARGET . '"'), 
+                'physical_connection_end_to_middle.logical_connection_id = logical_connection.id AND physical_connection_end_to_middle.role = ' .
+                     '"' . AbstractPhysicalConnection::ROLE_END_TO_MIDDLE . '"'), 
             [
-                'physical_connection_target_id' => 'id'
+                'physical_connection_end_to_middle_id' => 'id'
+            ], Select::JOIN_LEFT);
+        
+        $select->join([
+            'physical_connection_middle_to_end' => 'physical_connection'
+        ], 
+            new Expression(
+                'physical_connection_middle_to_end.logical_connection_id = logical_connection.id AND physical_connection_middle_to_end.role = ' .
+                     '"' . AbstractPhysicalConnection::ROLE_MIDDLE_TO_END . '"'), 
+            [
+                'physical_connection_middle_to_end_id' => 'id'
             ], Select::JOIN_LEFT);
         
         $statement = $sql->prepareStatementForSqlObject($select);
@@ -155,13 +165,17 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
             $return = $this->hydrator->hydrate($result->current(), $this->prototype);
             $data = $result->current();
             
-            if (! empty($data['physical_connection_source_id'])) {
-                $return->setPhysicalConnectionSource(
-                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_source_id']));
+            if (! empty($data['physical_connection_end_to_end_id'])) {
+                $return->setPhysicalConnectionEndToEnd(
+                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_end_to_end_id']));
             }
-            if (! empty($data['physical_connection_target_id'])) {
-                $return->setPhysicalConnectionTarget(
-                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_target_id']));
+            if (! empty($data['physical_connection_end_to_middle_id'])) {
+                $return->setPhysicalConnectionEndToMiddle(
+                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_end_to_middle_id']));
+            }
+            if (! empty($data['physical_connection_middle_to_end_id'])) {
+                $return->setPhysicalConnectionMiddleToEnd(
+                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_middle_to_end_id']));
             }
             
             return $return;
@@ -198,15 +212,20 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 $newPhysicalConnections = [];
-                if ($dataObject->getPhysicalConnectionSource()) {
-                    $dataObject->getPhysicalConnectionSource()->setLogicalConnection($dataObject);
+                if ($dataObject->getPhysicalConnectionEndToEnd()) {
+                    $dataObject->getPhysicalConnectionEndToEnd()->setLogicalConnection($dataObject);
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
-                        $dataObject->getPhysicalConnectionSource());
+                        $dataObject->getPhysicalConnectionEndToEnd());
                 }
-                if ($dataObject->getPhysicalConnectionTarget()) {
-                    $dataObject->getPhysicalConnectionTarget()->setLogicalConnection($dataObject);
+                if ($dataObject->getPhysicalConnectionEndToMiddle()) {
+                    $dataObject->getPhysicalConnectionEndToMiddle()->setLogicalConnection($dataObject);
                     $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
-                        $dataObject->getPhysicalConnectionTarget());
+                        $dataObject->getPhysicalConnectionEndToMiddle());
+                }
+                if ($dataObject->getPhysicalConnectionMiddleToEnd()) {
+                    $dataObject->getPhysicalConnectionMiddleToEnd()->setLogicalConnection($dataObject);
+                    $newPhysicalConnections[] = $this->physicalConnectionMapper->save(
+                        $dataObject->getPhysicalConnectionMiddleToEnd());
                 }
                 $this->notificationMapper->deleteAll(
                     [

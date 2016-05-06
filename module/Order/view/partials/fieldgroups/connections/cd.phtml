@@ -1,12 +1,12 @@
 <?php
-$fieldgroupName = 'physical_connection_source';
+$fieldgroupName = 'physical_connection_end_to_end';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . _('directly from the source to the target') .
      ')';
 $fieldgroupFormRows = [
-    $this->formRow($physicalConnectionSourceFieldset->get('type')),
-    $this->formRow($physicalConnectionSourceFieldset->get('role')),
-    $this->formRow($physicalConnectionSourceFieldset->get('secure_plus'))
+    $this->formRow($physicalConnectionEndToEndFieldset->get('type')),
+    $this->formRow($physicalConnectionEndToEndFieldset->get('role')),
+    $this->formRow($physicalConnectionEndToEndFieldset->get('secure_plus'))
 ];
 echo $this->partial('/partials/fieldgroup', 
     [

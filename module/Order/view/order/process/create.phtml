@@ -16,14 +16,14 @@ $logicalConnectionFieldset = $fileTransferRequestFieldset->get('logical_connecti
 $serviceInvoicePositionBasicFieldset = $fileTransferRequestFieldset->get('service_invoice_position_basic');
 $serviceInvoicePositionPersonalFieldset = $fileTransferRequestFieldset->get('service_invoice_position_personal');
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
-    $physicalConnectionSourceFieldset = $logicalConnectionFieldset->get('physical_connection_source');
-    $endpointSourceFieldset = $physicalConnectionSourceFieldset->get('endpoint_source');
-    $endpointTargetFieldset = $physicalConnectionSourceFieldset->get('endpoint_target');
+    $physicalConnectionEndToEndFieldset = $logicalConnectionFieldset->get('physical_connection_end_to_end');
+    $endpointSourceFieldset = $physicalConnectionEndToEndFieldset->get('endpoint_source');
+    $endpointTargetFieldset = $physicalConnectionEndToEndFieldset->get('endpoint_target');
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-    $physicalConnectionSourceFieldset = $logicalConnectionFieldset->get('physical_connection_source');
-    $endpointSourceFieldset = $physicalConnectionSourceFieldset->get('endpoint_source');
-    $physicalConnectionTargetFieldset = $logicalConnectionFieldset->get('physical_connection_target');
-    $endpointTargetFieldset = $physicalConnectionTargetFieldset->get('endpoint_target');
+    $physicalConnectionEndToMiddleFieldset = $logicalConnectionFieldset->get('physical_connection_end_to_middle');
+    $endpointSourceFieldset = $physicalConnectionEndToMiddleFieldset->get('endpoint_source');
+    $physicalConnectionMiddleToEndFieldset = $logicalConnectionFieldset->get('physical_connection_middle_to_end');
+    $endpointTargetFieldset = $physicalConnectionMiddleToEndFieldset->get('endpoint_target');
 }
 $applicationForSourceFieldset = $endpointSourceFieldset->get('application');
 $customerForSourceFieldset = $endpointSourceFieldset->get('customer');
@@ -102,13 +102,13 @@ echo $this->partial('/partials/fieldgroups/logical-connection',
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
-            'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset
+            'physicalConnectionEndToEndFieldset' => $physicalConnectionEndToEndFieldset
         ]);
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
-            'physicalConnectionSourceFieldset' => $physicalConnectionSourceFieldset,
-            'physicalConnectionTargetFieldset' => $physicalConnectionTargetFieldset,
+            'physicalConnectionEndToMiddleFieldset' => $physicalConnectionEndToMiddleFieldset,
+            'physicalConnectionMiddleToEndFieldset' => $physicalConnectionMiddleToEndFieldset,
             'endpointSourceType' => $endpointSourceType,
             'endpointTargetType' => $endpointTargetType
         ]);

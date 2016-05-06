@@ -1,18 +1,27 @@
 <?php
+use DbSystel\DataObject\LogicalConnection;
+?>
+<?php
 /**
  * @var \DbSystel\DataObject\FileTransferRequest $fileTransferRequest
  */
 $fileTransferRequest;
 
-$physicalConnectionSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionSource();
-$endpointSource = $physicalConnectionSource ? $physicalConnectionSource->getEndpointSource() : null;
-$endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
-$endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
-
-$physicalConnectionTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionTarget();
-$endpointTarget = $physicalConnectionTarget ? $physicalConnectionTarget->getEndpointTarget() : null;
-$endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
-$endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
+if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
+    $physicalConnectionEndToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd();
+    $endpointSource = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointSource() : null;
+    $endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
+    $endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
+} elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
+    $physicalConnectionEndToMiddle = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle();
+    $endpointSource = $physicalConnectionEndToMiddle ? $physicalConnectionEndToMiddle->getEndpointSource() : null;
+    $endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
+    $endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
+    $physicalConnectionMiddleToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd();
+    $endpointTarget = $physicalConnectionMiddleToEnd ? $physicalConnectionMiddleToEnd->getEndpointTarget() : null;
+    $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
+    $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
+}
 ?>
 <ul>
     <li><?php echo $this->translate('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>

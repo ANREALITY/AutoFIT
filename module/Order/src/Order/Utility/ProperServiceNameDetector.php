@@ -15,11 +15,11 @@ class ProperServiceNameDetector
         $this->routerMatchParams = $routerMatchParams;
     }
 
-    public function getPhysicalConnectionSourceFieldsetServiceName()
+    public function getPhysicalConnectionEndToEndFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
             $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' .
-                 $this->routerMatchParams['connectionType'] . 'Source';
+                 $this->routerMatchParams['connectionType'] . 'EndToEnd';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
@@ -27,11 +27,23 @@ class ProperServiceNameDetector
         return $physicalConnectionFieldsetServiceName;
     }
 
-    public function getPhysicalConnectionTargetFieldsetServiceName()
+    public function getphysicalConnectionEndToMiddleFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
             $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' .
-                 $this->routerMatchParams['connectionType'] . 'Target';
+                 $this->routerMatchParams['connectionType'] . 'EndToMiddle';
+        } else {
+            throw new \Exception('No source endpoint type defined!');
+        }
+        
+        return $physicalConnectionFieldsetServiceName;
+    }
+
+    public function getPhysicalConnectionMiddleToEndFieldsetServiceName()
+    {
+        if (! empty($this->routerMatchParams['connectionType'])) {
+            $physicalConnectionFieldsetServiceName = 'Order\Form\Fieldset\PhysicalConnection' .
+                 $this->routerMatchParams['connectionType'] . 'MiddleToEnd';
         } else {
             throw new \Exception('No source endpoint type defined!');
         }

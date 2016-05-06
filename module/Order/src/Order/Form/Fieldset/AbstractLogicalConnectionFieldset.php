@@ -11,37 +11,52 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
      *
      * @var string
      */
-    protected $physicalConnectionSourceFieldsetServiceName;
+    protected $physicalConnectionEndToEndFieldsetServiceName;
 
     /**
      *
      * @var string
      */
-    protected $physicalConnectionTargetFieldsetServiceName;
+    protected $physicalConnectionEndToMiddleFieldsetServiceName;
 
-    public function __construct($name = null, $options = [], string $physicalConnectionSourceFieldsetServiceName,
-        string $physicalConnectionTargetFieldsetServiceName = null)
+    /**
+     *
+     * @var string
+     */
+    protected $physicalConnectionMiddleToEndFieldsetServiceName;
+
+    public function __construct($name = null, $options = [], string $physicalConnectionEndToEndFieldsetServiceName = null,
+        string $physicalConnectionEndToMiddleFieldsetServiceName = null, string $physicalConnectionMiddleToEndFieldsetServiceName = null)
     {
         parent::__construct('logical_connection', $options);
 
-        $this->physicalConnectionSourceFieldsetServiceName = $physicalConnectionSourceFieldsetServiceName;
-        $this->physicalConnectionTargetFieldsetServiceName = $physicalConnectionTargetFieldsetServiceName;
+        $this->physicalConnectionEndToEndFieldsetServiceName = $physicalConnectionEndToEndFieldsetServiceName;
+        $this->physicalConnectionEndToMiddleFieldsetServiceName = $physicalConnectionEndToMiddleFieldsetServiceName;
+        $this->physicalConnectionMiddleToEndFieldsetServiceName = $physicalConnectionMiddleToEndFieldsetServiceName;
     }
 
     public function init()
     {
-        $this->add(
-            [
-                'name' => 'physical_connection_source',
-                'type' => $this->physicalConnectionSourceFieldsetServiceName,
-                'options' => []
-            ]);
-
-        if ($this->physicalConnectionTargetFieldsetServiceName) {
+        if ($this->physicalConnectionEndToEndFieldsetServiceName) {
             $this->add(
                 [
-                    'name' => 'physical_connection_target',
-                    'type' => $this->physicalConnectionTargetFieldsetServiceName,
+                    'name' => 'physical_connection_end_to_end',
+                    'type' => $this->physicalConnectionEndToEndFieldsetServiceName,
+                    'options' => []
+                ]);
+        }
+
+        if ($this->physicalConnectionEndToMiddleFieldsetServiceName && $this->physicalConnectionMiddleToEndFieldsetServiceName) {
+            $this->add(
+                [
+                    'name' => 'physical_connection_end_to_middle',
+                    'type' => $this->physicalConnectionEndToMiddleFieldsetServiceName,
+                    'options' => []
+                ]);
+            $this->add(
+                [
+                    'name' => 'physical_connection_middle_to_end',
+                    'type' => $this->physicalConnectionMiddleToEndFieldsetServiceName,
                     'options' => []
                 ]);
         }

@@ -5,6 +5,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\AbstractFactoryInterface;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\AbstractEndpoint;
+use DbSystel\DataObject\AbstractPhysicalConnection;
 
 class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterface
 {
@@ -57,7 +58,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
 
         $matches = [];
         $pattern = '^(' . preg_quote(self::NAMESPACE_FIELDSET . '\\') . self::NAME_PART_PHYSICAL_CONNECTION .
-             '(?<connectionType>Ftgw|Cd)' . '(?<role>Source|Target)' . ')$';
+             '(?<connectionType>Ftgw|Cd)' . '(?<role>EndToEnd|EndToMiddle|MiddleToEnd)' . ')$';
         preg_match('/' . $pattern . '/i', $requestedName, $matches);
 
         if (! empty($matches['connectionType']) && ! empty($matches['role']) &&
@@ -79,7 +80,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $fieldsetName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
-        $prototypeClassName = preg_replace('/(Source|Target)$/i', '', $fieldsetName);
+        $prototypeClassName = preg_replace('/(EndToEnd|EndToMiddle|MiddleToEnd)$/i', '', $fieldsetName);
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
@@ -87,15 +88,17 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
             'Order\Utility\ProperServiceNameDetector');
 
         if (strcasecmp($this->connectionType, LogicalConnection::TYPE_CD) === 0) {
-            $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
-            $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
-            $service = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName,
-                $endpointTargetFieldsetServiceName);
+            if (strcasecmp($this->role, str_replace('_', '', AbstractPhysicalConnection::ROLE_END_TO_END)) === 0) {
+                $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
+                $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
+                $service = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName,
+                    $endpointTargetFieldsetServiceName);
+            }
         } elseif (strcasecmp($this->connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-            if (strcasecmp($this->role, AbstractEndpoint::ROLE_SOURCE) === 0) {
+            if (strcasecmp($this->role, str_replace('_', '', AbstractPhysicalConnection::ROLE_END_TO_MIDDLE)) === 0) {
                 $endpointSourceFieldsetServiceName = $properServiceNameDetector->getEndpointSourceFieldsetServiceName();
                 $service = new $fieldsetQualifiedClassName(null, [], $endpointSourceFieldsetServiceName);
-            } elseif (strcasecmp($this->role, AbstractEndpoint::ROLE_TARGET) === 0) {
+            } elseif (strcasecmp($this->role, str_replace('_', '', AbstractPhysicalConnection::ROLE_MIDDLE_TO_END)) === 0) {
                 $endpointTargetFieldsetServiceName = $properServiceNameDetector->getEndpointTargetFieldsetServiceName();
                 $service = new $fieldsetQualifiedClassName(null, [], $endpointTargetFieldsetServiceName);
             }

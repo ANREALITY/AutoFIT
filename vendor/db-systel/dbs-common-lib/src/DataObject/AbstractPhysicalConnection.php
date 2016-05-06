@@ -4,9 +4,11 @@ namespace DbSystel\DataObject;
 abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
 
-    const ROLE_SOURCE = 'source';
+    const ROLE_END_TO_END = 'end_to_end';
 
-    const ROLE_TARGET = 'target';
+    const ROLE_END_TO_MIDDLE = 'end_to_middle';
+
+    const ROLE_MIDDLE_TO_END = 'middle_to_end';
 
     /**
      *

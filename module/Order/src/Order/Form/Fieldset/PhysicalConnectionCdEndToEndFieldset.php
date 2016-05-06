@@ -5,13 +5,13 @@ use Zend\Form\Fieldset;
 use DbSystel\DataObject\AbstractPhysicalConnection;
 use DbSystel\DataObject\LogicalConnection;
 
-class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionFieldset
+class PhysicalConnectionCdEndToEndFieldset extends AbstractPhysicalConnectionFieldset
 {
 
     public function __construct($name = null, $options = [], string $endpointSourceFieldsetServiceName,
         string $endpointTargetFieldsetServiceName)
     {
-        parent::__construct('physical_connection_cd', $options, $endpointSourceFieldsetServiceName,
+        parent::__construct('physical_connection_cd_end_to_end', $options, $endpointSourceFieldsetServiceName,
             $endpointTargetFieldsetServiceName);
     }
 
@@ -43,7 +43,7 @@ class PhysicalConnectionCdSourceFieldset extends AbstractPhysicalConnectionField
 
     protected function getConcreteRole()
     {
-        return AbstractPhysicalConnection::ROLE_SOURCE;
+        return AbstractPhysicalConnection::ROLE_END_TO_END;
     }
 
     protected function getConcreteType()
