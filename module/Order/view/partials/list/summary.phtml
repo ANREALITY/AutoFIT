@@ -1,12 +1,14 @@
 <?php
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\FileTransferRequest;
 ?>
 <?php
 /**
- * @var \DbSystel\DataObject\FileTransferRequest $fileTransferRequest
+ * @var FileTransferRequest $fileTransferRequest
  */
 $fileTransferRequest;
 
+$connectionType = $fileTransferRequest->getLogicalConnection()->getType();
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     $physicalConnectionEndToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd();
     $endpointSource = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointSource() : null;
