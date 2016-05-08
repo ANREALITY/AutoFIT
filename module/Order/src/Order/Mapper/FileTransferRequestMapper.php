@@ -20,6 +20,7 @@ use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\ServiceInvoice;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
+use Zend\Db\Sql\Join;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -29,6 +30,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      * @var FileTransferRequest
      */
     protected $prototype;
+
+    /**
+     *
+     * @var LogicalConnection
+     */
+    protected $logicalConnectionPrototype;
 
     /**
      *
@@ -45,6 +52,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype);
+    }
+
+    /**
+     * @param LogicalConnection $logicalConnectionPrototype
+     */
+    public function setLogicalConnectionPrototype($logicalConnectionPrototype)
+    {
+        $this->logicalConnectionPrototype = $logicalConnectionPrototype;
     }
 
     /**
@@ -74,23 +89,49 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('file_transfer_request');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
-         * }
-         *
-         * throw new \InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('file_transfer_request');
+        $select->where([
+            'file_transfer_request.id = ?' => $id
+        ]);
+        $select->columns([
+            'file_transfer_request' . '_' . 'id' => 'id',
+            'file_transfer_request' . '_' . 'change_number' => 'change_number',
+            'file_transfer_request' . '_' . 'status' => 'status',
+            'file_transfer_request' . '_' . 'logical_connection_id' => 'logical_connection_id',
+            'file_transfer_request' . '_' . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
+            'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
+            'file_transfer_request' . '_' . 'user_id' => 'user_id',
+        ]);
+        $select->join('logical_connection', 'file_transfer_request.id = logical_connection.id', [
+            'logical_connection' . '_' . 'id' => 'id',
+            'logical_connection' . '_' . 'type' => 'type',
+        ], Join::JOIN_LEFT);
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            $resultArray = ['file_transfer_request', 'logical_connection'];
+            foreach ($result->current() as $column => $value) {
+                if (strpos($column, 'file_transfer_request') === 0) {
+                    $keyForHydration = substr($column, strlen('file_transfer_request' . '_'), strlen($column) - 1);
+                    $resultArray['file_transfer_request'][$keyForHydration] = $value;
+                }
+                if (strpos($column, 'logical_connection') === 0) {
+                    $keyForHydration = substr($column, strlen('logical_connection' . '_'), strlen($column) - 1);
+                    $resultArray['file_transfer_request']['logical_connection'][$keyForHydration] = $value;
+                }
+            }
+
+            $fileTransferRequest = $this->hydrator->hydrate($resultArray['file_transfer_request'], $this->prototype);
+            $logicalConnection = $this->hydrator->hydrate($resultArray['file_transfer_request']['logical_connection'], $this->prototype);
+            $fileTransferRequest->setLogicalConnection($logicalConnection);
+
+            return $fileTransferRequest;
+        }
+
+        throw new \InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
     }
 
     /**
