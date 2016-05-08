@@ -26,6 +26,17 @@ return [
                     ]
                 ]
             ],
+            'show-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/show-order/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'showOrder',
+                        'id' => '',
+                    ]
+                ]
+            ],
             'list-orders' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
