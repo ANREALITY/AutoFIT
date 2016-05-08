@@ -12,7 +12,7 @@ interface EndpointMapperInterface
      * @return AbstractEndpoint
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

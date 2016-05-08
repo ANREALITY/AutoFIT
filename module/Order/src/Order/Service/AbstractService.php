@@ -19,7 +19,7 @@ class AbstractService
      */
     public function findOne($id)
     {
-        return $this->mapper->find($id);
+        return $this->mapper->findOne($id);
     }
 
 }

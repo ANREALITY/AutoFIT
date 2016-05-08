@@ -71,7 +71,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
      * @return LogicalConnection
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

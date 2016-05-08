@@ -12,7 +12,7 @@ interface EnvironmentMapperInterface
      * @return Environment
      * @throws \InvalidArgumentException
      */
-    public function find($severity);
+    public function findOne($severity);
 
     /**
      *

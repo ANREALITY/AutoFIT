@@ -33,7 +33,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
      */
-    public function find($number)
+    public function findOne($number)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

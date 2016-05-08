@@ -32,7 +32,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
      * @return User
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

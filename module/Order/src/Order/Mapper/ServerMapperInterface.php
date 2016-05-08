@@ -12,7 +12,7 @@ interface ServerMapperInterface
      * @return Server
      * @throws \InvalidArgumentException
      */
-    public function find($name);
+    public function findOne($name);
 
     /**
      *

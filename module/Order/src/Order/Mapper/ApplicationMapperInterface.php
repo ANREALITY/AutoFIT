@@ -12,7 +12,7 @@ interface ApplicationMapperInterface
      * @return Application
      * @throws \InvalidArgumentException
      */
-    public function find($technicalShortName);
+    public function findOne($technicalShortName);
 
     /**
      *

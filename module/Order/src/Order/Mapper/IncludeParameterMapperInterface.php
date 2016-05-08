@@ -12,7 +12,7 @@ interface IncludeParameterMapperInterface
      * @return IncludeParameter
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

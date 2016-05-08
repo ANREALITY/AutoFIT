@@ -12,7 +12,7 @@ interface ServiceInvoicePositionMapperInterface
      * @return ServiceInvoicePosition
      * @throws \InvalidArgumentException
      */
-    public function find($number);
+    public function findOne($number);
 
     /**
      *

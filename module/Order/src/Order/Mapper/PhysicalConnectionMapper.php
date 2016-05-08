@@ -67,7 +67,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
      *
      * @see AbstractPhysicalConnectionMapper::find()
      */
-    public function find($id)
+    public function findOne($id)
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
         

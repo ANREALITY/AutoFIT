@@ -72,7 +72,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

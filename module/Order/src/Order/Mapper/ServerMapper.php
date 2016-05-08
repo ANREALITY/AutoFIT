@@ -32,7 +32,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
      * @return Server
      * @throws \InvalidArgumentException
      */
-    public function find($name)
+    public function findOne($name)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

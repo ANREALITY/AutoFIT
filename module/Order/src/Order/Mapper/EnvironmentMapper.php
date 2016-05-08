@@ -33,7 +33,7 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
      * @return Environment
      * @throws \InvalidArgumentException
      */
-    public function find($severity)
+    public function findOne($severity)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

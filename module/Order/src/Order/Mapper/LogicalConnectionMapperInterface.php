@@ -12,7 +12,7 @@ interface LogicalConnectionMapperInterface
      * @return LogicalConnection
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

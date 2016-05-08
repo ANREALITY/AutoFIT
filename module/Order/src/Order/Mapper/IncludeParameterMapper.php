@@ -33,7 +33,7 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
      * @return IncludeParameter
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

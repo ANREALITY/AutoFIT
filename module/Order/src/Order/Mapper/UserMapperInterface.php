@@ -12,7 +12,7 @@ interface UserMapperInterface
      * @return User
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

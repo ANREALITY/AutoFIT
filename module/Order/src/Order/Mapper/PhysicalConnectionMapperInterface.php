@@ -12,7 +12,7 @@ interface PhysicalConnectionMapperInterface
      * @return AbstractPhysicalConnection
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

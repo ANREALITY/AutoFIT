@@ -32,7 +32,7 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
      * @return Application
      * @throws \InvalidArgumentException
      */
-    public function find($technicalShortName)
+    public function findOne($technicalShortName)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

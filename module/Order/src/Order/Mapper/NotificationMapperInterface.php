@@ -12,7 +12,7 @@ interface NotificationMapperInterface
      * @return Notification
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *

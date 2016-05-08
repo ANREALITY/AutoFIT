@@ -32,7 +32,7 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
      * @return Customer
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

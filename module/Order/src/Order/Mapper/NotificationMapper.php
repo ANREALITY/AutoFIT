@@ -33,7 +33,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
      * @return Notification
      * @throws \InvalidArgumentException
      */
-    public function find($id)
+    public function findOne($id)
     {
         /*
          * $sql = new Sql($this->dbAdapter);

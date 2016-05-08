@@ -100,7 +100,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      *
      * @see AbstractEndpointMapper::find()
      */
-    public function find($id)
+    public function findOne($id)
     {
         // $this->prototype = new Endpoint{CONCRETE_TYPE}();
 

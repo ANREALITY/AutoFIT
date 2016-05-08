@@ -12,7 +12,7 @@ interface CustomerMapperInterface
      * @return Customer
      * @throws \InvalidArgumentException
      */
-    public function find($id);
+    public function findOne($id);
 
     /**
      *
