@@ -103,7 +103,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
             'file_transfer_request' . '_' . 'user_id' => 'user_id',
         ]);
-        $select->join('logical_connection', 'file_transfer_request.id = logical_connection.id', [
+        $select->join('logical_connection', 'file_transfer_request.logical_connection_id = logical_connection.id', [
             'logical_connection' . '_' . 'id' => 'id',
             'logical_connection' . '_' . 'type' => 'type',
         ], Join::JOIN_LEFT);
@@ -125,7 +125,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
 
             $fileTransferRequest = $this->hydrator->hydrate($resultArray['file_transfer_request'], $this->prototype);
-            $logicalConnection = $this->hydrator->hydrate($resultArray['file_transfer_request']['logical_connection'], $this->prototype);
+            $logicalConnection = $this->hydrator->hydrate($resultArray['file_transfer_request']['logical_connection'], $this->logicalConnectionPrototype);
             $fileTransferRequest->setLogicalConnection($logicalConnection);
 
             return $fileTransferRequest;
