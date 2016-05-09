@@ -30,13 +30,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
      *
      * @var AbstractEndpointMapper
      */
-    protected $endpointSourceMapper;
-
-    /**
-     *
-     * @var AbstractEndpointMapper
-     */
-    protected $endpointTargetMapper;
+    protected $endpointMapper;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
@@ -45,20 +39,11 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param EndpointMapperInterface $endpointSourceMapper            
+     * @param EndpointMapperInterface $endpointMapper            
      */
-    public function setEndpointSourceMapper(EndpointMapperInterface $endpointSourceMapper)
+    public function setEndpointMapper(EndpointMapperInterface $endpointMapper)
     {
-        $this->endpointSourceMapper = $endpointSourceMapper;
-    }
-
-    /**
-     *
-     * @param EndpointMapperInterface $endpointTargetMapper            
-     */
-    public function setEndpointTargetMapper(EndpointMapperInterface $endpointTargetMapper)
-    {
-        $this->endpointTargetMapper = $endpointTargetMapper;
+        $this->endpointMapper = $endpointMapper;
     }
 
     /**
@@ -137,11 +122,11 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 
                 if (! empty($data['endpoint_source_id'])) {
                     $return->setEndpointSource(
-                        $this->endpointSourceMapper->findWithBuldledData($data['endpoint_source_id']));
+                        $this->endpointMapper->findWithBuldledData($data['endpoint_source_id']));
                 }
                 if (! empty($data['endpoint_target_id'])) {
                     $return->setEndpointTarget(
-                        $this->endpointTargetMapper->findWithBuldledData($data['endpoint_target_id']));
+                        $this->endpointMapper->findWithBuldledData($data['endpoint_target_id']));
                 }
             } else {
                 $return = null;
@@ -211,12 +196,12 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 // creating sub-objects: in this case only now possible, since the $newId is needed
                 if ($dataObject->getEndpointSource()) {
                     $dataObject->getEndpointSource()->setPhysicalConnection($dataObject);
-                    $newEndpointSource = $this->endpointSourceMapper->save($dataObject->getEndpointSource());
+                    $newEndpointSource = $this->endpointMapper->save($dataObject->getEndpointSource());
                     $dataObject->setEndpointSource($newEndpointSource);
                 }
                 if ($dataObject->getEndpointTarget()) {
                     $dataObject->getEndpointTarget()->setPhysicalConnection($dataObject);
-                    $newEndpointTarget = $this->endpointTargetMapper->save($dataObject->getEndpointTarget());
+                    $newEndpointTarget = $this->endpointMapper->save($dataObject->getEndpointTarget());
                     $dataObject->setEndpointTarget($newEndpointTarget);
                 }
             }
