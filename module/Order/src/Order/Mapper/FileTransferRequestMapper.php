@@ -21,6 +21,7 @@ use DbSystel\DataObject\ServiceInvoice;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
 use Zend\Db\Sql\Join;
+use DbSystel\DataObject\Notification;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -36,6 +37,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      * @var LogicalConnection
      */
     protected $logicalConnectionPrototype;
+
+    /**
+     *
+     * @var Notification
+     */
+    protected $notificationPrototype;
 
     /**
      *
@@ -55,7 +62,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     }
 
     /**
-     * @param LogicalConnection $logicalConnectionPrototype
+     *
+     * @param LogicalConnection $logicalConnectionPrototype            
      */
     public function setLogicalConnectionPrototype($logicalConnectionPrototype)
     {
@@ -64,7 +72,16 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @param LogicalConnectionMapperInterface $logicalConnectionMapper
+     * @param Notification $notoficationPrototype            
+     */
+    public function setNotificationPrototype($notoficationPrototype)
+    {
+        $this->notificationPrototype = $notoficationPrototype;
+    }
+
+    /**
+     *
+     * @param LogicalConnectionMapperInterface $logicalConnectionMapper            
      */
     public function setLogicalConnectionMapper(LogicalConnectionMapperInterface $logicalConnectionMapper)
     {
@@ -73,7 +90,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @param UserMapperInterface $userMapper
+     * @param UserMapperInterface $userMapper            
      */
     public function setUserMapper(UserMapperInterface $userMapper)
     {
@@ -82,7 +99,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @param int|string $id
+     * @param int|string $id            
      *
      * @return FileTransferRequest
      * @throws \InvalidArgumentException
@@ -94,30 +111,33 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->where([
             'file_transfer_request.id = ?' => $id
         ]);
-        $select->columns([
-            'file_transfer_request' . '_' . 'id' => 'id',
-            'file_transfer_request' . '_' . 'change_number' => 'change_number',
-            'file_transfer_request' . '_' . 'status' => 'status',
-            'file_transfer_request' . '_' . 'logical_connection_id' => 'logical_connection_id',
-            'file_transfer_request' . '_' . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
-            'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
-            'file_transfer_request' . '_' . 'user_id' => 'user_id',
-        ]);
-        $select->join('logical_connection', 'file_transfer_request.logical_connection_id = logical_connection.id', [
-            'logical_connection' . '_' . 'id' => 'id',
-            'logical_connection' . '_' . 'type' => 'type',
-        ], Join::JOIN_LEFT);
-        $select->join('notification', 'notification.logical_connection_id = logical_connection.id', [
-            'notification' . '_' . 'id' => 'id',
-            'notification' . '_' . 'email' => 'email',
-            'notification' . '_' . 'success' => 'success',
-            'notification' . '_' . 'failure' => 'failure',
-            'notification' . '_' . 'logical_connection_id' => 'logical_connection_id',
-        ], Join::JOIN_LEFT);
-
+        $select->columns(
+            [
+                'file_transfer_request' . '_' . 'id' => 'id',
+                'file_transfer_request' . '_' . 'change_number' => 'change_number',
+                'file_transfer_request' . '_' . 'status' => 'status',
+                'file_transfer_request' . '_' . 'logical_connection_id' => 'logical_connection_id',
+                'file_transfer_request' . '_' . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
+                'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
+                'file_transfer_request' . '_' . 'user_id' => 'user_id'
+            ]);
+        $select->join('logical_connection', 'file_transfer_request.logical_connection_id = logical_connection.id', 
+            [
+                'logical_connection' . '_' . 'id' => 'id',
+                'logical_connection' . '_' . 'type' => 'type'
+            ], Join::JOIN_LEFT);
+        $select->join('notification', 'notification.logical_connection_id = logical_connection.id', 
+            [
+                'notification' . '_' . 'id' => 'id',
+                'notification' . '_' . 'email' => 'email',
+                'notification' . '_' . 'success' => 'success',
+                'notification' . '_' . 'failure' => 'failure',
+                'notification' . '_' . 'logical_connection_id' => 'logical_connection_id'
+            ], Join::JOIN_LEFT);
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             foreach ($result as $column => $value) {
                 $resultArray[] = $result->current();
@@ -125,50 +145,48 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $resultData = [];
             foreach ($resultArray as $resultRowArray) {
                 foreach (array_keys($resultRowArray) as $arrayKey) {
-                    $tablePrefix = 'file_transfer_request' . '_';
-                    $resultDataKey = 'file_transfer_request';
-                    if (strpos($arrayKey, $tablePrefix) === 0) {
-                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
-                        $indexColumn = 'file_transfer_request' . '_' . 'id';
-                        $indexValue = $resultRowArray[$indexColumn];
-                        $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
-                    }
-                    $tablePrefix = 'logical_connection' . '_';
-                    $resultDataKey = 'logical_connection';
-                    if (strpos($arrayKey, $tablePrefix) === 0) {
-                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
-                        $indexColumn = 'logical_connection' . '_' . 'id';
-                        $indexValue = $resultRowArray[$indexColumn];
-                        $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
-                    }
-                    $tablePrefix = 'notification' . '_';
-                    $resultDataKey = 'notifications';
-                    if (strpos($arrayKey, $tablePrefix) === 0) {
-                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
-                        $parentColumn = $tablePrefix . 'logical_connection' . '_' . 'id';
-                        $parentValue = $resultRowArray[$parentColumn];
-                        $indexColumn = 'notification' . '_' . 'id';
-                        $indexValue = $resultRowArray[$indexColumn];
-                        $resultData[$resultDataKey][$parentValue][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
-                    }
+                    $this->processResultRow($resultData, $resultRowArray, 'file_transfer_request' . '_', 'file_transfer_request', $arrayKey, 'file_transfer_request' . '_' . 'id');
+                    $this->processResultRow($resultData, $resultRowArray, 'logical_connection' . '_', 'logical_connection', $arrayKey, 'logical_connection' . '_' . 'id');
+                    $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications', $arrayKey, 'notification' . '_' . 'id', 'logical_connection' . '_' . 'id');
                 }
             }
-
-            echo '<pre>';
-            print_r($resultData);
-            die();
-
             $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], $this->prototype);
-            $logicalConnection = $this->hydrator->hydrate($resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']], $this->logicalConnectionPrototype);
+            $logicalConnection = $this->hydrator->hydrate(
+                $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']], 
+                $this->logicalConnectionPrototype);
             $fileTransferRequest->setLogicalConnection($logicalConnection);
-
+            $notifications = [];
+            foreach ($resultData['notifications'][$resultData['file_transfer_request'][$id]['logical_connection_id']] as $notification) {
+                $notifications[] = $this->hydrator->hydrate($notification, $this->notificationPrototype);
+            }
+            $fileTransferRequest->getLogicalConnection()->setNotifications($notifications);
+            
+//             echo '<pre>';
+//             print_r($resultData);
+//             die();
             // $fileTransferRequest = new FileTransferRequest();
             // $fileTransferRequest->setId(777);
-
+            
             return $fileTransferRequest;
         }
-
+        
         throw new \InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
+    }
+
+    protected function processResultRow(array &$resultData, array $resultRowArray, string $tablePrefix, 
+        string $resultDataKey, string $arrayKey, string $indexColumn, string $parentColumn = null)
+    {
+        if (strpos($arrayKey, $tablePrefix) === 0) {
+            $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
+            if (!$parentColumn) {
+                $indexValue = $resultRowArray[$indexColumn];
+                $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+            } else {
+                $parentValue = $resultRowArray[$parentColumn];
+                $indexValue = $resultRowArray[$indexColumn];
+                $resultData[$resultDataKey][$parentValue][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+            }
+        }
     }
 
     /**
@@ -179,18 +197,18 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             $return = $resultSet->initialize($result);
-
+            
             return $return;
         }
-
+        
         return [];
     }
 
@@ -202,52 +220,52 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
-
-        $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
+        
+        $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id', 
             [
                 'logical_connection_type' => 'type'
             ], Select::JOIN_LEFT);
         $select->join([
             'service_invoice_position_basic' => 'service_invoice_position'
-        ], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number', [],
+        ], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number', [], 
             Select::JOIN_LEFT);
         $select->join([
             'service_invoice_position_personal' => 'service_invoice_position'
-        ], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
+        ], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number', 
             [], Select::JOIN_LEFT);
-        $select->join('service_invoice',
-            'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number',
+        $select->join('service_invoice', 
+            'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number', 
             [], Select::JOIN_LEFT);
-        $select->join('application',
-            'application.technical_short_name = service_invoice.application_technical_short_name',
+        $select->join('application', 
+            'application.technical_short_name = service_invoice.application_technical_short_name', 
             [
                 'application_technical_short_name' => 'technical_short_name'
             ], Select::JOIN_LEFT);
-        $select->join('environment', 'environment.severity = service_invoice.environment_severity',
+        $select->join('environment', 'environment.severity = service_invoice.environment_severity', 
             [
                 'environment_severity' => 'severity',
                 'environment_name' => 'name'
             ], Select::JOIN_LEFT);
-
+        
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-
+            
             $return = $resultSet->initialize($result);
-
+            
             $fileTransferRequests = [];
-
+            
             /**
              *
              * @var FileTransferRequest $fileTransferRequest
              */
             $fileTransferRequest;
-
+            
             foreach ($return as $fileTransferRequest) {
                 $data = $result->current();
-
+                
                 $fileTransferRequest->setLogicalConnection(
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
@@ -266,7 +284,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->getServiceInvoice()
                     ->getEnvironment()
                     ->setName($data['environment_name']);
-
+                
                 $fileTransferRequest->setLogicalConnection(
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequest->setServiceInvoicePositionPersonal(new ServiceInvoicePosition());
@@ -285,19 +303,19 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->getServiceInvoice()
                     ->getEnvironment()
                     ->setName($data['environment_name']);
-
+                
                 $fileTransferRequests[] = $fileTransferRequest;
             }
-
+            
             return $fileTransferRequests;
         }
-
+        
         return [];
     }
 
     /**
      *
-     * @param FileTransferRequest $dataObject
+     * @param FileTransferRequest $dataObject            
      *
      * @return FileTransferRequest
      * @throws \Exception
@@ -318,13 +336,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         // data from the recently persisted objects
         $data['logical_connection_id'] = $newLogicalConnection->getId();
         $data['user_id'] = $newUser->getId();
-
+        
         $action = new Insert('file_transfer_request');
         $action->values($data);
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-
+        
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
