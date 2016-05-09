@@ -107,26 +107,63 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             'logical_connection' . '_' . 'id' => 'id',
             'logical_connection' . '_' . 'type' => 'type',
         ], Join::JOIN_LEFT);
+        $select->join('notification', 'notification.logical_connection_id = logical_connection.id', [
+            'notification' . '_' . 'id' => 'id',
+            'notification' . '_' . 'email' => 'email',
+            'notification' . '_' . 'success' => 'success',
+            'notification' . '_' . 'failure' => 'failure',
+            'notification' . '_' . 'logical_connection_id' => 'logical_connection_id',
+        ], Join::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $resultArray = ['file_transfer_request', 'logical_connection'];
-            foreach ($result->current() as $column => $value) {
-                if (strpos($column, 'file_transfer_request') === 0) {
-                    $keyForHydration = substr($column, strlen('file_transfer_request' . '_'), strlen($column) - 1);
-                    $resultArray['file_transfer_request'][$keyForHydration] = $value;
-                }
-                if (strpos($column, 'logical_connection') === 0) {
-                    $keyForHydration = substr($column, strlen('logical_connection' . '_'), strlen($column) - 1);
-                    $resultArray['file_transfer_request']['logical_connection'][$keyForHydration] = $value;
+            foreach ($result as $column => $value) {
+                $resultArray[] = $result->current();
+            }
+            $resultData = [];
+            foreach ($resultArray as $resultRowArray) {
+                foreach (array_keys($resultRowArray) as $arrayKey) {
+                    $tablePrefix = 'file_transfer_request' . '_';
+                    $resultDataKey = 'file_transfer_request';
+                    if (strpos($arrayKey, $tablePrefix) === 0) {
+                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
+                        $indexColumn = 'file_transfer_request' . '_' . 'id';
+                        $indexValue = $resultRowArray[$indexColumn];
+                        $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+                    }
+                    $tablePrefix = 'logical_connection' . '_';
+                    $resultDataKey = 'logical_connection';
+                    if (strpos($arrayKey, $tablePrefix) === 0) {
+                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
+                        $indexColumn = 'logical_connection' . '_' . 'id';
+                        $indexValue = $resultRowArray[$indexColumn];
+                        $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+                    }
+                    $tablePrefix = 'notification' . '_';
+                    $resultDataKey = 'notifications';
+                    if (strpos($arrayKey, $tablePrefix) === 0) {
+                        $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
+                        $parentColumn = $tablePrefix . 'logical_connection' . '_' . 'id';
+                        $parentValue = $resultRowArray[$parentColumn];
+                        $indexColumn = 'notification' . '_' . 'id';
+                        $indexValue = $resultRowArray[$indexColumn];
+                        $resultData[$resultDataKey][$parentValue][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+                    }
                 }
             }
 
-            $fileTransferRequest = $this->hydrator->hydrate($resultArray['file_transfer_request'], $this->prototype);
-            $logicalConnection = $this->hydrator->hydrate($resultArray['file_transfer_request']['logical_connection'], $this->logicalConnectionPrototype);
+            echo '<pre>';
+            print_r($resultData);
+            die();
+
+            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], $this->prototype);
+            $logicalConnection = $this->hydrator->hydrate($resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']], $this->logicalConnectionPrototype);
             $fileTransferRequest->setLogicalConnection($logicalConnection);
+
+            // $fileTransferRequest = new FileTransferRequest();
+            // $fileTransferRequest->setId(777);
 
             return $fileTransferRequest;
         }
