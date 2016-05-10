@@ -53,7 +53,8 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'value' => '*/15 * * * *'
                 ]
             ]);
 
