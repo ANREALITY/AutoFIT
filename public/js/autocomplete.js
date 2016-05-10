@@ -2,7 +2,7 @@
  * Autocompletion for the field order-application-number.
  */
 $(function() {
-	$("#order-application-number")
+	$(".autocomplete-application")
 		.autocomplete({
 			autoFocus : true,
 			delay : 500,
@@ -101,84 +101,6 @@ $(function() {
 					+ "data[number]=" + request.term
 					+ "&data[application_technical_short_name]=" + $('#order-application-number').val()
 					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
-					{},
-					function(data) {
-						response(data.slice(0, 10));
-					}
-				);
-			}
-		}).on('focus', function(event) {
-			console.log(new Date());
-			console.log($(this));
-		$(this).autocomplete("search", this.value);
-	});
-});
-/**
- * Autocompletion for the field physical-connection-source-endpoint-source-application-number.
- */
-$(function() {
-	var physicalConnectionSourceEndpointSourceApplicationNumber = $('input[name="file_transfer_request[logical_connection][physical_connection_source][endpoint_source][application][technical_short_name]"]');
-	physicalConnectionSourceEndpointSourceApplicationNumber
-		.autocomplete({
-			autoFocus : true,
-			delay : 500,
-			minLength : 3,
-			source : function(request, response) {
-				$.get(
-					"/order/ajax/provide-applications?"
-					+ "data[technical_short_name]=" + request.term,
-					{},
-					function(data) {
-						response(data.slice(0, 10));
-					}
-				);
-			}
-		}).on('focus', function(event) {
-			console.log(new Date());
-			console.log($(this));
-		$(this).autocomplete("search", this.value);
-	});
-});
-/**
- * Autocompletion for the field physical-connection-source-endpoint-target-application-number.
- */
-$(function() {
-	var physicalConnectionSourceEndpointTargetApplicationNumber = $('input[name="file_transfer_request[logical_connection][physical_connection_source][endpoint_target][application][technical_short_name]"]');
-	physicalConnectionSourceEndpointTargetApplicationNumber
-		.autocomplete({
-			autoFocus : true,
-			delay : 500,
-			minLength : 3,
-			source : function(request, response) {
-				$.get(
-					"/order/ajax/provide-applications?"
-					+ "data[technical_short_name]=" + request.term,
-					{},
-					function(data) {
-						response(data.slice(0, 10));
-					}
-				);
-			}
-		}).on('focus', function(event) {
-			console.log(new Date());
-			console.log($(this));
-		$(this).autocomplete("search", this.value);
-	});
-});
-/**
- * Autocompletion for the field physical-connection-target-endpoint-target-application-number.
- */
-$(function() {
-	var physicalConnectionTargetEndpointTargetApplicationNumber = $('input[name="file_transfer_request[logical_connection][physical_connection_target][endpoint_target][application][technical_short_name]"]');
-	physicalConnectionTargetEndpointTargetApplicationNumber
-		.autocomplete({
-			autoFocus : true,
-			delay : 500,
-			minLength : 3,
-			source : function(request, response) {
-				$.get(
-					"/order/ajax/provide-applications?"
-					+ "data[technical_short_name]=" + request.term,
 					{},
 					function(data) {
 						response(data.slice(0, 10));

@@ -25,7 +25,7 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control autocomplete-application'
                 ]
             ]);
     }
