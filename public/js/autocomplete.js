@@ -114,11 +114,11 @@ $(function() {
 	});
 });
 /**
- * Autocompletion for the field physical-connection-(source|target)-endpoint-(source|target)-server-name.
+ * Autocompletion for the field (billing|physical-connection-endpoint)-server-name.
  */
 $(function() {
-	var physicalConnectionSourceEndpointSourceServerName = $('.autocomplete-server');
-	physicalConnectionSourceEndpointSourceServerName
+	var physicalConnectionEndpointServerName = $('.autocomplete-server');
+	physicalConnectionEndpointServerName
 		.autocomplete({
 			autoFocus : true,
 			delay : 500,
