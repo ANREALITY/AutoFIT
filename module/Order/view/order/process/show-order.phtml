@@ -1,1 +1,80 @@
-show order <?php echo $fileTransferRequest->getId(); ?>
+<?php
+use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\LogicalConnection;
+/**
+ * @var FileTransferRequest $fileTransferRequest
+ */
+$fileTransferRequest;
+?>
+
+<!-- show order <?php echo $fileTransferRequest->getId(); ?> -->
+
+<?php
+// billing
+echo $this->partial('/partials/order-parts/billing', 
+    [
+        'fileTransferRequest' => $fileTransferRequest,
+    ]);
+?>
+
+<?php
+// // endpoint source (basic settings)
+// echo $this->partial('/partials/order-parts/endpoints/basic-source', 
+//     [
+//         'fileTransferRequest' => $fileTransferRequest,
+//     ]);
+?>
+
+<?php
+// // endpoint target (basic settings)
+// echo $this->partial('/partials/order-parts/endpoints/basic-target', 
+//     [
+//         'fileTransferRequest' => $fileTransferRequest,
+//     ]);
+?>
+
+<div class="clearer"></div>
+
+<?php
+// // endpoint source (specific settings)
+// echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source', 
+//     [
+//         'fileTransferRequest' => $fileTransferRequest,
+//     ]);
+?>
+
+<?php
+// // endpoint target (specific settings)
+// echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target', 
+//     [
+//         'fileTransferRequest' => $fileTransferRequest,
+//     ]);
+?>
+
+<div class="clearer"></div>
+
+<?php
+// // logical connection
+// echo $this->partial('/partials/order-parts/logical-connection', 
+//     [
+//         'fileTransferRequest' => $fileTransferRequest,
+//     ]);
+?>
+
+<div class="clearer"></div>
+
+<?php
+// // physical connections
+// $connectionType = strtolower($fileTransferRequest->getLogicalConnection()->getType());
+// if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
+//     echo $this->partial('/partials/order-parts/connections/' . $connectionType, 
+//         [
+//             'fileTransferRequest' => $fileTransferRequest
+//         ]);
+// } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
+//     echo $this->partial('/partials/order-parts/connections/' . $connectionType, 
+//         [
+//             'fileTransferRequest' => $fileTransferRequest
+//         ]);
+// }
+?>

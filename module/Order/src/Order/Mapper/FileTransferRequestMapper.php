@@ -216,10 +216,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [])
+    public function findAllWithBuldledData(array $criteria = [], $id = null)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
+        if ($id) {
+            $select->where([
+                'file_transfer_request.id = ?' => $id
+            ]);
+        }
         
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id', 
             [
@@ -270,6 +275,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
                 $fileTransferRequest->getServiceInvoicePositionBasic()->setServiceInvoice(new ServiceInvoice());
+                $fileTransferRequest->getServiceInvoicePositionBasic()->setNumber($data['service_invoice_position_basic_number']);
                 $fileTransferRequest->getServiceInvoicePositionBasic()
                     ->getServiceInvoice()
                     ->setApplication(new Application());
@@ -288,6 +294,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 $fileTransferRequest->setLogicalConnection(
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequest->setServiceInvoicePositionPersonal(new ServiceInvoicePosition());
+                $fileTransferRequest->getServiceInvoicePositionPersonal()->setNumber($data['service_invoice_position_personal_number']);
                 $fileTransferRequest->getServiceInvoicePositionPersonal()->setServiceInvoice(new ServiceInvoice());
                 $fileTransferRequest->getServiceInvoicePositionPersonal()
                     ->getServiceInvoice()

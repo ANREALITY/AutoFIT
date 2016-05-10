@@ -106,7 +106,8 @@ class ProcessController extends AbstractActionController
     public function showOrderAction()
     {
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequest = $this->fileTransferRequestService->findOne($id);
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
+        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest

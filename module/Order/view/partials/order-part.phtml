@@ -1,0 +1,21 @@
+<div id="fieldgroup-<?php echo $orderPartCssId; ?>"
+    class="fieldgroup-container <?php echo $orderPartCssClass; ?>">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo $orderPartTitle; ?></h3>
+        </div>
+        <div class="panel-body">
+            <dl class="list-group">
+            <?php foreach ($orderPartAttributes as $orderPartAttribute) : ?>
+                <div class="attribute-row col-md-6">
+                     <dt><?php echo $orderPartAttribute['label']; ?></dt>
+                     <dd><?php echo $orderPartAttribute['value']; ?></dd>
+                 </div>
+            <?php endforeach; ?>
+            </dl>
+            <?php if($emptyView) : ?>
+            <span><?php echo $this->translate('No settings needed for this area.'); ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
