@@ -14,13 +14,16 @@ $orderPartAttributes = [
         'label' => $this->translate('application'), 'value' => $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(),
     ],
     [
-        'label' => $this->translate('change number'), 'value' => $fileTransferRequest->getChangeNumber(),
-    ],
-    [
         'label' => $this->translate('environment'), 'value' => $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(),
     ],
     [
+        'label' => $this->translate('change number'), 'value' => $fileTransferRequest->getChangeNumber(),
+    ],
+    [
         'label' => $this->translate('service invoice position (basic)'), 'value' => $fileTransferRequest->getServiceInvoicePositionBasic()->getNumber(),
+    ],
+    [
+        'label' => $this->translate('user'), 'value' => $fileTransferRequest->getUser()->getUsername(),
     ],
     [
         'label' => $this->translate('service invoice position (personal)'), 'value' => $fileTransferRequest->getServiceInvoicePositionPersonal()->getNumber(),

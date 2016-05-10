@@ -18,6 +18,24 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
+     * @var string
+     */
+    protected $status;
+
+    /**
+     *
+     * @var string
+     */
+    protected $created;
+
+    /**
+     *
+     * @var string
+     */
+    protected $updated;
+
+    /**
+     *
      * @var LogicalConnection
      */
     protected $logicalConnection;
@@ -51,7 +69,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -69,11 +87,65 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param string $changeNumber            
+     * @param string $changeNumber
      */
     public function setChangeNumber($changeNumber)
     {
         $this->changeNumber = $changeNumber;
+    }
+
+    /**
+     *
+     * @return the $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     *
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     *
+     * @return the $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     *
+     * @param string $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     *
+     * @return the $updated
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     *
+     * @param string $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
     }
 
     /**
@@ -87,7 +159,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -105,7 +177,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePositionBasic            
+     * @param ServiceInvoicePosition $serviceInvoicePositionBasic
      */
     public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
     {
@@ -123,7 +195,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal            
+     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
      */
     public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
     {
@@ -141,7 +213,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @param User $user            
+     * @param User $user
      */
     public function setUser($user)
     {

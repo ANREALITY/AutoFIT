@@ -271,6 +271,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             foreach ($return as $fileTransferRequest) {
                 $data = $result->current();
                 
+                $fileTransferRequest->setUser($this->userMapper->findOne($data['user_id']));
                 $fileTransferRequest->setLogicalConnection(
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
                 $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
@@ -334,6 +335,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $data['change_number'] = $dataObject->getChangeNumber();
         $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
         $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
+        if (empty($data['id'])) {
+            $data['created'] = null;
+            $data['updated'] = null;
+        } else {
+            unset($data['created']);
+            $data['updated'] = null;
+        }
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());

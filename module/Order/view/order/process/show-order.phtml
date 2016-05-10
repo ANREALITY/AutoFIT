@@ -10,6 +10,14 @@ $fileTransferRequest;
 <!-- show order <?php echo $fileTransferRequest->getId(); ?> -->
 
 <?php
+// info
+echo $this->partial('/partials/order-parts/order-info', 
+    [
+        'fileTransferRequest' => $fileTransferRequest,
+    ]);
+?>
+
+<?php
 // billing
 echo $this->partial('/partials/order-parts/billing', 
     [

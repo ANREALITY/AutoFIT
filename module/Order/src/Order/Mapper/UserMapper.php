@@ -34,23 +34,21 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
-         * }
-         *
-         * throw new \InvalidArgumentException("User with given ID:{$id} not found.");
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+
+         $sql = new Sql($this->dbAdapter);
+         $select = $sql->select('user');
+         $select->where([
+            'id = ?' => $id
+         ]);
+
+         $statement = $sql->prepareStatementForSqlObject($select);
+         $result = $statement->execute();
+
+         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            return $this->hydrator->hydrate($result->current(), $this->prototype);
+        }
+        
+        throw new \InvalidArgumentException("User with given ID:{$id} not found.");
     }
 
     /**
@@ -59,22 +57,31 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('user');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return [];
-         */
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('user');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('username', $condition)) {
+                    $select->where(
+                        [
+                            'username = ?' => $condition['username']
+                        ]);
+                }
+            }
+        }
+        
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+             return $resultSet->initialize($result);
+         }
+
+         return [];
+
+         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
