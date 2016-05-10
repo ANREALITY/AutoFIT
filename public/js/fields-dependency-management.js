@@ -1,7 +1,7 @@
 /**
  * Clearing and enabling/disabling of fields dependending on other fields.
  */
-// Billing
+// Billing #start#
 $(document).ready(function() {
 	fieldApplicationTechnicalShortName = $('#order-application-number');
 	fieldEnvironmentSeverity = $("#order-environment-severity");
@@ -28,6 +28,7 @@ $(document).ready(function() {
 		updateEnvironmentDependentFields(this.value);
 	});
 });
+//Billing #stop#
 
 function updateApplicationDependentFields(value) {
 	fieldEnvironmentSeverity.val('');
@@ -136,7 +137,7 @@ function togglePhysicalConnectionTargetEndpointTargetDependentFields(value) {
 	}
 }
 
-// Linux/Unix Source #start#
+// Linux/Unix EndpointSource #start#
 $(document).ready(function() {
 	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
 	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
@@ -182,8 +183,9 @@ function toggleFieldServiceAddressSource(field) {
 		fieldServiceAddressSource.parent().fadeOut('slow');
 	}
 }
-// Linux/Unix Source #stop#
-// Linux/Unix Target #start#
+// Linux/Unix EndpointSource #stop#
+
+// Linux/Unix EndpointTarget #start#
 $(document).ready(function() {
 	fieldServerTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-server');
 	fieldTheServerTarget = $('#fieldgroup-basic-endpoint-target .input-server');
@@ -250,4 +252,4 @@ function toggleFieldClusterTarget(field) {
 		fieldClusterTarget.parent().fadeOut('slow');
 	}
 }
-// Linux/Unix Target #stop#
+// Linux/Unix EndpointTarget #stop#
