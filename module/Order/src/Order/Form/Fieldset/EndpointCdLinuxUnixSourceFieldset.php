@@ -68,9 +68,8 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
 
     public function getInputFilterSpecification()
     {
-        $parentInputFilterSpecification = parent::getInputFilterSpecification();
-        $thisInputFilterSpecification = [];
-        return array_merge($parentInputFilterSpecification, $thisInputFilterSpecification);
+        $inputFilterSpecification = [];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteRole()

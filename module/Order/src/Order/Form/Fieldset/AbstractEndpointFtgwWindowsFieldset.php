@@ -23,7 +23,8 @@ abstract class AbstractEndpointFtgwWindowsFieldset extends AbstractEndpointField
 
     public function getInputFilterSpecification()
     {
-        return [];
+        $inputFilterSpecification = [];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteType()

@@ -97,9 +97,10 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
 
     public function getInputFilterSpecification()
     {
-        return [
+        $inputFilterSpecification = [
             'protocols' => []
         ];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteType()

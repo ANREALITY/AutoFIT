@@ -20,7 +20,8 @@ class EndpointCdTandemSourceFieldset extends AbstractEndpointCdTandemFieldset
 
     public function getInputFilterSpecification()
     {
-        return [];
+        $inputFilterSpecification = [];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteRole()

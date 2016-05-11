@@ -20,7 +20,8 @@ class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
 
     public function getInputFilterSpecification()
     {
-        return [];
+        $inputFilterSpecification = [];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteRole()

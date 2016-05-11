@@ -38,11 +38,12 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
 
     public function getInputFilterSpecification()
     {
-        return [
+        $inputFilterSpecification = [
             'username' => [
                 'required' => true
             ]
         ];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteType()

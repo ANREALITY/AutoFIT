@@ -131,7 +131,7 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
     public function getInputFilterSpecification()
     {
-        return [
+        $inputFilterSpecification = [
             'username' => [
                 'required' => true
             ],
@@ -142,6 +142,7 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                 'required' => false
             ]
         ];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteType()

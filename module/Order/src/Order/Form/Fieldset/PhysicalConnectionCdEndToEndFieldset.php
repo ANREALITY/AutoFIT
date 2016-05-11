@@ -34,11 +34,12 @@ class PhysicalConnectionCdEndToEndFieldset extends AbstractPhysicalConnectionFie
 
     public function getInputFilterSpecification()
     {
-        return [
+        $inputFilterSpecification = [
             'secure_plus' => [
                 'required' => true
             ]
         ];
+        return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
     protected function getConcreteRole()
