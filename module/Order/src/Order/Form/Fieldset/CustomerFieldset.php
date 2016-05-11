@@ -25,7 +25,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control field-customer-name'
                 ]
             ]);
     }

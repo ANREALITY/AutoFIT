@@ -3,7 +3,7 @@
  */
 // Billing #start#
 $(document).ready(function() {
-	fieldApplicationTechnicalShortName = $('#order-application-number');
+	fieldApplicationNumber = $('#order-application-number');
 	fieldEnvironmentSeverity = $("#order-environment-severity");
 	fieldEnvironmentName = $("#order-environment-name");
 	fieldInvoicePositionBasic = $("#order-service-invoice-position-basic-number");
@@ -11,11 +11,11 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-	fieldApplicationTechnicalShortName.on('autocompletechange', function() {
+	fieldApplicationNumber.on('autocompletechange', function() {
 		console.log('autocompletechange');
-		fieldApplicationTechnicalShortName.trigger('change');
+		fieldApplicationNumber.trigger('change');
 	});
-	fieldApplicationTechnicalShortName.change(function() {
+	fieldApplicationNumber.change(function() {
 		console.log('change');
 		updateApplicationDependentFields(this.value);
 	});
@@ -28,7 +28,6 @@ $(document).ready(function() {
 		updateEnvironmentDependentFields(this.value);
 	});
 });
-//Billing #stop#
 
 function updateApplicationDependentFields(value) {
 	fieldEnvironmentSeverity.val('');
@@ -41,101 +40,69 @@ function updateEnvironmentDependentFields(value) {
 	fieldInvoicePositionBasic.val('');
 	fieldInvoicePositionPersonal.val('');
 }
+// Billing #stop#
 
-// PhysicalConnectionSource.EndpointSource basic #start#
-fieldNamePhysicalConnectionSourceEndpointSourceServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server_place]"';
-fieldNamePhysicalConnectionSourceEndpointSourceCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][customer][name]"';
-fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][application][technical_short_name]"';
-fieldNamePhysicalConnectionSourceEndpointSourceName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_source][server][name]"';
-
+// EndpointSource basic #start#
 $(document).ready(function() {
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointSourceServerPlace + ']');
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace.change(function() {
-		togglePhysicalConnectionSourceEndpointSourceDependentFields(this.value);
-	});
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace.filter(':checked').trigger('change');
-});
-// PhysicalConnectionSource.EndpointSource basic #stop#
-// PhysicalConnectionSource.EndpointTarget basic #start#
-fieldNamePhysicalConnectionSourceEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server_place]"';
-fieldNamePhysicalConnectionSourceEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][customer][name]"';
-fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][application][technical_short_name]"';
-fieldNamePhysicalConnectionSourceEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_source][endpoint_target][server][name]"';
+	fieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
+	fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
+	fieldEndpointSourceApplicationNumber = $('#fieldgroup-basic-endpoint-source .field-application-number');
+	fieldEndpointSourceServerName = $('#fieldgroup-basic-endpoint-source .input-server');
 
-$(document).ready(function() {
-	fieldPhysicalConnectionSourceEndpointTargetServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionSourceEndpointTargetServerPlace + ']');
-	fieldPhysicalConnectionSourceEndpointTargetServerPlace.change(function() {
-		togglePhysicalConnectionSourceEndpointTargetDependentFields(this.value);
+	fieldEndpointSourceServerPlace.change(function() {
+		toggleEndpointSourceDependentFields(this.value);
 	});
-	fieldPhysicalConnectionSourceEndpointTargetServerPlace.filter(':checked').trigger('change');
+	fieldEndpointSourceServerPlace.filter(':checked').trigger('change');
 });
-// PhysicalConnectionSource.EndpointTarget basic #stop#
-// PhysicalConnectionTarget.EndpointTarget basic #start#
-fieldNamePhysicalConnectionTargetEndpointTargetServerPlace = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server_place]"';
-fieldNamePhysicalConnectionTargetEndpointTargetCustomerName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][customer][name]"';
-fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][application][technical_short_name]"';
-fieldNamePhysicalConnectionTargetEndpointTargetName = '"file_transfer_request[logical_connection][physical_connection_target][endpoint_target][server][name]"';
-
-$(document).ready(function() {
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace = $('input[type=radio][name=' + fieldNamePhysicalConnectionTargetEndpointTargetServerPlace + ']');
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace.change(function() {
-		togglePhysicalConnectionTargetEndpointTargetDependentFields(this.value);
-	});
-	fieldPhysicalConnectionSourceEndpointSourceServerPlace.filter(':checked').trigger('change');
-});
-// PhysicalConnectionTarget.EndpointTarget basic #stop#
-
-function togglePhysicalConnectionSourceEndpointSourceDependentFields(value) {
+function toggleEndpointSourceDependentFields(value) {
 	if (value == 'internal') {
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').parent().fadeOut('slow');
+		fieldEndpointSourceCustomerName.val('');
+		fieldEndpointSourceCustomerName.parent().fadeOut('slow');
 
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeIn('slow');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').parent().fadeIn('slow');
+		fieldEndpointSourceApplicationNumber.parent().fadeIn('slow');
+		fieldEndpointSourceServerName.parent().fadeIn('slow');
 	}
 	if (value == 'external') {
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceApplicationTechnicalShortName + ']').parent().fadeOut('slow');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceName + ']').parent().fadeOut('slow');
+		fieldEndpointSourceApplicationNumber.val('');
+		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
+		fieldEndpointSourceServerName.val('');
+		fieldEndpointSourceServerName.parent().fadeOut('slow');
 
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointSourceCustomerName + ']').parent().fadeIn('slow');
+		fieldEndpointSourceCustomerName.parent().fadeIn('slow');
 	}
 }
-function togglePhysicalConnectionSourceEndpointTargetDependentFields(value) {
-	if (value == 'internal') {
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').parent().fadeOut('slow');
+// EndpointSource basic #stop#
 
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').parent().fadeIn('slow');
+// EndpointTarget basic #start#
+$(document).ready(function() {
+	fieldEndpointTargetServerPlace = $('#fieldgroup-basic-endpoint-target .field-server-place');
+	fieldEndpointTargetCustomerName = $('#fieldgroup-basic-endpoint-target .field-customer-name');
+	fieldEndpointTargetApplicationNumber = $('#fieldgroup-basic-endpoint-target .field-application-number');
+	fieldEndpointTargetServerName = $('#fieldgroup-basic-endpoint-target .input-server');
+
+	fieldEndpointTargetServerPlace.change(function() {
+		toggleEndpointTargetDependentFields(this.value);
+	});
+	fieldEndpointTargetServerPlace.filter(':checked').trigger('change');
+});
+function toggleEndpointTargetDependentFields(value) {
+	if (value == 'internal') {
+		fieldEndpointTargetCustomerName.val('');
+		fieldEndpointTargetCustomerName.parent().fadeOut('slow');
+
+		fieldEndpointTargetApplicationNumber.parent().fadeIn('slow');
+		fieldEndpointTargetServerName.parent().fadeIn('slow');
 	}
 	if (value == 'external') {
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetName + ']').parent().fadeOut('slow');
+		fieldEndpointTargetApplicationNumber.val('');
+		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
+		fieldEndpointTargetServerName.val('');
+		fieldEndpointTargetServerName.parent().fadeOut('slow');
 
-		$('input[name=' + fieldNamePhysicalConnectionSourceEndpointTargetCustomerName + ']').parent().fadeIn('slow');
+		fieldEndpointTargetCustomerName.parent().fadeIn('slow');
 	}
 }
-function togglePhysicalConnectionTargetEndpointTargetDependentFields(value) {
-	if (value == 'internal') {
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeOut('slow');
-
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeIn('slow');
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').parent().fadeIn('slow');
-	}
-	if (value == 'external') {
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetApplicationTechnicalShortName + ']').parent().fadeOut('slow');
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').val('');
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetName + ']').parent().fadeOut('slow');
-
-		$('input[name=' + fieldNamePhysicalConnectionTargetEndpointTargetCustomerName + ']').parent().fadeIn('slow');
-	}
-}
+// EndpointTarget basic #stop#
 
 // Linux/Unix EndpointSource #start#
 $(document).ready(function() {

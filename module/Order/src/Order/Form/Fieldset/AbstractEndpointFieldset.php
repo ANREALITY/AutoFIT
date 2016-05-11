@@ -50,6 +50,9 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
+                ],
+                'attributes' => [
+                    'class' => 'field-server-place'
                 ]
             ]);
 
