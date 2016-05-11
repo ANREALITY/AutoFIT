@@ -14,6 +14,9 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     $endpointSource = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointSource() : null;
     $endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
     $endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
+    $endpointTarget = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointTarget() : null;
+    $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
+    $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     $physicalConnectionEndToMiddle = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle();
     $endpointSource = $physicalConnectionEndToMiddle ? $physicalConnectionEndToMiddle->getEndpointSource() : null;
