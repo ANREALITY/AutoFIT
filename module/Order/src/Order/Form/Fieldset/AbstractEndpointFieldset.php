@@ -9,7 +9,7 @@ use DbSystel\DataObject\AbstractEndpoint;
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    const CONTACT_PERCON_MAX_LENGTH = 50;
+    const CONTACT_PERCON_MAX_LENGTH = 250;
 
     public function __construct($name = null, $options = [])
     {
@@ -20,7 +20,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     {
         $this->add(
             [
-                'type' => 'text',
+                'type' => 'textarea',
                 'name' => 'contact_person',
                 'options' => [
                     'label' => _('contact person'),
