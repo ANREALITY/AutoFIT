@@ -4,9 +4,12 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use DbSystel\DataObject\Server;
+use DbSystel\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {
+
+    const CONTACT_PERCON_MAX_LENGTH = 50;
 
     public function __construct($name = null, $options = [])
     {
@@ -26,7 +29,8 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'maxlength' => static::CONTACT_PERCON_MAX_LENGTH
                 ]
             ]);
 
@@ -102,7 +106,20 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'contact_person' => [
+                'filters' => [
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'callback' => function($value) {
+                                return substr($value, 0, static::CONTACT_PERCON_MAX_LENGTH);
+                            }
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
     abstract protected function getConcreteRole();
