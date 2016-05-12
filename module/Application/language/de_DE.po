@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 18:51+0200\n"
-"PO-Revision-Date: 2016-05-12 18:55+0200\n"
+"POT-Creation-Date: 2016-05-12 20:39+0200\n"
+"PO-Revision-Date: 2016-05-12 20:40+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -264,6 +264,99 @@ msgid "Tool for creating, submission, and managing of file transfer requests"
 msgstr ""
 "Anwendung zur Erstellung, Einreichung und Verwaltung von File-Transfer-"
 "Anträgen"
+
+#: Application/view/application/index/index.phtml:9
+msgid "Welcome on the ordering portal for file transfer interfaces"
+msgstr "Willkommen auf dem Bestellportal für Filetransfer-Schnittstellen"
+
+#: Application/view/application/index/index.phtml:14
+msgid ""
+"For data exchange between IT systems we provide following two file transfer "
+"products to you:"
+msgstr ""
+"Für den Dateiaustausch zwischen IT-Systemen bieten wir Ihnen die folgenden "
+"beiden Filetransfer-Produkte an:"
+
+#: Application/view/application/index/index.phtml:22
+msgid ""
+"file transfer between two IT systems in the intranet of the DB (corporate "
+"network)"
+msgstr ""
+"Filetransfer zwischen zwei IT-Systemen im Intranet der DB (Konzernnetz)"
+
+#: Application/view/application/index/index.phtml:23
+msgid ""
+"direct peer-to-peer file transfer from the sending IT system (source) to the "
+"receiving IT system (target)"
+msgstr ""
+"direkter Punkt-zu-Punkt-Filetransfer vom sendenden IT-System (Quelle) zum "
+"empfangenden IT-System (Ziel)"
+
+#: Application/view/application/index/index.phtml:33
+msgid "file transfer between two IT systems"
+msgstr "Filetransfer zwischen zwei IT-Systemen"
+
+#: Application/view/application/index/index.phtml:35
+msgid "in the intranet of the DB (corporate network)"
+msgstr "im Intranet der DB (Konzernnetz)"
+
+#: Application/view/application/index/index.phtml:36
+msgid "in the internet and intranet of the DB (corporate network)"
+msgstr "im Internet und im Intranet der DB (Konzernnetz)"
+
+#: Application/view/application/index/index.phtml:37
+msgid "in the internet"
+msgstr "im Internet"
+
+#: Application/view/application/index/index.phtml:39
+msgid ""
+"File transfer takes place via a central intermediate, the "
+"FiletransferGateway."
+msgstr "Filetransfer erfolgt über eine Zentrale, das FiletransferGateway."
+
+#: Application/view/application/index/index.phtml:40
+msgid ""
+"In the process the file is transfered from the sending IT system (source) to "
+"the FGW first"
+msgstr ""
+"Dabei wird die Datei vom sendenden IT-System (Quelle) zunächst zum FGW "
+"übertragen"
+
+#: Application/view/application/index/index.phtml:41
+msgid "and then provided by the FGW for the receiver (target)."
+msgstr "und vom FGW dann dem Empfänger (Ziel) bereitgestellt"
+
+#: Application/view/application/index/index.phtml:48
+msgid "Service description and prices"
+msgstr "Leistungsbeschreibungen und Preise"
+
+#: Application/view/application/index/index.phtml:49
+msgid "according to"
+msgstr "laut"
+
+#: Application/view/application/index/index.phtml:50
+msgid "ICT supply catalog"
+msgstr "ICT Angebotskatalog"
+
+#: Application/view/application/index/index.phtml:55
+msgid "Middleware - special / application integrated"
+msgstr "Middleware – Spezial / anwendungsintegriert"
+
+#: Application/view/application/index/index.phtml:58
+msgid "Middleware - FiletransferGateway"
+msgstr "Middleware – FiletransferGateway"
+
+#: Application/view/application/index/index.phtml:64
+msgid "Technical description"
+msgstr "Technische Beschreibung"
+
+#: Application/view/application/index/index.phtml:65
+msgid "you find in the TDV"
+msgstr "finden Sie in der TDV"
+
+#: Application/view/application/index/index.phtml:95
+msgid "Select the desired product now"
+msgstr "Wählen Sie nun das gewünschte Filetransfer-Produkt aus"
 
 #: Application/view/error/404.phtml:1
 msgid "A 404 error occurred"

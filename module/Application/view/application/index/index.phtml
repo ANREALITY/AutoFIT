@@ -6,13 +6,12 @@
             id="appDescription"><?php echo $this->translate('Tool for creating, submission, and managing of file transfer requests'); ?></span>
     </h1>
     -->
-    <h2>Willkommen auf dem Bestellportal für Filetransfer-Schnittstellen</h2>
+    <h2><?php echo $this->translate('Welcome on the ordering portal for file transfer interfaces'); ?></h2>
 </div>
 
 <div class="row">
     <div class="col-md-12 centered">
-        <span>Für den Dateiaustausch zwischen IT-Systemen bieten wir
-            Ihnen die folgenden beiden Filetransfer-Produkte an:</span>
+        <span><?php echo $this->translate('For data exchange between IT systems we provide following two file transfer products to you:'); ?></span>
     </div>
     <div class="col-md-6">
         <h3 class="semi-title">
@@ -20,11 +19,8 @@
         </h3>
         <div class="panel-body">
             <ul>
-                <li><span>Filetransfer zwischen zwei IT-Systemen im
-                        Intranet der DB (Konzernnetz)</span></li>
-                <li><span>direkter Punkt-zu-Punkt-Filetransfer vom
-                        sendenden IT-System (Quelle) zum empfangenden
-                        IT-System (Ziel)</span></li>
+                <li><span><?php echo $this->translate('file transfer between two IT systems in the intranet of the DB (corporate network)'); ?></span></li>
+                <li><span><?php echo $this->translate('direct peer-to-peer file transfer from the sending IT system (source) to the receiving IT system (target)'); ?></span></li>
             </ul>
         </div>
     </div>
@@ -34,43 +30,39 @@
         </h3>
         <div class="panel-body">
             <ul>
-                <li><span>Filetransfer zwischen zwei IT-Systemen</span>
+                <li><span><?php echo $this->translate('file transfer between two IT systems'); ?></span>
                     <ul class="list-unstyled">
-                        <li><span>a) im Intranet der DB (Konzernnetz)</span></li>
-                        <li><span>b) im Internet und im Intranet der DB
-                                (Konzernnetz)</span></li>
-                        <li><span>c) im Internet</span></li>
+                        <li><span>a) <?php echo $this->translate('in the intranet of the DB (corporate network)'); ?></span></li>
+                        <li><span>b) <?php echo $this->translate('in the internet and intranet of the DB (corporate network)'); ?></span></li>
+                        <li><span>c) <?php echo $this->translate('in the internet'); ?></span></li>
                     </ul></li>
-                <li><span>Filetransfer erfolgt über eine Zentrale, das
-                        FiletransferGateway, dabei wird die Datei vom
-                        sendenden IT-System (Quelle) zunächst zum FGW
-                        übertragen und vom FGW dann dem Empfänger (Ziel)
-                        bereitgestellt</span></li>
+                <li><span><?php echo $this->translate('File transfer takes place via a central intermediate, the FiletransferGateway.'); ?>
+				<?php echo $this->translate('In the process the file is transfered from the sending IT system (source) to the FGW first'); ?>
+				<?php echo $this->translate('and then provided by the FGW for the receiver (target).'); ?></span></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="row">
     <h3 class="semi-title">
-        <span>Leistungsbeschreibungen und Preise</span> <br /> <span
-            class="title-addition">&rarr; laut "<a target="_blank"
-            href="https://dbsystel.intranet.deutschebahn.com/file/intra-dbsystel/2129504/msQgmvn5zQWG2g2O-WNxwfDPDI8/9402020/data/ICT_Angebotskatalog_2016_V_1.2.pdf">ICT
-                Angebotskatalog V 1.2</a>"
+        <span><?php echo $this->translate('Service description and prices'); ?></span> <br /> <span
+            class="title-addition">&rarr; <?php echo $this->translate('according to'); ?> "<a target="_blank"
+            href="https://dbsystel.intranet.deutschebahn.com/file/intra-dbsystel/2129504/msQgmvn5zQWG2g2O-WNxwfDPDI8/9402020/data/ICT_Angebotskatalog_2016_V_1.2.pdf"><?php echo $this->translate('ICT supply catalog'); ?> V 1.2</a>"
         </span>
     </h3>
     <div class="panel-body">
         <div class="col-md-6">
-            <span>4.6.1 Middleware – Spezial /anwendungsintegriert</span>
+            <span>4.6.1 <?php echo $this->translate('Middleware - special / application integrated'); ?></span>
         </div>
         <div class="col-md-6">
-            <span>4.6.2 Middleware – Filetransfer Gateway</span>
+            <span>4.6.2 <?php echo $this->translate('Middleware - FiletransferGateway'); ?></span>
         </div>
     </div>
 </div>
 <div class="row">
     <h3 class="semi-title">
-        <span>Technische Beschreibung</span> <br /> <span
-            class="title-addition">&rarr; finden Sie in der TDV</span>
+        <span><?php echo $this->translate('Technical description'); ?></span> <br /> <span
+            class="title-addition">&rarr; <?php echo $this->translate('you find in the TDV'); ?>/span>
     </h3>
     <div class="panel-body">
         <div class="col-md-2"></div>
@@ -100,8 +92,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-12">
             <h3 class="semi-title">
-                <span>Wählen Sie nun das gewünschte Filetransfer-Produkt
-                    aus</span>
+                <span><?php echo $this->translate('Select the desired product now'); ?></span>
             </h3>
             <div class="col-md-6">
                 <div class="start-link-container">
