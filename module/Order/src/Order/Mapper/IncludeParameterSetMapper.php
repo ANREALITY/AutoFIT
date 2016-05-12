@@ -69,7 +69,7 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
          * }
          *
          * throw new \InvalidArgumentException("IncludeParameterSet with given ID:{$id} not found.");
@@ -91,7 +91,7 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
+         * $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
          *
          * return $resultSet->initialize($result);
          * }
@@ -117,7 +117,7 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), clone $this->prototype);
+            $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
             $data = $result->current();
 
             return $return;

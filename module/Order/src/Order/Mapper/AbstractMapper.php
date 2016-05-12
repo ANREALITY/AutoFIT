@@ -78,7 +78,7 @@ class AbstractMapper
      */
     public function getPrototype()
     {
-        return $this->prototype;
+        return clone $this->prototype;
     }
 
     /**

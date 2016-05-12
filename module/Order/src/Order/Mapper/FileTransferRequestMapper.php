@@ -62,12 +62,28 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     }
 
     /**
+     * @return the $logicalConnectionPrototype
+     */
+    public function getLogicalConnectionPrototype()
+    {
+        return clone $this->logicalConnectionPrototype;
+    }
+
+    /**
      *
      * @param LogicalConnection $logicalConnectionPrototype            
      */
     public function setLogicalConnectionPrototype($logicalConnectionPrototype)
     {
         $this->logicalConnectionPrototype = $logicalConnectionPrototype;
+    }
+
+    /**
+     * @return the $notificationPrototype
+     */
+    public function getNotificationPrototype()
+    {
+        return clone $this->notificationPrototype;
     }
 
     /**
@@ -150,14 +166,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications', $arrayKey, 'notification' . '_' . 'id', 'logical_connection' . '_' . 'id');
                 }
             }
-            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], clone $this->prototype);
+            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], $this->getPrototype());
             $logicalConnection = $this->hydrator->hydrate(
                 $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']], 
-                clone $this->logicalConnectionPrototype);
+                $this->getLogicalConnectionPrototype());
             $fileTransferRequest->setLogicalConnection($logicalConnection);
             $notifications = [];
             foreach ($resultData['notifications'][$resultData['file_transfer_request'][$id]['logical_connection_id']] as $notification) {
-                $notifications[] = $this->hydrator->hydrate($notification, clone $this->notificationPrototype);
+                $notifications[] = $this->hydrator->hydrate($notification, $this->getNotificationPrototype());
             }
             $fileTransferRequest->getLogicalConnection()->setNotifications($notifications);
             
@@ -202,7 +218,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
             
             $return = $resultSet->initialize($result);
             
@@ -256,7 +272,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
             
             $return = $resultSet->initialize($result);
             

@@ -116,7 +116,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
          * }
          *
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
@@ -157,7 +157,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
                     $this->prototype = new EndpointFtgwWindows();
                 }
-                $return = $this->hydrator->hydrate($result->current(), clone $this->prototype);
+                $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
                 $return->setServer(new Server());
                 $return->getServer()->setName($data['server_name']);
@@ -185,7 +185,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
+         * $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
          *
          * return $resultSet->initialize($result);
          * }

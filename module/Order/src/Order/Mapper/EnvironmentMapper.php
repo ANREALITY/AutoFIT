@@ -46,7 +46,7 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
          * }
          *
          * throw new \InvalidArgumentException("Environment with given severity:{$severity} not found.");
@@ -88,7 +88,7 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
 
             return $resultSet->initialize($result);
         }
