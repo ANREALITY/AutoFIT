@@ -84,7 +84,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
          * }
          *
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
@@ -106,7 +106,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+         * $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
          *
          * return $resultSet->initialize($result);
          * }
@@ -162,7 +162,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+            $return = $this->hydrator->hydrate($result->current(), clone $this->prototype);
             $data = $result->current();
             
             if (! empty($data['physical_connection_end_to_end_id'])) {

@@ -150,14 +150,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications', $arrayKey, 'notification' . '_' . 'id', 'logical_connection' . '_' . 'id');
                 }
             }
-            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], $this->prototype);
+            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id], clone $this->prototype);
             $logicalConnection = $this->hydrator->hydrate(
                 $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']], 
-                $this->logicalConnectionPrototype);
+                clone $this->logicalConnectionPrototype);
             $fileTransferRequest->setLogicalConnection($logicalConnection);
             $notifications = [];
             foreach ($resultData['notifications'][$resultData['file_transfer_request'][$id]['logical_connection_id']] as $notification) {
-                $notifications[] = $this->hydrator->hydrate($notification, $this->notificationPrototype);
+                $notifications[] = $this->hydrator->hydrate($notification, clone $this->notificationPrototype);
             }
             $fileTransferRequest->getLogicalConnection()->setNotifications($notifications);
             
@@ -202,7 +202,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
             
             $return = $resultSet->initialize($result);
             
@@ -254,9 +254,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
             
             $return = $resultSet->initialize($result);
             
@@ -267,13 +267,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
              * @var FileTransferRequest $fileTransferRequest
              */
             $fileTransferRequest;
-            
+
             foreach ($return as $fileTransferRequest) {
                 $data = $result->current();
                 
                 $fileTransferRequest->setUser($this->userMapper->findOne($data['user_id']));
                 $fileTransferRequest->setLogicalConnection(
                     $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
+
                 $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
                 $fileTransferRequest->getServiceInvoicePositionBasic()->setServiceInvoice(new ServiceInvoice());
                 $fileTransferRequest->getServiceInvoicePositionBasic()->setNumber($data['service_invoice_position_basic_number']);
@@ -291,9 +292,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->getServiceInvoice()
                     ->getEnvironment()
                     ->setName($data['environment_name']);
-                
-                $fileTransferRequest->setLogicalConnection(
-                    $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
+
                 $fileTransferRequest->setServiceInvoicePositionPersonal(new ServiceInvoicePosition());
                 $fileTransferRequest->getServiceInvoicePositionPersonal()->setNumber($data['service_invoice_position_personal_number']);
                 $fileTransferRequest->getServiceInvoicePositionPersonal()->setServiceInvoice(new ServiceInvoice());
@@ -313,6 +312,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->setName($data['environment_name']);
                 
                 $fileTransferRequests[] = $fileTransferRequest;
+
+                // $test = spl_object_hash($fileTransferRequest->getLogicalConnection());
             }
             
             return $fileTransferRequests;

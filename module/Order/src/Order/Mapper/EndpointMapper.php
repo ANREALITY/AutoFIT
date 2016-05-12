@@ -19,6 +19,7 @@ use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Protocol;
+use Zend\Db\Sql\Select;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -115,7 +116,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
          * }
          *
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
@@ -137,7 +138,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
         $select->join('server', 'server.name = endpoint.server_name', [
             'server_name' => 'name'
-        ]);
+        ], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
@@ -156,7 +157,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
                     $this->prototype = new EndpointFtgwWindows();
                 }
-                $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+                $return = $this->hydrator->hydrate($result->current(), clone $this->prototype);
 
                 $return->setServer(new Server());
                 $return->getServer()->setName($data['server_name']);
@@ -184,7 +185,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+         * $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
          *
          * return $resultSet->initialize($result);
          * }

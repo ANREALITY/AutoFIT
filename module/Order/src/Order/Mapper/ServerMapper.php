@@ -45,7 +45,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
          * }
          *
          * throw new \InvalidArgumentException("Server with given name:{$name} not found.");
@@ -77,7 +77,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+            $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
             
             return $resultSet->initialize($result);
         }

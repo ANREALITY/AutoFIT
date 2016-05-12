@@ -67,7 +67,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->prototype);
+         * return $this->hydrator->hydrate($result->current(), clone $this->prototype);
          * }
          *
          * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
@@ -118,7 +118,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 } elseif (strcasecmp($data['type'], LogicalConnection::TYPE_FTGW) === 0) {
                     $this->prototype = new PhysicalConnectionFtgw();
                 }
-                $return = $this->hydrator->hydrate($result->current(), $this->prototype);
+                $return = $this->hydrator->hydrate($result->current(), clone $this->prototype);
                 
                 if (! empty($data['endpoint_source_id'])) {
                     $return->setEndpointSource(
@@ -152,7 +152,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
          * $result = $statement->execute();
          *
          * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+         * $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
          *
          * return $resultSet->initialize($result);
          * }

@@ -45,7 +45,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
          $result = $statement->execute();
 
          if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            return $this->hydrator->hydrate($result->current(), $this->prototype);
+            return $this->hydrator->hydrate($result->current(), clone $this->prototype);
         }
         
         throw new \InvalidArgumentException("User with given ID:{$id} not found.");
@@ -75,7 +75,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-             $resultSet = new HydratingResultSet($this->hydrator, $this->prototype);
+             $resultSet = new HydratingResultSet($this->hydrator, clone $this->prototype);
              return $resultSet->initialize($result);
          }
 
@@ -111,7 +111,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         $result = $statement->execute();
         
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $dataObject = $this->hydrator->hydrate($result->current(), $this->prototype);
+            $dataObject = $this->hydrator->hydrate($result->current(), clone $this->prototype);
             $action = new Update('user');
             $action->set($data);
             $action->where([
