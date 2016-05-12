@@ -54,7 +54,7 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control',
-                    'value' => '*/15 * * * *'
+                    'value' => '0,15,30,45 * * * *'
                 ]
             ]);
 
@@ -68,7 +68,31 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'transmission_interval' => [
+                'filters' => [
+                    [
+                        'name' => 'Zend\Filter\StringTrim'
+                    ]
+                ],
+                'validators' => [
+                    [
+                        'name' => 'Zend\Validator\Regex',
+                        'options' => [
+                            'pattern' => '/' . '^((0*([0-9]|[1-5][0-9])|\*)(-0*([0-9]|[1-5][0-9]))?(\/\d+)?,)*' .
+                                 '(0*([0-9]|[1-5][0-9])|\*)(-0*([0-9]|[1-5][0-9]))?(\/\d+)?\s' .
+                                 '((0*([0-9]|1[0-9]|2[0-3])|\*)(-0*([0-9]|1[0-9]|2[0-3]))?(\/\d+)?,)*' .
+                                 '(0*([0-9]|1[0-9]|2[0-3])|\*)(-0*([0-9]|1[0-9]|2[0-3]))?(\/\d+)?\s' .
+                                 '((0*([1-9]|[12][0-9]3[01])|\*)(-0*([1-9]|[12][0-9]3[01]))?(\/\d+)?,)*' .
+                                 '(0*([1-9]|[12][0-9]3[01])|\*)(-0*([1-9]|[12][0-9]3[01]))?(\/\d+)?\s' .
+                                 '((0*([1-9]|1[0-2])|\*)(-0*([1-9]|1[0-2]))?(\/\d+)?,)*' .
+                                 '(0*([1-9]|1[0-2])|\*)(-0*([1-9]|1[0-2]))?(\/\d+)?\s' .
+                                 '((0*[0-7]|\*)(-0*[0-7])?(\/\d+)?,)*' . '(0*[0-7]|\*)(-0*[0-7])?(\/\d+)?$' . '/'
+                        ]
+                    ]
+                ]
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
