@@ -4,8 +4,8 @@
     
     <div class="body">
 
-        <p><?php echo $this->translate('For the field "transmission interval" is') . ' ' . $this->translate('%s minutes', 15); ?></p>
-        <p><?php echo $this->translate('If you need an alternative transmission interval, please set it up according to the crontab rules:'); ?></p>
+        <p><?php echo $this->translate('For the field "transmission interval" is') . ' ' . sprintf($this->translate('%s minutes'), 15); ?></p>
+        <p><?php echo $this->translate('If you need an alternative transmission interval, please set it up according to the crontab rules'); ?>:</p>
 
         <p><span class="inline-code">
         <?php echo $this->translate('MINUTE'); ?>
@@ -16,23 +16,23 @@
         <table class="table">
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('MINUTE'); ?></span></td>
-                <td class='dt'><?php echo $this->translate('Minutes within the hour (0–59)'); ?></td>
+                <td class='dt'><?php echo $this->translate('Minutes within the hour (0-59)'); ?></td>
             </tr>
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('HOUR'); ?></span></td>
-                <td class='dt'><?php echo $this->translate('The hour of the day (0–23)'); ?></td>
+                <td class='dt'><?php echo $this->translate('The hour of the day (0-23)'); ?></td>
             </tr>
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('DOM'); ?></span></td>
-                <td class='dt'><?php echo $this->translate('The day of the month (1–31)'); ?></td>
+                <td class='dt'><?php echo $this->translate('The day of the month (1-31)'); ?></td>
             </tr>
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('MONTH'); ?></span></td>
-                <td class='dt'><?php echo $this->translate('The month (1–12)'); ?></td>
+                <td class='dt'><?php echo $this->translate('The month (1-12)'); ?></td>
             </tr>
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('DOW'); ?></span></td>
-                <td class='dt'><?php echo $this->translate('The day of the week (0–7) where 0 and 7 are Sunday.'); ?></td>
+                <td class='dt'><?php echo $this->translate('The day of the week (0-7) where 0 and 7 are Sunday.'); ?></td>
             </tr>
         </table>
         
