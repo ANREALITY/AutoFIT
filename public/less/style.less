@@ -205,6 +205,16 @@ form .checkboxdummy {
 form .protocol-field {
     margin: 0 0 0 15px;
 }
+
+form .fieldgroup-container .appendix-container {
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    position: relative;
+}
 /* the checkbox labels */
 form #fieldgroup-logical_connection .notification-checkbox {
     margin-top: 20px;
@@ -260,4 +270,33 @@ div.form-field-wrapper {
 }
 div.form-field-wrapper label {
     margin-bottom: 0;
+}
+
+div.info-box {
+    padding: 15px;
+    border-radius: 4px;
+    background: #fcfcfc;
+}
+
+div.info-box .header {
+    background-image: url(/img/info-icon.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+    padding: 0 10px 0 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.info-box .body {
+    display: none;
+    padding: 10px 0 0 0;
+}
+
+span.inline-code {
+    font-family: Courier New, Courier, monospace;
+}
+
+table#crontab-examples td.dt {
+    font-weight: bold;
+    white-space: nowrap;
 }
