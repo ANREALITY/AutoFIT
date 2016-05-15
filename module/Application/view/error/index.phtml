@@ -1,7 +1,7 @@
 <div class="info-box">
     <div class="header"><?php echo $this->translate('An error occured. Please try later again.'); ?></div>
     <div class="body">
-        <div class="alert-info error-reference"><span><?php echo sprintf($this->translate('Error reference: %s'), $this->layout()->errorReference); ?></span></div>
+        <div class="alert-info error-reference"><span><?php echo sprintf($this->translate('Error reference: %s.'), $this->layout()->errorReference); ?></span></div>
         <?php if($this->layout()->userIsAdmin) : ?>
             <h1><?php echo $this->translate('An error occurred') ?></h1>
             <h2><?php echo $this->message ?></h2>

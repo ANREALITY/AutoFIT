@@ -71,29 +71,59 @@ class Module
 
     public function initErrorHandler(MvcEvent $event)
     {
-        set_exception_handler(function (\Throwable $exception) use ($event) {
-            $event->setError(Application::ERROR_EXCEPTION);
-            $routeMatch        = $event->getRouteMatch();
-            $controllerName    = 'Application\Controller\Error';
-            $event->setController($controllerName);
-            $controllerManager = $event->getApplication()->getServiceManager()->get('controller_manager'); // ->get('controllers');
-            $controller = $controllerManager->get($controllerName);
-            $event->setControllerClass(get_class($controller));
-            $event->setParam('exception', $exception);
-            $viewModel = new ViewModel();
-            $viewModel->setCaptureTo('content');
-            $viewModel->setTemplate('error/index');
-            $viewModel->setTerminal(false);
-            $viewModel->setVariables([
-                'message' => 'An error occurred during execution; please try again later.',
-                'display_exceptions' => true
-            ]);
-            $event->setResult($viewModel);
-            // $event->getApplication()->getEventManager()->trigger(MvcEvent::EVENT_DISPATCH_ERROR, $event);
-            $event->setName(MvcEvent::EVENT_DISPATCH_ERROR);
-            $event->getApplication()->getEventManager()->triggerEvent($event);
-            return false;
-        });
+        set_exception_handler(
+            function (\Throwable $exception) use($event) {
+                $translator = $event->getApplication()
+                    ->getServiceManager()
+                    ->get('translator');
+                $randomChars = md5(uniqid('', true));
+                $errorReference = substr($randomChars, strlen($randomChars) / 5, 7);
+                // error log
+                $event->setParam('exception', $exception);
+                $serviceManager = $event->getApplication()->getServiceManager();
+                $extra = [
+                    'error-reference' => $errorReference
+                ];
+                $serviceManager->get('ErrorLogger')->crit($event->getParam('exception'), $extra);
+                // error page
+                // @todo Make it dynamic! Since not every user should be able to see the technical error message.
+                $userIsAdmin = true;
+                $message = null;
+                if ($userIsAdmin) {
+                    @trigger_error($exception);
+                    $lastErrorData = error_get_last();
+                    $message = <<<MESSAGE
+TYPE: {$lastErrorData['type']}
+MESSAGE: {$lastErrorData['message']}
+FILE: {$lastErrorData['file']}
+LINE: {$lastErrorData['line']}
+MESSAGE;
+                }
+                ob_start();
+                xdebug_var_dump(debug_backtrace());
+                $debugBacktrace = ob_get_clean();
+                $output = [
+                    // header
+                    $translator->translate('An error occured. Please try later again.'),
+                    // error reference
+                    sprintf($translator->translate('Error reference: %s.'), $errorReference),
+                    // error info
+                    $message,
+                    // debug backtrace
+                    $debugBacktrace
+                ];
+                $fatalTemplatePath = __DIR__ . '/view/error/fatal.html';
+                $body = file_get_contents($fatalTemplatePath);
+                $body = str_replace(
+                    [
+                        '%__HEADER__%',
+                        '%__ERROR_REFERENCE__%',
+                        '%__ERROR_INFO__%',
+                        '%__DEBUG_BACKTRACE__%'
+                    ], $output, $body);
+                echo $body;
+                return true;
+            });
     }
 
     public function initExceptionHandler($event)
