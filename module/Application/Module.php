@@ -12,6 +12,10 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Validator\AbstractValidator;
 use Zend\Log\Logger;
+use Zend\View\Model\ViewModel;
+use Zend\Mvc\Router\RouteMatch;
+use Zend\Mvc\Application;
+use Zend\Stdlib\ResponseInterface;
 
 class Module
 {
@@ -21,7 +25,7 @@ class Module
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        
+
         $translator = $e->getApplication()
             ->getServiceManager()
             ->get('translator');
@@ -29,7 +33,8 @@ class Module
             './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
 
-        $this->initErrorLogger($e);
+        $this->initErrorHandler($e);
+        $this->initExceptionHandler($e);
     }
 
     public function getServiceConfig()
@@ -64,7 +69,34 @@ class Module
         ];
     }
 
-    public function initErrorLogger($event)
+    public function initErrorHandler(MvcEvent $event)
+    {
+        set_exception_handler(function (\Throwable $exception) use ($event) {
+            $event->setError(Application::ERROR_EXCEPTION);
+            $routeMatch        = $event->getRouteMatch();
+            $controllerName    = 'Application\Controller\Error';
+            $event->setController($controllerName);
+            $controllerManager = $event->getApplication()->getServiceManager()->get('controller_manager'); // ->get('controllers');
+            $controller = $controllerManager->get($controllerName);
+            $event->setControllerClass(get_class($controller));
+            $event->setParam('exception', $exception);
+            $viewModel = new ViewModel();
+            $viewModel->setCaptureTo('content');
+            $viewModel->setTemplate('error/index');
+            $viewModel->setTerminal(false);
+            $viewModel->setVariables([
+                'message' => 'An error occurred during execution; please try again later.',
+                'display_exceptions' => true
+            ]);
+            $event->setResult($viewModel);
+            // $event->getApplication()->getEventManager()->trigger(MvcEvent::EVENT_DISPATCH_ERROR, $event);
+            $event->setName(MvcEvent::EVENT_DISPATCH_ERROR);
+            $event->getApplication()->getEventManager()->triggerEvent($event);
+            return false;
+        });
+    }
+
+    public function initExceptionHandler($event)
     {
         $sharedManager = $event->getApplication()
             ->getEventManager()
