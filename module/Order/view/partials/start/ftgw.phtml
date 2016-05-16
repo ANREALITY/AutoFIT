@@ -6,10 +6,8 @@ $endpointTypes = [
 ?>
 <div class="col-md-12">
     <div class="col-md-12">
-        <span><b><?php echo  $this->translate(''); ?>Sie haben sich für eine Filetransfer-Schnittstelle per
-                FiletransferGateWay entschieden.</b></span><br /> <span><b><?php echo  $this->translate(''); ?>Wählen
-                Sie nun die Betriebssystem-Plattform der Datenquelle und
-                des Filetransfer-Ziels aus:</b></span>
+        <span><b><?php echo sprintf($this->translate('You chose file transfer interface via %s.'), 'FiletransferGateWay'); ?></b></span><br />
+        <span><b><?php echo $this->translate('Please choose now the operating system plattform of the data source and of the file transfer target:'); ?></b></span>
     </div>
     <div class="col-md-6 centered">
         <h3 class="semi-title">
@@ -45,10 +43,9 @@ $endpointTypes = [
     </div>
 </div>
 <div class="col-md-12">
-    <br /> <span><b><?php echo  $this->translate(''); ?>Musterchanges zum Beantragen von
-            FGW-Filetransfer-Schnittstellen im PSC:</b></span>
+    <br /> <span><b><?php echo sprintf($this->translate('Example changes for ordering of %s file transfer interfaces in the PSC:'), 'an FGW'); ?></b></span>
     <ul class="list-unstyled">
-        <li><span><?php echo  $this->translate(''); ?>C30483063 Neukonfiguration FileGateway-Schnittstelle</span></li>
+        <li><span><?php echo sprintf($this->translate('%s Initial setup of a FileGateway interface'), 'C30483063'); ?></span></li>
     </ul>
 </div>
 

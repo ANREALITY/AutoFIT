@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-15 17:06+0200\n"
-"PO-Revision-Date: 2016-05-15 17:06+0200\n"
+"POT-Creation-Date: 2016-05-16 15:40+0200\n"
+"PO-Revision-Date: 2016-05-16 15:40+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,12 +17,12 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
 
-#: Application/Module.php:81 Application/view/error/index.phtml:2
+#: Application/Module.php:107 Application/view/error/index.phtml:2
 msgid "An error occured. Please try later again."
 msgstr ""
 "Es ist ein Fehler aufgetreten. Bitte versuchen sie es später noch einmal."
 
-#: Application/Module.php:83 Application/view/error/index.phtml:4
+#: Application/Module.php:109 Application/view/error/index.phtml:4
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
@@ -648,16 +648,16 @@ msgid "endpoint"
 msgstr "Endpoint"
 
 #: Order/view/partials/list/summary.phtml:36
-#: Order/view/partials/start/cd.phtml:17 Order/view/partials/start/cd.phtml:21
-#: Order/view/partials/start/ftgw.phtml:16
-#: Order/view/partials/start/ftgw.phtml:20
+#: Order/view/partials/start/cd.phtml:15 Order/view/partials/start/cd.phtml:19
+#: Order/view/partials/start/ftgw.phtml:14
+#: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:42
-#: Order/view/partials/start/cd.phtml:30 Order/view/partials/start/cd.phtml:34
-#: Order/view/partials/start/ftgw.phtml:29
-#: Order/view/partials/start/ftgw.phtml:33
+#: Order/view/partials/start/cd.phtml:28 Order/view/partials/start/cd.phtml:32
+#: Order/view/partials/start/ftgw.phtml:27
+#: Order/view/partials/start/ftgw.phtml:31
 msgid "target"
 msgstr "Zielsystem"
 
@@ -677,21 +677,78 @@ msgstr "erstellt am"
 msgid "status"
 msgstr ""
 
-#: Order/view/partials/start/cd.phtml:10 Order/view/partials/start/cd.phtml:11
-#: Order/view/partials/start/cd.phtml:49 Order/view/partials/start/cd.phtml:50
-#: Order/view/partials/start/cd.phtml:52 Order/view/partials/start/cd.phtml:54
-#: Order/view/partials/start/cd.phtml:56 Order/view/partials/start/cd.phtml:59
-#: Order/view/partials/start/cd.phtml:61 Order/view/partials/start/ftgw.phtml:9
-#: Order/view/partials/start/ftgw.phtml:10
-#: Order/view/partials/start/ftgw.phtml:48
-#: Order/view/partials/start/ftgw.phtml:51
-msgid " "
-msgstr ""
+#: Order/view/partials/start/cd.phtml:10 Order/view/partials/start/ftgw.phtml:9
+#, php-format
+msgid "You chose file transfer interface via %s."
+msgstr "Sie haben sich für eine Filetransfer-Schnittstelle per %s entschieden."
 
-#: Order/view/partials/start/cd.phtml:44
-#: Order/view/partials/start/ftgw.phtml:43
+#: Order/view/partials/start/cd.phtml:11
+#: Order/view/partials/start/ftgw.phtml:10
+msgid ""
+"Please choose now the operating system plattform of the data source and of "
+"the file transfer target:"
+msgstr ""
+"Wählen Sie nun die Betriebssystem-Plattform der Datenquelle und des "
+"Filetransfer-Ziels aus:"
+
+#: Order/view/partials/start/cd.phtml:42
+#: Order/view/partials/start/ftgw.phtml:41
 msgid "to the order"
 msgstr "zur Bestellung"
+
+#: Order/view/partials/start/cd.phtml:47
+#: Order/view/partials/start/ftgw.phtml:46
+#, php-format
+msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
+msgstr ""
+"Example changes for ordering of %s file transfer interfaces in the PSC:"
+
+#: Order/view/partials/start/cd.phtml:49
+#, php-format
+msgid "%s for creating a new C:D file transfer"
+msgstr "%s zur Einrichtung eines neuen C:D-Filetransfers"
+
+#: Order/view/partials/start/cd.phtml:50
+#, php-format
+msgid ""
+"%s for the customization of access rights to a ConnectDirect Windows SHARE"
+msgstr ""
+"%s für die Anpassung der Zugriffsrechte auf ein ConnectDirect Windows SHARE"
+
+#: Order/view/partials/start/cd.phtml:51
+#, php-format
+msgid ""
+"%s for a relocation of n existing C:D file transfer due to a relocation of "
+"the application to a new server"
+msgstr ""
+"%s für den Umzug eines bestehenden C:D-Filetransfers wegen Umzug des "
+"Verfahrens auf neuen Server"
+
+#: Order/view/partials/start/cd.phtml:52
+#, php-format
+msgid ""
+"%s for the cancelation of all the channels of an application on a server / "
+"server cluster (for the teardown of all SSTs running on a node / shutting "
+"down C:D)"
+msgstr ""
+"%s für die Abbestellung aller C:D-Filetransfer-Channels eines Verfahrens auf "
+"einem Server bzw. Cluster-Server (für den Abbau aller auf einem Knoten "
+"laufenden SST / Stoppen von C:D)"
+
+#: Order/view/partials/start/ftgw.phtml:48
+#, php-format
+msgid "%s Initial setup of a FileGateway interface"
+msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid ""
+#~ "Example changes for ordering of a C:D file transfer interfaces in the PSC:"
+#~ msgstr ""
+#~ "Musterchanges zum Beantragen von C:D-Filetransfer-Schnittstellen im PSC:"
+
+#~ msgid ""
+#~ "Example changes for ordering of a FGW file transfer interfaces in the PSC:"
+#~ msgstr ""
+#~ "Musterchanges zum Beantragen von FGW-Filetransfer-Schnittstellen im PSC:"
 
 #~ msgid "Error reference: %s"
 #~ msgstr "Fehler-Referenz: %s"
