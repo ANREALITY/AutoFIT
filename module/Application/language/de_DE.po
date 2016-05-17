@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-16 15:40+0200\n"
-"PO-Revision-Date: 2016-05-16 15:40+0200\n"
+"POT-Creation-Date: 2016-05-17 19:47+0200\n"
+"PO-Revision-Date: 2016-05-17 19:48+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -22,7 +22,7 @@ msgid "An error occured. Please try later again."
 msgstr ""
 "Es ist ein Fehler aufgetreten. Bitte versuchen sie es später noch einmal."
 
-#: Application/Module.php:109 Application/view/error/index.phtml:4
+#: Application/Module.php:109 Application/view/error/index.phtml:5
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
@@ -107,7 +107,7 @@ msgid "mailbox"
 msgstr "Mailbox"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
-#: Order/view/partials/list/summary.phtml:32
+#: Order/view/partials/list/summary.phtml:34
 msgid "connection type"
 msgstr "Verbindungstyp"
 
@@ -117,14 +117,14 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:43
 #: Order/view/order/process/list-orders.phtml:4
-#: Order/view/partials/order-parts/billing.phtml:20
+#: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:80
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
-#: Order/view/partials/list/summary.phtml:33
-#: Order/view/partials/order-parts/billing.phtml:14
+#: Order/view/partials/list/summary.phtml:35
+#: Order/view/partials/order-parts/billing.phtml:16
 msgid "application"
 msgstr "Verfahren"
 
@@ -134,16 +134,16 @@ msgid ""
 msgstr ""
 "Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
 
-#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:79
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:81
 msgid "notifications"
 msgstr "Benachrichtigungen"
 
-#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:98
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:103
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:105
 msgid "add a notification"
 msgstr "Benachrichtigung hinzufügen"
 
@@ -212,8 +212,8 @@ msgid "Target - Windows"
 msgstr "Zielsystem - Windows"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:31
-#: Order/view/partials/list/summary.phtml:34
-#: Order/view/partials/order-parts/billing.phtml:17
+#: Order/view/partials/list/summary.phtml:36
+#: Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
 
@@ -246,18 +246,18 @@ msgid "Secure Plus"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
-#: Order/view/partials/list/summary.phtml:38
-#: Order/view/partials/list/summary.phtml:44
+#: Order/view/partials/list/summary.phtml:40
+#: Order/view/partials/list/summary.phtml:46
 msgid "server name"
 msgstr "Servername"
 
 #: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
-#: Order/view/partials/order-parts/billing.phtml:23
+#: Order/view/partials/order-parts/billing.phtml:34
 msgid "service invoice position (basic)"
 msgstr "LSP-S"
 
 #: Order/src/Order/Form/Fieldset/ServiceInvoicePositionPersonalFieldset.php:16
-#: Order/view/partials/order-parts/billing.phtml:29
+#: Order/view/partials/order-parts/billing.phtml:42
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
@@ -268,6 +268,14 @@ msgstr "Benutzername"
 #: Order/src/Order/Form/OrderForm.php:35
 msgid "binding order"
 msgstr "verbindlich bestellen"
+
+#: Application/view/application/error/error403.phtml:2
+msgid "You have no access rights to this page/action."
+msgstr "Sie haben keine Zugriffsrechte für diese Ansicht/Aktion."
+
+#: Application/view/application/error/error403.phtml:4
+msgid "An error 403 occured (access forbidden)."
+msgstr "Ein Feher 403 ist aufgetreten (Zugriff verweigert)."
 
 #: Application/view/application/index/index.phtml:6
 msgid "Tool for creating, submission, and managing of file transfer requests"
@@ -344,27 +352,27 @@ msgstr "Leistungsbeschreibungen und Preise"
 msgid "according to"
 msgstr "laut"
 
-#: Application/view/application/index/index.phtml:50
+#: Application/view/application/index/index.phtml:51
 msgid "ICT supply catalog"
 msgstr "ICT Angebotskatalog"
 
-#: Application/view/application/index/index.phtml:55
+#: Application/view/application/index/index.phtml:56
 msgid "Middleware - special / application integrated"
 msgstr "Middleware – Spezial / anwendungsintegriert"
 
-#: Application/view/application/index/index.phtml:58
+#: Application/view/application/index/index.phtml:59
 msgid "Middleware - FiletransferGateway"
 msgstr "Middleware – FiletransferGateway"
 
-#: Application/view/application/index/index.phtml:64
+#: Application/view/application/index/index.phtml:65
 msgid "Technical description"
 msgstr "Technische Beschreibung"
 
-#: Application/view/application/index/index.phtml:65
+#: Application/view/application/index/index.phtml:66
 msgid "you find in the TDV"
 msgstr "finden Sie in der TDV"
 
-#: Application/view/application/index/index.phtml:95
+#: Application/view/application/index/index.phtml:98
 msgid "Select the desired product now"
 msgstr "Wählen Sie nun das gewünschte Filetransfer-Produkt aus"
 
@@ -407,34 +415,34 @@ msgstr "Controller"
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: Application/view/error/404.phtml:52 Application/view/error/index.phtml:13
+#: Application/view/error/404.phtml:52 Application/view/error/index.phtml:15
 msgid "Additional information"
 msgstr "Zusätzliche Information"
 
 #: Application/view/error/404.phtml:55 Application/view/error/404.phtml:79
-#: Application/view/error/index.phtml:16 Application/view/error/index.phtml:40
+#: Application/view/error/index.phtml:18 Application/view/error/index.phtml:42
 msgid "File"
 msgstr "Datei"
 
 #: Application/view/error/404.phtml:59 Application/view/error/404.phtml:83
-#: Application/view/error/index.phtml:20 Application/view/error/index.phtml:44
+#: Application/view/error/index.phtml:22 Application/view/error/index.phtml:46
 msgid "Message"
 msgstr "Meldung"
 
 #: Application/view/error/404.phtml:63 Application/view/error/404.phtml:87
-#: Application/view/error/index.phtml:24 Application/view/error/index.phtml:48
+#: Application/view/error/index.phtml:26 Application/view/error/index.phtml:50
 msgid "Stack trace"
 msgstr "Stapelüberwachung"
 
-#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:34
+#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:36
 msgid "Previous exceptions"
 msgstr "Vorherige Ausnahme"
 
-#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:64
+#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:66
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
-#: Application/view/error/index.phtml:6
+#: Application/view/error/index.phtml:8
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -470,20 +478,20 @@ msgstr "Danke für Ihre Bestellung!"
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
 
-#: Order/view/partials/crontab-info.phtml:3
+#: Order/view/partials/crontab-info.phtml:4
 msgid "Contab for transmission interval"
 msgstr "Crontab für das Sendeinterval"
 
-#: Order/view/partials/crontab-info.phtml:7
+#: Order/view/partials/crontab-info.phtml:9
 msgid "For the field \"transmission interval\" is"
 msgstr "Für das Feld \"Sendeinterval\" ist"
 
-#: Order/view/partials/crontab-info.phtml:7
+#: Order/view/partials/crontab-info.phtml:9
 #, php-format
 msgid "%s minutes"
 msgstr "%s Minuten"
 
-#: Order/view/partials/crontab-info.phtml:8
+#: Order/view/partials/crontab-info.phtml:10
 msgid ""
 "If you need an alternative transmission interval, please set it up according "
 "to the crontab rules"
@@ -491,60 +499,60 @@ msgstr ""
 "Benötigen Sie ein abweichendes Sendeinterval, definieren Sie es bitte nach "
 "den Crontab-Regeln"
 
-#: Order/view/partials/crontab-info.phtml:11
-#: Order/view/partials/crontab-info.phtml:18
+#: Order/view/partials/crontab-info.phtml:14
+#: Order/view/partials/crontab-info.phtml:22
 msgid "MINUTE"
 msgstr "MINUTE"
 
-#: Order/view/partials/crontab-info.phtml:12
-#: Order/view/partials/crontab-info.phtml:22
+#: Order/view/partials/crontab-info.phtml:15
+#: Order/view/partials/crontab-info.phtml:26
 msgid "HOUR"
 msgstr "STUNDE"
 
-#: Order/view/partials/crontab-info.phtml:13
-#: Order/view/partials/crontab-info.phtml:26
+#: Order/view/partials/crontab-info.phtml:16
+#: Order/view/partials/crontab-info.phtml:30
 msgid "DOM"
 msgstr "TDM"
 
-#: Order/view/partials/crontab-info.phtml:14
-#: Order/view/partials/crontab-info.phtml:30
+#: Order/view/partials/crontab-info.phtml:17
+#: Order/view/partials/crontab-info.phtml:34
 msgid "MONTH"
 msgstr "MONAT"
 
-#: Order/view/partials/crontab-info.phtml:15
-#: Order/view/partials/crontab-info.phtml:34
+#: Order/view/partials/crontab-info.phtml:18
+#: Order/view/partials/crontab-info.phtml:38
 msgid "DOW"
 msgstr "WT"
 
-#: Order/view/partials/crontab-info.phtml:19
+#: Order/view/partials/crontab-info.phtml:23
 msgid "Minutes within the hour (0-59)"
 msgstr "Minuten innerhalb einer Stunde (0-59)"
 
-#: Order/view/partials/crontab-info.phtml:23
+#: Order/view/partials/crontab-info.phtml:27
 msgid "The hour of the day (0-23)"
 msgstr "Die Stunde des Tages (0-23)"
 
-#: Order/view/partials/crontab-info.phtml:27
+#: Order/view/partials/crontab-info.phtml:31
 msgid "The day of the month (1-31)"
 msgstr "Der Tag des Monats (1-31)"
 
-#: Order/view/partials/crontab-info.phtml:31
+#: Order/view/partials/crontab-info.phtml:35
 msgid "The month (1-12)"
 msgstr "Der Monat (1-12)"
 
-#: Order/view/partials/crontab-info.phtml:35
+#: Order/view/partials/crontab-info.phtml:39
 msgid "The day of the week (0-7) where 0 and 7 are Sunday."
 msgstr "Der Wochentag (0-7), wobei 0 und 7 für Sonntag stehen."
 
-#: Order/view/partials/crontab-info.phtml:39
+#: Order/view/partials/crontab-info.phtml:43
 msgid "Examples"
 msgstr "Beispiele"
 
-#: Order/view/partials/crontab-info.phtml:44
+#: Order/view/partials/crontab-info.phtml:48
 msgid "every fifteen minutes (perhaps at :07, :22, :37, :52)"
 msgstr "alle fünfzehn Minuten (vielleicht um :07, :22, :37, :52)"
 
-#: Order/view/partials/crontab-info.phtml:48
+#: Order/view/partials/crontab-info.phtml:52
 msgid ""
 "every ten minutes in the first half of every hour (three times, perhaps "
 "at :04, :14, :24)"
@@ -552,18 +560,18 @@ msgstr ""
 "alle zehn Minuten in der ersten Hälfte jeder Stunde (dreimal: vielleicht "
 "um :04, :14, :24)"
 
-#: Order/view/partials/crontab-info.phtml:52
+#: Order/view/partials/crontab-info.phtml:56
 msgid ""
 "once every two hours every weekday (perhaps at 10:38 AM, 12:38 PM, 2:38 PM, "
 "4:38 PM)"
 msgstr ""
 "einmal alle zwei Stunden werktags (vielleicht um 10:38, 12:38, 14:38, 18:38)"
 
-#: Order/view/partials/crontab-info.phtml:56
+#: Order/view/partials/crontab-info.phtml:60
 msgid "once a day on the 1st and 15th of every month except December"
 msgstr "einmal am Tag am 1. und 15. des  Monats außer Dezember"
 
-#: Order/view/partials/crontab-info.phtml:60
+#: Order/view/partials/crontab-info.phtml:64
 msgid "You can generate a valid value with a converting tool like"
 msgstr "Sie können einen gültigen Wert mit einem Umrechnungstool generieren"
 
@@ -573,16 +581,16 @@ msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: Order/view/partials/fieldgroups/billing.phtml:4
-#: Order/view/partials/order-parts/billing.phtml:11
+#: Order/view/partials/order-parts/billing.phtml:13
 msgid "Billing"
 msgstr "Abrechnung"
 
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:7
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:29
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:8
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:31
 #: Order/view/partials/order-parts/connections/cd.phtml:4
-#: Order/view/partials/order-parts/connections/ftgw.phtml:7
-#: Order/view/partials/order-parts/connections/ftgw.phtml:29
+#: Order/view/partials/order-parts/connections/ftgw.phtml:8
+#: Order/view/partials/order-parts/connections/ftgw.phtml:31
 msgid "Technical connection"
 msgstr "Technische Verbindung"
 
@@ -591,13 +599,13 @@ msgstr "Technische Verbindung"
 msgid "directly from the source to the target"
 msgstr "direkt vom Quell- zum Zielsystem"
 
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:8
-#: Order/view/partials/order-parts/connections/ftgw.phtml:8
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:9
+#: Order/view/partials/order-parts/connections/ftgw.phtml:9
 msgid "from the source to the FTGW server"
 msgstr "vom Quellsystem zum FTGW-Server"
 
-#: Order/view/partials/fieldgroups/connections/ftgw.phtml:30
-#: Order/view/partials/order-parts/connections/ftgw.phtml:30
+#: Order/view/partials/fieldgroups/connections/ftgw.phtml:32
+#: Order/view/partials/order-parts/connections/ftgw.phtml:32
 msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
@@ -642,38 +650,38 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
-#: Order/view/partials/list/summary.phtml:36
-#: Order/view/partials/list/summary.phtml:42
+#: Order/view/partials/list/summary.phtml:38
+#: Order/view/partials/list/summary.phtml:44
 msgid "endpoint"
 msgstr "Endpoint"
 
-#: Order/view/partials/list/summary.phtml:36
+#: Order/view/partials/list/summary.phtml:38
 #: Order/view/partials/start/cd.phtml:15 Order/view/partials/start/cd.phtml:19
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:42
+#: Order/view/partials/list/summary.phtml:44
 #: Order/view/partials/start/cd.phtml:28 Order/view/partials/start/cd.phtml:32
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
 msgid "target"
 msgstr "Zielsystem"
 
-#: Order/view/partials/order-parts/billing.phtml:26
+#: Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
 msgstr "Benutzer"
 
-#: Order/view/partials/order-parts/order-info.phtml:11
+#: Order/view/partials/order-parts/order-info.phtml:13
 msgid "Order info"
 msgstr "Informationen zur Bestellung"
 
-#: Order/view/partials/order-parts/order-info.phtml:14
+#: Order/view/partials/order-parts/order-info.phtml:16
 msgid "created on"
 msgstr "erstellt am"
 
-#: Order/view/partials/order-parts/order-info.phtml:17
+#: Order/view/partials/order-parts/order-info.phtml:20
 msgid "status"
 msgstr ""
 

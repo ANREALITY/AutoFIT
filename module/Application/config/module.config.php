@@ -19,6 +19,16 @@ return [
                     ]
                 ]
             ],
+            'error403' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/error/403',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Error',
+                        'action' => 'error403'
+                    ]
+                ]
+            ],
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -71,7 +81,8 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Error' => 'Application\Controller\ErrorController'
         ]
     ],
     'view_manager' => [
@@ -83,6 +94,7 @@ return [
         'template_map' => [
             'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'error/403' => __DIR__ . '/../view/error/403.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml'
         ],

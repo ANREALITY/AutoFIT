@@ -10,6 +10,7 @@ return array(
         'Application',
         'Order',
         'Authentication',
+        'Authorization',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
