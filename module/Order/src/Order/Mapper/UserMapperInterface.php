@@ -16,6 +16,14 @@ interface UserMapperInterface
 
     /**
      *
+     * @param string $username
+     * @return User
+     * @throws \InvalidArgumentException
+     */
+    public function findOneByUsername(string $username);
+
+    /**
+     *
      * @return array|User[]
      */
     public function findAll(array $criteria = []);

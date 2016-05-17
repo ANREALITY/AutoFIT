@@ -53,6 +53,32 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
 
     /**
      *
+     * @param string $username
+     *
+     * @return User
+     * @throws \InvalidArgumentException
+     */
+    public function findOneByUsername(string $username)
+    {
+
+         $sql = new Sql($this->dbAdapter);
+         $select = $sql->select('user');
+         $select->where([
+            'username = ?' => $username
+         ]);
+
+         $statement = $sql->prepareStatementForSqlObject($select);
+         $result = $statement->execute();
+
+         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+            return $this->hydrator->hydrate($result->current(), $this->getPrototype());
+        }
+
+        throw new \InvalidArgumentException("User with given ID:{$username} not found.");
+    }
+
+    /**
+     *
      * @return array|User[]
      */
     public function findAll(array $criteria = [])
