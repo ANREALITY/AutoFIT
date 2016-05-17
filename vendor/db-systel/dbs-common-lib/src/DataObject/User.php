@@ -5,6 +5,16 @@ class User extends AbstractDataObject
 {
 
     /**
+     * Role "member"
+     */
+    const ROLE_MEMBER = 'member';
+
+    /**
+     * Role "admin"
+     */
+    const ROLE_ADMIN = 'admin';
+
+    /**
      *
      * @var int
      */
@@ -18,9 +28,9 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @var boolean
+     * @var string
      */
-    protected $admin;
+    protected $role;
 
     /**
      *
@@ -60,20 +70,20 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return the $admin
+     * @return the $role
      */
-    public function getAdmin()
+    public function getRole()
     {
-        return $this->admin;
+        return $this->role;
     }
 
     /**
      *
-     * @param boolean $admin            
+     * @param boolean $role            
      */
-    public function setAdmin($admin)
+    public function setRole($role)
     {
-        $this->admin = $admin;
+        $this->role = $role;
     }
 
 }

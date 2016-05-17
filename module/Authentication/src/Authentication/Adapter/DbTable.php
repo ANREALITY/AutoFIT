@@ -4,6 +4,7 @@ namespace Authentication\Adapter;
 use Order\Service\UserServiceInterface;
 use Zend\Authentication\Adapter\AbstractAdapter;
 use Zend\Authentication\Result;
+use DbSystel\DataObject\User;
 
 class DbTable extends AbstractAdapter
 {
@@ -37,12 +38,12 @@ class DbTable extends AbstractAdapter
         $identity = [
             'id' => null,
             'username' => $this->username,
-            'role' => 'member'
+            'role' => User::ROLE_MEMBER
         ];
         try {
             $user = $this->userService->findOneByUsername($this->username);
             $identity['id'] = $user->getId();
-            $identity['role'] = $user->getAdmin() ? 'admin': 'member'
+            $identity['role'] = $user->getRole()
             ;
         } catch (\InvalidArgumentException $e) {}
         $this->setIdentity($identity);
