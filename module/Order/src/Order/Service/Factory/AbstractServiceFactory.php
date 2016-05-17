@@ -45,7 +45,8 @@ class AbstractServiceFactory implements AbstractFactoryInterface
         $pattern = '[a-zA-z0-9]+' . self::NAME_PART_SERVICE . '$';
         preg_match('/' . $pattern . '/', $requestedName, $matches);
         
-        if (! empty($matches[0]) && $matches[0] === $requestedName && class_exists($requestedName)) {
+        if (! empty($matches[0]) && $matches[0] === $requestedName &&
+             strpos($requestedName, self::NAMESPACE_SERVICE) === 0 && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
         
