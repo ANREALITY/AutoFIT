@@ -13,15 +13,5 @@ if (php_sapi_name() === 'cli-server' && is_file(__DIR__ . parse_url($_SERVER['RE
 // Setup autoloading
 require 'init_autoloader.php';
 
-session_start();
-if (!empty($_SERVER['AUTH_USER'])) {
-    $_SESSION['username'] = strrchr($_SERVER['AUTH_USER'], "\\")
-        ? str_ireplace("\\", '', strrchr($_SERVER['AUTH_USER'], "\\"))
-        : $_SERVER['AUTH_USER']
-    ;
-} else {
-    $_SESSION['username'] = 'undefined';
-}
-
 // Run the application!
 Zend\Mvc\Application::init(require 'config/application.config.php')->run();

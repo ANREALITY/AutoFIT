@@ -83,7 +83,8 @@
             </div>
             <!--/.nav-collapse -->
             <div id="current-user" class="navbar-collapse collapse">
-                <span><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : null; ?></span>
+            <?php $authenticationService = $this->getHelperPluginManager()->getServiceLocator()->get('AuthenticationService'); ?>
+                <span><?php echo $authenticationService->getIdentity()['username']; ?></span>
             </div>
         </div>
     </nav>

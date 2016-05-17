@@ -22,6 +22,8 @@ class ProcessController extends AbstractActionController
 
     protected $endpointTargetType;
 
+    protected $authenticationService;
+
     public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
@@ -65,6 +67,15 @@ class ProcessController extends AbstractActionController
         $this->endpointTargetType = $endpointTargetType;
     }
 
+    /**
+     *
+     * @param field_type $authenticationService
+     */
+    public function setAuthenticationService($authenticationService)
+    {
+        $this->authenticationService = $authenticationService;
+    }
+
     public function startAction()
     {
         return [
@@ -81,7 +92,8 @@ class ProcessController extends AbstractActionController
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                $this->fileTransferRequest->getUser()->setUsername($_SESSION['username']);
+                $username = $this->authenticationService->getIdentity()['username'];
+                $this->fileTransferRequest->getUser()->setUsername($username);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
