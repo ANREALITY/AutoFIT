@@ -16,7 +16,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
 
     /**
      *
-     * @param ServiceInvoicePositionMapperInterface $mapper            
+     * @param ServiceInvoicePositionMapperInterface $mapper
      */
     public function __construct(ServiceInvoicePositionMapperInterface $mapper)
     {
@@ -28,7 +28,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName, 
+    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
         int $environmentSeverity)
     {
         return $this->mapper->findAll(
@@ -47,7 +47,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAllPersonalByNumberApplicationAndEnvironment(string $number, 
+    public function findAllPersonalByNumberApplicationAndEnvironment(string $number,
         string $applicationTechnicalShortName, int $environmentSeverity)
     {
         return $this->mapper->findAll(

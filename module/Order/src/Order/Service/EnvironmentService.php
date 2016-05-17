@@ -15,7 +15,7 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
 
     /**
      *
-     * @param EnvironmentMapperInterface $mapper            
+     * @param EnvironmentMapperInterface $mapper
      */
     public function __construct(EnvironmentMapperInterface $mapper)
     {

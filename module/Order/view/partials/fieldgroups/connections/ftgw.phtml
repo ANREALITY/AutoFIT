@@ -2,6 +2,7 @@
 use DbSystel\DataObject\LogicalConnection;
 ?>
 <?php
+
 $fieldgroupName = 'physical_connection_end_to_middle';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' .
@@ -14,7 +15,7 @@ $fieldgroupFormRows = [
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
     $fieldgroupFormRows[] = $this->formRow($physicalConnectionEndToMiddleFieldset->get('secure_plus'));
 }
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,
@@ -24,6 +25,7 @@ echo $this->partial('/partials/fieldgroup',
     ]);
 ?>
 <?php
+
 $fieldgroupName = 'physical_connection_middle_to_end';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' .
@@ -36,7 +38,7 @@ $fieldgroupFormRows = [
 if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
     $fieldgroupFormRows[] = $this->formRow($physicalConnectionMiddleToEndFieldset->get('secure_plus'));
 }
-echo $this->partial('/partials/fieldgroup', 
+echo $this->partial('/partials/fieldgroup',
     [
         'fieldgroupName' => $fieldgroupName,
         'fieldgroupCssClass' => $fieldgroupCssClass,

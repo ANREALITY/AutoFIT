@@ -8,7 +8,7 @@ interface NotificationMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      * @return Notification
      * @throws \InvalidArgumentException
      */
@@ -22,7 +22,7 @@ interface NotificationMapperInterface
 
     /**
      *
-     * @param Notification $dataObject            
+     * @param Notification $dataObject
      * @return Notification
      * @throws \Exception
      */
@@ -30,7 +30,7 @@ interface NotificationMapperInterface
 
     /**
      *
-     * @param array $criteria            
+     * @param array $criteria
      * @throws \Exception
      */
     public function deleteAll(array $criteria);

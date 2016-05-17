@@ -8,7 +8,7 @@ interface UserMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      * @return User
      * @throws \InvalidArgumentException
      */
@@ -30,7 +30,7 @@ interface UserMapperInterface
 
     /**
      *
-     * @param User $dataObject            
+     * @param User $dataObject
      * @return User
      * @throws \Exception
      */

@@ -28,10 +28,10 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
              strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0 ? $properServiceNameDetector->getPhysicalConnectionMiddleToEndFieldsetServiceName() : null;
 
         if (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_CD) === 0) {
-            $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName, 
+            $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName,
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
         } elseif (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_FTGW) === 0) {
-            $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName, 
+            $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName,
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
         }
 

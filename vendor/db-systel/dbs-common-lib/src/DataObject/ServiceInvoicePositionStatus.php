@@ -21,7 +21,7 @@ class ServiceInvoicePositionStatus extends AbstractDataObject
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {

@@ -43,8 +43,7 @@ class DbTable extends AbstractAdapter
         try {
             $user = $this->userService->findOneByUsername($this->username);
             $identity['id'] = $user->getId();
-            $identity['role'] = $user->getRole()
-            ;
+            $identity['role'] = $user->getRole();
         } catch (\InvalidArgumentException $e) {}
         $this->setIdentity($identity);
         $authResult = new Result(Result::SUCCESS, $identity);

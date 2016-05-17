@@ -21,7 +21,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
-     * @param IncludeParameterSet $includeParameterSet            
+     * @param IncludeParameterSet $includeParameterSet
      */
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {

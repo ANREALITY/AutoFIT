@@ -27,27 +27,26 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return User
      * @throws \InvalidArgumentException
      */
     public function findOne($id)
     {
-
-         $sql = new Sql($this->dbAdapter);
-         $select = $sql->select('user');
-         $select->where([
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('user');
+        $select->where([
             'id = ?' => $id
-         ]);
+        ]);
 
-         $statement = $sql->prepareStatementForSqlObject($select);
-         $result = $statement->execute();
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
 
-         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             return $this->hydrator->hydrate($result->current(), $this->getPrototype());
         }
-        
+
         throw new \InvalidArgumentException("User with given ID:{$id} not found.");
     }
 
@@ -60,17 +59,16 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
      */
     public function findOneByUsername(string $username)
     {
-
-         $sql = new Sql($this->dbAdapter);
-         $select = $sql->select('user');
-         $select->where([
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('user');
+        $select->where([
             'username = ?' => $username
-         ]);
+        ]);
 
-         $statement = $sql->prepareStatementForSqlObject($select);
-         $result = $statement->execute();
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
 
-         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
+        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             return $this->hydrator->hydrate($result->current(), $this->getPrototype());
         }
 
@@ -96,23 +94,23 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-             return $resultSet->initialize($result);
-         }
+            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
+            return $resultSet->initialize($result);
+        }
 
-         return [];
+        return [];
 
-         throw new \Exception('Method not implemented: ' . __METHOD__);
+        throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @param User $dataObject            
+     * @param User $dataObject
      *
      * @return User
      * @throws \Exception
@@ -127,7 +125,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         // none
         // data from the recently persisted objects
         // none
-        
+
         $sql = new Sql($this->dbAdapter);
         $select = $select = $sql->select('user');
         $select->where([
@@ -135,7 +133,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         ]);
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $dataObject = $this->hydrator->hydrate($result->current(), $this->getPrototype());
             $action = new Update('user');
@@ -147,10 +145,10 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
             $action = new Insert('user');
             $action->values($data);
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {

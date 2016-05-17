@@ -26,7 +26,8 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
     protected $physicalConnectionMiddleToEndFieldsetServiceName;
 
     public function __construct($name = null, $options = [], string $physicalConnectionEndToEndFieldsetServiceName = null,
-        string $physicalConnectionEndToMiddleFieldsetServiceName = null, string $physicalConnectionMiddleToEndFieldsetServiceName = null)
+        string $physicalConnectionEndToMiddleFieldsetServiceName = null,
+        string $physicalConnectionMiddleToEndFieldsetServiceName = null)
     {
         parent::__construct('logical_connection', $options);
 
@@ -46,7 +47,8 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                 ]);
         }
 
-        if ($this->physicalConnectionEndToMiddleFieldsetServiceName && $this->physicalConnectionMiddleToEndFieldsetServiceName) {
+        if ($this->physicalConnectionEndToMiddleFieldsetServiceName &&
+             $this->physicalConnectionMiddleToEndFieldsetServiceName) {
             $this->add(
                 [
                     'name' => 'physical_connection_end_to_middle',

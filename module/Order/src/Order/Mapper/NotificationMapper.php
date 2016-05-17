@@ -28,7 +28,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return Notification
      * @throws \InvalidArgumentException
@@ -62,7 +62,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('notification');
-        
+
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (! empty($condition['logical_connection_id'])) {
@@ -73,23 +73,23 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
                 }
             }
         }
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
             return $resultSet->initialize($result);
         }
-        
+
         return [];
-        
+
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
      *
-     * @param Notification $dataObject            
+     * @param Notification $dataObject
      *
      * @return Notification
      * @throws \Exception
@@ -106,14 +106,14 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
         // none
         // data from the recently persisted objects
         // none
-        
+
         $action = new Insert('notification');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {
@@ -127,10 +127,10 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
     public function deleteAll(array $criteria)
     {
         $action = new Delete('notification');
-        
+
         $return = false;
         $conditionGiven = false;
-        
+
         if (! empty($criteria)) {
             foreach ($criteria as $condition) {
                 if (is_array($condition)) {
@@ -150,7 +150,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
             $result = $statement->execute();
             $return = (bool) $result->getAffectedRows();
         }
-        
+
         return $return;
     }
 

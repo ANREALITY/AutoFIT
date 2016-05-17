@@ -33,7 +33,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -51,7 +51,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @param AbstractEndpoint $endpoint            
+     * @param AbstractEndpoint $endpoint
      */
     public function setEndpoint(AbstractEndpoint $endpoint)
     {
@@ -69,7 +69,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @param multitype:IncludeParameter $includeParameters            
+     * @param multitype:IncludeParameter $includeParameters
      */
     public function setIncludeParameters(array $includeParameters)
     {

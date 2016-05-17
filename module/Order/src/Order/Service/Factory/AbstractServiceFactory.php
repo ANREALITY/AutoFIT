@@ -40,16 +40,16 @@ class AbstractServiceFactory implements AbstractFactoryInterface
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $canCreateServiceWithName = false;
-        
+
         $matches = [];
         $pattern = '[a-zA-z0-9]+' . self::NAME_PART_SERVICE . '$';
         preg_match('/' . $pattern . '/', $requestedName, $matches);
-        
+
         if (! empty($matches[0]) && $matches[0] === $requestedName &&
              strpos($requestedName, self::NAMESPACE_SERVICE) === 0 && class_exists($requestedName)) {
             $canCreateServiceWithName = true;
         }
-        
+
         return $canCreateServiceWithName;
     }
 
@@ -65,9 +65,9 @@ class AbstractServiceFactory implements AbstractFactoryInterface
         $prototypeClassName = preg_replace('/' . self::NAME_PART_SERVICE . '$/', '', $serviceClassName);
         $mapperClassName = $prototypeClassName . self::NAME_PART_MAPPER;
         $mapperQualifiedClassName = self::NAMESPACE_MAPPER . '\\' . $mapperClassName;
-        
+
         $service = new $requestedName($serviceLocator->get($mapperQualifiedClassName));
-        
+
         return $service;
     }
 

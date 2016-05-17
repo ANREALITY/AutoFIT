@@ -23,7 +23,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
-        
+
         return $physicalConnectionFieldsetServiceName;
     }
 
@@ -35,7 +35,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
-        
+
         return $physicalConnectionFieldsetServiceName;
     }
 
@@ -47,7 +47,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
-        
+
         return $physicalConnectionFieldsetServiceName;
     }
 
@@ -58,7 +58,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No source endpoint type defined!');
         }
-        
+
         return $serviceName;
     }
 
@@ -69,7 +69,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No target endpoint type defined!');
         }
-        
+
         return $serviceName;
     }
 
@@ -80,7 +80,7 @@ class ProperServiceNameDetector
         } else {
             throw new \Exception('No connection type defined!');
         }
-        
+
         return $serviceName;
     }
 

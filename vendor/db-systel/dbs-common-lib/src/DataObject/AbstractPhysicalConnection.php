@@ -57,7 +57,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -75,7 +75,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param string $role            
+     * @param string $role
      */
     public function setRole($role)
     {
@@ -93,7 +93,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param string $type            
+     * @param string $type
      */
     public function setType($type)
     {
@@ -111,7 +111,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param LogicalConnection $logicalConnection            
+     * @param LogicalConnection $logicalConnection
      */
     public function setLogicalConnection(LogicalConnection $logicalConnection)
     {
@@ -129,7 +129,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param AbstractEndpoint $endpointSource            
+     * @param AbstractEndpoint $endpointSource
      */
     public function setEndpointSource($endpointSource)
     {
@@ -147,7 +147,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param AbstractEndpoint $endpointTarget            
+     * @param AbstractEndpoint $endpointTarget
      */
     public function setEndpointTarget($endpointTarget)
     {

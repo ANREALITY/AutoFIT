@@ -39,7 +39,7 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -57,7 +57,7 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @param string $name            
+     * @param string $name
      */
     public function setName($name)
     {

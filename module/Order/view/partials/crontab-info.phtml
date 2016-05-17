@@ -1,18 +1,22 @@
 <div class="info-box">
 
-    <div class="header"><span><?php echo $this->translate('Contab for transmission interval'); ?></span></div>
-    
+    <div class="header">
+        <span><?php echo $this->translate('Contab for transmission interval'); ?></span>
+    </div>
+
     <div class="body">
 
         <p><?php echo $this->translate('For the field "transmission interval" is') . ' ' . sprintf($this->translate('%s minutes'), 15); ?></p>
         <p><?php echo $this->translate('If you need an alternative transmission interval, please set it up according to the crontab rules'); ?>:</p>
 
-        <p><span class="inline-code">
+        <p>
+            <span class="inline-code">
         <?php echo $this->translate('MINUTE'); ?>
         <?php echo $this->translate('HOUR'); ?>
         <?php echo $this->translate('DOM'); ?>
         <?php echo $this->translate('MONTH'); ?>
-        <?php echo $this->translate('DOW'); ?></span></p>
+        <?php echo $this->translate('DOW'); ?></span>
+        </p>
         <table class="table">
             <tr>
                 <td class='dd'><span class="inline-code"><?php echo $this->translate('MINUTE'); ?></span></td>
@@ -35,9 +39,9 @@
                 <td class='dt'><?php echo $this->translate('The day of the week (0-7) where 0 and 7 are Sunday.'); ?></td>
             </tr>
         </table>
-        
+
         <p><?php echo $this->translate('Examples'); ?>:</p>
-    
+
         <table class="table" id="crontab-examples">
             <tr>
                 <td class='dt'>H/15 * * * *</td>
@@ -56,9 +60,11 @@
                 <td class='dd'><?php echo $this->translate('once a day on the 1st and 15th of every month except December'); ?></td>
             </tr>
         </table>
-    
+
         <p><?php echo $this->translate('You can generate a valid value with a converting tool like'); ?>
-        <a href="http://crontab-generator.org/" title="Crontab Generator">Crontab Generator</a>.</p>
+        <a href="http://crontab-generator.org/"
+                title="Crontab Generator">Crontab Generator</a>.
+        </p>
 
     </div>
 

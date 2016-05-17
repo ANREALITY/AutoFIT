@@ -36,7 +36,7 @@ class Module
                     $dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
                     $userService = $serviceManager->get('Order\Service\UserService');
                     if (! empty($_SERVER['AUTH_USER'])) {
-                        $username = strrchr($_SERVER['AUTH_USER'], "\\") ? str_ireplace("\\", '', 
+                        $username = strrchr($_SERVER['AUTH_USER'], "\\") ? str_ireplace("\\", '',
                             strrchr($_SERVER['AUTH_USER'], "\\")) : $_SERVER['AUTH_USER'];
                     } else {
                         $username = 'undefined';
@@ -46,7 +46,7 @@ class Module
                     $authenticationService->setAdapter($authenticationAdapter);
                     $authenticationService->setStorage($serviceManager->get('AuthenticationStorage'));
                     $authenticationService->authenticate();
-                    
+
                     return $authenticationService;
                 }
             ]

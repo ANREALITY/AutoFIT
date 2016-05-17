@@ -33,7 +33,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -51,7 +51,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @param string $expression            
+     * @param string $expression
      */
     public function setExpression($expression)
     {
@@ -69,7 +69,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @param IncludeParameterSet $includeParameterSet            
+     * @param IncludeParameterSet $includeParameterSet
      */
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {

@@ -48,7 +48,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper            
+     * @param PhysicalConnectionMapperInterface $physicalConnectionMapper
      */
     public function setPhysicalConnectionMapper(PhysicalConnectionMapperInterface $physicalConnectionMapper)
     {
@@ -57,7 +57,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param NotificationMapperInterface $notificationMapper            
+     * @param NotificationMapperInterface $notificationMapper
      */
     public function setNotificationMapper(NotificationMapperInterface $notificationMapper)
     {
@@ -66,7 +66,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param int|string $id            
+     * @param int|string $id
      *
      * @return LogicalConnection
      * @throws \InvalidArgumentException
@@ -127,44 +127,44 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $select->where([
             'logical_connection.id = ?' => $id
         ]);
-        
+
         $select->join([
             'physical_connection_end_to_end' => 'physical_connection'
-        ], 
+        ],
             new Expression(
                 'physical_connection_end_to_end.logical_connection_id = logical_connection.id AND physical_connection_end_to_end.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_END_TO_END . '"'), 
+                     '"' . AbstractPhysicalConnection::ROLE_END_TO_END . '"'),
             [
                 'physical_connection_end_to_end_id' => 'id'
             ], Select::JOIN_LEFT);
-        
+
         $select->join([
             'physical_connection_end_to_middle' => 'physical_connection'
-        ], 
+        ],
             new Expression(
                 'physical_connection_end_to_middle.logical_connection_id = logical_connection.id AND physical_connection_end_to_middle.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_END_TO_MIDDLE . '"'), 
+                     '"' . AbstractPhysicalConnection::ROLE_END_TO_MIDDLE . '"'),
             [
                 'physical_connection_end_to_middle_id' => 'id'
             ], Select::JOIN_LEFT);
-        
+
         $select->join([
             'physical_connection_middle_to_end' => 'physical_connection'
-        ], 
+        ],
             new Expression(
                 'physical_connection_middle_to_end.logical_connection_id = logical_connection.id AND physical_connection_middle_to_end.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_MIDDLE_TO_END . '"'), 
+                     '"' . AbstractPhysicalConnection::ROLE_MIDDLE_TO_END . '"'),
             [
                 'physical_connection_middle_to_end_id' => 'id'
             ], Select::JOIN_LEFT);
-        
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
             $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
             $data = $result->current();
-            
+
             if (! empty($data['physical_connection_end_to_end_id'])) {
                 $return->setPhysicalConnectionEndToEnd(
                     $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_end_to_end_id']));
@@ -177,16 +177,16 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 $return->setPhysicalConnectionMiddleToEnd(
                     $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_middle_to_end_id']));
             }
-            
+
             return $return;
         }
-        
+
         throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
     }
 
     /**
      *
-     * @param LogicalConnection $dataObject            
+     * @param LogicalConnection $dataObject
      *
      * @return LogicalConnection
      * @throws \Exception
@@ -198,14 +198,14 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $data['type'] = $dataObject->getType();
         // creating sub-objects
         // data from the recently persisted objects
-        
+
         $action = new Insert('logical_connection');
         $action->values($data);
-        
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
-        
+
         if ($result instanceof ResultInterface) {
             $newId = $result->getGeneratedValue();
             if ($newId) {

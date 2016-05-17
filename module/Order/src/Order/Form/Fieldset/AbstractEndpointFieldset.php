@@ -112,7 +112,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     [
                         'name' => 'Callback',
                         'options' => [
-                            'callback' => function($value) {
+                            'callback' => function ($value) {
                                 return substr($value, 0, static::CONTACT_PERCON_MAX_LENGTH);
                             }
                         ]

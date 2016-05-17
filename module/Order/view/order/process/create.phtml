@@ -35,7 +35,7 @@ $serverForTargetFieldset = $endpointTargetFieldset->get('server');
 
 <?php
 // billing
-echo $this->partial('/partials/fieldgroups/billing', 
+echo $this->partial('/partials/fieldgroups/billing',
     [
         'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
         'userFieldset' => $userFieldset,
@@ -47,7 +47,7 @@ echo $this->partial('/partials/fieldgroups/billing',
 
 <?php
 // endpoint source (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/basic-source', 
+echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
     [
         'endpointSourceFieldset' => $endpointSourceFieldset,
         'applicationForSourceFieldset' => $applicationForSourceFieldset,
@@ -58,7 +58,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
 
 <?php
 // endpoint target (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/basic-target', 
+echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
     [
         'endpointTargetFieldset' => $endpointTargetFieldset,
         'applicationForTargetFieldset' => $applicationForTargetFieldset,
@@ -71,7 +71,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
 
 <?php
 // endpoint source (specific settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source', 
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source',
     [
         'endpointSourceFieldset' => $endpointSourceFieldset
     ]);
@@ -79,7 +79,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 
 <?php
 // endpoint target (specific settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target', 
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
     [
         'endpointTargetFieldset' => $endpointTargetFieldset
     ]);
@@ -89,7 +89,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 
 <?php
 // logical connection
-echo $this->partial('/partials/fieldgroups/logical-connection', 
+echo $this->partial('/partials/fieldgroups/logical-connection',
     [
         'logicalConnectionFieldset' => $logicalConnectionFieldset
     ]);
@@ -100,12 +100,12 @@ echo $this->partial('/partials/fieldgroups/logical-connection',
 <?php
 // physical connections
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
-    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
         [
             'physicalConnectionEndToEndFieldset' => $physicalConnectionEndToEndFieldset
         ]);
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
         [
             'physicalConnectionEndToMiddleFieldset' => $physicalConnectionEndToMiddleFieldset,
             'physicalConnectionMiddleToEndFieldset' => $physicalConnectionMiddleToEndFieldset,

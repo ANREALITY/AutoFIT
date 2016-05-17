@@ -29,7 +29,7 @@ class Module
         $translator = $e->getApplication()
             ->getServiceManager()
             ->get('translator');
-        $translator->addTranslationFile('phpArray', 
+        $translator->addTranslationFile('phpArray',
             './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
 
@@ -132,11 +132,11 @@ MESSAGE;
             ->getEventManager()
             ->getSharedManager();
         $serviceManager = $event->getApplication()->getServiceManager();
-        $sharedManager->attach('Zend\Mvc\Application', 
+        $sharedManager->attach('Zend\Mvc\Application',
             [
                 MvcEvent::EVENT_DISPATCH_ERROR,
                 MvcEvent::EVENT_RENDER_ERROR
-            ], 
+            ],
             function ($event) use($serviceManager) {
                 $randomChars = md5(uniqid('', true));
                 $errorReference = substr($randomChars, strlen($randomChars) / 5, 7);
