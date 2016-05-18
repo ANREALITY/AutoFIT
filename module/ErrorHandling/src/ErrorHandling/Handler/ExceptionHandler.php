@@ -4,6 +4,7 @@ namespace ErrorHandling\Handler;
 use Zend\Mvc\MvcEvent;
 use Zend\Log\LoggerInterface;
 use Zend\Http\Request as HttpRequest;
+use Zend\Mvc\Application;
 
 class ExceptionHandler
 {
@@ -39,6 +40,8 @@ class ExceptionHandler
         // error log
         if ($event->getParam('exception')) {
             $this->logger->crit($event->getParam('exception'), $extra);
+        } elseif ($event->getParam('error') === Application::ERROR_ROUTER_NO_MATCH) {
+            $this->logger->notice($event->getParam('exception'), $extra);
         }
         // @todo Make it dynamic! Since not every user should be able to see the technical error message.
         $userIsAdmin = true;

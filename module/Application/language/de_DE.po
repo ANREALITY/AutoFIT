@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-17 19:47+0200\n"
-"PO-Revision-Date: 2016-05-17 19:48+0200\n"
+"POT-Creation-Date: 2016-05-18 23:38+0200\n"
+"PO-Revision-Date: 2016-05-18 23:38+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,12 +17,14 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
 
-#: Application/Module.php:107 Application/view/error/index.phtml:2
+#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:69
+#: Application/view/error/index.phtml:2
 msgid "An error occured. Please try later again."
 msgstr ""
 "Es ist ein Fehler aufgetreten. Bitte versuchen sie es später noch einmal."
 
-#: Application/Module.php:109 Application/view/error/index.phtml:5
+#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:71
+#: Application/view/error/404.phtml:5 Application/view/error/index.phtml:5
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
@@ -274,7 +276,7 @@ msgid "You have no access rights to this page/action."
 msgstr "Sie haben keine Zugriffsrechte für diese Ansicht/Aktion."
 
 #: Application/view/application/error/error403.phtml:4
-msgid "An error 403 occured (access forbidden)."
+msgid "A 403 error occured (access forbidden)."
 msgstr "Ein Feher 403 ist aufgetreten (Zugriff verweigert)."
 
 #: Application/view/application/index/index.phtml:6
@@ -372,73 +374,77 @@ msgstr "Technische Beschreibung"
 msgid "you find in the TDV"
 msgstr "finden Sie in der TDV"
 
-#: Application/view/application/index/index.phtml:98
+#: Application/view/application/index/index.phtml:100
 msgid "Select the desired product now"
 msgstr "Wählen Sie nun das gewünschte Filetransfer-Produkt aus"
 
-#: Application/view/error/404.phtml:1
+#: Application/view/error/404.phtml:2
+msgid "The page you requested is not available."
+msgstr "Die Seite, die Sie angefragt haben, ist nicht verfügbar."
+
+#: Application/view/error/404.phtml:9
 msgid "A 404 error occurred"
 msgstr "Es trat ein 404 Fehler auf"
 
-#: Application/view/error/404.phtml:10
+#: Application/view/error/404.phtml:19
 msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
-#: Application/view/error/404.phtml:14
+#: Application/view/error/404.phtml:23
 msgid ""
 "The requested controller could not be mapped to an existing controller class."
 msgstr ""
 "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
 "werden."
 
-#: Application/view/error/404.phtml:17
+#: Application/view/error/404.phtml:26
 msgid "The requested controller was not dispatchable."
 msgstr "Der angeforderte Controller ist nicht aufrufbar."
 
-#: Application/view/error/404.phtml:20
+#: Application/view/error/404.phtml:29
 msgid "The requested URL could not be matched by routing."
 msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
 
-#: Application/view/error/404.phtml:23
+#: Application/view/error/404.phtml:32
 msgid "We cannot determine at this time why a 404 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
 "Fehler aufgetreten ist."
 
-#: Application/view/error/404.phtml:35
+#: Application/view/error/404.phtml:44
 msgid "Controller"
 msgstr "Controller"
 
-#: Application/view/error/404.phtml:40
+#: Application/view/error/404.phtml:50
 #, php-format
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: Application/view/error/404.phtml:52 Application/view/error/index.phtml:15
+#: Application/view/error/404.phtml:63 Application/view/error/index.phtml:15
 msgid "Additional information"
 msgstr "Zusätzliche Information"
 
-#: Application/view/error/404.phtml:55 Application/view/error/404.phtml:79
+#: Application/view/error/404.phtml:66 Application/view/error/404.phtml:90
 #: Application/view/error/index.phtml:18 Application/view/error/index.phtml:42
 msgid "File"
 msgstr "Datei"
 
-#: Application/view/error/404.phtml:59 Application/view/error/404.phtml:83
+#: Application/view/error/404.phtml:70 Application/view/error/404.phtml:94
 #: Application/view/error/index.phtml:22 Application/view/error/index.phtml:46
 msgid "Message"
 msgstr "Meldung"
 
-#: Application/view/error/404.phtml:63 Application/view/error/404.phtml:87
+#: Application/view/error/404.phtml:74 Application/view/error/404.phtml:98
 #: Application/view/error/index.phtml:26 Application/view/error/index.phtml:50
 msgid "Stack trace"
 msgstr "Stapelüberwachung"
 
-#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:36
+#: Application/view/error/404.phtml:84 Application/view/error/index.phtml:36
 msgid "Previous exceptions"
 msgstr "Vorherige Ausnahme"
 
-#: Application/view/error/404.phtml:103 Application/view/error/index.phtml:66
+#: Application/view/error/404.phtml:114 Application/view/error/index.phtml:66
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
@@ -747,6 +753,12 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "An error 403 occured (access forbidden)."
+#~ msgstr "Ein Feher 403 ist aufgetreten (Zugriff verweigert)."
+
+#~ msgid "A 404 error occurred."
+#~ msgstr "Es trat ein 404 Fehler auf."
 
 #~ msgid ""
 #~ "Example changes for ordering of a C:D file transfer interfaces in the PSC:"
