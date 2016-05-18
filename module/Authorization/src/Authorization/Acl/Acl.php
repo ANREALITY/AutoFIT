@@ -3,7 +3,7 @@ namespace Authorization\Acl;
 
 use Zend\Permissions\Acl\Acl as ZendAcl;
 use Zend\Permissions\Acl\Role\GenericRole as Role;
-use Zend\Permissions\Acl\Resource\GenericResource as Resource;
+use Authorization\Acl\Resource\ParametrizedResource as Resource;
 
 class Acl extends ZendAcl
 {
@@ -23,6 +23,10 @@ class Acl extends ZendAcl
      */
     const DEFAULT_ROLE = self::ROLE_MEMBER;
 
+    protected $assertions;
+
+    protected $routeMatchParams;
+
     /**
      * Constructor
      *
@@ -30,7 +34,7 @@ class Acl extends ZendAcl
      * @return void
      * @throws \Exception
      */
-    public function __construct(array $config)
+    public function __construct(array $config, array $assertions = [], array $routeMatchParams = [])
     {
         if (! isset($config['acl']['roles']) || ! isset($config['acl']['resources'])) {
             throw new \Exception('Invalid ACL config found');
@@ -40,6 +44,9 @@ class Acl extends ZendAcl
         if (! isset($roles[self::DEFAULT_ROLE])) {
             $roles[self::DEFAULT_ROLE] = '';
         }
+
+        $this->assertions = $assertions;
+        $this->routeMatchParams = $routeMatchParams;
 
         $this->addRoles($roles)->addResources($config['acl']['resources']);
     }
@@ -83,21 +90,35 @@ class Acl extends ZendAcl
                     $controller = null;
                 } else {
                     if (! $this->hasResource($controller)) {
-                        $this->addResource(new Resource($controller));
+                        $this->addResource(new Resource($controller, $this->routeMatchParams));
                     }
                 }
-
-                foreach ($actions as $action => $role) {
-                    if ($action == 'all') {
-                        $action = null;
-                    }
-
-                    if ($permission == 'allow') {
-                        $this->allow($role, $controller, $action);
-                    } elseif ($permission == 'deny') {
-                        $this->deny($role, $controller, $action);
-                    } else {
-                        throw new \Exception('No valid permission defined: ' . $permission);
+                foreach ($actions as $action => $roleConfig) {
+                    if (is_array($roleConfig)) {
+                        foreach ($roleConfig as $role => $assertion) {
+                            if ($action == 'all') {
+                                $action = null;
+                            }
+                            $assertion = !empty($this->assertions[$assertion]) ? $this->assertions[$assertion] : null;
+                            if ($permission == 'allow') {
+                                $this->allow($role, $controller, $action, $assertion);
+                            } elseif ($permission == 'deny') {
+                                $this->deny($role, $controller, $action, $assertion);
+                            } else {
+                                throw new \Exception('No valid permission defined: ' . $permission);
+                            }
+                        }
+                    } elseif (is_string($roleConfig)) {
+                        if ($action == 'all') {
+                            $action = null;
+                        }
+                        if ($permission == 'allow') {
+                            $this->allow($roleConfig, $controller, $action);
+                        } elseif ($permission == 'deny') {
+                            $this->deny($roleConfig, $controller, $action);
+                        } else {
+                            throw new \Exception('No valid permission defined: ' . $permission);
+                        }
                     }
                 }
             }

@@ -63,6 +63,24 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
+     * @return the $userPrototype
+     */
+    public function getUserPrototype()
+    {
+        return clone $this->userPrototype;
+    }
+
+    /**
+     *
+     * @param User $userPrototype
+     */
+    public function setUserPrototype($userPrototype)
+    {
+        $this->userPrototype = $userPrototype;
+    }
+
+    /**
+     *
      * @return the $logicalConnectionPrototype
      */
     public function getLogicalConnectionPrototype()
@@ -139,6 +157,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
                 'file_transfer_request' . '_' . 'user_id' => 'user_id'
             ]);
+        $select->join('user', 'file_transfer_request.user_id = user.id',
+            [
+                'user' . '_' . 'id' => 'id',
+                'user' . '_' . 'role' => 'role',
+                'user' . '_' . 'username' => 'username'
+            ], Join::JOIN_LEFT);
         $select->join('logical_connection', 'file_transfer_request.logical_connection_id = logical_connection.id',
             [
                 'logical_connection' . '_' . 'id' => 'id',
@@ -165,6 +189,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 foreach (array_keys($resultRowArray) as $arrayKey) {
                     $this->processResultRow($resultData, $resultRowArray, 'file_transfer_request' . '_',
                         'file_transfer_request', $arrayKey, 'file_transfer_request' . '_' . 'id');
+                    $this->processResultRow($resultData, $resultRowArray, 'user' . '_',
+                        'user', $arrayKey, 'user' . '_' . 'id');
                     $this->processResultRow($resultData, $resultRowArray, 'logical_connection' . '_',
                         'logical_connection', $arrayKey, 'logical_connection' . '_' . 'id');
                     $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications',
@@ -176,6 +202,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $logicalConnection = $this->hydrator->hydrate(
                 $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']],
                 $this->getLogicalConnectionPrototype());
+            $user = $this->hydrator->hydrate(
+                $resultData['user'][$resultData['file_transfer_request'][$id]['user_id']],
+                $this->getUserPrototype());
+            $fileTransferRequest->setUser($user);
             $fileTransferRequest->setLogicalConnection($logicalConnection);
             $notifications = [];
             foreach ($resultData['notifications'][$resultData['file_transfer_request'][$id]['logical_connection_id']] as $notification) {

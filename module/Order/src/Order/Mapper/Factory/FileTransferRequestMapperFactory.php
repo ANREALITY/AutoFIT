@@ -5,6 +5,7 @@ use Order\Mapper\FileTransferRequestMapper;
 use DbSystel\DataObject\FileTransferRequest;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use DbSystel\DataObject\User;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Notification;
 
@@ -23,6 +24,7 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $service = new FileTransferRequestMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
 
+        $service->setUserPrototype(new User());
         $service->setLogicalConnectionPrototype(new LogicalConnection());
         $service->setNotificationPrototype(new Notification());
 

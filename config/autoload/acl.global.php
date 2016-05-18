@@ -9,17 +9,20 @@ return [
         'resources' => [
             'allow' => [
                 'Application\Controller\Index' => [
-                    'all' => 'member'
+                    'all' => 'guest'
                 ],
                 'Application\Controller\Error' => [
-                    'all' => 'member'
+                    'all' => 'guest'
                 ],
                 'Order\Controller\Process' => [
                     'index' => 'member',
                     'start' => 'member',
                     'create' => 'member',
                     'received' => 'member',
-                    'showOrder' => 'member',
+                    'showOrder' => [
+                        'admin' => null,
+                        'member' => 'UserIsOwner'
+                    ],
                     'listOrders' => 'member'
                 ]
             ]
