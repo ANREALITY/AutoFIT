@@ -32,7 +32,9 @@ class Module
     {
         set_exception_handler(
             function (\Throwable $exception) use($event) {
-                $handler = $event->getApplication()->getServiceManager()->get('ErrorHandling\Handler\ErrorHandler');
+                $handler = $event->getApplication()
+                    ->getServiceManager()
+                    ->get('ErrorHandling\Handler\ErrorHandler');
                 $handler->handle($exception, $event);
             });
     }
@@ -40,8 +42,8 @@ class Module
     public function initExceptionHandler(MvcEvent $event)
     {
         $sharedManager = $event->getApplication()
-        ->getEventManager()
-        ->getSharedManager();
+            ->getEventManager()
+            ->getSharedManager();
         $serviceManager = $event->getApplication()->getServiceManager();
         $sharedManager->attach('Zend\Mvc\Application',
             [
@@ -49,7 +51,9 @@ class Module
                 MvcEvent::EVENT_RENDER_ERROR
             ],
             function ($event) use($serviceManager) {
-                $handler = $event->getApplication()->getServiceManager()->get('ErrorHandling\Handler\ExceptionHandler');
+                $handler = $event->getApplication()
+                    ->getServiceManager()
+                    ->get('ErrorHandling\Handler\ExceptionHandler');
                 $handler->handle($event);
             });
     }

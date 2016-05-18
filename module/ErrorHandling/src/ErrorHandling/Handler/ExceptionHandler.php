@@ -9,11 +9,13 @@ class ExceptionHandler
 {
 
     /**
+     *
      * @var array
      */
     protected $config;
 
     /**
+     *
      * @var LoggerInterface
      */
     protected $logger;
@@ -41,8 +43,7 @@ class ExceptionHandler
         // @todo Make it dynamic! Since not every user should be able to see the technical error message.
         $userIsAdmin = true;
         // error page
-        $event->getViewModel()
-            ->setVariables(
+        $event->getViewModel()->setVariables(
             [
                 'userIsAdmin' => $userIsAdmin,
                 'errorReference' => $errorReference

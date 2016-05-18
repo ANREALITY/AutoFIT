@@ -8,6 +8,7 @@ class ParametrizedResource extends GenericResource
 {
 
     /**
+     *
      * @var array Params. Here the RouteMatch#params.
      * @see RouteMatch
      */

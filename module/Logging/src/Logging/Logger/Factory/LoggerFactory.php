@@ -8,6 +8,7 @@ use Zend\Log\Writer\Stream;
 
 class LoggerFactory implements FactoryInterface
 {
+
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
@@ -17,4 +18,5 @@ class LoggerFactory implements FactoryInterface
         $service->addWriter($writer);
         return $service;
     }
+
 }

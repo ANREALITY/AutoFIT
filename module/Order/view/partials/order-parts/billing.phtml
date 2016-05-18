@@ -42,7 +42,7 @@ $orderPartAttributes = [
         'label' => $this->translate('service invoice position (personal)'),
         'value' => $fileTransferRequest->getServiceInvoicePositionPersonal()->getNumber()
     ]
-]
+];
 // [
 // 'label' => $this->translate('ID'), 'value' => $fileTransferRequest->getId(),
 // ],
@@ -58,7 +58,7 @@ $orderPartAttributes = [
 // [
 // 'label' => $this->translate('ID'), 'value' => $fileTransferRequest->getId(),
 // ]
-;
+
 echo $this->partial('/partials/order-part',
     [
         'orderPartCssId' => $orderPartCssId,

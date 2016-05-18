@@ -189,8 +189,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 foreach (array_keys($resultRowArray) as $arrayKey) {
                     $this->processResultRow($resultData, $resultRowArray, 'file_transfer_request' . '_',
                         'file_transfer_request', $arrayKey, 'file_transfer_request' . '_' . 'id');
-                    $this->processResultRow($resultData, $resultRowArray, 'user' . '_',
-                        'user', $arrayKey, 'user' . '_' . 'id');
+                    $this->processResultRow($resultData, $resultRowArray, 'user' . '_', 'user', $arrayKey,
+                        'user' . '_' . 'id');
                     $this->processResultRow($resultData, $resultRowArray, 'logical_connection' . '_',
                         'logical_connection', $arrayKey, 'logical_connection' . '_' . 'id');
                     $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications',
@@ -202,8 +202,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $logicalConnection = $this->hydrator->hydrate(
                 $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']],
                 $this->getLogicalConnectionPrototype());
-            $user = $this->hydrator->hydrate(
-                $resultData['user'][$resultData['file_transfer_request'][$id]['user_id']],
+            $user = $this->hydrator->hydrate($resultData['user'][$resultData['file_transfer_request'][$id]['user_id']],
                 $this->getUserPrototype());
             $fileTransferRequest->setUser($user);
             $fileTransferRequest->setLogicalConnection($logicalConnection);

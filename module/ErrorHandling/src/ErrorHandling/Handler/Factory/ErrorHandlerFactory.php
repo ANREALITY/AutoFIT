@@ -7,6 +7,7 @@ use ErrorHandling\Handler\ErrorHandler;
 
 class ErrorHandlerFactory implements FactoryInterface
 {
+
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
@@ -15,4 +16,5 @@ class ErrorHandlerFactory implements FactoryInterface
         $service = new ErrorHandler($config, $logger, $translator);
         return $service;
     }
+
 }

@@ -10,16 +10,19 @@ class ErrorHandler
 {
 
     /**
+     *
      * @var array
      */
     protected $config;
 
     /**
+     *
      * @var LoggerInterface
      */
     protected $logger;
 
     /**
+     *
      * @var Translator
      */
     protected $translator;

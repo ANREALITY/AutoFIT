@@ -99,7 +99,7 @@ class Acl extends ZendAcl
                             if ($action == 'all') {
                                 $action = null;
                             }
-                            $assertion = !empty($this->assertions[$assertion]) ? $this->assertions[$assertion] : null;
+                            $assertion = ! empty($this->assertions[$assertion]) ? $this->assertions[$assertion] : null;
                             if ($permission == 'allow') {
                                 $this->allow($role, $controller, $action, $assertion);
                             } elseif ($permission == 'deny') {
