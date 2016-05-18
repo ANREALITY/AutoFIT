@@ -3,6 +3,7 @@ namespace Application\Handler;
 
 use Zend\Mvc\MvcEvent;
 use Zend\Log\LoggerInterface;
+use Zend\Http\Request as HttpRequest;
 
 class ExceptionHandler
 {
@@ -27,7 +28,8 @@ class ExceptionHandler
     {
         $randomChars = md5(uniqid('', true));
         $errorReference = substr($randomChars, strlen($randomChars) / 5, 7);
-        $requestUri = $event->getRequest()->getRequestUri();
+        $request = $event->getRequest();
+        $requestUri = $request instanceof HttpRequest ? $request->getUri()->toString() : 'undefined';
         $extra = [
             'error-reference' => $errorReference,
             'request-uri' => $requestUri
