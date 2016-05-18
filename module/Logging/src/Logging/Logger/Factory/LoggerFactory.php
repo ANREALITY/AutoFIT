@@ -1,5 +1,5 @@
 <?php
-namespace Application\Logger\Factory;
+namespace Logging\Logger\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

@@ -10,7 +10,7 @@ class ExceptionHandlerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
-        $logger = $serviceLocator->get('Application\Logger\ErrorLogger');
+        $logger = $serviceLocator->get('Logging\Logger\ErrorLogger');
         $service = new ExceptionHandler($config, $logger);
         return $service;
     }

@@ -64,7 +64,6 @@ return [
         'invokables' => [
         ],
         'factories' => [
-            'Application\Logger\ErrorLogger' => 'Application\Logger\Factory\LoggerFactory',
             'Application\Handler\ErrorHandler' => 'Application\Handler\Factory\ErrorHandlerFactory',
             'Application\Handler\ExceptionHandler' => 'Application\Handler\Factory\ExceptionHandlerFactory',
         ],

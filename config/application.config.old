@@ -9,7 +9,8 @@ return array(
     'modules' => array(
         'Application',
         'Order',
-//         'Authorization',
+        'Authentication',
+        'Authorization',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
