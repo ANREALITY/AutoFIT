@@ -61,6 +61,12 @@ return [
         ]
     ],
     'service_manager' => [
+        'invokables' => [
+        ],
+        'factories' => [
+            'Application\Handler\ErrorHandler' => 'Application\Handler\Factory\ErrorHandlerFactory',
+            'Application\Handler\ExceptionHandler' => 'Application\Handler\Factory\ExceptionHandlerFactory',
+        ],
         'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory'

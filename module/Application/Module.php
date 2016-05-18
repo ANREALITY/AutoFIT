@@ -74,64 +74,16 @@ class Module
     {
         set_exception_handler(
             function (\Throwable $exception) use($event) {
-                $translator = $event->getApplication()
-                    ->getServiceManager()
-                    ->get('translator');
-                $randomChars = md5(uniqid('', true));
-                $errorReference = substr($randomChars, strlen($randomChars) / 5, 7);
-                // error log
-                $event->setParam('exception', $exception);
-                $serviceManager = $event->getApplication()->getServiceManager();
-                $extra = [
-                    'error-reference' => $errorReference
-                ];
-                $serviceManager->get('ErrorLogger')->crit($event->getParam('exception'), $extra);
-                // error page
-                // @todo Make it dynamic! Since not every user should be able to see the technical error message.
-                $userIsAdmin = true;
-                $message = null;
-                if ($userIsAdmin) {
-                    @trigger_error($exception);
-                    $lastErrorData = error_get_last();
-                    $message = <<<MESSAGE
-TYPE: {$lastErrorData['type']}
-MESSAGE: {$lastErrorData['message']}
-FILE: {$lastErrorData['file']}
-LINE: {$lastErrorData['line']}
-MESSAGE;
-                }
-                ob_start();
-                xdebug_var_dump(debug_backtrace());
-                $debugBacktrace = ob_get_clean();
-                $output = [
-                    // header
-                    $translator->translate('An error occured. Please try later again.'),
-                    // error reference
-                    sprintf($translator->translate('Error reference: %s.'), $errorReference),
-                    // error info
-                    $message,
-                    // debug backtrace
-                    $debugBacktrace
-                ];
-                $fatalTemplatePath = __DIR__ . '/view/error/fatal.html';
-                $body = file_get_contents($fatalTemplatePath);
-                $body = str_replace(
-                    [
-                        '%__HEADER__%',
-                        '%__ERROR_REFERENCE__%',
-                        '%__ERROR_INFO__%',
-                        '%__DEBUG_BACKTRACE__%'
-                    ], $output, $body);
-                echo $body;
-                return true;
+                $handler = $event->getApplication()->getServiceManager()->get('Application\Handler\ErrorHandler');
+                $handler->handle($exception, $event);
             });
     }
 
-    public function initExceptionHandler($event)
+    public function initExceptionHandler(MvcEvent $event)
     {
         $sharedManager = $event->getApplication()
-            ->getEventManager()
-            ->getSharedManager();
+        ->getEventManager()
+        ->getSharedManager();
         $serviceManager = $event->getApplication()->getServiceManager();
         $sharedManager->attach('Zend\Mvc\Application',
             [
@@ -139,25 +91,8 @@ MESSAGE;
                 MvcEvent::EVENT_RENDER_ERROR
             ],
             function ($event) use($serviceManager) {
-                $randomChars = md5(uniqid('', true));
-                $errorReference = substr($randomChars, strlen($randomChars) / 5, 7);
-                $extra = [
-                    'error-reference' => $errorReference
-                ];
-                // error log
-                if ($event->getParam('exception')) {
-                    $serviceManager->get('ErrorLogger')
-                        ->crit($event->getParam('exception'), $extra);
-                }
-                // @todo Make it dynamic! Since not every user should be able to see the technical error message.
-                $userIsAdmin = true;
-                // error page
-                $event->getViewModel()
-                    ->setVariables(
-                    [
-                        'userIsAdmin' => $userIsAdmin,
-                        'errorReference' => $errorReference
-                    ]);
+                $handler = $event->getApplication()->getServiceManager()->get('Application\Handler\ExceptionHandler');
+                $handler->handle($event);
             });
     }
 
