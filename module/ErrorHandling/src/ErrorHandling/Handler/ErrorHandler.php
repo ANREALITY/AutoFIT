@@ -1,5 +1,5 @@
 <?php
-namespace Application\Handler;
+namespace ErrorHandling\Handler;
 
 use Zend\Mvc\MvcEvent;
 use Zend\Log\LoggerInterface;

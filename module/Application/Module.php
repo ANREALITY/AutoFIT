@@ -31,9 +31,6 @@ class Module
         $translator->addTranslationFile('phpArray',
             './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
-
-        $this->initErrorHandler($e);
-        $this->initExceptionHandler($e);
     }
 
     public function getServiceConfig()
@@ -56,32 +53,6 @@ class Module
                 ]
             ]
         ];
-    }
-
-    public function initErrorHandler(MvcEvent $event)
-    {
-        set_exception_handler(
-            function (\Throwable $exception) use($event) {
-                $handler = $event->getApplication()->getServiceManager()->get('Application\Handler\ErrorHandler');
-                $handler->handle($exception, $event);
-            });
-    }
-
-    public function initExceptionHandler(MvcEvent $event)
-    {
-        $sharedManager = $event->getApplication()
-        ->getEventManager()
-        ->getSharedManager();
-        $serviceManager = $event->getApplication()->getServiceManager();
-        $sharedManager->attach('Zend\Mvc\Application',
-            [
-                MvcEvent::EVENT_DISPATCH_ERROR,
-                MvcEvent::EVENT_RENDER_ERROR
-            ],
-            function ($event) use($serviceManager) {
-                $handler = $event->getApplication()->getServiceManager()->get('Application\Handler\ExceptionHandler');
-                $handler->handle($event);
-            });
     }
 
 }

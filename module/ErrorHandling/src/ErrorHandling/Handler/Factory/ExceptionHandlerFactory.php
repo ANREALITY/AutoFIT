@@ -1,18 +1,17 @@
 <?php
-namespace Application\Handler\Factory;
+namespace ErrorHandling\Handler\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Application\Handler\ErrorHandler;
+use ErrorHandling\Handler\ExceptionHandler;
 
-class ErrorHandlerFactory implements FactoryInterface
+class ExceptionHandlerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
         $logger = $serviceLocator->get('Logging\Logger\ErrorLogger');
-        $translator = $serviceLocator->get('translator');
-        $service = new ErrorHandler($config, $logger, $translator);
+        $service = new ExceptionHandler($config, $logger);
         return $service;
     }
 }

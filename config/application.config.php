@@ -12,6 +12,7 @@ return array(
         'Order',
         'Authentication',
         'Authorization',
+        'ErrorHandling',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
