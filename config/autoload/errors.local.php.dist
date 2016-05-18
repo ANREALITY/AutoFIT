@@ -1,0 +1,7 @@
+<?php
+return [
+    'errors' => [
+        'error_log_folder' => __DIR__ . '/../../data/logs',
+        'error_log_file' => 'error-' . date('Y-m-d') . '.log'
+    ]
+];

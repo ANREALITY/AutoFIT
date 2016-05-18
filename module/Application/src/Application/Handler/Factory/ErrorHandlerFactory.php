@@ -10,7 +10,7 @@ class ErrorHandlerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
-        $logger = $serviceLocator->get('ErrorLogger');
+        $logger = $serviceLocator->get('Application\Logger\ErrorLogger');
         $translator = $serviceLocator->get('translator');
         $service = new ErrorHandler($config, $logger, $translator);
         return $service;

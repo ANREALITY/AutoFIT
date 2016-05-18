@@ -11,12 +11,10 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Validator\AbstractValidator;
-use Zend\Log\Logger;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Application;
 use Zend\Stdlib\ResponseInterface;
-use Zend\Log\Writer\Stream;
 
 class Module
 {
@@ -40,17 +38,7 @@ class Module
 
     public function getServiceConfig()
     {
-        return [
-            'factories' => [
-                'ErrorLogger' => function ($serviceManager) {
-                    $logger = new Logger();
-                    $writer = new Stream('./data/logs/' . 'error-' . date('Y-m-d') . '.log');
-                    $writer->setLogSeparator(str_repeat(PHP_EOL, 2) . str_repeat('=', 250) . str_repeat(PHP_EOL, 2));
-                    $logger->addWriter($writer);
-                    return $logger;
-                }
-            ]
-        ];
+        return [];
     }
 
     public function getConfig()
