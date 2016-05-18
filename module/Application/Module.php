@@ -16,6 +16,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Application;
 use Zend\Stdlib\ResponseInterface;
+use Zend\Log\Writer\Stream;
 
 class Module
 {
@@ -41,9 +42,9 @@ class Module
     {
         return [
             'factories' => [
-                'ErrorLogger' => function ($sm) {
-                    $logger = new \Zend\Log\Logger();
-                    $writer = new \Zend\Log\Writer\Stream('./data/logs/' . 'error-' . date('Y-m-d') . '.log');
+                'ErrorLogger' => function ($serviceManager) {
+                    $logger = new Logger();
+                    $writer = new Stream('./data/logs/' . 'error-' . date('Y-m-d') . '.log');
                     $writer->setLogSeparator(str_repeat(PHP_EOL, 2) . str_repeat('=', 250) . str_repeat(PHP_EOL, 2));
                     $logger->addWriter($writer);
                     return $logger;
