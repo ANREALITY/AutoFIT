@@ -8,11 +8,11 @@
 return array(
     'modules' => array(
         'Logging',
+        'ErrorHandling',
         'Application',
         'Order',
         'Authentication',
         'Authorization',
-        'ErrorHandling',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
