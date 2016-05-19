@@ -1,6 +1,9 @@
 <?php
 return [
-    'errors' => [
-        'fatal_error_view' => __DIR__ . '/../../module/Application/view/error/fatal.phtml'
+    'errors' => [],
+    'view_manager' => [
+        'template_map' => [
+            'default_zf_error_view' => __DIR__ . '/../../module/Application/view/error/index.phtml',
+        ]
     ]
 ];

@@ -1,0 +1,13 @@
+<div class="info-box">
+    <div class="header"><?php echo $this->translate('An error occured. Please try later again.'); ?></div>
+    <div class="body">
+        <div class="alert-info error-reference">
+            <span><?php echo sprintf($this->translate('Error reference: %s.'), $this->layout()->errorReference); ?></span>
+        </div>
+        <?php if($this->layout()->userIsAdmin) : ?>
+        <!-- default view #start# -->
+        <?php echo $this->partial('default_zf_error_view'); ?>
+        <!-- default view #stop# -->
+        <?php endif; ?>
+    </div>
+</div>
