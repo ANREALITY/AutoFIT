@@ -84,7 +84,7 @@ MESSAGE;
                 '%__DEBUG_BACKTRACE__%'
             ], $output, $body);
         echo $body;
-        error_log($exception->getMessage());
+        error_log($exception);
     }
 
 }

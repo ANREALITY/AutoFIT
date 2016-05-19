@@ -51,6 +51,7 @@ class ExceptionHandler
                 'userIsAdmin' => $userIsAdmin,
                 'errorReference' => $errorReference
             ]);
+        error_log($event->getParam('exception'));
     }
 
 }
