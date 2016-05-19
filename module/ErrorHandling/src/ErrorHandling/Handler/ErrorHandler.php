@@ -41,12 +41,11 @@ class ErrorHandler
         $request = $event->getRequest();
         $requestUri = $request instanceof HttpRequest ? $request->getUri()->toString() : 'undefined';
         // error log
-        $event->setParam('exception', $exception);
         $extra = [
             'error-reference' => $errorReference,
             'request-uri' => $requestUri
         ];
-        $this->logger->crit($event->getParam('exception'), $extra);
+        $this->logger->crit($exception, $extra);
         // error page
         // @todo Make it dynamic! Since not every user should be able to see the technical error message.
         $userIsAdmin = true;

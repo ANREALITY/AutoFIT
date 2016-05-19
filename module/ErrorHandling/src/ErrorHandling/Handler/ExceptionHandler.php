@@ -38,10 +38,11 @@ class ExceptionHandler
             'request-uri' => $requestUri
         ];
         // error log
-        if ($event->getParam('exception')) {
-            $this->logger->crit($event->getParam('exception'), $extra);
+        $exception = $event->getParam('exception');
+        if ($exception) {
+            $this->logger->crit($exception, $extra);
         } elseif ($event->getParam('error') === Application::ERROR_ROUTER_NO_MATCH) {
-            $this->logger->notice($event->getParam('exception'), $extra);
+            $this->logger->notice($exception, $extra);
         }
         // @todo Make it dynamic! Since not every user should be able to see the technical error message.
         $userIsAdmin = true;
@@ -51,7 +52,7 @@ class ExceptionHandler
                 'userIsAdmin' => $userIsAdmin,
                 'errorReference' => $errorReference
             ]);
-        error_log($event->getParam('exception'));
+        error_log($exception);
     }
 
 }
