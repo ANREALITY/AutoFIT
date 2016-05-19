@@ -1,6 +1,8 @@
 <?php
 return [
     'errors' => [
+        'error_reporting' => E_ALL,
+        'display_errors' => false,
         'error_log_folder' => __DIR__ . '/../../data/logs',
         'error_log_file' => 'error' . '-' . '{date}' . '.log'
     ]

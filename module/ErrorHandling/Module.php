@@ -8,8 +8,10 @@ class Module
 
     public function onBootstrap(MvcEvent $event)
     {
+        $this->setUpNativeErrorHandling($event);
         $this->initErrorHandler($event);
         $this->initExceptionHandler($event);
+        $this->initWarningHandler($event);
     }
 
     public function getConfig()
@@ -26,6 +28,17 @@ class Module
                 )
             )
         );
+    }
+
+    public function setUpNativeErrorHandling(MvcEvent $event)
+    {
+        $config = $event->getApplication()->getServiceManager()->get('Config')['errors'];
+        if (isset($config['error_reporting'])) {
+            error_reporting($config['error_reporting']);
+        }
+        if (isset($config['display_errors'])) {
+            ini_set('display_errors', $config['display_errors']);
+        }
     }
 
     public function initErrorHandler(MvcEvent $event)
@@ -55,6 +68,17 @@ class Module
                     ->getServiceManager()
                     ->get('ErrorHandling\Handler\ExceptionHandler');
                 $handler->handle($event);
+            });
+    }
+
+    public function initWarningHandler(MvcEvent $event)
+    {
+        set_error_handler(
+            function (int $errno, string $errstr, string $errfile = null, int $errline = 0, array $errcontext = []) use($event) {
+                $handler = $event->getApplication()
+                    ->getServiceManager()
+                    ->get('ErrorHandling\Handler\WarningHandler');
+                return $handler->handle($errno, $errstr, $errfile, $errline, $errcontext, $event);
             });
     }
 
