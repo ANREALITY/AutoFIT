@@ -12,7 +12,8 @@ class LoggerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config')['errors'];
-        $writer = new Stream($config['error_log_folder'] . '/' . $config['error_log_file']);
+        $writer = new Stream(
+            $config['error_log_folder'] . '/' . str_replace('{date}', date('Y-m-d'), $config['error_log_file']));
         $writer->setLogSeparator(str_repeat(PHP_EOL, 2) . str_repeat('=', 250) . str_repeat(PHP_EOL, 2));
         $service = new Logger();
         $service->addWriter($writer);
