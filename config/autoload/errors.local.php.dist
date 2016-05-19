@@ -2,11 +2,19 @@
 return [
     'errors' => [
         'error_reporting' => E_ALL,
-        'display_errors' => true,
+        'display_errors' => false,
         'error_log_folder' => __DIR__ . '/../../data/logs',
         'error_log_file' => 'error' . '-' . '{date}' . '.log',
         'fatal_error_view' => __DIR__ . '/../../module/ErrorHandling/view/fatal.phtml',
-        'nice_error_pages_enabled' => true
+        'nice_error_pages_enabled' => true,
+        'error_details' => [
+            'restricted' => true,
+            'auth_service_name' => 'AuthenticationService',
+            'identity_role_key' => 'role',
+            'roles' => [
+                'admin'
+            ]
+        ]
     ],
     'view_manager' => [
         'exception_template' => 'exception',

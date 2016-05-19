@@ -21,10 +21,17 @@ class ExceptionHandler
      */
     protected $logger;
 
-    public function __construct(array $config, LoggerInterface $logger)
+    /**
+     *
+     * @var boolean
+     */
+    protected $showErrorDetails;
+
+    public function __construct(array $config, LoggerInterface $logger, bool $showErrorDetails)
     {
         $this->config = $config;
         $this->logger = $logger;
+        $this->showErrorDetails = $showErrorDetails;
     }
 
     public function handle(MvcEvent $event)
@@ -44,12 +51,10 @@ class ExceptionHandler
         } elseif ($event->getParam('error') === Application::ERROR_ROUTER_NO_MATCH) {
             $this->logger->notice($exception, $extra);
         }
-        // @todo Make it dynamic! Since not every user should be able to see the technical error message.
-        $userIsAdmin = true;
         // error page
         $event->getViewModel()->setVariables(
             [
-                'userIsAdmin' => $userIsAdmin,
+                'showErrorDetails' => $this->showErrorDetails,
                 'errorReference' => $errorReference
             ]);
         error_log($exception);

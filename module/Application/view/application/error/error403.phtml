@@ -1,6 +1,13 @@
 <div class="info-box">
     <div class="header"><?php echo $this->translate('You have no access rights to this page/action.'); ?></div>
     <div class="body">
-        <?php echo $this->translate('A 403 error occured (access forbidden).'); ?>
+        <div class="alert-info error-reference">
+            <span><?php echo $this->translate('A 403 error occured (access forbidden).'); ?></span>
+        </div>
+        <!-- Just to keep the look of the error and the exception page consistent. -->
+        <br />
+        <div>
+            <pre class="xdebug-var-dump"></pre>
+        </div>
     </div>
 </div>

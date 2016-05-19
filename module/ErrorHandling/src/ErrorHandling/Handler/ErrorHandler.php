@@ -27,10 +27,17 @@ class ErrorHandler
      */
     protected $translator;
 
-    public function __construct(array $config, LoggerInterface $logger, Translator $translator)
+    /**
+     *
+     * @var boolean
+     */
+    protected $showErrorDetails;
+
+    public function __construct(array $config, LoggerInterface $logger, bool $showErrorDetails, Translator $translator)
     {
         $this->config = $config;
         $this->logger = $logger;
+        $this->showErrorDetails = $showErrorDetails;
         $this->translator = $translator;
     }
 
@@ -47,13 +54,11 @@ class ErrorHandler
         ];
         $this->logger->crit($exception, $extra);
         // error page
-        // @todo Make it dynamic! Since not every user should be able to see the technical error message.
-        $userIsAdmin = true;
         $message = null;
         if (! isset($this->config['nice_error_pages_enabled']) || ! $this->config['nice_error_pages_enabled']) {
             trigger_error($exception);
         } else {
-            if ($userIsAdmin) {
+            if ($this->showErrorDetails) {
                 trigger_error($exception);
                 $lastErrorData = error_get_last();
                 $message = <<<MESSAGE
@@ -62,10 +67,10 @@ MESSAGE: {$lastErrorData['message']}
 FILE: {$lastErrorData['file']}
 LINE: {$lastErrorData['line']}
 MESSAGE;
+                ob_start();
+                xdebug_var_dump(debug_backtrace());
+                $debugBacktrace = ob_get_clean();
             }
-            ob_start();
-            xdebug_var_dump(debug_backtrace());
-            $debugBacktrace = ob_get_clean();
             $output = [
                 // header
                 $this->translator->translate('An error occured. Please try later again.'),

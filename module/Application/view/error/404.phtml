@@ -4,7 +4,7 @@
         <div class="alert-info error-reference">
             <span><?php echo sprintf($this->translate('Error reference: %s.'), $this->layout()->errorReference); ?></span>
         </div>
-        <?php if($this->layout()->userIsAdmin) : ?>
+        <?php if($this->layout()->showErrorDetails) : ?>
             <!-- default view #start# -->
             <h1><?php echo $this->translate('A 404 error occurred') ?></h1>
             <h2><?php echo $this->message ?></h2>
@@ -99,6 +99,12 @@
                 <?php endif; ?>
             <?php endif; ?>
             <!-- default view #stop# -->
+        <?php else : ?>
+        <!-- Just to keep the look of the error and the exception page consistent. -->
+        <br />
+        <div>
+            <pre class="xdebug-var-dump"></pre>
+        </div>
         <?php endif; ?>
     </div>
 </div>
