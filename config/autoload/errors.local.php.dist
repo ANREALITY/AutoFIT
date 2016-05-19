@@ -2,8 +2,16 @@
 return [
     'errors' => [
         'error_reporting' => E_ALL,
-        'display_errors' => false,
+        'display_errors' => true,
         'error_log_folder' => __DIR__ . '/../../data/logs',
-        'error_log_file' => 'error' . '-' . '{date}' . '.log'
+        'error_log_file' => 'error' . '-' . '{date}' . '.log',
+        'fatal_error_view' => __DIR__ . '/../../module/ErrorHandling/view/fatal.phtml',
+        'nice_error_pages_enabled' => true
+    ],
+    'view_manager' => [
+        'exception_template' => 'exception',
+        'template_map' => [
+            'exception' => __DIR__ . '/../../module/ErrorHandling/view/exception.phtml'
+        ]
     ]
 ];
