@@ -54,24 +54,6 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
      */
     public function findOne($id)
     {
-        // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('logical_connection');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
@@ -140,23 +122,6 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
      */
     public function findAll(array $criteria = [])
     {
-        // $this->prototype = new Endpoint{CONCRETE_TYPE}();
-
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('logical_connection');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return [];
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

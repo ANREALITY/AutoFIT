@@ -35,22 +35,6 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
      */
     public function findOne($number)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('service_invoice_position');
-         * $select->where([
-         * 'number = ?' => $number
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("ServiceInvoicePosition with given number:{$number} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

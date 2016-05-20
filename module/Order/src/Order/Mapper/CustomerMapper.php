@@ -34,22 +34,6 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('customer');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("Customer with given ID:{$id} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
@@ -59,21 +43,6 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('customer');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return [];
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

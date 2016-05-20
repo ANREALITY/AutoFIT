@@ -34,22 +34,6 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
      */
     public function findOne($name)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('server');
-         * $select->where([
-         * 'technical_short_name = ?' => $name
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("Server with given name:{$name} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

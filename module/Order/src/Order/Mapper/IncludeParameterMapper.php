@@ -35,22 +35,6 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('include_parameter');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("IncludeParameter with given ID:{$id} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

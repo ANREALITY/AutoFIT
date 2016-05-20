@@ -35,22 +35,6 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('notification');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("Notification with given ID:{$id} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

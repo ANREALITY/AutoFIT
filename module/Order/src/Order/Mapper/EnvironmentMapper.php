@@ -35,22 +35,6 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
      */
     public function findOne($severity)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('environment');
-         * $select->where([
-         * 'severity = ?' => $severity
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("Environment with given severity:{$severity} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 

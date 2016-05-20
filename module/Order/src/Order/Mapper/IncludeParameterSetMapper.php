@@ -58,22 +58,6 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
      */
     public function findOne($id)
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('include_parameter_set');
-         * $select->where([
-         * 'id = ?' => $id
-         * ]);
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-         * return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-         * }
-         *
-         * throw new \InvalidArgumentException("IncludeParameterSet with given ID:{$id} not found.");
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
@@ -83,21 +67,6 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
      */
     public function findAll(array $criteria = [])
     {
-        /*
-         * $sql = new Sql($this->dbAdapter);
-         * $select = $sql->select('include_parameter_set');
-         *
-         * $statement = $sql->prepareStatementForSqlObject($select);
-         * $result = $statement->execute();
-         *
-         * if ($result instanceof ResultInterface && $result->isQueryResult()) {
-         * $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-         *
-         * return $resultSet->initialize($result);
-         * }
-         *
-         * return [];
-         */
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
