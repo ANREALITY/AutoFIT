@@ -20,6 +20,10 @@ class AbstractMapper
      */
     protected $hydrator;
 
+//     protected $prefix;
+
+//     protected $identifier;
+
     /**
      *
      * @var AbstractDataObject
@@ -27,13 +31,15 @@ class AbstractMapper
     protected $prototype;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        AbstractDataObject $prototype = null)
+        AbstractDataObject $prototype = null, string $prefix = null, string $identifier = null)
     {
         $this->setDbAdapter($dbAdapter);
         $this->setHydrator($hydrator);
         if ($prototype) {
             $this->setPrototype($prototype);
         }
+//         $this->prefix = $prefix;
+//         $this->identifier = $identifier;
     }
 
     /**
@@ -74,7 +80,7 @@ class AbstractMapper
 
     /**
      *
-     * @return the $prototype
+     * @return the clone of the $prototype
      */
     public function getPrototype()
     {
@@ -88,6 +94,28 @@ class AbstractMapper
     public function setPrototype(AbstractDataObject $prototype)
     {
         $this->prototype = $prototype;
+    }
+
+    public function createDataObjects(
+        array $resultSetArray,
+        string $parentIdentifierKey = null, string $parentIdentifierValue = null,
+        string $identifier = null, array $map = []
+    ) {
+        $dataObjects = [];
+        $identifier = $identifier ?: $this->prefix . $this->identifier;
+        foreach ($resultSetArray as $row) {
+            $objectData = [];
+            foreach ($row as $columnAlias => $value) {
+                if (strpos($columnAlias, $this->prefix) === 0) {
+                    $objectData[str_replace($this->prefix, '', $columnAlias)] = $value;
+                }
+            }
+            if (!empty($objectData)) {
+                $dataObjects[] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+            }
+            // sub-objects
+        }
+        return $dataObjects;
     }
 
 }

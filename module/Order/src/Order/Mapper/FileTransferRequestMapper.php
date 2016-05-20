@@ -56,9 +56,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     protected $userMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype, string $prefix = null, string $identifier = null)
     {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
+        parent::__construct($dbAdapter, $hydrator, $prototype, $prefix, $identifier);
     }
 
     /**
@@ -271,6 +271,18 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
+        $prefix = 'file_transfer_request_';
+//         $select->columns(
+//             [
+//                 $prefix . 'id' => 'id',
+//                 $prefix . 'change_number' => 'change_number',
+//                 $prefix . 'status' => 'status',
+//                 $prefix . 'created' => 'created',
+//                 $prefix . 'updated' => 'updated',
+//                 $prefix . 'logical_connection_id' => 'logical_connection_id',
+//                 $prefix . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
+//                 $prefix . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number'
+//             ]);
         if ($id) {
             $select->where([
                 'file_transfer_request.id = ?' => $id
@@ -295,6 +307,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
             [
                 'logical_connection_type' => 'type'
+            ], Select::JOIN_LEFT);
+        $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
+            [
+                'notification_id' => 'id',
+                'notification_email' => 'email',
+                'notification_success' => 'success',
+                'notification_failure' => 'failure',
+                'notification_logical_connection_id' => 'logical_connection_id'
             ], Select::JOIN_LEFT);
         $select->join([
             'service_invoice_position_basic' => 'service_invoice_position'
@@ -323,8 +343,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-
             $return = $resultSet->initialize($result);
+            
+            // $resultSet = new ResultSet();
+            // $resultSet->initialize($result);
+            // $resultSetArray = $resultSet->toArray();
+            // echo '<pre>';
+            // // print_r($resultSetArray);
+            // $dataObjects = $this->createDataObjects($resultSetArray);
+            // print_r($dataObjects);
 
             $fileTransferRequests = [];
 
@@ -380,8 +407,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->setName($data['environment_name']);
 
                 $fileTransferRequests[] = $fileTransferRequest;
-
-                // $test = spl_object_hash($fileTransferRequest->getLogicalConnection());
             }
 
             return $fileTransferRequests;
