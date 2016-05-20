@@ -4,6 +4,7 @@ namespace ErrorHandling\Handler\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ErrorHandling\Handler\ErrorHandler;
+use Zend\ServiceManager\Exception\CircularDependencyFoundException;
 
 class ErrorHandlerFactory implements FactoryInterface
 {
@@ -15,10 +16,14 @@ class ErrorHandlerFactory implements FactoryInterface
         $showErrorDetails = true;
 
         if (isset($config['error_details']['restricted']) && !empty($config['error_details']['restricted'])) {
-            $authenticationService = $serviceLocator->get($config['error_details']['auth_service_name']);
-            $identity = $authenticationService->getIdentity();
-            $role = $identity[$config['error_details']['identity_role_key']];
-            $errroDetailsAllowed = in_array($role, $config['error_details']['roles']);
+            try {
+                $authenticationService = $serviceLocator->get($config['error_details']['auth_service_name']);
+                $identity = $authenticationService->getIdentity();
+                $role = $identity[$config['error_details']['identity_role_key']];
+                $errroDetailsAllowed = in_array($role, $config['error_details']['roles']);
+            } catch (CircularDependencyFoundException $e) {
+                $errroDetailsAllowed = false;
+            }
             $showErrorDetails = $errroDetailsAllowed;
         }
 
