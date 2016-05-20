@@ -128,7 +128,7 @@ class ProcessController extends AbstractActionController
 
     public function listOrdersAction()
     {
-        $userId = $this->authenticationService->getIdentity()['id'];
+        $userId = ! empty($this->authenticationService->getIdentity()['id']) ? $this->authenticationService->getIdentity()['id'] : null;
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
             [
                 [
