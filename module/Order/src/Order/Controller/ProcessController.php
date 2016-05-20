@@ -128,7 +128,13 @@ class ProcessController extends AbstractActionController
 
     public function listOrdersAction()
     {
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
+        $userId = $this->authenticationService->getIdentity()['id'];
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
+            [
+                [
+                    'user_id' => $userId
+                ]
+            ]);
 
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests

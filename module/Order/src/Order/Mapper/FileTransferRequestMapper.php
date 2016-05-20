@@ -277,6 +277,21 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             ]);
         }
 
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('user_id', $condition)) {
+                    $select->join('user', 'user.id = file_transfer_request.user_id',
+                        [
+                            'user_id' => 'id'
+                        ], Select::JOIN_LEFT);
+                    $select->where(
+                        [
+                            'user_id = ?' => $condition['user_id']
+                        ]);
+                }
+            }
+        }
+
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
             [
                 'logical_connection_type' => 'type'
