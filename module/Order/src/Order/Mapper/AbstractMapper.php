@@ -20,10 +20,6 @@ class AbstractMapper
      */
     protected $hydrator;
 
-    protected $prefix;
-
-    protected $identifier;
-
     /**
      *
      * @var AbstractDataObject
@@ -31,15 +27,13 @@ class AbstractMapper
     protected $prototype;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        AbstractDataObject $prototype = null, string $prefix = null, string $identifier = null)
+        AbstractDataObject $prototype = null)
     {
         $this->setDbAdapter($dbAdapter);
         $this->setHydrator($hydrator);
         if ($prototype) {
             $this->setPrototype($prototype);
         }
-        $this->prefix = $prefix;
-        $this->identifier = $identifier;
     }
 
     /**
@@ -98,21 +92,26 @@ class AbstractMapper
 
     public function createDataObjects(
         array $resultSetArray,
-        string $parentIdentifierKey = null, string $parentIdentifierValue = null,
-        string $identifier = null, string $prefix = null, array $map = []
+        string $parentIdentifier = null, string $parentPrefix = null,
+        string $identifier = null, string $prefix = null
     ) {
-        $identifier = $identifier ?: $this->identifier;
-        $prefix = $prefix ?: $this->prefix;
         $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
         $dataObjects = [];
         foreach ($resultSetArray as $row) {
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
-                if (strpos($columnAlias, $this->prefix) === 0) {
-                    $objectData[str_replace($this->prefix, '', $columnAlias)] = $value;
+                $key = $columnAlias;
+                if (!empty($prefix) && strpos($columnAlias, $prefix) === 0) {
+                    $key = str_replace($prefix, '', $columnAlias);
                 }
+                $objectData[$key] = $value;
             }
             if (!empty($objectData)) {
+                if (!empty($parentPrefix . $parentIdentifier) && !empty($row[$parentPrefix . $parentIdentifier])) {
+                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+                } else {
+                    $dataObjects[] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+                }
                 $dataObjects[] = $this->hydrator->hydrate($objectData, $this->getPrototype());
             }
             // sub-objects

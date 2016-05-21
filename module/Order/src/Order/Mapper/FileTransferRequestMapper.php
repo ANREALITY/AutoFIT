@@ -52,6 +52,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
+     * @var ServiceInvoicePositionMapperInterface
+     */
+    protected $serviceInvoicePositionMapper;
+
+    /**
+     *
      * @var UserMapperInterface
      */
     protected $userMapper;
@@ -122,6 +128,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function setLogicalConnectionMapper(LogicalConnectionMapperInterface $logicalConnectionMapper)
     {
         $this->logicalConnectionMapper = $logicalConnectionMapper;
+    }
+
+    /**
+     *
+     * @param ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper
+     */
+    public function setServiceInvoicePositionMapper(ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper)
+    {
+        $this->serviceInvoicePositionMapper = $serviceInvoicePositionMapper;
     }
 
     /**
@@ -272,17 +287,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
         $prefix = 'file_transfer_request_';
-//         $select->columns(
-//             [
-//                 $prefix . 'id' => 'id',
-//                 $prefix . 'change_number' => 'change_number',
-//                 $prefix . 'status' => 'status',
-//                 $prefix . 'created' => 'created',
-//                 $prefix . 'updated' => 'updated',
-//                 $prefix . 'logical_connection_id' => 'logical_connection_id',
-//                 $prefix . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
-//                 $prefix . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number'
-//             ]);
+        $select->columns(
+            [
+                $prefix . 'id' => 'id',
+                $prefix . 'change_number' => 'change_number',
+                $prefix . 'status' => 'status',
+                $prefix . 'created' => 'created',
+                $prefix . 'updated' => 'updated',
+                $prefix . 'logical_connection_id' => 'logical_connection_id',
+                $prefix . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
+                $prefix . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number'
+            ]);
         if ($id) {
             $select->where([
                 'file_transfer_request.id = ?' => $id
@@ -292,10 +307,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('user_id', $condition)) {
-                    $select->join('user', 'user.id = file_transfer_request.user_id',
-                        [
-                            'user_id' => 'id'
-                        ], Select::JOIN_LEFT);
                     $select->where(
                         [
                             'user_id = ?' => $condition['user_id']
@@ -304,8 +315,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
         }
 
+        $select->join('user', 'file_transfer_request.user_id = user.id',
+            [
+                'user' . '_' . 'id' => 'id',
+                'user' . '_' . 'role' => 'role',
+                'user' . '_' . 'username' => 'username'
+            ], Join::JOIN_LEFT);
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
             [
+                'logical_connection_id' => 'id',
                 'logical_connection_type' => 'type'
             ], Select::JOIN_LEFT);
         $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
@@ -316,14 +334,27 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'notification_failure' => 'failure',
                 'notification_logical_connection_id' => 'logical_connection_id'
             ], Select::JOIN_LEFT);
-        $select->join([
-            'service_invoice_position_basic' => 'service_invoice_position'
-        ], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number', [],
-            Select::JOIN_LEFT);
-        $select->join([
-            'service_invoice_position_personal' => 'service_invoice_position'
-        ], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
-            [], Select::JOIN_LEFT);
+        $select->join(['service_invoice_position_basic' => 'service_invoice_position'],
+            'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number',
+            [
+                'service_invoice_position_basic' . '_' . 'number' => 'number',
+                'service_invoice_position_basic' . '_' . 'order_quantity' => 'order_quantity',
+                'service_invoice_position_basic' . '_' . 'description' => 'description',
+                'service_invoice_position_basic' . '_' . 'service_invoice_number' => 'service_invoice_number',
+                'service_invoice_position_basic' . '_' . 'article_sku' => 'article_sku',
+                'service_invoice_position_basic' . '_' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+            ], Join::JOIN_LEFT);
+        $select->join(['service_invoice_position_personal' => 'service_invoice_position'],
+            'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
+            [
+                'service_invoice_position_personal' . '_' . 'number' => 'number',
+                'service_invoice_position_personal' . '_' . 'order_quantity' => 'order_quantity',
+                'service_invoice_position_personal' . '_' . 'description' => 'description',
+                'service_invoice_position_personal' . '_' . 'service_invoice_number' => 'service_invoice_number',
+                'service_invoice_position_personal' . '_' . 'article_sku' => 'article_sku',
+                'service_invoice_position_personal' . '_' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+            ], Join::JOIN_LEFT);
+
         $select->join('service_invoice',
             'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number',
             [], Select::JOIN_LEFT);
@@ -345,13 +376,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
             $return = $resultSet->initialize($result);
             
-            // $resultSet = new ResultSet();
-            // $resultSet->initialize($result);
-            // $resultSetArray = $resultSet->toArray();
-            // echo '<pre>';
-            // // print_r($resultSetArray);
-            // $dataObjects = $this->createDataObjects($resultSetArray);
+            $resultSet = new ResultSet();
+            $resultSet->initialize($result);
+            $resultSetArray = $resultSet->toArray();
+            echo '<pre>';
+            // print_r($resultSetArray);
+            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_');
             // print_r($dataObjects);
+
+            die('###');
 
             $fileTransferRequests = [];
 
@@ -460,6 +493,55 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    public function createDataObjects(
+        array $resultSetArray,
+        string $parentIdentifier = null, string $parentPrefix = null,
+        string $identifier = null, string $prefix = null
+    ) {
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix);
+        
+        $logicalConnectionIdentifier = 'id';
+        $logicalConnectionPrefix = 'logical_connection_';
+        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+            $logicalConnectionIdentifier, $logicalConnectionPrefix);
+        
+        $serviceInvoicePositionBasicIdentifier = 'number';
+        $serviceInvoicePositionBasicPrefix = 'service_invoice_position_basic_';
+        $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+            $serviceInvoicePositionBasicIdentifier, $serviceInvoicePositionBasicPrefix);
+        
+        $serviceInvoicePositionPersonalIdentifier = 'number';
+        $serviceInvoicePositionPersonalPrefix = 'service_invoice_position_personal_';
+        $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+            $serviceInvoicePositionPersonalIdentifier, $serviceInvoicePositionPersonalPrefix);
+        
+        $userIdentifier = 'id';
+        $userPrefix = 'user_';
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+            $userIdentifier, $userPrefix);
+        
+        // print_r($userDataObjects);
+        
+        foreach ($dataObjects as $key => $dataObject) {
+            if (array_key_exists($dataObject->getId(), $logicalConnectionDataObjects)) {
+                $dataObject->setLogicalConnection($logicalConnectionDataObjects[$dataObject->getId()]);
+            }
+            if (array_key_exists($dataObject->getId(), $serviceInvoicePositionBasicDataObjects)) {
+                $dataObject->setServiceInvoicePositionBasic($serviceInvoicePositionBasicDataObjects[$dataObject->getId()]);
+            }
+            if (array_key_exists($dataObject->getId(), $serviceInvoicePositionPersonalDataObjects)) {
+                $dataObject->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonalDataObjects[$dataObject->getId()]);
+            }
+            if (array_key_exists($dataObject->getId(), $userDataObjects)) {
+                $dataObject->setUser($userDataObjects[$dataObject->getId()]);
+            }
+        }
+        
+        print_r($dataObjects);
+        
+        return $dataObjects;
     }
 
 }
