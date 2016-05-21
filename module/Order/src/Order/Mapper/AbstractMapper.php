@@ -129,4 +129,12 @@ class AbstractMapper
         return $array;
     }
 
+    protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter, 
+        $identifierGetter)
+    {
+        if (array_key_exists($parentId, $subDataObjects)) {
+            $dataObject->$subDataObjectSetter($subDataObjects[$dataObject->$identifierGetter()]);
+        }
+    }
+
 }

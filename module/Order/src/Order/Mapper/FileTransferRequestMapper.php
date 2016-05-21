@@ -62,7 +62,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     protected $userMapper;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype, string $prefix = null, string $identifier = null)
+    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype,
+        string $prefix = null, string $identifier = null)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype, $prefix, $identifier);
     }
@@ -334,8 +335,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'notification_failure' => 'failure',
                 'notification_logical_connection_id' => 'logical_connection_id'
             ], Select::JOIN_LEFT);
-        $select->join(['service_invoice_position_basic' => 'service_invoice_position'],
-            'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number',
+        $select->join([
+            'service_invoice_position_basic' => 'service_invoice_position'
+        ], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number',
             [
                 'service_invoice_position_basic' . '_' . 'number' => 'number',
                 'service_invoice_position_basic' . '_' . 'order_quantity' => 'order_quantity',
@@ -344,8 +346,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'service_invoice_position_basic' . '_' . 'article_sku' => 'article_sku',
                 'service_invoice_position_basic' . '_' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
             ], Join::JOIN_LEFT);
-        $select->join(['service_invoice_position_personal' => 'service_invoice_position'],
-            'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
+        $select->join([
+            'service_invoice_position_personal' => 'service_invoice_position'
+        ], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
             [
                 'service_invoice_position_personal' . '_' . 'number' => 'number',
                 'service_invoice_position_personal' . '_' . 'order_quantity' => 'order_quantity',
@@ -375,7 +378,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
             $return = $resultSet->initialize($result);
-            
+
             $resultSet = new ResultSet();
             $resultSet->initialize($result);
             $resultSetArray = $resultSet->toArray();
@@ -495,52 +498,55 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         throw new \Exception('Database error in ' . __METHOD__);
     }
 
-    public function createDataObjects(
-        array $resultSetArray,
-        string $parentIdentifier = null, string $parentPrefix = null,
-        string $identifier = null, string $prefix = null
-    ) {
+    public function createDataObjects(array $resultSetArray, string $parentIdentifier = null, string $parentPrefix = null,
+        string $identifier = null, string $prefix = null)
+    {
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix);
-        
+
         $logicalConnectionIdentifier = 'id';
         $logicalConnectionPrefix = 'logical_connection_';
-        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            $logicalConnectionIdentifier, $logicalConnectionPrefix);
-        
+        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, $identifier,
+            $prefix, $logicalConnectionIdentifier, $logicalConnectionPrefix);
+
         $serviceInvoicePositionBasicIdentifier = 'number';
         $serviceInvoicePositionBasicPrefix = 'service_invoice_position_basic_';
-        $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            $serviceInvoicePositionBasicIdentifier, $serviceInvoicePositionBasicPrefix);
-        
+        $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
+            $resultSetArray, $identifier, $prefix, $serviceInvoicePositionBasicIdentifier,
+            $serviceInvoicePositionBasicPrefix);
+
         $serviceInvoicePositionPersonalIdentifier = 'number';
         $serviceInvoicePositionPersonalPrefix = 'service_invoice_position_personal_';
-        $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            $serviceInvoicePositionPersonalIdentifier, $serviceInvoicePositionPersonalPrefix);
-        
+        $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
+            $resultSetArray, $identifier, $prefix, $serviceInvoicePositionPersonalIdentifier,
+            $serviceInvoicePositionPersonalPrefix);
+
         $userIdentifier = 'id';
         $userPrefix = 'user_';
-        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            $userIdentifier, $userPrefix);
-        
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix, $userIdentifier,
+            $userPrefix);
+
         // print_r($userDataObjects);
-        
+
         foreach ($dataObjects as $key => $dataObject) {
-            if (array_key_exists($dataObject->getId(), $logicalConnectionDataObjects)) {
-                $dataObject->setLogicalConnection($logicalConnectionDataObjects[$dataObject->getId()]);
-            }
-            if (array_key_exists($dataObject->getId(), $serviceInvoicePositionBasicDataObjects)) {
-                $dataObject->setServiceInvoicePositionBasic($serviceInvoicePositionBasicDataObjects[$dataObject->getId()]);
-            }
-            if (array_key_exists($dataObject->getId(), $serviceInvoicePositionPersonalDataObjects)) {
-                $dataObject->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonalDataObjects[$dataObject->getId()]);
-            }
-            if (array_key_exists($dataObject->getId(), $userDataObjects)) {
-                $dataObject->setUser($userDataObjects[$dataObject->getId()]);
-            }
+            // DANGEROUS!!!
+            // Array key of a common element (created like myArray[] = new Element();)
+            // can though quals to the $dataObject->getId()!!!!!
+
+            // Further NOTE: Avoid creating empty objects!!!
+            // Maybe with a !empty($identifier) check.
+
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
+                'setLogicalConnection', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionBasicDataObjects,
+                'setServiceInvoicePositionBasic', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionPersonalDataObjects,
+                'setServiceInvoicePositionPersonal', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects,
+                'setUser', 'getId');
         }
-        
+
         print_r($dataObjects);
-        
+
         return $dataObjects;
     }
 
