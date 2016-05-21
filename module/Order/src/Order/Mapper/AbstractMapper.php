@@ -20,9 +20,9 @@ class AbstractMapper
      */
     protected $hydrator;
 
-//     protected $prefix;
+    protected $prefix;
 
-//     protected $identifier;
+    protected $identifier;
 
     /**
      *
@@ -38,8 +38,8 @@ class AbstractMapper
         if ($prototype) {
             $this->setPrototype($prototype);
         }
-//         $this->prefix = $prefix;
-//         $this->identifier = $identifier;
+        $this->prefix = $prefix;
+        $this->identifier = $identifier;
     }
 
     /**
@@ -101,6 +101,7 @@ class AbstractMapper
         string $parentIdentifierKey = null, string $parentIdentifierValue = null,
         string $identifier = null, array $map = []
     ) {
+        $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $this->prefix . $this->identifier);
         $dataObjects = [];
         $identifier = $identifier ?: $this->prefix . $this->identifier;
         foreach ($resultSetArray as $row) {
@@ -116,6 +117,16 @@ class AbstractMapper
             // sub-objects
         }
         return $dataObjects;
+    }
+
+    protected function arrayUniqueByIdentifier(array $array, string $identifier)
+    {
+        $ids = array_column($array, $identifier);
+        $ids = array_unique($ids);
+        $array = array_filter($array, function ($key, $value) use ($ids) {
+            return in_array($value, array_keys($ids));
+        }, ARRAY_FILTER_USE_BOTH);
+        return $array;
     }
 
 }
