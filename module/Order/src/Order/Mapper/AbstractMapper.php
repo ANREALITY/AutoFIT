@@ -99,11 +99,12 @@ class AbstractMapper
     public function createDataObjects(
         array $resultSetArray,
         string $parentIdentifierKey = null, string $parentIdentifierValue = null,
-        string $identifier = null, array $map = []
+        string $identifier = null, string $prefix = null, array $map = []
     ) {
-        $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $this->prefix . $this->identifier);
+        $identifier = $identifier ?: $this->identifier;
+        $prefix = $prefix ?: $this->prefix;
+        $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
         $dataObjects = [];
-        $identifier = $identifier ?: $this->prefix . $this->identifier;
         foreach ($resultSetArray as $row) {
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
