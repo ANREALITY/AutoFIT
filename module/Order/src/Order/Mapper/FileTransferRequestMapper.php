@@ -385,7 +385,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             echo '<pre>';
             // print_r($resultSetArray);
             $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_');
-            // print_r($dataObjects);
+
+            print_r($dataObjects);
 
             die('###');
 
@@ -503,29 +504,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix);
 
-        $logicalConnectionIdentifier = 'id';
-        $logicalConnectionPrefix = 'logical_connection_';
         $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, $identifier,
-            $prefix, $logicalConnectionIdentifier, $logicalConnectionPrefix);
-
-        $serviceInvoicePositionBasicIdentifier = 'number';
-        $serviceInvoicePositionBasicPrefix = 'service_invoice_position_basic_';
+            $prefix, 'id', 'logical_connection_');
         $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, $identifier, $prefix, $serviceInvoicePositionBasicIdentifier,
-            $serviceInvoicePositionBasicPrefix);
-
-        $serviceInvoicePositionPersonalIdentifier = 'number';
-        $serviceInvoicePositionPersonalPrefix = 'service_invoice_position_personal_';
+            $resultSetArray, $identifier, $prefix, 'number', 'service_invoice_position_basic_');
         $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, $identifier, $prefix, $serviceInvoicePositionPersonalIdentifier,
-            $serviceInvoicePositionPersonalPrefix);
-
-        $userIdentifier = 'id';
-        $userPrefix = 'user_';
-        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix, $userIdentifier,
-            $userPrefix);
-
-        // print_r($userDataObjects);
+            $resultSetArray, $identifier, $prefix, 'number', 'service_invoice_position_personal_');
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix, 'id', 'user_');
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -533,7 +518,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             // can though quals to the $dataObject->getId()!!!!!
 
             // Further NOTE: Avoid creating empty objects!!!
-            // Maybe with a !empty($identifier) check.
+            // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+            // Maybe solve it with a !empty($identifier) check.
+
+            // Further NOTE: Maybe separate this logic from the mapping logic and move to a Hydrator hierarchy?..
 
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
                 'setLogicalConnection', 'getId');
@@ -541,11 +529,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'setServiceInvoicePositionBasic', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionPersonalDataObjects,
                 'setServiceInvoicePositionPersonal', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects,
-                'setUser', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
         }
-
-        print_r($dataObjects);
 
         return $dataObjects;
     }
