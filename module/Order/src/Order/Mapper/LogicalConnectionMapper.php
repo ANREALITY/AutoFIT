@@ -13,6 +13,9 @@ use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractPhysicalConnection;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
+use DbSystel\DataObject\AbstractDataObject;
+use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\PhysicalConnectionFtgw;
 
 class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectionMapperInterface
 {
@@ -213,6 +216,41 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix);
+
+        $physicalConnectionEndToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_cd_'], null, null, new PhysicalConnectionCd(),
+                function (array $row) {
+                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
+                });
+//         $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
+//             $identifier, $prefix, 'id', 'physical_connection_end_to_middle_', null, null, new PhysicalConnectionFtgw());
+//         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
+//             $identifier, $prefix, 'id', 'physical_connection_middle_to_end_', null, null, new PhysicalConnectionFtgw());
+//         $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+//             'id', 'notification_', null, null);
+
+        foreach ($dataObjects as $key => $dataObject) {
+            // DANGEROUS!!!
+            // Array key of a common element (created like myArray[] = new Element();)
+            // can though quals to the $dataObject->getId()!!!!!
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToEndDataObjects,
+                'setPhysicalConnectionEndToEnd', 'getId');
+//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionMiddleToEndDataObjects,
+//                 'setPhysicalConnectionEndToMiddle', 'getId');
+//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToMiddleDataObjects,
+//                 'setPhysicalConnectionMiddleToEnd', 'getId');
+//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $notificationDataObjects, 'setNotifications',
+//                 'getId');
+        }
+
+        return $dataObjects;
     }
 
 }

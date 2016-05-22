@@ -327,6 +327,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'logical_connection_id' => 'id',
                 'logical_connection_type' => 'type'
             ], Select::JOIN_LEFT);
+        $select->join('physical_connection', 'physical_connection.logical_connection_id = logical_connection.id',
+            [
+                'physical_connection' . '_' . 'id' => 'id',
+                'physical_connection' . '_' . 'logical_connection_id' => 'logical_connection_id',
+                'physical_connection' . '_' . 'role' => 'role',
+                'physical_connection' . '_' . 'type' => 'type'
+            ], Select::JOIN_LEFT);
+        $select->join('physical_connection_cd', 'physical_connection_cd.physical_connection_id = physical_connection.id',
+            [
+                'physical_connection_cd' . '_' . 'secure_plus' => 'secure_plus'
+            ], Select::JOIN_INNER);
         $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
             [
                 'notification_id' => 'id',
@@ -373,6 +384,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             ], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
+
+        // echo $select->getSqlString($this->dbAdapter->getPlatform());
+        // die('~~~~~~~');
+
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
@@ -384,7 +399,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $resultSetArray = $resultSet->toArray();
             echo '<pre>';
             // print_r($resultSetArray);
-            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_');
+            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_', null,
+                null);
 
             print_r($dataObjects);
 
@@ -499,23 +515,22 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         throw new \Exception('Database error in ' . __METHOD__);
     }
 
-    public function createDataObjects(array $resultSetArray, string $parentIdentifier = null, string $parentPrefix = null,
-        string $identifier = null, string $prefix = null)
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null)
     {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix);
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix);
 
-        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, $identifier,
-            $prefix, 'id', 'logical_connection_');
+        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, null, null,
+            'id', 'logical_connection_', $identifier, $prefix);
         $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, $identifier, $prefix, 'number', 'service_invoice_position_basic_');
+            $resultSetArray, null, null, 'number', 'service_invoice_position_basic_', $identifier, $prefix);
         $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, $identifier, $prefix, 'number', 'service_invoice_position_personal_');
-        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, $identifier, $prefix, 'id', 'user_');
+            $resultSetArray, null, null, 'number', 'service_invoice_position_personal_', $identifier, $prefix);
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user_', $identifier,
+            $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {
-            // DANGEROUS!!!
-            // Array key of a common element (created like myArray[] = new Element();)
-            // can though quals to the $dataObject->getId()!!!!!
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
                 'setLogicalConnection', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionBasicDataObjects,

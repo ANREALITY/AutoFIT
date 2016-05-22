@@ -90,41 +90,62 @@ class AbstractMapper
         $this->prototype = $prototype;
     }
 
-    public function createDataObjects(
-        array $resultSetArray,
-        string $parentIdentifier = null, string $parentPrefix = null,
-        string $identifier = null, string $prefix = null,
-        $prototype = null
-    ) {
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null)
+    {
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
         // @todo Maybe $prototyMap property instead of the $prototype property.
         $prototype = $prototype ?: $this->getPrototype();
         $prototypeClass = get_class($prototype);
 
-        if (!$prototype) {
+        if (! $prototype) {
             $breakpoint = null;
         }
-        
-        $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
-        // $processedIdentifiers = [];
+
+        $uniqueResultSetArray = [];
+        if (is_string($prefix)) {
+            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
+        } elseif (is_array($prefix)) {
+            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix[0] . $identifier[0]);
+        }
+
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            $prototype = new $prototypeClass;
+
+            if ($dataObjectCondition) {
+                if (! $dataObjectCondition($row)) {
+                    continue;
+                }
+            }
+
+            $prototype = new $prototypeClass();
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if (!empty($prefix) && strpos($columnAlias, $prefix) === 0) {
-                    $key = str_replace($prefix, '', $columnAlias);
+                if ($this->isProperColumn($columnAlias, $prefix)) {
+                    if (is_string($prefix)) {
+                        $key = str_replace($prefix, '', $columnAlias);
+                        $objectData[$key] = $value;
+                    } elseif (is_array($prefix)) {
+                        foreach ($prefix as $currentPrefix) {
+                            $key = str_replace($currentPrefix, '', $columnAlias);
+                            $objectData[$key] = $value;
+                        }
+                    }
                 }
                 // @todo Avoid creating empty objects!!!
                 // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
                 // Maybe solve it with a !empty($identifier) check.
                 // @todo Extend the logi for handling of collections (like Notification)
-                $objectData[$key] = $value;
             }
-            if (!empty($objectData)) {
-                if (!empty($parentPrefix . $parentIdentifier) && !empty($row[$parentPrefix . $parentIdentifier])) {
-                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
+            if (! empty($objectData)) {
+                if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
+                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData,
+                        $prototype);
+                } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
+                    $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData,
+                        $prototype);
                 } else {
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }
@@ -135,17 +156,36 @@ class AbstractMapper
         return $dataObjects;
     }
 
+    protected function isProperColumn(string $columnAlias, $prefixes)
+    {
+        $prefixIsProper = false;
+        if (is_string($prefixes)) {
+            if (! empty($prefixes) && strpos($columnAlias, $prefixes) === 0) {
+                $prefixIsProper = true;
+            }
+        } elseif (is_array($prefixes)) {
+            foreach ($prefixes as $prefix) {
+                if (! empty($prefix) && strpos($columnAlias, $prefix) === 0) {
+                    $prefixIsProper = true;
+                    break;
+                }
+            }
+        }
+        return $prefixIsProper;
+    }
+
     protected function arrayUniqueByIdentifier(array $array, string $identifier)
     {
         $ids = array_column($array, $identifier);
         $ids = array_unique($ids);
-        $array = array_filter($array, function ($key, $value) use ($ids) {
-            return in_array($value, array_keys($ids));
-        }, ARRAY_FILTER_USE_BOTH);
+        $array = array_filter($array,
+            function ($key, $value) use($ids) {
+                return in_array($value, array_keys($ids));
+            }, ARRAY_FILTER_USE_BOTH);
         return $array;
     }
 
-    protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter, 
+    protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter,
         $identifierGetter)
     {
         // DANGEROUS!!!
