@@ -18,6 +18,7 @@ use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\EndpointCdAs400;
 use DbSystel\DataObject\EndpointCdTandem;
+use DbSystel\DataObject\EndpointCdLinuxUnix;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
@@ -280,6 +281,20 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                     $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
+        $endpointCdLinuxUnixSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_linux_unix_'], null, null, new EndpointCdLinuxUnix(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_SOURCE;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointCdLinuxUnixTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_linux_unix_'], null, null, new EndpointCdLinuxUnix(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_TARGET;
+                    return $typeIsOk && $roleIsOk;
+                });
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -292,6 +307,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdTandemSourceDataObjects,
                 'setEndpointSource', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdTandemTargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdLinuxUnixSourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdLinuxUnixTargetDataObjects,
                 'setEndpointTarget', 'getId');
         }
 
