@@ -438,7 +438,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             echo '<pre>';
             // print_r($resultSetArray);
             $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_', null,
-                null);
+                null, null, null, false);
 
             print_r($dataObjects);
 

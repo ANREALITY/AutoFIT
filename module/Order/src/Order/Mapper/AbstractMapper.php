@@ -104,10 +104,14 @@ class AbstractMapper
         }
 
         $uniqueResultSetArray = [];
-        if (is_string($prefix)) {
-            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
-        } elseif (is_array($prefix)) {
-            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix[0] . $identifier[0]);
+        // For cases with an inverted relationship like
+        // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child
+        $identifierMakingUnique = $childIdentifier ?: $identifier;
+        $prefixMakingUnique = $childPrefix ?: $prefix;
+        if (is_string($prefixMakingUnique)) {
+            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
+        } elseif (is_array($prefixMakingUnique)) {
+            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique[0] . $identifierMakingUnique[0]);
         }
 
         $dataObjects = [];
