@@ -104,6 +104,11 @@ class AbstractMapper
                 if (!empty($prefix) && strpos($columnAlias, $prefix) === 0) {
                     $key = str_replace($prefix, '', $columnAlias);
                 }
+                // @todo Avoid creating empty objects!!!
+                // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+                // Maybe solve it with a !empty($identifier) check.
+                // @todo Extend the logi for handling of collections (like Notification)
+                // @todo REsolve the case of abstract entities (like Endpoint or PhysicalConnection)
                 $objectData[$key] = $value;
             }
             if (!empty($objectData)) {

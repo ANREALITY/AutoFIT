@@ -516,13 +516,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
             // can though quals to the $dataObject->getId()!!!!!
-
-            // Further NOTE: Avoid creating empty objects!!!
-            // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-            // Maybe solve it with a !empty($identifier) check.
-
-            // Further NOTE: Maybe separate this logic from the mapping logic and move to a Hydrator hierarchy?..
-
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
                 'setLogicalConnection', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionBasicDataObjects,
