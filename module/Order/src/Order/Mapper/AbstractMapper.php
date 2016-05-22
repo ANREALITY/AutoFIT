@@ -92,7 +92,7 @@ class AbstractMapper
 
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null)
+        callable $dataObjectCondition = null, bool $isCollection = false)
     {
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
         // @todo Maybe $prototyMap property instead of the $prototype property.
@@ -141,11 +141,23 @@ class AbstractMapper
             }
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
-                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData,
-                        $prototype);
+                    if ($isCollection) {
+                        if (empty($dataObjects[$row[$parentPrefix . $parentIdentifier]])) {
+                            $dataObjects[$row[$parentPrefix . $parentIdentifier]] = [];
+                        }
+                        $dataObjects[$row[$parentPrefix . $parentIdentifier]][] = $this->hydrator->hydrate($objectData, $prototype);
+                    } else {
+                        $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
+                    }
                 } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
-                    $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData,
-                        $prototype);
+                    if ($isCollection) {
+                        if (empty($dataObjects[$row[$childPrefix . $childIdentifier]])) {
+                            $dataObjects[$row[$childPrefix . $childIdentifier]] = [];
+                        }
+                        $dataObjects[$row[$childPrefix . $childIdentifier]][] = $this->hydrator->hydrate($objectData, $prototype);
+                    } else {
+                        $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
+                    }
                 } else {
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }

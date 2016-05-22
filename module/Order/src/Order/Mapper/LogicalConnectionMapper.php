@@ -220,7 +220,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null)
+        callable $dataObjectCondition = null, bool $isCollection = false)
     {
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix);
 
@@ -239,8 +239,8 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 function (array $row) {
                     return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
                 });
-//         $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-//             'id', 'notification_', null, null);
+        $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
+            'id', 'notification_', null, null, null, null, true);
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -252,8 +252,8 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 'setPhysicalConnectionEndToMiddle', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToMiddleDataObjects,
                 'setPhysicalConnectionMiddleToEnd', 'getId');
-//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $notificationDataObjects, 'setNotifications',
-//                 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $notificationDataObjects, 'setNotifications',
+                'getId');
         }
 
         return $dataObjects;
