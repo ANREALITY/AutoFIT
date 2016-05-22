@@ -94,9 +94,9 @@ class ServiceInvoiceMapper extends AbstractMapper implements ServiceInvoiceMappe
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $applicationDataObjects = $this->applicationMapper->createDataObjects($resultSetArray, null, null,
-            'technical_short_name', 'application_', $identifier, $prefix);
+            'technical_short_name', 'application__', $identifier, $prefix);
         $environmentDataObjects = $this->environmentMapper->createDataObjects($resultSetArray, null, null,
-            'severity', 'environment_', $identifier, $prefix);
+            'severity', 'environment__', $identifier, $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getNumber(), $applicationDataObjects,

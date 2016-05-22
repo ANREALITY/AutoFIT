@@ -287,7 +287,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
-        $prefix = 'file_transfer_request_';
+        $prefix = 'file_transfer_request__';
         $select->columns(
             [
                 $prefix . 'id' => 'id',
@@ -318,112 +318,112 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         $select->join('user', 'file_transfer_request.user_id = user.id',
             [
-                'user' . '_' . 'id' => 'id',
-                'user' . '_' . 'role' => 'role',
-                'user' . '_' . 'username' => 'username'
+                'user' . '__' . 'id' => 'id',
+                'user' . '__' . 'role' => 'role',
+                'user' . '__' . 'username' => 'username'
             ], Join::JOIN_LEFT);
         $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
             [
-                'logical_connection_id' => 'id',
-                'logical_connection_type' => 'type'
+                'logical_connection' . '__' . 'id' => 'id',
+                'logical_connection' . '__' . 'type' => 'type'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection', 'physical_connection.logical_connection_id = logical_connection.id',
             [
-                'physical_connection' . '_' . 'id' => 'id',
-                'physical_connection' . '_' . 'logical_connection_id' => 'logical_connection_id',
-                'physical_connection' . '_' . 'role' => 'role',
-                'physical_connection' . '_' . 'type' => 'type'
+                'physical_connection' . '__' . 'id' => 'id',
+                'physical_connection' . '__' . 'logical_connection_id' => 'logical_connection_id',
+                'physical_connection' . '__' . 'role' => 'role',
+                'physical_connection' . '__' . 'type' => 'type'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_cd', 'physical_connection_cd.physical_connection_id = physical_connection.id',
             [
-                'physical_connection_cd' . '_' . 'secure_plus' => 'secure_plus'
+                'physical_connection_cd' . '__' . 'secure_plus' => 'secure_plus'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_ftgw', 'physical_connection_ftgw.physical_connection_id = physical_connection.id',
             [], Select::JOIN_LEFT);
         $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
             [
-                'notification_id' => 'id',
-                'notification_email' => 'email',
-                'notification_success' => 'success',
-                'notification_failure' => 'failure',
-                'notification_logical_connection_id' => 'logical_connection_id'
+                'notification' . '__' . 'id' => 'id',
+                'notification' . '__' . 'email' => 'email',
+                'notification' . '__' . 'success' => 'success',
+                'notification' . '__' . 'failure' => 'failure',
+                'notification' . '__' . 'logical_connection_id' => 'logical_connection_id'
             ], Select::JOIN_LEFT);
         $select->join([
             'service_invoice_position_basic' => 'service_invoice_position'
         ], 'service_invoice_position_basic.number = file_transfer_request.service_invoice_position_basic_number',
             [
-                'service_invoice_position_basic' . '_' . 'number' => 'number',
-                'service_invoice_position_basic' . '_' . 'order_quantity' => 'order_quantity',
-                'service_invoice_position_basic' . '_' . 'description' => 'description',
-                'service_invoice_position_basic' . '_' . 'service_invoice_number' => 'service_invoice_number',
-                'service_invoice_position_basic' . '_' . 'article_sku' => 'article_sku',
-                'service_invoice_position_basic' . '_' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+                'service_invoice_position_basic' . '__' . 'number' => 'number',
+                'service_invoice_position_basic' . '__' . 'order_quantity' => 'order_quantity',
+                'service_invoice_position_basic' . '__' . 'description' => 'description',
+                'service_invoice_position_basic' . '__' . 'service_invoice_number' => 'service_invoice_number',
+                'service_invoice_position_basic' . '__' . 'article_sku' => 'article_sku',
+                'service_invoice_position_basic' . '__' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
             ], Join::JOIN_LEFT);
         $select->join([
             'service_invoice_position_personal' => 'service_invoice_position'
         ], 'service_invoice_position_personal.number = file_transfer_request.service_invoice_position_personal_number',
             [
-                'service_invoice_position_personal' . '_' . 'number' => 'number',
-                'service_invoice_position_personal' . '_' . 'order_quantity' => 'order_quantity',
-                'service_invoice_position_personal' . '_' . 'description' => 'description',
-                'service_invoice_position_personal' . '_' . 'service_invoice_number' => 'service_invoice_number',
-                'service_invoice_position_personal' . '_' . 'article_sku' => 'article_sku',
-                'service_invoice_position_personal' . '_' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+                'service_invoice_position_personal' . '__' . 'number' => 'number',
+                'service_invoice_position_personal' . '__' . 'order_quantity' => 'order_quantity',
+                'service_invoice_position_personal' . '__' . 'description' => 'description',
+                'service_invoice_position_personal' . '__' . 'service_invoice_number' => 'service_invoice_number',
+                'service_invoice_position_personal' . '__' . 'article_sku' => 'article_sku',
+                'service_invoice_position_personal' . '__' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
             ], Join::JOIN_LEFT);
 
         $select->join('service_invoice',
             'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number',
             [
-                'service_invoice' . '_' . 'number' => 'number',
-                'service_invoice' . '_' . 'description' => 'description',
+                'service_invoice' . '__' . 'number' => 'number',
+                'service_invoice' . '__' . 'description' => 'description',
             ], Select::JOIN_LEFT);
         $select->join('application',
             'application.technical_short_name = service_invoice.application_technical_short_name',
             [
-                'application_technical' . '_' . 'short_name' => 'technical_short_name',
-                'application_technical' . '_' . 'id' => 'technical_id'
+                'application' . '__' . 'technical_short_name' => 'technical_short_name',
+                'application' . '__' . 'technical_id' => 'technical_id'
             ], Select::JOIN_LEFT);
         $select->join('environment', 'environment.severity = service_invoice.environment_severity',
             [
-                'environment' . '_' . 'severity' => 'severity',
-                'environment' . '_' . 'name' => 'name',
-                'environment' . '_' . 'short_name' => 'short_name'
+                'environment' . '__' . 'severity' => 'severity',
+                'environment' . '__' . 'name' => 'name',
+                'environment' . '__' . 'short_name' => 'short_name'
             ], Select::JOIN_LEFT);
         $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
             [
-                'endpoint' . '_' . 'id' => 'id',
-                'endpoint' . '_' . 'physical_connection_id' => 'physical_connection_id',
-                'endpoint' . '_' . 'role' => 'role',
-                'endpoint' . '_' . 'type' => 'type',
-                'endpoint' . '_' . 'server_place' => 'server_place',
-                'endpoint' . '_' . 'contact_person' => 'contact_person'
+                'endpoint' . '__' . 'id' => 'id',
+                'endpoint' . '__' . 'physical_connection_id' => 'physical_connection_id',
+                'endpoint' . '__' . 'role' => 'role',
+                'endpoint' . '__' . 'type' => 'type',
+                'endpoint' . '__' . 'server_place' => 'server_place',
+                'endpoint' . '__' . 'contact_person' => 'contact_person'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_as400', 'endpoint_cd_as400.endpoint_id = endpoint.id',
             [
-                'endpoint_cd_as400' . '_' . 'username' => 'username',
-                'endpoint_cd_as400' . '_' . 'folder' => 'folder'
+                'endpoint_cd_as400' . '__' . 'username' => 'username',
+                'endpoint_cd_as400' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_tandem', 'endpoint_cd_tandem.endpoint_id = endpoint.id',
             [
-                'endpoint_cd_tandem' . '_' . 'username' => 'username',
-                'endpoint_cd_tandem' . '_' . 'folder' => 'folder'
+                'endpoint_cd_tandem' . '__' . 'username' => 'username',
+                'endpoint_cd_tandem' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_linux_unix', 'endpoint_cd_linux_unix.endpoint_id = endpoint.id',
             [
-                'endpoint_cd_linux_unix' . '_' . 'username' => 'username',
-                'endpoint_cd_linux_unix' . '_' . 'folder' => 'folder',
-                'endpoint_cd_linux_unix' . '_' . 'transmission_type' => 'transmission_type',
-                'endpoint_cd_linux_unix' . '_' . 'transmission_interval' => 'transmission_interval',
-                'endpoint_cd_linux_unix' . '_' . 'cluster' => 'cluster',
-                'endpoint_cd_linux_unix' . '_' . 'service_address' => 'service_address'
+                'endpoint_cd_linux_unix' . '__' . 'username' => 'username',
+                'endpoint_cd_linux_unix' . '__' . 'folder' => 'folder',
+                'endpoint_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
+                'endpoint_cd_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
+                'endpoint_cd_linux_unix' . '__' . 'cluster' => 'cluster',
+                'endpoint_cd_linux_unix' . '__' . 'service_address' => 'service_address'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
             [], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
             [
-                'endpoint_ftgw_self_service' . '_' . 'ftgw_username' => 'ftgw_username',
-                'endpoint_ftgw_self_service' . '_' . 'mailbox' => 'mailbox',
-                'endpoint_ftgw_self_service' . '_' . 'connection_type' => 'connection_type'
+                'endpoint_ftgw_self_service' . '__' . 'ftgw_username' => 'ftgw_username',
+                'endpoint_ftgw_self_service' . '__' . 'mailbox' => 'mailbox',
+                'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type'
             ], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
@@ -442,7 +442,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $resultSetArray = $resultSet->toArray();
             echo '<pre>';
             // print_r($resultSetArray);
-            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request_', null,
+            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
                 null, null, null, false);
 
             print_r($dataObjects);
@@ -565,12 +565,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, null, null,
-            'id', 'logical_connection_', $identifier, $prefix);
+            'id', 'logical_connection__', $identifier, $prefix);
         $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, null, null, 'number', 'service_invoice_position_basic_', $identifier, $prefix);
+            $resultSetArray, null, null, 'number', 'service_invoice_position_basic__', $identifier, $prefix);
         $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, null, null, 'number', 'service_invoice_position_personal_', $identifier, $prefix);
-        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user_', $identifier,
+            $resultSetArray, null, null, 'number', 'service_invoice_position_personal__', $identifier, $prefix);
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user__', $identifier,
             $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {

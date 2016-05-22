@@ -225,22 +225,22 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $physicalConnectionEndToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_cd_'], null, null, new PhysicalConnectionCd(),
+            $identifier, $prefix, ['id', 'physical_connection' . '__' . 'id'], ['physical_connection__', 'physical_connection_cd__'], null, null, new PhysicalConnectionCd(),
                 function (array $row) {
-                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
+                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
                 });
         $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_ftgw_'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection' . '__' . 'id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
                 function (array $row) {
-                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
+                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
                 });
         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_ftgw_'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection' . '__' . 'id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
                 function (array $row) {
-                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
+                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
                 });
         $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            'id', 'notification_', null, null, null, null, true);
+            'id', 'notification__', null, null, null, null, true);
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!

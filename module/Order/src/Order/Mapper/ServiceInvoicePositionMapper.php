@@ -136,7 +136,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $serviceInvoiceDataObjects = $this->serviceInvoiceMapper->createDataObjects($resultSetArray, null, null,
-            'number', 'service_invoice_', $identifier, $prefix);
+            'number', 'service_invoice__', $identifier, $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
