@@ -99,6 +99,7 @@ class AbstractMapper
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
         // @todo Maybe $prototyMap property instead of the $prototype property.
         $prototype = $prototype ?: $this->getPrototype();
+        $prototypeClass = get_class($prototype);
 
         if (!$prototype) {
             $breakpoint = null;
@@ -108,6 +109,7 @@ class AbstractMapper
         // $processedIdentifiers = [];
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
+            $prototype = new $prototypeClass;
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
@@ -127,6 +129,7 @@ class AbstractMapper
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }
             }
+            $breakpoint = null;
             // sub-objects
         }
         return $dataObjects;
