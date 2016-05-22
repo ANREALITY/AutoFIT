@@ -148,6 +148,9 @@ class AbstractMapper
     protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter, 
         $identifierGetter)
     {
+        // DANGEROUS!!!
+        // Array key of a common element (created like myArray[] = new Element();)
+        // can though quals to the $dataObject->getId()!!!!!
         if (array_key_exists($parentId, $subDataObjects)) {
             $dataObject->$subDataObjectSetter($subDataObjects[$dataObject->$identifierGetter()]);
         }
