@@ -93,8 +93,12 @@ class AbstractMapper
     public function createDataObjects(
         array $resultSetArray,
         string $parentIdentifier = null, string $parentPrefix = null,
-        string $identifier = null, string $prefix = null
+        string $identifier = null, string $prefix = null,
+        $prototype = null
     ) {
+        // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
+        // @todo Maybe $prototyMap property instead of the $prototype property.
+        $prototype = $prototype ?: $this->getPrototype();
         $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
         $dataObjects = [];
         foreach ($resultSetArray as $row) {
@@ -108,16 +112,15 @@ class AbstractMapper
                 // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
                 // Maybe solve it with a !empty($identifier) check.
                 // @todo Extend the logi for handling of collections (like Notification)
-                // @todo REsolve the case of abstract entities (like Endpoint or PhysicalConnection)
                 $objectData[$key] = $value;
             }
             if (!empty($objectData)) {
                 if (!empty($parentPrefix . $parentIdentifier) && !empty($row[$parentPrefix . $parentIdentifier])) {
-                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+                    $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
                 } else {
-                    $dataObjects[] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+                    $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }
-                $dataObjects[] = $this->hydrator->hydrate($objectData, $this->getPrototype());
+                $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
             }
             // sub-objects
         }
