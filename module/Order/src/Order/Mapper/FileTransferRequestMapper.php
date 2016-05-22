@@ -373,7 +373,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         $select->join('service_invoice',
             'service_invoice.number = service_invoice_position_basic.service_invoice_number OR service_invoice.number = service_invoice_position_personal.service_invoice_number',
-            [], Select::JOIN_LEFT);
+            [
+                'service_invoice' . '_' . 'number' => 'number',
+                'service_invoice' . '_' . 'description' => 'description',
+            ], Select::JOIN_LEFT);
         $select->join('application',
             'application.technical_short_name = service_invoice.application_technical_short_name',
             [

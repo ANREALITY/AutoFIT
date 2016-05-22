@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use DbSystel\DataObject\ServiceInvoice;
 
 class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvoicePositionMapperInterface
 {
@@ -20,10 +21,24 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
      */
     protected $prototype;
 
+    /**
+     *
+     * @var ServiceInvoiceMapperInterface
+     */
+    protected $serviceInvoiceMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         ServiceInvoicePosition $prototype)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype);
+    }
+
+    /**
+     * @param \Order\Mapper\ServiceInvoiceMapperInterface $serviceInvoiceMapper
+     */
+    public function setServiceInvoiceMapper($serviceInvoiceMapper)
+    {
+        $this->serviceInvoiceMapper = $serviceInvoiceMapper;
     }
 
     /**
@@ -112,6 +127,26 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
     public function save(ServiceInvoicePosition $dataObject)
     {
         throw new \Exception('Method not implemented: ' . __METHOD__);
+    }
+
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+
+        $serviceInvoiceDataObjects = $this->serviceInvoiceMapper->createDataObjects($resultSetArray, null, null,
+            'number', 'service_invoice_', $identifier, $prefix);
+
+        foreach ($dataObjects as $key => $dataObject) {
+            // DANGEROUS!!!
+            // Array key of a common element (created like myArray[] = new Element();)
+            // can though quals to the $dataObject->getId()!!!!!
+            $this->appendSubDataObject($dataObject, $dataObject->getNumber(), $serviceInvoiceDataObjects,
+                'setServiceInvoice', 'getNumber');
+        }
+
+        return $dataObjects;
     }
 
 }
