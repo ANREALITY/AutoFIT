@@ -398,6 +398,18 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint' . '__' . 'server_place' => 'server_place',
                 'endpoint' . '__' . 'contact_person' => 'contact_person'
             ], Select::JOIN_LEFT);
+        $select->join(['endpoint_application' => 'application'],
+            'endpoint_application.technical_short_name = endpoint.application_technical_short_name',
+            [
+                'endpoint_application' . '__' . 'technical_short_name' => 'technical_short_name',
+                'endpoint_application' . '__' . 'technical_id' => 'technical_id'
+            ], Select::JOIN_LEFT);
+        $select->join('customer',
+            'customer.id = endpoint.customer_id',
+            [
+                'customer' . '__' . 'id' => 'id',
+                'customer' . '__' . 'name' => 'name'
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_as400', 'endpoint_cd_as400.endpoint_id = endpoint.id',
             [
                 'endpoint_cd_as400' . '__' . 'username' => 'username',
