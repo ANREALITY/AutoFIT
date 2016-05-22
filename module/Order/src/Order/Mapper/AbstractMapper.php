@@ -78,7 +78,7 @@ class AbstractMapper
      */
     public function getPrototype()
     {
-        return clone $this->prototype;
+        return $this->prototype ? clone $this->prototype : null;
     }
 
     /**
@@ -99,9 +99,15 @@ class AbstractMapper
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
         // @todo Maybe $prototyMap property instead of the $prototype property.
         $prototype = $prototype ?: $this->getPrototype();
+
+        if (!$prototype) {
+            $breakpoint = null;
+        }
+        
         $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefix . $identifier);
+        // $processedIdentifiers = [];
         $dataObjects = [];
-        foreach ($resultSetArray as $row) {
+        foreach ($uniqueResultSetArray as $row) {
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
@@ -120,7 +126,6 @@ class AbstractMapper
                 } else {
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }
-                $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
             }
             // sub-objects
         }
