@@ -20,10 +20,38 @@ class ServiceInvoiceMapper extends AbstractMapper implements ServiceInvoiceMappe
      */
     protected $prototype;
 
+    /**
+     *
+     * @var ApplicationMapperInterface
+     */
+    protected $applicationMapper;
+
+    /**
+     *
+     * @var EnvironmentMapperInterface
+     */
+    protected $environmentMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         ServiceInvoice $prototype)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype);
+    }
+
+    /**
+     * @param \Order\Mapper\ApplicationMapperInterface $applicationMapper
+     */
+    public function setApplicationMapper($applicationMapper)
+    {
+        $this->applicationMapper = $applicationMapper;
+    }
+
+    /**
+     * @param \Order\Mapper\EnvironmentMapperInterface $environmentMapper
+     */
+    public function setEnvironmentMapper($environmentMapper)
+    {
+        $this->environmentMapper = $environmentMapper;
     }
 
     /**
@@ -59,24 +87,25 @@ class ServiceInvoiceMapper extends AbstractMapper implements ServiceInvoiceMappe
         throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
-//     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-//         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-//         callable $dataObjectCondition = null, bool $isCollection = false)
-//     {
-//         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
-//         $serviceInvoiceDataObjects = $this->serviceInvoiceMapper->createDataObjects($resultSetArray, null, null,
-//             'number', 'service_invoice_', $identifier, $prefix);
+        $applicationDataObjects = $this->applicationMapper->createDataObjects($resultSetArray, null, null,
+            'technical_short_name', 'application_', $identifier, $prefix);
+        $environmentDataObjects = $this->environmentMapper->createDataObjects($resultSetArray, null, null,
+            'severity', 'environment_', $identifier, $prefix);
 
-//         foreach ($dataObjects as $key => $dataObject) {
-//             // DANGEROUS!!!
-//             // Array key of a common element (created like myArray[] = new Element();)
-//             // can though quals to the $dataObject->getId()!!!!!
-//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoiceDataObjects,
-//                 'setServiceInvoice', 'getNumber');
-//         }
+        foreach ($dataObjects as $key => $dataObject) {
+            $this->appendSubDataObject($dataObject, $dataObject->getNumber(), $applicationDataObjects,
+                'setApplication', 'getNumber');
+            $this->appendSubDataObject($dataObject, $dataObject->getNumber(), $environmentDataObjects,
+                'setEnvironment', 'getNumber');
+        }
 
-//         return $dataObjects;
-//     }
+        return $dataObjects;
+    }
 
 }

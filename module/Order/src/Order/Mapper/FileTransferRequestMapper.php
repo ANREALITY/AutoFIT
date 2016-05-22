@@ -380,12 +380,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->join('application',
             'application.technical_short_name = service_invoice.application_technical_short_name',
             [
-                'application_technical_short_name' => 'technical_short_name'
+                'application_technical' . '_' . 'short_name' => 'technical_short_name',
+                'application_technical' . '_' . 'id' => 'technical_id'
             ], Select::JOIN_LEFT);
         $select->join('environment', 'environment.severity = service_invoice.environment_severity',
             [
-                'environment_severity' => 'severity',
-                'environment_name' => 'name'
+                'environment' . '_' . 'severity' => 'severity',
+                'environment' . '_' . 'name' => 'name',
+                'environment' . '_' . 'short_name' => 'short_name'
             ], Select::JOIN_LEFT);
         $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
             [
