@@ -229,10 +229,16 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                 function (array $row) {
                     return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
                 });
-//         $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-//             $identifier, $prefix, 'id', 'physical_connection_end_to_middle_', null, null, new PhysicalConnectionFtgw());
-//         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-//             $identifier, $prefix, 'id', 'physical_connection_middle_to_end_', null, null, new PhysicalConnectionFtgw());
+        $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_ftgw_'], null, null, new PhysicalConnectionFtgw(),
+                function (array $row) {
+                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
+                });
+        $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_ftgw_'], null, null, new PhysicalConnectionFtgw(),
+                function (array $row) {
+                    return array_key_exists('physical_connection_role', $row) && $row['physical_connection_role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
+                });
 //         $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
 //             'id', 'notification_', null, null);
 
@@ -242,10 +248,10 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
             // can though quals to the $dataObject->getId()!!!!!
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToEndDataObjects,
                 'setPhysicalConnectionEndToEnd', 'getId');
-//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionMiddleToEndDataObjects,
-//                 'setPhysicalConnectionEndToMiddle', 'getId');
-//             $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToMiddleDataObjects,
-//                 'setPhysicalConnectionMiddleToEnd', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionMiddleToEndDataObjects,
+                'setPhysicalConnectionEndToMiddle', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToMiddleDataObjects,
+                'setPhysicalConnectionMiddleToEnd', 'getId');
 //             $this->appendSubDataObject($dataObject, $dataObject->getId(), $notificationDataObjects, 'setNotifications',
 //                 'getId');
         }
