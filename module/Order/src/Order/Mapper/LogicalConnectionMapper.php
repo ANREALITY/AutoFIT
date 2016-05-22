@@ -222,7 +222,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
     {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix);
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $physicalConnectionEndToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
             $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection_', 'physical_connection_cd_'], null, null, new PhysicalConnectionCd(),

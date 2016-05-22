@@ -384,11 +384,38 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'environment_severity' => 'severity',
                 'environment_name' => 'name'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
+            [
+                'endpoint' . '_' . 'id' => 'id',
+                'endpoint' . '_' . 'physical_connection_id' => 'physical_connection_id',
+                'endpoint' . '_' . 'role' => 'role',
+                'endpoint' . '_' . 'type' => 'type',
+                'endpoint' . '_' . 'server_place' => 'server_place',
+                'endpoint' . '_' . 'contact_person' => 'contact_person'
+            ], Select::JOIN_LEFT);
+        $select->join('endpoint_cd_as400', 'endpoint_cd_as400.endpoint_id = endpoint.id',
+            [
+                'endpoint_cd_as400' . '_' . 'username' => 'username',
+                'endpoint_cd_as400' . '_' . 'folder' => 'folder'
+            ], Select::JOIN_LEFT);
+        $select->join('endpoint_cd_tandem', 'endpoint_cd_tandem.endpoint_id = endpoint.id',
+            [
+                'endpoint_cd_tandem' . '_' . 'username' => 'username',
+                'endpoint_cd_tandem' . '_' . 'folder' => 'folder'
+            ], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
+            [], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_self_service' . '_' . 'ftgw_username' => 'ftgw_username',
+                'endpoint_ftgw_self_service' . '_' . 'mailbox' => 'mailbox',
+                'endpoint_ftgw_self_service' . '_' . 'connection_type' => 'connection_type'
+            ], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
 
-        // echo $select->getSqlString($this->dbAdapter->getPlatform());
-        // die('~~~~~~~');
+//         echo $select->getSqlString($this->dbAdapter->getPlatform());
+//         die('');
 
         $result = $statement->execute();
 
@@ -521,7 +548,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
     {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix);
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, null, null,
             'id', 'logical_connection_', $identifier, $prefix);

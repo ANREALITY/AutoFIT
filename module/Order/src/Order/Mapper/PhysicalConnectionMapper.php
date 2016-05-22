@@ -16,6 +16,8 @@ use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
+use DbSystel\DataObject\EndpointCdAs400;
+use DbSystel\DataObject\EndpointCdTandem;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
@@ -242,6 +244,58 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, null, null, $prototype, $dataObjectCondition, $isCollection);
+
+        $endpointCdAs400SourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_as400_'], null, null, new EndpointCdAs400(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_AS400;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_SOURCE;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointCdAs400TargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_as400_'], null, null, new EndpointCdAs400(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_AS400;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_TARGET;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointCdTandemSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_tandem_'], null, null, new EndpointCdTandem(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_TANDEM;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_SOURCE;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointCdTandemTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection_', ['id', 'endpoint_id'], ['endpoint_', 'endpoint_cd_tandem_'], null, null, new EndpointCdTandem(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint_type', $row) && $row['endpoint_type'] === AbstractEndpoint::TYPE_CD_TANDEM;
+                    $roleIsOk = array_key_exists('endpoint_role', $row) && $row['endpoint_role'] === AbstractEndpoint::ROLE_TARGET;
+                    return $typeIsOk && $roleIsOk;
+                });
+
+        foreach ($dataObjects as $key => $dataObject) {
+            // DANGEROUS!!!
+            // Array key of a common element (created like myArray[] = new Element();)
+            // can though quals to the $dataObject->getId()!!!!!
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdAs400SourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdAs400TargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdTandemSourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdTandemTargetDataObjects,
+                'setEndpointTarget', 'getId');
+        }
+
+        return $dataObjects;
     }
 
 }
