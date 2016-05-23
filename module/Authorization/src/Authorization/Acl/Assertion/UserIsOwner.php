@@ -22,7 +22,7 @@ class UserIsOwner implements AssertionInterface
      */
     protected $fileTransferRequestService;
 
-    public function __construct(int $userId, FileTransferRequestService $fileTransferRequestService)
+    public function __construct(int $userId = null, FileTransferRequestService $fileTransferRequestService)
     {
         $this->userId = $userId;
         $this->fileTransferRequestService = $fileTransferRequestService;
@@ -33,7 +33,7 @@ class UserIsOwner implements AssertionInterface
         return isset($resource->getParams()['id']) ? $this->isUserOwner($resource->getParams()['id']) : false;
     }
 
-    protected function isUserOwner($orderId)
+    protected function isUserOwner($orderId = null)
     {
         $order = $this->fileTransferRequestService->findOne($orderId);
         $orderOwnerId = $order->getUser()->getId();
