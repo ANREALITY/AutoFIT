@@ -434,6 +434,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_linux_unix' . '__' . 'cluster' => 'cluster',
                 'endpoint_cd_linux_unix' . '__' . 'service_address' => 'service_address'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_cd_linux_unix_server', 'endpoint_cd_linux_unix_server.endpoint_cd_linux_unix_endpoint_id = endpoint_cd_linux_unix.endpoint_id',
+            [], Select::JOIN_LEFT);
+        $select->join(['cd_linux_unix_server' => 'server'],
+            'cd_linux_unix_server.name = endpoint_cd_linux_unix_server.server_name',
+            [
+                'cd_linux_unix_server' . '__' . 'name' => 'name'
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
             [], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
