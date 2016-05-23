@@ -451,12 +451,16 @@ SQL;
             'technical_short_name', 'endpoint_application__', 'id', 'endpoint__');
         $customerDataObjects = $this->customerMapper->createDataObjects($resultSetArray, null, null,
             'severity', 'customer__', 'id', 'endpoint__');
+        $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
+            'name', 'server__', 'id', 'endpoint__');
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
                 'setApplication', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $customerDataObjects,
                 'setCustomer', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
+                'setServer', 'getId');
         }
 
         return $dataObjects;
