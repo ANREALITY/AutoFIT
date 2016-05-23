@@ -117,6 +117,11 @@ class AbstractMapper
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
 
+            // @todo Avoid creating empty objects!!!
+            // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+            // Maybe solve it with a !empty($identifier) check.
+            // @todo Extend the logi for handling of collections (like Notification)
+
             if ($dataObjectCondition) {
                 if (! $dataObjectCondition($row)) {
                     continue;
@@ -138,10 +143,6 @@ class AbstractMapper
                         }
                     }
                 }
-                // @todo Avoid creating empty objects!!!
-                // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-                // Maybe solve it with a !empty($identifier) check.
-                // @todo Extend the logi for handling of collections (like Notification)
             }
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
