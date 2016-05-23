@@ -105,7 +105,8 @@ class AbstractMapper
 
         $uniqueResultSetArray = [];
         // For cases with an inverted relationship like
-        // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child
+        // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
+        // In otherweise in such cases some of the relevant rows can be ignored.
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
@@ -125,10 +126,17 @@ class AbstractMapper
             if ($dataObjectCondition) {
                 if (! $dataObjectCondition($row)) {
                     continue;
+                } else {
+                    $breakpoint = null;
                 }
             }
 
             $prototype = new $prototypeClass();
+            
+            if ($isCollection) {
+                $breakpoint = null;
+            }
+            
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
@@ -147,6 +155,7 @@ class AbstractMapper
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
                     if ($isCollection) {
+                        $test = $row[$parentPrefix . $parentIdentifier];
                         if (empty($dataObjects[$row[$parentPrefix . $parentIdentifier]])) {
                             $dataObjects[$row[$parentPrefix . $parentIdentifier]] = [];
                         }
@@ -156,6 +165,7 @@ class AbstractMapper
                     }
                 } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
                     if ($isCollection) {
+                        $test = $row[$childPrefix . $childIdentifier];
                         if (empty($dataObjects[$row[$childPrefix . $childIdentifier]])) {
                             $dataObjects[$row[$childPrefix . $childIdentifier]] = [];
                         }
