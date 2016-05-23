@@ -24,7 +24,10 @@ return [
                         'member' => 'UserIsOwner'
                     ],
                     'listOrders' => 'member'
-                ]
+                ],
+                'Order\Controller\Ajax' => [
+                    'all' => 'guest'
+                ],
             ]
         ],
         'redirect_route' => [
