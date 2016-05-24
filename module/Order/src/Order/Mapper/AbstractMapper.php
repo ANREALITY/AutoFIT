@@ -123,10 +123,8 @@ class AbstractMapper
             // @todo Avoid creating empty objects!!!
             // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
             // Maybe solve it with a !empty($identifier) check.
-            if ($dataObjectCondition) {
-                if (! $dataObjectCondition($row)) {
-                    continue;
-                }
+            if (!$this->isProperRow($row, $dataObjectCondition)) {
+                continue;
             }
             $prototype = new $prototypeClass();
             $objectData = [];
@@ -170,6 +168,19 @@ class AbstractMapper
             // sub-objects
         }
         return $dataObjects;
+    }
+
+    protected function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null)
+    {
+        $isProper = false;
+        if ($dataObjectCondition) {
+            if ($dataObjectCondition($row)) {
+                $isProper = true;
+            }
+        } else {
+            $isProper = true;
+        }
+        return $isProper;
     }
 
     protected function isProperColumn(string $columnAlias, $prefixes)
