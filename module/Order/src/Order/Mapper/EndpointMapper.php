@@ -54,6 +54,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      */
     protected $includeParameterSetMapper;
 
+    /**
+     *
+     * @var ProtocolMapperInterface
+     */
+    protected $protocolMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
         parent::__construct($dbAdapter, $hydrator);
@@ -93,6 +99,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     public function setIncludeParameterSetMapper(IncludeParameterSetMapperInterface $includeParameterSetMapper)
     {
         $this->includeParameterSetMapper = $includeParameterSetMapper;
+    }
+
+    /**
+     *
+     * @param ProtocolMapperInterface $protocolMapper
+     */
+    public function setProtocolMapper(ProtocolMapperInterface $protocolMapper)
+    {
+        $this->protocolMapper = $protocolMapper;
     }
 
     /**
@@ -458,18 +473,15 @@ SQL;
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
                 $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
-                if ($typeIsOk && $serverExists) {
-                    $breakpoint = null;
-                } else {
-                    $breakpoint = null;
-                }
                 return $typeIsOk && $serverExists;
             }, true);
-
-        if (!empty($cdLinuxUnixServerDataObjects)) {
-            $breakpoint = null;
-        }
-
+        $ftgwSelfServiceProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
+            'id', 'endpoint__', ['id', 'role'], ['ftgw_self_service_protocol__', 'endpoint__'], null, null, null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
+                $protocolExists = array_key_exists('ftgw_self_service_protocol' . '__' . 'id', $row) && !empty($row['ftgw_self_service_protocol' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, true);
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
                 'setApplication', 'getId');
@@ -479,6 +491,8 @@ SQL;
                 'setServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
                 'setServers', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
+                'setProtocols', 'getId');
         }
 
         return $dataObjects;

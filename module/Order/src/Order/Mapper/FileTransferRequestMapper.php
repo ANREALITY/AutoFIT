@@ -456,6 +456,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_self_service' . '__' . 'mailbox' => 'mailbox',
                 'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_self_service_protocol', 'endpoint_ftgw_self_service_protocol.endpoint_ftgw_self_service_endpoint_id = endpoint_ftgw_self_service.endpoint_id',
+            [], Select::JOIN_LEFT);
+        $select->join(['ftgw_self_service_protocol' => 'protocol'],
+            'ftgw_self_service_protocol.id = endpoint_ftgw_self_service_protocol.protocol_id',
+            [
+                'ftgw_self_service_protocol' . '__' . 'id' => 'id',
+                'ftgw_self_service_protocol' . '__' . 'name' => 'name'
+            ], Select::JOIN_LEFT);
 
         $statement = $sql->prepareStatementForSqlObject($select);
 
