@@ -20,6 +20,7 @@ use DbSystel\DataObject\EndpointCdAs400;
 use DbSystel\DataObject\EndpointCdTandem;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwSelfService;
+use DbSystel\DataObject\EndpointFtgwWindows;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
@@ -296,6 +297,20 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
+        $endpointFtgwWindowsSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS;
+                    $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointFtgwWindowsTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS;
+                    $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
+                    return $typeIsOk && $roleIsOk;
+                });
         $endpointFtgwSelfServiceSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
             'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_self_service__'], null, null, new EndpointFtgwSelfService(),
                 function (array $row) {
@@ -326,6 +341,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdLinuxUnixSourceDataObjects,
                 'setEndpointSource', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdLinuxUnixTargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwWindowsSourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwWindowsTargetDataObjects,
                 'setEndpointTarget', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwSelfServiceSourceDataObjects,
                 'setEndpointSource', 'getId');
