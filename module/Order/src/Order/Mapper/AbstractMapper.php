@@ -99,10 +99,6 @@ class AbstractMapper
         $prototype = $prototype ?: $this->getPrototype();
         $prototypeClass = get_class($prototype);
 
-        if (! $prototype) {
-            $breakpoint = null;
-        }
-
         $uniqueResultSetArray = [];
         // For cases with an inverted relationship like
         // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
@@ -111,18 +107,22 @@ class AbstractMapper
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
             $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
-        } elseif (is_array($prefixMakingUnique)) {
-            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique[0] . $identifierMakingUnique[0]);
+        } elseif (is_array($identifierMakingUnique)) {
+            $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
+                $result = [];
+                foreach ($prefixMakingUnique as $key => $value) {
+                    $result[] = $prefixMakingUnique[$key] . $identifierMakingUnique[$key];
+                }
+                return $result;
+            };
+            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
         }
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-
             // @todo Avoid creating empty objects!!!
             // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
             // Maybe solve it with a !empty($identifier) check.
-            // @todo Extend the logi for handling of collections (like Notification)
-
             if ($dataObjectCondition) {
                 if (! $dataObjectCondition($row)) {
                     continue;
@@ -130,13 +130,7 @@ class AbstractMapper
                     $breakpoint = null;
                 }
             }
-
             $prototype = new $prototypeClass();
-            
-            if ($isCollection) {
-                $breakpoint = null;
-            }
-            
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
@@ -201,15 +195,71 @@ class AbstractMapper
         return $prefixIsProper;
     }
 
-    protected function arrayUniqueByIdentifier(array $array, string $identifier)
+    protected function arrayUniqueByIdentifier(array $array, $identifier)
     {
-        $ids = array_column($array, $identifier);
-        $ids = array_unique($ids);
-        $array = array_filter($array,
-            function ($key, $value) use($ids) {
-                return in_array($value, array_keys($ids));
-            }, ARRAY_FILTER_USE_BOTH);
+        if (is_string($identifier)) {
+            // Get the grouping column array unique.
+            $ids = array_column($array, $identifier);
+            $ids = array_unique($ids);
+            // Filter the original array by the keys of the grouping column array.
+            $array = array_filter($array,
+                function ($key, $value) use($ids) {
+                    return in_array($value, array_keys($ids));
+                }, ARRAY_FILTER_USE_BOTH);
+        } elseif (is_array($identifier)) {
+            $array = $this->arrayUniqueByMultipleIdentifiers($array, $identifier, '|||');
+        }
         return $array;
+    }
+
+    protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers, string $implodeSeparator = null)
+    {
+        $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
+        $arrayUniqueByRow = $this->arrayUniqueByRow($arrayForMakingUniqueByRow, $implodeSeparator);
+        $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueByRow);
+        return $arrayUniqueByMultipleIdentifiers;
+    }
+    
+    protected function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
+    {
+        foreach ($table as $rowKey => $row) {
+            if (is_array($row)) {
+                if ($isWhitelist) {
+                    foreach ($row as $fieldName => $fieldValue) {
+                        if (!in_array($fieldName, $columnNames)) {
+                            unset($table[$rowKey][$fieldName]);
+                        }
+                    }
+                } else {
+                    foreach ($row as $fieldName => $fieldValue) {
+                        if (in_array($fieldName, $columnNames)) {
+                            unset($table[$rowKey][$fieldName]);
+                        }
+                    }
+                }
+            }
+        }
+        return $table;
+    }
+    
+    protected function arrayUniqueByRow(array $table = [], string $implodeSeparator)
+    {
+        $elementStrings = [];
+        foreach ($table as $row) {
+            // To avoid notices like "Array to string conversion".
+            $elementPreparedForImplode = array_map(
+                function ($field) {
+                    $valueType = gettype($field);
+                    $simpleTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
+                    $field = in_array($valueType, $simpleTypes) ? $field : $valueType;
+                    return $field;
+                }, $row
+                );
+            $elementStrings[] = implode($implodeSeparator, $elementPreparedForImplode);
+        }
+        $elementStringsUnique = array_unique($elementStrings);
+        $table = array_intersect_key($table, $elementStringsUnique);
+        return $table;
     }
 
     protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter,

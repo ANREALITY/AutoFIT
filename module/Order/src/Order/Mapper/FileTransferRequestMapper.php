@@ -336,6 +336,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_cd', 'physical_connection_cd.physical_connection_id = physical_connection.id',
             [
+                'physical_connection_cd' . '__' . 'physical_connection_id' => 'physical_connection_id',
                 'physical_connection_cd' . '__' . 'secure_plus' => 'secure_plus'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_ftgw', 'physical_connection_ftgw.physical_connection_id = physical_connection.id',
@@ -417,16 +418,19 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_as400', 'endpoint_cd_as400.endpoint_id = endpoint.id',
             [
+                'endpoint_cd_as400' . '__' . 'endpoint_id' => 'endpoint_id',
                 'endpoint_cd_as400' . '__' . 'username' => 'username',
                 'endpoint_cd_as400' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_tandem', 'endpoint_cd_tandem.endpoint_id = endpoint.id',
             [
+                'endpoint_cd_tandem' . '__' . 'endpoint_id' => 'endpoint_id',
                 'endpoint_cd_tandem' . '__' . 'username' => 'username',
                 'endpoint_cd_tandem' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_linux_unix', 'endpoint_cd_linux_unix.endpoint_id = endpoint.id',
             [
+                'endpoint_cd_linux_unix' . '__' . 'endpoint_id' => 'endpoint_id',
                 'endpoint_cd_linux_unix' . '__' . 'username' => 'username',
                 'endpoint_cd_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
@@ -442,9 +446,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'cd_linux_unix_server' . '__' . 'name' => 'name'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
-            [], Select::JOIN_LEFT);
+            [
+                'endpoint_ftgw_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
             [
+                'endpoint_ftgw_self_service' . '__' . 'endpoint_id' => 'endpoint_id',
                 'endpoint_ftgw_self_service' . '__' . 'ftgw_username' => 'ftgw_username',
                 'endpoint_ftgw_self_service' . '__' . 'mailbox' => 'mailbox',
                 'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type'

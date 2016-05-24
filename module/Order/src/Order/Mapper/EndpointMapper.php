@@ -453,6 +453,22 @@ SQL;
             'severity', 'customer__', 'id', 'endpoint__');
         $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
             'name', 'server__', 'id', 'endpoint__');
+        $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
+            'id', 'endpoint__', ['name', 'role'], ['cd_linux_unix_server__', 'endpoint__'], null, null, null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
+                if ($typeIsOk && $serverExists) {
+                    $breakpoint = null;
+                } else {
+                    $breakpoint = null;
+                }
+                return $typeIsOk && $serverExists;
+            }, true);
+
+        if (!empty($cdLinuxUnixServerDataObjects)) {
+            $breakpoint = null;
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -461,6 +477,8 @@ SQL;
                 'setCustomer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
                 'setServer', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
+                'setServers', 'getId');
         }
 
         return $dataObjects;
