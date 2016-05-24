@@ -449,6 +449,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             [
                 'endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id' => 'id'
             ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_linux_unix_include_parameter' => 'include_parameter'], 'endpoint_cd_linux_unix_include_parameter.include_parameter_set_id = endpoint_cd_linux_unix_include_parameter_set.id',
+            [
+                'endpoint_cd_linux_unix_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_cd_linux_unix_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_cd_linux_unix_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
             [
                 'endpoint_ftgw_windows' . '__' . 'endpoint_id' => 'endpoint_id',
