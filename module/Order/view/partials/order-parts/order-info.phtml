@@ -13,7 +13,7 @@ $orderPartCssClass = 'col-md-12';
 $orderPartTitle = $this->translate('Order info');
 $orderPartAttributes = [
     [
-        'label' => $this->translate('created on'),
+        'label' => ucfirst($this->translate('created on')),
         'value' => $fileTransferRequest->getCreated()
     ],
     [
