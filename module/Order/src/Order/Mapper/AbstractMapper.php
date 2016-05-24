@@ -126,8 +126,6 @@ class AbstractMapper
             if ($dataObjectCondition) {
                 if (! $dataObjectCondition($row)) {
                     continue;
-                } else {
-                    $breakpoint = null;
                 }
             }
             $prototype = new $prototypeClass();
@@ -171,7 +169,6 @@ class AbstractMapper
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
                 }
             }
-            $breakpoint = null;
             // sub-objects
         }
         return $dataObjects;
