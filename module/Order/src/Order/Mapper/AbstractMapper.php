@@ -147,7 +147,6 @@ class AbstractMapper
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
                     if ($isCollection) {
-                        $test = $row[$parentPrefix . $parentIdentifier];
                         if (empty($dataObjects[$row[$parentPrefix . $parentIdentifier]])) {
                             $dataObjects[$row[$parentPrefix . $parentIdentifier]] = [];
                         }
@@ -157,7 +156,6 @@ class AbstractMapper
                     }
                 } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
                     if ($isCollection) {
-                        $test = $row[$childPrefix . $childIdentifier];
                         if (empty($dataObjects[$row[$childPrefix . $childIdentifier]])) {
                             $dataObjects[$row[$childPrefix . $childIdentifier]] = [];
                         }
