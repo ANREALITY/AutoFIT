@@ -340,7 +340,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'physical_connection_cd' . '__' . 'secure_plus' => 'secure_plus'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_ftgw', 'physical_connection_ftgw.physical_connection_id = physical_connection.id',
-            [], Select::JOIN_LEFT);
+            [
+                'physical_connection_ftgw' . '__' . 'physical_connection_id' => 'physical_connection_id',
+            ], Select::JOIN_LEFT);
         $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
             [
                 'notification' . '__' . 'id' => 'id',
@@ -489,72 +491,16 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $resultSet = new ResultSet();
             $resultSet->initialize($result);
             $resultSetArray = $resultSet->toArray();
-            echo '<pre>';
+            // echo '<pre>';
             // print_r($resultSetArray);
             $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
                 null, null, null, false);
 
-            print_r($dataObjects);
+//             echo '<pre>';
+//             print_r($dataObjects);
+//             die('###');
 
-            die('###');
-
-            $fileTransferRequests = [];
-
-            /**
-             *
-             * @var FileTransferRequest $fileTransferRequest
-             */
-            $fileTransferRequest;
-
-            foreach ($return as $fileTransferRequest) {
-                $data = $result->current();
-
-                $fileTransferRequest->setUser($this->userMapper->findOne($data['user_id']));
-                $fileTransferRequest->setLogicalConnection(
-                    $this->logicalConnectionMapper->findWithBuldledData($data['logical_connection_id']));
-
-                $fileTransferRequest->setServiceInvoicePositionBasic(new ServiceInvoicePosition());
-                $fileTransferRequest->getServiceInvoicePositionBasic()->setServiceInvoice(new ServiceInvoice());
-                $fileTransferRequest->getServiceInvoicePositionBasic()->setNumber(
-                    $data['service_invoice_position_basic_number']);
-                $fileTransferRequest->getServiceInvoicePositionBasic()
-                    ->getServiceInvoice()
-                    ->setApplication(new Application());
-                $fileTransferRequest->getServiceInvoicePositionBasic()
-                    ->getServiceInvoice()
-                    ->setEnvironment(new Environment());
-                $fileTransferRequest->getServiceInvoicePositionBasic()
-                    ->getServiceInvoice()
-                    ->getApplication()
-                    ->setTechnicalShortName($data['application_technical_short_name']);
-                $fileTransferRequest->getServiceInvoicePositionBasic()
-                    ->getServiceInvoice()
-                    ->getEnvironment()
-                    ->setName($data['environment_name']);
-
-                $fileTransferRequest->setServiceInvoicePositionPersonal(new ServiceInvoicePosition());
-                $fileTransferRequest->getServiceInvoicePositionPersonal()->setNumber(
-                    $data['service_invoice_position_personal_number']);
-                $fileTransferRequest->getServiceInvoicePositionPersonal()->setServiceInvoice(new ServiceInvoice());
-                $fileTransferRequest->getServiceInvoicePositionPersonal()
-                    ->getServiceInvoice()
-                    ->setApplication(new Application());
-                $fileTransferRequest->getServiceInvoicePositionPersonal()
-                    ->getServiceInvoice()
-                    ->setEnvironment(new Environment());
-                $fileTransferRequest->getServiceInvoicePositionPersonal()
-                    ->getServiceInvoice()
-                    ->getApplication()
-                    ->setTechnicalShortName($data['application_technical_short_name']);
-                $fileTransferRequest->getServiceInvoicePositionPersonal()
-                    ->getServiceInvoice()
-                    ->getEnvironment()
-                    ->setName($data['environment_name']);
-
-                $fileTransferRequests[] = $fileTransferRequest;
-            }
-
-            return $fileTransferRequests;
+            return $dataObjects;
         }
 
         return [];

@@ -256,28 +256,28 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, null, null, $prototype, $dataObjectCondition, $isCollection);
 
         $endpointCdAs400SourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint' . '__' . 'id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_AS400;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdAs400TargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint' . '__' . 'id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_AS400;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdTandemSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint' . '__' . 'id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_TANDEM;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdTandemTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint' . '__' . 'id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_TANDEM;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;

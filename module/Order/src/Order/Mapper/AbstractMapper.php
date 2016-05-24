@@ -103,6 +103,11 @@ class AbstractMapper
         // For cases with an inverted relationship like
         // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
         // In otherweise in such cases some of the relevant rows can be ignored.
+        
+        if (is_array($identifier)) {
+            $breakpoint = null;
+        }
+        
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
@@ -120,10 +125,7 @@ class AbstractMapper
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            // @todo Avoid creating empty objects!!!
-            // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-            // Maybe solve it with a !empty($identifier) check.
-            if (!$this->isProperRow($row, $dataObjectCondition)) {
+            if (!$this->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
             $prototype = new $prototypeClass();
@@ -170,16 +172,27 @@ class AbstractMapper
         return $dataObjects;
     }
 
-    protected function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null)
+    protected function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null, $prefix = null)
     {
         $isProper = false;
-        if ($dataObjectCondition) {
-            if ($dataObjectCondition($row)) {
-                $isProper = true;
-            }
-        } else {
-            $isProper = true;
+        $conditionOk = true;
+        if ($dataObjectCondition && ! $dataObjectCondition($row)) {
+            $conditionOk = false;
         }
+        // Preventing creating empty objects.
+        // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+        $identifierOk = true;
+        if (is_string($identifier)) {
+            $identifierOk = ! ($row[$prefix . $identifier] === '' || $row[$prefix . $identifier] === null);
+        } elseif (is_array($identifier)) {
+            foreach ($identifier as $key => $partIdentifierValue) {
+                if ($row[$prefix[$key] . $partIdentifierValue] === '' || $row[$prefix[$key] . $partIdentifierValue] === null) {
+                    $identifierOk = false;
+                    break;
+                }
+            }
+        }
+        $isProper = $conditionOk && $identifierOk;
         return $isProper;
     }
 

@@ -230,12 +230,12 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
                 });
         $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection' . '__' . 'id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
                 });
         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection' . '__' . 'id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
                 });

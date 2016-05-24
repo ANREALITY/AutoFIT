@@ -466,7 +466,7 @@ SQL;
         $applicationDataObjects = $this->applicationMapper->createDataObjects($resultSetArray, null, null,
             'technical_short_name', 'endpoint_application__', 'id', 'endpoint__');
         $customerDataObjects = $this->customerMapper->createDataObjects($resultSetArray, null, null,
-            'severity', 'customer__', 'id', 'endpoint__');
+            'id', 'customer__', 'id', 'endpoint__');
         $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
             'name', 'server__', 'id', 'endpoint__');
         $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
