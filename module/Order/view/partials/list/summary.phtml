@@ -1,6 +1,7 @@
 <?php
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\EndpointCdLinuxUnix;
 ?>
 <?php
 
@@ -11,23 +12,61 @@ use DbSystel\DataObject\FileTransferRequest;
 $fileTransferRequest;
 
 $connectionType = $fileTransferRequest->getLogicalConnection()->getType();
+
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
-    $physicalConnectionEndToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd();
-    $endpointSource = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointSource() : null;
-    $endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
-    $endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
-    $endpointTarget = $physicalConnectionEndToEnd ? $physicalConnectionEndToEnd->getEndpointTarget() : null;
-    $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
-    $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
+    $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointSource();
+    try {
+        $endpointSourceServer = $endpointSource->getServer();
+        $endpointSourceServerName = $endpointSourceServer->getName();
+    } catch (Error $e) {
+        $endpointSourceServer = null;
+        $endpointSourceServerName = null;
+    }
+    try {
+        $endpointSourceServers = $endpointSource->getServers();
+    } catch (Error $e) {
+        $endpointSourceServers = [];
+    }
+    $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
+    try {
+        $endpointTargetServer = $endpointTarget->getServer();
+        $endpointTargetServerName = $endpointTargetServer->getName();
+    } catch (Error $e) {
+        $endpointTargetServer = null;
+        $endpointTargetServerName = null;
+    }
+    try {
+        $endpointTargetServers = $endpointTarget->getServers();
+    } catch (Error $e) {
+        $endpointTargetServers = [];
+    }
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-    $physicalConnectionEndToMiddle = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle();
-    $endpointSource = $physicalConnectionEndToMiddle ? $physicalConnectionEndToMiddle->getEndpointSource() : null;
-    $endpointSourceServer = $endpointSource ? $endpointSource->getServer() : null;
-    $endpointSourceServerName = $endpointSourceServer ? $endpointSourceServer->getName() : null;
-    $physicalConnectionMiddleToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd();
-    $endpointTarget = $physicalConnectionMiddleToEnd ? $physicalConnectionMiddleToEnd->getEndpointTarget() : null;
-    $endpointTargetServer = $endpointTarget ? $endpointTarget->getServer() : null;
-    $endpointTargetServerName = $endpointTargetServer ? $endpointTargetServer->getName() : null;
+    $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
+    try {
+        $endpointSourceServer = $endpointSource->getServer();
+        $endpointSourceServerName = $endpointSourceServer->getName();
+    } catch (Error $e) {
+        $endpointSourceServer = null;
+        $endpointSourceServerName = null;
+    }
+    try {
+        $endpointSourceServers = $endpointSource->getServers();
+    } catch (Error $e) {
+        $endpointSourceServers = [];
+    }
+    $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointTarget();
+    try {
+        $endpointTargetServer = $endpointTarget->getServer();
+        $endpointTargetServerName = $endpointTargetServer->getName();
+    } catch (Error $e) {
+        $endpointTargetServer = null;
+        $endpointTargetServerName = null;
+    }
+    try {
+        $endpointTargetServers = $endpointTarget->getServers();
+    } catch (Error $e) {
+        $endpointTargetServers = [];
+    }
 }
 ?>
 <ul>
@@ -37,13 +76,27 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     <li>
         <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('source') . ')'; ?>
         <ul>
-            <li><?php echo $this->translate('server name') . ': ' . $endpointSourceServerName; ?></li>
+            <?php if($endpointSourceServers) : ?>
+            <span><?php echo $this->translate('servers') . ':'; ?></span>
+                <?php foreach ($endpointSourceServers as $endpointSourceServer) : ?>
+                <li><?php echo $endpointSourceServer->getName(); ?></li>
+                <?php endforeach; ?>
+            <?php elseif ($endpointSourceServerName) : ?>
+                <li><?php echo $this->translate('server') . ': ' . $endpointSourceServerName; ?></li>
+            <?php endif; ?>
         </ul>
     </li>
     <li>
         <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('target') . ')'; ?>
         <ul>
-            <li><?php echo $this->translate('server name') . ': ' . $endpointTargetServerName; ?></li>
+            <?php if($endpointTargetServers) : ?>
+            <span><?php echo $this->translate('servers') . ':'; ?></span>
+                <?php foreach ($endpointTargetServers as $endpointTargetServer) : ?>
+                <li><?php echo $endpointTargetServer->getName(); ?></li>
+                <?php endforeach; ?>
+            <?php elseif ($endpointTargetServerName) : ?>
+                <li><?php echo $this->translate('server') . ': ' . $endpointTargetServerName; ?></li>
+            <?php endif; ?>
         </ul>
     </li>
 </ul>

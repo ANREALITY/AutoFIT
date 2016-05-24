@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-18 23:38+0200\n"
-"PO-Revision-Date: 2016-05-18 23:38+0200\n"
+"POT-Creation-Date: 2016-05-24 19:41+0200\n"
+"PO-Revision-Date: 2016-05-24 19:41+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,14 +17,14 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
 
-#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:69
-#: Application/view/error/index.phtml:2
+#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:76
+#: ErrorHandling/view/exception.phtml:2
 msgid "An error occured. Please try later again."
 msgstr ""
 "Es ist ein Fehler aufgetreten. Bitte versuchen sie es später noch einmal."
 
-#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:71
-#: Application/view/error/404.phtml:5 Application/view/error/index.phtml:5
+#: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:78
+#: Application/view/error/404.phtml:5 ErrorHandling/view/exception.phtml:5
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
@@ -109,7 +109,7 @@ msgid "mailbox"
 msgstr "Mailbox"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
-#: Order/view/partials/list/summary.phtml:34
+#: Order/view/partials/list/summary.phtml:72
 msgid "connection type"
 msgstr "Verbindungstyp"
 
@@ -125,7 +125,7 @@ msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:80
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
-#: Order/view/partials/list/summary.phtml:35
+#: Order/view/partials/list/summary.phtml:73
 #: Order/view/partials/order-parts/billing.phtml:16
 msgid "application"
 msgstr "Verfahren"
@@ -214,7 +214,7 @@ msgid "Target - Windows"
 msgstr "Zielsystem - Windows"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:31
-#: Order/view/partials/list/summary.phtml:36
+#: Order/view/partials/list/summary.phtml:74
 #: Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
@@ -248,8 +248,6 @@ msgid "Secure Plus"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
-#: Order/view/partials/list/summary.phtml:40
-#: Order/view/partials/list/summary.phtml:46
 msgid "server name"
 msgstr "Servername"
 
@@ -275,7 +273,7 @@ msgstr "verbindlich bestellen"
 msgid "You have no access rights to this page/action."
 msgstr "Sie haben keine Zugriffsrechte für diese Ansicht/Aktion."
 
-#: Application/view/application/error/error403.phtml:4
+#: Application/view/application/error/error403.phtml:5
 msgid "A 403 error occured (access forbidden)."
 msgstr "Ein Feher 403 ist aufgetreten (Zugriff verweigert)."
 
@@ -386,69 +384,69 @@ msgstr "Die Seite, die Sie angefragt haben, ist nicht verfügbar."
 msgid "A 404 error occurred"
 msgstr "Es trat ein 404 Fehler auf"
 
-#: Application/view/error/404.phtml:19
+#: Application/view/error/404.phtml:17
 msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
-#: Application/view/error/404.phtml:23
+#: Application/view/error/404.phtml:21
 msgid ""
 "The requested controller could not be mapped to an existing controller class."
 msgstr ""
 "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
 "werden."
 
-#: Application/view/error/404.phtml:26
+#: Application/view/error/404.phtml:24
 msgid "The requested controller was not dispatchable."
 msgstr "Der angeforderte Controller ist nicht aufrufbar."
 
-#: Application/view/error/404.phtml:29
+#: Application/view/error/404.phtml:27
 msgid "The requested URL could not be matched by routing."
 msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
 
-#: Application/view/error/404.phtml:32
+#: Application/view/error/404.phtml:30
 msgid "We cannot determine at this time why a 404 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
 "Fehler aufgetreten ist."
 
-#: Application/view/error/404.phtml:44
+#: Application/view/error/404.phtml:38
 msgid "Controller"
 msgstr "Controller"
 
-#: Application/view/error/404.phtml:50
+#: Application/view/error/404.phtml:44
 #, php-format
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: Application/view/error/404.phtml:63 Application/view/error/index.phtml:15
+#: Application/view/error/404.phtml:54 Application/view/error/index.phtml:7
 msgid "Additional information"
 msgstr "Zusätzliche Information"
 
-#: Application/view/error/404.phtml:66 Application/view/error/404.phtml:90
-#: Application/view/error/index.phtml:18 Application/view/error/index.phtml:42
+#: Application/view/error/404.phtml:57 Application/view/error/404.phtml:79
+#: Application/view/error/index.phtml:10 Application/view/error/index.phtml:32
 msgid "File"
 msgstr "Datei"
 
-#: Application/view/error/404.phtml:70 Application/view/error/404.phtml:94
-#: Application/view/error/index.phtml:22 Application/view/error/index.phtml:46
+#: Application/view/error/404.phtml:61 Application/view/error/404.phtml:83
+#: Application/view/error/index.phtml:14 Application/view/error/index.phtml:36
 msgid "Message"
 msgstr "Meldung"
 
-#: Application/view/error/404.phtml:74 Application/view/error/404.phtml:98
-#: Application/view/error/index.phtml:26 Application/view/error/index.phtml:50
+#: Application/view/error/404.phtml:65 Application/view/error/404.phtml:87
+#: Application/view/error/index.phtml:18 Application/view/error/index.phtml:40
 msgid "Stack trace"
 msgstr "Stapelüberwachung"
 
-#: Application/view/error/404.phtml:84 Application/view/error/index.phtml:36
+#: Application/view/error/404.phtml:73 Application/view/error/index.phtml:26
 msgid "Previous exceptions"
 msgstr "Vorherige Ausnahme"
 
-#: Application/view/error/404.phtml:114 Application/view/error/index.phtml:66
+#: Application/view/error/404.phtml:98 Application/view/error/index.phtml:51
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
-#: Application/view/error/index.phtml:8
+#: Application/view/error/index.phtml:1
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -656,19 +654,28 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
-#: Order/view/partials/list/summary.phtml:38
-#: Order/view/partials/list/summary.phtml:44
+#: Order/view/partials/list/summary.phtml:76
+#: Order/view/partials/list/summary.phtml:89
 msgid "endpoint"
 msgstr "Endpoint"
 
-#: Order/view/partials/list/summary.phtml:38
+#: Order/view/partials/list/summary.phtml:76
 #: Order/view/partials/start/cd.phtml:15 Order/view/partials/start/cd.phtml:19
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:44
+#: Order/view/partials/list/summary.phtml:79
+msgid "servers"
+msgstr "Servers"
+
+#: Order/view/partials/list/summary.phtml:84
+#: Order/view/partials/list/summary.phtml:91
+msgid "server"
+msgstr "Server"
+
+#: Order/view/partials/list/summary.phtml:89
 #: Order/view/partials/start/cd.phtml:28 Order/view/partials/start/cd.phtml:32
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
