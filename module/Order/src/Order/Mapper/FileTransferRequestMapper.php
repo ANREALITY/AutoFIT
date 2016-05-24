@@ -158,83 +158,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_transfer_request');
-        $select->where([
-            'file_transfer_request.id = ?' => $id
-        ]);
-        $select->columns(
-            [
-                'file_transfer_request' . '_' . 'id' => 'id',
-                'file_transfer_request' . '_' . 'change_number' => 'change_number',
-                'file_transfer_request' . '_' . 'status' => 'status',
-                'file_transfer_request' . '_' . 'logical_connection_id' => 'logical_connection_id',
-                'file_transfer_request' . '_' . 'service_invoice_position_basic_number' => 'service_invoice_position_basic_number',
-                'file_transfer_request' . '_' . 'service_invoice_position_personal_number' => 'service_invoice_position_personal_number',
-                'file_transfer_request' . '_' . 'user_id' => 'user_id'
-            ]);
-        $select->join('user', 'file_transfer_request.user_id = user.id',
-            [
-                'user' . '_' . 'id' => 'id',
-                'user' . '_' . 'role' => 'role',
-                'user' . '_' . 'username' => 'username'
-            ], Join::JOIN_LEFT);
-        $select->join('logical_connection', 'file_transfer_request.logical_connection_id = logical_connection.id',
-            [
-                'logical_connection' . '_' . 'id' => 'id',
-                'logical_connection' . '_' . 'type' => 'type'
-            ], Join::JOIN_LEFT);
-        $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
-            [
-                'notification' . '_' . 'id' => 'id',
-                'notification' . '_' . 'email' => 'email',
-                'notification' . '_' . 'success' => 'success',
-                'notification' . '_' . 'failure' => 'failure',
-                'notification' . '_' . 'logical_connection_id' => 'logical_connection_id'
-            ], Join::JOIN_LEFT);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            foreach ($result as $column => $value) {
-                $resultArray[] = $result->current();
-            }
-            $resultData = [];
-            foreach ($resultArray as $resultRowArray) {
-                foreach (array_keys($resultRowArray) as $arrayKey) {
-                    $this->processResultRow($resultData, $resultRowArray, 'file_transfer_request' . '_',
-                        'file_transfer_request', $arrayKey, 'file_transfer_request' . '_' . 'id');
-                    $this->processResultRow($resultData, $resultRowArray, 'user' . '_', 'user', $arrayKey,
-                        'user' . '_' . 'id');
-                    $this->processResultRow($resultData, $resultRowArray, 'logical_connection' . '_',
-                        'logical_connection', $arrayKey, 'logical_connection' . '_' . 'id');
-                    $this->processResultRow($resultData, $resultRowArray, 'notification' . '_', 'notifications',
-                        $arrayKey, 'notification' . '_' . 'id', 'logical_connection' . '_' . 'id');
-                }
-            }
-            $fileTransferRequest = $this->hydrator->hydrate($resultData['file_transfer_request'][$id],
-                $this->getPrototype());
-            $logicalConnection = $this->hydrator->hydrate(
-                $resultData['logical_connection'][$resultData['file_transfer_request'][$id]['logical_connection_id']],
-                $this->getLogicalConnectionPrototype());
-            $user = $this->hydrator->hydrate($resultData['user'][$resultData['file_transfer_request'][$id]['user_id']],
-                $this->getUserPrototype());
-            $fileTransferRequest->setUser($user);
-            $fileTransferRequest->setLogicalConnection($logicalConnection);
-            $notifications = [];
-            foreach ($resultData['notifications'][$resultData['file_transfer_request'][$id]['logical_connection_id']] as $notification) {
-                $notifications[] = $this->hydrator->hydrate($notification, $this->getNotificationPrototype());
-            }
-            $fileTransferRequest->getLogicalConnection()->setNotifications($notifications);
-
-            // echo '<pre>';
-            // print_r($resultData);
-            // die();
-            // $fileTransferRequest = new FileTransferRequest();
-            // $fileTransferRequest->setId(777);
-
-            return $fileTransferRequest;
+        $fileTransferRequests = $this->findAllWithBuldledData([], $id);
+        if ($fileTransferRequests) {
+            return $fileTransferRequests[0];
         }
 
         throw new \InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
