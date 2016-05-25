@@ -54,7 +54,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
-    $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointTarget();
+    $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
     try {
         $endpointTargetServer = $endpointTarget->getServer();
         $endpointTargetServerName = $endpointTargetServer->getName();
