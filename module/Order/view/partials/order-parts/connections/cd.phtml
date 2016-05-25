@@ -1,0 +1,27 @@
+<?php
+use DbSystel\DataObject\PhysicalConnectionCd;
+/**
+ *
+ * @var PhysicalConnectionCd $dataObject
+ */
+$dataObject;
+?>
+<?php
+$orderPartCssId = 'physical-connection-end-to-end';
+$orderPartCssClass = 'col-md-12';
+$orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('directly from the source to the target') . ')';
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('Secure Plus'),
+        'value' => $dataObject->getSecurePlus() ? $this->translate('yes') : $this->translate('no')
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

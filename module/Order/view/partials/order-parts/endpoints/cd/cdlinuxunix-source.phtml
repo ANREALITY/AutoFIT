@@ -1,0 +1,59 @@
+<?php
+use DbSystel\DataObject\EndpointCdLinuxUnix;
+/**
+ *
+ * @var EndpointCdLinuxUnix $dataObject
+ */
+$dataObject;
+?>
+<?php
+$orderPartCssId = 'specific-source';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Source - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('username'),
+        'value' => $dataObject->getUsername() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission type'),
+        'value' => $dataObject->getTransmissionType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission interval'),
+        'value' => $dataObject->getTransmissionInterval() ?: '-'
+    ],
+    [
+        'label' => $this->translate('servers'),
+        'value' => 'SERVERS: TODO'
+    ],
+    [
+        'label' => $this->translate('service address'),
+        'value' => $dataObject->getServiceAddress() ?: '-'
+    ],
+    [
+        'label' => $this->translate('cluster'),
+        'value' => $dataObject->getCluster() ? $this->translate('yes') : $this->translate('no')
+    ],
+    [
+        'label' => $this->translate('include parameters'),
+        'value' => 'INCLUDE PARAMETERS: TODO'
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

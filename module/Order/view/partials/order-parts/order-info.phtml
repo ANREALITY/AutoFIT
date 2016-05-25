@@ -7,18 +7,24 @@ use DbSystel\DataObject\FileTransferRequest;
 $fileTransferRequest;
 ?>
 <?php
-
+// for translations (workaround)
+if (false) {
+    $this->translate('new');
+    $this->translate('canceled');
+}
+?>
+<?php
 $orderPartCssId = 'info';
 $orderPartCssClass = 'col-md-12';
 $orderPartTitle = $this->translate('Order info');
 $orderPartAttributes = [
     [
         'label' => ucfirst($this->translate('created on')),
-        'value' => $fileTransferRequest->getCreated()
+        'value' => $fileTransferRequest->getCreated() ?: '&nbsp;'
     ],
     [
         'label' => $this->translate('status'),
-        'value' => $fileTransferRequest->getStatus()
+        'value' => $this->translate($fileTransferRequest->getStatus()) ?: '-'
     ]
 ];
 echo $this->partial('/partials/order-part',

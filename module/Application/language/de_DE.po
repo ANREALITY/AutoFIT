@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 19:41+0200\n"
-"PO-Revision-Date: 2016-05-24 20:13+0200\n"
+"POT-Creation-Date: 2016-05-25 11:01+0200\n"
+"PO-Revision-Date: 2016-05-25 11:02+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -46,6 +46,8 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:44
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:23
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:23
 msgid "folder"
 msgstr "Verzeichnis"
 
@@ -63,6 +65,8 @@ msgid "multiple servers"
 msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:39
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:31
 msgid "service address"
 msgstr "Service-Adresse"
 
@@ -75,10 +79,14 @@ msgid "Tandem"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:26
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:15
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:15
 msgid "contact person"
 msgstr "Ansprechpartner"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:42
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:19
 msgid "server place"
 msgstr "Serverstandort"
 
@@ -109,7 +117,7 @@ msgid "mailbox"
 msgstr "Mailbox"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
-#: Order/view/partials/list/summary.phtml:72
+#: Order/view/partials/list/summary.phtml:73
 msgid "connection type"
 msgstr "Verbindungstyp"
 
@@ -125,8 +133,10 @@ msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:80
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
-#: Order/view/partials/list/summary.phtml:73
+#: Order/view/partials/list/summary.phtml:74
 #: Order/view/partials/order-parts/billing.phtml:16
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:23
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:23
 msgid "application"
 msgstr "Verfahren"
 
@@ -137,6 +147,7 @@ msgstr ""
 "Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
 
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:81
+#: Order/view/partials/order-parts/logical-connection.phtml:51
 msgid "notifications"
 msgstr "Benachrichtigungen"
 
@@ -154,6 +165,8 @@ msgid "service invoice position number"
 msgstr "LSP"
 
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:27
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:27
 msgid "external partner"
 msgstr "externer Partner"
 
@@ -170,10 +183,12 @@ msgid "Source - LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:27
 msgid "transmission type"
 msgstr "Übertragungsart"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:31
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
@@ -182,6 +197,8 @@ msgid "Target - LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:43
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:35
 msgid "cluster"
 msgstr "Cluster"
 
@@ -214,7 +231,7 @@ msgid "Target - Windows"
 msgstr "Zielsystem - Windows"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:31
-#: Order/view/partials/list/summary.phtml:74
+#: Order/view/partials/list/summary.phtml:75
 #: Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
@@ -224,6 +241,7 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:47
 msgid "include parameters"
 msgstr "Include-Parameter"
 
@@ -244,6 +262,7 @@ msgid "failed"
 msgstr "fehlgeschlagen"
 
 #: Order/src/Order/Form/Fieldset/PhysicalConnectionCdEndToEndFieldset.php:27
+#: Order/view/partials/order-parts/connections/cd.phtml:15
 msgid "Secure Plus"
 msgstr ""
 
@@ -262,6 +281,8 @@ msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:35
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:19
 msgid "username"
 msgstr "Benutzername"
 
@@ -592,14 +613,16 @@ msgstr "Abrechnung"
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:8
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:31
-#: Order/view/partials/order-parts/connections/cd.phtml:4
+#: Order/view/partials/order-parts/connections/cd.phtml:12
 #: Order/view/partials/order-parts/connections/ftgw.phtml:8
 #: Order/view/partials/order-parts/connections/ftgw.phtml:31
+#: Order/view/partials/order-parts/logical-connection.phtml:48
 msgid "Technical connection"
 msgstr "Technische Verbindung"
 
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
-#: Order/view/partials/order-parts/connections/cd.phtml:4
+#: Order/view/partials/order-parts/connections/cd.phtml:12
+#: Order/view/partials/order-parts/logical-connection.phtml:48
 msgid "directly from the source to the target"
 msgstr "direkt vom Quell- zum Zielsystem"
 
@@ -614,12 +637,12 @@ msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
 #: Order/view/partials/fieldgroups/endpoints/basic-source.phtml:4
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:4
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:12
 msgid "Source - basic settings"
 msgstr "Quellsystem (Grundeinstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/basic-target.phtml:4
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:4
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:12
 msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
@@ -629,7 +652,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:4
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:8
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:4
@@ -642,7 +665,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:4
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:8
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:4
@@ -650,32 +673,36 @@ msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"
 
 #: Order/view/partials/fieldgroups/logical-connection.phtml:4
-#: Order/view/partials/order-parts/logical-connection.phtml:4
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
-#: Order/view/partials/list/summary.phtml:76
-#: Order/view/partials/list/summary.phtml:89
+#: Order/view/partials/list/summary.phtml:77
+#: Order/view/partials/list/summary.phtml:90
 msgid "endpoint"
 msgstr "Endpoint"
 
-#: Order/view/partials/list/summary.phtml:76
+#: Order/view/partials/list/summary.phtml:77
 #: Order/view/partials/start/cd.phtml:15 Order/view/partials/start/cd.phtml:19
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:79
+#: Order/view/partials/list/summary.phtml:80
+#: Order/view/partials/list/summary.phtml:93
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:35
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:27
 msgid "servers"
 msgstr "Servers"
 
-#: Order/view/partials/list/summary.phtml:84
-#: Order/view/partials/list/summary.phtml:91
+#: Order/view/partials/list/summary.phtml:85
+#: Order/view/partials/list/summary.phtml:98
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server"
 msgstr "Server"
 
-#: Order/view/partials/list/summary.phtml:89
+#: Order/view/partials/list/summary.phtml:90
 #: Order/view/partials/start/cd.phtml:28 Order/view/partials/start/cd.phtml:32
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
@@ -686,15 +713,54 @@ msgstr "Zielsystem"
 msgid "user"
 msgstr "Benutzer"
 
+#: Order/view/partials/order-parts/connections/cd.phtml:16
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:44
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:36
+#: Order/view/partials/order-parts/logical-connection.phtml:20
+msgid "yes"
+msgstr "ja"
+
+#: Order/view/partials/order-parts/connections/cd.phtml:16
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:44
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:36
+#: Order/view/partials/order-parts/logical-connection.phtml:19
+msgid "no"
+msgstr "nein"
+
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:15
+msgid "type"
+msgstr "Typ"
+
+#: Order/view/partials/order-parts/logical-connection.phtml:12
+msgid "notification"
+msgstr "Benachrichtigung"
+
+#: Order/view/partials/order-parts/logical-connection.phtml:13
+msgid "on successful transfer"
+msgstr "bei erfolgreicher Übertragung"
+
+#: Order/view/partials/order-parts/logical-connection.phtml:14
+msgid "on failed transfer"
+msgstr "bei fehlgeschlagener Übertragung"
+
+#: Order/view/partials/order-parts/order-info.phtml:12
+msgid "new"
+msgstr "neu"
+
 #: Order/view/partials/order-parts/order-info.phtml:13
+msgid "canceled"
+msgstr "storniert"
+
+#: Order/view/partials/order-parts/order-info.phtml:19
 msgid "Order info"
 msgstr "Informationen zur Bestellung"
 
-#: Order/view/partials/order-parts/order-info.phtml:16
+#: Order/view/partials/order-parts/order-info.phtml:22
 msgid "created on"
 msgstr "erstellt am"
 
-#: Order/view/partials/order-parts/order-info.phtml:20
+#: Order/view/partials/order-parts/order-info.phtml:26
 msgid "status"
 msgstr "Status"
 
@@ -760,6 +826,9 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "role"
+#~ msgstr "Rolle"
 
 #~ msgid "An error 403 occured (access forbidden)."
 #~ msgstr "Ein Feher 403 ist aufgetreten (Zugriff verweigert)."
@@ -866,9 +935,6 @@ msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 
 #~ msgid "server plattform"
 #~ msgstr "Server-Plattform"
-
-#~ msgid "type"
-#~ msgstr "Typ"
 
 #~ msgid "service invoice position number (basic)"
 #~ msgstr "LSP-S"

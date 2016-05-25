@@ -1,0 +1,63 @@
+<?php
+use DbSystel\DataObject\LogicalConnection;
+/**
+ *
+ * @var LogicalConnection $dataObject
+ */
+$dataObject;
+?>
+<?php
+// for translations (workaround)
+if (false) {
+    $this->translate('notification');
+    $this->translate('on successful transfer');
+    $this->translate('on failed transfer');
+}
+?>
+<?php
+$flags = [
+    0 => $this->translate('no'),
+    1 => $this->translate('yes')
+];
+?>
+<?php
+// notifications
+$notificationsOutput = '-';
+if ($dataObject->getNotifications()) {
+    $notificationsOutput = '<ul class="notifications">';
+    $index = 0;
+    foreach ($dataObject->getNotifications() as $notification) {
+        $index++;
+        $notificationsOutput .= <<<NOTIFICATION
+<li>
+    <span>{$this->translate('notification')} {$index}<span>
+    <ul>
+    <li>{$this->translate('email')}: {$notification->getEmail()}</li>
+    <li>{$this->translate('on successful transfer')}: {$flags[$notification->getSuccess()]}</li>
+    <li>{$this->translate('on failed transfer')}: {$flags[$notification->getFailure()]}</li>
+    </ul>
+</li>
+NOTIFICATION;
+    }
+    $notificationsOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'basic-source';
+$orderPartCssClass = 'col-md-12';
+$orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('directly from the source to the target') . ')';
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('notifications'),
+        'value' => $notificationsOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

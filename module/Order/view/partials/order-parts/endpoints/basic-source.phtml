@@ -1,0 +1,43 @@
+<?php
+use DbSystel\DataObject\AbstractEndpoint;
+/**
+ *
+ * @var AbstractEndpoint $dataObject
+ */
+$dataObject;
+?>
+<?php
+$orderPartCssId = 'basic-source';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Source - basic settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('contact person'),
+        'value' => $dataObject->getContactPerson() ?: '-'
+    ],
+    [
+        'label' => $this->translate('server place'),
+        'value' => $this->translate($dataObject->getServerPlace()) ?: '-'
+    ],
+    [
+        'label' => $this->translate('application'),
+        'value' => $dataObject->getApplication() ? $dataObject->getApplication()->getTechnicalShortName() : '-'
+    ],
+    [
+        'label' => ucfirst($this->translate('external partner')),
+        'value' => $dataObject->getCustomer() ? $dataObject->getCustomer()->getName() : '-'
+    ],
+    [
+        'label' => $this->translate('server'),
+        'value' => $dataObject->getServer() ? $dataObject->getServer()->getName() : '-'
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
