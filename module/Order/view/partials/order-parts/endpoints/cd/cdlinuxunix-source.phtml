@@ -9,18 +9,18 @@ $dataObject;
 ?>
 <?php
 // servers
-$serversOutput = '-';
+$protocolsOutput = '-';
 if ($dataObject->getServers()) {
-    $serversOutput = '<ul class="servers">';
+    $protocolsOutput = '<ul class="servers">';
     $index = 0;
     foreach ($dataObject->getServers() as $server) {
-        $serversOutput .= <<<SERVER
+        $protocolsOutput .= <<<SERVER
 <li>
     <span>{$server->getName()}<span>
 </li>
 SERVER;
     }
-    $serversOutput .= '</ul>';
+    $protocolsOutput .= '</ul>';
 }
 ?>
 <?php
@@ -66,7 +66,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('servers'),
-        'value' => $serversOutput
+        'value' => $protocolsOutput
     ],
     [
         'label' => $this->translate('service address'),

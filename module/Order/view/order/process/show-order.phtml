@@ -63,10 +63,10 @@ echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' .
 <?php
 // // endpoint target (specific settings)
 $connectionType = strtolower($fileTransferRequest->getLogicalConnection()->getType());
-$endpointSourceType = strtolower($endpointSource->getType());
-echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointSourceType . '-target',
+$endpointTargetType = strtolower($endpointTarget->getType());
+echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
     [
-        'dataObject' => $endpointSource,
+        'dataObject' => $endpointTarget,
     ]);
 ?>
 

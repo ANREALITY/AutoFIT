@@ -25,7 +25,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => ucfirst($this->translate('external partner')),
-        'value' => $dataObject->getCustomer() ? $dataObject->getCustomer()->getName() : '-'
+        'value' => $dataObject->getCustomer() && $dataObject->getCustomer()->getName() ? $dataObject->getCustomer()->getName() : '-'
     ],
     [
         'label' => $this->translate('server'),
