@@ -1,0 +1,48 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwWindows;
+use DbSystel\DataObject\IncludeParameterSet;
+/**
+ *
+ * @var EndpointFtgwWindows $dataObject
+ */
+$dataObject;
+?>
+<?php
+// include parameters
+$includeParametersOutput = '-';
+if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
+    $includeParametersOutput = '<ul class="include-parameters">';
+    $index = 0;
+    foreach ($dataObject->getIncludeParameterSet()->getIncludeParameters() as $includeParameter) {
+        $includeParametersOutput .= <<<INCLUDE_PARAMETER
+<li>
+    <span>{$includeParameter->getExpression()}<span>
+</li>
+INCLUDE_PARAMETER;
+    }
+    $includeParametersOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'specific-source';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Source - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('include parameters'),
+        'value' => $includeParametersOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

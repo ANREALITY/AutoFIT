@@ -166,21 +166,35 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
         return $return;
     }
 
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null, $identifier = null,
+        $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null, callable $dataObjectCondition = null,
+        bool $isCollection = false)
     {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier,
+            $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
-        $includeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            'id', 'endpoint_cd_linux_unix_include_parameter__', null, null, null, null, true);
+        // @todo It's a hack! Find a clean solution!
+        if ($prefix === 'endpoint_cd_linux_unix_include_parameter_set__') {
+            $cdLinuxUnixIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_cd_linux_unix_include_parameter__', null, null, null, null, true);
+        }
+        if ($prefix === 'endpoint_ftgw_windows_include_parameter_set__') {
+            $ftgwWindowsIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_include_parameter__', null, null, null, null, true);
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
             // can though quals to the $dataObject->getId()!!!!!
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $includeParameterDataObjects, 'setIncludeParameters',
-                'getId');
+            if ($prefix === 'endpoint_cd_linux_unix_include_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterDataObjects,
+                    'setIncludeParameters', 'getId');
+            }
+            if ($prefix === 'endpoint_ftgw_windows_include_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsIncludeParameterDataObjects,
+                    'setIncludeParameters', 'getId');
+            }
         }
 
         return $dataObjects;
