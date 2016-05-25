@@ -1,0 +1,41 @@
+<?php
+use DbSystel\DataObject\PhysicalConnectionFtgw;
+/**
+ *
+ * @var PhysicalConnectionFtgw $dataObject
+ */
+$physicalConnectionEndToMiddle;
+/**
+ *
+ * @var PhysicalConnectionFtgw $dataObject
+ */
+$physicalConnectionMiddleToEnd;
+?>
+<?php
+$orderPartCssId = 'physical-connection-end-to-middle';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the source to the FTGW server') . ')';
+$orderPartAttributes = [];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => true
+    ]);
+?>
+<?php
+$orderPartCssId = 'physical-connection-end-to-middle';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the FTGW server to the target') . ')';
+$orderPartAttributes = [];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => true
+    ]);
+?>

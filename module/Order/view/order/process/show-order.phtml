@@ -88,24 +88,25 @@ echo $this->partial('/partials/order-parts/logical-connection',
 $connectionType = strtolower($fileTransferRequest->getLogicalConnection()->getType());
 // CD
 if ($fileTransferRequest->getLogicalConnection()->getType() == LogicalConnection::TYPE_CD) {
-    $dataObject = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd();
+    $dataObjectPhysicalConnectionFtgwEndToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd();
 }
 // FTGW (no settings for now)
-// elseif ($fileTransferRequest->getLogicalConnection()->getType() == LogicalConnection::TYPE_FTGW) {
-//     $physicalConnectionEndToMiddle = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle();
-//     $physicalConnectionMiddleToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd();
-// }
+elseif ($fileTransferRequest->getLogicalConnection()->getType() == LogicalConnection::TYPE_FTGW) {
+    $physicalConnectionEndToMiddle = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle();
+    $physicalConnectionMiddleToEnd = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd();
+}
 // CD
 if ($fileTransferRequest->getLogicalConnection()->getType() == LogicalConnection::TYPE_CD) {
     echo $this->partial('/partials/order-parts/connections/' . $connectionType,
     [
-        'dataObject' => $dataObject
+        'dataObject' => $dataObjectPhysicalConnectionFtgwEndToEnd
     ]);
 }
 // FTGW (no settings for now)
-// elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-//     echo $this->partial('/partials/order-parts/connections/' . $connectionType, [
-//         'fileTransferRequest' => $fileTransferRequest
-//     ]);
-// }
+elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
+    echo $this->partial('/partials/order-parts/connections/' . $connectionType, [
+        'physicalConnectionEndToMiddle' => $physicalConnectionEndToMiddle,
+        'physicalConnectionMiddleToEnd' => $physicalConnectionMiddleToEnd
+    ]);
+}
 ?>
