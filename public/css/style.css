@@ -276,6 +276,8 @@ div.error-reference {
   border: 1px solid #cccccc;
   border-radius: 3px;
 }
-ul.notifications {
+ul.notifications,
+ul.servers,
+ul.include-parameters {
     list-style: none;
 }

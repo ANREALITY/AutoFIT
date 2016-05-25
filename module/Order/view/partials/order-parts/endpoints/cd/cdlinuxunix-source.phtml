@@ -1,10 +1,43 @@
 <?php
 use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\IncludeParameterSet;
 /**
  *
  * @var EndpointCdLinuxUnix $dataObject
  */
 $dataObject;
+?>
+<?php
+// servers
+$serversOutput = '-';
+if ($dataObject->getServers()) {
+    $serversOutput = '<ul class="servers">';
+    $index = 0;
+    foreach ($dataObject->getServers() as $server) {
+        $serversOutput .= <<<SERVER
+<li>
+    <span>{$server->getName()}<span>
+</li>
+SERVER;
+    }
+    $serversOutput .= '</ul>';
+}
+?>
+<?php
+// include parameters
+$includeParametersOutput = '-';
+if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
+    $includeParametersOutput = '<ul class="include-parameters">';
+    $index = 0;
+    foreach ($dataObject->getIncludeParameterSet()->getIncludeParameters() as $includeParameter) {
+        $includeParametersOutput .= <<<INCLUDE_PARAMETER
+<li>
+    <span>{$includeParameter->getExpression()}<span>
+</li>
+INCLUDE_PARAMETER;
+    }
+    $includeParametersOutput .= '</ul>';
+}
 ?>
 <?php
 $orderPartCssId = 'specific-source';
@@ -33,7 +66,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('servers'),
-        'value' => 'SERVERS: TODO'
+        'value' => $serversOutput
     ],
     [
         'label' => $this->translate('service address'),
@@ -45,7 +78,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('include parameters'),
-        'value' => 'INCLUDE PARAMETERS: TODO'
+        'value' => $includeParametersOutput
     ],
 ];
 echo $this->partial('/partials/order-part',
