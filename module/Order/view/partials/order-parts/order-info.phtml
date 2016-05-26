@@ -20,7 +20,7 @@ $orderPartTitle = $this->translate('Order info');
 $orderPartAttributes = [
     [
         'label' => ucfirst($this->translate('created on')),
-        'value' => $fileTransferRequest->getCreated() ?: '&nbsp;'
+        'value' => $fileTransferRequest->getCreated() ? strftime('%e.%m.%Y', strtotime($fileTransferRequest->getCreated())) : '&nbsp;'
     ],
     [
         'label' => $this->translate('status'),
