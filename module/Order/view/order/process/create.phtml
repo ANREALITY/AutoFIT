@@ -9,6 +9,14 @@ echo $this->form()->openTag($form);
 ?>
 
 <?php
+// validation errors
+echo $this->partial('/partials/validation-errors',
+    [
+        'form' => $form,
+    ]);
+?>
+
+<?php
 $fileTransferRequestFieldset = $form->get('file_transfer_request');
 $userFieldset = $fileTransferRequestFieldset->get('user');
 $environmentFieldset = $fileTransferRequestFieldset->get('environment');

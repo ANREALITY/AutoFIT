@@ -157,13 +157,24 @@ form fieldset legend {
 form label fieldset legend {
   display: none;
 }
-form .error-message-container {
-  display: inline-block;
+form div.validation-errors-container {
+  display: block;
   list-style: none;
   margin: 0;
   padding: 0 15px 5px 15px;
   color: #a94442;
-  font-size: 10px;
+}
+form div.validation-errors-container:empty {
+  display: none;
+}
+form div.validation-errors-container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+form div.validation-errors-container ul li {
+  margin: 5px 0 5px 0;
+  padding: 5px 15px 5px 15px;
 }
 form.cd .form-control:focus {
   border-color: #ffcc33;
@@ -275,9 +286,4 @@ div.error-reference {
   padding: 10px;
   border: 1px solid #cccccc;
   border-radius: 3px;
-}
-ul.notifications,
-ul.servers,
-ul.include-parameters {
-    list-style: none;
 }
