@@ -18,6 +18,12 @@ class Application extends AbstractDataObject
 
     /**
      *
+     * @var boolean
+     */
+    protected $active;
+
+    /**
+     *
      * @return the $technicalShortName
      */
     public function getTechnicalShortName()
@@ -50,6 +56,24 @@ class Application extends AbstractDataObject
     public function setTechnicalId($technicalId)
     {
         $this->technicalId = $technicalId;
+    }
+
+    /**
+     *
+     * @return the $active
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     *
+     * @param boolean $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
 }

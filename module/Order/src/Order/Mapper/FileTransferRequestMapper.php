@@ -284,9 +284,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'service_invoice_position_basic' . '__' . 'number' => 'number',
                 'service_invoice_position_basic' . '__' . 'order_quantity' => 'order_quantity',
                 'service_invoice_position_basic' . '__' . 'description' => 'description',
+                'service_invoice_position_basic' . '__' . 'status' => 'status',
                 'service_invoice_position_basic' . '__' . 'service_invoice_number' => 'service_invoice_number',
-                'service_invoice_position_basic' . '__' . 'article_sku' => 'article_sku',
-                'service_invoice_position_basic' . '__' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+                'service_invoice_position_basic' . '__' . 'article_sku' => 'article_sku'
             ], Join::JOIN_LEFT);
         $select->join([
             'service_invoice_position_personal' => 'service_invoice_position'
@@ -295,9 +295,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'service_invoice_position_personal' . '__' . 'number' => 'number',
                 'service_invoice_position_personal' . '__' . 'order_quantity' => 'order_quantity',
                 'service_invoice_position_personal' . '__' . 'description' => 'description',
+                'service_invoice_position_personal' . '__' . 'status' => 'status',
                 'service_invoice_position_personal' . '__' . 'service_invoice_number' => 'service_invoice_number',
-                'service_invoice_position_personal' . '__' . 'article_sku' => 'article_sku',
-                'service_invoice_position_personal' . '__' . 'service_invoice_position_status_name' => 'service_invoice_position_status_name'
+                'service_invoice_position_personal' . '__' . 'article_sku' => 'article_sku'
             ], Join::JOIN_LEFT);
 
         $select->join('service_invoice',
@@ -310,7 +310,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             'application.technical_short_name = service_invoice.application_technical_short_name',
             [
                 'application' . '__' . 'technical_short_name' => 'technical_short_name',
-                'application' . '__' . 'technical_id' => 'technical_id'
+                'application' . '__' . 'technical_id' => 'technical_id',
+                'application' . '__' . 'active' => 'active'
             ], Select::JOIN_LEFT);
         $select->join('environment', 'environment.severity = service_invoice.environment_severity',
             [
@@ -336,7 +337,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->join('server',
             'server.name = endpoint.server_name',
             [
-                'server' . '__' . 'name' => 'name'
+                'server' . '__' . 'name' => 'name',
+                'server' . '__' . 'active' => 'active'
             ], Select::JOIN_LEFT);
         $select->join('customer',
             'customer.id = endpoint.customer_id',

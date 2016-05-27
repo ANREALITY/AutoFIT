@@ -24,6 +24,12 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
+     * @var string
+     */
+    protected $status;
+
+    /**
+     *
      * @var ServiceInvoice
      */
     protected $serviceInvoice;
@@ -33,12 +39,6 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @var Article
      */
     protected $article;
-
-    /**
-     *
-     * @var ServiceInvoicePositionStatus
-     */
-    protected $serviceInvoicePositionStatus;
 
     /**
      *
@@ -96,6 +96,24 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
+     * @return the $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     *
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     *
      * @return the $serviceInvoice
      */
     public function getServiceInvoice()
@@ -105,9 +123,9 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @param ServiceInvoice $serviceInvoice
+     * @param \DbSystel\DataObject\ServiceInvoice $serviceInvoice
      */
-    public function setServiceInvoice(ServiceInvoice $serviceInvoice)
+    public function setServiceInvoice($serviceInvoice)
     {
         $this->serviceInvoice = $serviceInvoice;
     }
@@ -123,29 +141,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @param Article $article
+     * @param \DbSystel\DataObject\Article $article
      */
-    public function setArticle(Article $article)
+    public function setArticle($article)
     {
         $this->article = $article;
-    }
-
-    /**
-     *
-     * @return the $serviceInvoicePositionStatus
-     */
-    public function getServiceInvoicePositionStatus()
-    {
-        return $this->serviceInvoicePositionStatus;
-    }
-
-    /**
-     *
-     * @param ServiceInvoicePositionStatus $serviceInvoicePositionStatus
-     */
-    public function setServiceInvoicePositionStatus(ServiceInvoicePositionStatus $serviceInvoicePositionStatus)
-    {
-        $this->serviceInvoicePositionStatus = $serviceInvoicePositionStatus;
     }
 
 }

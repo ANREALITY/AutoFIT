@@ -22,6 +22,12 @@ class Server extends AbstractDataObject
 
     /**
      *
+     * @var boolean
+     */
+    protected $active;
+
+    /**
+     *
      * @return the $name
      */
     public function getName()
@@ -54,6 +60,24 @@ class Server extends AbstractDataObject
     public function setServerType($serverType)
     {
         $this->serverType = $serverType;
+    }
+
+    /**
+     *
+     * @return the $active
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     *
+     * @param boolean $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
 }
