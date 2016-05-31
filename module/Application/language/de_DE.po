@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-25 11:01+0200\n"
-"PO-Revision-Date: 2016-05-25 11:02+0200\n"
+"POT-Creation-Date: 2016-05-31 11:04+0200\n"
+"PO-Revision-Date: 2016-05-31 11:05+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -46,8 +46,10 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:44
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:23
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:23
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:23
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:56
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:39
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:23
 msgid "folder"
 msgstr "Verzeichnis"
 
@@ -65,8 +67,8 @@ msgid "multiple servers"
 msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:39
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:31
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
 msgid "service address"
 msgstr "Service-Adresse"
 
@@ -105,6 +107,8 @@ msgid "Self-Service"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:35
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
 msgid "protocols"
 msgstr "Protokolle"
 
@@ -113,6 +117,8 @@ msgid "FTWG user"
 msgstr "FTGW User"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:64
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:43
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:43
 msgid "mailbox"
 msgstr "Mailbox"
 
@@ -183,22 +189,26 @@ msgid "Source - LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:27
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:60
 msgid "transmission type"
 msgstr "Übertragungsart"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:31
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
 msgid "transmission interval"
 msgstr "Sendeintervall"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:91
+msgid "The input does not match against the crontab pattern"
+msgstr "Die Eingabe entspricht dem Crontab-Muster."
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
 msgid "Target - LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:43
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:35
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
 msgid "cluster"
 msgstr "Cluster"
 
@@ -241,7 +251,8 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:47
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 msgid "include parameters"
 msgstr "Include-Parameter"
 
@@ -281,8 +292,12 @@ msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:35
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:52
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:35
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 msgid "username"
 msgstr "Benutzername"
 
@@ -614,7 +629,7 @@ msgstr "Abrechnung"
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:8
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:31
 #: Order/view/partials/order-parts/connections/cd.phtml:12
-#: Order/view/partials/order-parts/connections/ftgw.phtml:8
+#: Order/view/partials/order-parts/connections/ftgw.phtml:17
 #: Order/view/partials/order-parts/connections/ftgw.phtml:31
 #: Order/view/partials/order-parts/logical-connection.phtml:48
 msgid "Technical connection"
@@ -627,12 +642,12 @@ msgid "directly from the source to the target"
 msgstr "direkt vom Quell- zum Zielsystem"
 
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:9
-#: Order/view/partials/order-parts/connections/ftgw.phtml:9
+#: Order/view/partials/order-parts/connections/ftgw.phtml:17
 msgid "from the source to the FTGW server"
 msgstr "vom Quellsystem zum FTGW-Server"
 
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:32
-#: Order/view/partials/order-parts/connections/ftgw.phtml:32
+#: Order/view/partials/order-parts/connections/ftgw.phtml:31
 msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
@@ -651,11 +666,11 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:4
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:8
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:4
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:45
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:12
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:29
 msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
@@ -664,11 +679,11 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:4
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:4
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:8
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:4
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:28
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
 msgstr "Zielsystem (spezifische Einstellungen)"
 
@@ -690,8 +705,8 @@ msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:80
 #: Order/view/partials/list/summary.phtml:93
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:35
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:27
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
 msgid "servers"
 msgstr "Servers"
 
@@ -714,23 +729,36 @@ msgid "user"
 msgstr "Benutzer"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:44
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:36
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
 #: Order/view/partials/order-parts/logical-connection.phtml:20
 msgid "yes"
 msgstr "ja"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:44
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:36
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
 
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:15
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:48
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:31
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:15
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:31
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:32
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:15
 msgid "type"
 msgstr "Typ"
+
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:39
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:39
+msgid "FTGW username"
+msgstr ""
 
 #: Order/view/partials/order-parts/logical-connection.phtml:12
 msgid "notification"
