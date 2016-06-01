@@ -13,7 +13,7 @@ $(function() {
 					+ "data[technical_short_name]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 10));
+						response(data.slice(0, 25));
 					}
 				);
 			}
@@ -76,7 +76,7 @@ $(function() {
 					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
-						response(data.slice(0, 10));
+						response(data.slice(0, 25));
 					}
 				);
 			}
@@ -103,7 +103,7 @@ $(function() {
 					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
-						response(data.slice(0, 10));
+						response(data.slice(0, 25));
 					}
 				);
 			}
@@ -129,7 +129,7 @@ $(function() {
 					+ "data[name]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 10));
+						response(data.slice(0, 25));
 					}
 				);
 			}

@@ -312,7 +312,7 @@ table#crontab-examples td.dt {
     white-space: nowrap;
 }
 
-div.error-reference {
+.error-reference {
     background: #ffffff;
     background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
     background:      -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
@@ -320,4 +320,11 @@ div.error-reference {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 3px;
+}
+
+.ui-autocomplete {
+    max-height: 265px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
 }

@@ -287,3 +287,10 @@ div.error-reference {
   border: 1px solid #cccccc;
   border-radius: 3px;
 }
+
+.ui-autocomplete {
+    max-height: 265px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
