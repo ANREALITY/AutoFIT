@@ -135,7 +135,8 @@ class ProcessController extends AbstractActionController
             'form' => $this->orderForm,
             'connectionType' => $this->connectionType,
             'endpointSourceType' => $this->endpointSourceType,
-            'endpointTargetType' => $this->endpointTargetType
+            'endpointTargetType' => $this->endpointTargetType,
+            'fileTransferRequest' => $this->fileTransferRequest
         ];
     }
 

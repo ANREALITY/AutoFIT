@@ -1,5 +1,6 @@
 <?php
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\FileTransferRequest;
 ?>
 
 <?php
@@ -39,6 +40,19 @@ $serverForSourceFieldset = $endpointSourceFieldset->get('server');
 $applicationForTargetFieldset = $endpointTargetFieldset->get('application');
 $customerForTargetFieldset = $endpointTargetFieldset->get('customer');
 $serverForTargetFieldset = $endpointTargetFieldset->get('server');
+?>
+
+<?php
+/**
+ * @var FileTransferRequest $fileTransferRequest
+ */
+$serviceInvoice = $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice();
+$applicationTechnicalShortName = $serviceInvoice->getApplication()->getTechnicalShortName();
+$fileTransferRequestFieldset->get('application_technical_short_name')->setValue($applicationTechnicalShortName);
+$environmentSeverity = $serviceInvoice->getEnvironment()->getSeverity();
+$environmentFieldset->get('severity')->setValue($environmentSeverity);
+$environmentName = $serviceInvoice->getEnvironment()->getName();
+$environmentFieldset->get('name')->setValue($environmentName);
 ?>
 
 <?php
