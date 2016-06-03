@@ -74,7 +74,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
 
         $this->add(
             [
-                'name' => 'application_number',
+                'name' => 'application_technical_short_name',
                 'type' => 'text',
                 'options' => [
                     'label' => _('application'),
