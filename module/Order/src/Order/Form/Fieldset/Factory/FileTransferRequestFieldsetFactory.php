@@ -16,11 +16,12 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
-        $connectionType = $requestAnalyzer->getConnectionType();
+        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $connectionType = $properServiceNameDetector->getConnectionType();
 
-        if (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_CD) === 0) {
+        if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             $fieldset = new FileTransferRequestCdFieldset();
-        } elseif (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_FTGW) === 0) {
+        } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
             $fieldset = new FileTransferRequestFtgwFieldset();
         }
 

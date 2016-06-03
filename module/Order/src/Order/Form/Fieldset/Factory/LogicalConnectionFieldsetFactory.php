@@ -15,22 +15,21 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
-        $connectionType = $requestAnalyzer->getConnectionType();
+        $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
+        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $connectionType = $properServiceNameDetector->getConnectionType();
 
-        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
-            'Order\Utility\ProperServiceNameDetector');
-
-        $physicalConnectionEndToEndFieldsetServiceName = $isOrderRequest &&
+        $physicalConnectionEndToEndFieldsetServiceName = ($isOrderRequest || $isOrderEditRequest) &&
              strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0 ? $properServiceNameDetector->getPhysicalConnectionEndToEndFieldsetServiceName() : null;
-        $physicalConnectionEndToMiddleFieldsetServiceName = $isOrderRequest &&
+        $physicalConnectionEndToMiddleFieldsetServiceName = ($isOrderRequest || $isOrderEditRequest) &&
              strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0 ? $properServiceNameDetector->getphysicalConnectionEndToMiddleFieldsetServiceName() : null;
-        $physicalConnectionMiddleToEndFieldsetServiceName = $isOrderRequest &&
+        $physicalConnectionMiddleToEndFieldsetServiceName = ($isOrderRequest || $isOrderEditRequest) &&
              strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0 ? $properServiceNameDetector->getPhysicalConnectionMiddleToEndFieldsetServiceName() : null;
 
-        if (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_CD) === 0) {
+        if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             $fieldset = new LogicalConnectionCdFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName,
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
-        } elseif (strcasecmp($requestAnalyzer->getConnectionType(), LogicalConnection::TYPE_FTGW) === 0) {
+        } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
             $fieldset = new LogicalConnectionFtgwFieldset(null, [], $physicalConnectionEndToEndFieldsetServiceName,
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
         }

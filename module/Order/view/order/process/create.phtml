@@ -1,8 +1,8 @@
 <?php
 use DbSystel\DataObject\LogicalConnection;
 ?>
-<?php
 
+<?php
 $formClass = strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0 ? 'cd' : 'ftgw';
 $form->setAttribute('class', $formClass)->prepare();
 echo $this->form()->openTag($form);

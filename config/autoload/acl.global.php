@@ -18,6 +18,10 @@ return [
                     'index' => 'member',
                     'start' => 'member',
                     'create' => 'member',
+                    'edit' => [
+                        'admin' => null,
+                        'member' => 'UserIsOwner'
+                    ],
                     'received' => 'member',
                     'showOrder' => [
                         'admin' => null,

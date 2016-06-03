@@ -22,11 +22,26 @@ class RequestAnalyzer
      */
     protected $requestPost;
 
-    public function __construct(array $routerMatchParams, array $requestQuery, array $requestPost)
+    /**
+     *
+     * @var string
+     */
+    protected $orderControllerName;
+
+    /**
+     *
+     * @var string
+     */
+    protected $orderEditActionName;
+
+    public function __construct(array $routerMatchParams, array $requestQuery, array $requestPost,
+        string $orderControllerName = null, string $orderEditActionName = null)
     {
         $this->routerMatchParams = $routerMatchParams;
         $this->requestQuery = $requestQuery;
         $this->requestPost = $requestPost;
+        $this->orderControllerName = 'Order\Controller\Process';
+        $this->orderEditActionName = 'edit';
     }
 
     public function isStartRequest()
@@ -56,19 +71,17 @@ class RequestAnalyzer
         return $allParamsForOrderFormGiven;
     }
 
-    public function getConnectionType()
+    public function isOrderEditRequest()
     {
-        return ! empty($this->routerMatchParams['connectionType']) ? $this->routerMatchParams['connectionType'] : null;
-    }
+        $paramsIdentifyingEditRequest = [
+            'controller' => $this->orderControllerName,
+            'action' => $this->orderEditActionName
+        ];
 
-    public function getEndpointSourceType()
-    {
-        return ! empty($this->routerMatchParams['endpointSourceType']) ? $this->routerMatchParams['endpointSourceType'] : null;
-    }
+        $allParamsCorrectForOrderEdit = count(array_intersect($paramsIdentifyingEditRequest, $this->routerMatchParams)) ===
+             count($paramsIdentifyingEditRequest);
 
-    public function getEndpointTargetType()
-    {
-        return ! empty($this->routerMatchParams['endpointTargetType']) ? $this->routerMatchParams['endpointTargetType'] : null;
+        return $allParamsCorrectForOrderEdit;
     }
 
 }

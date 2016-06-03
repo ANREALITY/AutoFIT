@@ -13,22 +13,28 @@ class ProcessControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
 
-        $service = new ProcessController(new FileTransferRequest(),
-            $realServiceLocator->get('Order\Service\FileTransferRequestService'));
-
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
+        $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
         $isStartRequest = $requestAnalyzer->isStartRequest();
+        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $connectionType = $properServiceNameDetector->getConnectionType();
+        $endpointSourceType = $properServiceNameDetector->getEndpointSourceType();
+        $endpointTargetType = $properServiceNameDetector->getEndpointTargetType();
 
-        if ($isOrderRequest) {
+        $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
+        $fileTransferRequest = $realServiceLocator->get('DbSystel\DataObject\FileTransferRequest');
+        $service = new ProcessController($fileTransferRequest, $fileTransferRequestService);
+
+        if ($isOrderRequest || $isOrderEditRequest) {
             $formElementManager = $realServiceLocator->get('FormElementManager');
             $orderForm = $formElementManager->get('Order\Form\OrderForm');
             $service->setOrderForm($orderForm);
-            $service->setConnectionType($requestAnalyzer->getConnectionType());
-            $service->setEndpointSourceType($requestAnalyzer->getEndpointSourceType());
-            $service->setEndpointTargetType($requestAnalyzer->getEndpointTargetType());
+            $service->setConnectionType($connectionType);
+            $service->setEndpointSourceType($endpointSourceType);
+            $service->setEndpointTargetType($endpointTargetType);
         } elseif ($isStartRequest) {
-            $service->setConnectionType($requestAnalyzer->getConnectionType());
+            $service->setConnectionType($connectionType);
         }
 
         $authenticationService = $realServiceLocator->get('AuthenticationService');

@@ -26,6 +26,17 @@ return [
                     ]
                 ]
             ],
+            'edit-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/edit/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'edit',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'show-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
@@ -132,7 +143,9 @@ return [
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
             // utitlities
             'Order\Utility\ProperServiceNameDetector' => 'Order\Utility\Factory\ProperServiceNameDetectorFactory',
-            'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory'
+            'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory',
+            // DataObjects
+            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
         ],
         'invokables' => [],
         'abstract_factories' => [

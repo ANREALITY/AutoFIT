@@ -3,9 +3,6 @@ namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Form\FormInterface;
-use DbSystel\DataObject\FileTransferRequest;
-use Order\Service\FileTransferRequestService;
 
 class ProcessController extends AbstractActionController
 {
@@ -24,8 +21,8 @@ class ProcessController extends AbstractActionController
 
     protected $authenticationService;
 
-    public function __construct(FileTransferRequest $fileTransferRequest,
-        FileTransferRequestService $fileTransferRequestService)
+    public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest,
+        \Order\Service\FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
@@ -101,6 +98,38 @@ class ProcessController extends AbstractActionController
                     ]);
             }
         }
+
+        return [
+            'form' => $this->orderForm,
+            'connectionType' => $this->connectionType,
+            'endpointSourceType' => $this->endpointSourceType,
+            'endpointTargetType' => $this->endpointTargetType
+        ];
+    }
+
+    public function editAction()
+    {
+        // $this->orderForm->bind($this->fileTransferRequest);
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $this->orderForm->setData($request->getPost());
+            if ($this->orderForm->isValid()) {
+                $username = $this->authenticationService->getIdentity()['username'];
+                $this->fileTransferRequest->getUser()->setUsername($username);
+                $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                return $this->forward()->dispatch('Order\Controller\Process',
+                    [
+                        'action' => 'received'
+                    ]);
+            }
+        }
+
+        $id = $this->params()->fromRoute('id', null);
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
+        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+
+        $this->orderForm->bind($this->fileTransferRequest);
 
         return [
             'form' => $this->orderForm,

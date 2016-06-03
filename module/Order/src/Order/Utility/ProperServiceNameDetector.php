@@ -15,6 +15,21 @@ class ProperServiceNameDetector
         $this->routerMatchParams = $routerMatchParams;
     }
 
+    public function getConnectionType()
+    {
+        return isset($this->routerMatchParams['connectionType']) ? $this->routerMatchParams['connectionType'] : null;
+    }
+
+    public function getEndpointSourceType()
+    {
+        return isset($this->routerMatchParams['endpointSourceType']) ? $this->routerMatchParams['endpointSourceType'] : null;
+    }
+
+    public function getEndpointTargetType()
+    {
+        return isset($this->routerMatchParams['endpointTargetType']) ? $this->routerMatchParams['endpointTargetType'] : null;
+    }
+
     public function getPhysicalConnectionEndToEndFieldsetServiceName()
     {
         if (! empty($this->routerMatchParams['connectionType'])) {
