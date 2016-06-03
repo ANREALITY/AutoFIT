@@ -456,16 +456,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     {
         $data = [];
         // data retrieved directly from the input
+        $data['id'] = $dataObject->getId();
         $data['change_number'] = $dataObject->getChangeNumber();
         $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
         $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
-        if (empty($data['id'])) {
-            $data['created'] = null;
-            $data['updated'] = null;
-        } else {
-            unset($data['created']);
-            $data['updated'] = null;
-        }
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
@@ -476,7 +470,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $data['logical_connection_id'] = $newLogicalConnection->getId();
         $data['user_id'] = $newUser->getId();
 
-        $action = new Insert('file_transfer_request');
+        if (! $data['id']) {
+            $action = new Insert('file_transfer_request');
+        } else {
+            $action = new Update('file_transfer_request');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+        }
         $action->values($data);
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
