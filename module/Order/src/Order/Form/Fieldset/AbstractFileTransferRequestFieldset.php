@@ -126,7 +126,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                     ]
                 ]
             ],
-            'application_number' => [
+            'application_technical_short_name' => [
                 'required' => true
             ]
         ];
