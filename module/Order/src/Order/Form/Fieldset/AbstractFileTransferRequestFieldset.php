@@ -4,6 +4,7 @@ namespace Order\Form\Fieldset;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Db\Adapter\AdapterInterface;
+use Zend\Validator\Db\NoRecordExists;
 
 abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -117,12 +118,21 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                         ]
                     ],
                     [
-                        'name' => 'Zend\Validator\Db\NoRecordExists',
+                        'name' => 'Callback',
                         'options' => [
-                            'table' => 'file_transfer_request',
-                            'field' => 'change_number',
-                            'adapter' => $this->dbAdapter
-                        ]
+                            'callback' => function($value, $context = []) {
+                                $return = true;
+                                if (empty($context['id'])) {
+                                    $noRecordExistsValidator = new NoRecordExists([
+                                        'table' => 'file_transfer_request',
+                                        'field' => 'change_number',
+                                        'adapter' => $this->dbAdapter
+                                    ]);
+                                    $return = $noRecordExistsValidator->isValid($value);
+                                }
+                                return $return;
+                            },
+                        ],
                     ]
                 ]
             ],
