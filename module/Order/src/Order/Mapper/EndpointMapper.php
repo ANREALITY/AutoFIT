@@ -193,8 +193,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['server_place'] = $dataObject->getServerPlace();
         $data['contact_person'] = $dataObject->getContactPerson();
         $data['physical_connection_id'] = $dataObject->getPhysicalConnection()->getId();
-        $data['server_name'] = $dataObject->getServer()->getName() ?: new Expression('NULL');
-        $data['application_technical_short_name'] = $dataObject->getApplication()->getTechnicalShortName() ?: new Expression(
+        $data['server_name'] = $dataObject->getServer() && $dataObject->getServer()->getName() ? $dataObject->getServer()->getName() : new Expression('NULL');
+        $data['application_technical_short_name'] = $dataObject->getApplication() && $dataObject->getApplication()->getTechnicalShortName() ? $dataObject->getApplication()->getTechnicalShortName() : new Expression(
             'NULL');
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
@@ -333,18 +333,20 @@ DELETE FROM
 WHERE
     endpoint_cd_linux_unix_endpoint_id = $newEndpointId
 SQL;
-                foreach ($dataObject->getServers() as $server) {
-                    if ($server->getName()) {
-                        $sql = <<<SQL
+                if ($dataObject->getServers()) {
+                    foreach ($dataObject->getServers() as $server) {
+                        if ($server->getName()) {
+                            $sql = <<<SQL
 INSERT INTO
     endpoint_cd_linux_unix_server
 (endpoint_cd_linux_unix_endpoint_id, server_name)
 VALUES ('$newEndpointId', '{$server->getName()}');
 SQL;
-                        $result = $this->dbAdapter->getDriver()
-                            ->getConnection()
-                            ->execute($sql);
-                        ;
+                            $result = $this->dbAdapter->getDriver()
+                                ->getConnection()
+                                ->execute($sql);
+                            ;
+                        }
                     }
                 }
             }
