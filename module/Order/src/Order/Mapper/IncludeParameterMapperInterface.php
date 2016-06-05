@@ -23,10 +23,11 @@ interface IncludeParameterMapperInterface
     /**
      *
      * @param IncludeParameter $dataObject
+     * @param boolean $updateIfIdSet
      * @return IncludeParameter
      * @throws \Exception
      */
-    public function save(IncludeParameter $dataObject);
+    public function save(IncludeParameter $dataObject, bool $updateIfIdSet = false);
 
     /**
      *

@@ -74,11 +74,12 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
     /**
      *
      * @param IncludeParameter $dataObject
+     * @param boolean $updateIfIdSet
      *
      * @return IncludeParameter
      * @throws \Exception
      */
-    public function save(IncludeParameter $dataObject)
+    public function save(IncludeParameter $dataObject, bool $updateIfIdSet = true)
     {
         $data = [];
         // data retrieved directly from the input
@@ -90,14 +91,14 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
         // data from the recently persisted objects
         // none
 
-        if (! $data['id']) {
-            $action = new Insert('include_parameter');
-            $action->values($data);
-        } else {
+        if ($data['id'] && $updateIfIdSet) {
             $action = new Update('include_parameter');
             $action->where(['id' => $data['id']]);
             unset($data['id']);
             $action->set($data);
+        } else {
+            $action = new Insert('include_parameter');
+            $action->values($data);
         }
 
         $sql = new Sql($this->dbAdapter);
