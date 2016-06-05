@@ -188,6 +188,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
+        $data['id'] = $dataObject->getId();
         $data['role'] = $dataObject->getRole();
         $data['type'] = $dataObject->getType();
         $data['server_place'] = $dataObject->getServerPlace();
@@ -202,20 +203,29 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
 
-        $action = new Insert('endpoint');
-        $action->values($data);
+        $isUpdate = false;
+        if (! $data['id']) {
+            $action = new Insert('endpoint');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+            $action->set($data);
+            $isUpdate = true;
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }
             $concreteSaveMethod = 'save' . $data['type'];
-            $concreteDataObject = $this->$concreteSaveMethod($dataObject);
+            $concreteDataObject = $this->$concreteSaveMethod($dataObject, $isUpdate);
             return $concreteDataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
@@ -224,11 +234,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     /**
      *
      * @param EndpointCdAs400 $dataObject
+     * @param boolean $isUpdate
      *
      * @return EndpointCdAs400
      * @throws \Exception
      */
-    protected function saveCdAs400(EndpointCdAs400 $dataObject)
+    protected function saveCdAs400(EndpointCdAs400 $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -240,8 +251,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
 
-        $action = new Insert('endpoint_cd_as400');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_as400');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_as400');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
@@ -256,11 +274,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     /**
      *
      * @param EndpointCdTandem $dataObject
+     * @param boolean $isUpdate
      *
      * @return EndpointCdTandem
      * @throws \Exception
      */
-    protected function saveCdTandem(EndpointCdTandem $dataObject)
+    protected function saveCdTandem(EndpointCdTandem $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -272,8 +291,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
 
-        $action = new Insert('endpoint_cd_tandem');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_tandem');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_tandem');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
@@ -288,11 +314,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     /**
      *
      * @param EndpointCdLinuxUnix $dataObject
+     * @param boolean $isUpdate
      *
      * @return EndpointCdLinuxUnix
      * @throws \Exception
      */
-    protected function saveCdLinuxUnix(EndpointCdLinuxUnix $dataObject)
+    protected function saveCdLinuxUnix(EndpointCdLinuxUnix $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -302,6 +329,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['transmission_type'] = $dataObject->getTransmissionType();
         $data['transmission_interval'] = $dataObject->getTransmissionInterval();
         $data['service_address'] = $dataObject->getServiceAddress();
+
         // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
@@ -316,8 +344,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
 
-        $action = new Insert('endpoint_cd_linux_unix');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_linux_unix');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_linux_unix');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
@@ -358,11 +393,12 @@ SQL;
     /**
      *
      * @param EndpointFtgwSelfService $dataObject
+     * @param boolean $isUpdate
      *
      * @return EndpointFtgwSelfService
      * @throws \Exception
      */
-    protected function saveFtgwSelfService(EndpointFtgwSelfService $dataObject)
+    protected function saveFtgwSelfService(EndpointFtgwSelfService $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -375,8 +411,15 @@ SQL;
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
 
-        $action = new Insert('endpoint_ftgw_self_service');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_self_service');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_self_service');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
@@ -426,11 +469,12 @@ SQL;
     /**
      *
      * @param EndpointFtgwWindows $dataObject
+     * @param boolean $isUpdate
      *
      * @return EndpointFtgwWindows
      * @throws \Exception
      */
-    protected function saveFtgwWindows(EndpointFtgwWindows $dataObject)
+    protected function saveFtgwWindows(EndpointFtgwWindows $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -446,8 +490,15 @@ SQL;
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
 
-        $action = new Insert('endpoint_ftgw_windows');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_windows');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_windows');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);

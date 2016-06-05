@@ -479,12 +479,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             unset($data['id']);
             $action->set($data);
         }
+
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }

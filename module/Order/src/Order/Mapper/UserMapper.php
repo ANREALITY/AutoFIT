@@ -150,7 +150,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }

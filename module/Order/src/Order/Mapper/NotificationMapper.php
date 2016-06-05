@@ -82,6 +82,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
     {
         $data = [];
         // data retrieved directly from the input
+        $data['id'] = $dataObject->getId();
         $data['email'] = $dataObject->getEmail();
         $data['success'] = $dataObject->getSuccess();
         $data['failure'] = $dataObject->getFailure();
@@ -91,15 +92,22 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
         // data from the recently persisted objects
         // none
 
-        $action = new Insert('notification');
-        $action->values($data);
+        if (! $data['id']) {
+            $action = new Insert('notification');
+            $action->values($data);
+        } else {
+            $action = new Update('notification');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }

@@ -141,6 +141,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
     {
         $data = [];
         // data retrieved directly from the input
+        $data['id'] = $dataObject->getId();
         $data['role'] = $dataObject->getRole();
         $data['type'] = $dataObject->getType();
         // $data['foo'] = $dataObject->getFoo();
@@ -150,15 +151,24 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // data from the recently persisted objects
         // none
 
-        $action = new Insert('physical_connection');
-        $action->values($data);
+        $isUpdate = false;
+        if (! $data['id']) {
+            $action = new Insert('physical_connection');
+            $action->values($data);
+        } else {
+            $action = new Update('physical_connection');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+            $action->set($data);
+            $isUpdate = true;
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
@@ -174,7 +184,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 }
             }
             $concreteSaveMethod = 'save' . $data['type'];
-            $concreteDataObject = $this->$concreteSaveMethod($dataObject);
+            $concreteDataObject = $this->$concreteSaveMethod($dataObject, $isUpdate);
             return $concreteDataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
@@ -183,11 +193,12 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
     /**
      *
      * @param PhysicalConnectionCd $dataObject
+     * @param boolean $isUpdate
      *
      * @return PhysicalConnectionCd
      * @throws \Exception
      */
-    public function saveCd(AbstractPhysicalConnection $dataObject)
+    public function saveCd(AbstractPhysicalConnection $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -198,15 +209,22 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
 
-        $action = new Insert('physical_connection_cd');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('physical_connection_cd');
+            $action->values($data);
+        } else {
+            $action = new Update('physical_connection_cd');
+            $action->where(['physical_connection_id' => $data['physical_connection_id']]);
+            unset($data['physical_connection_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }
@@ -218,11 +236,12 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
     /**
      *
      * @param PhysicalConnectionFtgw $dataObject
+     * @param boolean $isUpdate
      *
      * @return PhysicalConnectionFtgw
      * @throws \Exception
      */
-    public function saveFtgw(AbstractPhysicalConnection $dataObject)
+    public function saveFtgw(AbstractPhysicalConnection $dataObject, bool $isUpdate)
     {
         $data = [];
         // data retrieved directly from the input
@@ -232,15 +251,22 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
 
-        $action = new Insert('physical_connection_ftgw');
-        $action->values($data);
+        if (! $isUpdate) {
+            $action = new Insert('physical_connection_ftgw');
+            $action->values($data);
+        } else {
+            $action = new Update('physical_connection_ftgw');
+            $action->where(['physical_connection_id' => $data['physical_connection_id']]);
+            unset($data['physical_connection_id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }

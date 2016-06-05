@@ -167,19 +167,27 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
     {
         $data = [];
         // data retrieved directly from the input
+        $data['id'] = $dataObject->getId();
         $data['type'] = $dataObject->getType();
         // creating sub-objects
         // data from the recently persisted objects
 
-        $action = new Insert('logical_connection');
-        $action->values($data);
+        if (! $data['id']) {
+            $action = new Insert('logical_connection');
+            $action->values($data);
+        } else {
+            $action = new Update('logical_connection');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
@@ -206,10 +214,12 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                         ]
                     ]);
                 $newNotifications = [];
-                foreach ($dataObject->getNotifications() as $notification) {
-                    if ($notification->getEmail()) {
-                        $notification->setLogicalConnection($dataObject);
-                        $newNotifications[] = $this->notificationMapper->save($notification);
+                if ($dataObject->getNotifications()) {
+                    foreach ($dataObject->getNotifications() as $notification) {
+                        if ($notification->getEmail()) {
+                            $notification->setLogicalConnection($dataObject);
+                            $newNotifications[] = $this->notificationMapper->save($notification);
+                        }
                     }
                 }
             }

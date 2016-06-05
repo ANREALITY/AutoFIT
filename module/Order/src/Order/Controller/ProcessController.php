@@ -109,7 +109,8 @@ class ProcessController extends AbstractActionController
 
     public function editAction()
     {
-        // $this->orderForm->bind($this->fileTransferRequest);
+        $this->orderForm->bind($this->fileTransferRequest);
+
         $request = $this->getRequest();
 
         if ($request->isPost()) {

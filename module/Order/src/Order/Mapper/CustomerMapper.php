@@ -58,21 +58,29 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
         // @todo Check, if customer exists!
         $data = [];
         // data retrieved directly from the input
+        $data['id'] = $dataObject->getId();
         $data['name'] = $dataObject->getName();
         // creating sub-objects
         // none
         // data from the recently persisted objects
         // none
 
-        $action = new Insert('customer');
-        $action->values($data);
+        if (! $data['id']) {
+            $action = new Insert('customer');
+            $action->values($data);
+        } else {
+            $action = new Update('customer');
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
+            $action->set($data);
+        }
 
         $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
             }

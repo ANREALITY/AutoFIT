@@ -109,13 +109,17 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
         // creating sub-objects
         // data from the recently persisted objects
 
-        $sql = 'INSERT INTO include_parameter_set VALUES ();';
+        if (! $dataObject->getId()) {
+            $sql = 'INSERT INTO include_parameter_set VALUES ();';
+        } else {
+            $sql = 'UPDATE include_parameter_set SET id = ' . $dataObject->getId() . ' WHERE id = ' . $dataObject->getId() .';';
+        }
         $result = $this->dbAdapter->getDriver()
             ->getConnection()
             ->execute($sql);
 
         if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue();
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
             if ($newId) {
                 $dataObject->setId($newId);
                 // creating sub-objects: in this case only now possible, since the $newId is needed
