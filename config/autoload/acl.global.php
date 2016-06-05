@@ -27,7 +27,8 @@ return [
                         'admin' => null,
                         'member' => 'UserIsOwner'
                     ],
-                    'listOrders' => 'member'
+                    'listOrders' => 'member',
+                    'syncInProgress' => 'member'
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'
