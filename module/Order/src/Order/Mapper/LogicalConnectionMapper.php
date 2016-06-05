@@ -218,7 +218,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                     foreach ($dataObject->getNotifications() as $notification) {
                         if ($notification->getEmail()) {
                             $notification->setLogicalConnection($dataObject);
-                            $newNotifications[] = $this->notificationMapper->save($notification);
+                            $newNotifications[] = $this->notificationMapper->save($notification, false);
                         }
                     }
                 }

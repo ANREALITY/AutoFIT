@@ -78,7 +78,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
      * @return Notification
      * @throws \Exception
      */
-    public function save(Notification $dataObject)
+    public function save(Notification $dataObject, bool $updateIfIdSet = true)
     {
         $data = [];
         // data retrieved directly from the input
@@ -92,14 +92,14 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
         // data from the recently persisted objects
         // none
 
-        if (! $data['id']) {
-            $action = new Insert('notification');
-            $action->values($data);
-        } else {
+        if ($data['id'] && $updateIfIdSet) {
             $action = new Update('notification');
             $action->where(['id' => $data['id']]);
             unset($data['id']);
             $action->set($data);
+        } else {
+            $action = new Insert('notification');
+            $action->values($data);
         }
 
         $sql = new Sql($this->dbAdapter);
