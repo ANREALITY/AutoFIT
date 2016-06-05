@@ -74,6 +74,7 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
     /**
      *
      * @param Notification $dataObject
+     * @param boolean $updateIfIdSet
      *
      * @return Notification
      * @throws \Exception
