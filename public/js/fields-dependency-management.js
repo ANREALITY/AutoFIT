@@ -132,7 +132,9 @@ function toggleFieldServerSource(value) {
 		fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 		fieldServiceAddressSourceToggle.trigger('change');
 	} else if (value == 'multiple_servers') {
-		fieldAServerSource.first().val(fieldTheServerSource.val());
+		if (fieldTheServerSource.val() != '') {
+			fieldAServerSource.first().val(fieldTheServerSource.val());
+		}
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		fieldsetMultipleServersSource.fadeIn('slow');
@@ -190,7 +192,9 @@ function toggleFieldServerTarget(value) {
 		fieldClusterTargetToggle.trigger('change');
 		fieldClusterTargetToggle.parent().fadeOut('slow');
 	} else if (value == 'multiple_servers') {
-		fieldAServerTarget.first().val(fieldTheServerTarget.val());
+		if (fieldTheServerTarget.val() != '') {
+			fieldAServerTarget.first().val(fieldTheServerTarget.val());
+		}
 		fieldTheServerTarget.val('');
 		fieldTheServerTarget.parent().fadeOut('slow');
 		fieldsetMultipleServersTarget.fadeIn('slow');
