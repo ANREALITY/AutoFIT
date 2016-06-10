@@ -63,11 +63,16 @@ if ($getHelperFieldsValuesFromObject) {
 // billing
 echo $this->partial('/partials/fieldgroups/billing',
     [
+        // Fieldsets
         'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
         'userFieldset' => $userFieldset,
         'environmentFieldset' => $environmentFieldset,
         'serviceInvoicePositionBasicFieldset' => $serviceInvoicePositionBasicFieldset,
-        'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset
+        'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -75,10 +80,15 @@ echo $this->partial('/partials/fieldgroups/billing',
 // endpoint source (basic settings)
 echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
     [
+        // Fieldsets
         'endpointSourceFieldset' => $endpointSourceFieldset,
         'applicationForSourceFieldset' => $applicationForSourceFieldset,
         'customerForSourceFieldset' => $customerForSourceFieldset,
-        'serverForSourceFieldset' => $serverForSourceFieldset
+        'serverForSourceFieldset' => $serverForSourceFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -86,10 +96,15 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
 // endpoint target (basic settings)
 echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
     [
+        // Fieldsets
         'endpointTargetFieldset' => $endpointTargetFieldset,
         'applicationForTargetFieldset' => $applicationForTargetFieldset,
         'customerForTargetFieldset' => $customerForTargetFieldset,
-        'serverForTargetFieldset' => $serverForTargetFieldset
+        'serverForTargetFieldset' => $serverForTargetFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -99,7 +114,12 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
 // endpoint source (specific settings)
 echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source',
     [
-        'endpointSourceFieldset' => $endpointSourceFieldset
+        // Fieldsets
+        'endpointSourceFieldset' => $endpointSourceFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -107,7 +127,12 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 // endpoint target (specific settings)
 echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
     [
-        'endpointTargetFieldset' => $endpointTargetFieldset
+        // Fieldsets
+        'endpointTargetFieldset' => $endpointTargetFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -117,7 +142,12 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' .
 // logical connection
 echo $this->partial('/partials/fieldgroups/logical-connection',
     [
-        'logicalConnectionFieldset' => $logicalConnectionFieldset
+        // Fieldsets
+        'logicalConnectionFieldset' => $logicalConnectionFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
     ]);
 ?>
 
@@ -128,15 +158,24 @@ echo $this->partial('/partials/fieldgroups/logical-connection',
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
         [
-            'physicalConnectionEndToEndFieldset' => $physicalConnectionEndToEndFieldset
+            // Fieldsets
+            'physicalConnectionEndToEndFieldset' => $physicalConnectionEndToEndFieldset,
+            // DataObjects
+            // no DataObjects
+            // misc values
+            // no misc values
         ]);
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
         [
+            // Fieldsets
             'physicalConnectionEndToMiddleFieldset' => $physicalConnectionEndToMiddleFieldset,
             'physicalConnectionMiddleToEndFieldset' => $physicalConnectionMiddleToEndFieldset,
+            // DataObjects
+            // no DataObjects
+            // misc values
             'endpointSourceType' => $endpointSourceType,
-            'endpointTargetType' => $endpointTargetType
+            'endpointTargetType' => $endpointTargetType,
         ]);
 }
 ?>
