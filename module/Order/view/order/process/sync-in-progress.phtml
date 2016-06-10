@@ -1,0 +1,13 @@
+<div class="info-box">
+    <div class="header"><?php echo $this->translate('The synchronization is in progress.') . ' ' . $this->translate('Please try later again.'); ?></div>
+    <div class="body">
+        <div>
+            <span><?php echo $this->translate('The synchronization is processed daily.') . ' ' . $this->translate('During the synchronization all writing operations are locked.'); ?></span>
+        </div>
+        <!-- Just to keep the look of the error and the exception page consistent. -->
+        <br />
+        <div>
+            <pre class="xdebug-var-dump"></pre>
+        </div>
+    </div>
+</div>
