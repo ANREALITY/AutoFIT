@@ -368,6 +368,10 @@ DELETE FROM
 WHERE
     endpoint_cd_linux_unix_endpoint_id = $newEndpointId
 SQL;
+                $result = $this->dbAdapter->getDriver()
+                    ->getConnection()
+                    ->execute($sql);
+                ;
                 if ($dataObject->getServers()) {
                     foreach ($dataObject->getServers() as $server) {
                         if ($server->getName()) {
