@@ -1,4 +1,23 @@
 <?php
+if ($getHelperFieldsValuesFromObject) {
+    $dataObject = $endpointSourceFieldset->getObject();
+    // setting value for server_toggle
+    if ($dataObject->getServer()) {
+        $valueServerToggle = 'single_server';
+    } else {
+        $valueServerToggle = 'multiple_servers';
+    }
+    $endpointSourceFieldset->get('server_toggle')->setValue($valueServerToggle);
+    // setting value for service_address_toggle
+    if ($dataObject->getServiceAddress()) {
+        $valueClusterToggle = 1;
+    } else {
+        $valueClusterToggle = 0;
+    }
+    $endpointSourceFieldset->get('service_address_toggle')->setValue($valueClusterToggle);
+}
+?>
+<?php
 $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Source - specific settings');

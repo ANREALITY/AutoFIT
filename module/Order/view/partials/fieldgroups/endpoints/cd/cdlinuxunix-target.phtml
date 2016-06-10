@@ -1,4 +1,23 @@
 <?php
+if ($getHelperFieldsValuesFromObject) {
+    $dataObject = $endpointTargetFieldset->getObject();
+    // setting value for server_toggle
+    if ($dataObject->getServer()) {
+        $valueServerToggle = 'single_server';
+    } else {
+        $valueServerToggle = 'multiple_servers';
+    }
+    $endpointTargetFieldset->get('server_toggle')->setValue($valueServerToggle);
+    // setting value for cluster_toggle
+    if ($dataObject->getCluster()) {
+        $valueClusterToggle = 1;
+    } else {
+        $valueClusterToggle = 0;
+    }
+    $endpointTargetFieldset->get('cluster_toggle')->setValue($valueClusterToggle);
+}
+?>
+<?php
 $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - specific settings');
