@@ -34,3 +34,39 @@ function addIncludeParameter() {
     }
     return false;
 }
+/**
+ * Dynamic adding of endpoint source server field(-set-)s.
+ */
+// Constants are supported in IE from v11. http://caniuse.com/#search=const
+const ENDPOINT_SOURCE_SERVERS_MAX_NUMBER = 5;
+$(document).ready(function() {
+	addEndpointSourceServerButton = $('#add-endpoint-source-server-button');
+	addEndpointSourceServerButton.on('click', addEndpointSourceServer);
+});
+function addEndpointSourceServer() {
+    var currentCount = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers fieldset:first > fieldset').length;
+    var template = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers fieldset:first > span').data('template');
+    template = template.replace(/__index__/g, currentCount);
+    if (currentCount < ENDPOINT_SOURCE_SERVERS_MAX_NUMBER) {
+        $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers fieldset:first').append(template);
+    }
+    return false;
+}
+/**
+ * Dynamic adding of endpoint target server field(-set-)s.
+ */
+// Constants are supported in IE from v11. http://caniuse.com/#search=const
+const ENDPOINT_TARGET_SERVERS_MAX_NUMBER = 5;
+$(document).ready(function() {
+	addEndpointTargetServerButton = $('#add-endpoint-target-server-button');
+	addEndpointTargetServerButton.on('click', addEndpointTargetServer);
+});
+function addEndpointTargetServer() {
+    var currentCount = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers fieldset:first > fieldset').length;
+    var template = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers fieldset:first > span').data('template');
+    template = template.replace(/__index__/g, currentCount);
+    if (currentCount < ENDPOINT_TARGET_SERVERS_MAX_NUMBER) {
+        $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers fieldset:first').append(template);
+    }
+    return false;
+}

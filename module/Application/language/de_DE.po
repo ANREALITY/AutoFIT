@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-05 23:54+0200\n"
-"PO-Revision-Date: 2016-06-05 23:55+0200\n"
+"POT-Creation-Date: 2016-06-10 17:49+0200\n"
+"PO-Revision-Date: 2016-06-10 17:49+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -67,12 +67,22 @@ msgid "multiple servers"
 msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
+#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
+#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
+msgid "+"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:110
+msgid "add a server"
+msgstr "Server hinzufügen"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:119
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
 msgid "service address"
 msgstr "Service-Adresse"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:121
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:135
 msgid "IP / server name service address"
 msgstr "IP / Server-Name der Service-Adresse"
 
@@ -156,11 +166,6 @@ msgstr ""
 #: Order/view/partials/order-parts/logical-connection.phtml:51
 msgid "notifications"
 msgstr "Benachrichtigungen"
-
-#: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
-#: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
-msgid "+"
-msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:105
 msgid "add a notification"
@@ -679,7 +684,7 @@ msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:23
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
@@ -692,7 +697,7 @@ msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:23
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:8
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4

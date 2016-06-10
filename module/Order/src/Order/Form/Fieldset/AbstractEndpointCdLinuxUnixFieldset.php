@@ -84,9 +84,9 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                 'type' => 'Zend\Form\Element\Collection',
                 'options' => [
                     'label' => _('multiple servers'),
-                    'count' => 5,
+                    'count' => 1,
                     'should_create_template' => true,
-                    'template_placeholder' => '__placeholder__',
+                    'template_placeholder' => '__index__',
                     'allow_add' => true,
                     'target_element' => [
                         'type' => 'Order\Form\Fieldset\Server'
@@ -94,6 +94,20 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     'label_attributes' => [
                         'class' => 'col-md-12 fieldset-multiple-servers'
                     ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'add_server',
+                'type' => 'button',
+                'options' => [
+                    'label' => _('+')
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default',
+                    'id' => 'add-endpoint-' . $this->getConcreteRole() . '-server-button',
+                    'value' => _('add a server')
                 ]
             ]);
 

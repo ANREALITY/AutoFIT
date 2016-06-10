@@ -29,6 +29,8 @@ $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('transmission_interval')),
     $this->formRow($endpointSourceFieldset->get('server_toggle')),
     $this->formRow($endpointSourceFieldset->get('servers')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' .
+         $this->formRow($endpointSourceFieldset->get('add_server')) . '</div>',
     $this->formRow($endpointSourceFieldset->get('service_address_toggle')),
     $this->formRow($endpointSourceFieldset->get('service_address')),
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')
