@@ -48,6 +48,16 @@ return [
                     ]
                 ]
             ],
+            'sync-in-progress' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/sync-in-progress',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'syncInProgress',
+                    ]
+                ]
+            ],
             'list-orders' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [

@@ -21,6 +21,8 @@ class ProcessController extends AbstractActionController
 
     protected $authenticationService;
 
+    protected $synchronizationService;
+
     public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest,
         \Order\Service\FileTransferRequestService $fileTransferRequestService)
     {
@@ -73,6 +75,15 @@ class ProcessController extends AbstractActionController
         $this->authenticationService = $authenticationService;
     }
 
+    /**
+     *
+     * @param field_type $synchronizationService
+     */
+    public function setSynchronizationService($synchronizationService)
+    {
+        $this->synchronizationService = $synchronizationService;
+    }
+
     public function startAction()
     {
         return [
@@ -82,6 +93,10 @@ class ProcessController extends AbstractActionController
 
     public function createAction()
     {
+        if ($this->isInSync()) {
+            return $this->redirect()->toRoute('sync-in-progress');
+        }
+
         $this->orderForm->bind($this->fileTransferRequest);
 
         $request = $this->getRequest();
@@ -109,6 +124,10 @@ class ProcessController extends AbstractActionController
 
     public function editAction()
     {
+        if ($this->isInSync()) {
+            return $this->redirect()->toRoute('sync-in-progress');
+        }
+
         $this->orderForm->bind($this->fileTransferRequest);
 
         $request = $this->getRequest();
@@ -172,6 +191,24 @@ class ProcessController extends AbstractActionController
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests
         ]);
+    }
+
+    public function syncInProgressAction()
+    {
+        return new ViewModel();
+    }
+
+    protected function isInSync()
+    {
+        $isInSync = false;
+        $synchronizations = $this->synchronizationService->findAll();
+        foreach ($synchronizations as $synchronization) {
+            if ($synchronization->getInProgress()) {
+                $isInSync = true;
+                break;
+            }
+        }
+        return $isInSync;
     }
 
 }

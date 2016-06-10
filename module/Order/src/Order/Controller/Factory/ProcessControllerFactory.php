@@ -39,6 +39,8 @@ class ProcessControllerFactory implements FactoryInterface
 
         $authenticationService = $realServiceLocator->get('AuthenticationService');
         $service->setAuthenticationService($authenticationService);
+        $synchronizationService = $realServiceLocator->get('Order\Service\SynchronizationService');
+        $service->setSynchronizationService($synchronizationService);
 
         return $service;
     }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-31 11:04+0200\n"
-"PO-Revision-Date: 2016-05-31 11:05+0200\n"
+"POT-Creation-Date: 2016-06-05 23:54+0200\n"
+"PO-Revision-Date: 2016-06-05 23:55+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -131,13 +131,13 @@ msgstr "Verbindungstyp"
 msgid "Windows"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:43
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
 #: Order/view/order/process/list-orders.phtml:4
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:80
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:81
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
 #: Order/view/partials/list/summary.phtml:74
 #: Order/view/partials/order-parts/billing.phtml:16
@@ -146,7 +146,7 @@ msgstr "Change-Nummer"
 msgid "application"
 msgstr "Verfahren"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:116
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:117
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
@@ -517,6 +517,23 @@ msgstr "Danke für Ihre Bestellung!"
 #: Order/view/order/process/start.phtml:11
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
+
+#: Order/view/order/process/sync-in-progress.phtml:2
+msgid "The synchronization is in progress."
+msgstr "Die Synchronisation läuft."
+
+#: Order/view/order/process/sync-in-progress.phtml:2
+msgid "Please try later again."
+msgstr "Bitte versuchen Sie später noch einmal."
+
+#: Order/view/order/process/sync-in-progress.phtml:5
+msgid "The synchronization is processed daily."
+msgstr "Die Synchronisation wird täglich durchgeführt."
+
+#: Order/view/order/process/sync-in-progress.phtml:5
+msgid "During the synchronization all writing operations are locked."
+msgstr ""
+"Während der Synchronisation sind alle schreibenden Operationen gesperrt."
 
 #: Order/view/partials/crontab-info.phtml:4
 msgid "Contab for transmission interval"
