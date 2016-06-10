@@ -46,13 +46,17 @@ $serverForTargetFieldset = $endpointTargetFieldset->get('server');
 /**
  * @var FileTransferRequest $fileTransferRequest
  */
-$serviceInvoice = $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice();
-$applicationTechnicalShortName = $serviceInvoice->getApplication()->getTechnicalShortName();
-$fileTransferRequestFieldset->get('application_technical_short_name')->setValue($applicationTechnicalShortName);
-$environmentSeverity = $serviceInvoice->getEnvironment()->getSeverity();
-$environmentFieldset->get('severity')->setValue($environmentSeverity);
-$environmentName = $serviceInvoice->getEnvironment()->getName();
-$environmentFieldset->get('name')->setValue($environmentName);
+?>
+<?php
+if ($getHelperFieldsValuesFromObject) {
+    $serviceInvoice = $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice();
+    $applicationTechnicalShortName = $serviceInvoice->getApplication()->getTechnicalShortName();
+    $fileTransferRequestFieldset->get('application_technical_short_name')->setValue($applicationTechnicalShortName);
+    $environmentSeverity = $serviceInvoice->getEnvironment()->getSeverity();
+    $environmentFieldset->get('severity')->setValue($environmentSeverity);
+    $environmentName = $serviceInvoice->getEnvironment()->getName();
+    $environmentFieldset->get('name')->setValue($environmentName);
+}
 ?>
 
 <?php

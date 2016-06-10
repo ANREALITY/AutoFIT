@@ -113,7 +113,10 @@ class ProcessController extends AbstractActionController
 
         $request = $this->getRequest();
 
+        $getHelperFieldsValuesFromObject = true;
+
         if ($request->isPost()) {
+            $getHelperFieldsValuesFromObject = false;
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
                 $username = $this->authenticationService->getIdentity()['username'];
@@ -130,14 +133,13 @@ class ProcessController extends AbstractActionController
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
-        $this->orderForm->bind($this->fileTransferRequest);
-
         return [
             'form' => $this->orderForm,
             'connectionType' => $this->connectionType,
             'endpointSourceType' => $this->endpointSourceType,
             'endpointTargetType' => $this->endpointTargetType,
-            'fileTransferRequest' => $this->fileTransferRequest
+            'fileTransferRequest' => $this->fileTransferRequest,
+            'getHelperFieldsValuesFromObject' => $getHelperFieldsValuesFromObject
         ];
     }
 
