@@ -78,7 +78,7 @@ class RequestAnalyzer
             'action' => $this->orderEditActionName
         ];
 
-        $allParamsCorrectForOrderEdit = count(array_intersect($paramsIdentifyingEditRequest, $this->routerMatchParams)) ===
+        $allParamsCorrectForOrderEdit = count(array_intersect_assoc($paramsIdentifyingEditRequest, $this->routerMatchParams)) ===
              count($paramsIdentifyingEditRequest);
 
         return $allParamsCorrectForOrderEdit;
