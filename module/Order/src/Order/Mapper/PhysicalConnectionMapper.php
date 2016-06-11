@@ -257,7 +257,8 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         } else {
             $action = new Update('physical_connection_ftgw');
             $action->where(['physical_connection_id' => $data['physical_connection_id']]);
-            unset($data['physical_connection_id']);
+            // Don't unset the $data['physical_connection_id'], since its the only field to UPDATE!
+            // unset($data['physical_connection_id']);
             $action->set($data);
         }
 
