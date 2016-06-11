@@ -3,6 +3,7 @@ namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\AbstractFactoryInterface;
+use Zend\ServiceManager\Exception\ServiceNotFoundException;
 
 class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
 {
@@ -30,6 +31,12 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
      * @var string
      */
     const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
+
+    /**
+     *
+     * @var string
+     */
+    const NAMESPACE_HYDRATOR = 'DbSystel\Hydrator';
 
     /**
      *
@@ -67,9 +74,12 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
-        $hydrator = $serviceLocator->getServiceLocator()
-            ->get('HydratorManager')
-            ->get('Zend\Hydrator\ClassMethods');
+        $hydratorManager = $serviceLocator->getServiceLocator()->get('HydratorManager');
+        try {
+            $hydrator = $hydratorManager->get(self::NAMESPACE_HYDRATOR . '\\' . $prototypeClassName . 'Hydrator');
+        } catch (ServiceNotFoundException $e) {
+            $hydrator = $hydratorManager->get('Zend\Hydrator\ClassMethods');
+        }
         $service->setHydrator($hydrator);
         $prototype = new $prototypeQualifiedClassName();
         $service->setObject($prototype);
