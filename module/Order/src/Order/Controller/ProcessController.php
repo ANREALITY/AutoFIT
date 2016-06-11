@@ -1,4 +1,5 @@
 <?php
+
 namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -19,12 +20,13 @@ class ProcessController extends AbstractActionController
 
     protected $endpointTargetType;
 
+    protected $statusConfig;
+
     protected $authenticationService;
 
     protected $synchronizationService;
 
-    public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest,
-        \Order\Service\FileTransferRequestService $fileTransferRequestService)
+    public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest, \Order\Service\FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
@@ -64,6 +66,15 @@ class ProcessController extends AbstractActionController
     public function setEndpointTargetType($endpointTargetType)
     {
         $this->endpointTargetType = $endpointTargetType;
+    }
+
+    /**
+     *
+     * @param string $statusConfig
+     */
+    public function setStatusConfig($statusConfig)
+    {
+        $this->statusConfig = $statusConfig;
     }
 
     /**
@@ -126,6 +137,13 @@ class ProcessController extends AbstractActionController
     {
         if ($this->isInSync()) {
             return $this->redirect()->toRoute('sync-in-progress');
+        }
+
+        if (! $this->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
+            return $this->redirect()->toRoute('operation-denied-for-status', [
+                'operation' => 'edit',
+                'status' => $this->fileTransferRequest->getStatus()
+            ]);
         }
 
         $this->orderForm->bind($this->fileTransferRequest);
@@ -198,6 +216,16 @@ class ProcessController extends AbstractActionController
         return new ViewModel();
     }
 
+    public function operationDeniedForStatusAction()
+    {
+        $operation = $this->params()->fromRoute('operation');
+        $status = $this->params()->fromRoute('status');
+        return new ViewModel([
+            'operation' => $this->params()->fromRoute('operation'),
+            'status' => $this->params()->fromRoute('status')
+        ]);
+    }
+
     protected function isInSync()
     {
         $isInSync = false;
@@ -209,6 +237,17 @@ class ProcessController extends AbstractActionController
             }
         }
         return $isInSync;
+    }
+
+    protected function isAllowedOperationForStatus($operation, $status)
+    {
+        $isAllowed =
+            $this->statusConfig
+            && isset($this->statusConfig['order']['per_operation'][$operation])
+            && is_array($this->statusConfig['order']['per_operation'][$operation])
+            && in_array($status, $this->statusConfig['order']['per_operation'][$operation])
+        ;
+        return $isAllowed;
     }
 
 }

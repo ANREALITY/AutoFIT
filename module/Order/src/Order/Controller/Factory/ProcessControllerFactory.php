@@ -26,6 +26,10 @@ class ProcessControllerFactory implements FactoryInterface
         $fileTransferRequest = $realServiceLocator->get('DbSystel\DataObject\FileTransferRequest');
         $service = new ProcessController($fileTransferRequest, $fileTransferRequestService);
 
+        $config = $realServiceLocator->get('Config');
+        $statusConfig = isset($config['status']) ? $config['status'] : [];
+        $service->setStatusConfig($statusConfig);
+
         if ($isOrderRequest || $isOrderEditRequest) {
             $formElementManager = $realServiceLocator->get('FormElementManager');
             $orderForm = $formElementManager->get('Order\Form\OrderForm');

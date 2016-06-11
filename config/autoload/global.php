@@ -12,5 +12,19 @@
  */
 
 return array(
-    // ...
+    'status' => [
+        'order' => [
+            'all' => [
+                'new', 'edit', 'canceled', 'check', 'accepted', 'declined', 'processing', 'completed'
+            ],
+            'per_operation' => [
+                'edit' => [
+                    'new', 'declined'
+                ],
+                'cancel' => [
+                    'new', 'declined'
+                ]
+            ]
+        ]
+    ]
 );

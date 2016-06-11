@@ -58,6 +58,16 @@ return [
                     ]
                 ]
             ],
+            'operation-denied-for-status' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/operation-denied-for-status[/:operation][/:status]',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'operationDeniedForStatus',
+                    ]
+                ]
+            ],
             'list-orders' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [

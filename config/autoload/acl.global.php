@@ -28,7 +28,8 @@ return [
                         'member' => 'UserIsOwner'
                     ],
                     'listOrders' => 'member',
-                    'syncInProgress' => 'member'
+                    'syncInProgress' => 'member',
+                    'operationDeniedForStatus' => 'member'
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'

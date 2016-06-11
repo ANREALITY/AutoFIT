@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-10 17:49+0200\n"
-"PO-Revision-Date: 2016-06-10 17:49+0200\n"
+"POT-Creation-Date: 2016-06-11 18:02+0200\n"
+"PO-Revision-Date: 2016-06-11 18:03+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -511,6 +511,21 @@ msgstr "Antrag-ID"
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
+#: Order/view/order/process/operation-denied-for-status.phtml:4
+#, php-format
+msgid "The operation \"%s\" is not permited for the order status \"%s\"."
+msgstr ""
+"Die Operation \"%s\" ist für den Bestellungsstatus \"%s\" nicht erlaubt."
+
+#: Order/view/order/process/operation-denied-for-status.phtml:11
+#, php-format
+msgid ""
+"An order can oly be edited or canceled, if it has the status \"%s\" or \"%s"
+"\"."
+msgstr ""
+"Eine Bestellung kann nur dann editiert oder storniert werden, wenn sie sich "
+"im Status \"%s\" oder \"%s\" befindet."
+
 #: Order/view/order/process/received.phtml:2
 msgid "We have received the form."
 msgstr "Wie haben das Formular erhalten."
@@ -876,6 +891,9 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "Not allowed operation for the order status."
+#~ msgstr "Nicht erlaubte Operation für den Bestellungsstatus."
 
 #~ msgid "role"
 #~ msgstr "Rolle"
