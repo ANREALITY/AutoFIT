@@ -47,7 +47,7 @@ class GenericCollectionStrategy implements StrategyInterface
      */
     public function getPrototype()
     {
-        return $this->prototype;
+        return $this->prototype ? clone $this->prototype : null;
     }
 
     /**
