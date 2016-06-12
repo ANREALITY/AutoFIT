@@ -460,6 +460,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $data['change_number'] = $dataObject->getChangeNumber();
         $data['service_invoice_position_basic_number'] = $dataObject->getServiceInvoicePositionBasic()->getNumber();
         $data['service_invoice_position_personal_number'] = $dataObject->getServiceInvoicePositionPersonal()->getNumber();
+        if ($dataObject->getStatus()) {
+            $data['status'] = $dataObject->getStatus();
+        }
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
