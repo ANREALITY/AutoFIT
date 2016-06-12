@@ -4,6 +4,7 @@ namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use DbSystel\DataObject\FileTransferRequest;
 
 class ProcessController extends AbstractActionController
 {
@@ -161,7 +162,7 @@ class ProcessController extends AbstractActionController
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
-                        'action' => 'received'
+                        'action' => 'updated'
                     ]);
             }
         }
@@ -180,7 +181,40 @@ class ProcessController extends AbstractActionController
         ];
     }
 
+    public function cancelAction()
+    {
+        if ($this->isInSync()) {
+            return $this->redirect()->toRoute('sync-in-progress');
+        }
+
+        if (! $this->isAllowedOperationForStatus('cancel', $this->fileTransferRequest->getStatus())) {
+            return $this->redirect()->toRoute('operation-denied-for-status', [
+                'operation' => 'cancel',
+                'status' => $this->fileTransferRequest->getStatus()
+            ]);
+        }
+
+        $this->fileTransferRequest->setStatus(FileTransferRequest::STATUS_CANCELED);
+        $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'canceled'
+            ]
+        );
+    }
+
     public function receivedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function updatedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function canceledAction()
     {
         return new ViewModel();
     }
