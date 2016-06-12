@@ -22,7 +22,13 @@ return [
                         'admin' => null,
                         'member' => 'UserIsOwner'
                     ],
+                    'cancel' => [
+                        'admin' => null,
+                        'member' => 'UserIsOwner'
+                    ],
                     'received' => 'member',
+                    'updated' => 'member',
+                    'canceled' => 'member',
                     'showOrder' => [
                         'admin' => null,
                         'member' => 'UserIsOwner'
