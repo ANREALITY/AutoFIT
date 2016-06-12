@@ -37,6 +37,17 @@ return [
                     ]
                 ]
             ],
+            'cancel-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/cancel/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'cancel',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'show-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
