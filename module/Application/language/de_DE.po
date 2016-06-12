@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-11 18:34+0200\n"
-"PO-Revision-Date: 2016-06-11 18:35+0200\n"
+"POT-Creation-Date: 2016-06-12 20:16+0200\n"
+"PO-Revision-Date: 2016-06-12 20:17+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate;gettext;_\n"
 "X-Poedit-Basepath: ../..\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SearchPath-0: Application\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
@@ -503,6 +503,10 @@ msgstr "Startseite"
 msgid "My orders"
 msgstr "Meine Bestellungen"
 
+#: Order/view/order/process/canceled.phtml:2
+msgid "The order has been canceled successfully."
+msgstr "Die Bestellung wurde erfolgreich storniert."
+
 #: Order/view/order/process/list-orders.phtml:3
 msgid "request ID"
 msgstr "Antrag-ID"
@@ -511,17 +515,29 @@ msgstr "Antrag-ID"
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
-#: Order/view/order/process/list-orders.phtml:14
+#: Order/view/order/process/list-orders.phtml:15
 msgid "edit order"
-msgstr "Bestellung ändern"
+msgstr "Bestellung anpassen"
+
+#: Order/view/order/process/list-orders.phtml:16
+msgid "cancel order"
+msgstr "Bestellung stornieren"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:4
+msgid "edit"
+msgstr "anpassen"
+
+#: Order/view/order/process/operation-denied-for-status.phtml:5
+msgid "cancel"
+msgstr "stornieren"
+
+#: Order/view/order/process/operation-denied-for-status.phtml:11
 #, php-format
 msgid "The operation \"%s\" is not permited for the order status \"%s\"."
 msgstr ""
 "Die Operation \"%s\" ist für den Bestellungsstatus \"%s\" nicht erlaubt."
 
-#: Order/view/order/process/operation-denied-for-status.phtml:11
+#: Order/view/order/process/operation-denied-for-status.phtml:18
 #, php-format
 msgid ""
 "An order can oly be edited or canceled, if it has the status \"%s\" or \"%s"
@@ -529,6 +545,15 @@ msgid ""
 msgstr ""
 "Eine Bestellung kann nur dann editiert oder storniert werden, wenn sie sich "
 "im Status \"%s\" oder \"%s\" befindet."
+
+#: Order/view/order/process/operation-denied-for-status.phtml:19
+#: Order/view/partials/order-parts/order-info.phtml:12
+msgid "new"
+msgstr "neu"
+
+#: Order/view/order/process/operation-denied-for-status.phtml:19
+msgid "declined"
+msgstr "abgelehnt"
 
 #: Order/view/order/process/received.phtml:2
 msgid "We have received the form."
@@ -558,6 +583,10 @@ msgstr "Die Synchronisation wird täglich durchgeführt."
 msgid "During the synchronization all writing operations are locked."
 msgstr ""
 "Während der Synchronisation sind alle schreibenden Operationen gesperrt."
+
+#: Order/view/order/process/updated.phtml:2
+msgid "The order has been updated successfully."
+msgstr "Die Bestellung wurde erfolgreich aktualisiert."
 
 #: Order/view/partials/crontab-info.phtml:4
 msgid "Contab for transmission interval"
@@ -812,10 +841,6 @@ msgstr "bei erfolgreicher Übertragung"
 #: Order/view/partials/order-parts/logical-connection.phtml:14
 msgid "on failed transfer"
 msgstr "bei fehlgeschlagener Übertragung"
-
-#: Order/view/partials/order-parts/order-info.phtml:12
-msgid "new"
-msgstr "neu"
 
 #: Order/view/partials/order-parts/order-info.phtml:13
 msgid "canceled"
