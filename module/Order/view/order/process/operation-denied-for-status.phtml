@@ -1,15 +1,22 @@
+<?php
+// for translations (workaround)
+if (false) {
+    $this->translate('edit');
+    $this->translate('cancel');
+}
+?>
 <div class="info-box">
     <div class="header"><?php
 echo sprintf($this->translate(
     'The operation "%s" is not permited for the order status "%s".'
-), $operation, $status);
+), $this->translate($operation), $this->translate($status));
     ?></div>
     <div class="body">
         <div class="alert-info error-reference">
             <span><?php
 echo sprintf($this->translate(
     'An order can oly be edited or canceled, if it has the status "%s" or "%s".'
-), 'new', 'declined');
+), $this->translate('new'), $this->translate('declined'));
             ?></span>
         </div>
         <!-- Just to keep the look of the error and the exception page consistent. -->
