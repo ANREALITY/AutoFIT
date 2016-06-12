@@ -34,6 +34,12 @@ class RequestAnalyzer
      */
     protected $orderEditActionName;
 
+    /**
+     *
+     * @var string
+     */
+    protected $orderCancelActionName;
+
     public function __construct(array $routerMatchParams, array $requestQuery, array $requestPost,
         string $orderControllerName = null, string $orderEditActionName = null)
     {
@@ -42,6 +48,7 @@ class RequestAnalyzer
         $this->requestPost = $requestPost;
         $this->orderControllerName = 'Order\Controller\Process';
         $this->orderEditActionName = 'edit';
+        $this->orderCancelActionName = 'cancel';
     }
 
     public function isStartRequest()
@@ -82,6 +89,19 @@ class RequestAnalyzer
              count($paramsIdentifyingEditRequest);
 
         return $allParamsCorrectForOrderEdit;
+    }
+
+    public function isOrderCancelRequest()
+    {
+        $paramsIdentifyingCancelRequest = [
+            'controller' => $this->orderControllerName,
+            'action' => $this->orderCancelActionName
+        ];
+
+        $allParamsCorrectForOrderCancel = count(array_intersect_assoc($paramsIdentifyingCancelRequest, $this->routerMatchParams)) ===
+             count($paramsIdentifyingCancelRequest);
+
+        return $allParamsCorrectForOrderCancel;
     }
 
 }
