@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-12 20:16+0200\n"
-"PO-Revision-Date: 2016-06-12 20:17+0200\n"
+"POT-Creation-Date: 2016-06-13 11:11+0200\n"
+"PO-Revision-Date: 2016-06-13 11:11+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -142,6 +142,7 @@ msgid "Windows"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
+#: Order/view/order/process/list-my-orders.phtml:4
 #: Order/view/order/process/list-orders.phtml:4
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
@@ -491,34 +492,42 @@ msgstr "Es ist keine Ausnahme verfügbar"
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: Application/view/layout/layout.phtml:6
+#: Application/view/layout/layout.phtml:17
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:78
-msgid "Home"
+#: Application/view/layout/layout.phtml:89
+msgid "home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:81
-msgid "My orders"
+#: Application/view/layout/layout.phtml:92
+msgid "my orders"
 msgstr "Meine Bestellungen"
+
+#: Application/view/layout/layout.phtml:96
+msgid "orders"
+msgstr "Bestellungen"
 
 #: Order/view/order/process/canceled.phtml:2
 msgid "The order has been canceled successfully."
 msgstr "Die Bestellung wurde erfolgreich storniert."
 
+#: Order/view/order/process/list-my-orders.phtml:3
 #: Order/view/order/process/list-orders.phtml:3
 msgid "request ID"
 msgstr "Antrag-ID"
 
+#: Order/view/order/process/list-my-orders.phtml:5
 #: Order/view/order/process/list-orders.phtml:5
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
+#: Order/view/order/process/list-my-orders.phtml:15
 #: Order/view/order/process/list-orders.phtml:15
 msgid "edit order"
 msgstr "Bestellung anpassen"
 
+#: Order/view/order/process/list-my-orders.phtml:16
 #: Order/view/order/process/list-orders.phtml:16
 msgid "cancel order"
 msgstr "Bestellung stornieren"
@@ -920,6 +929,12 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "My orders"
+#~ msgstr "Meine Bestellungen"
+
+#~ msgid "Home"
+#~ msgstr "Startseite"
 
 #~ msgid "Not allowed operation for the order status."
 #~ msgstr "Nicht erlaubte Operation für den Bestellungsstatus."
