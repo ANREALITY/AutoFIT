@@ -1,3 +1,22 @@
+<?php
+use DbSystel\DataObject\FileTransferRequest;
+?>
+<?php
+// for translations (workaround)
+if (false) {
+    $this->translate('check');
+    $this->translate('accepted');
+    $this->translate('processing');
+    $this->translate('completed');
+}
+?>
+<?php
+// action => [statuses]
+$orderStatus = [
+    'edit' => [FileTransferRequest::STATUS_NEW, FileTransferRequest::STATUS_DECLINED],
+    'cancel' => [FileTransferRequest::STATUS_NEW, FileTransferRequest::STATUS_DECLINED],
+];
+?>
 <table class="table table-striped">
     <tr>
         <th><?php echo $this->translate('request ID'); ?></th>
@@ -9,11 +28,17 @@
     <tr>
         <td><?php echo $fileTransferRequest->getId(); ?></td>
         <td><a
-            href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a></td>
+            href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>
+            <br />
+            <small><?php echo $this->translate($fileTransferRequest->getStatus()); ?></small></td>
         <td><?php echo $this->partial('/partials/list/summary', ['fileTransferRequest' => $fileTransferRequest]); ?></td>
         <td>
+            <?php if(in_array($fileTransferRequest->getStatus(), $orderStatus['edit'])) : ?>
             <a class="btn btn-success" href="<?php echo $this->url('edit-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('edit order'); ?></a>
+            <?php endif; ?>
+            <?php if(in_array($fileTransferRequest->getStatus(), $orderStatus['cancel'])) : ?>
             <a class="btn btn-danger" href="<?php echo $this->url('cancel-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('cancel order'); ?></a>
+            <?php endif; ?>
         </td>
     </tr>
     <?php endforeach; ?>
