@@ -1,3 +1,16 @@
+<?php
+use DbSystel\DataObject\FileTransferRequest;
+?>
+<?php
+// action => [statuses]
+$orderStatus = [
+    'check' => [FileTransferRequest::STATUS_NEW, FileTransferRequest::STATUS_DECLINED],
+    'decline' => [FileTransferRequest::STATUS_CHECK],
+    'accept' => [FileTransferRequest::STATUS_CHECK],
+    'process' => [FileTransferRequest::STATUS_ACCEPTED],
+    'complete' => [FileTransferRequest::STATUS_PROCESSING],
+];
+?>
 <table class="table table-striped">
     <tr>
         <th><?php echo $this->translate('request ID'); ?></th>

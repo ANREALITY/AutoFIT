@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-13 11:11+0200\n"
-"PO-Revision-Date: 2016-06-13 11:11+0200\n"
+"POT-Creation-Date: 2016-06-13 12:17+0200\n"
+"PO-Revision-Date: 2016-06-13 12:48+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -142,7 +142,7 @@ msgid "Windows"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
-#: Order/view/order/process/list-my-orders.phtml:4
+#: Order/view/order/process/list-my-orders.phtml:22
 #: Order/view/order/process/list-orders.phtml:4
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
@@ -512,23 +512,42 @@ msgstr "Bestellungen"
 msgid "The order has been canceled successfully."
 msgstr "Die Bestellung wurde erfolgreich storniert."
 
-#: Order/view/order/process/list-my-orders.phtml:3
+#: Order/view/order/process/list-my-orders.phtml:7
+msgid "check"
+msgstr "in Überprüfung"
+
+#: Order/view/order/process/list-my-orders.phtml:8
+msgid "accepted"
+msgstr "angenommen"
+
+#: Order/view/order/process/list-my-orders.phtml:9
+msgid "processing"
+msgstr "in Bearbeitung"
+
+#: Order/view/order/process/list-my-orders.phtml:10
+msgid "completed"
+msgstr "Überfrüfung"
+
+#: Order/view/order/process/list-my-orders.phtml:21
 #: Order/view/order/process/list-orders.phtml:3
 msgid "request ID"
 msgstr "Antrag-ID"
 
-#: Order/view/order/process/list-my-orders.phtml:5
+#: Order/view/order/process/list-my-orders.phtml:23
 #: Order/view/order/process/list-orders.phtml:5
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
-#: Order/view/order/process/list-my-orders.phtml:15
-#: Order/view/order/process/list-orders.phtml:15
+#: Order/view/order/process/list-my-orders.phtml:32
+#: Order/view/partials/order-parts/order-info.phtml:26
+msgid "status"
+msgstr "Status"
+
+#: Order/view/order/process/list-my-orders.phtml:36
 msgid "edit order"
 msgstr "Bestellung anpassen"
 
-#: Order/view/order/process/list-my-orders.phtml:16
-#: Order/view/order/process/list-orders.phtml:16
+#: Order/view/order/process/list-my-orders.phtml:39
 msgid "cancel order"
 msgstr "Bestellung stornieren"
 
@@ -862,10 +881,6 @@ msgstr "Informationen zur Bestellung"
 #: Order/view/partials/order-parts/order-info.phtml:22
 msgid "created on"
 msgstr "erstellt am"
-
-#: Order/view/partials/order-parts/order-info.phtml:26
-msgid "status"
-msgstr "Status"
 
 #: Order/view/partials/start/cd.phtml:10 Order/view/partials/start/ftgw.phtml:9
 #, php-format
