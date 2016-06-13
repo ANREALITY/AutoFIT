@@ -36,6 +36,7 @@ return [
                     'listMyOrders' => 'member',
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',
+                    'listOrders' => 'admin',
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'

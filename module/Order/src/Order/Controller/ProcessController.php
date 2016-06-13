@@ -4,7 +4,6 @@ namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use DbSystel\DataObject\FileTransferRequest;
 
 class ProcessController extends AbstractActionController
 {
@@ -15,17 +14,17 @@ class ProcessController extends AbstractActionController
 
     protected $orderForm = null;
 
-    protected $connectionType;
+    protected $connectionType = null;
 
-    protected $endpointSourceType;
+    protected $endpointSourceType = null;
 
-    protected $endpointTargetType;
+    protected $endpointTargetType = null;
 
-    protected $statusConfig;
+    protected $statusConfig = null;
 
-    protected $authenticationService;
+    protected $authenticationService = null;
 
-    protected $synchronizationService;
+    protected $synchronizationService = null;
 
     public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest, \Order\Service\FileTransferRequestService $fileTransferRequestService)
     {
@@ -34,7 +33,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param FormInterface $orderForm
      */
     public function setOrderForm($orderForm)
@@ -43,7 +41,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $connectionType
      */
     public function setConnectionType($connectionType)
@@ -52,7 +49,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $endpointSourceType
      */
     public function setEndpointSourceType($endpointSourceType)
@@ -61,7 +57,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $endpointTargetType
      */
     public function setEndpointTargetType($endpointTargetType)
@@ -70,7 +65,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $statusConfig
      */
     public function setStatusConfig($statusConfig)
@@ -79,7 +73,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param field_type $authenticationService
      */
     public function setAuthenticationService($authenticationService)
@@ -88,7 +81,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param field_type $synchronizationService
      */
     public function setSynchronizationService($synchronizationService)
@@ -239,6 +231,15 @@ class ProcessController extends AbstractActionController
                     'user_id' => $userId
                 ]
             ]);
+
+        return new ViewModel([
+            'fileTransferRequests' => $fileTransferRequests
+        ]);
+    }
+
+    public function listOrdersAction()
+    {
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
 
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests

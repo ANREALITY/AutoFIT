@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <tr>
+        <th><?php echo $this->translate('request ID'); ?></th>
+        <th><?php echo $this->translate('change number'); ?></th>
+        <th><?php echo $this->translate('request summary'); ?></th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($fileTransferRequests as $fileTransferRequest) : ?>
+    <tr>
+        <td><?php echo $fileTransferRequest->getId(); ?></td>
+        <td><a
+            href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a></td>
+        <td><?php echo $this->partial('/partials/list/summary', ['fileTransferRequest' => $fileTransferRequest]); ?></td>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
