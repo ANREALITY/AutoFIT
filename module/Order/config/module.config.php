@@ -79,13 +79,13 @@ return [
                     ]
                 ]
             ],
-            'list-orders' => [
+            'list-my-orders' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
-                    'route' => '/list-orders',
+                    'route' => '/list-my-orders',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'listOrders'
+                        'action' => 'listMyOrders'
                     ]
                 ]
             ],

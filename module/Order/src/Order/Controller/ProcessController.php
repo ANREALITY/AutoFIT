@@ -230,7 +230,7 @@ class ProcessController extends AbstractActionController
         ]);
     }
 
-    public function listOrdersAction()
+    public function listMyOrdersAction()
     {
         $userId = ! empty($this->authenticationService->getIdentity()['id']) ? $this->authenticationService->getIdentity()['id'] : null;
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(

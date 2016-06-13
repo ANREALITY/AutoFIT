@@ -33,9 +33,9 @@ return [
                         'admin' => null,
                         'member' => 'UserIsOwner'
                     ],
-                    'listOrders' => 'member',
+                    'listMyOrders' => 'member',
                     'syncInProgress' => 'member',
-                    'operationDeniedForStatus' => 'member'
+                    'operationDeniedForStatus' => 'member',
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'
