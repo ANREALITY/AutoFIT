@@ -4,6 +4,7 @@ namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use DbSystel\DataObject\FileTransferRequest;
 
 class ProcessController extends AbstractActionController
 {
