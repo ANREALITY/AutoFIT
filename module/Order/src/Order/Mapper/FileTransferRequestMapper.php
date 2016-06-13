@@ -416,6 +416,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'ftgw_self_service_protocol' . '__' . 'name' => 'name'
             ], Select::JOIN_LEFT);
 
+        $select->order(['file_transfer_request__' . 'id' => 'ASC']);
+
         $statement = $sql->prepareStatementForSqlObject($select);
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
