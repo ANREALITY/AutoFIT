@@ -500,7 +500,8 @@ SQL;
         } else {
             $action = new Update('endpoint_ftgw_windows');
             $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            // Don't unset the $data['endpoint_id'], since its the only field to UPDATE!
+            // unset($data['endpoint_id']);
             $action->set($data);
         }
 
