@@ -41,14 +41,14 @@ class RequestAnalyzer
     protected $orderStatusChangingActions;
 
     public function __construct(array $routerMatchParams, array $requestQuery, array $requestPost,
-        string $orderControllerName = null, string $orderEditActionName = null)
+        string $orderControllerName = null, string $orderEditActionName = null, array $orderStatusChangingActions = [])
     {
         $this->routerMatchParams = $routerMatchParams;
         $this->requestQuery = $requestQuery;
         $this->requestPost = $requestPost;
-        $this->orderControllerName = 'Order\Controller\Process';
-        $this->orderEditActionName = 'edit';
-        $this->orderStatusChangingActions = ['cancel', 'accept', 'decline', 'complete'];
+        $this->orderControllerName = $orderControllerName;
+        $this->orderEditActionName = $orderEditActionName;
+        $this->orderStatusChangingActions = $orderStatusChangingActions;
     }
 
     public function isStartRequest()

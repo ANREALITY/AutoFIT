@@ -24,7 +24,12 @@ class RequestAnalyzerFactory implements FactoryInterface
         $requestQuery = $request->getQuery()->toArray();
         $requestPost = $request->getPost();
 
-        return new RequestAnalyzer($routerMatchParams, $requestQuery, $requestPost->toArray());
+        $config = $serviceLocator->get('Config');
+        $orderStatusChangingActions = isset($config['status']['order']['per_operation'])
+            ? array_keys($config['status']['order']['per_operation']) : [];
+
+        return new RequestAnalyzer($routerMatchParams, $requestQuery, $requestPost->toArray(),
+            'Order\Controller\Process', 'edit', $orderStatusChangingActions);
     }
 
 }
