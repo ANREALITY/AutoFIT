@@ -292,6 +292,9 @@ return [
     'view_helpers' => [
         'invokables' => [
             'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors'
+        ],
+        'factories' => [
+            'OrderStatusChecker' => 'Order\View\Helper\Factory\OrderStatusCheckerFactory',
         ]
     ],
     'hydrators' => [
