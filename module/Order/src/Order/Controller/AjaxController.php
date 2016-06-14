@@ -15,25 +15,25 @@ class AjaxController extends AbstractActionController
      *
      * @var ApplicationServiceInterface
      */
-    protected $applicationService = null;
+    protected $applicationService;
 
     /**
      *
      * @var EnvironmentServiceInterface
      */
-    protected $environmentService = null;
+    protected $environmentService;
 
     /**
      *
      * @var ServerServiceInterface
      */
-    protected $serverService = null;
+    protected $serverService;
 
     /**
      *
      * @var ServiceInvoicePositionServiceInterface
      */
-    protected $serviceInvoicePositionService = null;
+    protected $serviceInvoicePositionService;
 
     public function __construct(ApplicationServiceInterface $applicationService,
         EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService,

@@ -9,21 +9,21 @@ use DbSystel\DataObject\FileTransferRequest;
 class ProcessController extends AbstractActionController
 {
 
-    protected $fileTransferRequest = null;
+    protected $fileTransferRequest;
 
-    protected $fileTransferRequestService = null;
+    protected $fileTransferRequestService;
 
-    protected $orderForm = null;
+    protected $orderForm;
 
-    protected $connectionType = null;
+    protected $connectionType;
 
-    protected $endpointSourceType = null;
+    protected $endpointSourceType;
 
-    protected $endpointTargetType = null;
+    protected $endpointTargetType;
 
-    protected $authenticationService = null;
+    protected $authenticationService;
 
-    protected $synchronizationService = null;
+    protected $synchronizationService;
 
     public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest, \Order\Service\FileTransferRequestService $fileTransferRequestService)
     {
