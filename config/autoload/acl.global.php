@@ -19,11 +19,11 @@ return [
                     'start' => 'member',
                     'create' => 'member',
                     'edit' => [
-                        'admin' => null,
+                        'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
                     ],
                     'cancel' => [
-                        'admin' => null,
+                        'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
                     ],
                     'created' => 'member',
