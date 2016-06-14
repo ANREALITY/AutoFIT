@@ -26,9 +26,15 @@ return [
                         'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
                     ],
+                    'accept' => 'admin',
+                    'decline' => 'admin',
+                    'complete' => 'admin',
                     'created' => 'member',
                     'edited' => 'member',
                     'canceled' => 'member',
+                    'accepted' => 'admin',
+                    'declined' => 'admin',
+                    'completed' => 'admin',
                     'showOrder' => [
                         'admin' => null,
                         'member' => 'UserIsOwner'

@@ -197,6 +197,21 @@ class ProcessController extends AbstractActionController
         );
     }
 
+    public function acceptAction()
+    {
+        return new ViewModel();
+    }
+
+    public function declineAction()
+    {
+        return new ViewModel();
+    }
+
+    public function completeAction()
+    {
+        return new ViewModel();
+    }
+
     public function createdAction()
     {
         return new ViewModel();
@@ -211,6 +226,21 @@ class ProcessController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function acceptedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function declinedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function completedAction()
+    {
+        return new ViewModel();
+    }	
 
     public function showOrderAction()
     {

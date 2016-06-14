@@ -48,6 +48,39 @@ return [
                     ]
                 ]
             ],
+            'accept-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/accept/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'accept',
+                        'id' => ''
+                    ]
+                ]
+            ],
+            'decline-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/decline/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'decline',
+                        'id' => ''
+                    ]
+                ]
+            ],
+            'complete-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/complete/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'complete',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'show-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
