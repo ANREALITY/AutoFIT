@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-14 23:22+0200\n"
-"PO-Revision-Date: 2016-06-14 23:23+0200\n"
+"POT-Creation-Date: 2016-06-15 00:24+0200\n"
+"PO-Revision-Date: 2016-06-15 00:26+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -508,9 +508,29 @@ msgstr "Meine Bestellungen"
 msgid "orders"
 msgstr "Bestellungen"
 
-#: Order/view/order/process/canceled.phtml:2
-msgid "The order has been canceled successfully."
-msgstr "Die Bestellung wurde erfolgreich storniert."
+#: Order/view/order/process/accepted.phtml:3
+#: Order/view/order/process/canceled.phtml:3
+#: Order/view/order/process/completed.phtml:3
+#: Order/view/order/process/declined.phtml:3
+#: Order/view/order/process/edited.phtml:3
+#, php-format
+msgid "The order has been %s successfully."
+msgstr "Die Bestellung wurde erfolgreich %s."
+
+#: Order/view/order/process/accepted.phtml:3
+#: Order/view/order/process/list-my-orders.phtml:8
+msgid "accepted"
+msgstr "angenommen"
+
+#: Order/view/order/process/canceled.phtml:3
+#: Order/view/partials/order-parts/order-info.phtml:13
+msgid "canceled"
+msgstr "storniert"
+
+#: Order/view/order/process/completed.phtml:3
+#: Order/view/order/process/list-my-orders.phtml:10
+msgid "completed"
+msgstr "fertiggestellt"
 
 #: Order/view/order/process/created.phtml:2
 msgid "We have received the form."
@@ -520,25 +540,22 @@ msgstr "Wie haben das Formular erhalten."
 msgid "Thanks for your order!"
 msgstr "Danke für Ihre Bestellung!"
 
-#: Order/view/order/process/edited.phtml:2
-msgid "The order has been updated successfully."
-msgstr "Die Bestellung wurde erfolgreich aktualisiert."
+#: Order/view/order/process/declined.phtml:3
+#: Order/view/order/process/operation-denied-for-status.phtml:19
+msgid "declined"
+msgstr "abgelehnt"
+
+#: Order/view/order/process/edited.phtml:3
+msgid "updated"
+msgstr "aktualisiert"
 
 #: Order/view/order/process/list-my-orders.phtml:7
 msgid "check"
 msgstr "in Überprüfung"
 
-#: Order/view/order/process/list-my-orders.phtml:8
-msgid "accepted"
-msgstr "angenommen"
-
 #: Order/view/order/process/list-my-orders.phtml:9
 msgid "processing"
 msgstr "in Bearbeitung"
-
-#: Order/view/order/process/list-my-orders.phtml:10
-msgid "completed"
-msgstr "Überfrüfung"
 
 #: Order/view/order/process/list-my-orders.phtml:15
 #: Order/view/order/process/list-orders.phtml:6
@@ -597,10 +614,6 @@ msgstr ""
 #: Order/view/partials/order-parts/order-info.phtml:12
 msgid "new"
 msgstr "neu"
-
-#: Order/view/order/process/operation-denied-for-status.phtml:19
-msgid "declined"
-msgstr "abgelehnt"
 
 #: Order/view/order/process/start.phtml:11
 msgid "Please choose a file transfer product"
@@ -877,10 +890,6 @@ msgstr "bei erfolgreicher Übertragung"
 msgid "on failed transfer"
 msgstr "bei fehlgeschlagener Übertragung"
 
-#: Order/view/partials/order-parts/order-info.phtml:13
-msgid "canceled"
-msgstr "storniert"
-
 #: Order/view/partials/order-parts/order-info.phtml:19
 msgid "Order info"
 msgstr "Informationen zur Bestellung"
@@ -955,6 +964,12 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "The order has been canceled successfully."
+#~ msgstr "Die Bestellung wurde erfolgreich storniert."
+
+#~ msgid "The order has been updated successfully."
+#~ msgstr "Die Bestellung wurde erfolgreich aktualisiert."
 
 #~ msgid "My orders"
 #~ msgstr "Meine Bestellungen"

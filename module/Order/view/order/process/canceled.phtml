@@ -1,5 +1,7 @@
 <div class="jumbotron">
-    <span><?php echo $this->translate('The order has been canceled successfully.'); ?></span>
+    <span><?php
+    echo sprintf($this->translate('The order has been %s successfully.'), $this->translate('canceled'));
+    ?></span>
 </div>
 
 <div class="row"></div>
