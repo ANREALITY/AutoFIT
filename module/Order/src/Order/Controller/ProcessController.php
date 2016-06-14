@@ -25,8 +25,8 @@ class ProcessController extends AbstractActionController
 
     protected $synchronizationService;
 
-    public function __construct(FileTransferRequest $fileTransferRequest,
-        FileTransferRequestService $fileTransferRequestService)
+
+    public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
@@ -67,8 +67,6 @@ class ProcessController extends AbstractActionController
     {
         $this->endpointTargetType = $endpointTargetType;
     }
-
-    /**
      *
      * @param field_type $authenticationService
      */
@@ -193,6 +191,7 @@ class ProcessController extends AbstractActionController
         return $this->forward()->dispatch('Order\Controller\Process',
             [
                 'action' => 'canceled'
+
             ]);
     }
 

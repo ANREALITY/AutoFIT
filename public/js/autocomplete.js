@@ -116,7 +116,8 @@ $(function() {
 /**
  * Autocompletion for the field (billing|physical-connection-endpoint)-server-name.
  */
-$(function() {
+// Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
+var initAutocompleteServer = function() {
 	var physicalConnectionEndpointServerName = $('.autocomplete-server');
 	physicalConnectionEndpointServerName
 		.autocomplete({
@@ -138,4 +139,7 @@ $(function() {
 			console.log($(this));
 		$(this).autocomplete("search", this.value);
 	});
+};
+$(document).ready(function() {
+	initAutocompleteServer();
 });

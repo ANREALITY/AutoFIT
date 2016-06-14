@@ -48,7 +48,7 @@ $serverForTargetFieldset = $endpointTargetFieldset->get('server');
  */
 ?>
 <?php
-if ($getHelperFieldsValuesFromObject) {
+if (! empty($getHelperFieldsValuesFromObject)) {
     $serviceInvoice = $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice();
     $applicationTechnicalShortName = $serviceInvoice->getApplication()->getTechnicalShortName();
     $fileTransferRequestFieldset->get('application_technical_short_name')->setValue($applicationTechnicalShortName);

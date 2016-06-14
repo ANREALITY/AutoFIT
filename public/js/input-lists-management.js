@@ -50,6 +50,8 @@ function addEndpointSourceServer() {
     if (currentCount < ENDPOINT_SOURCE_SERVERS_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers fieldset:first').append(template);
     }
+    // This solves the issue with autocomplete for dynamically added fields (s. #120).
+    initAutocompleteServer();
     return false;
 }
 /**
@@ -68,5 +70,7 @@ function addEndpointTargetServer() {
     if (currentCount < ENDPOINT_TARGET_SERVERS_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers fieldset:first').append(template);
     }
+    // This solves the issue with autocomplete for dynamically added fields (s. #120).
+    initAutocompleteServer();
     return false;
 }

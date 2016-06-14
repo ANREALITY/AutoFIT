@@ -1,5 +1,5 @@
 <?php
-if ($getHelperFieldsValuesFromObject) {
+if (! empty($getHelperFieldsValuesFromObject)) {
     $dataObject = $endpointSourceFieldset->getObject();
     // setting value for server_toggle
     if ($dataObject->getServer()) {
