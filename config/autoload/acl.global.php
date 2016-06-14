@@ -26,8 +26,8 @@ return [
                         'admin' => null,
                         'member' => 'UserIsOwner'
                     ],
-                    'received' => 'member',
-                    'updated' => 'member',
+                    'created' => 'member',
+                    'edited' => 'member',
                     'canceled' => 'member',
                     'showOrder' => [
                         'admin' => null,

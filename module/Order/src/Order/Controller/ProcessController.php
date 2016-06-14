@@ -4,6 +4,7 @@ namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use DbSystel\DataObject\FileTransferRequest;
 
 class ProcessController extends AbstractActionController
 {
@@ -113,7 +114,7 @@ class ProcessController extends AbstractActionController
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
-                        'action' => 'received'
+                        'action' => 'created'
                     ]);
             }
         }
@@ -154,7 +155,7 @@ class ProcessController extends AbstractActionController
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
-                        'action' => 'updated'
+                        'action' => 'edited'
                     ]);
             }
         }
@@ -196,12 +197,12 @@ class ProcessController extends AbstractActionController
         );
     }
 
-    public function receivedAction()
+    public function createdAction()
     {
         return new ViewModel();
     }
 
-    public function updatedAction()
+    public function editedAction()
     {
         return new ViewModel();
     }
