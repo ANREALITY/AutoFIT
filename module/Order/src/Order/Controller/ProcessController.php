@@ -185,17 +185,35 @@ class ProcessController extends AbstractActionController
 
     public function acceptAction()
     {
-        return new ViewModel();
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_ACCEPTED,
+                'confirmationAction' => 'accepted',
+            ]);
     }
 
     public function declineAction()
     {
-        return new ViewModel();
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_DECLINED,
+                'confirmationAction' => 'declined',
+            ]);
     }
 
     public function completeAction()
     {
-        return new ViewModel();
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_COMPLETED,
+                'confirmationAction' => 'completed',
+            ]);
     }
 
     public function updateStatusAction()
