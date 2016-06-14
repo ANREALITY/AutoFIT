@@ -38,7 +38,7 @@ class RequestAnalyzer
      *
      * @var string
      */
-    protected $orderCancelActionName;
+    protected $orderStatusChangingActions;
 
     public function __construct(array $routerMatchParams, array $requestQuery, array $requestPost,
         string $orderControllerName = null, string $orderEditActionName = null)
@@ -48,7 +48,7 @@ class RequestAnalyzer
         $this->requestPost = $requestPost;
         $this->orderControllerName = 'Order\Controller\Process';
         $this->orderEditActionName = 'edit';
-        $this->orderCancelActionName = 'cancel';
+        $this->orderStatusChangingActions = ['cancel', 'accept', 'decline', 'complete'];
     }
 
     public function isStartRequest()
@@ -91,15 +91,15 @@ class RequestAnalyzer
         return $allParamsCorrectForOrderEdit;
     }
 
-    public function isOrderCancelRequest()
+    public function isOrderStatusChangingRequest()
     {
-        $paramsIdentifyingCancelRequest = [
-            'controller' => $this->orderControllerName,
-            'action' => $this->orderCancelActionName
-        ];
+        $allParamsCorrectForOrderCancel = false;
 
-        $allParamsCorrectForOrderCancel = count(array_intersect_assoc($paramsIdentifyingCancelRequest, $this->routerMatchParams)) ===
-             count($paramsIdentifyingCancelRequest);
+        if (isset($this->routerMatchParams['controller']) && isset($this->routerMatchParams['action'])
+            && $this->routerMatchParams['controller'] === $this->orderControllerName
+            && in_array($this->routerMatchParams['action'], $this->orderStatusChangingActions)) {
+            $allParamsCorrectForOrderCancel = true;
+        }
 
         return $allParamsCorrectForOrderCancel;
     }

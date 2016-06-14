@@ -18,9 +18,9 @@ class FileTransferRequestFactory implements FactoryInterface
     {
         $requestAnalyzer = $serviceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
-        $isOrderCancelRequest = $requestAnalyzer->isOrderCancelRequest();
+        $isOrderStatusChangingRequest = $requestAnalyzer->isOrderStatusChangingRequest();
         
-        if ($isOrderEditRequest || $isOrderCancelRequest) {
+        if ($isOrderEditRequest || $isOrderStatusChangingRequest) {
             $fileTransferRequestService = $serviceLocator->get('Order\Service\FileTransferRequestService');
             $router = $serviceLocator->get('router');
             $request = $serviceLocator->get('request');
