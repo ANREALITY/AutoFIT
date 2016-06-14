@@ -201,6 +201,11 @@ return [
             'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory'
         ]
     ],
+    'controller_plugins' => [
+        'factories' => [
+            'OrderStatusChecker' => 'Order\Mvc\Controller\Plugin\Factory\OrderStatusCheckerFactory',
+        ]
+    ],
     'service_manager' => [
         'factories' => [
             // services

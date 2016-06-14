@@ -21,8 +21,6 @@ class ProcessController extends AbstractActionController
 
     protected $endpointTargetType = null;
 
-    protected $statusConfig = null;
-
     protected $authenticationService = null;
 
     protected $synchronizationService = null;
@@ -63,14 +61,6 @@ class ProcessController extends AbstractActionController
     public function setEndpointTargetType($endpointTargetType)
     {
         $this->endpointTargetType = $endpointTargetType;
-    }
-
-    /**
-     * @param string $statusConfig
-     */
-    public function setStatusConfig($statusConfig)
-    {
-        $this->statusConfig = $statusConfig;
     }
 
     /**
@@ -133,7 +123,7 @@ class ProcessController extends AbstractActionController
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
-        if (! $this->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
+        if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
             return $this->redirect()->toRoute('operation-denied-for-status', [
                 'operation' => 'edit',
                 'status' => $this->fileTransferRequest->getStatus()
@@ -180,7 +170,7 @@ class ProcessController extends AbstractActionController
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
-        if (! $this->isAllowedOperationForStatus('cancel', $this->fileTransferRequest->getStatus())) {
+           if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('cancel', $this->fileTransferRequest->getStatus())) {
             return $this->redirect()->toRoute('operation-denied-for-status', [
                 'operation' => 'cancel',
                 'status' => $this->fileTransferRequest->getStatus()
@@ -243,7 +233,7 @@ class ProcessController extends AbstractActionController
     }	
 
     public function showOrderAction()
-    {
+    {        
         $id = $this->params()->fromRoute('id', null);
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
@@ -303,17 +293,6 @@ class ProcessController extends AbstractActionController
             }
         }
         return $isInSync;
-    }
-
-    protected function isAllowedOperationForStatus($operation, $status)
-    {
-        $isAllowed =
-            $this->statusConfig
-            && isset($this->statusConfig['order']['per_operation'][$operation])
-            && is_array($this->statusConfig['order']['per_operation'][$operation])
-            && in_array($status, $this->statusConfig['order']['per_operation'][$operation])
-        ;
-        return $isAllowed;
     }
 
 }
