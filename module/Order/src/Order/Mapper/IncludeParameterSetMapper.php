@@ -130,7 +130,7 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
                         ]
                     ]);
                 $newIncludeParameters = [];
-                foreach ($dataObject->getIncludeParameters() as $includeParameter) {
+                foreach ($dataObject->getIncludeParameters() ?: [] as $includeParameter) {
                     if ($includeParameter->getExpression()) {
                         $includeParameter->setIncludeParameterSet($dataObject);
                         $newIncludeParameters[] = $this->includeParameterMapper->save($includeParameter, false);
