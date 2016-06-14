@@ -174,25 +174,12 @@ class ProcessController extends AbstractActionController
 
     public function cancelAction()
     {
-        if ($this->isInSync()) {
-            return $this->redirect()->toRoute('sync-in-progress');
-        }
-
-        if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('cancel',
-            $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('operation-denied-for-status',
-                [
-                    'operation' => 'cancel',
-                    'status' => $this->fileTransferRequest->getStatus()
-                ]);
-        }
-
-        $this->fileTransferRequest->setStatus(FileTransferRequest::STATUS_CANCELED);
-        $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
-
         return $this->forward()->dispatch('Order\Controller\Process',
             [
-                'action' => 'canceled'
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_CANCELED,
+                'confirmationAction' => 'canceled',
             ]);
     }
 
@@ -209,6 +196,34 @@ class ProcessController extends AbstractActionController
     public function completeAction()
     {
         return new ViewModel();
+    }
+
+    public function updateStatusAction()
+    {
+        if ($this->isInSync()) {
+            return $this->redirect()->toRoute('sync-in-progress');
+        }
+
+        $operation = $this->params('operation');
+        $status = $this->params('status');
+        $confirmationAction = $this->params('confirmationAction');
+
+        if (! $this->OrderStatusChecker()->isAllowedOperationForStatus($operation,
+            $this->fileTransferRequest->getStatus())) {
+            return $this->redirect()->toRoute('operation-denied-for-status',
+                [
+                    'operation' => $operation,
+                    'status' => $this->fileTransferRequest->getStatus()
+                ]);
+        }
+
+        $this->fileTransferRequest->setStatus($status);
+        $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => $confirmationAction
+            ]);
     }
 
     public function createdAction()
