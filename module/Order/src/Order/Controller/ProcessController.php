@@ -1,10 +1,10 @@
 <?php
-
 namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use DbSystel\DataObject\FileTransferRequest;
+use Order\Service\FileTransferRequestService;
 
 class ProcessController extends AbstractActionController
 {
@@ -25,13 +25,15 @@ class ProcessController extends AbstractActionController
 
     protected $synchronizationService;
 
-    public function __construct(\DbSystel\DataObject\FileTransferRequest $fileTransferRequest, \Order\Service\FileTransferRequestService $fileTransferRequestService)
+    public function __construct(FileTransferRequest $fileTransferRequest,
+        FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
     }
 
     /**
+     *
      * @param FormInterface $orderForm
      */
     public function setOrderForm($orderForm)
@@ -40,6 +42,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $connectionType
      */
     public function setConnectionType($connectionType)
@@ -48,6 +51,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $endpointSourceType
      */
     public function setEndpointSourceType($endpointSourceType)
@@ -56,6 +60,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param string $endpointTargetType
      */
     public function setEndpointTargetType($endpointTargetType)
@@ -64,6 +69,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param field_type $authenticationService
      */
     public function setAuthenticationService($authenticationService)
@@ -72,6 +78,7 @@ class ProcessController extends AbstractActionController
     }
 
     /**
+     *
      * @param field_type $synchronizationService
      */
     public function setSynchronizationService($synchronizationService)
@@ -124,10 +131,11 @@ class ProcessController extends AbstractActionController
         }
 
         if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('operation-denied-for-status', [
-                'operation' => 'edit',
-                'status' => $this->fileTransferRequest->getStatus()
-            ]);
+            return $this->redirect()->toRoute('operation-denied-for-status',
+                [
+                    'operation' => 'edit',
+                    'status' => $this->fileTransferRequest->getStatus()
+                ]);
         }
 
         $this->orderForm->bind($this->fileTransferRequest);
@@ -170,11 +178,13 @@ class ProcessController extends AbstractActionController
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
-           if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('cancel', $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('operation-denied-for-status', [
-                'operation' => 'cancel',
-                'status' => $this->fileTransferRequest->getStatus()
-            ]);
+        if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('cancel',
+            $this->fileTransferRequest->getStatus())) {
+            return $this->redirect()->toRoute('operation-denied-for-status',
+                [
+                    'operation' => 'cancel',
+                    'status' => $this->fileTransferRequest->getStatus()
+                ]);
         }
 
         $this->fileTransferRequest->setStatus(FileTransferRequest::STATUS_CANCELED);
@@ -183,8 +193,7 @@ class ProcessController extends AbstractActionController
         return $this->forward()->dispatch('Order\Controller\Process',
             [
                 'action' => 'canceled'
-            ]
-        );
+            ]);
     }
 
     public function acceptAction()
@@ -230,10 +239,10 @@ class ProcessController extends AbstractActionController
     public function completedAction()
     {
         return new ViewModel();
-    }	
+    }
 
     public function showOrderAction()
-    {        
+    {
         $id = $this->params()->fromRoute('id', null);
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
@@ -276,10 +285,11 @@ class ProcessController extends AbstractActionController
     {
         $operation = $this->params()->fromRoute('operation');
         $status = $this->params()->fromRoute('status');
-        return new ViewModel([
-            'operation' => $this->params()->fromRoute('operation'),
-            'status' => $this->params()->fromRoute('status')
-        ]);
+        return new ViewModel(
+            [
+                'operation' => $this->params()->fromRoute('operation'),
+                'status' => $this->params()->fromRoute('status')
+            ]);
     }
 
     protected function isInSync()
