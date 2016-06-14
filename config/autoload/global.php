@@ -23,6 +23,15 @@ return array(
                 ],
                 'cancel' => [
                     'new', 'declined'
+                ],
+                'accept' => [
+                    'new'
+                ],
+                'decline' => [
+                    'new'
+                ],
+                'complete' => [
+                    'accepted'
                 ]
             ]
         ]

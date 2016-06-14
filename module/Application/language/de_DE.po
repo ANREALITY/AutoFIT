@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-13 12:17+0200\n"
-"PO-Revision-Date: 2016-06-13 12:48+0200\n"
+"POT-Creation-Date: 2016-06-14 23:22+0200\n"
+"PO-Revision-Date: 2016-06-14 23:23+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -142,8 +142,8 @@ msgid "Windows"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
-#: Order/view/order/process/list-my-orders.phtml:22
-#: Order/view/order/process/list-orders.phtml:4
+#: Order/view/order/process/list-my-orders.phtml:16
+#: Order/view/order/process/list-orders.phtml:7
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
@@ -512,6 +512,18 @@ msgstr "Bestellungen"
 msgid "The order has been canceled successfully."
 msgstr "Die Bestellung wurde erfolgreich storniert."
 
+#: Order/view/order/process/created.phtml:2
+msgid "We have received the form."
+msgstr "Wie haben das Formular erhalten."
+
+#: Order/view/order/process/created.phtml:3
+msgid "Thanks for your order!"
+msgstr "Danke für Ihre Bestellung!"
+
+#: Order/view/order/process/edited.phtml:2
+msgid "The order has been updated successfully."
+msgstr "Die Bestellung wurde erfolgreich aktualisiert."
+
 #: Order/view/order/process/list-my-orders.phtml:7
 msgid "check"
 msgstr "in Überprüfung"
@@ -528,28 +540,35 @@ msgstr "in Bearbeitung"
 msgid "completed"
 msgstr "Überfrüfung"
 
-#: Order/view/order/process/list-my-orders.phtml:21
-#: Order/view/order/process/list-orders.phtml:3
+#: Order/view/order/process/list-my-orders.phtml:15
+#: Order/view/order/process/list-orders.phtml:6
 msgid "request ID"
 msgstr "Antrag-ID"
 
-#: Order/view/order/process/list-my-orders.phtml:23
-#: Order/view/order/process/list-orders.phtml:5
+#: Order/view/order/process/list-my-orders.phtml:17
+#: Order/view/order/process/list-orders.phtml:8
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
-#: Order/view/order/process/list-my-orders.phtml:32
-#: Order/view/partials/order-parts/order-info.phtml:26
-msgid "status"
-msgstr "Status"
-
-#: Order/view/order/process/list-my-orders.phtml:36
+#: Order/view/order/process/list-my-orders.phtml:30
 msgid "edit order"
 msgstr "Bestellung anpassen"
 
-#: Order/view/order/process/list-my-orders.phtml:39
+#: Order/view/order/process/list-my-orders.phtml:33
 msgid "cancel order"
 msgstr "Bestellung stornieren"
+
+#: Order/view/order/process/list-orders.phtml:22
+msgid "accept order"
+msgstr "Bestellung annehmen"
+
+#: Order/view/order/process/list-orders.phtml:25
+msgid "decline order"
+msgstr "Bestellung ablehnen"
+
+#: Order/view/order/process/list-orders.phtml:28
+msgid "complete order"
+msgstr "Bestellung fertigstellen"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:4
 msgid "edit"
@@ -583,14 +602,6 @@ msgstr "neu"
 msgid "declined"
 msgstr "abgelehnt"
 
-#: Order/view/order/process/received.phtml:2
-msgid "We have received the form."
-msgstr "Wie haben das Formular erhalten."
-
-#: Order/view/order/process/received.phtml:3
-msgid "Thanks for your order!"
-msgstr "Danke für Ihre Bestellung!"
-
 #: Order/view/order/process/start.phtml:11
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
@@ -611,10 +622,6 @@ msgstr "Die Synchronisation wird täglich durchgeführt."
 msgid "During the synchronization all writing operations are locked."
 msgstr ""
 "Während der Synchronisation sind alle schreibenden Operationen gesperrt."
-
-#: Order/view/order/process/updated.phtml:2
-msgid "The order has been updated successfully."
-msgstr "Die Bestellung wurde erfolgreich aktualisiert."
 
 #: Order/view/partials/crontab-info.phtml:4
 msgid "Contab for transmission interval"
@@ -881,6 +888,10 @@ msgstr "Informationen zur Bestellung"
 #: Order/view/partials/order-parts/order-info.phtml:22
 msgid "created on"
 msgstr "erstellt am"
+
+#: Order/view/partials/order-parts/order-info.phtml:26
+msgid "status"
+msgstr "Status"
 
 #: Order/view/partials/start/cd.phtml:10 Order/view/partials/start/ftgw.phtml:9
 #, php-format
