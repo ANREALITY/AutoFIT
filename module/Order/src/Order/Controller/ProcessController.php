@@ -84,7 +84,7 @@ class ProcessController extends AbstractActionController
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                $username = $this->Identity('username');
+                $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
@@ -126,7 +126,7 @@ class ProcessController extends AbstractActionController
             $getHelperFieldsValuesFromObject = false;
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                $username = $this->Identity('username');
+                $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
@@ -265,7 +265,7 @@ class ProcessController extends AbstractActionController
 
     public function listMyOrdersAction()
     {
-        $userId = ! empty($this->Identity('id')) ? $this->Identity('id') : null;
+        $userId = $this->IdentityParam('id');
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
             [
                 [

@@ -3,9 +3,9 @@ namespace Order\Mvc\Controller\Plugin\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Order\Mvc\Controller\Plugin\Identity;
+use Order\Mvc\Controller\Plugin\IdentityParam;
 
-class IdentityFactory implements FactoryInterface
+class IdentityParamFactory implements FactoryInterface
 {
 
     /**
@@ -20,7 +20,7 @@ class IdentityFactory implements FactoryInterface
 
         $authenticationService = $realServiceLocator->get('AuthenticationService');
 
-        return new Identity($authenticationService);
+        return new IdentityParam($authenticationService);
     }
 
 }

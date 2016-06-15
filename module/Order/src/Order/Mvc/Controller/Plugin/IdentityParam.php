@@ -4,7 +4,7 @@ namespace Order\Mvc\Controller\Plugin;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\Authentication\AuthenticationService;
 
-class Identity extends AbstractPlugin
+class IdentityParam extends AbstractPlugin
 {
 
     /**
@@ -20,7 +20,7 @@ class Identity extends AbstractPlugin
 
     public function __invoke(string $paramKey)
     {
-        $identity = $this->authenticationService->getIdentity();
+        $identity = $this->authenticationService->hasIdentity() ? $this->authenticationService->getIdentity() : [];
         $paramValue = isset($identity[$paramKey]) ? $identity[$paramKey] : null;
         return $paramValue;
     }
