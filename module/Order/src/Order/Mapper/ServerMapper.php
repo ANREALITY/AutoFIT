@@ -54,6 +54,12 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                             'name LIKE ?' => '%' . $condition['name'] . '%'
                         ]);
                 }
+                if (array_key_exists('active', $condition)) {
+                    $select->where(
+                        [
+                            'server.active = ?' => $condition['active']
+                        ]);
+                }
             }
         }
 

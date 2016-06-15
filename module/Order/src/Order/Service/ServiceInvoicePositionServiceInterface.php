@@ -20,6 +20,24 @@ interface ServiceInvoicePositionServiceInterface
      * @param string $applicationTechnicalShortName
      * @param integer $environmentSeverity
      */
+    public function findAllBasicForAutocomplete(string $number, string $applicationTechnicalShortName,
+        int $environmentSeverity);
+
+    /**
+     *
+     * @param string $number
+     * @param string $applicationTechnicalShortName
+     * @param integer $environmentSeverity
+     */
+    public function findAllPersonalForAutocomplete(string $number,
+        string $applicationTechnicalShortName, int $environmentSeverity);
+
+    /**
+     *
+     * @param string $number
+     * @param string $applicationTechnicalShortName
+     * @param integer $environmentSeverity
+     */
     public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
         int $environmentSeverity);
 

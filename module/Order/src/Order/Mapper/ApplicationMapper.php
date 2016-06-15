@@ -51,7 +51,13 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
                 if (array_key_exists('technical_short_name', $condition)) {
                     $select->where(
                         [
-                            'technical_short_name LIKE ?' => '%' . $condition['technical_short_name'] . '%'
+                            'application.technical_short_name LIKE ?' => '%' . $condition['technical_short_name'] . '%'
+                        ]);
+                }
+                if (array_key_exists('active', $condition)) {
+                    $select->where(
+                        [
+                            'application.active = ?' => $condition['active']
                         ]);
                 }
             }

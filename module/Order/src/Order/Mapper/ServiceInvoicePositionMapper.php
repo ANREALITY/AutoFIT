@@ -102,6 +102,14 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                             'environment.severity = ?' => $condition['environment_severity']
                         ]);
                 }
+                if (array_key_exists('active', $condition)) {
+                    if ($condition['active'] == true) {
+                        $select->where(
+                            [
+                                'service_invoice_position.status <> ?' => ServiceInvoicePosition::STATUS_COMPLETED
+                            ]);
+                    }
+                }
             }
         }
 

@@ -18,6 +18,12 @@ interface ServerServiceInterface
      *
      * @param string $name
      */
+    public function findAllForAutocomplete(string $name);
+
+    /**
+     *
+     * @param string $name
+     */
     public function findAllByName(string $name);
 
     /**

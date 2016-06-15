@@ -28,6 +28,46 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
+    public function findAllBasicForAutocomplete(string $number, string $applicationTechnicalShortName,
+        int $environmentSeverity)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'number' => $number,
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'environment_severity' => $environmentSeverity,
+                    'article_type' => Article::TYPE_BASIC,
+                    'active' => true
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllPersonalForAutocomplete(string $number, string $applicationTechnicalShortName,
+        int $environmentSeverity)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'number' => $number,
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'environment_severity' => $environmentSeverity,
+                    'article_type' => Article::TYPE_PERSONAL,
+                    'active' => true
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
         int $environmentSeverity)
     {

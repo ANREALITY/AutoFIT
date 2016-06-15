@@ -4,6 +4,13 @@ namespace DbSystel\DataObject;
 class ServiceInvoicePosition extends AbstractDataObject
 {
 
+    const STATUS_ACTIVE = 'Aktiv';
+    const STATUS_COMPLETED = 'Beendet';
+    const STATUS_SUPPLYING_INITIATED = 'Bereitstellung ausgelost';
+    const STATUS_SUPPLYING_ORDERED = 'Bereitstellung beauftragt';
+    const STATUS_IN_PREPARATION = 'In Vorbereitung';
+    const STATUS_HARWARE_SUPPLIED = 'Technik bereitgestellt';
+
     /**
      *
      * @var string

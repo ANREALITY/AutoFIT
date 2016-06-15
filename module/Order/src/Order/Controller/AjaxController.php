@@ -53,7 +53,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
-                $dataList = $this->applicationService->findAllByTechnicalShortName($data['technical_short_name'])->toArray();
+                $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name'])->toArray();
             }
         }
 
@@ -86,7 +86,7 @@ class AjaxController extends AbstractActionController
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            $dataList = $this->serverService->findAllByName($data['name'])->toArray();
+            $dataList = $this->serverService->findAllForAutocomplete($data['name'])->toArray();
         }
 
         $dataList = array_column($dataList, 'name');
@@ -102,7 +102,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
-                $dataList = $this->serviceInvoicePositionService->findAllBasicByNumberApplicationAndEnvironment(
+                $dataList = $this->serviceInvoicePositionService->findAllBasicForAutocomplete(
                     $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
             }
         }
@@ -120,7 +120,7 @@ class AjaxController extends AbstractActionController
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
-                $dataList = $this->serviceInvoicePositionService->findAllPersonalByNumberApplicationAndEnvironment(
+                $dataList = $this->serviceInvoicePositionService->findAllPersonalForAutocomplete(
                     $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
             }
         }

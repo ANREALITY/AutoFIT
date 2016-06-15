@@ -27,6 +27,22 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
      * {@inheritDoc}
      *
      */
+    public function findAllForAutocomplete(string $technicalShortName)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'technical_short_name' => $technicalShortName,
+                    'active' => true
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function findAllByTechnicalShortName(string $technicalShortName)
     {
         return $this->mapper->findAll(

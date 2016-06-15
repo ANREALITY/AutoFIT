@@ -27,6 +27,22 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
+    public function findAllForAutocomplete(string $name)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'name' => $name,
+                    'active' => true
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function findAllByName(string $name)
     {
         return $this->mapper->findAll(
