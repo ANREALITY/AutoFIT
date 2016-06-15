@@ -23,8 +23,6 @@ class ProcessController extends AbstractActionController
 
     protected $authenticationService;
 
-    protected $synchronizationService;
-
     public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
@@ -77,15 +75,6 @@ class ProcessController extends AbstractActionController
         $this->authenticationService = $authenticationService;
     }
 
-    /**
-     *
-     * @param field_type $synchronizationService
-     */
-    public function setSynchronizationService($synchronizationService)
-    {
-        $this->synchronizationService = $synchronizationService;
-    }
-
     public function startAction()
     {
         return [
@@ -95,7 +84,7 @@ class ProcessController extends AbstractActionController
 
     public function createAction()
     {
-        if ($this->isInSync()) {
+        if ($this->IsInSync()) {
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
@@ -126,7 +115,7 @@ class ProcessController extends AbstractActionController
 
     public function editAction()
     {
-        if ($this->isInSync()) {
+        if ($this->IsInSync()) {
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
@@ -218,7 +207,7 @@ class ProcessController extends AbstractActionController
 
     public function updateStatusAction()
     {
-        if ($this->isInSync()) {
+        if ($this->IsInSync()) {
             return $this->redirect()->toRoute('sync-in-progress');
         }
 
@@ -323,19 +312,6 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params()->fromRoute('operation'),
                 'status' => $this->params()->fromRoute('status')
             ]);
-    }
-
-    protected function isInSync()
-    {
-        $isInSync = false;
-        $synchronizations = $this->synchronizationService->findAll();
-        foreach ($synchronizations as $synchronization) {
-            if ($synchronization->getInProgress()) {
-                $isInSync = true;
-                break;
-            }
-        }
-        return $isInSync;
     }
 
 }
