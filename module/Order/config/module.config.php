@@ -203,6 +203,7 @@ return [
     ],
     'controller_plugins' => [
         'factories' => [
+            'Identity' => 'Order\Mvc\Controller\Plugin\Factory\IdentityFactory',
             'IsInSync' => 'Order\Mvc\Controller\Plugin\Factory\IsInSyncFactory',
             'OrderStatusChecker' => 'Order\Mvc\Controller\Plugin\Factory\OrderStatusCheckerFactory',
         ]

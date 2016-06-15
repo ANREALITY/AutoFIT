@@ -37,9 +37,6 @@ class ProcessControllerFactory implements FactoryInterface
             $service->setConnectionType($connectionType);
         }
 
-        $authenticationService = $realServiceLocator->get('AuthenticationService');
-        $service->setAuthenticationService($authenticationService);
-
         return $service;
     }
 

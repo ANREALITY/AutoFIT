@@ -21,8 +21,6 @@ class ProcessController extends AbstractActionController
 
     protected $endpointTargetType;
 
-    protected $authenticationService;
-
     public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
     {
@@ -66,15 +64,6 @@ class ProcessController extends AbstractActionController
         $this->endpointTargetType = $endpointTargetType;
     }
 
-    /**
-     *
-     * @param field_type $authenticationService
-     */
-    public function setAuthenticationService($authenticationService)
-    {
-        $this->authenticationService = $authenticationService;
-    }
-
     public function startAction()
     {
         return [
@@ -95,7 +84,7 @@ class ProcessController extends AbstractActionController
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                $username = $this->authenticationService->getIdentity()['username'];
+                $username = $this->Identity('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
@@ -137,7 +126,7 @@ class ProcessController extends AbstractActionController
             $getHelperFieldsValuesFromObject = false;
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
-                $username = $this->authenticationService->getIdentity()['username'];
+                $username = $this->Identity('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
@@ -276,7 +265,7 @@ class ProcessController extends AbstractActionController
 
     public function listMyOrdersAction()
     {
-        $userId = ! empty($this->authenticationService->getIdentity()['id']) ? $this->authenticationService->getIdentity()['id'] : null;
+        $userId = ! empty($this->Identity('id')) ? $this->Identity('id') : null;
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
             [
                 [
