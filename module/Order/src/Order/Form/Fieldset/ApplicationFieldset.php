@@ -3,13 +3,27 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Db\Adapter\AdapterInterface;
 
 class ApplicationFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
+    /**
+     * @var AdapterInterface
+     */
+    protected $dbAdapter;
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
+    }
+
+    /**
+     * @param AdapterInterface $dbAdapter
+     */
+    public function setDbAdapter(AdapterInterface $dbAdapter)
+    {
+        $this->dbAdapter = $dbAdapter;
     }
 
     public function init()
@@ -32,7 +46,21 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'technical_short_name' => [
+                'required' => false,
+                'validators' => [
+                    [
+                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'options' => [
+                            'table' => 'application',
+                            'field' => 'technical_short_name',
+                            'adapter' => $this->dbAdapter
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
 }
