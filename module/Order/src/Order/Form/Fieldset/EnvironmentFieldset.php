@@ -3,13 +3,27 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Db\Adapter\AdapterInterface;
 
 class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
+    /**
+     * @var AdapterInterface
+     */
+    protected $dbAdapter;
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct('customer', $options);
+    }
+
+    /**
+     * @param AdapterInterface $dbAdapter
+     */
+    public function setDbAdapter(AdapterInterface $dbAdapter)
+    {
+        $this->dbAdapter = $dbAdapter;
     }
 
     public function init()
@@ -18,6 +32,9 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
             [
                 'name' => 'severity',
                 'type' => 'hidden',
+                'options' => [
+                    'label' => _('environment')
+                ],
                 'attributes' => [
                     'id' => 'order' . '-' . 'environment-severity'
                 ]
@@ -39,7 +56,21 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'severity' => [
+                'required' => false,
+                'validators' => [
+                    [
+                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'options' => [
+                            'table' => 'environment',
+                            'field' => 'severity',
+                            'adapter' => $this->dbAdapter
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
 }
