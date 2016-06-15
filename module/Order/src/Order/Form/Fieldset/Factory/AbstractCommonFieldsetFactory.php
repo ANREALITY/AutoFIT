@@ -77,6 +77,11 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $prototype = new $prototypeQualifiedClassName();
         $service->setObject($prototype);
 
+        if (method_exists($service, 'setDbAdapter')) {
+            $dbAdapter = $serviceLocator->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+            $service->setDbAdapter($dbAdapter);
+        }
+
         return $service;
     }
 
