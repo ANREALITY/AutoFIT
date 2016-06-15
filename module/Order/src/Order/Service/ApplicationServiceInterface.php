@@ -22,12 +22,6 @@ interface ApplicationServiceInterface
 
     /**
      *
-     * @param string $technicalShortName
-     */
-    public function findAllByTechnicalShortName(string $technicalShortName);
-
-    /**
-     *
      * @param Application $application
      * @return Application
      */

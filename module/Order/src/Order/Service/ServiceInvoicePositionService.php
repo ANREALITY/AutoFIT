@@ -68,44 +68,6 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAllBasicByNumberApplicationAndEnvironment(string $number, string $applicationTechnicalShortName,
-        int $environmentSeverity)
-    {
-        return $this->mapper->findAll(
-            [
-                [
-                    'number' => $number,
-                    'application_technical_short_name' => $applicationTechnicalShortName,
-                    'environment_severity' => $environmentSeverity,
-                    'article_type' => Article::TYPE_BASIC
-                ]
-            ]);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
-    public function findAllPersonalByNumberApplicationAndEnvironment(string $number,
-        string $applicationTechnicalShortName, int $environmentSeverity)
-    {
-        return $this->mapper->findAll(
-            [
-                [
-                    'number' => $number,
-                    'application_technical_short_name' => $applicationTechnicalShortName,
-                    'environment_severity' => $environmentSeverity,
-                    'article_type' => Article::TYPE_PERSONAL
-                ]
-            ]);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function saveOne(ServiceInvoicePosition $serviceInvoicePosition)
     {
         return $this->mapper->save($serviceInvoicePosition);

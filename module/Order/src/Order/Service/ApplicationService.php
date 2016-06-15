@@ -43,21 +43,6 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAllByTechnicalShortName(string $technicalShortName)
-    {
-        return $this->mapper->findAll(
-            [
-                [
-                    'technical_short_name' => $technicalShortName
-                ]
-            ]);
-    }
-
-    /**
-     *
-     * {@inheritDoc}
-     *
-     */
     public function saveOne(Application $application)
     {
         return $this->mapper->save($application);

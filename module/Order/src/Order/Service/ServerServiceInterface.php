@@ -22,12 +22,6 @@ interface ServerServiceInterface
 
     /**
      *
-     * @param string $name
-     */
-    public function findAllByName(string $name);
-
-    /**
-     *
      * @param Server $server
      * @return Server
      */
