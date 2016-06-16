@@ -477,6 +477,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         if (! $data['id']) {
             $action = new Insert('file_transfer_request');
+            unset($data['id']);
             $action->values($data);
         } else {
             $action = new Update('file_transfer_request');
