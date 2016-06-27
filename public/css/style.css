@@ -278,7 +278,7 @@ table#crontab-examples td.dt {
   font-weight: bold;
   white-space: nowrap;
 }
-div.error-reference {
+.error-reference {
   background: #ffffff;
   background: -webkit-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
   background: -o-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
@@ -287,14 +287,12 @@ div.error-reference {
   border: 1px solid #cccccc;
   border-radius: 3px;
 }
-
 .ui-autocomplete {
-    max-height: 265px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
+  max-height: 265px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
 }
-
 .navbar-inverse .navbar-nav > li.backend > a {
-    color: #cc0000;
+  color: #ccc000;
 }
