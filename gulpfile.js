@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 
 // Compile LESS to CSS
 gulp.task('build-less', function() {
-    const fileFilter = filter(['*', '!mixins.less', '!variables.less']);
+	const fileFilter = filter(['**/*', '!**/mixins.less', '!**/variables.less']);
     gulp.src('./public/less/*.less') // path to less file
         .pipe(fileFilter)
         .pipe(plumber())
