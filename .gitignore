@@ -27,3 +27,12 @@ ci/*/logs/*
 !ci/*/logs/empty
 ci/*/output/*
 !ci/*/output/empty
+build/api
+build/coverage
+build/logs
+build/pdepend
+build/phpdox
+build/phpcs.xml
+build/phpdox.xml
+build/phploc.xml
+build/phpmd.xml

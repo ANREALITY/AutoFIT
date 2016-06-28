@@ -1,32 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AutoFIT" default="full-build">
+
+	<property name="pdepend" value="/usr/share/.composer/vendor/bin/pdepend" />
+	<property name="phpmd" value="/usr/share/.composer/vendor/bin/phpmd" />
+	<property name="phpcpd" value="/usr/share/.composer/vendor/bin/phpcpd" />
+	<property name="phpcs" value="/usr/share/.composer/vendor/bin/phpcs" />
+	<property name="phploc" value="/usr/share/.composer/vendor/bin/phploc" />
+	<property name="phpdox" value="/usr/share/.composer/vendor/bin/phpdox" />
+	<property name="phpunit" value="/usr/share/.composer/vendor/bin/phpunit" />
+
 	<target name="full-build" depends="lint, phpcs, phpdox, phpunit" description="Performs static analysis, runs the tests, and generates project documentation"/>
-	<target name="lint" description="Perform syntax check of sourcecode files">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<target name="lint" unless="lint.done" description="Perform syntax check of sourcecode files">
 		<apply executable="php" taskname="lint" failonerror="true">
 			<arg value="-l" />
-			<fileset dir="${basedir}/module/**/src">
+			<fileset dir="${basedir}/module/">
 				<include name="**/*.php" />
 			</fileset>
 			<fileset dir="${basedir}/phpunit/tests">
 				<include name="**/*.php" />
 			</fileset>
 		</apply>
+		<property name="lint.done" value="true" />
 	</target>
-	<target name="phpcs">
-		<exec executable="phpcs">
-			<arg value="--report=checkstyle" />
-			<arg value="--report-file=${basedir}/ci/php_codesniffer/logs/checkstyle.xml" />
-			<arg value="--standard=${basedir}/ci/php_codesniffer/config.xml" />
-			<arg path="${basedir}/module/**/src" />
+	<target name="phpcpd" unless="phpcpd.done" description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
+		<exec executable="${phpcpd}" taskname="phpcpd">
+			<arg path="${basedir}/module" />
 		</exec>
+		<property name="phpcpd.done" value="true" />
 	</target>
-	<target name="phpdox" depends="phpcs" description="Generate project documentation using phpDox">
-		<exec executable="${phpdox}" dir="${basedir}/ci/phpdox" taskname="phpdox"/>
+	<target name="phpcs" unless="phpcs.done">
+		<exec executable="${phpcs}" taskname="phpcs">
+			<arg value="--standard=PSR2" />
+			<arg value="--extensions=php" />
+			<arg value="--ignore=autoload.php" />
+			<arg value="--report=checkstyle" />
+			<arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+			<arg path="${basedir}/module/" />
+			<arg path="${basedir}/vendor/db-systel/" />
+		</exec>
+		<property name="phpcs.done" value="true" />
+	</target>
+	<target name="phpdox" depends="phploc,phpcs,phpmd" unless="phpdox.done" description="Generate project documentation using phpDox">
+		<exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox">
+			<arg value="--file" />
+			<arg value="${basedir}/build/phpdox.xml" />
+		</exec>
+		<property name="phpdox.done" value="true" />
+	</target>
+	<target name="phploc" unless="phploc.done" description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
+		<exec executable="${phploc}" taskname="phploc">
+			<arg value="--count-tests" />
+			<arg value="--log-csv" />
+			<arg value="${basedir}/build/logs/phploc.csv" />
+			<arg value="--log-xml" />
+			<arg path="${basedir}/build/logs/phploc.xml" />
+			<arg path="${basedir}/module" />
+			<arg path="${basedir}/phpunit/tests" />
+		</exec>
+		<property name="phploc.done" value="true" />
 	</target>
 	<target name="phpunit" description="Run unit tests with PHPUnit">
 		<exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
-			<arg value="--configuration"/>
-			<arg path="${basedir}/phpunit/phpunit.xml"/>
+			<arg value="--configuration" />
+			<arg path="${basedir}/phpunit/phpunit.xml" />
 		</exec>
 	</target>
+
 </project>
