@@ -49,10 +49,10 @@ $(function() {
 				);
 			},
 			select: function (event, ui) {
-		         $('#order-environment-name').val(ui.item.label);
-		         $('#order-environment-severity').val(ui.item.value);
-		         return false;
-		     },
+				$('#order-environment-name').val(ui.item.label);
+				$('#order-environment-severity').val(ui.item.value);
+				return false;
+			},
 		}).on('focus', function(event) {
 			console.log(new Date());
 			console.log($(this));
@@ -119,19 +119,19 @@ $(function() {
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServer = function() {
 	var physicalConnectionEndpointServerName = $('.autocomplete-server');
-    var cache = [];
+	var cache = [];
 	physicalConnectionEndpointServerName
 		.autocomplete({
 			autoFocus : true,
 			delay : 500,
 			minLength : 0,
 			source : function(request, response) {
-		        var term = request.term;
-		        if (term in cache) {
-		            response(cache[term]);
-		            console.log(cache[term]);
-		            return;
-		        }
+				var term = request.term;
+				if (term in cache) {
+					response(cache[term]);
+					// console.log(cache[term]);
+					return;
+				}
 				$.get(
 					"/order/ajax/provide-servers?"
 					+ "data[name]=" + request.term,
