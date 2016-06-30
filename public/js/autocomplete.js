@@ -119,17 +119,25 @@ $(function() {
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServer = function() {
 	var physicalConnectionEndpointServerName = $('.autocomplete-server');
+    var cache = [];
 	physicalConnectionEndpointServerName
 		.autocomplete({
 			autoFocus : true,
 			delay : 500,
 			minLength : 0,
 			source : function(request, response) {
+		        var term = request.term;
+		        if (term in cache) {
+		            response(cache[term]);
+		            console.log(cache[term]);
+		            return;
+		        }
 				$.get(
 					"/order/ajax/provide-servers?"
 					+ "data[name]=" + request.term,
 					{},
 					function(data) {
+						cache[term] = data;
 						response(data.slice(0, 25));
 					}
 				);
