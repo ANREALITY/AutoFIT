@@ -89,10 +89,11 @@ class GenericCollectionStrategy implements StrategyInterface
         $collection = [];
         if (is_array($array)) {
             foreach ($array as $element) {
-                // the original clean variant
-                // $collection[] = is_array($element) ? $this->hydrator->hydrate($element, $this->getPrototype()) : $element;
                 // the variant for non-array elements
                 $element = is_array($element) ? $element : [$element];
+                $collection[] = $this->hydrator->hydrate($element, $this->getPrototype());
+                // the original clean variant
+                // $collection[] = is_array($element) ? $this->hydrator->hydrate($element, $this->getPrototype()) : $element;
             }
         }
         return $collection;
