@@ -95,7 +95,7 @@ class AbstractMapper
         callable $dataObjectCondition = null, bool $isCollection = false)
     {
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
-        // @todo Maybe $prototyMap property instead of the $prototype property.
+        // @todo Maybe $prototypeMap property instead of the $prototype property.
         $prototype = $prototype ?: $this->getPrototype();
         $prototypeClass = get_class($prototype);
 
@@ -103,11 +103,6 @@ class AbstractMapper
         // For cases with an inverted relationship like
         // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
         // In otherweise in such cases some of the relevant rows can be ignored.
-        
-        if (is_array($identifier)) {
-            $breakpoint = null;
-        }
-        
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
