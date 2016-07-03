@@ -528,7 +528,7 @@ SQL;
         $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
             'name', 'server__', 'id', 'endpoint__');
         $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
-            'id', 'endpoint__', ['name', 'role'], ['cd_linux_unix_server__', 'endpoint__'], null, null, null,
+            'id', 'endpoint__', ['name', 'id', 'role'], ['cd_linux_unix_server__', 'endpoint__', 'endpoint__'], null, null, null,
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
                 $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
