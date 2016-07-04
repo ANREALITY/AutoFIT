@@ -13,6 +13,7 @@ return array(
         'Order',
         'Authentication',
         'Authorization',
+        'ZendDeveloperTools',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
