@@ -37,9 +37,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 $applicationForSourceFieldset = $endpointSourceFieldset->get('application');
 $customerForSourceFieldset = $endpointSourceFieldset->get('customer');
 $serverForSourceFieldset = $endpointSourceFieldset->get('server');
+$externalServerForSourceFieldset = $endpointSourceFieldset->get('external_server');
 $applicationForTargetFieldset = $endpointTargetFieldset->get('application');
 $customerForTargetFieldset = $endpointTargetFieldset->get('customer');
 $serverForTargetFieldset = $endpointTargetFieldset->get('server');
+$externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server');
 ?>
 
 <?php
@@ -85,6 +87,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
         'applicationForSourceFieldset' => $applicationForSourceFieldset,
         'customerForSourceFieldset' => $customerForSourceFieldset,
         'serverForSourceFieldset' => $serverForSourceFieldset,
+        'externalServerForSourceFieldset' => $externalServerForSourceFieldset,
         // DataObjects
         // no DataObjects
         // misc values
@@ -101,6 +104,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
         'applicationForTargetFieldset' => $applicationForTargetFieldset,
         'customerForTargetFieldset' => $customerForTargetFieldset,
         'serverForTargetFieldset' => $serverForTargetFieldset,
+        'externalServerForTargetFieldset' => $externalServerForTargetFieldset,
         // DataObjects
         // no DataObjects
         // misc values

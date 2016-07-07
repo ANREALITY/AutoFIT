@@ -36,9 +36,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 $applicationForSourceFieldset = $endpointSourceFieldset->get('application');
 $customerForSourceFieldset = $endpointSourceFieldset->get('customer');
 $serverForSourceFieldset = $endpointSourceFieldset->get('server');
+$externalServerForSourceFieldset = $endpointSourceFieldset->get('external_server');
 $applicationForTargetFieldset = $endpointTargetFieldset->get('application');
 $customerForTargetFieldset = $endpointTargetFieldset->get('customer');
 $serverForTargetFieldset = $endpointTargetFieldset->get('server');
+$externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server');
 ?>
 
 <?php
@@ -64,7 +66,8 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
         'endpointSourceFieldset' => $endpointSourceFieldset,
         'applicationForSourceFieldset' => $applicationForSourceFieldset,
         'customerForSourceFieldset' => $customerForSourceFieldset,
-        'serverForSourceFieldset' => $serverForSourceFieldset
+        'serverForSourceFieldset' => $serverForSourceFieldset,
+        'externalServerForSourceFieldset' => $externalServerForSourceFieldset
         // misc values
         // no misc values
     ]);
@@ -78,7 +81,8 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
         'endpointTargetFieldset' => $endpointTargetFieldset,
         'applicationForTargetFieldset' => $applicationForTargetFieldset,
         'customerForTargetFieldset' => $customerForTargetFieldset,
-        'serverForTargetFieldset' => $serverForTargetFieldset
+        'serverForTargetFieldset' => $serverForTargetFieldset,
+        'externalServerForTargetFieldset' => $externalServerForTargetFieldset
         // misc values
         // no misc values
     ]);
