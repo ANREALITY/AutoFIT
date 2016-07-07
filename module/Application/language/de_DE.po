@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-15 00:24+0200\n"
-"PO-Revision-Date: 2016-07-02 10:58+0200\n"
+"POT-Creation-Date: 2016-07-07 13:54+0200\n"
+"PO-Revision-Date: 2016-07-07 13:54+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -133,7 +133,7 @@ msgid "mailbox"
 msgstr "Mailbox"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
-#: Order/view/partials/list/summary.phtml:73
+#: Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
 
@@ -149,8 +149,8 @@ msgid "change number"
 msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:81
-#: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:22
-#: Order/view/partials/list/summary.phtml:74
+#: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
+#: Order/view/partials/list/summary.phtml:102
 #: Order/view/partials/order-parts/billing.phtml:16
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:23
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:23
@@ -172,7 +172,7 @@ msgstr "Benachrichtigungen"
 msgid "add a notification"
 msgstr "Benachrichtigung hinzufügen"
 
-#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
+#: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:36
 msgid "service invoice position number"
 msgstr "LSP"
 
@@ -246,11 +246,18 @@ msgstr "Quellsystem - Windows"
 msgid "Target - Windows"
 msgstr "Zielsystem - Windows"
 
-#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:31
-#: Order/view/partials/list/summary.phtml:75
+#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:36
+#: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:48
+#: Order/view/partials/list/summary.phtml:103
 #: Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
+
+#: Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
+#: Order/view/partials/list/summary.phtml:116
+#: Order/view/partials/list/summary.phtml:132
+msgid "external server"
+msgstr "externer Server"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:22
 msgid "expression"
@@ -283,7 +290,7 @@ msgstr "fehlgeschlagen"
 msgid "Secure Plus"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/ServerFieldset.php:22
+#: Order/src/Order/Form/Fieldset/ServerFieldset.php:36
 msgid "server name"
 msgstr "Servername"
 
@@ -809,33 +816,33 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
-#: Order/view/partials/list/summary.phtml:77
-#: Order/view/partials/list/summary.phtml:90
+#: Order/view/partials/list/summary.phtml:105
+#: Order/view/partials/list/summary.phtml:121
 msgid "endpoint"
 msgstr "Endpoint"
 
-#: Order/view/partials/list/summary.phtml:77
+#: Order/view/partials/list/summary.phtml:105
 #: Order/view/partials/start/cd.phtml:15 Order/view/partials/start/cd.phtml:19
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:80
-#: Order/view/partials/list/summary.phtml:93
+#: Order/view/partials/list/summary.phtml:108
+#: Order/view/partials/list/summary.phtml:124
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
 msgid "servers"
 msgstr "Server"
 
-#: Order/view/partials/list/summary.phtml:85
-#: Order/view/partials/list/summary.phtml:98
+#: Order/view/partials/list/summary.phtml:113
+#: Order/view/partials/list/summary.phtml:129
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server"
 msgstr "Server"
 
-#: Order/view/partials/list/summary.phtml:90
+#: Order/view/partials/list/summary.phtml:121
 #: Order/view/partials/start/cd.phtml:28 Order/view/partials/start/cd.phtml:32
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
