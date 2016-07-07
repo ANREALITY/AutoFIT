@@ -2,7 +2,6 @@
 use Zend\Form\View\Helper\FormMultiCheckbox;
 ?>
 <?php
-
 $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6';
 $fieldgroupTitle = $this->translate('Target - specific settings');
@@ -25,3 +24,4 @@ echo $this->partial('/partials/fieldgroup',
         'emptyView' => false
     ]);
 ?>
+<?php $this->inlineScript()->appendFile('/js/ftgwselfservice-target-hack.js'); ?>
