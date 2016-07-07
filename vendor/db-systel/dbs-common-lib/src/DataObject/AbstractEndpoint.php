@@ -62,6 +62,12 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
+     * @var ExternalServer
+     */
+    protected $externalServer;
+
+    /**
+     *
      * @var Application
      */
     protected $application;
@@ -196,6 +202,22 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setServer(Server $server)
     {
         $this->server = $server;
+    }
+
+    /**
+     * @return the $externalServer
+     */
+    public function getExternalServer()
+    {
+        return $this->externalServer;
+    }
+
+    /**
+     * @param ExternalServer $externalServer
+     */
+    public function setExternalServer(ExternalServer $externalServer)
+    {
+        $this->externalServer = $externalServer;
     }
 
     /**
