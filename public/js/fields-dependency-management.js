@@ -62,15 +62,15 @@ function toggleEndpointSourceDependentFields(value) {
 
 		fieldEndpointSourceApplicationNumber.parent().fadeIn('slow');
 		fieldEndpointSourceServerName.parent().fadeIn('slow');
-		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
+		fieldEndpointSourceExternalServerName.val('');
+		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 	}
 	if (value == 'external') {
 		fieldEndpointSourceApplicationNumber.val('');
 		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.val('');
 		fieldEndpointSourceServerName.parent().fadeOut('slow');
-		fieldEndpointSourceExternalServerName.val('');
-		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
+		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
 
 		fieldEndpointSourceCustomerName.parent().fadeIn('slow');
 	}
@@ -97,15 +97,15 @@ function toggleEndpointTargetDependentFields(value) {
 
 		fieldEndpointTargetApplicationNumber.parent().fadeIn('slow');
 		fieldEndpointTargetServerName.parent().fadeIn('slow');
-		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
+		fieldEndpointTargetExternalServerName.val('');
+		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
 	}
 	if (value == 'external') {
 		fieldEndpointTargetApplicationNumber.val('');
 		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.val('');
 		fieldEndpointTargetServerName.parent().fadeOut('slow');
-		fieldEndpointTargetExternalServerName.val('');
-		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
+		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
 
 		fieldEndpointTargetCustomerName.parent().fadeIn('slow');
 	}
