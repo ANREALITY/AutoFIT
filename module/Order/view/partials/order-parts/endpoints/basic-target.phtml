@@ -31,6 +31,10 @@ $orderPartAttributes = [
         'label' => $this->translate('server'),
         'value' => $dataObject->getServer() ? $dataObject->getServer()->getName() : '-'
     ],
+    [
+        'label' => ucfirst($this->translate('external server')),
+        'value' => $dataObject->getExternalServer() ? $dataObject->getExternalServer()->getName() : '-'
+    ],
 ];
 echo $this->partial('/partials/order-part',
     [

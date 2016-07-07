@@ -23,6 +23,13 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointSourceServerName = null;
     }
     try {
+        $endpointSourceExternalServer = $endpointSource->getExternalServer();
+        $endpointSourceExternalServerName = $endpointSourceExternalServer->getName();
+    } catch (Error $e) {
+        $endpointSourceExternalServer = null;
+        $endpointSourceExternalServerName = null;
+    }
+    try {
         $endpointSourceServers = $endpointSource->getServers();
     } catch (Error $e) {
         $endpointSourceServers = [];
@@ -34,6 +41,13 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointTargetServer = null;
         $endpointTargetServerName = null;
+    }
+    try {
+        $endpointTargetExternalServer = $endpointTarget->getExternalServer();
+        $endpointTargetExternalServerName = $endpointTargetExternalServer->getName();
+    } catch (Error $e) {
+        $endpointTargetExternalServer = null;
+        $endpointTargetExternalServerName = null;
     }
     try {
         $endpointTargetServers = $endpointTarget->getServers();
@@ -50,6 +64,13 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointSourceServerName = null;
     }
     try {
+        $endpointSourceExternalServer = $endpointSource->getExternalServer();
+        $endpointSourceExternalServerName = $endpointSourceExternalServer->getName();
+    } catch (Error $e) {
+        $endpointSourceExternalServer = null;
+        $endpointSourceExternalServerName = null;
+    }
+    try {
         $endpointSourceServers = $endpointSource->getServers();
     } catch (Error $e) {
         $endpointSourceServers = [];
@@ -61,6 +82,13 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointTargetServer = null;
         $endpointTargetServerName = null;
+    }
+    try {
+        $endpointTargetExternalServer = $endpointTarget->getExternalServer();
+        $endpointTargetExternalServerName = $endpointTargetExternalServer->getName();
+    } catch (Error $e) {
+        $endpointTargetExternalServer = null;
+        $endpointTargetExternalServerName = null;
     }
     try {
         $endpointTargetServers = $endpointTarget->getServers();
@@ -84,6 +112,9 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             <?php elseif ($endpointSourceServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointSourceServerName; ?></li>
             <?php endif; ?>
+            <?php if ($endpointSourceExternalServerName) : ?>
+                <li><?php echo $this->translate('external server') . ': ' . $endpointSourceExternalServerName; ?></li>
+            <?php endif; ?>
         </ul>
     </li>
     <li>
@@ -96,6 +127,9 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
                 <?php endforeach; ?>
             <?php elseif ($endpointTargetServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointTargetServerName; ?></li>
+            <?php endif; ?>
+            <?php if ($endpointTargetExternalServerName) : ?>
+                <li><?php echo $this->translate('external server') . ': ' . $endpointTargetExternalServerName; ?></li>
             <?php endif; ?>
         </ul>
     </li>
