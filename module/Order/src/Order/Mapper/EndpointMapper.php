@@ -39,6 +39,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
     /**
      *
+     * @var ExternalServerMapperInterface
+     */
+    protected $externalServerMapper;
+
+    /**
+     *
      * @var ApplicationMapperInterface
      */
     protected $applicationMapper;
@@ -73,6 +79,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     public function setServerMapper(ServerMapperInterface $serverMapper)
     {
         $this->serverMapper = $serverMapper;
+    }
+
+    /**
+     *
+     * @param ExternalServerMapperInterface $externalServerMapper
+     */
+    public function setExternalServerMapper(ExternalServerMapperInterface $externalServerMapper)
+    {
+        $this->externalServerMapper = $externalServerMapper;
     }
 
     /**
@@ -200,6 +215,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
+        if(! empty($dataObject->getExternalServer()->getName())) {
+            $newExternalServer = $this->externalServerMapper->save($dataObject->getExternalServer());
+            $data['external_server_id'] = $newExternalServer->getId();
+        } else {
+            if ($dataObject->getId()) {
+                $this->externalServerMapper->deleteOneByEndpointId($dataObject->getId());
+            }
+            $data['external_server_id'] = null;
+        }
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
 
@@ -527,6 +551,8 @@ SQL;
             'id', 'customer__', 'id', 'endpoint__');
         $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
             'name', 'server__', 'id', 'endpoint__');
+        $externalServerDataObjects = $this->externalServerMapper->createDataObjects($resultSetArray, null, null,
+            'name', 'external_server__', 'id', 'endpoint__');
         $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
             'id', 'endpoint__', ['name', 'id', 'role'], ['cd_linux_unix_server__', 'endpoint__', 'endpoint__'], null, null, null,
             function (array $row) {
@@ -563,6 +589,8 @@ SQL;
                 'setCustomer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
                 'setServer', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $externalServerDataObjects,
+                'setExternalServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
                 'setServers', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
