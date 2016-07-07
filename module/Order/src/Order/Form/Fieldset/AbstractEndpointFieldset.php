@@ -83,6 +83,13 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
 
         $this->add(
             [
+                'name' => 'external_server',
+                'type' => 'Order\Form\Fieldset\ExternalServer',
+                'options' => []
+            ]);
+
+        $this->add(
+            [
                 'name' => 'role',
                 'type' => 'hidden',
                 'attributes' => [
