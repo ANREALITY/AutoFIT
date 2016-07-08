@@ -11,6 +11,15 @@ $fileTransferRequest;
 <!-- show order <?php echo $fileTransferRequest->getId(); ?> -->
 
 <?php
+// buttons
+echo $this->partial('/partials/order-buttons/detail', [
+    'fileTransferRequest' => $fileTransferRequest,
+    'userId' => $userId,
+    'userRole' => $userRole,
+]);
+?>
+
+<?php
 // info
 echo $this->partial('/partials/order-parts/order-info', [
     'fileTransferRequest' => $fileTransferRequest

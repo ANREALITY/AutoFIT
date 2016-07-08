@@ -259,7 +259,9 @@ class ProcessController extends AbstractActionController
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return new ViewModel([
-            'fileTransferRequest' => $fileTransferRequest
+            'fileTransferRequest' => $fileTransferRequest,
+            'userId' => $this->IdentityParam('id'),
+            'userRole' => $this->IdentityParam('role'),
         ]);
     }
 
@@ -274,7 +276,9 @@ class ProcessController extends AbstractActionController
             ]);
 
         return new ViewModel([
-            'fileTransferRequests' => $fileTransferRequests
+            'fileTransferRequests' => $fileTransferRequests,
+            'userId' => $this->IdentityParam('id'),
+            'userRole' => $this->IdentityParam('role'),
         ]);
     }
 
@@ -283,7 +287,9 @@ class ProcessController extends AbstractActionController
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
 
         return new ViewModel([
-            'fileTransferRequests' => $fileTransferRequests
+            'fileTransferRequests' => $fileTransferRequests,
+            'userId' => $this->IdentityParam('id'),
+            'userRole' => $this->IdentityParam('role'),
         ]);
     }
 

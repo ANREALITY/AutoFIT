@@ -1,0 +1,13 @@
+<div id="buttons" class="fieldgroup-container col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <?php
+        echo $this->partial('/partials/order-buttons/buttons', [
+            'fileTransferRequest' => $fileTransferRequest,
+            'userId' => $userId,
+            'userRole' => $userRole,
+        ]);
+        ?>
+        </div>
+    </div>
+</div>
