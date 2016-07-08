@@ -214,6 +214,7 @@ return [
             // mappers
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
+            'Order\Mapper\AccessConfigSetMapper' => 'Order\Mapper\Factory\AccessConfigSetMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
             'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
             'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
@@ -280,7 +281,12 @@ return [
             'Order\Form\Fieldset\Server' => false,
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => false,
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => false,
-            'Order\Form\Fieldset\User' => false
+            'Order\Form\Fieldset\User' => false,
+            'Order\Form\Fieldset\AccessConfig' => false,
+            'Order\Form\Fieldset\AccessConfigSet' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
+            // @todo ExternalServerFieldset
         ]
     ],
     'view_manager' => [
