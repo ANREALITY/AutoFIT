@@ -17,6 +17,7 @@ use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
@@ -60,6 +61,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      * @var IncludeParameterSetMapperInterface
      */
     protected $includeParameterSetMapper;
+
+    /**
+     *
+     * @var AccessConfigSetMapperInterface
+     */
+    protected $accessConfigSetMapper;
 
     /**
      *
@@ -118,6 +125,14 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     }
 
     /**
+     * @param AccessConfigSetMapperInterface $accessConfigSetMapper
+     */
+    public function setAccessConfigSetMapper($accessConfigSetMapper)
+    {
+        $this->accessConfigSetMapper = $accessConfigSetMapper;
+    }
+
+    /**
      *
      * @param ProtocolMapperInterface $protocolMapper
      */
@@ -165,6 +180,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointCdTandem();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_LINUX_UNIX) === 0) {
                     $this->prototype = new EndpointCdLinuxUnix();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS_SHARE) === 0) {
+                    $this->prototype = new EndpointCdWindowsShare();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_SELF_SERVICE) === 0) {
                     $this->prototype = new EndpointFtgwSelfService();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
@@ -412,6 +429,62 @@ SQL;
                         }
                     }
                 }
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointCdWindowsShare $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointCdWindowsShare
+     * @throws \Exception
+     */
+    protected function saveCdWindowsShare(EndpointCdWindowsShare $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['sharename'] = $dataObject->getSharename();
+        $data['folder'] = $dataObject->getFolder();
+        $data['transmission_type'] = $dataObject->getTransmissionType();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        $newAccessConfigSet = $this->accessConfigSetMapper->save($dataObject->getAccessConfigSet());
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['access_config_set_id'] = $newAccessConfigSet->getId();
+        }
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_windows_share');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_windows_share');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
             }
             return $dataObject;
         }
