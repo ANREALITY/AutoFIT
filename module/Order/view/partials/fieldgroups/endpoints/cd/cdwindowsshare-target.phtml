@@ -1,0 +1,23 @@
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
+    $this->formRow($endpointTargetFieldset->get('sharename')),
+    $this->formRow($endpointTargetFieldset->get('folder')),
+    $this->formRow($endpointTargetFieldset->get('access_config_set')
+        ->get('access_configs')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
+        $endpointTargetFieldset->get('access_config_set')
+            ->get('add_access_config')) . '</div>'
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
