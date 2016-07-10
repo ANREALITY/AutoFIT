@@ -22,6 +22,7 @@ use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\IncludeParameterSet;
+use DbSystel\DataObject\AccessConfigSet;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -127,7 +128,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     /**
      * @param AccessConfigSetMapperInterface $accessConfigSetMapper
      */
-    public function setAccessConfigSetMapper($accessConfigSetMapper)
+    public function setAccessConfigSetMapper(AccessConfigSetMapperInterface $accessConfigSetMapper)
     {
         $this->accessConfigSetMapper = $accessConfigSetMapper;
     }
@@ -463,9 +464,7 @@ SQL;
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
-        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
-            $data['access_config_set_id'] = $newAccessConfigSet->getId();
-        }
+        $data['access_config_set_id'] = $newAccessConfigSet->getId();
 
         if (! $isUpdate) {
             $action = new Insert('endpoint_cd_windows_share');
@@ -640,6 +639,20 @@ SQL;
                 $protocolExists = array_key_exists('endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $cdWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_include_parameter_set__', 'id',
+            'endpoint__', new IncludeParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
+                $protocolExists = array_key_exists('endpoint_cd_windows_share_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_share_include_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
+        $cdWindowsShareAccessConfigSetDataObjects = $this->accessConfigSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_access_config_set__', 'id',
+            'endpoint__', new AccessConfigSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
+                $protocolExists = array_key_exists('endpoint_cd_windows_share_access_config_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_share_access_config_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
         $ftgwWindowsIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_include_parameter_set__', 'id',
             'endpoint__', new IncludeParameterSet(),
             function (array $row) {
@@ -670,6 +683,10 @@ SQL;
                 'setProtocols', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareIncludeParameterSetDataObjects,
+                'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigSetDataObjects,
+                'setAccessConfigSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
         }

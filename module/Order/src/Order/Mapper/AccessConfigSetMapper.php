@@ -177,25 +177,17 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
             $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         // @todo It's a hack! Find a clean solution!
-        if ($prefix === 'endpoint_cd_linux_unix_access_config_set__') {
-            $cdLinuxUnixAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_linux_unix_access_config__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_ftgw_windows_access_config_set__') {
-            $ftgwWindowsAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_access_config__', null, null, null, null, true);
+        if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
+            $cdWindowsShareAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_cd_windows_share_access_config__', null, null, null, null, true);
         }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
             // can though quals to the $dataObject->getId()!!!!!
-            if ($prefix === 'endpoint_cd_linux_unix_access_config_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixAccessConfigDataObjects,
-                    'setAccessConfigs', 'getId');
-            }
-            if ($prefix === 'endpoint_ftgw_windows_access_config_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsAccessConfigDataObjects,
+            if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigDataObjects,
                     'setAccessConfigs', 'getId');
             }
         }

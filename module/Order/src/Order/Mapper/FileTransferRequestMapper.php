@@ -391,6 +391,38 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_linux_unix_include_parameter' . '__' . 'expression' => 'expression',
                 'endpoint_cd_linux_unix_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_cd_windows_share', 'endpoint_cd_windows_share.endpoint_id = endpoint.id',
+            [
+                'endpoint_cd_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_windows_share' . '__' . 'sharename' => 'sharename',
+                'endpoint_cd_windows_share' . '__' . 'folder' => 'folder',
+                'endpoint_cd_windows_share' . '__' . 'transmission_type' => 'transmission_type',
+                'endpoint_cd_windows_share' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id',
+                'endpoint_cd_windows_share' . '__' . 'access_config_set_id' => 'access_config_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_share_include_parameter_set' => 'include_parameter_set'], 'endpoint_cd_windows_share_include_parameter_set.id = endpoint_cd_windows_share.include_parameter_set_id',
+            [
+                'endpoint_cd_windows_share_include_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_share_include_parameter' => 'include_parameter'], 'endpoint_cd_windows_share_include_parameter.include_parameter_set_id = endpoint_cd_windows_share_include_parameter_set.id',
+            [
+                'endpoint_cd_windows_share_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_cd_windows_share_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_cd_windows_share_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_share_access_config_set' => 'access_config_set'], 'endpoint_cd_windows_share_access_config_set.id = endpoint_cd_windows_share.access_config_set_id',
+            [
+                'endpoint_cd_windows_share_access_config_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_share_access_config' => 'access_config'], 'endpoint_cd_windows_share_access_config.access_config_set_id = endpoint_cd_windows_share_access_config_set.id',
+            [
+                'endpoint_cd_windows_share_access_config' . '__' . 'id' => 'id',
+                'endpoint_cd_windows_share_access_config' . '__' . 'username' => 'username',
+                'endpoint_cd_windows_share_access_config' . '__' . 'permission_read' => 'permission_read',
+                'endpoint_cd_windows_share_access_config' . '__' . 'permission_write' => 'permission_write',
+                'endpoint_cd_windows_share_access_config' . '__' . 'permission_delete' => 'permission_delete',
+                'endpoint_cd_windows_share_access_config' . '__' . 'access_config_set_id' => 'access_config_set_id'
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
             [
                 'endpoint_ftgw_windows' . '__' . 'endpoint_id' => 'endpoint_id',
