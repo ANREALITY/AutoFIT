@@ -87,7 +87,7 @@ function addEndpointSourceServer() {
         $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers fieldset:first').append(template);
     }
     // This solves the issue with autocomplete for dynamically added fields (s. #120).
-    initAutocompleteServer();
+    initAutocompleteServerSource();
     return false;
 }
 /**
@@ -107,6 +107,6 @@ function addEndpointTargetServer() {
         $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers fieldset:first').append(template);
     }
     // This solves the issue with autocomplete for dynamically added fields (s. #120).
-    initAutocompleteServer();
+    initAutocompleteServerTarget();
     return false;
 }

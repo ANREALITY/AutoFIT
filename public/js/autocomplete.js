@@ -114,12 +114,13 @@ $(function() {
 	});
 });
 /**
- * Autocompletion for the field (billing|physical-connection-endpoint)-server-name.
+ * Autocompletion for the field (billing|physical-connection-endpoint-source)-server-name.
  */
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
-var initAutocompleteServer = function() {
-	var physicalConnectionEndpointServerName = $('.autocomplete-server');
-	physicalConnectionEndpointServerName
+var initAutocompleteServerSource = function() {
+	var physicalConnectionEndpointSourceServerName = $('.fieldgroup-source .autocomplete-server');
+	var physicalConnectionEndpointSourceType = $('#endpoint-type-source');
+	physicalConnectionEndpointSourceServerName
 		.autocomplete({
 			autoFocus : true,
 			delay : 500,
@@ -127,7 +128,8 @@ var initAutocompleteServer = function() {
 			source : function(request, response) {
 				$.get(
 					"/order/ajax/provide-servers?"
-					+ "data[name]=" + request.term,
+					+ "data[name]=" + request.term
+					+ '&' + "data[endpoint_type_name]=" + physicalConnectionEndpointSourceType.val(),
 					{},
 					function(data) {
 						response(data.slice(0, 25));
@@ -141,5 +143,37 @@ var initAutocompleteServer = function() {
 	});
 };
 $(document).ready(function() {
-	initAutocompleteServer();
+	initAutocompleteServerSource();
+});
+/**
+ * Autocompletion for the field (billing|physical-connection-endpoint-target)-server-name.
+ */
+// Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
+var initAutocompleteServerTarget = function() {
+	var physicalConnectionEndpointTargetServerName = $('.fieldgroup-target .autocomplete-server');
+	var physicalConnectionEndpointTargetType = $('#endpoint-type-target');
+	physicalConnectionEndpointTargetServerName
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/order/ajax/provide-servers?"
+					+ "data[name]=" + request.term
+					+ '&' + "data[endpoint_type_name]=" + physicalConnectionEndpointTargetType.val(),
+					{},
+					function(data) {
+						response(data.slice(0, 25));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+};
+$(document).ready(function() {
+	initAutocompleteServerTarget();
 });
