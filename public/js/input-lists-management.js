@@ -110,3 +110,43 @@ function addEndpointTargetServer() {
     initAutocompleteServerTarget();
     return false;
 }
+/**
+ * Dynamic adding of endpoint source external server field(-set-)s.
+ */
+// Constants are supported in IE from v11. http://caniuse.com/#search=const
+const ENDPOINT_SOURCE_EXTERNAL_SERVERS_MAX_NUMBER = 5;
+$(document).ready(function() {
+	addEndpointSourceExternalServerButton = $('#add-endpoint-source-external-server-button');
+	addEndpointSourceExternalServerButton.on('click', addEndpointSourceExternalServer);
+});
+function addEndpointSourceExternalServer() {
+    var currentCount = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-external-servers fieldset:first > fieldset').length;
+    var template = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-external-servers fieldset:first > span').data('template');
+    template = template.replace(/__index__/g, currentCount);
+    if (currentCount < ENDPOINT_SOURCE_EXTERNAL_SERVERS_MAX_NUMBER) {
+        $('#fieldgroup-specific-endpoint-source .fieldset-multiple-external-servers fieldset:first').append(template);
+    }
+    // This solves the issue with autocomplete for dynamically added fields (s. #120).
+    initAutocompleteExternalServerSource();
+    return false;
+}
+/**
+ * Dynamic adding of endpoint target external server field(-set-)s.
+ */
+// Constants are supported in IE from v11. http://caniuse.com/#search=const
+const ENDPOINT_TARGET_EXTERNAL_SERVERS_MAX_NUMBER = 5;
+$(document).ready(function() {
+	addEndpointTargetExternalServerButton = $('#add-endpoint-target-external-server-button');
+	addEndpointTargetExternalServerButton.on('click', addEndpointTargetExternalServer);
+});
+function addEndpointTargetExternalServer() {
+    var currentCount = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-external-servers fieldset:first > fieldset').length;
+    var template = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-external-servers fieldset:first > span').data('template');
+    template = template.replace(/__index__/g, currentCount);
+    if (currentCount < ENDPOINT_TARGET_EXTERNAL_SERVERS_MAX_NUMBER) {
+        $('#fieldgroup-specific-endpoint-target .fieldset-multiple-external-servers fieldset:first').append(template);
+    }
+    // This solves the issue with autocomplete for dynamically added fields (s. #120).
+    initAutocompleteExternalServerTarget();
+    return false;
+}

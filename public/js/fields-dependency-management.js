@@ -122,6 +122,11 @@ $(document).ready(function() {
 	fieldServiceAddressSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-service-address');
 	buttonAddEndpointSourceServer = $('#fieldgroup-specific-endpoint-source #add-endpoint-source-server-button');
 
+	fieldTheExternalServerSource = $('#fieldgroup-basic-endpoint-source .input-external-server');
+	fieldAnExternalServerSource = $('#fieldgroup-specific-endpoint-source .input-external-server');
+	fieldsetMultipleExternalServersSource = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-external-servers');
+	buttonAddEndpointSourceExternalServer = $('#fieldgroup-specific-endpoint-source #add-endpoint-source-external-server-button');
+
 	fieldServerSourceToggle.change(function() {
 		toggleFieldServerSource(this.value);
 	});
@@ -137,11 +142,17 @@ function toggleFieldServerSource(value) {
 		fieldTheServerSource.parent().fadeIn('slow');
 		fieldAServerSource.val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
+
+		buttonAddEndpointSourceServer.fadeOut('slow');
 		
 		fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 		fieldServiceAddressSourceToggle.trigger('change');
 
-		buttonAddEndpointSourceServer.fadeOut('slow');
+		fieldTheExternalServerSource.parent().fadeIn('slow');
+		fieldAnExternalServerSource.val('');
+		fieldsetMultipleExternalServersSource.fadeOut('slow');
+
+		buttonAddEndpointSourceExternalServer.fadeOut('slow');
 	} else if (value == 'multiple_servers') {
 		if (fieldTheServerSource.val() != '') {
 			fieldAServerSource.first().val(fieldTheServerSource.val());
@@ -149,12 +160,21 @@ function toggleFieldServerSource(value) {
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		fieldsetMultipleServersSource.fadeIn('slow');
-		
+
+		buttonAddEndpointSourceServer.fadeIn('slow');
+
+		if (fieldTheExternalServerSource.val() != '') {
+			fieldAnExternalServerSource.first().val(fieldTheExternalServerSource.val());
+		}
+		fieldTheExternalServerSource.val('');
+		fieldTheExternalServerSource.parent().fadeOut('slow');
+		fieldsetMultipleExternalServersSource.fadeIn('slow');
+
+		buttonAddEndpointSourceExternalServer.fadeIn('slow');
+
 		fieldServiceAddressSourceToggle.prop('checked', false);
 		fieldServiceAddressSourceToggle.trigger('change');
 		fieldServiceAddressSourceToggle.parent().fadeOut('slow');
-
-		buttonAddEndpointSourceServer.fadeIn('slow');
 	}
 }
 function toggleFieldServiceAddressSource(field) {
@@ -178,6 +198,11 @@ $(document).ready(function() {
 	fieldClusterTarget = $('#fieldgroup-specific-endpoint-target .field-cluster');
 	fieldClusterTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-cluster');
 	buttonAddEndpointTargetServer = $('#fieldgroup-specific-endpoint-target #add-endpoint-target-server-button');
+
+	fieldTheExternalServerTarget = $('#fieldgroup-basic-endpoint-target .input-external-server');
+	fieldAnExternalServerTarget = $('#fieldgroup-specific-endpoint-target .input-external-server');
+	fieldsetMultipleExternalServersTarget = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-external-servers');
+	buttonAddEndpointTargetExternalServer = $('#fieldgroup-specific-endpoint-target #add-endpoint-target-external-server-button');
 
 	fieldServerTargetToggle.change(function() {
 		toggleFieldServerTarget(this.value);
@@ -207,6 +232,12 @@ function toggleFieldServerTarget(value) {
 		fieldClusterTargetToggle.parent().fadeOut('slow');
 
 		buttonAddEndpointTargetServer.fadeOut('slow');
+
+		fieldTheExternalServerTarget.parent().fadeIn('slow');
+		fieldAnExternalServerTarget.val('');
+		fieldsetMultipleExternalServersTarget.fadeOut('slow');
+
+		buttonAddEndpointTargetExternalServer.fadeOut('slow');
 	} else if (value == 'multiple_servers') {
 		if (fieldTheServerTarget.val() != '') {
 			fieldAServerTarget.first().val(fieldTheServerTarget.val());
@@ -223,6 +254,15 @@ function toggleFieldServerTarget(value) {
 		fieldClusterTargetToggle.trigger('change');
 
 		buttonAddEndpointTargetServer.fadeIn('slow');
+
+		if (fieldTheExternalServerTarget.val() != '') {
+			fieldAnExternalServerTarget.first().val(fieldTheExternalServerTarget.val());
+		}
+		fieldTheExternalServerTarget.val('');
+		fieldTheExternalServerTarget.parent().fadeOut('slow');
+		fieldsetMultipleExternalServersTarget.fadeIn('slow');
+
+		buttonAddEndpointTargetExternalServer.fadeIn('slow');
 	}
 }
 function toggleFieldServiceAddressTarget(field) {
