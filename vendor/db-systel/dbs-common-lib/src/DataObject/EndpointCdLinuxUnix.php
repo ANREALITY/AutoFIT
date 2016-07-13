@@ -58,6 +58,12 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
+     * @var ExternalServer[]
+     */
+    protected $externalServers;
+
+    /**
+     *
      * @return the $username
      */
     public function getUsername()
@@ -198,6 +204,22 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function setServers(array $servers)
     {
         $this->servers = $servers;
+    }
+
+    /**
+     * @return the $externalServers
+     */
+    public function getExternalServers()
+    {
+        return $this->externalServers;
+    }
+
+    /**
+     * @param multitype:\DbSystel\DataObject\ExternalServer  $externalServers
+     */
+    public function setExternalServers($externalServers)
+    {
+        $this->externalServers = $externalServers;
     }
 
 }
