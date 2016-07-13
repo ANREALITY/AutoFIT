@@ -105,6 +105,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                 'type' => 'hidden',
                 'attributes' => [
                     'required' => 'required',
+                    'id' => 'endpoint-type-' . $this->getConcreteRole(),
                     'class' => 'form-control',
                     'value' => $this->getConcreteType()
                 ]
