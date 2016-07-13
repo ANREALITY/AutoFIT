@@ -23,6 +23,22 @@ NOTIFICATION;
 }
 ?>
 <?php
+// external servers
+$externalServersOutput = '-';
+if ($dataObject->getExternalServers()) {
+    $externalServersOutput = '<ul class="external-servers">';
+    $index = 0;
+    foreach ($dataObject->getExternalServers() as $externalServer) {
+        $externalServersOutput .= <<<EXTERNAL_SERVER
+<li>
+    <span>{$externalServer->getName()}<span>
+</li>
+EXTERNAL_SERVER;
+    }
+    $externalServersOutput .= '</ul>';
+}
+?>
+<?php
 $orderPartCssId = 'specific-target';
 $orderPartCssClass = 'col-md-6';
 $orderPartTitle = $this->translate('Target - specific settings');
@@ -46,6 +62,10 @@ $orderPartAttributes = [
     [
         'label' => $this->translate('service address'),
         'value' => $dataObject->getServiceAddress() ?: '-'
+    ],
+    [
+        'label' => $this->translate('external servers'),
+        'value' => $externalServersOutput
     ],
     [
         'label' => $this->translate('cluster'),
