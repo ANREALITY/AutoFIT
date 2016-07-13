@@ -430,6 +430,24 @@ SQL;
                         }
                     }
                 }
+                $this->externalServerMapper->deleteAllByEndpointId($newEndpointId);
+                if ($dataObject->getExternalServers()) {
+                    foreach ($dataObject->getExternalServers() as $externalServer) {
+                        if ($externalServer->getName()) {
+                            $newExternalServer = $this->externalServerMapper->save($externalServer);
+                            $sql = <<<SQL
+INSERT INTO
+    endpoint_cd_linux_unix_external_server
+(endpoint_cd_linux_unix_endpoint_id, external_server_id)
+VALUES ('$newEndpointId', '{$externalServer->getId()}');
+SQL;
+                            $result = $this->dbAdapter->getDriver()
+                                ->getConnection()
+                                ->execute($sql);
+                            ;
+                        }
+                    }
+                }
             }
             return $dataObject;
         }
