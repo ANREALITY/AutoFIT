@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-08 13:52+0200\n"
-"PO-Revision-Date: 2016-07-08 13:52+0200\n"
+"POT-Creation-Date: 2016-07-13 13:01+0200\n"
+"PO-Revision-Date: 2016-07-13 13:01+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -51,7 +51,7 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:39
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:23
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:68
-#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:23
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:51
 msgid "folder"
 msgstr "Verzeichnis"
 
@@ -69,6 +69,7 @@ msgid "multiple servers"
 msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:138
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
@@ -80,12 +81,20 @@ msgid "add a server"
 msgstr "Server hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:119
+msgid "multiple external servers"
+msgstr "mehrere externe Server"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:143
+msgid "add an external server"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:152
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
 msgid "service address"
 msgstr "Service-Adresse"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:135
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:168
 msgid "IP / server name service address"
 msgstr "IP / Server-Name der Service-Adresse"
 
@@ -99,7 +108,7 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:28
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:64
-#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:47
 msgid "sharename"
 msgstr "Sharename"
 
@@ -218,6 +227,7 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:22
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:80
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:55
 msgid "access configurations"
 msgstr "Zugriffseinstellungen"
 
@@ -626,26 +636,6 @@ msgstr "Antrag-ID"
 msgid "request summary"
 msgstr "Anfragenzusammenfassung"
 
-#: Order/view/order/process/list-my-orders.phtml:30
-msgid "edit order"
-msgstr "Bestellung anpassen"
-
-#: Order/view/order/process/list-my-orders.phtml:33
-msgid "cancel order"
-msgstr "Bestellung stornieren"
-
-#: Order/view/order/process/list-orders.phtml:22
-msgid "accept order"
-msgstr "Bestellung annehmen"
-
-#: Order/view/order/process/list-orders.phtml:25
-msgid "decline order"
-msgstr "Bestellung ablehnen"
-
-#: Order/view/order/process/list-orders.phtml:28
-msgid "complete order"
-msgstr "Bestellung fertigstellen"
-
 #: Order/view/order/process/operation-denied-for-status.phtml:4
 msgid "edit"
 msgstr "anpassen"
@@ -862,7 +852,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
@@ -905,6 +895,26 @@ msgstr "Server"
 msgid "target"
 msgstr "Zielsystem"
 
+#: Order/view/partials/order-buttons/buttons.phtml:12
+msgid "edit order"
+msgstr "Bestellung anpassen"
+
+#: Order/view/partials/order-buttons/buttons.phtml:15
+msgid "cancel order"
+msgstr "Bestellung stornieren"
+
+#: Order/view/partials/order-buttons/buttons.phtml:20
+msgid "accept order"
+msgstr "Bestellung annehmen"
+
+#: Order/view/partials/order-buttons/buttons.phtml:23
+msgid "decline order"
+msgstr "Bestellung ablehnen"
+
+#: Order/view/partials/order-buttons/buttons.phtml:26
+msgid "complete order"
+msgstr "Bestellung fertigstellen"
+
 #: Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
 msgstr "Benutzer"
@@ -913,6 +923,7 @@ msgstr "Benutzer"
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/logical-connection.phtml:20
 msgid "yes"
 msgstr "ja"
@@ -921,6 +932,7 @@ msgstr "ja"
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
@@ -932,7 +944,7 @@ msgstr "nein"
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
-#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:43
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:32
