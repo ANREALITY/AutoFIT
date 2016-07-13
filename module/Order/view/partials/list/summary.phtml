@@ -34,6 +34,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
+    try {
+        $endpointSourceExternalServers = $endpointSource->getExternalServers();
+    } catch (Error $e) {
+        $endpointSourceExternalServers = [];
+    }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
     try {
         $endpointTargetServer = $endpointTarget->getServer();
@@ -53,6 +58,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointTargetServers = $endpointTarget->getServers();
     } catch (Error $e) {
         $endpointTargetServers = [];
+    }
+    try {
+        $endpointTargetExternalServers = $endpointTarget->getExternalServers();
+    } catch (Error $e) {
+        $endpointTargetExternalServers = [];
     }
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
@@ -75,6 +85,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
+    try {
+        $endpointSourceExternalServers = $endpointSource->getExternalServers();
+    } catch (Error $e) {
+        $endpointSourceExternalServers = [];
+    }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
     try {
         $endpointTargetServer = $endpointTarget->getServer();
@@ -95,6 +110,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointTargetServers = [];
     }
+    try {
+        $endpointTargetExternalServers = $endpointTarget->getExternalServers();
+    } catch (Error $e) {
+        $endpointTargetExternalServers = [];
+    }
 }
 ?>
 <ul>
@@ -112,7 +132,12 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             <?php elseif ($endpointSourceServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointSourceServerName; ?></li>
             <?php endif; ?>
-            <?php if ($endpointSourceExternalServerName) : ?>
+            <?php if($endpointSourceExternalServers) : ?>
+            <span><?php echo $this->translate('external servers') . ':'; ?></span>
+                <?php foreach ($endpointSourceExternalServers as $endpointSourceExternalServer) : ?>
+                <li><?php echo $endpointSourceExternalServer->getName(); ?></li>
+                <?php endforeach; ?>
+            <?php elseif ($endpointSourceExternalServerName) : ?>
                 <li><?php echo $this->translate('external server') . ': ' . $endpointSourceExternalServerName; ?></li>
             <?php endif; ?>
         </ul>
@@ -128,7 +153,12 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
             <?php elseif ($endpointTargetServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointTargetServerName; ?></li>
             <?php endif; ?>
-            <?php if ($endpointTargetExternalServerName) : ?>
+            <?php if($endpointTargetExternalServers) : ?>
+            <span><?php echo $this->translate('external servers') . ':'; ?></span>
+                <?php foreach ($endpointTargetExternalServers as $endpointTargetExternalServer) : ?>
+                <li><?php echo $endpointTargetExternalServer->getName(); ?></li>
+                <?php endforeach; ?>
+            <?php elseif ($endpointTargetExternalServerName) : ?>
                 <li><?php echo $this->translate('external server') . ': ' . $endpointTargetExternalServerName; ?></li>
             <?php endif; ?>
         </ul>
