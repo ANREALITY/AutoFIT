@@ -113,6 +113,39 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
         $this->add(
             [
+                'name' => 'external_servers',
+                'type' => 'Zend\Form\Element\Collection',
+                'options' => [
+                    'label' => _('multiple external servers'),
+                    'count' => 1,
+                    'should_create_template' => true,
+                    'template_placeholder' => '__index__',
+                    'allow_add' => true,
+                    'target_element' => [
+                        'type' => 'Order\Form\Fieldset\ExternalServer'
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12 fieldset-multiple-external-servers'
+                    ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'add_external_server',
+                'type' => 'button',
+                'options' => [
+                    'label' => _('+')
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default',
+                    'id' => 'add-endpoint-' . $this->getConcreteRole() . '-external-server-button',
+                    'value' => _('add an external server')
+                ]
+            ]);
+
+        $this->add(
+            [
                 'type' => 'Zend\Form\Element\Checkbox',
                 'name' => 'service_address_toggle',
                 'options' => [
