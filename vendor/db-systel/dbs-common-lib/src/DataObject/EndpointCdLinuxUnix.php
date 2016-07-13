@@ -215,9 +215,9 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @param multitype:\DbSystel\DataObject\ExternalServer  $externalServers
+     * @param multitype:ExternalServer $externalServers
      */
-    public function setExternalServers($externalServers)
+    public function setExternalServers(array $externalServers)
     {
         $this->externalServers = $externalServers;
     }
