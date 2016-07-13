@@ -650,6 +650,13 @@ SQL;
                 $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
                 return $typeIsOk && $serverExists;
             }, true);
+        $cdLinuxUnixExternalServerDataObjects = $this->externalServerMapper->createDataObjects($resultSetArray,
+            'id', 'endpoint__', ['id', 'id', 'role'], ['cd_linux_unix_external_server__', 'endpoint__', 'endpoint__'], null, null, null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                $externalServerExists = array_key_exists('cd_linux_unix_external_server' . '__' . 'id', $row) && !empty($row['cd_linux_unix_external_server' . '__' . 'id']);
+                return $typeIsOk && $externalServerExists;
+            }, true);
         $cdLinuxUnixIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_linux_unix_include_parameter_set__', 'id',
             'endpoint__', new IncludeParameterSet(),
             function (array $row) {
@@ -697,6 +704,8 @@ SQL;
                 'setExternalServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
                 'setServers', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixExternalServerDataObjects,
+                'setExternalServers', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
                 'setProtocols', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,
