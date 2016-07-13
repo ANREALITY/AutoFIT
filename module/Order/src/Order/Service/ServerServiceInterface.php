@@ -17,8 +17,9 @@ interface ServerServiceInterface
     /**
      *
      * @param string $name
+     * @param string $endpointTypeName
      */
-    public function findAllForAutocomplete(string $name);
+    public function findAllForAutocomplete(string $name, string $endpointTypeName = null);
 
     /**
      *

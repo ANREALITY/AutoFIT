@@ -10,6 +10,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
+use Zend\Db\Sql\Select;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
@@ -51,7 +52,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                 if (array_key_exists('name', $condition)) {
                     $select->where(
                         [
-                            'name LIKE ?' => '%' . $condition['name'] . '%'
+                            'server.name LIKE ?' => '%' . $condition['name'] . '%'
                         ]);
                 }
                 if (array_key_exists('active', $condition)) {
@@ -59,6 +60,16 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                         [
                             'server.active = ?' => $condition['active']
                         ]);
+                }
+                if (array_key_exists('endpoint_type_name', $condition) && ! empty($condition['endpoint_type_name'])) {
+                    $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],
+                        Select::JOIN_INNER);
+                    $select->join('endpoint_type', 'endpoint_type.id = endpoint_type_server_type.endpoint_type_id', [
+                        'endpoint_type_name' => 'name'
+                    ], Select::JOIN_INNER);
+                    $select->where->expression(
+                        'LOWER(endpoint_type.name) = LOWER(?)', $condition['endpoint_type_name']
+                    );
                 }
             }
         }
