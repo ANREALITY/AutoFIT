@@ -53,6 +53,9 @@ $(document).ready(function() {
 	fieldEndpointSourceServerPlace.filter(':checked').trigger('change');
 });
 function toggleEndpointSourceDependentFields(value) {
+	if (value == '') {
+		value = global.sourceServerPlace;
+	}
 	if (value == SERVER_PLACE_INTERNAL) {
 		fieldEndpointSourceCustomerName.val('');
 		fieldEndpointSourceCustomerName.parent().fadeOut('slow');
@@ -93,6 +96,9 @@ $(document).ready(function() {
 	fieldEndpointTargetServerPlace.filter(':checked').trigger('change');
 });
 function toggleEndpointTargetDependentFields(value) {
+	if (value == '') {
+		value = global.targetServerPlace;
+	}
 	if (value == SERVER_PLACE_INTERNAL) {
 		fieldEndpointTargetCustomerName.val('');
 		fieldEndpointTargetCustomerName.parent().fadeOut('slow');

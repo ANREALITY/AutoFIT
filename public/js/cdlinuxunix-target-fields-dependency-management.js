@@ -1,5 +1,6 @@
 // Linux/Unix EndpointTarget #start#
 $(document).ready(function() {
+	basicFieldEndpointTargetServerPlace = $('#fieldgroup-basic-endpoint-target .field-server-place');
 	fieldServerTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-server');
 	fieldTheServerTarget = $('#fieldgroup-basic-endpoint-target .input-server');
 	fieldAServerTarget = $('#fieldgroup-specific-endpoint-target .input-server');
@@ -27,8 +28,15 @@ $(document).ready(function() {
 	fieldServerTargetToggle.filter(':checked').trigger('change');
 	// fieldServiceAddressTargetToggle.trigger('change');
 	// fieldClusterTargetToggle.trigger('change');
+	basicFieldEndpointTargetServerPlace.change(function() {
+		console.log(global.targetServerQuantity);
+		toggleFieldServerTarget('');
+	});
 });
 function toggleFieldServerTarget(value) {
+	if (value == '') {
+		value = global.targetServerQuantity;
+	}
 	if (value == SERVER_QUANTITY_ONE) {
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldTheServerTarget.parent().fadeIn('slow');
@@ -37,9 +45,9 @@ function toggleFieldServerTarget(value) {
 		}	
 		fieldAServerTarget.val('');
 		fieldsetMultipleServersTarget.fadeOut('slow');
+		buttonAddEndpointTargetServer.fadeOut('slow');
 		fieldServiceAddressTargetToggle.parent().fadeIn('slow');
 		fieldServiceAddressTargetToggle.trigger('change');
-		buttonAddEndpointTargetServer.fadeOut('slow');
 		fieldAnExternalServerTarget.val('');
 		fieldsetMultipleExternalServersTarget.fadeOut('slow');
 		buttonAddEndpointTargetExternalServer.fadeOut('slow');
@@ -55,6 +63,8 @@ function toggleFieldServerTarget(value) {
 		fieldTheServerTarget.val('');
 		fieldTheServerTarget.parent().fadeOut('slow');
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
+			fieldsetMultipleExternalServersTarget.fadeOut('slow');
+			buttonAddEndpointTargetExternalServer.fadeOut('slow');
 			fieldsetMultipleServersTarget.fadeIn('slow');
 			buttonAddEndpointTargetServer.fadeIn('slow');
 		}
@@ -64,6 +74,8 @@ function toggleFieldServerTarget(value) {
 		fieldTheExternalServerTarget.val('');
 		fieldTheExternalServerTarget.parent().fadeOut('slow');
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
+			fieldsetMultipleServersTarget.fadeOut('slow');
+			buttonAddEndpointTargetServer.fadeOut('slow');
 			fieldsetMultipleExternalServersTarget.fadeIn('slow');
 			buttonAddEndpointTargetExternalServer.fadeIn('slow');
 		}

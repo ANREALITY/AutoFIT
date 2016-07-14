@@ -1,5 +1,6 @@
 // Linux/Unix EndpointSource #start#
 $(document).ready(function() {
+	basicFieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
 	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
 	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
 	fieldAServerSource = $('#fieldgroup-specific-endpoint-source .input-server');
@@ -21,8 +22,15 @@ $(document).ready(function() {
 	});
 	fieldServerSourceToggle.filter(':checked').trigger('change');
 	// fieldServiceAddressSourceToggle.trigger('change');
+	basicFieldEndpointSourceServerPlace.change(function() {
+		console.log(global.sourceServerQuantity);
+		toggleFieldServerSource('');
+	});
 });
 function toggleFieldServerSource(value) {
+	if (value == '') {
+		value = global.sourceServerQuantity;
+	}
 	if (value == SERVER_QUANTITY_ONE) {
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldTheServerSource.parent().fadeIn('slow');
@@ -31,9 +39,9 @@ function toggleFieldServerSource(value) {
 		}
 		fieldAServerSource.val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
+		buttonAddEndpointSourceServer.fadeOut('slow');
 		fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 		fieldServiceAddressSourceToggle.trigger('change');
-		buttonAddEndpointSourceServer.fadeOut('slow');
 		fieldAnExternalServerSource.val('');
 		fieldsetMultipleExternalServersSource.fadeOut('slow');
 		buttonAddEndpointSourceExternalServer.fadeOut('slow');
@@ -46,6 +54,8 @@ function toggleFieldServerSource(value) {
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
+			fieldsetMultipleExternalServersSource.fadeOut('slow');
+			buttonAddEndpointSourceExternalServer.fadeOut('slow');
 			fieldsetMultipleServersSource.fadeIn('slow');
 			buttonAddEndpointSourceServer.fadeIn('slow');
 		}
@@ -55,6 +65,8 @@ function toggleFieldServerSource(value) {
 		fieldTheExternalServerSource.val('');
 		fieldTheExternalServerSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
+			fieldsetMultipleServersSource.fadeOut('slow');
+			buttonAddEndpointSourceServer.fadeOut('slow');
 			fieldsetMultipleExternalServersSource.fadeIn('slow');
 			buttonAddEndpointSourceExternalServer.fadeIn('slow');
 		}
