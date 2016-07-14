@@ -13,6 +13,8 @@ $(document).ready(function() {
 	fieldAnExternalServerTarget = $('#fieldgroup-specific-endpoint-target .input-external-server');
 	fieldsetMultipleExternalServersTarget = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-external-servers');
 	buttonAddEndpointTargetExternalServer = $('#fieldgroup-specific-endpoint-target #add-endpoint-target-external-server-button');
+});
+$(document).ready(function() {
 	fieldServerTargetToggle.change(function() {
 		toggleFieldServerTarget(this.value);
 	});

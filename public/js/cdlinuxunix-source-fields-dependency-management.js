@@ -11,6 +11,8 @@ $(document).ready(function() {
 	fieldAnExternalServerSource = $('#fieldgroup-specific-endpoint-source .input-external-server');
 	fieldsetMultipleExternalServersSource = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-external-servers');
 	buttonAddEndpointSourceExternalServer = $('#fieldgroup-specific-endpoint-source #add-endpoint-source-external-server-button');
+});
+$(document).ready(function() {
 	fieldServerSourceToggle.change(function() {
 		toggleFieldServerSource(this.value);
 	});
