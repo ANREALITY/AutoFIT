@@ -22,34 +22,45 @@ $(document).ready(function() {
 });
 function toggleFieldServerSource(value) {
 	if (value == SERVER_QUANTITY_ONE) {
-		fieldTheServerSource.parent().fadeIn('slow');
+		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
+			fieldTheServerSource.parent().fadeIn('slow');
+		} else if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
+			fieldTheExternalServerSource.parent().fadeIn('slow');
+		}
 		fieldAServerSource.val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
-		buttonAddEndpointSourceServer.fadeOut('slow');
 		fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 		fieldServiceAddressSourceToggle.trigger('change');
-		fieldTheExternalServerSource.parent().fadeIn('slow');
+		buttonAddEndpointSourceServer.fadeOut('slow');
 		fieldAnExternalServerSource.val('');
 		fieldsetMultipleExternalServersSource.fadeOut('slow');
 		buttonAddEndpointSourceExternalServer.fadeOut('slow');
+
+		global.sourceServerQuantity = SERVER_QUANTITY_ONE;
 	} else if (value == SERVER_QUANTITY_MANY) {
 		if (fieldTheServerSource.val() != '') {
 			fieldAServerSource.first().val(fieldTheServerSource.val());
 		}
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
-		fieldsetMultipleServersSource.fadeIn('slow');
-		buttonAddEndpointSourceServer.fadeIn('slow');
+		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
+			fieldsetMultipleServersSource.fadeIn('slow');
+			buttonAddEndpointSourceServer.fadeIn('slow');
+		}
 		if (fieldTheExternalServerSource.val() != '') {
 			fieldAnExternalServerSource.first().val(fieldTheExternalServerSource.val());
 		}
 		fieldTheExternalServerSource.val('');
 		fieldTheExternalServerSource.parent().fadeOut('slow');
-		fieldsetMultipleExternalServersSource.fadeIn('slow');
-		buttonAddEndpointSourceExternalServer.fadeIn('slow');
+		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
+			fieldsetMultipleExternalServersSource.fadeIn('slow');
+			buttonAddEndpointSourceExternalServer.fadeIn('slow');
+		}
 		fieldServiceAddressSourceToggle.prop('checked', false);
 		fieldServiceAddressSourceToggle.trigger('change');
 		fieldServiceAddressSourceToggle.parent().fadeOut('slow');
+
+		global.sourceServerQuantity = SERVER_QUANTITY_MANY;
 	}
 }
 function toggleFieldServiceAddressSource(field) {
