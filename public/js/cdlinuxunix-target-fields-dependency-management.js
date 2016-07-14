@@ -30,7 +30,7 @@ $(document).ready(function() {
 	// fieldClusterTargetToggle.trigger('change');
 });
 function toggleFieldServerTarget(value) {
-	if (value == 'single_server') {
+	if (value == SERVER_QUANTITY_ONE) {
 		fieldTheServerTarget.parent().fadeIn('slow');
 		fieldAServerTarget.val('');
 		fieldsetMultipleServersTarget.fadeOut('slow');
@@ -49,7 +49,7 @@ function toggleFieldServerTarget(value) {
 		fieldsetMultipleExternalServersTarget.fadeOut('slow');
 
 		buttonAddEndpointTargetExternalServer.fadeOut('slow');
-	} else if (value == 'multiple_servers') {
+	} else if (value == SERVER_QUANTITY_MANY) {
 		if (fieldTheServerTarget.val() != '') {
 			fieldAServerTarget.first().val(fieldTheServerTarget.val());
 		}

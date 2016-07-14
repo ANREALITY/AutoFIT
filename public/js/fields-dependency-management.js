@@ -56,7 +56,7 @@ $(document).ready(function() {
 	fieldEndpointSourceServerPlace.filter(':checked').trigger('change');
 });
 function toggleEndpointSourceDependentFields(value) {
-	if (value == 'internal') {
+	if (value == SERVER_PLACE_INTERNAL) {
 		fieldEndpointSourceCustomerName.val('');
 		fieldEndpointSourceCustomerName.parent().fadeOut('slow');
 
@@ -65,7 +65,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceExternalServerName.val('');
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 	}
-	if (value == 'external') {
+	if (value == SERVER_PLACE_EXTERNAL) {
 		fieldEndpointSourceApplicationNumber.val('');
 		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.val('');
@@ -91,7 +91,7 @@ $(document).ready(function() {
 	fieldEndpointTargetServerPlace.filter(':checked').trigger('change');
 });
 function toggleEndpointTargetDependentFields(value) {
-	if (value == 'internal') {
+	if (value == SERVER_PLACE_INTERNAL) {
 		fieldEndpointTargetCustomerName.val('');
 		fieldEndpointTargetCustomerName.parent().fadeOut('slow');
 
@@ -100,7 +100,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetExternalServerName.val('');
 		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
 	}
-	if (value == 'external') {
+	if (value == SERVER_PLACE_EXTERNAL) {
 		fieldEndpointTargetApplicationNumber.val('');
 		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.val('');

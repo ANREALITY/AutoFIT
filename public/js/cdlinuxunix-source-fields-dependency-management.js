@@ -24,7 +24,7 @@ $(document).ready(function() {
 	// fieldServiceAddressSourceToggle.trigger('change');
 });
 function toggleFieldServerSource(value) {
-	if (value == 'single_server') {
+	if (value == SERVER_QUANTITY_ONE) {
 		fieldTheServerSource.parent().fadeIn('slow');
 		fieldAServerSource.val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
@@ -39,7 +39,7 @@ function toggleFieldServerSource(value) {
 		fieldsetMultipleExternalServersSource.fadeOut('slow');
 
 		buttonAddEndpointSourceExternalServer.fadeOut('slow');
-	} else if (value == 'multiple_servers') {
+	} else if (value == SERVER_QUANTITY_MANY) {
 		if (fieldTheServerSource.val() != '') {
 			fieldAServerSource.first().val(fieldTheServerSource.val());
 		}
