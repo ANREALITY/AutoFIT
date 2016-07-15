@@ -194,7 +194,7 @@ class AbstractMapper
     {
         // DANGEROUS!!!
         // Array key of a common element (created like myArray[] = new Element();)
-        // can though quals to the $dataObject->getId()!!!!!
+        // can though equal to the $dataObject->getId()!!!!!
         if (array_key_exists($parentId, $subDataObjects)) {
             $dataObject->$subDataObjectSetter($subDataObjects[$dataObject->$identifierGetter()]);
         }
