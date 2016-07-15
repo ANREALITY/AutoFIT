@@ -149,7 +149,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
-            // can though quals to the $dataObject->getId()!!!!!
+            // can though equal to the $dataObject->getId()!!!!!
             $this->appendSubDataObject($dataObject, $dataObject->getNumber(), $serviceInvoiceDataObjects,
                 'setServiceInvoice', 'getNumber');
         }

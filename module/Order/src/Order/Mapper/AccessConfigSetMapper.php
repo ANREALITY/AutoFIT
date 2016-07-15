@@ -185,7 +185,7 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
-            // can though quals to the $dataObject->getId()!!!!!
+            // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigDataObjects,
                     'setAccessConfigs', 'getId');

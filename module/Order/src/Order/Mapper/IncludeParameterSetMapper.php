@@ -194,7 +194,7 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
-            // can though quals to the $dataObject->getId()!!!!!
+            // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_cd_linux_unix_include_parameter_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterDataObjects,
                     'setIncludeParameters', 'getId');
