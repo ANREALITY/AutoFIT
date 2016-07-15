@@ -147,6 +147,7 @@ class AbstractMapper
             }
             $prototypeForHydration = new $prototypeClass();
             $objectData = [];
+            // @todo Maybe faster with array_map(...).
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
                 if ($this->arrayProcessor->isProperColumn($columnAlias, $prefix)) {
