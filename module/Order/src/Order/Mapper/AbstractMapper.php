@@ -145,7 +145,7 @@ class AbstractMapper
             if (!$this->arrayProcessor->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
-            $prototype = new $prototypeClass();
+            $prototypeForHydration = new $prototypeClass();
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
@@ -167,21 +167,21 @@ class AbstractMapper
                         if (empty($dataObjects[$row[$parentPrefix . $parentIdentifier]])) {
                             $dataObjects[$row[$parentPrefix . $parentIdentifier]] = [];
                         }
-                        $dataObjects[$row[$parentPrefix . $parentIdentifier]][] = $this->hydrator->hydrate($objectData, $prototype);
+                        $dataObjects[$row[$parentPrefix . $parentIdentifier]][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     } else {
-                        $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
+                        $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     }
                 } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
                     if ($isCollection) {
                         if (empty($dataObjects[$row[$childPrefix . $childIdentifier]])) {
                             $dataObjects[$row[$childPrefix . $childIdentifier]] = [];
                         }
-                        $dataObjects[$row[$childPrefix . $childIdentifier]][] = $this->hydrator->hydrate($objectData, $prototype);
+                        $dataObjects[$row[$childPrefix . $childIdentifier]][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     } else {
-                        $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData, $prototype);
+                        $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     }
                 } else {
-                    $dataObjects[] = $this->hydrator->hydrate($objectData, $prototype);
+                    $dataObjects[] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                 }
             }
             // sub-objects
