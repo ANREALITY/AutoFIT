@@ -22,6 +22,7 @@ class AccessConfigSetMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AccessConfigSet());
 
         $service->setAccessConfigMapper($serviceLocator->get('Order\Mapper\AccessConfigMapper'));
+        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
 
         return $service;
     }

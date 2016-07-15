@@ -22,6 +22,7 @@ class ServiceInvoicePositionMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ServiceInvoicePosition());
 
         $service->setServiceInvoiceMapper($serviceLocator->get('Order\Mapper\ServiceInvoiceMapper'));
+        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
 
         return $service;
     }

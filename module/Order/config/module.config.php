@@ -229,7 +229,9 @@ return [
             // DataObjects
             'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
         ],
-        'invokables' => [],
+        'invokables' => [
+            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
+        ],
         'abstract_factories' => [
             // mappers
             'Order\Mapper\Factory\AbstractMapperFactory',

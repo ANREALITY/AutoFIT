@@ -4,6 +4,7 @@ namespace Order\Mapper;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
+use DbSystel\Utility\ArrayProcessor;
 
 class AbstractMapper
 {
@@ -25,6 +26,11 @@ class AbstractMapper
      * @var AbstractDataObject
      */
     protected $prototype;
+
+    /**
+     * @var ArrayProcessor
+     */
+    protected $arrayProcessor;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         AbstractDataObject $prototype = null)
@@ -90,6 +96,22 @@ class AbstractMapper
         $this->prototype = $prototype;
     }
 
+    /**
+     * @return the $arrayProcessor
+     */
+    public function getArrayProcessor()
+    {
+        return $this->arrayProcessor;
+    }
+
+    /**
+     * @param ArrayProcessor $arrayProcessor
+     */
+    public function setArrayProcessor(ArrayProcessor $arrayProcessor)
+    {
+        $this->arrayProcessor = $arrayProcessor;
+    }
+
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
@@ -106,7 +128,7 @@ class AbstractMapper
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
-            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
+            $uniqueResultSetArray = $this->arrayProcessor->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
         } elseif (is_array($identifierMakingUnique)) {
             $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
                 $result = [];
@@ -115,19 +137,19 @@ class AbstractMapper
                 }
                 return $result;
             };
-            $uniqueResultSetArray = $this->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
+            $uniqueResultSetArray = $this->arrayProcessor->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
         }
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            if (!$this->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
+            if (!$this->arrayProcessor->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
             $prototype = new $prototypeClass();
             $objectData = [];
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if ($this->isProperColumn($columnAlias, $prefix)) {
+                if ($this->arrayProcessor->isProperColumn($columnAlias, $prefix)) {
                     if (is_string($prefix)) {
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;
@@ -165,115 +187,6 @@ class AbstractMapper
             // sub-objects
         }
         return $dataObjects;
-    }
-
-    protected function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null, $prefix = null)
-    {
-        $isProper = false;
-        $conditionOk = true;
-        if ($dataObjectCondition && ! $dataObjectCondition($row)) {
-            $conditionOk = false;
-        }
-        // Preventing creating empty objects.
-        // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-        $identifierOk = true;
-        if (is_string($identifier)) {
-            $identifierOk = ! ($row[$prefix . $identifier] === '' || $row[$prefix . $identifier] === null);
-        } elseif (is_array($identifier)) {
-            foreach ($identifier as $key => $partIdentifierValue) {
-                if ($row[$prefix[$key] . $partIdentifierValue] === '' || $row[$prefix[$key] . $partIdentifierValue] === null) {
-                    $identifierOk = false;
-                    break;
-                }
-            }
-        }
-        $isProper = $conditionOk && $identifierOk;
-        return $isProper;
-    }
-
-    protected function isProperColumn(string $columnAlias, $prefixes)
-    {
-        $prefixIsProper = false;
-        if (is_string($prefixes)) {
-            if (! empty($prefixes) && strpos($columnAlias, $prefixes) === 0) {
-                $prefixIsProper = true;
-            }
-        } elseif (is_array($prefixes)) {
-            foreach ($prefixes as $prefix) {
-                if (! empty($prefix) && strpos($columnAlias, $prefix) === 0) {
-                    $prefixIsProper = true;
-                    break;
-                }
-            }
-        }
-        return $prefixIsProper;
-    }
-
-    protected function arrayUniqueByIdentifier(array $array, $identifier)
-    {
-        if (is_string($identifier)) {
-            // Get the grouping column array unique.
-            $ids = array_column($array, $identifier);
-            $ids = array_unique($ids);
-            // Filter the original array by the keys of the grouping column array.
-            $array = array_filter($array,
-                function ($key, $value) use($ids) {
-                    return in_array($value, array_keys($ids));
-                }, ARRAY_FILTER_USE_BOTH);
-        } elseif (is_array($identifier)) {
-            $array = $this->arrayUniqueByMultipleIdentifiers($array, $identifier, '|||');
-        }
-        return $array;
-    }
-
-    protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers, string $implodeSeparator = null)
-    {
-        $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
-        $arrayUniqueByRow = $this->arrayUniqueByRow($arrayForMakingUniqueByRow, $implodeSeparator);
-        $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueByRow);
-        return $arrayUniqueByMultipleIdentifiers;
-    }
-    
-    protected function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
-    {
-        foreach ($table as $rowKey => $row) {
-            if (is_array($row)) {
-                if ($isWhitelist) {
-                    foreach ($row as $fieldName => $fieldValue) {
-                        if (!in_array($fieldName, $columnNames)) {
-                            unset($table[$rowKey][$fieldName]);
-                        }
-                    }
-                } else {
-                    foreach ($row as $fieldName => $fieldValue) {
-                        if (in_array($fieldName, $columnNames)) {
-                            unset($table[$rowKey][$fieldName]);
-                        }
-                    }
-                }
-            }
-        }
-        return $table;
-    }
-    
-    protected function arrayUniqueByRow(array $table = [], string $implodeSeparator)
-    {
-        $elementStrings = [];
-        foreach ($table as $row) {
-            // To avoid notices like "Array to string conversion".
-            $elementPreparedForImplode = array_map(
-                function ($field) {
-                    $valueType = gettype($field);
-                    $simpleTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
-                    $field = in_array($valueType, $simpleTypes) ? $field : $valueType;
-                    return $field;
-                }, $row
-                );
-            $elementStrings[] = implode($implodeSeparator, $elementPreparedForImplode);
-        }
-        $elementStringsUnique = array_unique($elementStrings);
-        $table = array_intersect_key($table, $elementStringsUnique);
-        return $table;
     }
 
     protected function appendSubDataObject(&$dataObject, $parentId, array $subDataObjects, $subDataObjectSetter,

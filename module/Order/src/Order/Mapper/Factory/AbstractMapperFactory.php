@@ -63,6 +63,8 @@ class AbstractMapperFactory implements AbstractFactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new $prototypeQualifiedClassName());
 
+        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+
         return $service;
     }
 

@@ -21,6 +21,7 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
 
         $service->setEndpointMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
+        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
 
         return $service;
     }
