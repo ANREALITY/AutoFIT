@@ -52,7 +52,7 @@ class Bootstrap
                 'module_paths' => $zf2ModulePaths
             ),
             'modules' => array(
-                'JuunaConnectApi'
+                'Order'
             )
         );
 
@@ -203,11 +203,11 @@ if (file_exists(APPLICATION_PATH . '/config/application.config.integrationtest.p
 // are fully qualified (e.g., IBM i). The following prefixes the default glob
 // path with the value of the current working directory to ensure configuration
 // globbing will work cross-platform.
-if (isset($appConfig['module_listener_options']['config_glob_paths'])) {
-    foreach ($appConfig['module_listener_options']['config_glob_paths'] as $index => $path) {
-        $appConfig['module_listener_options']['config_glob_paths'][$index] = APPLICATION_PATH . $path;
-    }
-}
+// if (isset($appConfig['module_listener_options']['config_glob_paths'])) {
+//     foreach ($appConfig['module_listener_options']['config_glob_paths'] as $index => $path) {
+//         $appConfig['module_listener_options']['config_glob_paths'][$index] = APPLICATION_PATH . $path;
+//     }
+// }
 
 // Run the application!
 $application = Application::init($appConfig);
