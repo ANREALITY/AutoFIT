@@ -27,7 +27,7 @@ class ArrayProcessor
         $isProper = $conditionOk && $identifierOk;
         return $isProper;
     }
-    
+
     public function isProperColumn(string $columnAlias, $prefixes)
     {
         $prefixIsProper = false;
@@ -45,7 +45,7 @@ class ArrayProcessor
         }
         return $prefixIsProper;
     }
-    
+
     public function arrayUniqueByIdentifier(array $array, $identifier)
     {
         if (is_string($identifier)) {
@@ -62,7 +62,7 @@ class ArrayProcessor
         }
         return $array;
     }
-    
+
     public function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers, string $implodeSeparator = null)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
@@ -70,7 +70,7 @@ class ArrayProcessor
         $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueByRow);
         return $arrayUniqueByMultipleIdentifiers;
     }
-    
+
     public function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
         foreach ($table as $rowKey => $row) {
@@ -92,25 +92,46 @@ class ArrayProcessor
         }
         return $table;
     }
-    
-    public function arrayUniqueByRow(array $table = [], string $implodeSeparator)
+
+    /**
+     *
+     *
+     * @param array $table
+     * @param string $implodeSeparator
+     */
+    public function arrayUniqueByRow(array $table = [], string $implodeSeparator = null)
     {
-        $elementStrings = [];
-        foreach ($table as $row) {
-            // To avoid notices like "Array to string conversion".
-            $elementPreparedForImplode = array_map(
-                function ($field) {
-                    $valueType = gettype($field);
-                    $simpleTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
-                    $field = in_array($valueType, $simpleTypes) ? $field : $valueType;
-                    return $field;
-                }, $row
-                );
-            $elementStrings[] = implode($implodeSeparator, $elementPreparedForImplode);
-        }
+        $elementStrings = $this->stringifySubArrays($table, $implodeSeparator);
         $elementStringsUnique = array_unique($elementStrings);
         $table = array_intersect_key($table, $elementStringsUnique);
         return $table;
     }
-    
+
+    public function stringifySubArrays(array $array, string $implodeSeparator = null) {
+        $elementStrings = [];
+        foreach ($array as $subArray) {
+            // To avoid notices like "Array to string conversion".
+            $elementStrings[] = $this->stringifyArray($subArray, $implodeSeparator);
+        }
+        return $elementStrings;
+    }
+
+    public function stringifyArray(array $array, string $implodeSeparator = null)
+    {
+        $elementPreparedForImplode = $this->flattenArray($array);
+        return implode($implodeSeparator, $elementPreparedForImplode);
+    }
+
+    public function flattenArray(array $array) {
+        $flatArray = array_map([$this, 'flattenVar'], $array);
+        return $flatArray;
+    }
+
+    public function flattenVar($var) {
+        $valueType = gettype($var);
+        $simpleTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
+        $var = in_array($valueType, $simpleTypes) ? $var : $valueType;
+        return $var;
+    }
+
 }
