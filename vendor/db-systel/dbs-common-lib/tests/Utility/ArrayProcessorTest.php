@@ -14,6 +14,84 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->arrayProcessor = new ArrayProcessor();
     }
 
+    /**
+     * @dataProvider provideDataForRemoveArrayColumns
+     */
+    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
+    {
+        $this->assertEquals($expectedArray, $this->arrayProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
+    }
+
+    public function provideDataForRemoveArrayColumns()
+    {
+        return [
+            // variant without whitelisting
+            [
+                // test array
+                [
+                    [
+                        'foo' => 'qwer',
+                        'bar' => 'asdf',
+                        'baz' => 'yxcv',
+                        'buz' => 'qxev'
+                    ],
+                    [
+                        'foo' => '12',
+                        'bar' => '34',
+                        'baz' => '56',
+                        'buz' => '78'
+                    ],
+                ],
+                // columns
+                ['foo', 'baz'],
+                false,
+                // expected array
+                [
+                    [
+                        'bar' => 'asdf',
+                        'buz' => 'qxev'
+                    ],
+                    [
+                        'bar' => '34',
+                        'buz' => '78'
+                    ],
+                ],
+            ],
+            // variant with whitelisting
+            [
+                // test array
+                [
+                    [
+                        'foo' => 'qwer',
+                        'bar' => 'asdf',
+                        'baz' => 'yxcv',
+                        'buz' => 'qxev'
+                    ],
+                    [
+                        'foo' => '12',
+                        'bar' => '34',
+                        'baz' => '56',
+                        'buz' => '78'
+                    ],
+                ],
+                // columns
+                ['foo', 'baz'],
+                true,
+                // expected array
+                [
+                    [
+                        'foo' => 'qwer',
+                        'baz' => 'yxcv'
+                    ],
+                    [
+                        'foo' => '12',
+                        'baz' => '56'
+                    ],
+                ],
+            ]
+        ];
+    }
+
     public function testFlattenArray()
     {
         $testArray = [true, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];

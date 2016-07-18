@@ -71,6 +71,18 @@ class ArrayProcessor
         return $arrayUniqueByMultipleIdentifiers;
     }
 
+    /**
+     * Considering the multidimensional input array as a table,
+     * removes some of its columns,
+     * means the second-level elements with the specified keys.
+     * If $isWhitelist is TRUE, all $columnNames are removed.
+     * Else these are on the "whitelist" and the other are removed.
+     *
+     * @param array $table
+     * @param array $columnNames
+     * @param bool $isWhitelist
+     * @return array
+     */
     public function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
         foreach ($table as $rowKey => $row) {
@@ -90,6 +102,7 @@ class ArrayProcessor
                 }
             }
         }
+
         return $table;
     }
 
