@@ -66,8 +66,8 @@ class ArrayProcessor
     public function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers, string $implodeSeparator = null)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
-        $arrayUniqueByRow = $this->arrayUniqueByRow($arrayForMakingUniqueByRow, $implodeSeparator);
-        $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueByRow);
+        $arrayUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow, $implodeSeparator);
+        $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueBySubArray);
         return $arrayUniqueByMultipleIdentifiers;
     }
 
@@ -94,12 +94,17 @@ class ArrayProcessor
     }
 
     /**
+     * Extracts from the input $table the unique sub-arrays.
      *
+     * For uniqueness check the sub-arrays get "stringified" first.
+     * The IDs of the unique result strings are then the IDs of the unique sub-arrays.
+     *
+     * @see ArrayProcessor#stringifySubArrays(...)
      *
      * @param array $table
      * @param string $implodeSeparator
      */
-    public function arrayUniqueByRow(array $table = [], string $implodeSeparator = null)
+    public function arrayUniqueBySubArray(array $table = [], string $implodeSeparator = null)
     {
         $elementStrings = $this->stringifySubArrays($table, $implodeSeparator);
         $elementStringsUnique = array_unique($elementStrings);
@@ -107,26 +112,75 @@ class ArrayProcessor
         return $table;
     }
 
+    /**
+     * Makes from every sub-array a string from its elements
+     * (flattened and separated by the $implodeSeparator)
+     * and returns an array of these "strigified" sub-arrays.
+     *
+     * @see ArrayProcessor#flattenArray(...)
+     * @see ArrayProcessor#stringifyArray(...)
+     *
+     * @param array $array
+     * @param string $implodeSeparator
+     */
     public function stringifySubArrays(array $array, string $implodeSeparator = null) {
         $elementStrings = [];
         foreach ($array as $subArray) {
-            // To avoid notices like "Array to string conversion".
             $elementStrings[] = $this->stringifyArray($subArray, $implodeSeparator);
         }
         return $elementStrings;
     }
 
+    /**
+     * "Flatten" the input $array first
+     * (in order to avoid notices like "Array to string conversion")
+     * and returns a string from its elements separated by the $implodeSeparator.
+     * The idexes of the stringified sub-arrays remain the same
+     *  as the indexes of the original sub-array elements.
+     *
+     * @see ArrayProcessor#flattenArray(...)
+     *
+     * @param array $array
+     * @param string $implodeSeparator
+     */
     public function stringifyArray(array $array, string $implodeSeparator = null)
     {
         $elementPreparedForImplode = $this->flattenArray($array);
         return implode($implodeSeparator, $elementPreparedForImplode);
     }
 
+    /**
+     * Iterates through the input $array,
+     * makes all its elements "flat",
+     * and returnes the result.
+     *
+     * @see ArrayProcessor#flattenVar(...)
+     *
+     * @todo Make aware against cases with non-array elements
+     *  (like: $elementStrings[] = is_array($subArray) ? stringify... : $subArray;).
+     * 
+     *
+     * @param array $array
+     */
     public function flattenArray(array $array) {
         $flatArray = array_map([$this, 'flattenVar'], $array);
         return $flatArray;
     }
 
+    /**
+     * Makes the input $var "flat".
+     * If it's from a simply type like string or integer or from type NULL,
+     * the value is returned.
+     * If it's an object or an array, "object" or "array" is returned.
+     *
+     * @see gettype()
+     *
+     * @todo Maybe it would be make sence to return the (qualified?) classname for objects.
+     * @todo Meybe create a Stringifyable interface, in order to allow nested "stringification".
+     *
+     * @param mixed $var
+     * @return mixed
+     */
     public function flattenVar($var) {
         $valueType = gettype($var);
         $simpleTypes = ['boolean', 'integer', 'double', 'float', 'string', 'NULL'];
