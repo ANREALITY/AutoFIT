@@ -87,19 +87,15 @@ class ArrayProcessor
     {
         foreach ($table as $rowKey => $row) {
             if (is_array($row)) {
-                if ($isWhitelist) {
                     foreach ($row as $fieldName => $fieldValue) {
-                        if (!in_array($fieldName, $columnNames)) {
+                        $remove = $isWhitelist
+                            ? !in_array($fieldName, $columnNames)
+                            : in_array($fieldName, $columnNames)
+                        ;
+                        if ($remove) {
                             unset($table[$rowKey][$fieldName]);
                         }
                     }
-                } else {
-                    foreach ($row as $fieldName => $fieldValue) {
-                        if (in_array($fieldName, $columnNames)) {
-                            unset($table[$rowKey][$fieldName]);
-                        }
-                    }
-                }
             }
         }
 
