@@ -19,7 +19,8 @@ return [
     'view_manager' => [
         'exception_template' => 'exception',
         'template_map' => [
-            'exception' => __DIR__ . '/../../module/ErrorHandling/view/exception.phtml'
+            'exception' => __DIR__ . '/../../module/ErrorHandling/view/exception.phtml',
+            'default_zf_error_view' => __DIR__ . '/../../module/Application/view/error/index.phtml',
         ]
     ]
 ];
