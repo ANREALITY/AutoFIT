@@ -1,0 +1,10 @@
+exclude.txt
+vendor/
+public/components
+data
+/**/npm-debug.*
+build/**/
+.buildpath
+.project
+.settings/
+composer.lock
