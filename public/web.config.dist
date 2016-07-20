@@ -124,7 +124,7 @@
         <security>
             <authorization>
                 <remove users="*" roles="" verbs="" />
-                <add accessType="Allow" users="enricohalbauer, manuelakamberg, sabinehinz, iriskrueger, dirkludwig, ilyakhanataev" />
+                <add accessType="Allow" users="enricohalbauer, manuelakamberg, sabinehinz, iriskrueger, dirkludwig, ilyakhanataev" roles="" />
             </authorization>
         </security>
     </system.webServer>
