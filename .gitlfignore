@@ -7,4 +7,3 @@ build/**/
 .buildpath
 .project
 .settings/
-composer.lock
