@@ -8,6 +8,7 @@ nbproject
 .settings
 .htpasswd
 build.xml
+.bowerrc
 composer.lock
 npm-debug.log*
 config/application.config.php
