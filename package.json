@@ -1,14 +1,16 @@
 {
-    "name": "AutoFIT",
-    "version": "0.0.1",
-    "devDependencies": {
-        "gulp": "*",
-        "gulp-watch": "*",
-        "gulp-less": "*",
-        "gulp-watch": "*",
-        "gulp-autoprefixer": "*",
-        "gulp-plumber": "*",
-        "gulp-rename": "*",
-        "path": "*"
-    }
+  "name": "AutoFIT",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-watch": "*",
+    "gulp-less": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-plumber": "*",
+    "gulp-rename": "*",
+    "path": "*"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
 }
