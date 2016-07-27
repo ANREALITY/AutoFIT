@@ -14,6 +14,28 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->arrayProcessor = new ArrayProcessor();
     }
 
+    public function testArrayUniqueBySubArray()
+    {
+        $testArray = [
+            0 => [true, false, 123],
+            2 => ['foo'],
+            4 => [true, false, 123],
+            5 => [['foo' => 'bar'], new \stdClass()],
+            7 => [4.567, 'abc', null],
+            8 => [['foo' => 'bar'], new \AppendIterator()],
+            9 => [['foo' => 'bar'], new \Exception()],
+        ];
+        $implodeSeparator = '|';
+        $expectedArray = [
+            0 => [true, false, 123],
+            2 => ['foo'],
+            5 => [['foo' => 'bar'], new \stdClass()],
+            7 => [4.567, 'abc', null],
+        ];
+
+        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueBySubArray($testArray, $implodeSeparator));
+    }
+
     public function testStringifySubArrays()
     {
         $testArray = [
