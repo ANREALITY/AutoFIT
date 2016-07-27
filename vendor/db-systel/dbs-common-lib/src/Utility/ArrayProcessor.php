@@ -4,6 +4,16 @@ namespace DbSystel\Utility;
 class ArrayProcessor
 {
 
+    /**
+     * @var string
+     */
+    protected $implodeSeparator;
+
+    public function __construct($implodeSeparator = null)
+    {
+        $this->setImplodeSeparator($implodeSeparator);
+    }
+
     public function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null, $prefix = null)
     {
         $isProper = false;
@@ -58,15 +68,15 @@ class ArrayProcessor
                     return in_array($value, array_keys($ids));
                 }, ARRAY_FILTER_USE_BOTH);
         } elseif (is_array($identifier)) {
-            $array = $this->arrayUniqueByMultipleIdentifiers($array, $identifier, '|||');
+            $array = $this->arrayUniqueByMultipleIdentifiers($array, $identifier);
         }
         return $array;
     }
 
-    public function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers, string $implodeSeparator = null)
+    public function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
-        $arrayUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow, $implodeSeparator);
+        $arrayUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
         $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueBySubArray);
         return $arrayUniqueByMultipleIdentifiers;
     }
@@ -111,11 +121,10 @@ class ArrayProcessor
      * @see ArrayProcessor#stringifySubArrays(...)
      *
      * @param array $table
-     * @param string $implodeSeparator
      */
-    public function arrayUniqueBySubArray(array $table = [], string $implodeSeparator = null)
+    public function arrayUniqueBySubArray(array $table = [])
     {
-        $elementStrings = $this->stringifySubArrays($table, $implodeSeparator);
+        $elementStrings = $this->stringifySubArrays($table);
         $elementStringsUnique = array_unique($elementStrings);
         $table = array_intersect_key($table, $elementStringsUnique);
         return $table;
@@ -123,7 +132,7 @@ class ArrayProcessor
 
     /**
      * Makes from every sub-array a string from its elements
-     * (flattened and separated by the $implodeSeparator)
+     * (flattened and separated by the $this->implodeSeparator)
      * and returns an array of these "strigified" sub-arrays.
      * The indexes of the stringified sub-arrays remain the same
      *  as the indexes of the original sub-array elements.
@@ -132,12 +141,11 @@ class ArrayProcessor
      * @see ArrayProcessor#stringifyArray(...)
      *
      * @param array $array
-     * @param string $implodeSeparator
      */
-    public function stringifySubArrays(array $array, string $implodeSeparator = null) {
+    public function stringifySubArrays(array $array) {
         $elementStrings = [];
         foreach ($array as $key => $subArray) {
-            $elementStrings[$key] = $this->stringifyArray($subArray, $implodeSeparator);
+            $elementStrings[$key] = $this->stringifyArray($subArray);
         }
         return $elementStrings;
     }
@@ -156,6 +164,7 @@ class ArrayProcessor
      */
     public function stringifyArray(array $array, string $implodeSeparator = null)
     {
+        $implodeSeparator = $implodeSeparator ?: $this->implodeSeparator;
         $elementPreparedForImplode = $this->flattenArray($array);
         return implode($implodeSeparator, $elementPreparedForImplode);
     }
@@ -199,4 +208,21 @@ class ArrayProcessor
         return $var;
     }
 
+    /**
+     * @return the $implodeSeparator
+     */
+    public function getImplodeSeparator()
+    {
+        return $this->implodeSeparator;
+    }
+
+
+
+    /**
+     * @param string $implodeSeparator
+     */
+    public function setImplodeSeparator(string $implodeSeparator = null)
+    {
+        $this->implodeSeparator = $implodeSeparator;
+    }
 }

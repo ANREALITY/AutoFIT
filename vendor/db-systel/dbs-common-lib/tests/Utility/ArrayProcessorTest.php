@@ -11,7 +11,7 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->arrayProcessor = new ArrayProcessor();
+        $this->arrayProcessor = new ArrayProcessor('|');
     }
 
     /**
@@ -33,7 +33,6 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             8 => [['foo' => 'bar'], new \AppendIterator()],
             9 => [['foo' => 'bar'], new \Exception()],
         ];
-        $implodeSeparator = '|';
         $expectedArray = [
             0 => [true, false, 123],
             2 => ['foo'],
@@ -41,7 +40,7 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             7 => [4.567, 'abc', null],
         ];
 
-        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueBySubArray($testArray, $implodeSeparator));
+        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueBySubArray($testArray));
     }
 
     public function testStringifySubArrays()
@@ -51,23 +50,21 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             3 => [4.567, 'abc', null],
             7 => [['foo' => 'bar'], new \stdClass()],
         ];
-        $implodeSeparator = '|';
         $expectedArray = [
             0 => '1||123',
             3 => '4.567|abc|',
             7 => 'array|object',
         ];
 
-        $this->assertEquals($expectedArray, $this->arrayProcessor->stringifySubArrays($testArray, $implodeSeparator));
+        $this->assertEquals($expectedArray, $this->arrayProcessor->stringifySubArrays($testArray));
     }
 
     public function testStringifyArray()
     {
         $testArray = [true, false, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
-        $implodeSeparator = '|';
         $expectedString = '1||123|4.567|abc||array|object';
 
-        $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray, $implodeSeparator));
+        $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray));
     }
 
     public function provideDataForRemoveArrayColumns()

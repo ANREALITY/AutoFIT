@@ -227,10 +227,11 @@ return [
             'Order\Utility\ProperServiceNameDetector' => 'Order\Utility\Factory\ProperServiceNameDetectorFactory',
             'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory',
             // DataObjects
-            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
+            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory',
+            // utilities
+            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\Factory\ArrayProcessorFactory'
         ],
         'invokables' => [
-            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
         ],
         'abstract_factories' => [
             // mappers
