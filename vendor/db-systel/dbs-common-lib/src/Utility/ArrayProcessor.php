@@ -72,29 +72,41 @@ class ArrayProcessor
         return $prefixIsProper;
     }
 
+    /**
+     * 
+     *
+     * @param array $array
+     * @param mixed $identifier
+     */
     public function arrayUniqueByIdentifier(array $array, $identifier)
     {
         if (is_string($identifier)) {
-            // Get the grouping column array unique.
-            $ids = array_column($array, $identifier);
-            $ids = array_unique($ids);
-            // Filter the original array by the keys of the grouping column array.
-            $array = array_filter($array,
-                function ($key, $value) use($ids) {
-                    return in_array($value, array_keys($ids));
-                }, ARRAY_FILTER_USE_BOTH);
+            $arrayUnique = $this->arrayUniqueByOneIdentifier($array, $identifier);
         } elseif (is_array($identifier)) {
-            $array = $this->arrayUniqueByMultipleIdentifiers($array, $identifier);
+            $arrayUnique = $this->arrayUniqueByMultipleIdentifiers($array, $identifier);
         }
-        return $array;
+        return $arrayUnique;
     }
 
-    public function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
+    protected function arrayUniqueByOneIdentifier(array $array, string $identifier)
+    {
+        // Get the grouping column array unique.
+        $ids = array_column($array, $identifier);
+        $ids = array_unique($ids);
+        // Filter the original array by the keys of the grouping column array.
+        $arrayUnique = array_filter($array,
+            function ($key, $value) use($ids) {
+                return in_array($value, array_keys($ids));
+            }, ARRAY_FILTER_USE_BOTH);
+        return $arrayUnique;
+    }
+
+    protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
         $arrayUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
-        $arrayUniqueByMultipleIdentifiers = array_intersect_key($table, $arrayUniqueBySubArray);
-        return $arrayUniqueByMultipleIdentifiers;
+        $arrayUnique = array_intersect_key($table, $arrayUniqueBySubArray);
+        return $arrayUnique;
     }
 
     /**
