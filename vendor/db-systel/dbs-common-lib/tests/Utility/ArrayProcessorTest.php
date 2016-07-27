@@ -14,6 +14,14 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->arrayProcessor = new ArrayProcessor();
     }
 
+    /**
+     * @dataProvider provideDataForRemoveArrayColumns
+     */
+    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
+    {
+        $this->assertEquals($expectedArray, $this->arrayProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
+    }
+
     public function testArrayUniqueBySubArray()
     {
         $testArray = [
@@ -60,14 +68,6 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $expectedString = '1||123|4.567|abc||array|object';
 
         $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray, $implodeSeparator));
-    }
-
-    /**
-     * @dataProvider provideDataForRemoveArrayColumns
-     */
-    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
-    {
-        $this->assertEquals($expectedArray, $this->arrayProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
     }
 
     public function provideDataForRemoveArrayColumns()
