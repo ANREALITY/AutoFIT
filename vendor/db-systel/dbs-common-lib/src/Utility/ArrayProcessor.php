@@ -73,10 +73,15 @@ class ArrayProcessor
     }
 
     /**
-     * 
+     * Returns the input array with only unique sub-arrays.
+     * To determinate the uniqueness of the sub-arrays
+     * following logic is applied:
+     * A sub-array $foo is identical to another sub-array $bar,
+     * if the value(-s) of the $identifier element(-s) in $foo
+     * equals to the value(-s) of the correspondent element(-s) in $bar.
      *
      * @param array $array
-     * @param mixed $identifier
+     * @param mixed $identifier A value allowed as an array element's key or an array of such values.
      */
     public function arrayUniqueByIdentifier(array $array, $identifier)
     {
@@ -88,6 +93,17 @@ class ArrayProcessor
         return $arrayUnique;
     }
 
+    /**
+     * Returns the input array with only unique sub-arrays.
+     * To determinate the uniqueness of the sub-arrays
+     * following logic is applied:
+     * A sub-array $foo is identical to another sub-array $bar,
+     * if the value of the $identifier element in $foo
+     * equals to the value of the correspondent element in $bar.
+     *
+     * @param array $array
+     * @param string $identifier A value allowed as an array element's key.
+     */
     protected function arrayUniqueByOneIdentifier(array $array, string $identifier)
     {
         // Get the grouping column array unique.
@@ -101,6 +117,17 @@ class ArrayProcessor
         return $arrayUnique;
     }
 
+    /**
+     * Returns the input array with only unique sub-arrays.
+     * To determinate the uniqueness of the sub-arrays
+     * following logic is applied:
+     * A sub-array $foo is identical to another sub-array $bar,
+     * if the values of the $identifier elements in $foo
+     * equals to the values of the correspondent elements in $bar.
+     *
+     * @param array $array
+     * @param array $identifier An array of values, that are allowed as array element's keys.
+     */
     protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
