@@ -72,70 +72,41 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
 
     public function provideDataForRemoveArrayColumns()
     {
+        $testArray = [
+            ['foo' => 'qwer', 'bar' => 'asdf', 'baz' => 'yxcv', 'buz' => 'qxev'],
+            ['foo' => '12', 'bar' => '34', 'baz' => '56', 'buz' => '78'],
+        ];
+        $columns = ['foo', 'baz'];
+        $expectedArrays = [
+            'forWhitelistFalse' => [
+                ['bar' => 'asdf', 'buz' => 'qxev'],
+                ['bar' => '34', 'buz' => '78'],
+            ],
+            'forWhitelistTrue' => [
+                ['foo' => 'qwer', 'baz' => 'yxcv'],
+                ['foo' => '12', 'baz' => '56'],
+            ]
+        ];
         return [
             // variant without whitelisting
             [
-                // test array
-                [
-                    [
-                        'foo' => 'qwer',
-                        'bar' => 'asdf',
-                        'baz' => 'yxcv',
-                        'buz' => 'qxev'
-                    ],
-                    [
-                        'foo' => '12',
-                        'bar' => '34',
-                        'baz' => '56',
-                        'buz' => '78'
-                    ],
-                ],
+                // test array,
+                $testArray,
                 // columns
-                ['foo', 'baz'],
+                $columns,
                 false,
                 // expected array
-                [
-                    [
-                        'bar' => 'asdf',
-                        'buz' => 'qxev'
-                    ],
-                    [
-                        'bar' => '34',
-                        'buz' => '78'
-                    ],
-                ],
+                $expectedArrays['forWhitelistFalse'],
             ],
             // variant with whitelisting
             [
                 // test array
-                [
-                    [
-                        'foo' => 'qwer',
-                        'bar' => 'asdf',
-                        'baz' => 'yxcv',
-                        'buz' => 'qxev'
-                    ],
-                    [
-                        'foo' => '12',
-                        'bar' => '34',
-                        'baz' => '56',
-                        'buz' => '78'
-                    ],
-                ],
+                $testArray,
                 // columns
-                ['foo', 'baz'],
+                $columns,
                 true,
                 // expected array
-                [
-                    [
-                        'foo' => 'qwer',
-                        'baz' => 'yxcv'
-                    ],
-                    [
-                        'foo' => '12',
-                        'baz' => '56'
-                    ],
-                ],
+                $expectedArrays['forWhitelistTrue'],
             ]
         ];
     }
