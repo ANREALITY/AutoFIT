@@ -14,6 +14,22 @@ class ArrayProcessor
         $this->setImplodeSeparator($implodeSeparator);
     }
 
+    /**
+     * @return the $implodeSeparator
+     */
+    public function getImplodeSeparator()
+    {
+        return $this->implodeSeparator;
+    }
+
+    /**
+     * @param string $implodeSeparator
+     */
+    public function setImplodeSeparator(string $implodeSeparator = null)
+    {
+        $this->implodeSeparator = $implodeSeparator;
+    }
+
     public function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null, $prefix = null)
     {
         $isProper = false;
@@ -208,21 +224,4 @@ class ArrayProcessor
         return $var;
     }
 
-    /**
-     * @return the $implodeSeparator
-     */
-    public function getImplodeSeparator()
-    {
-        return $this->implodeSeparator;
-    }
-
-
-
-    /**
-     * @param string $implodeSeparator
-     */
-    public function setImplodeSeparator(string $implodeSeparator = null)
-    {
-        $this->implodeSeparator = $implodeSeparator;
-    }
 }
