@@ -125,6 +125,8 @@ class ArrayProcessor
      * Makes from every sub-array a string from its elements
      * (flattened and separated by the $implodeSeparator)
      * and returns an array of these "strigified" sub-arrays.
+     * The indexes of the stringified sub-arrays remain the same
+     *  as the indexes of the original sub-array elements.
      *
      * @see ArrayProcessor#flattenArray(...)
      * @see ArrayProcessor#stringifyArray(...)
@@ -134,8 +136,8 @@ class ArrayProcessor
      */
     public function stringifySubArrays(array $array, string $implodeSeparator = null) {
         $elementStrings = [];
-        foreach ($array as $subArray) {
-            $elementStrings[] = $this->stringifyArray($subArray, $implodeSeparator);
+        foreach ($array as $key => $subArray) {
+            $elementStrings[$key] = $this->stringifyArray($subArray, $implodeSeparator);
         }
         return $elementStrings;
     }
@@ -144,8 +146,8 @@ class ArrayProcessor
      * "Flatten" the input $array first
      * (in order to avoid notices like "Array to string conversion")
      * and returns a string from its elements separated by the $implodeSeparator.
-     * The idexes of the stringified sub-arrays remain the same
-     *  as the indexes of the original sub-array elements.
+     * 
+     * TRUE becomes '1', FALSE becomes '', NULL becomes ''.
      *
      * @see ArrayProcessor#flattenArray(...)
      *
