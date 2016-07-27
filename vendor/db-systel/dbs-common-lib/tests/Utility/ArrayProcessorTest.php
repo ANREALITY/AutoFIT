@@ -14,6 +14,32 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->arrayProcessor = new ArrayProcessor();
     }
 
+    public function testStringifySubArrays()
+    {
+        $testArray = [
+            0 => [true, false, 123],
+            3 => [4.567, 'abc', null],
+            7 => [['foo' => 'bar'], new \stdClass()],
+        ];
+        $implodeSeparator = '|';
+        $expectedArray = [
+            0 => '1||123',
+            3 => '4.567|abc|',
+            7 => 'array|object',
+        ];
+
+        $this->assertEquals($expectedArray, $this->arrayProcessor->stringifySubArrays($testArray, $implodeSeparator));
+    }
+
+    public function testStringifyArray()
+    {
+        $testArray = [true, false, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
+        $implodeSeparator = '|';
+        $expectedString = '1||123|4.567|abc||array|object';
+
+        $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray, $implodeSeparator));
+    }
+
     /**
      * @dataProvider provideDataForRemoveArrayColumns
      */
