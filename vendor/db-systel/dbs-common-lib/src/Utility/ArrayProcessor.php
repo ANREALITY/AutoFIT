@@ -86,7 +86,7 @@ class ArrayProcessor
     public function arrayUniqueByIdentifier(array $array, $identifier)
     {
         if (is_string($identifier)) {
-            $arrayUnique = $this->arrayUniqueByOneIdentifier($array, $identifier);
+            $arrayUnique = $this->arrayUniqueBySingleIdentifier($array, $identifier);
         } elseif (is_array($identifier)) {
             $arrayUnique = $this->arrayUniqueByMultipleIdentifiers($array, $identifier);
         }
@@ -104,7 +104,7 @@ class ArrayProcessor
      * @param array $array
      * @param string $identifier A value allowed as an array element's key.
      */
-    protected function arrayUniqueByOneIdentifier(array $array, string $identifier)
+    protected function arrayUniqueBySingleIdentifier(array $array, string $identifier)
     {
         // Get the grouping column array unique.
         $ids = array_keys($array);
