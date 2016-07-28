@@ -15,6 +15,83 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider provideDataForArrayUniqueByIdentifier
+     */
+    public function testArrayUniqueByIdentifier($testArray, $identifier, $expectedArray)
+    {
+        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueByIdentifier($testArray, $identifier));
+    }
+
+    public function provideDataForArrayUniqueByIdentifier()
+    {
+        $testArray = [
+            0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+            3   => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            5   => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            6   => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+            7   => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
+            8   => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+            9   => ['foo' => 'qwer',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            10  => ['foo' => '12',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+        ];
+        $identifiers = [
+            'singleIdentifierFoo' => 'foo', 'singleIdentifierBar' => 'bar', 'multipleIdentifiers' => ['foo', 'bar']
+        ];
+        $expectedArrays = [
+            'singleIdentifierFoo' => [
+                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                8 => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+            ],
+            'singleIdentifierBar' => [
+                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
+            ],
+            'multipleIdentifiers' => [
+                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
+                8 => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                9 => ['foo' => 'qwer',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            ]
+        ];
+        return [
+            // variant without singleIdentifierFoo
+            [
+                // test array,
+                $testArray,
+                // identifier
+                $identifiers['singleIdentifierFoo'],
+                // expected array
+                $expectedArrays['singleIdentifierFoo'],
+            ],
+            // variant with singleIdentifierBar
+            [
+                // test array,
+                $testArray,
+                // identifier
+                $identifiers['singleIdentifierBar'],
+                // expected array
+                $expectedArrays['singleIdentifierBar'],
+            ],
+            // variant with singleIdentifierBar
+            [
+                // test array,
+                $testArray,
+                // identifier
+                $identifiers['multipleIdentifiers'],
+                // expected array
+                $expectedArrays['multipleIdentifiers'],
+            ],
+        ];
+    }
+
+    /**
      * @dataProvider provideDataForRemoveArrayColumns
      */
     public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
