@@ -112,11 +112,7 @@ class ArrayProcessor
         $identifierColumnWithIds = array_combine($arrayIds, $identifierColumn);
         $identifierColumnUnique = array_unique($identifierColumnWithIds);
 
-        // Filter the original array by the keys of the grouping column array.
-        $arrayUnique = array_filter($array,
-            function ($value, $key) use($identifierColumnUnique) {
-                return in_array($key, array_keys($identifierColumnUnique), true);
-            }, ARRAY_FILTER_USE_BOTH);
+        $arrayUnique = array_intersect_key($array, $identifierColumnUnique);
 
         return $arrayUnique;
     }
