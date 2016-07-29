@@ -115,7 +115,7 @@ class ArrayProcessor
 
         // Filter the original array by the keys of the grouping column array.
         $arrayUnique = array_filter($array,
-            function ($value, $key) use($ids, $array) {
+            function ($value, $key) use($ids) {
                 return in_array($key, array_keys($ids), true);
             }, ARRAY_FILTER_USE_BOTH);
 
