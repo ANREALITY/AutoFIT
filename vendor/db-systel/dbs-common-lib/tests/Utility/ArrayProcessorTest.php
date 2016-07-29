@@ -38,29 +38,32 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             10  => ['foo' => '12',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
         ];
         $identifiers = [
-            'singleIdentifierFoo' => 'foo', 'singleIdentifierBar' => 'bar', 'multipleIdentifiers' => ['foo', 'bar']
+            'singleIdentifierFoo' => 'foo',
+            'singleIdentifierBar' => 'bar',
+            'singleIdentifierBuz' => 'buz',
+            'multipleIdentifiers' => ['foo', 'bar']
         ];
         $expectedArrays = [
             'singleIdentifierFoo' => [
-                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
                 'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
-                5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
-                8 => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                5   => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                8   => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
             ],
             'singleIdentifierBar' => [
-                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
                 'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
-                6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
-                7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
+                6   => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                7   => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
             ],
             'multipleIdentifiers' => [
-                0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+                0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
                 'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
-                5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
-                6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
-                7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
-                8 => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
-                9 => ['foo' => 'qwer',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                5   => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                6   => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                7   => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
+                8   => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
+                9   => ['foo' => 'qwer',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
             ]
         ];
         return [
