@@ -101,6 +101,11 @@ class ArrayProcessor
      * if the value of the $identifier element in $foo
      * equals to the value of the correspondent element in $bar.
      *
+     * Limitations:
+     * Works correctly only for elementary values.
+     * Doesn't work for objects (fatal error due to converting object to string);
+     * notice (due to converting array to string) and not tested for arrays.
+     *
      * @param array $array
      * @param string $identifier A value allowed as an array element's key.
      */
