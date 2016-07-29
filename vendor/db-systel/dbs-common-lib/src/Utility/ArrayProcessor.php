@@ -105,7 +105,7 @@ class ArrayProcessor
      * @param string $identifier A value allowed as an array element's key.
      */
     protected function arrayUniqueBySingleIdentifier(array $array, string $identifier)
-    {
+    {    
         // Get the grouping column array unique.
         $ids = array_keys($array);
         $identifierColumn = array_column($array, $identifier);
@@ -115,8 +115,8 @@ class ArrayProcessor
 
         // Filter the original array by the keys of the grouping column array.
         $arrayUnique = array_filter($array,
-            function ($value, $key) use($ids) {
-                return in_array($key, array_keys($ids));
+            function ($value, $key) use($ids, $array) {
+                return in_array($key, array_keys($ids), true);
             }, ARRAY_FILTER_USE_BOTH);
 
         return $arrayUnique;

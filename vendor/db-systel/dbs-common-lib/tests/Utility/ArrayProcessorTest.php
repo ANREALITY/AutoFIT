@@ -26,6 +26,9 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
     {
         $testArray = [
             0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
+            'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            'a' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+            'c' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
             3   => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
             5   => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
             6   => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
@@ -40,19 +43,19 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $expectedArrays = [
             'singleIdentifierFoo' => [
                 0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
-                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
                 5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
                 8 => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
             ],
             'singleIdentifierBar' => [
                 0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
-                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
                 6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
                 7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
             ],
             'multipleIdentifiers' => [
                 0 => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
-                3 => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
+                'b' => ['foo' => '12',     'bar' => '34',      'baz' => '56', 'buz' => '78'],
                 5 => ['foo' => 'asdf',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
                 6 => ['foo' => '12',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
                 7 => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
