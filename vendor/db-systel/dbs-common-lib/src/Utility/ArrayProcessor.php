@@ -107,16 +107,15 @@ class ArrayProcessor
     protected function arrayUniqueBySingleIdentifier(array $array, string $identifier)
     {    
         // Get the grouping column array unique.
-        $ids = array_keys($array);
+        $arrayIds = array_keys($array);
         $identifierColumn = array_column($array, $identifier);
-        $identifierColumnWithIds = array_combine($ids, $identifierColumn);
+        $identifierColumnWithIds = array_combine($arrayIds, $identifierColumn);
         $identifierColumnUnique = array_unique($identifierColumnWithIds);
-        $ids = $identifierColumnUnique;
 
         // Filter the original array by the keys of the grouping column array.
         $arrayUnique = array_filter($array,
-            function ($value, $key) use($ids) {
-                return in_array($key, array_keys($ids), true);
+            function ($value, $key) use($identifierColumnUnique) {
+                return in_array($key, array_keys($identifierColumnUnique), true);
             }, ARRAY_FILTER_USE_BOTH);
 
         return $arrayUnique;
