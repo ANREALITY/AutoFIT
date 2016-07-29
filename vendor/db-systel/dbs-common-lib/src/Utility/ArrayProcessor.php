@@ -105,8 +105,7 @@ class ArrayProcessor
      * @param string $identifier A value allowed as an array element's key.
      */
     protected function arrayUniqueBySingleIdentifier(array $array, string $identifier)
-    {    
-        // Get the grouping column array unique.
+    {
         $arrayIds = array_keys($array);
         $identifierColumn = array_column($array, $identifier);
         $identifierColumnWithIds = array_combine($arrayIds, $identifierColumn);
