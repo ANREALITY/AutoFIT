@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://xml.phpdox.net/config">
-    <project name="AutoFIT" source="${basedir}/../module" workdir="${basedir}/api/xml">
-        <collector backend="parser" />
+    <project name="AutoFIT" source="${basedir}/.." workdir="${basedir}/api/xml">
+        <collector publiconly="false" backend="parser">
+            <include mask="*/module/**/src/**/*.php" />
+            <include mask="*/vendor/db-systel/dbs-common-lib/src/**/*.php" />
+        </collector>
         <generator output="${basedir}/api">
             <enrich base="logs">
                 <source type="build" />
@@ -10,7 +13,9 @@
                 <source type="checkstyle" />
                 <source type="pmd" />
                 <!--
-                <source type="phpunit" />
+                <source type="phpunit"
+                    <coverage path="coverage/xml" />
+                </source>
                 -->
             </enrich>
             <build engine="html" output="html" />
