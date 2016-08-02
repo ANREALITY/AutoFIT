@@ -24,7 +24,7 @@ $orderPartAttributes = [
         'value' => $dataObject->getApplication() ? $dataObject->getApplication()->getTechnicalShortName() : '-'
     ],
     [
-        'label' => ucfirst($this->translate('external partner')),
+        'label' => ucfirst($this->translate('firm')),
         'value' => $dataObject->getCustomer() && $dataObject->getCustomer()->getName() ? $dataObject->getCustomer()->getName() : '-'
     ],
     [
