@@ -19,7 +19,7 @@ class CustomerFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'text',
                 'name' => 'name',
                 'options' => [
-                    'label' => _('external partner'),
+                    'label' => _('firm'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]

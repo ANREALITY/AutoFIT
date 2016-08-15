@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-13 14:39+0200\n"
-"PO-Revision-Date: 2016-07-13 14:39+0200\n"
+"POT-Creation-Date: 2016-08-02 09:58+0200\n"
+"PO-Revision-Date: 2016-08-02 09:58+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -47,8 +47,8 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:23
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:56
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:39
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:55
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:23
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:68
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:51
@@ -89,8 +89,8 @@ msgid "add an external server"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:152
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:88
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:63
 msgid "service address"
 msgstr "Service-Adresse"
 
@@ -206,8 +206,8 @@ msgstr "LSP"
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:35
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:52
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:35
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 msgid "username"
@@ -236,10 +236,8 @@ msgid "add an access config"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:27
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:27
-msgid "external partner"
-msgstr "externer Partner"
+msgid "firm"
+msgstr "Firma"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400SourceFieldset.php:13
 msgid "Source - AS400"
@@ -255,13 +253,13 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:60
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
 msgid "transmission type"
 msgstr "Übertragungsart"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
@@ -274,8 +272,8 @@ msgid "Target - LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:96
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:71
 msgid "cluster"
 msgstr "Cluster"
 
@@ -324,7 +322,7 @@ msgstr "Umgebung"
 
 #: Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
 #: Order/view/partials/list/summary.phtml:141
-#: Order/view/partials/list/summary.phtml:157
+#: Order/view/partials/list/summary.phtml:162
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:35
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:35
 msgid "external server"
@@ -335,7 +333,7 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:100
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 msgid "include parameters"
@@ -565,15 +563,15 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:89
+#: Application/view/layout/layout.phtml:90
 msgid "home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:92
+#: Application/view/layout/layout.phtml:93
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
-#: Application/view/layout/layout.phtml:96
+#: Application/view/layout/layout.phtml:97
 msgid "orders"
 msgstr "Bestellungen"
 
@@ -835,7 +833,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:45
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:61
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:57
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
@@ -850,7 +848,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:28
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:44
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
@@ -876,8 +874,8 @@ msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:128
 #: Order/view/partials/list/summary.phtml:149
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:84
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:59
 msgid "servers"
 msgstr "Server"
 
@@ -889,6 +887,9 @@ msgid "server"
 msgstr "Server"
 
 #: Order/view/partials/list/summary.phtml:136
+#: Order/view/partials/list/summary.phtml:157
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:92
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:67
 msgid "external servers"
 msgstr "externe Server"
 
@@ -924,8 +925,8 @@ msgid "user"
 msgstr "Benutzer"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:97
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/logical-connection.phtml:20
@@ -933,18 +934,23 @@ msgid "yes"
 msgstr "ja"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:97
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
 
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:27
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:27
+msgid "external partner"
+msgstr "externer Partner"
+
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:15
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:48
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:31
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
