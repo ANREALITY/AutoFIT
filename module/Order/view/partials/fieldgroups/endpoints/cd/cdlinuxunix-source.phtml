@@ -10,11 +10,11 @@ if (! empty($getHelperFieldsValuesFromObject)) {
     $endpointSourceFieldset->get('server_toggle')->setValue($valueServerToggle);
     // setting value for service_address_toggle
     if ($dataObject->getServiceAddress()) {
-        $valueClusterToggle = 1;
+        $valueServiceAddressToggle = 1;
     } else {
-        $valueClusterToggle = 0;
+        $valueServiceAddressToggle = 0;
     }
-    $endpointSourceFieldset->get('service_address_toggle')->setValue($valueClusterToggle);
+    $endpointSourceFieldset->get('service_address_toggle')->setValue($valueServiceAddressToggle);
 }
 ?>
 <?php
