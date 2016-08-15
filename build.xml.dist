@@ -93,7 +93,7 @@
 		</exec>
 		<property name="phpcs.done" value="true" />
 	</target>
-	<target name="phpdox" depends="phploc,phpcs,phpmd,phpunit" unless="phpdox.done" description="Generate project documentation using phpDox">
+	<target name="phpdox" depends="phploc,phpcs,phpmd" unless="phpdox.done" description="Generate project documentation using phpDox">
 		<exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox">
 			<arg value="--file" />
 			<arg value="${basedir}/build/phpdox.xml" />
@@ -112,11 +112,12 @@
 		</exec>
 		<property name="phploc.done" value="true" />
 	</target>
-	<target name="phpunit" description="Run unit tests with PHPUnit">
+	<target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
 		<exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
 			<arg value="--configuration" />
 			<arg path="${basedir}/phpunit/phpunit.xml" />
 		</exec>
+		<property name="phpunit.done" value="true" />
 	</target>
 	<target name="-check-failure">
 		<fail message="PHPUnit did not finish successfully">
