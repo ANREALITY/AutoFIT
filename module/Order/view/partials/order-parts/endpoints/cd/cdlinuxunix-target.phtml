@@ -69,7 +69,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('cluster'),
-        'value' => $dataObject->getCluster() ? $this->translate('yes') : $this->translate('no')
+        'value' => $dataObject->getCluster() ?: $this->translate('no')
     ],
 ];
 echo $this->partial('/partials/order-part',

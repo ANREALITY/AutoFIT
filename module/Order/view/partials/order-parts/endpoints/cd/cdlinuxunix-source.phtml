@@ -94,7 +94,7 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('cluster'),
-        'value' => $dataObject->getCluster() ? $this->translate('yes') : $this->translate('no')
+        'value' => $dataObject->getCluster() ?: $this->translate('no')
     ],
     [
         'label' => $this->translate('include parameters'),
