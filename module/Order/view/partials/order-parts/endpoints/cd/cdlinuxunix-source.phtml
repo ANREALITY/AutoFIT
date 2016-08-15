@@ -24,22 +24,6 @@ SERVER;
 }
 ?>
 <?php
-// external servers
-$externalServersOutput = '-';
-if ($dataObject->getExternalServers()) {
-    $externalServersOutput = '<ul class="external-servers">';
-    $index = 0;
-    foreach ($dataObject->getExternalServers() as $externalServer) {
-        $externalServersOutput .= <<<EXTERNAL_SERVER
-<li>
-    <span>{$externalServer->getName()}<span>
-</li>
-EXTERNAL_SERVER;
-    }
-    $externalServersOutput .= '</ul>';
-}
-?>
-<?php
 // include parameters
 $includeParametersOutput = '-';
 if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
@@ -87,10 +71,6 @@ $orderPartAttributes = [
     [
         'label' => $this->translate('service address'),
         'value' => $dataObject->getServiceAddress() ?: '-'
-    ],
-    [
-        'label' => $this->translate('external servers'),
-        'value' => $externalServersOutput
     ],
     [
         'label' => $this->translate('include parameters'),

@@ -62,9 +62,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceApplicationNumber.parent().fadeIn('slow');
 		fieldEndpointSourceExternalServerName.val('');
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
-		if (global.sourceServerQuantity != SERVER_QUANTITY_MANY) {
-			fieldEndpointSourceServerName.parent().fadeIn('slow');
-		}
+		fieldEndpointSourceServerName.parent().fadeIn('slow');
 
 		global.sourceServerPlace = SERVER_PLACE_INTERNAL;
 	} else if (value == SERVER_PLACE_EXTERNAL) {
@@ -72,9 +70,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.val('');
 		fieldEndpointSourceServerName.parent().fadeOut('slow');
-		if (global.sourceServerQuantity != SERVER_QUANTITY_MANY) {
-			fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
-		}
+		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
 		fieldEndpointSourceCustomerName.parent().fadeIn('slow');
 
 		global.sourceServerPlace = SERVER_PLACE_EXTERNAL;
@@ -105,9 +101,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetApplicationNumber.parent().fadeIn('slow');
 		fieldEndpointTargetExternalServerName.val('');
 		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
-		if (global.targetServerQuantity != SERVER_QUANTITY_MANY) {
-			fieldEndpointTargetServerName.parent().fadeIn('slow');
-		}
+		fieldEndpointTargetServerName.parent().fadeIn('slow');
 
 		global.targetServerPlace = SERVER_PLACE_INTERNAL;
 	} else if (value == SERVER_PLACE_EXTERNAL) {
@@ -115,9 +109,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.val('');
 		fieldEndpointTargetServerName.parent().fadeOut('slow');
-		if (global.targetServerQuantity != SERVER_QUANTITY_MANY) {
-			fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
-		}
+		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
 		fieldEndpointTargetCustomerName.parent().fadeIn('slow');
 
 		global.targetServerPlace = SERVER_PLACE_EXTERNAL;

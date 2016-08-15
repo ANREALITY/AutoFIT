@@ -35,11 +35,4 @@ interface ExternalServerMapperInterface
      */
     public function deleteOneByEndpointId(int $endpointId);
 
-    /**
-     *
-     * @param int $endpointId
-     * @throws \Exception
-     */
-    public function deleteAllByEndpointId(int $endpointId);
-
 }

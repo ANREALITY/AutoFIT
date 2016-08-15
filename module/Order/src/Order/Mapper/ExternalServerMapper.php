@@ -136,32 +136,4 @@ SQL;
         return $return;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * @see ExternalServerMapperInterface::deleteAllByEndpointId()
-     */
-    public function deleteAllByEndpointId(int $endpointId)
-    {
-        $action = new Delete('external_server');
-
-        $return = false;
-
-        $sql = <<<SQL
-DELETE `external_server` FROM `external_server`
-LEFT JOIN `endpoint` ON `endpoint`.`external_server_id` = `external_server`.`id`
-LEFT JOIN `endpoint_cd_linux_unix_external_server`
-    ON `endpoint_cd_linux_unix_external_server`.`external_server_id` = `external_server`.`id`
-LEFT JOIN `endpoint_cd_linux_unix`
-    ON `endpoint_cd_linux_unix`.`endpoint_id` = `endpoint_cd_linux_unix_external_server`.`endpoint_cd_linux_unix_endpoint_id`
-WHERE `endpoint_cd_linux_unix`.`endpoint_id` = {$endpointId} OR
-    `endpoint`.`id` = {$endpointId}
-SQL;
-
-        $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
-        $return = (bool) $result->getAffectedRows();
-
-        return $return;
-    }
-
 }
