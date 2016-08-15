@@ -371,7 +371,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
-                'endpoint_cd_linux_unix' . '__' . 'cluster' => 'cluster',
                 'endpoint_cd_linux_unix' . '__' . 'service_address' => 'service_address'
             ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_linux_unix_server', 'endpoint_cd_linux_unix_server.endpoint_cd_linux_unix_endpoint_id = endpoint_cd_linux_unix.endpoint_id',

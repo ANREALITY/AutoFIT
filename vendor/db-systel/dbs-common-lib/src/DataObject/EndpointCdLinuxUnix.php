@@ -36,12 +36,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
      *
      * @var string
      */
-    protected $cluster;
-
-    /**
-     *
-     * @var string
-     */
     protected $serviceAddress;
 
     /**
@@ -132,24 +126,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function setTransmissionInterval($transmissionInterval)
     {
         $this->transmissionInterval = $transmissionInterval;
-    }
-
-    /**
-     *
-     * @return the $cluster
-     */
-    public function getCluster()
-    {
-        return $this->cluster;
-    }
-
-    /**
-     *
-     * @param string $cluster
-     */
-    public function setCluster($cluster)
-    {
-        $this->cluster = $cluster;
     }
 
     /**

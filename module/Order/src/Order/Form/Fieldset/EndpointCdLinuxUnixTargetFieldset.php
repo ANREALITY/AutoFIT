@@ -16,21 +16,6 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
     public function init()
     {
         parent::init();
-
-        $this->add(
-            [
-                'type' => 'text',
-                'name' => 'cluster',
-                'options' => [
-                    'label' => _('server name / IP of the load balancer'),
-                    'label_attributes' => [
-                        'class' => 'col-md-12'
-                    ]
-                ],
-                'attributes' => [
-                    'class' => 'form-control field-cluster'
-                ]
-            ]);
     }
 
     public function getInputFilterSpecification()

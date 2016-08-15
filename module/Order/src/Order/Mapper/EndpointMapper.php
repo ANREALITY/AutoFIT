@@ -375,9 +375,6 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
         }
-        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
-            $data['cluster'] = $dataObject->getCluster();
-        }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();

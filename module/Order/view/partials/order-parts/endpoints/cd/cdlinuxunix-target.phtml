@@ -67,10 +67,6 @@ $orderPartAttributes = [
         'label' => $this->translate('external servers'),
         'value' => $externalServersOutput
     ],
-    [
-        'label' => $this->translate('cluster'),
-        'value' => $dataObject->getCluster() ?: $this->translate('no')
-    ],
 ];
 echo $this->partial('/partials/order-part',
     [

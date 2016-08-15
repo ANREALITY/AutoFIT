@@ -26,8 +26,7 @@ $fieldgroupFormRows = [
     '<div class="form-field-wrapper col-md-6 add-button-container">' .
          $this->formRow($endpointTargetFieldset->get('add_external_server')) . '</div>',
     $this->formRow($endpointTargetFieldset->get('service_address_toggle')),
-    $this->formRow($endpointTargetFieldset->get('service_address')),
-    $this->formRow($endpointTargetFieldset->get('cluster'))
+    $this->formRow($endpointTargetFieldset->get('service_address'))
 ];
 echo $this->partial('/partials/fieldgroup',
     [
