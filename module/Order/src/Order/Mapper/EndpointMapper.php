@@ -18,7 +18,6 @@ use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\EndpointCdWindowsShare;
-use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\IncludeParameterSet;
