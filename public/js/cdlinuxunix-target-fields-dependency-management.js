@@ -9,8 +9,6 @@ $(document).ready(function() {
 	fieldsetMultipleServersTarget = $('#fieldgroup-specific-endpoint-target .fieldset-multiple-servers');
 	fieldServiceAddressTarget = $('#fieldgroup-specific-endpoint-target .field-service-address');
 	fieldServiceAddressTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-service-address');
-	fieldClusterTarget = $('#fieldgroup-specific-endpoint-target .field-cluster');
-	fieldClusterTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-cluster');
 	buttonAddEndpointTargetServer = $('#fieldgroup-specific-endpoint-target #add-endpoint-target-server-button');
 	fieldTheExternalServerTarget = $('#fieldgroup-basic-endpoint-target .input-external-server');
 	fieldAnExternalServerTarget = function() {
@@ -26,12 +24,8 @@ $(document).ready(function() {
 	fieldServiceAddressTargetToggle.change(function() {
 		toggleFieldServiceAddressTarget(this);
 	});
-	fieldClusterTargetToggle.change(function() {
-		toggleFieldClusterTarget(this);
-	});
 	fieldServerTargetToggle.filter(':checked').trigger('change');
 	// fieldServiceAddressTargetToggle.trigger('change');
-	// fieldClusterTargetToggle.trigger('change');
 	basicFieldEndpointTargetServerPlace.change(function() {
 		console.log(global.targetServerQuantity);
 		toggleFieldServerTarget('');
@@ -55,9 +49,6 @@ function toggleFieldServerTarget(value) {
 		fieldAnExternalServerTarget().val('');
 		fieldsetMultipleExternalServersTarget.fadeOut('slow');
 		buttonAddEndpointTargetExternalServer.fadeOut('slow');
-		fieldClusterTargetToggle.prop('checked', false);
-		fieldClusterTargetToggle.trigger('change');
-		fieldClusterTargetToggle.parent().fadeOut('slow');
 
 		global.targetServerQuantity = SERVER_QUANTITY_ONE;
 	} else if (value == SERVER_QUANTITY_MANY) {
@@ -86,8 +77,6 @@ function toggleFieldServerTarget(value) {
 		fieldServiceAddressTargetToggle.prop('checked', false);
 		fieldServiceAddressTargetToggle.trigger('change');
 		fieldServiceAddressTargetToggle.parent().fadeOut('slow');
-		fieldClusterTargetToggle.parent().fadeIn('slow');
-		fieldClusterTargetToggle.trigger('change');
 
 		global.targetServerQuantity = SERVER_QUANTITY_MANY;	
 	}
@@ -98,14 +87,6 @@ function toggleFieldServiceAddressTarget(field) {
 	} else {
 		fieldServiceAddressTarget.val('');
 		fieldServiceAddressTarget.parent().fadeOut('slow');
-	}
-}
-function toggleFieldClusterTarget(field) {
-	if ($(field).prop('checked')) {
-		fieldClusterTarget.parent().fadeIn('slow');
-	} else {
-		fieldClusterTarget.val('');
-		fieldClusterTarget.parent().fadeOut('slow');
 	}
 }
 // Linux/Unix EndpointTarget #stop#

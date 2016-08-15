@@ -8,13 +8,6 @@ if (! empty($getHelperFieldsValuesFromObject)) {
         $valueServerToggle = 'multiple_servers';
     }
     $endpointTargetFieldset->get('server_toggle')->setValue($valueServerToggle);
-    // setting value for cluster_toggle
-    if ($dataObject->getCluster()) {
-        $valueServiceAddressToggle = 1;
-    } else {
-        $valueServiceAddressToggle = 0;
-    }
-    $endpointTargetFieldset->get('cluster_toggle')->setValue($valueServiceAddressToggle);
 }
 ?>
 <?php
@@ -34,7 +27,6 @@ $fieldgroupFormRows = [
          $this->formRow($endpointTargetFieldset->get('add_external_server')) . '</div>',
     $this->formRow($endpointTargetFieldset->get('service_address_toggle')),
     $this->formRow($endpointTargetFieldset->get('service_address')),
-    $this->formRow($endpointTargetFieldset->get('cluster_toggle')),
     $this->formRow($endpointTargetFieldset->get('cluster'))
 ];
 echo $this->partial('/partials/fieldgroup',

@@ -19,22 +19,6 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
 
         $this->add(
             [
-                'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'cluster_toggle',
-                'options' => [
-                    'label' => _('cluster'),
-                    'use_hidden_element' => false,
-                    'label_attributes' => [
-                        'class' => 'col-md-12'
-                    ]
-                ],
-                'attributes' => [
-                    'class' => 'toggle-cluster'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'type' => 'text',
                 'name' => 'cluster',
                 'options' => [
@@ -51,11 +35,7 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [
-            'cluster_toggle' => [
-                'required' => false
-            ]
-        ];
+        $inputFilterSpecification = [];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
