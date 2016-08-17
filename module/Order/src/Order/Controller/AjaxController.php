@@ -7,6 +7,7 @@ use Order\Service\ApplicationServiceInterface;
 use Order\Service\EnvironmentServiceInterface;
 use Order\Service\ServerServiceInterface;
 use Order\Service\ServiceInvoicePositionServiceInterface;
+use Order\Service\ClusterServiceInterface;
 
 class AjaxController extends AbstractActionController
 {
@@ -35,14 +36,22 @@ class AjaxController extends AbstractActionController
      */
     protected $serviceInvoicePositionService;
 
+    /**
+     *
+     * @var ClusterServiceInterface
+     */
+    protected $clusterService;
+
     public function __construct(ApplicationServiceInterface $applicationService,
         EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService,
-        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService)
+        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService,
+        ClusterServiceInterface $clusterService)
     {
         $this->applicationService = $applicationService;
         $this->environmentService = $environmentService;
         $this->serverService = $serverService;
         $this->serviceInvoicePositionService = $serviceInvoicePositionService;
+        $this->clusterService = $clusterService;
     }
 
     public function provideApplicationsAction()
@@ -127,6 +136,20 @@ class AjaxController extends AbstractActionController
         }
 
         $dataList = array_column($dataList, 'number');
+
+        return new JsonModel($dataList);
+    }
+
+    public function provideClustersAction()
+    {
+        $request = $this->getRequest();
+        $dataList = [];
+
+        if (true || $request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+                $data['virtual_node_name'] = isset($data['virtual_node_name']) ? $data['virtual_node_name'] : null;
+                $dataList = $this->clusterService->findAllForAutocomplete($data['virtual_node_name'])->toArray();
+        }
 
         return new JsonModel($dataList);
     }

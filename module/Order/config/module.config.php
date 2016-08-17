@@ -191,6 +191,16 @@ return [
                         'action' => 'provideServiceInvoicePositions'
                     ]
                 ]
+            ],
+            'provide-clusters' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-clusters',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideclusters'
+                    ]
+                ]
             ]
         ]
     ],
