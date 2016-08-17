@@ -52,6 +52,12 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
+     * @var EndpointClusterConfig
+     */
+    protected $endpointClusterConfig;
+
+    /**
+     *
      * @return the $username
      */
     public function getUsername()
@@ -174,6 +180,24 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function setServers(array $servers)
     {
         $this->servers = $servers;
+    }
+
+    /**
+     *
+     * @return the $endpointClusterConfig
+     */
+    public function getEndpointClusterConfig()
+    {
+        return $this->endpointClusterConfig;
+    }
+
+    /**
+     *
+     * @param EndpointClusterConfig $endpointClusterConfig
+     */
+    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
+    {
+        $this->endpointClusterConfig = $endpointClusterConfig;
     }
 
 }

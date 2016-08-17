@@ -28,6 +28,12 @@ class Server extends AbstractDataObject
 
     /**
      *
+     * @var Cluster
+     */
+    protected $cluster;
+
+    /**
+     *
      * @return the $name
      */
     public function getName()
@@ -78,6 +84,24 @@ class Server extends AbstractDataObject
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     *
+     * @return the $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
+    }
+
+    /**
+     *
+     * @param Cluster $cluster
+     */
+    public function setCluster(Cluster $cluster)
+    {
+        $this->cluster = $cluster;
     }
 
 }
