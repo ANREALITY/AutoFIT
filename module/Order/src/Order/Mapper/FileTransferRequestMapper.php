@@ -380,6 +380,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             [
                 'cd_linux_unix_server' . '__' . 'name' => 'name'
             ], Select::JOIN_LEFT);
+        $select->join(['cd_linux_unix_cluster_config' => 'endpoint_cluster_config'], 'cd_linux_unix_cluster_config.id = endpoint_cd_linux_unix.endpoint_cluster_config_id',
+            [
+                'cd_linux_unix_cluster_config' . '__' . 'id' => 'id',
+                'cd_linux_unix_cluster_config' . '__' . 'dns_address' => 'dns_address',
+                'cd_linux_unix_cluster_config' . '__' . 'cluster_id' => 'cluster_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['cd_linux_unix_cluster' => 'cluster'], 'cd_linux_unix_cluster.id = cd_linux_unix_cluster_config.cluster_id',
+            [
+                'cd_linux_unix_cluster' . '__' . 'id' => 'id',
+                'cd_linux_unix_cluster' . '__' . 'virtual_node_name' => 'virtual_node_name',
+            ], Select::JOIN_LEFT);
         $select->join(['endpoint_cd_linux_unix_include_parameter_set' => 'include_parameter_set'], 'endpoint_cd_linux_unix_include_parameter_set.id = endpoint_cd_linux_unix.include_parameter_set_id',
             [
                 'endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id' => 'id'
