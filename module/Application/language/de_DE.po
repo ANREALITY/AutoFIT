@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-02 09:58+0200\n"
-"PO-Revision-Date: 2016-08-02 09:58+0200\n"
+"POT-Creation-Date: 2016-08-17 14:34+0200\n"
+"PO-Revision-Date: 2016-08-17 14:35+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -47,8 +47,8 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:23
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:55
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:56
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:39
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:23
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:68
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:51
@@ -69,7 +69,6 @@ msgid "multiple servers"
 msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:138
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
@@ -81,20 +80,12 @@ msgid "add a server"
 msgstr "Server hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:119
-msgid "multiple external servers"
-msgstr "mehrere externe Server"
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:143
-msgid "add an external server"
-msgstr ""
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:152
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:88
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:63
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:55
 msgid "service address"
 msgstr "Service-Adresse"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:168
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:135
 msgid "IP / server name service address"
 msgstr "IP / Server-Name der Service-Adresse"
 
@@ -159,7 +150,7 @@ msgid "mailbox"
 msgstr "Mailbox"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
-#: Order/view/partials/list/summary.phtml:121
+#: Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
 
@@ -176,7 +167,7 @@ msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:81
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
-#: Order/view/partials/list/summary.phtml:122
+#: Order/view/partials/list/summary.phtml:102
 #: Order/view/partials/order-parts/billing.phtml:16
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:23
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:23
@@ -206,8 +197,8 @@ msgstr "LSP"
 #: Order/src/Order/Form/Fieldset/UserFieldset.php:35
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:52
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:35
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 msgid "username"
@@ -235,7 +226,13 @@ msgstr "Zugriffseinstellungen"
 msgid "add an access config"
 msgstr ""
 
+#: Order/src/Order/Form/Fieldset/ClusterFieldset.php:29
+msgid "virtual node name"
+msgstr "Virtueller Knotenname"
+
 #: Order/src/Order/Form/Fieldset/CustomerFieldset.php:22
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:27
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:27
 msgid "firm"
 msgstr "Firma"
 
@@ -253,13 +250,13 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
 msgid "transmission type"
 msgstr "Übertragungsart"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
@@ -270,16 +267,6 @@ msgstr "Die Eingabe entspricht dem Crontab-Muster."
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
 msgid "Target - LinuxUnix"
 msgstr ""
-
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:96
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:71
-msgid "cluster"
-msgstr "Cluster"
-
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:41
-msgid "server name / IP of the load balancer"
-msgstr "Servername / IP des Lastverteilers"
 
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 msgid "Source - Tandem"
@@ -296,6 +283,10 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsShareTargetFieldset.php:13
 msgid "Target - WindowsShare"
 msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
+msgid "DNS address"
+msgstr "DNS-Adresse"
 
 #: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:13
 msgid "Source - Self-Service"
@@ -315,14 +306,14 @@ msgstr "Zielsystem - Windows"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:36
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:48
-#: Order/view/partials/list/summary.phtml:123
+#: Order/view/partials/list/summary.phtml:103
 #: Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
 
 #: Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
-#: Order/view/partials/list/summary.phtml:141
-#: Order/view/partials/list/summary.phtml:162
+#: Order/view/partials/list/summary.phtml:116
+#: Order/view/partials/list/summary.phtml:132
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:35
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:35
 msgid "external server"
@@ -333,7 +324,7 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:100
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:84
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 msgid "include parameters"
@@ -833,7 +824,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:61
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:45
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:57
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
@@ -842,13 +833,13 @@ msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:23
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:16
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:44
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
@@ -860,40 +851,33 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
-#: Order/view/partials/list/summary.phtml:125
-#: Order/view/partials/list/summary.phtml:146
+#: Order/view/partials/list/summary.phtml:105
+#: Order/view/partials/list/summary.phtml:121
 msgid "endpoint"
 msgstr "Endpoint"
 
-#: Order/view/partials/list/summary.phtml:125
+#: Order/view/partials/list/summary.phtml:105
 #: Order/view/partials/start/cd.phtml:16 Order/view/partials/start/cd.phtml:20
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:128
-#: Order/view/partials/list/summary.phtml:149
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:84
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:59
+#: Order/view/partials/list/summary.phtml:108
+#: Order/view/partials/list/summary.phtml:124
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
 msgid "servers"
 msgstr "Server"
 
-#: Order/view/partials/list/summary.phtml:133
-#: Order/view/partials/list/summary.phtml:154
+#: Order/view/partials/list/summary.phtml:113
+#: Order/view/partials/list/summary.phtml:129
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server"
 msgstr "Server"
 
-#: Order/view/partials/list/summary.phtml:136
-#: Order/view/partials/list/summary.phtml:157
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:92
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:67
-msgid "external servers"
-msgstr "externe Server"
-
-#: Order/view/partials/list/summary.phtml:146
+#: Order/view/partials/list/summary.phtml:121
 #: Order/view/partials/start/cd.phtml:29 Order/view/partials/start/cd.phtml:33
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
@@ -925,8 +909,6 @@ msgid "user"
 msgstr "Benutzer"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:97
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/logical-connection.phtml:20
@@ -934,23 +916,16 @@ msgid "yes"
 msgstr "ja"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:97
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:72
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
 
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:27
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:27
-msgid "external partner"
-msgstr "externer Partner"
-
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:15
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:48
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:31
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
@@ -961,6 +936,16 @@ msgstr "externer Partner"
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:15
 msgid "type"
 msgstr "Typ"
+
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
+msgid "cluster's virtual node name"
+msgstr "Virtual Knotenname des Clusters"
+
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
+msgid "cluster's DNS address"
+msgstr "Cluster-DNS-Adresse"
 
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:39
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:39
@@ -1053,6 +1038,21 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "multiple external servers"
+#~ msgstr "mehrere externe Server"
+
+#~ msgid "cluster"
+#~ msgstr "Cluster"
+
+#~ msgid "server name / IP of the load balancer"
+#~ msgstr "Servername / IP des Lastverteilers"
+
+#~ msgid "external servers"
+#~ msgstr "externe Server"
+
+#~ msgid "external partner"
+#~ msgstr "externer Partner"
 
 #~ msgid "The order has been canceled successfully."
 #~ msgstr "Die Bestellung wurde erfolgreich storniert."
