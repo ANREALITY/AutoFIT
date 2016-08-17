@@ -44,6 +44,14 @@ $orderPartAttributes = [
         'value' => $includeParametersOutput
     ],
     [
+        'label' => $this->translate('cluster\'s virtual node name'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getCluster() ? $dataObject->getEndpointClusterConfig()->getCluster()->getVirtualNodeName() : '-'
+    ],
+    [
+        'label' => $this->translate('cluster\'s DNS address'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getDnsAddress() ? $dataObject->getEndpointClusterConfig()->getDnsAddress() : '-'
+    ],
+    [
         'label' => $this->translate('service address'),
         'value' => $dataObject->getServiceAddress() ?: '-'
     ],
