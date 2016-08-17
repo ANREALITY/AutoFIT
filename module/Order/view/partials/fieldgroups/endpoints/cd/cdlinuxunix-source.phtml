@@ -37,7 +37,11 @@ $fieldgroupFormRows = [
         ->get('include_parameters')),
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
         $endpointSourceFieldset->get('include_parameter_set')
-            ->get('add_include_parameter')) . '</div>'
+            ->get('add_include_parameter')) . '</div>',
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('id')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('dns_address')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('virtual_node_name')),
 ];
 echo $this->partial('/partials/fieldgroup',
     [
@@ -50,3 +54,4 @@ echo $this->partial('/partials/fieldgroup',
     ]);
 ?>
 <?php $this->inlineScript()->appendFile('/js/cdlinuxunix-source-fields-dependency-management.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/cdlinuxunix-source-autocomplete.js'); ?>
