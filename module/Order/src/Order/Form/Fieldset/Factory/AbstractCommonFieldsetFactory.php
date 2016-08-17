@@ -18,6 +18,8 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         'ExternalServer',
         'AccessConfig',
         'AccessConfigSet',
+        'EndpointClusterConfig',
+        'Cluster',
     ];
 
     /**

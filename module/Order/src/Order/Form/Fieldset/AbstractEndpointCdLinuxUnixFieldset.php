@@ -141,6 +141,13 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     'class' => 'form-control field-service-address'
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'endpoint_cluster_config',
+                'type' => 'Order\Form\Fieldset\EndpointClusterConfig',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()
