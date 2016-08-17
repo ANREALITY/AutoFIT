@@ -11,6 +11,10 @@ $(document).ready(function() {
 	fieldServiceAddressTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-service-address');
 	buttonAddEndpointTargetServer = $('#fieldgroup-specific-endpoint-target #add-endpoint-target-server-button');
 	fieldTheExternalServerTarget = $('#fieldgroup-basic-endpoint-target .input-external-server');
+	fieldClusterIdTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-id');
+	fieldClusterVirtualNodeNameTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-virtual-node-name');
+	fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
+	fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
 });
 $(document).ready(function() {
 	fieldServerTargetToggle.change(function() {
@@ -40,6 +44,12 @@ function toggleFieldServerTarget(value) {
 		buttonAddEndpointTargetServer.fadeOut('slow');
 		fieldServiceAddressTargetToggle.parent().fadeIn('slow');
 		fieldServiceAddressTargetToggle.trigger('change');
+		fieldClusterIdTarget.val('');
+		fieldClusterVirtualNodeNameTarget.val('');
+		fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
+		fieldEndpointClusterConfigIdTarget.val('');
+		fieldEndpointClusterConfigDnsAddressTarget.val('');
+		fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
 
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeOut('slow');
@@ -56,6 +66,8 @@ function toggleFieldServerTarget(value) {
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
 			fieldsetMultipleServersTarget.fadeIn('slow');
 			buttonAddEndpointTargetServer.fadeIn('slow');
+			fieldClusterVirtualNodeNameTarget.parent().fadeIn('slow');
+			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeIn('slow');
 		}
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldsetMultipleServersTarget.fadeOut('slow');
@@ -70,6 +82,12 @@ function toggleFieldServerTarget(value) {
 			fieldAServerTarget().val('');
 			fieldsetMultipleServersTarget.fadeOut('slow');
 			buttonAddEndpointTargetServer.fadeOut('slow');
+			fieldClusterIdTarget.val('');
+			fieldClusterVirtualNodeNameTarget.val('');
+			fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
+			fieldEndpointClusterConfigIdTarget.val('');
+			fieldEndpointClusterConfigDnsAddressTarget.val('');
+			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
 		}
 
 		global.targetServerQuantity = SERVER_QUANTITY_MANY;	
