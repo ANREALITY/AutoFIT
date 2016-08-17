@@ -74,6 +74,18 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      */
     protected $protocolMapper;
 
+    /**
+     *
+     * @var ClusterMapperInterface
+     */
+    protected $clusterMapper;
+
+    /**
+     *
+     * @var EndpointClusterConfigMapperInterface
+     */
+    protected $endpointClusterConfigMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
     {
         parent::__construct($dbAdapter, $hydrator);
@@ -139,6 +151,24 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     public function setProtocolMapper(ProtocolMapperInterface $protocolMapper)
     {
         $this->protocolMapper = $protocolMapper;
+    }
+
+    /**
+     *
+     * @param ClusterMapperInterface $clusterMapper
+     */
+    public function setClusterMapper(ClusterMapperInterface $clusterMapper)
+    {
+        $this->clusterMapper = $clusterMapper;
+    }
+
+    /**
+     *
+     * @param EndpointClusterConfigMapperInterface $endpointClusterConfigMapper
+     */
+    public function setEndpointClusterConfigMapper(EndpointClusterConfigMapperInterface $endpointClusterConfigMapper)
+    {
+        $this->endpointClusterConfigMapper = $endpointClusterConfigMapper;
     }
 
     /**
@@ -375,12 +405,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
         }
+        $newEndpointClusterConfig = $this->endpointClusterConfigMapper->save($dataObject->getEndpointClusterConfig());
+        
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
+        $data['endpoint_cluster_config_id'] = $newEndpointClusterConfig->getId();
 
         if (! $isUpdate) {
             $action = new Insert('endpoint_cd_linux_unix');
@@ -628,6 +661,13 @@ SQL;
                 $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
                 return $typeIsOk && $serverExists;
             }, true);
+        $cdLinuxUnixClusterConfigDataObjects = $this->endpointClusterConfigMapper->createDataObjects($resultSetArray,
+            null, null, ['id', 'id', 'role'], ['cd_linux_unix_cluster_config__', 'endpoint__', 'endpoint__'], 'id', 'endpoint__', null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                $endpointClusterConfigExists = array_key_exists('cd_linux_unix_cluster_config' . '__' . 'id', $row) && !empty($row['cd_linux_unix_cluster_config' . '__' . 'id']);
+                return $typeIsOk && $endpointClusterConfigExists;
+            }, false);
         $cdLinuxUnixIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_linux_unix_include_parameter_set__', 'id',
             'endpoint__', new IncludeParameterSet(),
             function (array $row) {
@@ -675,6 +715,8 @@ SQL;
                 'setExternalServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
                 'setServers', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixClusterConfigDataObjects,
+                'setEndpointClusterConfig', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
                 'setProtocols', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,

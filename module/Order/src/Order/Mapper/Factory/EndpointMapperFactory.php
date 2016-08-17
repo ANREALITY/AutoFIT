@@ -27,6 +27,8 @@ class EndpointMapperFactory implements FactoryInterface
         $service->setIncludeParameterSetMapper($serviceLocator->get('Order\Mapper\IncludeParameterSetMapper'));
         $service->setAccessConfigSetMapper($serviceLocator->get('Order\Mapper\AccessConfigSetMapper'));
         $service->setProtocolMapper($serviceLocator->get('Order\Mapper\ProtocolMapper'));
+        $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
+        $service->setEndpointClusterConfigMapper($serviceLocator->get('Order\Mapper\EndpointClusterConfigMapper'));
         $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
 
         return $service;

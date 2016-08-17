@@ -223,6 +223,7 @@ return [
             // services
             // mappers
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
+            'Order\Mapper\EndpointClusterConfigMapper' => 'Order\Mapper\Factory\EndpointClusterConfigMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
             'Order\Mapper\AccessConfigSetMapper' => 'Order\Mapper\Factory\AccessConfigSetMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
