@@ -260,6 +260,8 @@ return [
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
+            'Order\Form\Fieldset\ServerCommon' => 'Order\Form\Fieldset\Factory\ServerCommonFieldsetFactory',
+            'Order\Form\Fieldset\ServerListItem' => 'Order\Form\Fieldset\Factory\ServerListItemFieldsetFactory',
             'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
         ],
         'abstract_factories' => [
@@ -292,7 +294,8 @@ return [
             'Order\Form\Fieldset\PhysicalConnectionCdEndToEnd' => false,
             'Order\Form\Fieldset\PhysicalConnectionFtgwEndToMiddle' => false,
             'Order\Form\Fieldset\PhysicalConnectionFtgwMiddleToEnd' => false,
-            'Order\Form\Fieldset\Server' => false,
+            'Order\Form\Fieldset\ServerCommon' => false,
+            'Order\Form\Fieldset\ServerListItem' => false,
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => false,
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => false,
             'Order\Form\Fieldset\User' => false,

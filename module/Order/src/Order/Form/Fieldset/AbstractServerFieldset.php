@@ -5,7 +5,7 @@ use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Db\Adapter\AdapterInterface;
 
-class ServerFieldset extends Fieldset implements InputFilterProviderInterface
+abstract class AbstractServerFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     /**

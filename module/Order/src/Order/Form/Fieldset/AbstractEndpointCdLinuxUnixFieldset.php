@@ -89,7 +89,7 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     'template_placeholder' => '__index__',
                     'allow_add' => true,
                     'target_element' => [
-                        'type' => 'Order\Form\Fieldset\Server'
+                        'type' => 'Order\Form\Fieldset\ServerListItem'
                     ],
                     'label_attributes' => [
                         'class' => 'col-md-12 fieldset-multiple-servers'

@@ -77,7 +77,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
         $this->add(
             [
                 'name' => 'server',
-                'type' => 'Order\Form\Fieldset\Server',
+                'type' => 'Order\Form\Fieldset\ServerCommon',
                 'options' => []
             ]);
 

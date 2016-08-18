@@ -14,7 +14,6 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         'Environment',
         'IncludeParameterSet',
         'Notification',
-        'Server',
         'ExternalServer',
         'AccessConfig',
         'AccessConfigSet',
