@@ -8,10 +8,12 @@ class ServerCommonFieldset extends AbstractServerFieldset
 
     public function init()
     {
+        parent::init();
+
         $this->add(
             [
                 'type' => 'text',
-                'name' => 'name',
+                'name' => 'node_name',
                 'options' => [
                     'label' => _('server\'s node name'),
                     'label_attributes' => [
