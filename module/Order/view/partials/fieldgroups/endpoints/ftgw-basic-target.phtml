@@ -1,0 +1,22 @@
+<?php
+$fieldgroupName = 'basic-endpoint-target';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-target';
+$fieldgroupTitle = $this->translate('Target - basic settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('role')),
+    $this->formRow($endpointTargetFieldset->get('contact_person')),
+    $this->formRow($endpointTargetFieldset->get('server_place')),
+    $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
+    $this->formRow($customerForTargetFieldset->get('name')),
+    $this->formRow($serverForTargetFieldset->get('name')),
+    $this->formRow($externalServerForTargetFieldset->get('name'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
