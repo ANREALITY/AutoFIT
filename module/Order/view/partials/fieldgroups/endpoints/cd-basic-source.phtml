@@ -9,6 +9,7 @@ $fieldgroupFormRows = [
     $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($serverForSourceFieldset->get('name')),
+    $this->formRow($serverForSourceFieldset->get('node_name')),
     $this->formRow($externalServerForSourceFieldset->get('name'))
 ];
 echo $this->partial('/partials/fieldgroup',
