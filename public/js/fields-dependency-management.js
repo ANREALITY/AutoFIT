@@ -46,6 +46,7 @@ $(document).ready(function() {
 	fieldEndpointSourceApplicationNumber = $('#fieldgroup-basic-endpoint-source .field-application-number');
 	fieldEndpointSourceServerName = $('#fieldgroup-basic-endpoint-source .input-server');
 	fieldEndpointSourceServerNodeName = $('#fieldgroup-basic-endpoint-source .field-server-node-name');
+	fieldEndpointSourceEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldEndpointSourceExternalServerName = $('#fieldgroup-basic-endpoint-source .input-external-server');
 
 	fieldEndpointSourceServerPlace.change(function() {
@@ -65,6 +66,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.parent().fadeIn('slow');
 		fieldEndpointSourceServerNodeName.parent().fadeIn('slow');
+		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		global.sourceServerPlace = SERVER_PLACE_INTERNAL;
 	} else if (value == SERVER_PLACE_EXTERNAL) {
@@ -74,6 +76,8 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceServerName.parent().fadeOut('slow');
 		fieldEndpointSourceServerNodeName.val('');
 		fieldEndpointSourceServerNodeName.parent().fadeOut('slow');
+		fieldEndpointSourceEndpointServerConfigDnsAddress.val('');
+		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
 		fieldEndpointSourceCustomerName.parent().fadeIn('slow');
 
@@ -89,6 +93,7 @@ $(document).ready(function() {
 	fieldEndpointTargetApplicationNumber = $('#fieldgroup-basic-endpoint-target .field-application-number');
 	fieldEndpointTargetServerName = $('#fieldgroup-basic-endpoint-target .input-server');
 	fieldEndpointTargetServerNodeName = $('#fieldgroup-basic-endpoint-target .field-server-node-name');
+	fieldEndpointTargetEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-target .field-endpoint-server-config-dns-address');
 	fieldEndpointTargetExternalServerName = $('#fieldgroup-basic-endpoint-target .input-external-server');
 
 	fieldEndpointTargetServerPlace.change(function() {
@@ -108,6 +113,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.parent().fadeIn('slow');
 		fieldEndpointTargetServerNodeName.parent().fadeIn('slow');
+		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		global.targetServerPlace = SERVER_PLACE_INTERNAL;
 	} else if (value == SERVER_PLACE_EXTERNAL) {
@@ -117,6 +123,8 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetServerName.parent().fadeOut('slow');
 		fieldEndpointTargetServerNodeName.val('');
 		fieldEndpointTargetServerNodeName.parent().fadeOut('slow');
+		fieldEndpointTargetEndpointServerConfigDnsAddress.val('');
+		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
 		fieldEndpointTargetCustomerName.parent().fadeIn('slow');
 

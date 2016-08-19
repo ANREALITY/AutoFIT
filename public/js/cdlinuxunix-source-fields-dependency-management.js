@@ -3,6 +3,8 @@ $(document).ready(function() {
 	basicFieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
 	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
 	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
+	fieldTheServerNodeNameSource = $('#fieldgroup-basic-endpoint-source .field-server-node-name');
+	fieldTheServerEndpointServerConfigDnsAddressSource = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldAServerSource = function() {
 		return $('#fieldgroup-specific-endpoint-source .input-server');
 	};
@@ -38,6 +40,8 @@ function toggleFieldServerSource(value) {
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldTheServerSource.parent().fadeIn('slow');
+			fieldTheServerNodeNameSource.parent().fadeIn('slow');
+			fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeIn('slow');
 		}
 		fieldAServerSource().val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
@@ -62,6 +66,10 @@ function toggleFieldServerSource(value) {
 		}
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
+		fieldTheServerNodeNameSource.val('');
+		fieldTheServerNodeNameSource.parent().fadeOut('slow');
+		fieldTheServerEndpointServerConfigDnsAddressSource.val('');
+		fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldsetMultipleServersSource.fadeIn('slow');
