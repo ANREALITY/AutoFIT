@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 14:34+0200\n"
-"PO-Revision-Date: 2016-08-17 14:35+0200\n"
+"POT-Creation-Date: 2016-08-18 18:35+0200\n"
+"PO-Revision-Date: 2016-08-18 18:36+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -189,6 +189,10 @@ msgstr "Benachrichtigungen"
 msgid "add a notification"
 msgstr "Benachrichtigung hinzufügen"
 
+#: Order/src/Order/Form/Fieldset/AbstractServerFieldset.php:36
+msgid "server name"
+msgstr "Servername"
+
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:36
 msgid "service invoice position number"
 msgstr "LSP"
@@ -351,9 +355,9 @@ msgstr "fehlgeschlagen"
 msgid "Secure Plus"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/ServerFieldset.php:36
-msgid "server name"
-msgstr "Servername"
+#: Order/src/Order/Form/Fieldset/ServerCommonFieldset.php:18
+msgid "server's node name"
+msgstr "Knotenname des Servers"
 
 #: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
 #: Order/view/partials/order-parts/billing.phtml:34
@@ -807,12 +811,14 @@ msgstr "vom Quellsystem zum FTGW-Server"
 msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
-#: Order/view/partials/fieldgroups/endpoints/basic-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd-basic-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw-basic-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:12
 msgid "Source - basic settings"
 msgstr "Quellsystem (Grundeinstellungen)"
 
-#: Order/view/partials/fieldgroups/endpoints/basic-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd-basic-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw-basic-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:12
 msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
