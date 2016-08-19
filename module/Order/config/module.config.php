@@ -272,7 +272,10 @@ return [
             'Order\Form\Fieldset\Factory\AbstractServiceInvoicePositionFieldsetFactory'
         ],
         'shared' => [
+            'Order\Form\Fieldset\AccessConfig' => false,
+            'Order\Form\Fieldset\AccessConfigSet' => false,
             'Order\Form\Fieldset\Application' => false,
+            'Order\Form\Fieldset\Cluster' => false,
             'Order\Form\Fieldset\Customer' => false,
             'Order\Form\Fieldset\EndpointCdAs400Source' => false,
             'Order\Form\Fieldset\EndpointCdAs400Target' => false,
@@ -280,10 +283,16 @@ return [
             'Order\Form\Fieldset\EndpointCdLinuxUnixTarget' => false,
             'Order\Form\Fieldset\EndpointCdTandemSource' => false,
             'Order\Form\Fieldset\EndpointCdTandemTarget' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
+            'Order\Form\Fieldset\EndpointClusterConfig' => false,
             'Order\Form\Fieldset\EndpointFtgwSelfServiceSource' => false,
             'Order\Form\Fieldset\EndpointFtgwSelfServiceTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwWindowsSource' => false,
             'Order\Form\Fieldset\EndpointFtgwWindowsTarget' => false,
+            'Order\Form\Fieldset\EndpointServerConfig' => false,
+            'Order\Form\Fieldset\Environment' => false,
+            'Order\Form\Fieldset\ExternalServer' => false,
             'Order\Form\Fieldset\FileTransferRequestCd' => false,
             'Order\Form\Fieldset\FileTransferRequestFtgw' => false,
             'Order\Form\Fieldset\IncludeParameter' => false,
@@ -303,7 +312,6 @@ return [
             'Order\Form\Fieldset\AccessConfigSet' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
-            // @todo ExternalServerFieldset
         ]
     ],
     'view_manager' => [
