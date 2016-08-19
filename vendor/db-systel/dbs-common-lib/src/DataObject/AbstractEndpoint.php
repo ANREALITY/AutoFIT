@@ -58,12 +58,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @var Server
-     */
-    protected $server;
-
-    /**
-     *
      * @var ExternalServer
      */
     protected $externalServer;
@@ -79,6 +73,12 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @var Customer
      */
     protected $customer;
+
+    /**
+     *
+     * @var EndpointServerConfig
+     */
+    protected $endpointServerConfig;
 
     /**
      *
@@ -189,24 +189,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
-     * @return the $server
-     */
-    public function getServer()
-    {
-        return $this->server;
-    }
-
-    /**
-     *
-     * @param Server $server
-     */
-    public function setServer(Server $server)
-    {
-        $this->server = $server;
-    }
-
-    /**
      * @return the $externalServer
      */
     public function getExternalServer()
@@ -256,6 +238,24 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
+    }
+
+    /**
+     *
+     * @return the $endpointServerConfig
+     */
+    public function getEndpointServerConfig()
+    {
+        return $this->endpointServerConfig;
+    }
+
+    /**
+     *
+     * @param EndpointServerConfig $endpointServerConfig
+     */
+    public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
+    {
+        $this->endpointServerConfig = $endpointServerConfig;
     }
 
 }

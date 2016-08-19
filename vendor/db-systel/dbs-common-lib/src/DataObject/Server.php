@@ -40,6 +40,12 @@ class Server extends AbstractDataObject
 
     /**
      *
+     * @var EndpointServerConfig[]
+     */
+    protected $endpointServerConfigs;
+
+    /**
+     *
      * @return the $name
      */
     public function getName()
@@ -126,6 +132,24 @@ class Server extends AbstractDataObject
     public function setNodeName($nodeName)
     {
         $this->nodeName = $nodeName;
+    }
+
+    /**
+     *
+     * @return the $endpointServerConfigs
+     */
+    public function getEndpointServerConfigs()
+    {
+        return $this->endpointServerConfigs;
+    }
+
+    /**
+     *
+     * @param multitype:EndpointServerConfig $endpointServerConfigs
+     */
+    public function setEndpointServerConfigs(array $endpointServerConfigs)
+    {
+        $this->endpointServerConfigs = $endpointServerConfigs;
     }
 
 }
