@@ -36,11 +36,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 }
 $applicationForSourceFieldset = $endpointSourceFieldset->get('application');
 $customerForSourceFieldset = $endpointSourceFieldset->get('customer');
-$serverForSourceFieldset = $endpointSourceFieldset->get('server');
+$endpointServerConfigForSourceFieldset = $endpointSourceFieldset->get('endpoint_server_config');
 $externalServerForSourceFieldset = $endpointSourceFieldset->get('external_server');
 $applicationForTargetFieldset = $endpointTargetFieldset->get('application');
 $customerForTargetFieldset = $endpointTargetFieldset->get('customer');
-$serverForTargetFieldset = $endpointTargetFieldset->get('server');
+$endpointServerConfigForTargetFieldset = $endpointTargetFieldset->get('endpoint_server_config');
 $externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server');
 ?>
 
@@ -86,7 +86,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '-bas
         'endpointSourceFieldset' => $endpointSourceFieldset,
         'applicationForSourceFieldset' => $applicationForSourceFieldset,
         'customerForSourceFieldset' => $customerForSourceFieldset,
-        'serverForSourceFieldset' => $serverForSourceFieldset,
+        'endpointServerConfigForSourceFieldset' => $endpointServerConfigForSourceFieldset,
         'externalServerForSourceFieldset' => $externalServerForSourceFieldset,
         // DataObjects
         // no DataObjects
@@ -103,7 +103,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '-bas
         'endpointTargetFieldset' => $endpointTargetFieldset,
         'applicationForTargetFieldset' => $applicationForTargetFieldset,
         'customerForTargetFieldset' => $customerForTargetFieldset,
-        'serverForTargetFieldset' => $serverForTargetFieldset,
+        'endpointServerConfigForTargetFieldset' => $endpointServerConfigForTargetFieldset,
         'externalServerForTargetFieldset' => $externalServerForTargetFieldset,
         // DataObjects
         // no DataObjects

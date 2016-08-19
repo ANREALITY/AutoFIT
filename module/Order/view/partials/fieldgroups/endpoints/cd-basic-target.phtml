@@ -8,8 +8,9 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('server_place')),
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
     $this->formRow($customerForTargetFieldset->get('name')),
-    $this->formRow($serverForTargetFieldset->get('name')),
-    $this->formRow($serverForTargetFieldset->get('node_name')),
+    $this->formRow($endpointServerConfigForTargetFieldset->get('server')->get('name')),
+    $this->formRow($endpointServerConfigForTargetFieldset->get('server')->get('node_name')),
+    $this->formRow($endpointServerConfigForTargetFieldset->get('dns_address')),
     $this->formRow($externalServerForTargetFieldset->get('name'))
 ];
 echo $this->partial('/partials/fieldgroup',
