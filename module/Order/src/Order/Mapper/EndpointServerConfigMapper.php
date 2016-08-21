@@ -135,4 +135,21 @@ class EndpointServerConfigMapper extends AbstractMapper implements EndpointServe
         throw new \Exception('Database error in ' . __METHOD__);
     }
 
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+
+        $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
+            'name', 'server__', 'id', 'endpoint_server_config__');
+    
+        foreach ($dataObjects as $key => $dataObject) {
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
+                'setServer', 'getId');
+        }
+    
+        return $dataObjects;
+    }
+
 }

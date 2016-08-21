@@ -660,8 +660,8 @@ SQL;
             'technical_short_name', 'endpoint_application__', 'id', 'endpoint__');
         $customerDataObjects = $this->customerMapper->createDataObjects($resultSetArray, null, null,
             'id', 'customer__', 'id', 'endpoint__');
-        $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
-            'name', 'server__', 'id', 'endpoint__');
+        $endpointServerConfigDataObjects = $this->endpointServerConfigMapper->createDataObjects($resultSetArray, null, null,
+            'id', 'endpoint_server_config__', 'id', 'endpoint__');        
         $externalServerDataObjects = $this->externalServerMapper->createDataObjects($resultSetArray, null, null,
             'name', 'external_server__', 'id', 'endpoint__');
         $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
@@ -719,8 +719,8 @@ SQL;
                 'setApplication', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $customerDataObjects,
                 'setCustomer', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
-                'setServer', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointServerConfigDataObjects,
+                'setEndpointServerConfig', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $externalServerDataObjects,
                 'setExternalServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
