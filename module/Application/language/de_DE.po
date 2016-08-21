@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-19 13:43+0200\n"
-"PO-Revision-Date: 2016-08-19 13:43+0200\n"
+"POT-Creation-Date: 2016-08-21 16:12+0200\n"
+"PO-Revision-Date: 2016-08-21 16:12+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -319,8 +319,8 @@ msgstr "Umgebung"
 #: Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
 #: Order/view/partials/list/summary.phtml:116
 #: Order/view/partials/list/summary.phtml:132
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:35
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:35
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:39
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:39
 msgid "external server"
 msgstr "externer Server"
 
@@ -928,6 +928,11 @@ msgstr "ja"
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
+
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:35
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:35
+msgid "server DNS address"
+msgstr "Server-DNS-Adresse"
 
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:15
