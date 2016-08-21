@@ -224,6 +224,7 @@ return [
             // mappers
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\EndpointClusterConfigMapper' => 'Order\Mapper\Factory\EndpointClusterConfigMapperFactory',
+            'Order\Mapper\EndpointServerConfigMapper' => 'Order\Mapper\Factory\EndpointServerConfigMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
             'Order\Mapper\AccessConfigSetMapper' => 'Order\Mapper\Factory\AccessConfigSetMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
@@ -308,10 +309,6 @@ return [
             'Order\Form\Fieldset\ServiceInvoicePositionBasic' => false,
             'Order\Form\Fieldset\ServiceInvoicePositionPersonal' => false,
             'Order\Form\Fieldset\User' => false,
-            'Order\Form\Fieldset\AccessConfig' => false,
-            'Order\Form\Fieldset\AccessConfigSet' => false,
-            'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
-            'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
         ]
     ],
     'view_manager' => [

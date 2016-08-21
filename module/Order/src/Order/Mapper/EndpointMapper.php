@@ -102,6 +102,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
     /**
      *
+     * @param EndpointServerConfigMapperInterface $endpointServerConfigMapper
+     */
+    public function setEndpointServerConfigMapper(EndpointServerConfigMapperInterface $endpointServerConfigMapper)
+    {
+        $this->endpointServerConfigMapper = $endpointServerConfigMapper;
+    }
+
+    /**
+     *
      * @param ExternalServerMapperInterface $externalServerMapper
      */
     public function setExternalServerMapper(ExternalServerMapperInterface $externalServerMapper)
@@ -256,12 +265,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['server_place'] = $dataObject->getServerPlace();
         $data['contact_person'] = $dataObject->getContactPerson();
         $data['physical_connection_id'] = $dataObject->getPhysicalConnection()->getId();
-        $data['server_name'] = $dataObject->getServer() && $dataObject->getServer()->getName() ? $dataObject->getServer()->getName() : new Expression('NULL');
         $data['application_technical_short_name'] = $dataObject->getApplication() && $dataObject->getApplication()->getTechnicalShortName() ? $dataObject->getApplication()->getTechnicalShortName() : new Expression(
             'NULL');
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
+        $newEndpointServerConfig = $this->endpointServerConfigMapper->save($dataObject->getEndpointServerConfig());
         if(! empty($dataObject->getExternalServer()->getName())) {
             $newExternalServer = $this->externalServerMapper->save($dataObject->getExternalServer());
             $data['external_server_id'] = $newExternalServer->getId();
@@ -273,6 +282,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         }
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
+        $data['endpoint_server_config_id'] = $newEndpointServerConfig->getId();
 
         $isUpdate = false;
         if (! $data['id']) {

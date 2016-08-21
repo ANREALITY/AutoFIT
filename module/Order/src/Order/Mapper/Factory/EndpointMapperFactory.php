@@ -21,6 +21,7 @@ class EndpointMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
 
         $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
+        $service->setEndpointServerConfigMapper($serviceLocator->get('Order\Mapper\EndpointServerConfigMapper'));
         $service->setExternalServerMapper($serviceLocator->get('Order\Mapper\ExternalServerMapper'));
         $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
         $service->setCustomerMapper($serviceLocator->get('Order\Mapper\CustomerMapper'));
