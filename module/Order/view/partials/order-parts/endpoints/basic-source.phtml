@@ -29,7 +29,11 @@ $orderPartAttributes = [
     ],
     [
         'label' => $this->translate('server'),
-        'value' => $dataObject->getServer() ? $dataObject->getServer()->getName() : '-'
+        'value' => $dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer() ? $dataObject->getEndpointServerConfig()->getServer()->getName() : '-'
+    ],
+    [
+        'label' => $this->translate('server DNS address'),
+        'value' => $dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getDnsAddress() ? $dataObject->getEndpointServerConfig()->getDnsAddress() : '-'
     ],
     [
         'label' => ucfirst($this->translate('external server')),
