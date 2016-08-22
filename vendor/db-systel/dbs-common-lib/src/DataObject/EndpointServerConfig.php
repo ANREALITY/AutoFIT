@@ -59,7 +59,7 @@ class EndpointServerConfig extends AbstractDataObject
      *
      * @param string $dnsAddress
      */
-    public function setDnsAddress(string $dnsAddress)
+    public function setDnsAddress($dnsAddress)
     {
         $this->dnsAddress = $dnsAddress;
     }
