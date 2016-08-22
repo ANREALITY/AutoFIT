@@ -36,8 +36,11 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                         ]
                     ],
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 '
                     ]
+                ],
+                'attributes' => [
+                    'class' => 'field-transmission-type'
                 ]
             ]);
 
@@ -53,7 +56,7 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control',
+                    'class' => 'form-control field-transmission-interval',
                     'value' => '0,15,30,45 * * * *'
                 ]
             ]);

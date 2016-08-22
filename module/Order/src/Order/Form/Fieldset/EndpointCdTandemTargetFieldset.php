@@ -29,7 +29,7 @@ class EndpointCdTandemTargetFieldset extends AbstractEndpointCdTandemFieldset
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control field-folder'
                 ]
             ]);
     }

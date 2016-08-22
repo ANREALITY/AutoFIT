@@ -1,4 +1,6 @@
 // Linux/Unix EndpointSource #start#
+const TRANSMISSION_TYPE_TXT = 'txt';
+
 $(document).ready(function() {
 	basicFieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
 	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
@@ -17,6 +19,8 @@ $(document).ready(function() {
 	fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
 	fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
+	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
+	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
 });
 $(document).ready(function() {
 	fieldServerSourceToggle.change(function() {
@@ -42,12 +46,13 @@ function toggleFieldServerSource(value) {
 			fieldTheServerSource.parent().fadeIn('slow');
 			fieldTheServerNodeNameSource.parent().fadeIn('slow');
 			fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeIn('slow');
+			fieldTransmissionType.parent().parent().fadeIn('slow');
+			fieldServiceAddressSourceToggle.parent().fadeIn('slow');
+			fieldServiceAddressSourceToggle.trigger('change');
 		}
 		fieldAServerSource().val('');
 		fieldsetMultipleServersSource.fadeOut('slow');
 		buttonAddEndpointSourceServer.fadeOut('slow');
-		fieldServiceAddressSourceToggle.parent().fadeIn('slow');
-		fieldServiceAddressSourceToggle.trigger('change');
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
 		fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
@@ -57,6 +62,13 @@ function toggleFieldServerSource(value) {
 
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
+			fieldServiceAddressSourceToggle.prop('checked', false);
+			fieldServiceAddressSourceToggle.trigger('change');
+			fieldServiceAddressSourceToggle.parent().fadeOut('slow');
+			fieldTransmissionInterval.val('');
+			fieldTransmissionInterval.parent().fadeOut('slow');
+			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
+			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
 
 		global.sourceServerQuantity = SERVER_QUANTITY_ONE;
@@ -70,22 +82,20 @@ function toggleFieldServerSource(value) {
 		fieldTheServerNodeNameSource.parent().fadeOut('slow');
 		fieldTheServerEndpointServerConfigDnsAddressSource.val('');
 		fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeOut('slow');
+		fieldServiceAddressSourceToggle.prop('checked', false);
+		fieldServiceAddressSourceToggle.trigger('change');
+		fieldServiceAddressSourceToggle.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldsetMultipleServersSource.fadeIn('slow');
 			buttonAddEndpointSourceServer.fadeIn('slow');
 			fieldClusterVirtualNodeNameSource.parent().fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeIn('slow');
+			fieldTransmissionType.parent().parent().fadeIn('slow');
 		}
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldsetMultipleServersSource.fadeOut('slow');
 			buttonAddEndpointSourceServer.fadeOut('slow');
-		}
-		fieldServiceAddressSourceToggle.prop('checked', false);
-		fieldServiceAddressSourceToggle.trigger('change');
-		fieldServiceAddressSourceToggle.parent().fadeOut('slow');
-
-		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
 			fieldAServerSource().val('');
 			fieldsetMultipleServersSource.fadeOut('slow');
@@ -96,6 +106,10 @@ function toggleFieldServerSource(value) {
 			fieldEndpointClusterConfigIdSource.val('');
 			fieldEndpointClusterConfigDnsAddressSource.val('');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
+			fieldTransmissionInterval.val('');
+			fieldTransmissionInterval.parent().fadeOut('slow');
+			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
+			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
 
 		global.sourceServerQuantity = SERVER_QUANTITY_MANY;

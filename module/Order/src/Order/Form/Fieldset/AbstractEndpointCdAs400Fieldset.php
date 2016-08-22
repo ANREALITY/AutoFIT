@@ -31,7 +31,7 @@ abstract class AbstractEndpointCdAs400Fieldset extends AbstractEndpointFieldset 
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control field-application-user'
                 ]
             ]);
     }

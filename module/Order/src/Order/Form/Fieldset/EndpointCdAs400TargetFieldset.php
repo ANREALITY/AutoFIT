@@ -29,7 +29,7 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control'
+                    'class' => 'form-control field-folder'
                 ]
             ]);
     }

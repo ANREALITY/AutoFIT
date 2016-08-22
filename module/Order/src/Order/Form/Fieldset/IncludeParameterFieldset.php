@@ -25,7 +25,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control field-expression'
                 ]
             ]);
     }

@@ -42,12 +42,12 @@ function toggleFieldServerTarget(value) {
 			fieldTheServerTarget.parent().fadeIn('slow');
 			fieldTheServerNodeNameTarget.parent().fadeIn('slow');
 			fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeIn('slow');
+			fieldServiceAddressTargetToggle.parent().fadeIn('slow');
+			fieldServiceAddressTargetToggle.trigger('change');
 		}
 		fieldAServerTarget().val('');
 		fieldsetMultipleServersTarget.fadeOut('slow');
 		buttonAddEndpointTargetServer.fadeOut('slow');
-		fieldServiceAddressTargetToggle.parent().fadeIn('slow');
-		fieldServiceAddressTargetToggle.trigger('change');
 		fieldClusterIdTarget.val('');
 		fieldClusterVirtualNodeNameTarget.val('');
 		fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
@@ -57,6 +57,9 @@ function toggleFieldServerTarget(value) {
 
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeOut('slow');
+			fieldServiceAddressTargetToggle.prop('checked', false);
+			fieldServiceAddressTargetToggle.trigger('change');
+			fieldServiceAddressTargetToggle.parent().fadeOut('slow');
 		}
 
 		global.targetServerQuantity = SERVER_QUANTITY_ONE;
@@ -70,6 +73,9 @@ function toggleFieldServerTarget(value) {
 		fieldTheServerNodeNameTarget.parent().fadeOut('slow');
 		fieldTheServerEndpointServerConfigDnsAddressTarget.val('');
 		fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeOut('slow');
+		fieldServiceAddressTargetToggle.prop('checked', false);
+		fieldServiceAddressTargetToggle.trigger('change');
+		fieldServiceAddressTargetToggle.parent().fadeOut('slow');
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
 			fieldsetMultipleServersTarget.fadeIn('slow');
@@ -80,12 +86,6 @@ function toggleFieldServerTarget(value) {
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldsetMultipleServersTarget.fadeOut('slow');
 			buttonAddEndpointTargetServer.fadeOut('slow');
-		}
-		fieldServiceAddressTargetToggle.prop('checked', false);
-		fieldServiceAddressTargetToggle.trigger('change');
-		fieldServiceAddressTargetToggle.parent().fadeOut('slow');
-
-		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeOut('slow');
 			fieldAServerTarget().val('');
 			fieldsetMultipleServersTarget.fadeOut('slow');
