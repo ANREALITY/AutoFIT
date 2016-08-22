@@ -86,6 +86,10 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                         [
                             'value' => EndpointFtgwSelfService::CONNECTION_TYPE_EXTERNAL,
                             'label' => _('external')
+                        ],
+                        [
+                            'value' => EndpointFtgwSelfService::CONNECTION_TYPE_BOTH,
+                            'label' => _('internal and external')
                         ]
                     ],
                     'label_attributes' => [

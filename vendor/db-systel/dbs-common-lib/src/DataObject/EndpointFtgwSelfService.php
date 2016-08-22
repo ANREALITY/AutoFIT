@@ -8,6 +8,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     const CONNECTION_TYPE_EXTERNAL = 'external';
 
+    const CONNECTION_TYPE_BOTH = 'both';
+
     /**
      *
      * @var Protocol[]

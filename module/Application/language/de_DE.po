@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 16:12+0200\n"
-"PO-Revision-Date: 2016-08-21 16:12+0200\n"
+"POT-Creation-Date: 2016-08-22 09:48+0200\n"
+"PO-Revision-Date: 2016-08-22 09:48+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -153,6 +153,10 @@ msgstr "Mailbox"
 #: Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:92
+msgid "internal and external"
+msgstr "intern und extern"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
 msgid "Windows"
@@ -477,7 +481,7 @@ msgstr "Technische Beschreibung"
 msgid "you find in the TDV"
 msgstr "finden Sie in der TDV"
 
-#: Application/view/application/index/index.phtml:100
+#: Application/view/application/index/index.phtml:96
 msgid "Select the desired product now"
 msgstr "Wählen Sie nun das gewünschte Filetransfer-Produkt aus"
 
