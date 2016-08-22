@@ -1,7 +1,9 @@
 /**
  * A hack for FTGW Self-Service to disable the irrelevant source basic endpoint fields.
  */
-fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
+$(document).ready(function() {
+	fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
+});
 
 $(document).ready(function() {
 	fieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
