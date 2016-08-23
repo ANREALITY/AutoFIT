@@ -36,11 +36,7 @@ class EndpointCdTandemTargetFieldset extends AbstractEndpointCdTandemFieldset
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [
-            'folder' => [
-                'required' => true
-            ]
-        ];
+        $inputFilterSpecification = [];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 

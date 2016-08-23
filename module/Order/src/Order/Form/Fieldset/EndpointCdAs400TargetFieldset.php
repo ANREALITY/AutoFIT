@@ -28,7 +28,6 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control field-folder'
                 ]
             ]);
@@ -36,11 +35,7 @@ class EndpointCdAs400TargetFieldset extends AbstractEndpointCdAs400Fieldset
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [
-            'folder' => [
-                'required' => true
-            ]
-        ];
+        $inputFilterSpecification = [];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 

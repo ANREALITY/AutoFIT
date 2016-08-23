@@ -47,7 +47,6 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);

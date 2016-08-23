@@ -47,7 +47,6 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control field-folder'
                 ]
             ]);
