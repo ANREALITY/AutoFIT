@@ -29,9 +29,9 @@ $currentIdentity = $authenticationService->getIdentity();
                 'type' => 'image/vnd.microsoft.icon',
                 'href' => $this->basePath() . '/img/favicon.ico'
             ))
-            ->prependStylesheet($this->basePath() . '/css/style.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css')
-            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+            ->prependStylesheet($this->basePath() . '/css/style.css', ['screen', 'print'])
+            ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css', ['screen', 'print'])
+            ->prependStylesheet($this->basePath() . '/css/bootstrap.css', ['screen', 'print'])
             ->appendStylesheet($this->basePath() . '/components/jquery-ui/themes/smoothness/jquery-ui.css')?>
 
         <!-- Scripts -->
