@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-22 09:48+0200\n"
-"PO-Revision-Date: 2016-08-22 09:48+0200\n"
+"POT-Creation-Date: 2016-08-26 16:42+0200\n"
+"PO-Revision-Date: 2016-08-26 16:42+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -55,37 +55,37 @@ msgstr ""
 msgid "folder"
 msgstr "Verzeichnis"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:60
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:59
 msgid "server variant"
 msgstr "Server-Vatiante"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:64
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:63
 msgid "single server (s. basic settings)"
 msgstr "einziger Server (s. Basis-Einstellungen)"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:69
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:86
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:68
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:85
 msgid "multiple servers"
 msgstr "mehrere Server"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:105
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:104
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:110
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:109
 msgid "add a server"
 msgstr "Server hinzufügen"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:119
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:118
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:80
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:55
 msgid "service address"
 msgstr "Service-Adresse"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:135
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:134
 msgid "IP / server name service address"
 msgstr "IP / Server-Name der Service-Adresse"
 
@@ -263,12 +263,12 @@ msgstr ""
 msgid "transmission type"
 msgstr "Übertragungsart"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:49
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:52
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:64
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:91
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:94
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht dem Crontab-Muster."
 
@@ -374,7 +374,7 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:35
+#: Order/src/Order/Form/OrderForm.php:35 Order/src/Order/Form/ServerForm.php:26
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -572,6 +572,10 @@ msgid "my orders"
 msgstr "Meine Bestellungen"
 
 #: Application/view/layout/layout.phtml:97
+msgid "server edit"
+msgstr "Server-Aktualisierung"
+
+#: Application/view/layout/layout.phtml:100
 msgid "orders"
 msgstr "Bestellungen"
 
@@ -966,7 +970,7 @@ msgstr "Cluster-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:39
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:39
 msgid "FTGW username"
-msgstr ""
+msgstr "FTGW-Username"
 
 #: Order/view/partials/order-parts/logical-connection.phtml:12
 msgid "notification"

@@ -47,6 +47,9 @@ return [
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'
                 ],
+                'MasterData\Controller\Server' => [
+                    'all' => 'member'
+                ],
             ]
         ],
         'redirect_route' => [

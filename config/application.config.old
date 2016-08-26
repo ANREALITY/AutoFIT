@@ -8,10 +8,13 @@
 return array(
     'modules' => array(
         'Logging',
+        'ErrorHandling',
         'Application',
         'Order',
         'Authentication',
         'Authorization',
+//         'ZendDeveloperTools',
+//         'BjyProfiler',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
