@@ -16,7 +16,7 @@ $connectionType = $fileTransferRequest->getLogicalConnection()->getType();
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointSource();
     try {
-        $endpointSourceServer = $endpointSource->getServer();
+        $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
         $endpointSourceServerName = $endpointSourceServer->getName();
     } catch (Error $e) {
         $endpointSourceServer = null;
@@ -36,7 +36,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
     try {
-        $endpointTargetServer = $endpointTarget->getServer();
+        $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
         $endpointTargetServerName = $endpointTargetServer->getName();
     } catch (Error $e) {
         $endpointTargetServer = null;
@@ -57,7 +57,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
     try {
-        $endpointSourceServer = $endpointSource->getServer();
+        $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
         $endpointSourceServerName = $endpointSourceServer->getName();
     } catch (Error $e) {
         $endpointSourceServer = null;
@@ -77,7 +77,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
     try {
-        $endpointTargetServer = $endpointTarget->getServer();
+        $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
         $endpointTargetServerName = $endpointTargetServer->getName();
     } catch (Error $e) {
         $endpointTargetServer = null;

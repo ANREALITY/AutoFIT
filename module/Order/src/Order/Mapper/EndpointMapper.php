@@ -271,7 +271,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // $newBar = $this->barMapper->save($dataObject->getBar());
         $newCustomer = $this->customerMapper->save($dataObject->getCustomer());
         $newEndpointServerConfig = $this->endpointServerConfigMapper->save($dataObject->getEndpointServerConfig());
-        if(! empty($dataObject->getExternalServer()->getName())) {
+        if(! empty($dataObject->getExternalServer()) && ! empty($dataObject->getExternalServer()->getName())) {
             $newExternalServer = $this->externalServerMapper->save($dataObject->getExternalServer());
             $data['external_server_id'] = $newExternalServer->getId();
         } else {

@@ -2,7 +2,7 @@
 if (! empty($getHelperFieldsValuesFromObject)) {
     $dataObject = $endpointSourceFieldset->getObject();
     // setting value for server_toggle
-    if ($dataObject->getServer()) {
+    if ($dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer()) {
         $valueServerToggle = 'single_server';
     } else {
         $valueServerToggle = 'multiple_servers';
