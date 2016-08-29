@@ -176,6 +176,11 @@ form div.validation-errors-container ul li {
   margin: 5px 0 5px 0;
   padding: 5px 15px 5px 15px;
 }
+form .form-control:focus {
+  border-color: #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #afafaf;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #afafaf;
+}
 form.cd .form-control:focus {
   border-color: #ffcc33;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ffcc00;

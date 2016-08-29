@@ -34,6 +34,12 @@ class Server extends AbstractDataObject
 
     /**
      *
+     * @var string
+     */
+    protected $virtualNodeName;
+
+    /**
+     *
      * @var Cluster
      */
     protected $cluster;
@@ -132,6 +138,24 @@ class Server extends AbstractDataObject
     public function setNodeName($nodeName)
     {
         $this->nodeName = $nodeName;
+    }
+
+    /**
+     *
+     * @return the $virtualNodeName
+     */
+    public function getVirtualNodeName()
+    {
+        return $this->virtualNodeName;
+    }
+
+    /**
+     *
+     * @param string $virtualNodeName
+     */
+    public function setVirtualNodeName($virtualNodeName)
+    {
+        $this->virtualNodeName = $virtualNodeName;
     }
 
     /**

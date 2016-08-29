@@ -95,7 +95,36 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
      */
     public function save(Server $dataObject)
     {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $data = [];
+        // data retrieved directly from the input
+        $data['name'] = $dataObject->getName();
+        $data['virtual_node_name'] = $dataObject->getVirtualNodeName();
+        // creating sub-objects
+        // data from the recently persisted objects
+
+        if (! $data['name']) {
+            // No INSERT functionality!
+            // $action = new Insert('server');
+            // $action->values($data);
+        } else {
+            $action = new Update('server');
+            $action->where(['name' => $data['name']]);
+            unset($data['name']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newName = $result->getGeneratedValue() ?: $dataObject->getName();
+            if ($newName) {
+                $dataObject->setName($newName);
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
     }
 
 }

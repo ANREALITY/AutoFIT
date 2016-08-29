@@ -20,6 +20,14 @@ return [
             'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory'
         ]
     ],
+    'form_elements' => [
+        'factories' => [
+            // forms
+            'MasterData\Form\ServerForm' => 'MasterData\Form\Factory\ServerFormFactory',
+            // fieldsets
+            'MasterData\Form\Fieldset\ServerAdditionalName' => 'MasterData\Form\Fieldset\Factory\ServerAdditionalNameFieldsetFactory'
+        ],
+    ],
     'view_manager' => [
         'template_path_stack' => [
             __DIR__ . '/../view'
