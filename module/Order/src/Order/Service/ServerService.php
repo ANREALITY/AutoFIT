@@ -56,6 +56,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'active' => true,
                     'node_name' => null,
                     'virtual_node_name' => null,
+                    'cluster_id' => null,
                 ]
             ]);
     }

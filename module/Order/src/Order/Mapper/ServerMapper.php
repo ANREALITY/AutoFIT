@@ -78,6 +78,14 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                             ]);
                     }
                 }
+                if (array_key_exists('cluster_id', $condition)) {
+                    if ($condition['cluster_id'] === null) {
+                        $select->where(
+                            [
+                                'server.cluster_id IS ?' => new Expression('NULL')
+                            ]);
+                    }
+                }
                 if (array_key_exists('endpoint_type_name', $condition) && ! empty($condition['endpoint_type_name'])) {
                     $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],
                         Select::JOIN_INNER);
