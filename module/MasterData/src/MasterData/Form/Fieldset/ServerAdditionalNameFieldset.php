@@ -45,7 +45,7 @@ class ServerAdditionalNameFieldset extends AbstractServerFieldset
                             'table' => 'server',
                             'field' => 'name',
                             'adapter' => $this->dbAdapter,
-                            'exclude' => 'NOT (node_name IS NULL AND virtual_node_name IS NULL)'
+                            'exclude' => 'NOT ((node_name IS NULL OR node_name = "") AND (virtual_node_name IS NULL OR virtual_node_name = ""))'
                         ],
                         
                     ]
