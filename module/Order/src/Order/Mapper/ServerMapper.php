@@ -11,6 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Select;
+use Zend\Db\Sql\Expression;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
@@ -60,6 +61,22 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                         [
                             'server.active = ?' => $condition['active']
                         ]);
+                }
+                if (array_key_exists('node_name', $condition)) {
+                    if ($condition['node_name'] === null) {
+                        $select->where(
+                            [
+                                'server.node_name IS ?' => new Expression('NULL')
+                            ]);
+                    }
+                }
+                if (array_key_exists('virtual_node_name', $condition)) {
+                    if ($condition['virtual_node_name'] === null) {
+                        $select->where(
+                            [
+                                'server.virtual_node_name IS ?' => new Expression('NULL')
+                            ]);
+                    }
                 }
                 if (array_key_exists('endpoint_type_name', $condition) && ! empty($condition['endpoint_type_name'])) {
                     $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],

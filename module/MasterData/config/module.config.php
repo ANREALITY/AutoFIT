@@ -12,6 +12,16 @@ return [
                     ]
                 ]
             ],
+            'provide-servers-not-in-cd-use' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-servers-not-in-cd-use',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServersNotInCdUse'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [
