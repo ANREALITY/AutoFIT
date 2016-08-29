@@ -42,12 +42,8 @@ class ServerAdditionalNameFieldset extends AbstractServerFieldset
                     [
                         'name' => 'MasterData\Validator\Db\ServerNotInUseForCd',
                         'options' => [
-                            'table' => 'server',
-                            'field' => 'name',
                             'adapter' => $this->dbAdapter,
-                            'exclude' => 'NOT ((node_name IS NULL OR node_name = "") AND (virtual_node_name IS NULL OR virtual_node_name = ""))'
                         ],
-                        
                     ]
                 ]
             ],

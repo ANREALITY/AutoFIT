@@ -1,7 +1,7 @@
 <?php
 return [
     // MasterData\Validator\Db\ServerNotInUseForCd
-    "The ConnectDirect settings for this server already defined." => "Die ConnectDirect-Einstellungen für diesen Server bereits festgelegt.",
+    "The Connect:Direct settings for this server already defined." => "Die Connect:Direct-Einstellungen für diesen Server bereits festgelegt.",
 
     // ...
 ];

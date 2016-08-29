@@ -1,9 +1,6 @@
 <?php
 namespace MasterData\Validator\Db;
 
-use Zend\Validator\Exception;
-use Zend\Validator\Db\AbstractDb;
-use Zend\Db\Sql\Sql;
 use Zend\Validator\Db\NoRecordExists;
 
 /**
@@ -21,8 +18,15 @@ class ServerNotInUseForCd extends NoRecordExists
      * @var array Message templates
      */
     protected $messageTemplates = [
-        self::ERROR_CD_SETTINGS_ALREADY_DEFINED => 'The ConnectDirect settings for this server already defined.'
+        self::ERROR_CD_SETTINGS_ALREADY_DEFINED => 'The Connect:Direct settings for this server already defined.'
     ];
+
+    public function __construct($options = null) {
+        $options['exclude'] = 'NOT ((node_name IS NULL OR node_name = "") AND (virtual_node_name IS NULL OR virtual_node_name = ""))';
+        $options['table'] = 'server';
+        $options['field'] = 'name';
+        parent::__construct($options);
+    }
 
     public function isValid($value)
     {
