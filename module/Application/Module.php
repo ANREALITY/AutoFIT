@@ -30,6 +30,8 @@ class Module
             ->get('translator');
         $translator->addTranslationFile('phpArray',
             './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
+        $translator->addTranslationFile('phpArray',
+            './vendor/db-systel/dbs-common-lib/src/i18n-resources/languages/de/Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
     }
 

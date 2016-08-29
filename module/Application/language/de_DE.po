@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-26 16:42+0200\n"
-"PO-Revision-Date: 2016-08-26 16:42+0200\n"
+"POT-Creation-Date: 2016-08-29 14:29+0200\n"
+"PO-Revision-Date: 2016-08-29 14:48+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -28,6 +28,14 @@ msgstr ""
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
+
+#: MasterData/src/MasterData/Form/Fieldset/ServerAdditionalNameFieldset.php:24
+msgid "server's virtual node name"
+msgstr "Virtueller Knotenname des Servers"
+
+#: MasterData/src/MasterData/Form/ServerForm.php:32
+msgid "update server"
+msgstr "Server aktualisieren"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:15
 msgid "AS400"
@@ -374,7 +382,7 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:35 Order/src/Order/Form/ServerForm.php:26
+#: Order/src/Order/Form/OrderForm.php:35
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -579,6 +587,27 @@ msgstr "Server-Aktualisierung"
 msgid "orders"
 msgstr "Bestellungen"
 
+#: MasterData/view/master-data/server/edited.phtml:3
+#, php-format
+msgid "The server has been %s successfully."
+msgstr "Der Server wurde erfolgreich %s."
+
+#: MasterData/view/master-data/server/edited.phtml:3
+#: Order/view/order/process/edited.phtml:3
+msgid "updated"
+msgstr "aktualisiert"
+
+#: MasterData/view/partials/fieldgroup.phtml:14
+#: MasterData/view/partials/order-part.phtml:17
+#: Order/view/partials/fieldgroup.phtml:14
+#: Order/view/partials/order-part.phtml:17
+msgid "No settings needed for this area."
+msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
+
+#: MasterData/view/partials/fieldgroups/server.phtml:4
+msgid "Server settings"
+msgstr "Server-Einstellungen"
+
 #: Order/view/order/process/accepted.phtml:3
 #: Order/view/order/process/canceled.phtml:3
 #: Order/view/order/process/completed.phtml:3
@@ -615,10 +644,6 @@ msgstr "Danke für Ihre Bestellung!"
 #: Order/view/order/process/operation-denied-for-status.phtml:19
 msgid "declined"
 msgstr "abgelehnt"
-
-#: Order/view/order/process/edited.phtml:3
-msgid "updated"
-msgstr "aktualisiert"
 
 #: Order/view/order/process/list-my-orders.phtml:7
 msgid "check"
@@ -783,11 +808,6 @@ msgstr "einmal am Tag am 1. und 15. des  Monats außer Dezember"
 #: Order/view/partials/crontab-info.phtml:64
 msgid "You can generate a valid value with a converting tool like"
 msgstr "Sie können einen gültigen Wert mit einem Umrechnungstool generieren"
-
-#: Order/view/partials/fieldgroup.phtml:14
-#: Order/view/partials/order-part.phtml:17
-msgid "No settings needed for this area."
-msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: Order/view/partials/fieldgroups/billing.phtml:4
 #: Order/view/partials/order-parts/billing.phtml:13
