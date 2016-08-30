@@ -16,7 +16,6 @@ $(document).ready(function() {
 	fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
 	fieldEndpointSourceApplicationNumber = $('#fieldgroup-basic-endpoint-source .field-application-number');
 	fieldEndpointSourceServerName = $('#fieldgroup-basic-endpoint-source .input-server');
-	fieldEndpointSourceServerNodeName = $('#fieldgroup-basic-endpoint-source .field-server-node-name');
 	fieldEndpointSourceEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldEndpointSourceExternalServerName = $('#fieldgroup-basic-endpoint-source .input-external-server');
 });
@@ -26,7 +25,6 @@ $(document).ready(function() {
 	fieldEndpointTargetCustomerName = $('#fieldgroup-basic-endpoint-target .field-customer-name');
 	fieldEndpointTargetApplicationNumber = $('#fieldgroup-basic-endpoint-target .field-application-number');
 	fieldEndpointTargetServerName = $('#fieldgroup-basic-endpoint-target .input-server');
-	fieldEndpointTargetServerNodeName = $('#fieldgroup-basic-endpoint-target .field-server-node-name');
 	fieldEndpointTargetEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-target .field-endpoint-server-config-dns-address');
 	fieldEndpointTargetExternalServerName = $('#fieldgroup-basic-endpoint-target .input-external-server');
 });
@@ -90,7 +88,6 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceExternalServerName.val('');
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.parent().fadeIn('slow');
-		fieldEndpointSourceServerNodeName.parent().fadeIn('slow');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		enableEndpointSpecificForExternalSource();
@@ -101,8 +98,6 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.val('');
 		fieldEndpointSourceServerName.parent().fadeOut('slow');
-		fieldEndpointSourceServerNodeName.val('');
-		fieldEndpointSourceServerNodeName.parent().fadeOut('slow');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.val('');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
@@ -133,7 +128,6 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetExternalServerName.val('');
 		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.parent().fadeIn('slow');
-		fieldEndpointTargetServerNodeName.parent().fadeIn('slow');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		global.targetServerPlace = SERVER_PLACE_INTERNAL;
@@ -142,8 +136,6 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.val('');
 		fieldEndpointTargetServerName.parent().fadeOut('slow');
-		fieldEndpointTargetServerNodeName.val('');
-		fieldEndpointTargetServerNodeName.parent().fadeOut('slow');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.val('');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
