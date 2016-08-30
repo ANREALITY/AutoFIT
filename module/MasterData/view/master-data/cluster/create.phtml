@@ -1,0 +1,45 @@
+<?php
+use MasterData\Form\ClusterForm;
+/**
+ * @var ClusterForm $form
+ */
+?>
+<?php
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<?php
+// validation errors
+echo $this->partial('/partials/validation-errors',
+    [
+        'form' => $form,
+    ]);
+?>
+
+<?php
+$clusterFieldset = $form->get('cluster');
+?>
+
+<?php
+// billing
+echo $this->partial('/partials/fieldgroups/cluster',
+    [
+        // Fieldsets
+        'clusterFieldset' => $clusterFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
+    ]);
+?>
+
+<div class="clearer"></div>
+
+<div class="form-group">
+    <div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div>
+</div>
+
+<?php
+echo $this->form()->closeTag();
+?>

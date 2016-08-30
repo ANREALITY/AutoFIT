@@ -22,9 +22,24 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
      */
     protected $prototype;
 
+    /**
+     *
+     * @var ServerMapperInterface
+     */
+    protected $serverMapper;
+
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Cluster $prototype)
     {
         parent::__construct($dbAdapter, $hydrator, $prototype);
+    }
+
+    /**
+     *
+     * @param ServerMapperInterface $serverMapper
+     */
+    public function setServerMapper(ServerMapperInterface $serverMapper)
+    {
+        $this->serverMapper = $serverMapper;
     }
 
     /**
@@ -86,7 +101,44 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
      */
     public function save(Cluster $dataObject)
     {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        $data = [];
+        // data retrieved directly from the input
+        $data['virtual_node_name'] = $dataObject->getVirtualNodeName();
+        // creating sub-objects
+        // data from the recently persisted objects
+
+        if (empty($data['id'])) {
+            $action = new Insert('cluster');
+            $action->values($data);
+        } else {
+            // No UPDATE functionality!
+            // $action = new Update('cluster');
+            // $action->where(['id' => $data['id']]);
+            // unset($data['id']);
+            // $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
+            if ($newId) {
+                $dataObject->setId($newId);
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+                if ($dataObject->getServers()) {
+                    foreach ($dataObject->getServers() as $server) {
+                        if ($server->getName()) {
+                            $server->setCluster($dataObject);
+                            $this->serverMapper->save($server);
+                        }
+                    }
+                }
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
     }
 
 }

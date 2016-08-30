@@ -2,9 +2,8 @@
 namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
-use Zend\InputFilter\InputFilterProviderInterface;
 
-class ClusterFieldset extends Fieldset implements InputFilterProviderInterface
+class ClusterFieldset extends AbstractClusterFieldset
 {
 
     public function __construct($name = null, $options = [])

@@ -22,18 +22,40 @@ return [
                     ]
                 ]
             ],
+            'create-cluster' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/master-data/cluster/create',
+                    'defaults' => [
+                        'controller' => 'MasterData\Controller\Cluster',
+                        'action' => 'create'
+                    ]
+                ]
+            ],
+            'provide-servers-not-in-cluster' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-servers-not-in-cluster',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServersNotInCluster'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [
         'invokables' => [],
         'factories' => [
-            'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory'
+            'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory',
+            'MasterData\Controller\Cluster' => 'MasterData\Controller\Factory\ClusterControllerFactory'
         ]
     ],
     'form_elements' => [
         'factories' => [
             // forms
             'MasterData\Form\ServerForm' => 'MasterData\Form\Factory\ServerFormFactory',
+            'MasterData\Form\ClusterForm' => 'MasterData\Form\Factory\ClusterFormFactory',
             // fieldsets
             'MasterData\Form\Fieldset\ServerAdditionalName' => 'MasterData\Form\Fieldset\Factory\ServerAdditionalNameFieldsetFactory'
         ],

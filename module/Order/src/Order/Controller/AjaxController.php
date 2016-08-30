@@ -111,8 +111,22 @@ class AjaxController extends AbstractActionController
 
         if (true || $request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            $data['endpoint_type_name'] = isset($data['endpoint_type_name']) ? $data['endpoint_type_name'] : null;
             $dataList = $this->serverService->findAllNotInCdUseForAutocomplete($data['name'])->toArray();
+        }
+
+        $dataList = array_column($dataList, 'name');
+
+        return new JsonModel($dataList);
+    }
+
+    public function provideServersNotInClusterAction()
+    {
+        $request = $this->getRequest();
+        $dataList = [];
+
+        if (true || $request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $dataList = $this->serverService->findAllNotInClusterForAutocomplete($data['name'])->toArray();
         }
 
         $dataList = array_column($dataList, 'name');

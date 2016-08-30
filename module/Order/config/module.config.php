@@ -223,6 +223,7 @@ return [
             // services
             // mappers
             'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
+            'Order\Mapper\ClusterMapper' => 'Order\Mapper\Factory\ClusterMapperFactory',
             'Order\Mapper\EndpointClusterConfigMapper' => 'Order\Mapper\Factory\EndpointClusterConfigMapperFactory',
             'Order\Mapper\EndpointServerConfigMapper' => 'Order\Mapper\Factory\EndpointServerConfigMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
@@ -257,6 +258,8 @@ return [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
             // fieldsets
+            'Order\Form\Fieldset\Cluster' => 'Order\Form\Fieldset\Factory\ClusterFieldsetFactory',
+            'Order\Form\Fieldset\ClusterCreate' => 'Order\Form\Fieldset\Factory\ClusterCreateFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestCd' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\FileTransferRequestFtgw' => 'Order\Form\Fieldset\Factory\FileTransferRequestFieldsetFactory',
             'Order\Form\Fieldset\LogicalConnectionCd' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',

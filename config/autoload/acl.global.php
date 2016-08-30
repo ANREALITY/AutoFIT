@@ -50,6 +50,9 @@ return [
                 'MasterData\Controller\Server' => [
                     'all' => 'member'
                 ],
+                'MasterData\Controller\Cluster' => [
+                    'all' => 'member'
+                ],
             ]
         ],
         'redirect_route' => [

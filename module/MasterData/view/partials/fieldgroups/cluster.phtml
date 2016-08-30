@@ -1,0 +1,23 @@
+<?php
+$fieldgroupName = 'cluster';
+$fieldgroupCssClass = 'col-md-12 fieldgroup-cluster';
+$fieldgroupTitle = $this->translate('New Cluster');
+$fieldgroupFormRows = [
+    '<div class="form-field-wrapper col-md-6">' .
+    $this->formRow($clusterFieldset->get('virtual_node_name'), null, false) . '</div>',
+    '<div class="form-field-wrapper col-md-6">' .
+    $this->formRow($clusterFieldset->get('servers')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' .
+        $this->formRow($clusterFieldset->get('add_server')) . '</div>' . '</div>',
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false,
+        'appendixPartial' => null
+    ]);
+?>
+<?php /*$this->inlineScript()->appendFile('/js/cluster-create-autocomplete.js');*/ ?>

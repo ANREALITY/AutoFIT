@@ -124,10 +124,11 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
         // data retrieved directly from the input
         $data['name'] = $dataObject->getName();
         $data['virtual_node_name'] = $dataObject->getVirtualNodeName();
+        $data['cluster_id'] = $dataObject->getCluster() && $dataObject->getCluster()->getId() ? $dataObject->getCluster()->getId() : new Expression('NULL');
         // creating sub-objects
         // data from the recently persisted objects
 
-        if (! $data['name']) {
+        if (empty($data['name'])) {
             // No INSERT functionality!
             // $action = new Insert('server');
             // $action->values($data);

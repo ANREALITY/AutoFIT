@@ -66,6 +66,25 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
+    public function findAllNotInClusterForAutocomplete(string $name)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'name' => $name,
+                    'active' => true,
+                    'node_name' => null,
+                    'virtual_node_name' => null,
+                    'cluster_id' => null,
+                ]
+            ]);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function saveOne(Server $server)
     {
         return $this->mapper->save($server);

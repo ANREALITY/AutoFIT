@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 14:29+0200\n"
-"PO-Revision-Date: 2016-08-29 14:48+0200\n"
+"POT-Creation-Date: 2016-08-29 18:42+0200\n"
+"PO-Revision-Date: 2016-08-29 18:45+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -28,6 +28,10 @@ msgstr ""
 #, php-format
 msgid "Error reference: %s."
 msgstr "Fehler-Referenz: %s."
+
+#: MasterData/src/MasterData/Form/ClusterForm.php:32
+msgid "create cluster"
+msgstr "Cluster erstellen"
 
 #: MasterData/src/MasterData/Form/Fieldset/ServerAdditionalNameFieldset.php:24
 msgid "server's virtual node name"
@@ -79,11 +83,13 @@ msgstr "mehrere Server"
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:104
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
+#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:56
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:109
+#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:61
 msgid "add a server"
 msgstr "Server hinzufügen"
 
@@ -241,6 +247,20 @@ msgstr "Zugriffseinstellungen"
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:45
 msgid "add an access config"
 msgstr ""
+
+#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:21
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
+msgid "cluster's virtual node name"
+msgstr "Virtueller Knotenname des Clusters"
+
+#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
+#: Order/view/partials/list/summary.phtml:108
+#: Order/view/partials/list/summary.phtml:124
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
+msgid "servers"
+msgstr "Server"
 
 #: Order/src/Order/Form/Fieldset/ClusterFieldset.php:29
 msgid "virtual node name"
@@ -580,29 +600,42 @@ msgid "my orders"
 msgstr "Meine Bestellungen"
 
 #: Application/view/layout/layout.phtml:97
-msgid "server edit"
-msgstr "Server-Aktualisierung"
+#: Order/view/partials/list/summary.phtml:113
+#: Order/view/partials/list/summary.phtml:129
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
+msgid "server"
+msgstr "Server"
 
 #: Application/view/layout/layout.phtml:100
+msgid "cluster"
+msgstr "Cluster"
+
+#: Application/view/layout/layout.phtml:103
 msgid "orders"
 msgstr "Bestellungen"
 
+#: MasterData/view/master-data/cluster/created.phtml:3
 #: MasterData/view/master-data/server/edited.phtml:3
 #, php-format
 msgid "The server has been %s successfully."
 msgstr "Der Server wurde erfolgreich %s."
 
+#: MasterData/view/master-data/cluster/created.phtml:3
 #: MasterData/view/master-data/server/edited.phtml:3
 #: Order/view/order/process/edited.phtml:3
 msgid "updated"
 msgstr "aktualisiert"
 
 #: MasterData/view/partials/fieldgroup.phtml:14
-#: MasterData/view/partials/order-part.phtml:17
 #: Order/view/partials/fieldgroup.phtml:14
 #: Order/view/partials/order-part.phtml:17
 msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
+
+#: MasterData/view/partials/fieldgroups/cluster.phtml:4
+msgid "New Cluster"
+msgstr "Neuer Cluster"
 
 #: MasterData/view/partials/fieldgroups/server.phtml:4
 msgid "Server settings"
@@ -898,20 +931,6 @@ msgstr "Endpoint"
 msgid "source"
 msgstr "Quellsystem"
 
-#: Order/view/partials/list/summary.phtml:108
-#: Order/view/partials/list/summary.phtml:124
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:68
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:43
-msgid "servers"
-msgstr "Server"
-
-#: Order/view/partials/list/summary.phtml:113
-#: Order/view/partials/list/summary.phtml:129
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
-msgid "server"
-msgstr "Server"
-
 #: Order/view/partials/list/summary.phtml:121
 #: Order/view/partials/start/cd.phtml:29 Order/view/partials/start/cd.phtml:33
 #: Order/view/partials/start/ftgw.phtml:27
@@ -976,11 +995,6 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:15
 msgid "type"
 msgstr "Typ"
-
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:72
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:47
-msgid "cluster's virtual node name"
-msgstr "Virtual Knotenname des Clusters"
 
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
@@ -1079,11 +1093,11 @@ msgstr ""
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 
+#~ msgid "server edit"
+#~ msgstr "Server-Aktualisierung"
+
 #~ msgid "multiple external servers"
 #~ msgstr "mehrere externe Server"
-
-#~ msgid "cluster"
-#~ msgstr "Cluster"
 
 #~ msgid "server name / IP of the load balancer"
 #~ msgstr "Servername / IP des Lastverteilers"
