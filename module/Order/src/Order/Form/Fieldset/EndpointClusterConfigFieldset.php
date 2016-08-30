@@ -33,7 +33,7 @@ class EndpointClusterConfigFieldset extends Fieldset implements InputFilterProvi
             'name' => 'dns_address',
             'type' => 'text',
             'options' => [
-                'label' => _('DNS address'),
+                'label' => _('cluster\'s DNS address'),
                 'label_attributes' => [
                     'class' => 'col-md-12'
                 ]
