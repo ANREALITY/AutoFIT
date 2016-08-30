@@ -7,13 +7,8 @@ $(document).ready(function() {
 	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
 	fieldTheServerNodeNameSource = $('#fieldgroup-basic-endpoint-source .field-server-node-name');
 	fieldTheServerEndpointServerConfigDnsAddressSource = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
-	fieldAServerSource = function() {
-		return $('#fieldgroup-specific-endpoint-source .input-server');
-	};
-	fieldsetMultipleServersSource = $('#fieldgroup-specific-endpoint-source .fieldset-multiple-servers');
 	fieldServiceAddressSource = $('#fieldgroup-specific-endpoint-source .field-service-address');
 	fieldServiceAddressSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-service-address');
-	buttonAddEndpointSourceServer = $('#fieldgroup-specific-endpoint-source #add-endpoint-source-server-button');
 	fieldTheExternalServerSource = $('#fieldgroup-basic-endpoint-source .input-external-server');
 	fieldClusterIdSource = $('#fieldgroup-specific-endpoint-source .field-cluster-id');
 	fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
@@ -50,9 +45,6 @@ function toggleFieldServerSource(value) {
 			fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 			fieldServiceAddressSourceToggle.trigger('change');
 		}
-		fieldAServerSource().val('');
-		fieldsetMultipleServersSource.fadeOut('slow');
-		buttonAddEndpointSourceServer.fadeOut('slow');
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
 		fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
@@ -73,9 +65,6 @@ function toggleFieldServerSource(value) {
 
 		global.sourceServerQuantity = SERVER_QUANTITY_ONE;
 	} else if (value == SERVER_QUANTITY_MANY) {
-		if (fieldTheServerSource.val() != '') {
-			fieldAServerSource().first().val(fieldTheServerSource.val());
-		}
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
 		fieldTheServerNodeNameSource.val('');
@@ -87,19 +76,12 @@ function toggleFieldServerSource(value) {
 		fieldServiceAddressSourceToggle.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
-			fieldsetMultipleServersSource.fadeIn('slow');
-			buttonAddEndpointSourceServer.fadeIn('slow');
 			fieldClusterVirtualNodeNameSource.parent().fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeIn('slow');
 			fieldTransmissionType.parent().parent().fadeIn('slow');
 		}
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
-			fieldsetMultipleServersSource.fadeOut('slow');
-			buttonAddEndpointSourceServer.fadeOut('slow');
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
-			fieldAServerSource().val('');
-			fieldsetMultipleServersSource.fadeOut('slow');
-			buttonAddEndpointSourceServer.fadeOut('slow');
 			fieldClusterIdSource.val('');
 			fieldClusterVirtualNodeNameSource.val('');
 			fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
