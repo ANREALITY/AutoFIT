@@ -275,10 +275,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $newExternalServer = $this->externalServerMapper->save($dataObject->getExternalServer());
             $data['external_server_id'] = $newExternalServer->getId();
         } else {
-            if ($dataObject->getId()) {
-                $this->externalServerMapper->deleteOneByEndpointId($dataObject->getId());
-            }
-            $data['external_server_id'] = null;
+            $data['external_server_id'] = new Expression('NULL');
         }
         // data from the recently persisted objects
         $data['customer_id'] = $newCustomer->getId();
