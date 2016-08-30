@@ -10,10 +10,15 @@ $dataObject;
 <?php
 // servers
 $protocolsOutput = '-';
-if ($dataObject->getServers()) {
+try {
+    $servers = $dataObject->getEndpointClusterConfig()->getCluster()->getServers();
+} catch (Error $error) {
+    $servers = [];
+}
+if (!empty($servers)) {
     $protocolsOutput = '<ul class="servers">';
     $index = 0;
-    foreach ($dataObject->getServers() as $server) {
+    foreach ($servers as $server) {
         $protocolsOutput .= <<<SERVER
 <li>
     <span>{$server->getName()}<span>

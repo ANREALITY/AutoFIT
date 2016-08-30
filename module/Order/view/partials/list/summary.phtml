@@ -30,7 +30,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointSourceExternalServerName = null;
     }
     try {
-        $endpointSourceServers = $endpointSource->getServers();
+        $endpointSourceServers = $endpointSource->getEndpointClusterConfig()->getCluster()->getServers();
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
@@ -50,7 +50,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointTargetExternalServerName = null;
     }
     try {
-        $endpointTargetServers = $endpointTarget->getServers();
+        $endpointTargetServers = $endpointTarget->getEndpointClusterConfig()->getCluster()->getServers();
     } catch (Error $e) {
         $endpointTargetServers = [];
     }
@@ -71,7 +71,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointSourceExternalServerName = null;
     }
     try {
-        $endpointSourceServers = $endpointSource->getServers();
+        $endpointSourceServers = $endpointSource->getEndpointClusterConfig()->getCluster()->getServers();
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
@@ -91,7 +91,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointTargetExternalServerName = null;
     }
     try {
-        $endpointTargetServers = $endpointTarget->getServers();
+        $endpointTargetServers = $endpointTarget->getEndpointClusterConfig()->getCluster()->getServers();
     } catch (Error $e) {
         $endpointTargetServers = [];
     }

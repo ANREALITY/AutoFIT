@@ -9,10 +9,15 @@ $dataObject;
 <?php
 // servers
 $includeParametersOutput = '-';
-if ($dataObject->getServers()) {
+try {
+    $servers = $dataObject->getEndpointClusterConfig()->getCluster()->getServers();
+} catch (Error $error) {
+    $servers = [];
+}
+if ($servers) {
     $includeParametersOutput = '<ul class="servers">';
     $index = 0;
-    foreach ($dataObject->getServers() as $server) {
+    foreach ($servers as $server) {
         $includeParametersOutput .= <<<NOTIFICATION
 <li>
     <span>{$server->getName()}<span>
