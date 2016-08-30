@@ -105,7 +105,7 @@ class EndpointClusterConfigMapper extends AbstractMapper implements EndpointClus
         $data = [];
         // data retrieved directly from the input
         $data['dns_address'] = $dataObject->getDnsAddress() ?: new Expression('NULL');
-        $data['cluster_id'] = $dataObject->getCluster() && $dataObject->getCluster()->getId() ?: new Expression('NULL');
+        $data['cluster_id'] = $dataObject->getCluster() && $dataObject->getCluster()->getId() ? $dataObject->getCluster()->getId() : new Expression('NULL');
         // creating sub-objects
         // none
         // data from the recently persisted objects
