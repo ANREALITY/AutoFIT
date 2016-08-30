@@ -60,7 +60,7 @@ echo $this->partial('/partials/fieldgroups/billing',
 
 <?php
 // endpoint source (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '-basic-source',
+echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
     [
         // Fieldsets
         'endpointSourceFieldset' => $endpointSourceFieldset,
@@ -75,7 +75,7 @@ echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '-bas
 
 <?php
 // endpoint target (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '-basic-target',
+echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
     [
         // Fieldsets
         'endpointTargetFieldset' => $endpointTargetFieldset,
