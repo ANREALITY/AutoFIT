@@ -46,12 +46,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @var Server[]
-     */
-    protected $servers;
-
-    /**
-     *
      * @var EndpointClusterConfig
      */
     protected $endpointClusterConfig;
@@ -162,24 +156,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
-    }
-
-    /**
-     *
-     * @return the $servers
-     */
-    public function getServers()
-    {
-        return $this->servers;
-    }
-
-    /**
-     *
-     * @param multitype:Server $servers
-     */
-    public function setServers(array $servers)
-    {
-        $this->servers = $servers;
     }
 
     /**
