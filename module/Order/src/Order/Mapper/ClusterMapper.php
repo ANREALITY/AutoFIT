@@ -12,6 +12,7 @@ use Zend\Db\Sql\Update;
 use Zend\Db\Sql\Delete;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Expression;
+use DbSystel\DataObject\AbstractEndpoint;
 
 class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
 {
@@ -139,6 +140,32 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+
+        $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
+            'id', 'cd_linux_unix_cluster__', 'name', 'cd_linux_unix_server__', null, null, null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
+                $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
+                return $typeIsOk && $serverExists;
+            }, true);
+    
+        foreach ($dataObjects as $key => $dataObject) {
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
+                'setServers', 'getId');
+        }
+
+        if (!empty($cdLinuxUnixServerDataObjects)) {
+            $breakboint = null;
+        }
+
+        return $dataObjects;
     }
 
 }

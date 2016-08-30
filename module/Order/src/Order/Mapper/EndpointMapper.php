@@ -639,13 +639,6 @@ SQL;
             'id', 'endpoint_server_config__', 'id', 'endpoint__');        
         $externalServerDataObjects = $this->externalServerMapper->createDataObjects($resultSetArray, null, null,
             'name', 'external_server__', 'id', 'endpoint__');
-        $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
-            'id', 'endpoint__', ['name', 'id', 'role'], ['cd_linux_unix_server__', 'endpoint__', 'endpoint__'], null, null, null,
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
-                $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
-                return $typeIsOk && $serverExists;
-            }, true);
         $cdLinuxUnixClusterConfigDataObjects = $this->endpointClusterConfigMapper->createDataObjects($resultSetArray,
             null, null, ['id', 'id', 'role'], ['cd_linux_unix_cluster_config__', 'endpoint__', 'endpoint__'], 'id', 'endpoint__', null,
             function (array $row) {
@@ -698,8 +691,6 @@ SQL;
                 'setEndpointServerConfig', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $externalServerDataObjects,
                 'setExternalServer', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
-                'setServers', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixClusterConfigDataObjects,
                 'setEndpointClusterConfig', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,

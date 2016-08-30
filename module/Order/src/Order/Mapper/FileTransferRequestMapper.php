@@ -380,13 +380,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
                 'endpoint_cd_linux_unix' . '__' . 'service_address' => 'service_address'
             ], Select::JOIN_LEFT);
-        $select->join('endpoint_cd_linux_unix_server', 'endpoint_cd_linux_unix_server.endpoint_cd_linux_unix_endpoint_id = endpoint_cd_linux_unix.endpoint_id',
-            [], Select::JOIN_LEFT);
-        $select->join(['cd_linux_unix_server' => 'server'],
-            'cd_linux_unix_server.name = endpoint_cd_linux_unix_server.server_name',
-            [
-                'cd_linux_unix_server' . '__' . 'name' => 'name'
-            ], Select::JOIN_LEFT);
         $select->join(['cd_linux_unix_cluster_config' => 'endpoint_cluster_config'], 'cd_linux_unix_cluster_config.id = endpoint_cd_linux_unix.endpoint_cluster_config_id',
             [
                 'cd_linux_unix_cluster_config' . '__' . 'id' => 'id',
@@ -397,6 +390,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             [
                 'cd_linux_unix_cluster' . '__' . 'id' => 'id',
                 'cd_linux_unix_cluster' . '__' . 'virtual_node_name' => 'virtual_node_name',
+            ], Select::JOIN_LEFT);
+        $select->join(['cd_linux_unix_server' => 'server'],
+            'cd_linux_unix_server.cluster_id = cd_linux_unix_cluster.id',
+            [
+                'cd_linux_unix_server' . '__' . 'name' => 'name',
+                'cd_linux_unix_server' . '__' . 'node_name' => 'node_name',
+                'cd_linux_unix_server' . '__' . 'virtual_node_name' => 'virtual_node_name',
+                'cd_linux_unix_server' . '__' . 'cluster_id' => 'cluster_id',
             ], Select::JOIN_LEFT);
         $select->join(['endpoint_cd_linux_unix_include_parameter_set' => 'include_parameter_set'], 'endpoint_cd_linux_unix_include_parameter_set.id = endpoint_cd_linux_unix.include_parameter_set_id',
             [
