@@ -23,10 +23,12 @@ class ServerNotInUseForCd extends NoRecordExists
 
     public function __construct($options = null) {
         $options['exclude'] = <<<SQL
-        NOT (
-            (node_name IS NULL OR node_name = "") AND (virtual_node_name IS NULL OR virtual_node_name = "")
-        ) OR (
-            cluster_id IS NOT NULL
+        (
+            NOT (
+                (node_name IS NULL OR node_name = "") AND (virtual_node_name IS NULL OR virtual_node_name = "")
+            ) OR (
+                cluster_id IS NOT NULL
+            )
         )
 SQL;
         $options['table'] = 'server';
