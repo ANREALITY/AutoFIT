@@ -443,32 +443,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
                 // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
-                $sql = <<<SQL
-DELETE FROM
-    endpoint_cd_linux_unix_server
-WHERE
-    endpoint_cd_linux_unix_endpoint_id = $newEndpointId
-SQL;
-                $result = $this->dbAdapter->getDriver()
-                    ->getConnection()
-                    ->execute($sql);
-                ;
-                if ($dataObject->getServers()) {
-                    foreach ($dataObject->getServers() as $server) {
-                        if ($server->getName()) {
-                            $sql = <<<SQL
-INSERT INTO
-    endpoint_cd_linux_unix_server
-(endpoint_cd_linux_unix_endpoint_id, server_name)
-VALUES ('$newEndpointId', '{$server->getName()}');
-SQL;
-                            $result = $this->dbAdapter->getDriver()
-                                ->getConnection()
-                                ->execute($sql);
-                            ;
-                        }
-                    }
-                }
+                // ...
             }
             return $dataObject;
         }
