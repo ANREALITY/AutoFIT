@@ -33,15 +33,15 @@ $fieldgroupFormRows = [
          $this->formRow($endpointSourceFieldset->get('add_server')) . '</div>',
     $this->formRow($endpointSourceFieldset->get('service_address_toggle')),
     $this->formRow($endpointSourceFieldset->get('service_address')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('id')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('dns_address')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id')),
+    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('virtual_node_name')),
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')
         ->get('include_parameters')),
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
         $endpointSourceFieldset->get('include_parameter_set')
             ->get('add_include_parameter')) . '</div>',
-    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('id')),
-    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('dns_address')),
-    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id')),
-    $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('virtual_node_name')),
 ];
 echo $this->partial('/partials/fieldgroup',
     [
