@@ -409,6 +409,24 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_linux_unix_include_parameter' . '__' . 'expression' => 'expression',
                 'endpoint_cd_linux_unix_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_cd_windows', 'endpoint_cd_windows.endpoint_id = endpoint.id',
+            [
+                'endpoint_cd_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_windows' . '__' . 'folder' => 'folder',
+                'endpoint_cd_windows' . '__' . 'transmission_type' => 'transmission_type',
+                'endpoint_cd_windows' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_include_parameter_set' => 'include_parameter_set'], 'endpoint_cd_windows_include_parameter_set.id = endpoint_cd_windows.include_parameter_set_id',
+            [
+                'endpoint_cd_windows_include_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_windows_include_parameter' => 'include_parameter'], 'endpoint_cd_windows_include_parameter.include_parameter_set_id = endpoint_cd_windows_include_parameter_set.id',
+            [
+                'endpoint_cd_windows_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_cd_windows_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_cd_windows_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
+        
         $select->join('endpoint_cd_windows_share', 'endpoint_cd_windows_share.endpoint_id = endpoint.id',
             [
                 'endpoint_cd_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',

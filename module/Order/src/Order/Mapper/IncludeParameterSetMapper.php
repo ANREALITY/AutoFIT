@@ -182,6 +182,10 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
             $cdLinuxUnixIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_cd_linux_unix_include_parameter__', null, null, null, null, true);
         }
+        if ($prefix === 'endpoint_cd_windows_include_parameter_set__') {
+            $cdWindowsIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_cd_windows_include_parameter__', null, null, null, null, true);
+        }
         if ($prefix === 'endpoint_cd_windows_share_include_parameter_set__') {
             $cdWindowsShareIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_cd_windows_share_include_parameter__', null, null, null, null, true);
@@ -197,6 +201,10 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
             // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_cd_linux_unix_include_parameter_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterDataObjects,
+                    'setIncludeParameters', 'getId');
+            }
+            if ($prefix === 'endpoint_cd_windows_include_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsIncludeParameterDataObjects,
                     'setIncludeParameters', 'getId');
             }
             if ($prefix === 'endpoint_cd_windows_share_include_parameter_set__') {

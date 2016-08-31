@@ -704,6 +704,13 @@ SQL;
                 $protocolExists = array_key_exists('endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $cdWindowsIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_include_parameter_set__', 'id',
+            'endpoint__', new IncludeParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS;
+                $protocolExists = array_key_exists('endpoint_cd_windows_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_include_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
         $cdWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_include_parameter_set__', 'id',
             'endpoint__', new IncludeParameterSet(),
             function (array $row) {
@@ -747,6 +754,8 @@ SQL;
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
                 'setProtocols', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,
+                'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
