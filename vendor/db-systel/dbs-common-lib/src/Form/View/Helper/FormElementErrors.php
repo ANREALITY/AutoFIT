@@ -57,7 +57,7 @@ class FormElementErrors extends ZendFormElementErrors
                     ? '<b>' . $this->view->translate($element->getLabel()) . '</b>' . ': '
                     : null
                 ;
-                $message = $escapeHtml($elementOrError);
+                $message = $this->view->translate($escapeHtml($elementOrError));
                 $messagesToPrint[] = $elementLabel ? $elementLabel . $message : $message;
     
             } elseif (is_array($elementOrError)) {
