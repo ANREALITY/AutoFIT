@@ -1,0 +1,38 @@
+<?php
+use DbSystel\DataObject\EndpointCdWindowsShare;
+use DbSystel\DataObject\AccessConfigSet;
+/**
+ *
+ * @var EndpointCdWindowsShare $dataObject
+ */
+$dataObject;
+?>
+<?php
+$flags = [
+    0 => $this->translate('no'),
+    1 => $this->translate('yes')
+];
+?>
+<?php
+$orderPartCssId = 'specific-target';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Target - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
