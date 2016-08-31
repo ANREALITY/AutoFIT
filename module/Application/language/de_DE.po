@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-30 22:25+0200\n"
-"PO-Revision-Date: 2016-08-30 22:27+0200\n"
+"POT-Creation-Date: 2016-08-31 15:52+0200\n"
+"PO-Revision-Date: 2016-08-31 15:52+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -315,9 +315,10 @@ msgid "Target - WindowsShare"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
-#: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
-msgid "DNS address"
-msgstr "DNS-Adresse"
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:56
+msgid "cluster's DNS address"
+msgstr "DNS-Adresse des Clusters"
 
 #: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:13
 msgid "Source - Self-Service"
@@ -334,6 +335,10 @@ msgstr "Quellsystem - Windows"
 #: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsTargetFieldset.php:13
 msgid "Target - Windows"
 msgstr "Zielsystem - Windows"
+
+#: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
+msgid "DNS address"
+msgstr "DNS-Adresse"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:36
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:48
@@ -392,7 +397,7 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:35
+#: Order/src/Order/Form/OrderForm.php:47
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -984,11 +989,6 @@ msgstr "Server-DNS-Adresse"
 msgid "type"
 msgstr "Typ"
 
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:56
-msgid "cluster's DNS address"
-msgstr "DNS-Adresse des Clusters"
-
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:39
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:39
 msgid "FTGW username"
@@ -1080,6 +1080,20 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid ""
+#~ "Neither a server (internal/external), nor a cluster is defined for the "
+#~ "source endpoint."
+#~ msgstr ""
+#~ "Es ist weder ein Server (intern/extern), noch ein Cluster für den "
+#~ "Quellenendpoint angegeben."
+
+#~ msgid ""
+#~ "Neither a server (internal/external), nor a cluster is defined for the "
+#~ "target endpoint."
+#~ msgstr ""
+#~ "Es ist weder ein Server (intern/extern), noch ein Cluster für den "
+#~ "Zielendpoint angegeben."
 
 #~ msgid "virtual node name"
 #~ msgstr "Virtueller Knotenname"
