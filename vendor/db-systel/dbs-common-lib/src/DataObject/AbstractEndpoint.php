@@ -10,6 +10,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     const TYPE_CD_LINUX_UNIX = 'CdLinuxUnix';
 
+    const TYPE_CD_WINDOWS = 'CdWindows';
+
     const TYPE_CD_WINDOWS_SHARE = 'CdWindowsShare';
 
     const TYPE_FTGW_WINDOWS = 'FtgwWindows';
