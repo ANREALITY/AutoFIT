@@ -17,6 +17,7 @@ use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\EndpointCdWindows;
 use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
@@ -219,6 +220,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointCdTandem();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_LINUX_UNIX) === 0) {
                     $this->prototype = new EndpointCdLinuxUnix();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS) === 0) {
+                    $this->prototype = new EndpointCdWindows();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS_SHARE) === 0) {
                     $this->prototype = new EndpointCdWindowsShare();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_SELF_SERVICE) === 0) {
@@ -441,6 +444,57 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             if ($newEndpointId) {
                 // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
                 // ...
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointCdWindows $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointCdWindows
+     * @throws \Exception
+     */
+    protected function saveCdWindows(EndpointCdWindows $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['folder'] = $dataObject->getFolder();
+        $data['transmission_type'] = $dataObject->getTransmissionType();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_windows');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_windows');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
             }
             return $dataObject;
         }
