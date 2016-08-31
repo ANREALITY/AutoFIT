@@ -287,6 +287,8 @@ return [
             'Order\Form\Fieldset\EndpointCdLinuxUnixTarget' => false,
             'Order\Form\Fieldset\EndpointCdTandemSource' => false,
             'Order\Form\Fieldset\EndpointCdTandemTarget' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsSource' => false,
+            'Order\Form\Fieldset\EndpointCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
             'Order\Form\Fieldset\EndpointCdWindowsSource' => false,
