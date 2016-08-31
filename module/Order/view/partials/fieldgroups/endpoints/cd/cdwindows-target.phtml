@@ -1,0 +1,17 @@
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-target';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
+    $this->formRow($endpointTargetFieldset->get('folder'))
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
