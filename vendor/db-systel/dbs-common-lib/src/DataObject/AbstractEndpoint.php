@@ -14,6 +14,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     const TYPE_CD_WINDOWS_SHARE = 'CdWindowsShare';
 
+    const TYPE_CD_ZOS = 'CdZos';
+
     const TYPE_FTGW_WINDOWS = 'FtgwWindows';
 
     const TYPE_FTGW_SELF_SERVICE = 'FtgwSelfService';
