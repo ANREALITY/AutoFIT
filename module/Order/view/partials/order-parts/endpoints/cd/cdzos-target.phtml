@@ -1,0 +1,65 @@
+<?php
+use DbSystel\DataObject\EndpointCdZos;
+use DbSystel\DataObject\FileParameterSet;
+/**
+ *
+ * @var EndpointCdZos $dataObject
+ */
+$dataObject;
+?>
+<?php
+// file parameters
+$fileParametersOutput = '-';
+if ($dataObject->getFileParameterSet() && $dataObject->getFileParameterSet() instanceof FileParameterSet && $dataObject->getFileParameterSet()->getFileParameters()) {
+    $fileParametersOutput = '<ul class="file-parameters">';
+    $index = 0;
+    foreach ($dataObject->getFileParameterSet()->getFileParameters() as $fileParameter) {
+        $index++;
+        $fileParametersOutput .= <<<FILE_PARAMETER
+<li>
+    <span>{$this->translate('file')} {$index}<span>
+    <ul>
+    <li>{$this->translate('filename')}: {$fileParameter->getFilename()}</li>
+    <li>{$this->translate('record length')}: {$fileParameter->getRecordLength()}</li>
+    <li>{$this->translate('blocking')}: {$fileParameter->getBlocking()}</li>
+    <li>{$this->translate('block size')}: {$fileParameter->getBlockSize()}</li>
+    </ul>
+</li>
+FILE_PARAMETER;
+    }
+    $fileParametersOutput .= '</ul>';
+}
+?>
+<?php
+$flags = [
+    0 => $this->translate('no'),
+    1 => $this->translate('yes')
+];
+?>
+<?php
+$orderPartCssId = 'specific-target';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Target - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('username'),
+        'value' => $dataObject->getUsername() ?: '-'
+    ],
+    [
+        'label' => $this->translate('file parameters'),
+        'value' => $fileParametersOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
