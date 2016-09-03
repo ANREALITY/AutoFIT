@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-01 14:41+0200\n"
-"PO-Revision-Date: 2016-09-01 15:06+0200\n"
+"POT-Creation-Date: 2016-09-03 15:17+0200\n"
+"PO-Revision-Date: 2016-09-03 15:18+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -128,6 +128,8 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:49
 msgid "username"
 msgstr "Benutzername"
 
@@ -386,14 +388,15 @@ msgid "record length"
 msgstr "Satzlänge"
 
 #: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:53
-msgid "blocking type"
+msgid "blocking"
 msgstr "Blockung"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:76
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:79
 msgid "block size"
 msgstr "Blockgröße"
 
 #: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:22
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:53
 msgid "file parameters"
 msgstr "Dateiparameter"
 
@@ -938,6 +941,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:36
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:57
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:18
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:29
 msgid "Source - specific settings"
@@ -956,6 +960,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:42
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
@@ -1013,6 +1018,8 @@ msgstr "Benutzer"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:13
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:36
 #: Order/view/partials/order-parts/logical-connection.phtml:20
 msgid "yes"
 msgstr "ja"
@@ -1022,6 +1029,8 @@ msgstr "ja"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:11
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:35
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
@@ -1041,6 +1050,8 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:22
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:43
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:21
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:45
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:32
@@ -1139,6 +1150,9 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "blocking type"
+#~ msgstr "Blockung"
 
 #~ msgid ""
 #~ "Neither a server (internal/external), nor a cluster is defined for the "
