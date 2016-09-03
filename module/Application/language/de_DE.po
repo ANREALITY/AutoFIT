@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-31 15:52+0200\n"
-"PO-Revision-Date: 2016-08-31 15:52+0200\n"
+"POT-Creation-Date: 2016-09-01 14:41+0200\n"
+"PO-Revision-Date: 2016-09-01 15:06+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -62,6 +62,8 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:61
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:44
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:23
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:43
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:26
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:68
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:51
 msgid "folder"
@@ -93,6 +95,16 @@ msgstr "IP / Server-Name der Service-Adresse"
 msgid "Tandem"
 msgstr ""
 
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:16
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
+msgid "Windows"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:28
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:44
+msgid "interface directory"
+msgstr "Schnittstellenverzeichnis"
+
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:16
 msgid "WindowsShare"
 msgstr ""
@@ -103,9 +115,21 @@ msgstr ""
 msgid "sharename"
 msgstr "Sharename"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:44
-msgid "interface directory"
-msgstr "Schnittstellenverzeichnis"
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:16
+msgid "Zos"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:28
+#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:57
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:40
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
+msgid "username"
+msgstr "Benutzername"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:26
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:15
@@ -158,10 +182,6 @@ msgstr "Verbindungstyp"
 msgid "internal and external"
 msgstr "intern und extern"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
-msgid "Windows"
-msgstr ""
-
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
 #: Order/view/order/process/list-my-orders.phtml:16
 #: Order/view/order/process/list-orders.phtml:7
@@ -192,6 +212,7 @@ msgstr "Benachrichtigungen"
 #: Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:55
+#: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:41
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
@@ -207,17 +228,6 @@ msgstr "Servername"
 #: Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:36
 msgid "service invoice position number"
 msgstr "LSP"
-
-#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:57
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:40
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
-msgid "username"
-msgstr "Benutzername"
 
 #: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:37
 msgid "read"
@@ -280,7 +290,9 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
+#: Order/src/Order/Form/Fieldset/EndpointCdWindowsSourceFieldset.php:26
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:65
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:47
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
 msgid "transmission type"
 msgstr "Übertragungsart"
@@ -314,6 +326,24 @@ msgstr ""
 msgid "Target - WindowsShare"
 msgstr ""
 
+#: Order/src/Order/Form/Fieldset/EndpointCdWindowsSourceFieldset.php:14
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:13
+msgid "Source - Windows"
+msgstr "Quellsystem - Windows"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdWindowsTargetFieldset.php:13
+#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsTargetFieldset.php:13
+msgid "Target - Windows"
+msgstr "Zielsystem - Windows"
+
+#: Order/src/Order/Form/Fieldset/EndpointCdZosSourceFieldset.php:13
+msgid "Source - Zos"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointCdZosTargetFieldset.php:13
+msgid "Target - Zos"
+msgstr ""
+
 #: Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:56
@@ -327,14 +357,6 @@ msgstr "Quellsystem - Self-Service"
 #: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceTargetFieldset.php:13
 msgid "Target - Self-Service"
 msgstr "Zielsystem - Self-Service"
-
-#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:13
-msgid "Source - Windows"
-msgstr "Quellsystem - Windows"
-
-#: Order/src/Order/Form/Fieldset/EndpointFtgwWindowsTargetFieldset.php:13
-msgid "Target - Windows"
-msgstr "Zielsystem - Windows"
 
 #: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
 msgid "DNS address"
@@ -355,12 +377,37 @@ msgstr "Umgebung"
 msgid "external server"
 msgstr "externer Server"
 
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:23
+msgid "filename"
+msgstr "Dateiname"
+
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:38
+msgid "record length"
+msgstr "Satzlänge"
+
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:53
+msgid "blocking type"
+msgstr "Blockung"
+
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:76
+msgid "block size"
+msgstr "Blockgröße"
+
+#: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:22
+msgid "file parameters"
+msgstr "Dateiparameter"
+
+#: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:46
+msgid "add an file parameter"
+msgstr "Dateiparameter hinzufügen"
+
 #: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:22
 msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:51
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 msgid "include parameters"
@@ -397,7 +444,7 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:47
+#: Order/src/Order/Form/OrderForm.php:45
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -881,12 +928,15 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:23
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdzos-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:50
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:36
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:57
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:29
@@ -896,12 +946,15 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:16
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdwindows-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/cd/cdzos-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:33
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
@@ -918,14 +971,14 @@ msgid "endpoint"
 msgstr "Endpoint"
 
 #: Order/view/partials/list/summary.phtml:105
-#: Order/view/partials/start/cd.phtml:16 Order/view/partials/start/cd.phtml:20
+#: Order/view/partials/start/cd.phtml:18 Order/view/partials/start/cd.phtml:22
 #: Order/view/partials/start/ftgw.phtml:14
 #: Order/view/partials/start/ftgw.phtml:18
 msgid "source"
 msgstr "Quellsystem"
 
 #: Order/view/partials/list/summary.phtml:121
-#: Order/view/partials/start/cd.phtml:29 Order/view/partials/start/cd.phtml:33
+#: Order/view/partials/start/cd.phtml:31 Order/view/partials/start/cd.phtml:35
 #: Order/view/partials/start/ftgw.phtml:27
 #: Order/view/partials/start/ftgw.phtml:31
 msgid "target"
@@ -956,6 +1009,8 @@ msgid "user"
 msgstr "Benutzer"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:30
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:13
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/logical-connection.phtml:20
@@ -963,6 +1018,8 @@ msgid "yes"
 msgstr "ja"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:16
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:29
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/logical-connection.phtml:19
@@ -980,6 +1037,8 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:36
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:15
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:39
+#: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:22
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:43
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
@@ -1018,12 +1077,12 @@ msgstr "erstellt am"
 msgid "status"
 msgstr "Status"
 
-#: Order/view/partials/start/cd.phtml:11 Order/view/partials/start/ftgw.phtml:9
+#: Order/view/partials/start/cd.phtml:13 Order/view/partials/start/ftgw.phtml:9
 #, php-format
 msgid "You chose file transfer interface via %s."
 msgstr "Sie haben sich für eine Filetransfer-Schnittstelle per %s entschieden."
 
-#: Order/view/partials/start/cd.phtml:12
+#: Order/view/partials/start/cd.phtml:14
 #: Order/view/partials/start/ftgw.phtml:10
 msgid ""
 "Please choose now the operating system plattform of the data source and of "
@@ -1032,31 +1091,31 @@ msgstr ""
 "Wählen Sie nun die Betriebssystem-Plattform der Datenquelle und des "
 "Filetransfer-Ziels aus:"
 
-#: Order/view/partials/start/cd.phtml:43
+#: Order/view/partials/start/cd.phtml:45
 #: Order/view/partials/start/ftgw.phtml:41
 msgid "to the order"
 msgstr "zur Bestellung"
 
-#: Order/view/partials/start/cd.phtml:48
+#: Order/view/partials/start/cd.phtml:50
 #: Order/view/partials/start/ftgw.phtml:46
 #, php-format
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
 "Example changes for ordering of %s file transfer interfaces in the PSC:"
 
-#: Order/view/partials/start/cd.phtml:50
+#: Order/view/partials/start/cd.phtml:52
 #, php-format
 msgid "%s for creating a new C:D file transfer"
 msgstr "%s zur Einrichtung eines neuen C:D-Filetransfers"
 
-#: Order/view/partials/start/cd.phtml:51
+#: Order/view/partials/start/cd.phtml:53
 #, php-format
 msgid ""
 "%s for the customization of access rights to a ConnectDirect Windows SHARE"
 msgstr ""
 "%s für die Anpassung der Zugriffsrechte auf ein ConnectDirect Windows SHARE"
 
-#: Order/view/partials/start/cd.phtml:52
+#: Order/view/partials/start/cd.phtml:54
 #, php-format
 msgid ""
 "%s for a relocation of n existing C:D file transfer due to a relocation of "
@@ -1065,7 +1124,7 @@ msgstr ""
 "%s für den Umzug eines bestehenden C:D-Filetransfers wegen Umzug des "
 "Verfahrens auf neuen Server"
 
-#: Order/view/partials/start/cd.phtml:53
+#: Order/view/partials/start/cd.phtml:55
 #, php-format
 msgid ""
 "%s for the cancelation of all the channels of an application on a server / "
