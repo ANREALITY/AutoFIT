@@ -166,3 +166,21 @@ function addClusterServer() {
     initAutocompleteClusterServer();
     return false;
 }
+/**
+ * Dynamic adding of file parameter fields.
+ */
+//Constants are supported in IE from v11. http://caniuse.com/#search=const
+const FILE_PARAMETERS_MAX_NUMBER = 10;
+$(document).ready(function() {
+	addFileParameterButton = $('#add-file-parameter-button');
+	addFileParameterButton.on('click', addFileParameter);
+});
+function addFileParameter() {
+    var currentCount = $('#fieldgroup-specific-endpoint-target .file-parameters fieldset:first > fieldset').length;
+    var template = $('#fieldgroup-specific-endpoint-target .file-parameters fieldset:first > span').data('template');
+    template = template.replace(/__index__/g, currentCount);
+    if (currentCount < FILE_PARAMETERS_MAX_NUMBER) {
+        $('#fieldgroup-specific-endpoint-target .file-parameters fieldset:first').append(template);
+    }
+    return false;
+}
