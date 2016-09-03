@@ -50,7 +50,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'type' => 'radio',
                 'name' => 'blocking',
                 'options' => [
-                    'label' => _('blocking type'),
+                    'label' => _('blocking'),
                     'value_options' => [
                         [
                             'value' => FileParameter::BLOCKING_TYPE_VARIABLE,
