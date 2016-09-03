@@ -17,6 +17,7 @@ use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\EndpointCdZos;
 use DbSystel\DataObject\EndpointCdWindows;
 use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\Protocol;
@@ -62,6 +63,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      * @var IncludeParameterSetMapperInterface
      */
     protected $includeParameterSetMapper;
+
+    /**
+     *
+     * @var FileParameterSetMapperInterface
+     */
+    protected $fileParameterSetMapper;
 
     /**
      *
@@ -147,6 +154,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     }
 
     /**
+     *
+     * @param FileParameterSetMapperInterface $fileParameterSetMapper
+     */
+    public function setFileParameterSetMapper(FileParameterSetMapperInterface $fileParameterSetMapper)
+    {
+        $this->fileParameterSetMapper = $fileParameterSetMapper;
+    }
+
+    /**
      * @param AccessConfigSetMapperInterface $accessConfigSetMapper
      */
     public function setAccessConfigSetMapper(AccessConfigSetMapperInterface $accessConfigSetMapper)
@@ -220,6 +236,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointCdTandem();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_LINUX_UNIX) === 0) {
                     $this->prototype = new EndpointCdLinuxUnix();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_ZOS) === 0) {
+                    $this->prototype = new EndpointCdZos();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS) === 0) {
                     $this->prototype = new EndpointCdWindows();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS_SHARE) === 0) {
@@ -536,6 +554,56 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_windows_share');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointCdZos $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointCdZos
+     * @throws \Exception
+     */
+    protected function saveCdZos(EndpointCdZos $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
+            $newFileParameterSet = $this->fileParameterSetMapper->save($dataObject->getFileParameterSet());
+        }
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
+            $data['file_parameter_set_id'] = $newFileParameterSet->getId();
+        }
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_cd_zos');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_cd_zos');
             $action->where(['endpoint_id' => $data['endpoint_id']]);
             unset($data['endpoint_id']);
             $action->set($data);

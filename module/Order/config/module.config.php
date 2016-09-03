@@ -226,6 +226,7 @@ return [
             'Order\Mapper\ClusterMapper' => 'Order\Mapper\Factory\ClusterMapperFactory',
             'Order\Mapper\EndpointClusterConfigMapper' => 'Order\Mapper\Factory\EndpointClusterConfigMapperFactory',
             'Order\Mapper\EndpointServerConfigMapper' => 'Order\Mapper\Factory\EndpointServerConfigMapperFactory',
+            'Order\Mapper\FileParameterSetMapper' => 'Order\Mapper\Factory\FileParameterSetMapperFactory',
             'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
             'Order\Mapper\AccessConfigSetMapper' => 'Order\Mapper\Factory\AccessConfigSetMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
