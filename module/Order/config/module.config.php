@@ -291,6 +291,8 @@ return [
             'Order\Form\Fieldset\EndpointCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareSource' => false,
             'Order\Form\Fieldset\EndpointCdWindowsShareTarget' => false,
+            'Order\Form\Fieldset\EndpointCdZosSource' => false,
+            'Order\Form\Fieldset\EndpointCdZosTarget' => false,
             'Order\Form\Fieldset\EndpointCdWindowsSource' => false,
             'Order\Form\Fieldset\EndpointCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointClusterConfig' => false,
