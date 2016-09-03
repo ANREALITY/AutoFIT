@@ -24,19 +24,19 @@ class FileParameter extends AbstractDataObject
      *
      * @var int
      */
-    protected $record_size;
+    protected $recordLength;
 
     /**
      *
      * @var string
      */
-    protected $bocking_tyle;
+    protected $blocking;
 
     /**
      *
      * @var int
      */
-    protected $block_size;
+    protected $blockSize;
 
     /**
      *
@@ -82,56 +82,56 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return the $record_size
+     * @return the $recordLength
      */
-    public function getRecord_size()
+    public function getRecordLength()
     {
-        return $this->record_size;
+        return $this->recordLength;
     }
 
     /**
      *
-     * @param number $record_size
+     * @param number $recordLength
      */
-    public function setRecord_size($record_size)
+    public function setRecordLength($recordLength)
     {
-        $this->record_size = $record_size;
+        $this->recordLength = $recordLength;
     }
 
     /**
      *
-     * @return the $bocking_tyle
+     * @return the $blocking
      */
-    public function getBocking_tyle()
+    public function getBlocking()
     {
-        return $this->bocking_tyle;
+        return $this->blocking;
     }
 
     /**
      *
-     * @param string $bocking_tyle
+     * @param string $blocking
      */
-    public function setBocking_tyle($bocking_tyle)
+    public function setBlocking($blocking)
     {
-        $this->bocking_tyle = $bocking_tyle;
+        $this->blocking = $blocking;
     }
 
     /**
      *
-     * @return the $block_size
+     * @return the $blockSize
      */
-    public function getBlock_size()
+    public function getBlockSize()
     {
-        return $this->block_size;
+        return $this->blockSize;
     }
 
     /**
      *
-     * @param number $block_size
+     * @param number $blockSize
      */
-    public function setBlock_size($block_size)
+    public function setBlockSize($blockSize)
     {
-        $this->block_size = $block_size;
+        $this->blockSize = $blockSize;
     }
 
     /**
