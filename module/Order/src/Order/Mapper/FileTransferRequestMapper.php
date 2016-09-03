@@ -426,7 +426,25 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_cd_windows_include_parameter' . '__' . 'expression' => 'expression',
                 'endpoint_cd_windows_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
             ], Select::JOIN_LEFT);
-        
+        $select->join('endpoint_cd_zos', 'endpoint_cd_zos.endpoint_id = endpoint.id',
+            [
+                'endpoint_cd_zos' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_zos' . '__' . 'username' => 'username',
+                'endpoint_cd_zos' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_zos_file_parameter_set' => 'file_parameter_set'], 'endpoint_cd_zos_file_parameter_set.id = endpoint_cd_zos.file_parameter_set_id',
+            [
+                'endpoint_cd_zos_file_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_cd_zos_file_parameter' => 'file_parameter'], 'endpoint_cd_zos_file_parameter.file_parameter_set_id = endpoint_cd_zos_file_parameter_set.id',
+            [
+                'endpoint_cd_zos_file_parameter' . '__' . 'id' => 'id',
+                'endpoint_cd_zos_file_parameter' . '__' . 'filename' => 'filename',
+                'endpoint_cd_zos_file_parameter' . '__' . 'record_length' => 'record_length',
+                'endpoint_cd_zos_file_parameter' . '__' . 'blocking' => 'blocking',
+                'endpoint_cd_zos_file_parameter' . '__' . 'block_size' => 'block_size',
+                'endpoint_cd_zos_file_parameter' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id'
+            ], Select::JOIN_LEFT);
         $select->join('endpoint_cd_windows_share', 'endpoint_cd_windows_share.endpoint_id = endpoint.id',
             [
                 'endpoint_cd_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',

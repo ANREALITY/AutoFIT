@@ -23,6 +23,7 @@ use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\IncludeParameterSet;
+use DbSystel\DataObject\FileParameterSet;
 use DbSystel\DataObject\AccessConfigSet;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
@@ -779,6 +780,13 @@ SQL;
                 $protocolExists = array_key_exists('endpoint_cd_windows_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_include_parameter_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $cdZosFileParameterSetDataObjects = $this->fileParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_zos_file_parameter_set__', 'id',
+            'endpoint__', new FileParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
+                $protocolExists = array_key_exists('endpoint_cd_zos_file_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_zos_file_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
         $cdWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_include_parameter_set__', 'id',
             'endpoint__', new IncludeParameterSet(),
             function (array $row) {
@@ -825,6 +833,8 @@ SQL;
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdZosFileParameterSetDataObjects,
+                'setFileParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigSetDataObjects,

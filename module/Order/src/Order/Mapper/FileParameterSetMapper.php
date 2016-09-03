@@ -177,7 +177,21 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier,
             $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
-        // @todo
+        // @todo It's a hack! Find a clean solution!
+        if ($prefix === 'endpoint_cd_zos_file_parameter_set__') {
+            $cdZosFileParameterDataObjects = $this->fileParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_cd_zos_file_parameter__', null, null, null, null, true);
+        }
+
+        foreach ($dataObjects as $key => $dataObject) {
+            // DANGEROUS!!!
+            // Array key of a common element (created like myArray[] = new Element();)
+            // can though equal to the $dataObject->getId()!!!!!
+            if ($prefix === 'endpoint_cd_zos_file_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdZosFileParameterDataObjects,
+                    'setFileParameters', 'getId');
+            }
+        }
 
         return $dataObjects;
     }

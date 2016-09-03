@@ -22,6 +22,7 @@ use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwSelfService;
 use DbSystel\DataObject\EndpointFtgwWindows;
 use DbSystel\DataObject\EndpointCdWindows;
+use DbSystel\DataObject\EndpointCdZos;
 use DbSystel\DataObject\EndpointCdWindowsShare;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
@@ -340,6 +341,20 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
+        $endpointCdZosSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
+                $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
+                return $typeIsOk && $roleIsOk;
+            });
+        $endpointCdZosTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
+                $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
+                return $typeIsOk && $roleIsOk;
+            });
         $endpointCdWindowsShareSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
             'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_windows_share__'], null, null, new EndpointCdWindowsShare(),
                 function (array $row) {
@@ -402,6 +417,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdWindowsSourceDataObjects,
                 'setEndpointSource', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdWindowsTargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdZosSourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdZosTargetDataObjects,
                 'setEndpointTarget', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointCdWindowsShareSourceDataObjects,
                 'setEndpointSource', 'getId');
