@@ -8,6 +8,13 @@ use DbSystel\DataObject\FileParameterSet;
 $dataObject;
 ?>
 <?php
+// for translations (workaround)
+if (false) {
+    $this->translate('file');
+    $this->translate('block size');
+}
+?>
+<?php
 // file parameters
 $fileParametersOutput = '-';
 if ($dataObject->getFileParameterSet() && $dataObject->getFileParameterSet() instanceof FileParameterSet && $dataObject->getFileParameterSet()->getFileParameters()) {

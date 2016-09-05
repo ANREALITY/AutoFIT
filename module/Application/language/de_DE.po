@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 11:56+0200\n"
-"PO-Revision-Date: 2016-09-05 11:56+0200\n"
+"POT-Creation-Date: 2016-09-05 12:14+0200\n"
+"PO-Revision-Date: 2016-09-05 12:14+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:49
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:56
 msgid "username"
 msgstr "Benutzername"
 
@@ -396,7 +396,7 @@ msgid "block size (only for fixed blocking)"
 msgstr "Blockgröße (nur bei fester Blockung)"
 
 #: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:53
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:60
 msgid "file parameters"
 msgstr "Dateiparameter"
 
@@ -960,7 +960,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:42
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:49
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
@@ -1019,7 +1019,7 @@ msgstr "Benutzer"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:36
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:43
 #: Order/view/partials/order-parts/logical-connection.phtml:20
 msgid "yes"
 msgstr "ja"
@@ -1030,7 +1030,7 @@ msgstr "ja"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:11
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:35
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:42
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
@@ -1051,13 +1051,21 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:43
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:21
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:45
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:52
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:32
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:15
 msgid "type"
 msgstr "Typ"
+
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:13
+msgid "file"
+msgstr "Datei"
+
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:14
+msgid "block size"
+msgstr "Blockgröße"
 
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:39
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:39
@@ -1151,14 +1159,8 @@ msgstr ""
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 
-#~ msgid "block size"
-#~ msgstr "Blockgröße"
-
 #~ msgid "(only for fixed blocking)"
 #~ msgstr "(nur bei fester Blockung)"
-
-#~ msgid "file"
-#~ msgstr "Datei"
 
 #~ msgid "blocking type"
 #~ msgstr "Blockung"
