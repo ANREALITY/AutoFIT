@@ -4,9 +4,9 @@ namespace DbSystel\DataObject;
 class FileParameter extends AbstractDataObject
 {
 
-    const BLOCKING_TYPE_VARIABLE = 'vb';
+    const BLOCKING_VARIABLE = 'vb';
 
-    const BLOCKING_TYPE_FIXED = 'fb';
+    const BLOCKING_FIXED = 'fb';
 
     /**
      *

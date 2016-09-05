@@ -23,7 +23,7 @@ if ($dataObject->getFileParameterSet() && $dataObject->getFileParameterSet() ins
     $index = 0;
     foreach ($dataObject->getFileParameterSet()->getFileParameters() as $fileParameter) {
         $index++;
-        $blockSize = $fileParameter->getBlocking() === FileParameter::BLOCKING_TYPE_FIXED
+        $blockSize = $fileParameter->getBlocking() === FileParameter::BLOCKING_FIXED
             ? "<li>{$this->translate('block size')}: {$fileParameter->getBlockSize()}</li>"
             : null
         ;

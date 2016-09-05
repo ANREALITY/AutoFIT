@@ -53,13 +53,13 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                     'label' => _('blocking'),
                     'value_options' => [
                         [
-                            'value' => FileParameter::BLOCKING_TYPE_VARIABLE,
-                            'label' => FileParameter::BLOCKING_TYPE_VARIABLE,
+                            'value' => FileParameter::BLOCKING_VARIABLE,
+                            'label' => FileParameter::BLOCKING_VARIABLE,
                             'selected' => true
                         ],
                         [
-                            'value' => FileParameter::BLOCKING_TYPE_FIXED,
-                            'label' => FileParameter::BLOCKING_TYPE_FIXED
+                            'value' => FileParameter::BLOCKING_FIXED,
+                            'label' => FileParameter::BLOCKING_FIXED
                         ]
                     ],
                     'label_attributes' => [
@@ -67,7 +67,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'field-blocking-type'
+                    'class' => 'field-blocking'
                 ]
             ]);
 

@@ -1,16 +1,16 @@
 // CD ZOS EndpointTarget #start#
-const BLOCKING_TYPE_VARIABLE = 'vb';
-const BLOCKING_TYPE_FIXED = 'fb';
+const BLOCKING_VARIABLE = 'vb';
+const BLOCKING_FIXED = 'fb';
 
 $(document).ready(function() {
 	initBlockingFieldsTarget();
 });
 
 function toggleFieldBlockSizeTarget(field) {
-	if ($(field).prop('checked') && $(field).val() === BLOCKING_TYPE_FIXED) {
+	if ($(field).prop('checked') && $(field).val() === BLOCKING_FIXED) {
 		console.log($(field).val());
 		fieldBlockSizeTarget.parent().fadeIn('slow');
-	} else if ($(field).prop('checked') && $(field).val() === BLOCKING_TYPE_VARIABLE) {
+	} else if ($(field).prop('checked') && $(field).val() === BLOCKING_VARIABLE) {
 		console.log($(field).val());
 		fieldBlockSizeTarget.val('');
 		fieldBlockSizeTarget.parent().fadeOut('slow');
@@ -20,7 +20,7 @@ function toggleFieldBlockSizeTarget(field) {
 var initBlockingFieldsTarget = function() {
 	console.log('initBlockingFieldsTarget');
 	fieldBlockSizeTarget = $('#fieldgroup-specific-endpoint-target .field-block-size');
-	fieldBlockingTarget = $('#fieldgroup-specific-endpoint-target .field-blocking-type');
+	fieldBlockingTarget = $('#fieldgroup-specific-endpoint-target .field-blocking');
 	fieldBlockingTarget.change(function() {
 		toggleFieldBlockSizeTarget(this);
 	});

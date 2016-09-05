@@ -88,7 +88,7 @@ class FileParameterMapper extends AbstractMapper implements FileParameterMapperI
         $data['filename'] = $dataObject->getFilename() ?: new Expression('NULL');
         $data['record_length'] = $dataObject->getRecordLength() ?: new Expression('NULL');
         $data['blocking'] = $dataObject->getBlocking() ?: new Expression('NULL');
-        $data['block_size'] = $dataObject->getBlocking() === FileParameter::BLOCKING_TYPE_FIXED && $dataObject->getBlockSize()
+        $data['block_size'] = $dataObject->getBlocking() === FileParameter::BLOCKING_FIXED && $dataObject->getBlockSize()
             ? $dataObject->getBlockSize()
             : new Expression('NULL')
         ;
