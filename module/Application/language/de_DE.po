@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-03 15:17+0200\n"
-"PO-Revision-Date: 2016-09-03 15:18+0200\n"
+"POT-Creation-Date: 2016-09-05 10:00+0200\n"
+"PO-Revision-Date: 2016-09-05 10:00+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -379,19 +379,23 @@ msgstr "Umgebung"
 msgid "external server"
 msgstr "externer Server"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:23
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:18
+msgid "file"
+msgstr "Datei"
+
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:25
 msgid "filename"
 msgstr "Dateiname"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:38
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:40
 msgid "record length"
 msgstr "Satzlänge"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:53
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:55
 msgid "blocking"
 msgstr "Blockung"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:79
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:81
 msgid "block size"
 msgstr "Blockgröße"
 
