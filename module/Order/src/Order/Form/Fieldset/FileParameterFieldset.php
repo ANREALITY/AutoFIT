@@ -76,7 +76,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'name' => 'block_size',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('block size'),
+                    'label' => _('block size (only for fixed blocking)'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]

@@ -11,6 +11,7 @@ use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Update;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Delete;
+use Zend\Db\Sql\Expression;
 
 class FileParameterMapper extends AbstractMapper implements FileParameterMapperInterface
 {
@@ -84,10 +85,13 @@ class FileParameterMapper extends AbstractMapper implements FileParameterMapperI
         $data = [];
         // data retrieved directly from the input
         $data['id'] = $dataObject->getId();
-        $data['filename'] = $dataObject->getFilename();
-        $data['record_length'] = $dataObject->getRecordLength();
-        $data['blocking'] = $dataObject->getBlocking();
-        $data['block_size'] = $dataObject->getBlockSize();
+        $data['filename'] = $dataObject->getFilename() ?: new Expression('NULL');
+        $data['record_length'] = $dataObject->getRecordLength() ?: new Expression('NULL');
+        $data['blocking'] = $dataObject->getBlocking() ?: new Expression('NULL');
+        $data['block_size'] = $dataObject->getBlocking() === FileParameter::BLOCKING_TYPE_FIXED && $dataObject->getBlockSize()
+            ? $dataObject->getBlockSize()
+            : new Expression('NULL')
+        ;
         $data['file_parameter_set_id'] = $dataObject->getFileParameterSet()->getId();
         // creating sub-objects
         // none

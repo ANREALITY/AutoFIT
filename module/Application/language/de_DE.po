@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 10:01+0200\n"
-"PO-Revision-Date: 2016-09-05 11:27+0200\n"
+"POT-Creation-Date: 2016-09-05 11:56+0200\n"
+"PO-Revision-Date: 2016-09-05 11:56+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -392,8 +392,8 @@ msgid "blocking"
 msgstr "Blockung"
 
 #: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:79
-msgid "block size"
-msgstr "Blockgröße"
+msgid "block size (only for fixed blocking)"
+msgstr "Blockgröße (nur bei fester Blockung)"
 
 #: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:22
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:53
@@ -1150,6 +1150,12 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "block size"
+#~ msgstr "Blockgröße"
+
+#~ msgid "(only for fixed blocking)"
+#~ msgstr "(nur bei fester Blockung)"
 
 #~ msgid "file"
 #~ msgstr "Datei"
