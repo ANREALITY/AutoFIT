@@ -1,6 +1,7 @@
 <?php
 use DbSystel\DataObject\EndpointCdZos;
 use DbSystel\DataObject\FileParameterSet;
+use DbSystel\DataObject\FileParameter;
 /**
  *
  * @var EndpointCdZos $dataObject
@@ -22,6 +23,10 @@ if ($dataObject->getFileParameterSet() && $dataObject->getFileParameterSet() ins
     $index = 0;
     foreach ($dataObject->getFileParameterSet()->getFileParameters() as $fileParameter) {
         $index++;
+        $blockSize = $fileParameter->getBlocking() === FileParameter::BLOCKING_TYPE_FIXED
+            ? "<li>{$this->translate('block size')}: {$fileParameter->getBlockSize()}</li>"
+            : null
+        ;
         $fileParametersOutput .= <<<FILE_PARAMETER
 <li>
     <span>{$this->translate('file')} {$index}<span>
@@ -29,7 +34,7 @@ if ($dataObject->getFileParameterSet() && $dataObject->getFileParameterSet() ins
     <li>{$this->translate('filename')}: {$fileParameter->getFilename()}</li>
     <li>{$this->translate('record length')}: {$fileParameter->getRecordLength()}</li>
     <li>{$this->translate('blocking')}: {$fileParameter->getBlocking()}</li>
-    <li>{$this->translate('block size')}: {$fileParameter->getBlockSize()}</li>
+    {$blockSize}
     </ul>
 </li>
 FILE_PARAMETER;
