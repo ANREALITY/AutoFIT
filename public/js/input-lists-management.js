@@ -182,5 +182,6 @@ function addFileParameter() {
     if (currentCount < FILE_PARAMETERS_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-target .file-parameters fieldset:first').append(template);
     }
+    initBlockingFieldsTarget();
     return false;
 }
