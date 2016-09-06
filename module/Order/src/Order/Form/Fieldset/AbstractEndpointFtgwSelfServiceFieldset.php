@@ -29,16 +29,9 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
 
         $this->add(
             [
-                'type' => 'multi_checkbox',
-                'name' => 'protocols',
-                'options' => [
-                    'label' => _('protocols'),
-                    'label_attributes' => [
-                        'class' => 'col-md-1 protocol-field'
-                    ],
-                    'value_options' => $this->getValueOptions(),
-                    'selected' => static::PROTOCOLS_DUMMY_VALUE
-                ]
+                'name' => 'protocol_set',
+                'type' => 'Order\Form\Fieldset\ProtocolSet',
+                'options' => []
             ]);
 
         $this->add(
@@ -101,9 +94,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [
-            'protocols' => []
-        ];
+        $inputFilterSpecification = [];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 

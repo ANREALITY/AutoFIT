@@ -9,11 +9,11 @@ class Protocol extends AbstractDataObject
      * @var array
      */
     const PROTOCOLS = [
-        1 => 'FTP',
-        2 => 'FTPs',
-        // 3 => 'HTTP',
-        4 => 'HTTPs',
-        5 => 'WebDAV'
+        'FTP' => 'FTP',
+        'FTPs' => 'FTPs',
+        // 'HTTP' => 'HTTP',
+        'HTTPs' => 'HTTPs',
+        'WebDAV' => 'WebDAV'
     ];
 
     /**
@@ -27,6 +27,12 @@ class Protocol extends AbstractDataObject
      * @var string
      */
     protected $name;
+
+    /**
+     *
+     * @var ProtocolSet
+     */
+    protected $protocolSet;
 
     /**
      *
@@ -62,6 +68,24 @@ class Protocol extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     *
+     * @return the $protocolSet
+     */
+    public function getProtocolSet()
+    {
+        return $this->protocolSet;
+    }
+
+    /**
+     *
+     * @param ProtocolSet $protocolSet
+     */
+    public function setProtocolSet(ProtocolSet $protocolSet)
+    {
+        $this->protocolSet = $protocolSet;
     }
 
 }

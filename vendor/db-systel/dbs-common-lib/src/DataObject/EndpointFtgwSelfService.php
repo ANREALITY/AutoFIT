@@ -12,12 +12,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @var Protocol[]
-     */
-    protected $protocols;
-
-    /**
-     *
      * @var string
      */
     protected $ftgwUsername;
@@ -36,21 +30,9 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @return the $protocols
+     * @var ProtocolSet
      */
-    public function getProtocols()
-    {
-        return $this->protocols;
-    }
-
-    /**
-     *
-     * @param multitype:Protocol $protocols
-     */
-    public function setProtocols(array $protocols)
-    {
-        $this->protocols = $protocols;
-    }
+    protected $protocolSet;
 
     /**
      *
@@ -104,6 +86,24 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setConnectionType($connectionType)
     {
         $this->connectionType = $connectionType;
+    }
+
+    /**
+     *
+     * @return the $protocolSet
+     */
+    public function getProtocolSet()
+    {
+        return $this->protocolSet;
+    }
+
+    /**
+     *
+     * @param ProtocolSet $protocolSet
+     */
+    public function setProtocolSet(ProtocolSet $protocolSet)
+    {
+        $this->protocolSet = $protocolSet;
     }
 
 }

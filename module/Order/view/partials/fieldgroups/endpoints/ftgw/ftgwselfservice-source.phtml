@@ -8,12 +8,12 @@ $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('connection_type')),
-    '<fieldset>' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocols')
+    '<fieldset>' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
-         $this->formMultiCheckbox($endpointSourceFieldset->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
-         '</fieldset>',
-        $this->formRow($endpointSourceFieldset->get('ftgw_username')),
-        $this->formRow($endpointSourceFieldset->get('mailbox'))
+         $this->formMultiCheckbox($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
+     '</fieldset>',
+    $this->formRow($endpointSourceFieldset->get('ftgw_username')),
+    $this->formRow($endpointSourceFieldset->get('mailbox'))
 ];
 echo $this->partial('/partials/fieldgroup',
     [

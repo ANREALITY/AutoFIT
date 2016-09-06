@@ -23,6 +23,7 @@ use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\Protocol;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\IncludeParameterSet;
+use DbSystel\DataObject\ProtocolSet;
 use DbSystel\DataObject\FileParameterSet;
 use DbSystel\DataObject\AccessConfigSet;
 
@@ -64,6 +65,12 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
      * @var IncludeParameterSetMapperInterface
      */
     protected $includeParameterSetMapper;
+
+    /**
+     *
+     * @var ProtocolSetMapperInterface
+     */
+    protected $protocolSetMapper;
 
     /**
      *
@@ -152,6 +159,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     public function setIncludeParameterSetMapper(IncludeParameterSetMapperInterface $includeParameterSetMapper)
     {
         $this->includeParameterSetMapper = $includeParameterSetMapper;
+    }
+
+    /**
+     *
+     * @param ProtocolSetMapperInterface $protocolSetMapper
+     */
+    public function setProtocolSetMapper(ProtocolSetMapperInterface $protocolSetMapper)
+    {
+        $this->protocolSetMapper = $protocolSetMapper;
     }
 
     /**
@@ -641,9 +657,11 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['ftgw_username'] = $dataObject->getFtgwUsername();
         $data['mailbox'] = $dataObject->getMailbox();
         // creating sub-objects
+        $newProtocolSet = $this->protocolSetMapper->save($dataObject->getProtocolSet());
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
         $data['endpoint_id'] = $dataObject->getId();
+        $data['protocol_set_id'] = $newProtocolSet->getId();
 
         if (! $isUpdate) {
             $action = new Insert('endpoint_ftgw_self_service');
@@ -664,36 +682,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             if ($newEndpointId) {
                 $dataObject->setId($newEndpointId);
                 // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
-                $sql = <<<SQL
-DELETE FROM
-    endpoint_ftgw_self_service_protocol
-WHERE
-    endpoint_ftgw_self_service_endpoint_id = $newEndpointId
-SQL;
-                $result = $this->dbAdapter->getDriver()
-                    ->getConnection()
-                    ->execute($sql);
-                foreach ($dataObject->getProtocols() as $protocol) {
-                    $protocolId = null;
-                    if (is_object($protocol) && $protocol instanceof Protocol) {
-                        $protocolId = $protocol->getId();
-                    } elseif (is_numeric($protocol)) {
-                        $protocolId = $protocol;
-                    }
-                    if (! empty($protocolId) && key_exists($protocolId, Protocol::PROTOCOLS)) {
-                        $sql = <<<SQL
-INSERT INTO
-    endpoint_ftgw_self_service_protocol
-    (endpoint_ftgw_self_service_endpoint_id, protocol_id)
-VALUES
-    ('$newEndpointId', '{$protocolId}')
-;
-SQL;
-                        $result = $this->dbAdapter->getDriver()
-                            ->getConnection()
-                            ->execute($sql);
-                    }
-                }
+                // ...
             }
             return $dataObject;
         }
