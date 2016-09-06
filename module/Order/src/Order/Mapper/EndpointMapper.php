@@ -797,13 +797,13 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 $protocolExists = array_key_exists('endpoint_ftgw_windows_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_include_parameter_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
-        $ftgwSelfServiceProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-            'id', 'endpoint__', ['id', 'role'], ['ftgw_self_service_protocol__', 'endpoint__'], null, null, null,
+        $ftgwSelfServiceProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_self_service_protocol_set__', 'id',
+            'endpoint__', new ProtocolSet(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
-                $protocolExists = array_key_exists('ftgw_self_service_protocol' . '__' . 'id', $row) && !empty($row['ftgw_self_service_protocol' . '__' . 'id']);
+                $protocolExists = array_key_exists('endpoint_ftgw_self_service_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_self_service_protocol_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
-            }, true);
+            }, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -816,8 +816,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 'setExternalServer', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixClusterConfigDataObjects,
                 'setEndpointClusterConfig', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
-                'setProtocols', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolSetDataObjects,
+                'setProtocolSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsIncludeParameterSetDataObjects,

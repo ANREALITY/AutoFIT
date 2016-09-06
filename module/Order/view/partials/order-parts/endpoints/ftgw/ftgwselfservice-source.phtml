@@ -9,10 +9,10 @@ $dataObject;
 <?php
 // protocols
 $protocolsOutput = '-';
-if ($dataObject->getProtocols()) {
+if ($dataObject->getProtocolSet() && $dataObject->getProtocolSet()->getProtocols()) {
     $protocolsOutput = '<ul class="protocols">';
     $index = 0;
-    foreach ($dataObject->getProtocols() as $protocol) {
+    foreach ($dataObject->getProtocolSet()->getProtocols() as $protocol) {
         $protocolsOutput .= <<<SERVER
 <li>
     <span>{$protocol->getName()}<span>

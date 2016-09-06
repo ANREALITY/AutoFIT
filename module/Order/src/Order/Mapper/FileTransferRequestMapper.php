@@ -491,21 +491,24 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_windows_include_parameter' . '__' . 'expression' => 'expression',
                 'endpoint_ftgw_windows_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
             ], Select::JOIN_LEFT);
-        
+
         $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
             [
                 'endpoint_ftgw_self_service' . '__' . 'endpoint_id' => 'endpoint_id',
                 'endpoint_ftgw_self_service' . '__' . 'ftgw_username' => 'ftgw_username',
                 'endpoint_ftgw_self_service' . '__' . 'mailbox' => 'mailbox',
-                'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type'
+                'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type',
+                'endpoint_ftgw_self_service' . '__' . 'protocol_set_id' => 'protocol_set_id'
             ], Select::JOIN_LEFT);
-        $select->join('endpoint_ftgw_self_service_protocol', 'endpoint_ftgw_self_service_protocol.endpoint_ftgw_self_service_endpoint_id = endpoint_ftgw_self_service.endpoint_id',
-            [], Select::JOIN_LEFT);
-        $select->join(['ftgw_self_service_protocol' => 'protocol'],
-            'ftgw_self_service_protocol.id = endpoint_ftgw_self_service_protocol.protocol_id',
+        $select->join(['endpoint_ftgw_self_service_protocol_set' => 'protocol_set'], 'endpoint_ftgw_self_service_protocol_set.id = endpoint_ftgw_self_service.protocol_set_id',
             [
-                'ftgw_self_service_protocol' . '__' . 'id' => 'id',
-                'ftgw_self_service_protocol' . '__' . 'name' => 'name'
+                'endpoint_ftgw_self_service_protocol_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_self_service_protocol' => 'protocol'], 'endpoint_ftgw_self_service_protocol.protocol_set_id = endpoint_ftgw_self_service_protocol_set.id',
+            [
+                'endpoint_ftgw_self_service_protocol' . '__' . 'id' => 'id',
+                'endpoint_ftgw_self_service_protocol' . '__' . 'name' => 'name',
+                'endpoint_ftgw_self_service_protocol' . '__' . 'protocol_set_id' => 'protocol_set_id'
             ], Select::JOIN_LEFT);
 
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);

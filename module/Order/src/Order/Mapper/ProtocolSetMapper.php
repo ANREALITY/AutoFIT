@@ -181,41 +181,17 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
             $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         // @todo It's a hack! Find a clean solution!
-        if ($prefix === 'endpoint_cd_linux_unix_protocol_set__') {
-            $cdLinuxUnixProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_linux_unix_protocol__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_cd_windows_protocol_set__') {
-            $cdWindowsProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_windows_protocol__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_cd_windows_share_protocol_set__') {
-            $cdWindowsShareProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_windows_share_protocol__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_ftgw_windows_protocol_set__') {
-            $ftgwWindowsProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_protocol__', null, null, null, null, true);
+        if ($prefix === 'endpoint_ftgw_self_service_protocol_set__') {
+            $ftgwSelfServiceProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_self_service_protocol__', null, null, null, null, true);
         }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
             // Array key of a common element (created like myArray[] = new Element();)
             // can though equal to the $dataObject->getId()!!!!!
-            if ($prefix === 'endpoint_cd_linux_unix_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixProtocolDataObjects,
-                    'setProtocols', 'getId');
-            }
-            if ($prefix === 'endpoint_cd_windows_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsProtocolDataObjects,
-                    'setProtocols', 'getId');
-            }
-            if ($prefix === 'endpoint_cd_windows_share_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareProtocolDataObjects,
-                    'setProtocols', 'getId');
-            }
-            if ($prefix === 'endpoint_ftgw_windows_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsProtocolDataObjects,
+            if ($prefix === 'endpoint_ftgw_self_service_protocol_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
                     'setProtocols', 'getId');
             }
         }
