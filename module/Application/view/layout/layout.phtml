@@ -91,13 +91,13 @@ $currentIdentity = $authenticationService->getIdentity();
                     <li
                         <?php echo $currentRoute == 'list-my-orders' ? ' class="active"' : null;?>><a
                         href="<?php echo $this->url('list-my-orders') ?>"><?php echo $this->translate('my orders') ?></a></li>
-                    <?php if ($currentIdentity['role'] == User::ROLE_ADMIN): ?>
                     <li
                         <?php echo $currentRoute == 'edit-server' ? ' class="active"' : null;?>><a
                         href="<?php echo $this->url('edit-server') ?>"><?php echo $this->translate('server') ?></a></li>
                     <li
                         <?php echo $currentRoute == 'create-cluster' ? ' class="active"' : null;?>><a
                         href="<?php echo $this->url('create-cluster') ?>"><?php echo $this->translate('cluster') ?></a></li>
+                    <?php if ($currentIdentity['role'] == User::ROLE_ADMIN): ?>
                     <li
                         class="backend<?php echo $currentRoute == 'list-orders' ? ' active' : null;?>"><a
                         href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('orders') ?></a></li>
