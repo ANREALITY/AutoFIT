@@ -309,7 +309,6 @@ return [
             'Order\Form\Fieldset\FileTransferRequestFtgw' => false,
             'Order\Form\Fieldset\IncludeParameter' => false,
             'Order\Form\Fieldset\IncludeParameterSet' => false,
-            'Order\Form\Fieldset\Protocol' => false,
             'Order\Form\Fieldset\ProtocolSet' => false,
             'Order\Form\Fieldset\LogicalConnectionCd' => false,
             'Order\Form\Fieldset\LogicalConnectionFtgw' => false,
