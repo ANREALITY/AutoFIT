@@ -341,7 +341,7 @@ return [
     ],
     'hydrators' => [
         'factories' => [
-            'DbSystel\Hydrator\EndpointFtgwSelfServiceHydrator' => 'DbSystel\Hydrator\Factory\EndpointFtgwSelfServiceHydratorFactory',
+            'DbSystel\Hydrator\ProtocolSetHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
             'DbSystel\Hydrator\ProtocolHydrator' => 'DbSystel\Hydrator\Factory\ProtocolHydratorFactory'
         ]
     ]

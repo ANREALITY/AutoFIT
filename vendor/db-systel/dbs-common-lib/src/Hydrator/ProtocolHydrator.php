@@ -12,15 +12,15 @@ class ProtocolHydrator extends ClassMethods
      */
     public function extract($object)
     {
-        return $object->getId();
+        return $object->getName();
     }
 
     public function hydrate(array $data, $object)
     {
-        // An array with one int value for the ID is expected, e.g.:
-        // [123]
+        // An array with one string value for the ID is expected, e.g.:
+        // [HTTP]
         $dataValues = array_values($data);
-        $id = array_shift($dataValues);
-        return parent::hydrate(['id' => $id], $object);
+        $name = array_shift($dataValues);
+        return parent::hydrate(['name' => $name], $object);
     }
 }

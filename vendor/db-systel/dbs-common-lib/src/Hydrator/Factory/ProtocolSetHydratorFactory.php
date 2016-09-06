@@ -14,7 +14,7 @@ use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 use DbSystel\DataObject\Protocol;
 use DbSystel\Hydrator\Strategy\Entity\GenericCollectionStrategy;
 
-class EndpointFtgwSelfServiceHydratorFactory implements FactoryInterface
+class ProtocolSetHydratorFactory implements FactoryInterface
 {
 
     /**
@@ -26,13 +26,13 @@ class EndpointFtgwSelfServiceHydratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $endpointFtgwSelfServiceHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
+        $rotocolSetHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
         $protocolHydrator = $serviceLocator->get('DbSystel\Hydrator\ProtocolHydrator');
 
-        $endpointFtgwSelfServiceHydrator->addStrategy('protocols', new GenericCollectionStrategy($protocolHydrator, new Protocol()));
+        $rotocolSetHydrator->addStrategy('protocols', new GenericCollectionStrategy($protocolHydrator, new Protocol()));
 
         // no naming map
         
-        return $endpointFtgwSelfServiceHydrator;
+        return $rotocolSetHydrator;
     }
 }

@@ -131,10 +131,8 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
                         ]
                     ]);
                 $newProtocols = [];
-                foreach ($dataObject->getProtocols() ?: [] as $protocolName) {
-                    if ($protocolName) {
-                        $protocol = new Protocol();
-                        $protocol->setName($protocolName);
+                foreach ($dataObject->getProtocols() ?: [] as $protocol) {
+                    if ($protocol->getName()) {
                         $protocol->setProtocolSet($dataObject);
                         $newProtocols[] = $this->protocolMapper->save($protocol, false);
                     }
