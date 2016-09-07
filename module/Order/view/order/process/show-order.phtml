@@ -119,3 +119,11 @@ elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     ]);
 }
 ?>
+
+<div class="clearer"></div>
+
+<?php
+// comment
+echo $this->partial('/partials/order-parts/comment', [
+    'fileTransferRequest' => $fileTransferRequest
+]);

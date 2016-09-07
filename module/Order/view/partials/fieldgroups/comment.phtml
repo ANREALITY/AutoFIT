@@ -1,0 +1,16 @@
+<?php
+$fieldgroupName = 'comment';
+$fieldgroupCssClass = 'col-md-12';
+$fieldgroupTitle = $this->translate('Comment');
+$fieldgroupFormRows = [
+    $this->formRow($fileTransferRequestFieldset->get('comment'), null, false)
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>

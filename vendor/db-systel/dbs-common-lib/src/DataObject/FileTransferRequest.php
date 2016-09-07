@@ -5,12 +5,19 @@ class FileTransferRequest extends AbstractDataObject
 {
 
     const STATUS_NEW = 'new';
+
     const STATUS_EDIT = 'edit';
+
     const STATUS_CANCELED = 'canceled';
+
     const STATUS_CHECK = 'check';
+
     const STATUS_ACCEPTED = 'accepted';
+
     const STATUS_DECLINED = 'declined';
+
     const STATUS_PROCESSING = 'processing';
+
     const STATUS_COMPLETED = 'completed';
 
     /**
@@ -30,6 +37,12 @@ class FileTransferRequest extends AbstractDataObject
      * @var string
      */
     protected $status;
+
+    /**
+     *
+     * @var string
+     */
+    protected $comment;
 
     /**
      *
@@ -119,6 +132,24 @@ class FileTransferRequest extends AbstractDataObject
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     *
+     * @return the $comment
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     *
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 
     /**

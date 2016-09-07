@@ -9,6 +9,8 @@ use Zend\Validator\Db\NoRecordExists;
 abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
+    const COMMENT_MAX_LENGTH = 140;
+
     /**
      *
      * @var AdapterInterface
@@ -101,6 +103,22 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'type' => 'Order\Form\Fieldset\Environment',
                 'options' => []
             ]);
+
+        $this->add(
+            [
+                'type' => 'textarea',
+                'name' => 'comment',
+                'options' => [
+                    'label' => _('comment'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control',
+                    'maxlength' => static::COMMENT_MAX_LENGTH
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
@@ -134,10 +152,22 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                             },
                         ],
                     ]
-                ]
+                ],
             ],
             'application_technical_short_name' => [
                 'required' => true
+            ],
+            'comment' => [
+                'filters' => [
+                    [
+                        'name' => 'Callback',
+                        'options' => [
+                            'callback' => function ($value) {
+                                return substr($value, 0, static::COMMENT_MAX_LENGTH);
+                            }
+                        ]
+                    ]
+                ]
             ]
         ];
     }

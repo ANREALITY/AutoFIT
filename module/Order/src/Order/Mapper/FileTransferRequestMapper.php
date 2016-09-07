@@ -219,6 +219,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 $prefix . 'id' => 'id',
                 $prefix . 'change_number' => 'change_number',
                 $prefix . 'status' => 'status',
+                $prefix . 'comment' => 'comment',
                 $prefix . 'created' => 'created',
                 $prefix . 'updated' => 'updated',
                 $prefix . 'logical_connection_id' => 'logical_connection_id',
@@ -562,6 +563,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         if ($dataObject->getStatus()) {
             $data['status'] = $dataObject->getStatus();
         }
+        $data['comment'] = $dataObject->getComment();
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());

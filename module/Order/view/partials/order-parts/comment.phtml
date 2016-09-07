@@ -1,0 +1,29 @@
+<?php
+use DbSystel\DataObject\FileTransferRequest;
+/**
+ *
+ * @var FileTransferRequest $fileTransferRequest
+ */
+$fileTransferRequest;
+?>
+<?php
+
+$orderPartCssId = 'comment';
+$orderPartCssClass = 'col-md-12';
+$orderPartTitle = $this->translate('Comment');
+$orderPartAttributes = [
+    [
+        'label' => null,
+        'value' => $fileTransferRequest->getComment() ? str_replace(PHP_EOL, '<br />', $fileTransferRequest->getComment()) : '-'
+    ]
+];
+
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

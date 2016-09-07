@@ -186,6 +186,23 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 
 <div class="clearer"></div>
 
+<?php
+// comment
+echo $this->partial('/partials/fieldgroups/comment',
+    [
+        // Fieldsets
+        'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
+        'userFieldset' => $userFieldset,
+        'environmentFieldset' => $environmentFieldset,
+        'serviceInvoicePositionBasicFieldset' => $serviceInvoicePositionBasicFieldset,
+        'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset
+        // misc values
+        // no misc values
+    ]);
+?>
+
+<div class="clearer"></div>
+
 <div class="form-group">
     <div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div>
 </div>

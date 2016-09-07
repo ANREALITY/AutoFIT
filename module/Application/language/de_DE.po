@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 10:50+0200\n"
-"PO-Revision-Date: 2016-09-07 10:50+0200\n"
+"POT-Creation-Date: 2016-09-07 14:18+0200\n"
+"PO-Revision-Date: 2016-09-07 14:18+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -178,14 +178,14 @@ msgstr "Verbindungstyp"
 msgid "internal and external"
 msgstr "intern und extern"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:44
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
 #: Order/view/order/process/list-my-orders.phtml:16
 #: Order/view/order/process/list-orders.phtml:7
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:81
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:83
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
 #: Order/view/partials/list/summary.phtml:102
 #: Order/view/partials/order-parts/billing.phtml:16
@@ -194,7 +194,11 @@ msgstr "Change-Nummer"
 msgid "application"
 msgstr "Verfahren"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:117
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:112
+msgid "comment"
+msgstr "Kommentar"
+
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:135
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
@@ -891,6 +895,12 @@ msgstr "Sie können einen gültigen Wert mit einem Umrechnungstool generieren"
 #: Order/view/partials/order-parts/billing.phtml:13
 msgid "Billing"
 msgstr "Abrechnung"
+
+#: Order/view/partials/fieldgroups/comment.phtml:4
+#: Order/view/partials/order-parts/comment.phtml:13
+#: Order/view/partials/order-parts/comment.phtml:16
+msgid "Comment"
+msgstr "Kommentar"
 
 #: Order/view/partials/fieldgroups/connections/cd.phtml:4
 #: Order/view/partials/fieldgroups/connections/ftgw.phtml:8
