@@ -163,7 +163,8 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                         'name' => 'Callback',
                         'options' => [
                             'callback' => function ($value) {
-                                return substr($value, 0, static::COMMENT_MAX_LENGTH);
+                                $lineBreaks = substr_count($value, PHP_EOL);
+                                return substr($value, 0, static::COMMENT_MAX_LENGTH + ($lineBreaks - 1));
                             }
                         ]
                     ]
