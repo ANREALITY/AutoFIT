@@ -38,7 +38,21 @@ class ClusterFieldset extends AbstractClusterFieldset
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'virtual_node_name' => [
+                'required' => false,
+                'validators' => [
+                    [
+                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'options' => [
+                            'table' => 'cluster',
+                            'field' => 'virtual_node_name',
+                            'adapter' => $this->dbAdapter
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
 }
