@@ -122,6 +122,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                         'options' => [
                             'callback' => function ($value) {
                                 $lineBreaks = substr_count($value, PHP_EOL);
+                                mb_internal_encoding('UTF-8');
                                 return substr($value, 0, static::CONTACT_PERCON_MAX_LENGTH + $lineBreaks);
                             }
                         ]
