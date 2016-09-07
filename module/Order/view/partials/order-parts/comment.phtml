@@ -14,7 +14,8 @@ $orderPartTitle = $this->translate('Comment');
 $orderPartAttributes = [
     [
         'label' => null,
-        'value' => $fileTransferRequest->getComment() ? str_replace(PHP_EOL, '<br />', $fileTransferRequest->getComment()) : '-'
+        'value' => $fileTransferRequest->getComment() ? str_replace(PHP_EOL, '<br />', $fileTransferRequest->getComment()) : '-',
+        'class' => 'col-md-12'
     ]
 ];
 

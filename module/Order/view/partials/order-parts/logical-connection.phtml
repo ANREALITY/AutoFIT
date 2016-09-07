@@ -49,7 +49,8 @@ $orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->
 $orderPartAttributes = [
     [
         'label' => $this->translate('notifications'),
-        'value' => $notificationsOutput
+        'value' => $notificationsOutput,
+        'class' => 'col-md-12'
     ],
 ];
 echo $this->partial('/partials/order-part',

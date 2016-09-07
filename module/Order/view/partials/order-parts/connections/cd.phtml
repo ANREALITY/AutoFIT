@@ -13,7 +13,8 @@ $orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->
 $orderPartAttributes = [
     [
         'label' => $this->translate('Secure Plus'),
-        'value' => $dataObject->getSecurePlus() ? $this->translate('yes') : $this->translate('no')
+        'value' => $dataObject->getSecurePlus() ? $this->translate('yes') : $this->translate('no'),
+        'class' => 'col-md-12'
     ],
 ];
 echo $this->partial('/partials/order-part',
