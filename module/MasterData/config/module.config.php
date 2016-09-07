@@ -2,6 +2,16 @@
 return [
     'router' => [
         'routes' => [
+            'master-data' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/master-data',
+                    'defaults' => [
+                        'controller' => 'MasterData\Controller\Index',
+                        'action' => 'index'
+                    ]
+                ]
+            ],
             'edit-server' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
@@ -45,7 +55,9 @@ return [
         ]
     ],
     'controllers' => [
-        'invokables' => [],
+        'invokables' => [
+            'MasterData\Controller\Index' => 'MasterData\Controller\IndexController'
+        ],
         'factories' => [
             'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory',
             'MasterData\Controller\Cluster' => 'MasterData\Controller\Factory\ClusterControllerFactory'

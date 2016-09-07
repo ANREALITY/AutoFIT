@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 14:18+0200\n"
-"PO-Revision-Date: 2016-09-07 14:18+0200\n"
+"POT-Creation-Date: 2016-09-07 15:45+0200\n"
+"PO-Revision-Date: 2016-09-07 15:45+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -660,7 +660,11 @@ msgstr "Server"
 msgid "cluster"
 msgstr "Cluster"
 
-#: Application/view/layout/layout.phtml:103
+#: Application/view/layout/layout.phtml:102
+msgid "master data"
+msgstr "Stammdaten"
+
+#: Application/view/layout/layout.phtml:106
 msgid "orders"
 msgstr "Bestellungen"
 
@@ -898,7 +902,6 @@ msgstr "Abrechnung"
 
 #: Order/view/partials/fieldgroups/comment.phtml:4
 #: Order/view/partials/order-parts/comment.phtml:13
-#: Order/view/partials/order-parts/comment.phtml:16
 msgid "Comment"
 msgstr "Kommentar"
 
