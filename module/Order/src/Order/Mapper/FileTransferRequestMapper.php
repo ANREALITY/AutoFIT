@@ -345,7 +345,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             'server.name = endpoint_server_config.server_name',
             [
                 'server' . '__' . 'name' => 'name',
-                'server' . '__' . 'active' => 'active'
+                'server' . '__' . 'active' => 'active',
+                'server' . '__' . 'node_name' => 'node_name',
+                'server' . '__' . 'virtual_node_name' => 'virtual_node_name'
             ], Select::JOIN_LEFT);
         $select->join('external_server',
             'external_server.id = endpoint.external_server_id',

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 12:14+0200\n"
-"PO-Revision-Date: 2016-09-05 12:14+0200\n"
+"POT-Creation-Date: 2016-09-07 10:50+0200\n"
+"PO-Revision-Date: 2016-09-07 10:50+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:56
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:61
 msgid "username"
 msgstr "Benutzername"
 
@@ -146,12 +146,12 @@ msgid "server place"
 msgstr "Serverstandort"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:46
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:83
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:76
 msgid "internal"
 msgstr "intern"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:51
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:88
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:81
 msgid "external"
 msgstr "extern"
 
@@ -159,28 +159,22 @@ msgstr "extern"
 msgid "Self-Service"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:35
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
-msgid "protocols"
-msgstr "Protokolle"
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:49
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:42
 msgid "FTWG user"
 msgstr "FTGW User"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:64
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:57
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:43
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:43
 msgid "mailbox"
 msgstr "Mailbox"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:79
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:72
 #: Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:92
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:85
 msgid "internal and external"
 msgstr "intern und extern"
 
@@ -224,6 +218,8 @@ msgid "add a notification"
 msgstr "Benachrichtigung hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/AbstractServerFieldset.php:36
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server name"
 msgstr "Servername"
 
@@ -374,8 +370,8 @@ msgstr "Umgebung"
 #: Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
 #: Order/view/partials/list/summary.phtml:116
 #: Order/view/partials/list/summary.phtml:132
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:39
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:39
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:47
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:47
 msgid "external server"
 msgstr "externer Server"
 
@@ -396,7 +392,7 @@ msgid "block size (only for fixed blocking)"
 msgstr "Blockgröße (nur bei fester Blockung)"
 
 #: Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:60
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:65
 msgid "file parameters"
 msgstr "Dateiparameter"
 
@@ -436,6 +432,12 @@ msgstr "fehlgeschlagen"
 #: Order/view/partials/order-parts/connections/cd.phtml:15
 msgid "Secure Plus"
 msgstr ""
+
+#: Order/src/Order/Form/Fieldset/ProtocolSetFieldset.php:27
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
+msgid "protocols"
+msgstr "Protokolle"
 
 #: Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
 #: Order/view/partials/order-parts/billing.phtml:34
@@ -644,15 +646,13 @@ msgstr "Startseite"
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
-#: Application/view/layout/layout.phtml:97
+#: Application/view/layout/layout.phtml:96
 #: Order/view/partials/list/summary.phtml:113
 #: Order/view/partials/list/summary.phtml:129
-#: Order/view/partials/order-parts/endpoints/basic-source.phtml:31
-#: Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server"
 msgstr "Server"
 
-#: Application/view/layout/layout.phtml:100
+#: Application/view/layout/layout.phtml:99
 msgid "cluster"
 msgstr "Cluster"
 
@@ -960,7 +960,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:49
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:54
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
@@ -1019,7 +1019,7 @@ msgstr "Benutzer"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:30
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:13
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:12
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:43
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:48
 #: Order/view/partials/order-parts/logical-connection.phtml:20
 msgid "yes"
 msgstr "ja"
@@ -1030,13 +1030,23 @@ msgstr "ja"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:29
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:12
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:11
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:42
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:47
 #: Order/view/partials/order-parts/logical-connection.phtml:19
 msgid "no"
 msgstr "nein"
 
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:35
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:35
+msgid "server's virtual nodename"
+msgstr "Virtueller Knotenname des Servers"
+
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:39
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:39
+msgid "server's nodename"
+msgstr "Knotenname des Servers"
+
+#: Order/view/partials/order-parts/endpoints/basic-source.phtml:43
+#: Order/view/partials/order-parts/endpoints/basic-target.phtml:43
 msgid "server DNS address"
 msgstr "Server-DNS-Adresse"
 
@@ -1051,7 +1061,7 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:43
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:21
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:52
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:57
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:31
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:32
@@ -1059,11 +1069,11 @@ msgstr "Server-DNS-Adresse"
 msgid "type"
 msgstr "Typ"
 
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:13
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:14
 msgid "file"
 msgstr "Datei"
 
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:14
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:15
 msgid "block size"
 msgstr "Blockgröße"
 

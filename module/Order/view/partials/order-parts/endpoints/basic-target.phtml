@@ -28,8 +28,16 @@ $orderPartAttributes = [
         'value' => $dataObject->getCustomer() && $dataObject->getCustomer()->getName() ? $dataObject->getCustomer()->getName() : '-'
     ],
     [
-        'label' => $this->translate('server'),
+        'label' => $this->translate('server name'),
         'value' => $dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer() ? $dataObject->getEndpointServerConfig()->getServer()->getName() : '-'
+    ],
+    [
+        'label' => $this->translate('server\'s virtual nodename'),
+        'value' => $dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer() && $dataObject->getEndpointServerConfig()->getServer()->getVirtualNodeName() ? $dataObject->getEndpointServerConfig()->getServer()->getVirtualNodeName() : '-'
+    ],
+    [
+        'label' => $this->translate('server\'s nodename'),
+        'value' => $dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer() && $dataObject->getEndpointServerConfig()->getServer()->getNodeName() ? $dataObject->getEndpointServerConfig()->getServer()->getNodeName() : '-'
     ],
     [
         'label' => $this->translate('server DNS address'),
