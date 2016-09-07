@@ -13,7 +13,7 @@ $orderPartTitle = $this->translate('Source - basic settings');
 $orderPartAttributes = [
     [
         'label' => $this->translate('contact person'),
-        'value' => $dataObject->getContactPerson() ?: '-'
+        'value' => $dataObject->getContactPerson() ? str_replace(PHP_EOL, '<br />', $dataObject->getContactPerson()) : '-'
     ],
     [
         'label' => $this->translate('server place'),
