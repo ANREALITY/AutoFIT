@@ -1,1 +1,30 @@
-Action "index", controller "Index", module "MasterData".
+<div class="row">
+    <h3>
+        <span><?php echo $this->translate('Master data'); ?></span>
+    </h3>
+    <div class="col-md-12">
+        <p><?php echo $this->translate('On the subsequent pages you can update the master data, that is available on the order.'); ?></p>
+    </div>
+    <div class="col-md-12">
+        <h4>
+            <span><?php echo $this->translate('Server'); ?></span>
+        </h4>
+        <span><?php echo $this->translate('Besides the server name a Server has some further parameters (relevant for Connect:Direct): "node name" and "virtual node name".'); ?></span>
+        <span><?php echo $this->translate('They can be configuren via the server master data form.'); ?></span><br />
+        <span><?php echo $this->translate('Updating of the server data is only permitted, as long as the server has not yet been being used for Connect:Direct.'); ?></span>
+        <span><?php echo $this->translate('Or formally:'); ?></span>
+        <span><?php echo $this->translate('As long as no "node name" or "virtual node name" is set for the server and the server belongs to no cluster.'); ?></span><br />
+        <a class="btn btn-default" href="<?php echo $this->url('edit-server') ?>"role="button"><span><?php echo $this->translate('to the server master data form'); ?> >></span></a>
+    </div>
+    <div class="col-md-12">
+        <h4>
+            <span><?php echo $this->translate('Cluster'); ?></span>
+        </h4>
+        <span><?php echo $this->translate('To address multiple servers via one name, one needs to define a cluster.'); ?></span>
+        <span><?php echo $this->translate('For every cluster a "virtual node name" and a list of servers has to be determined.'); ?></span>
+        <span><?php echo $this->translate('To create a cluster please use the cluster master data form.'); ?></span><br />
+        <span><?php echo $this->translate('To the serves of a new cluster applies also:'); ?></span>
+        <span><?php echo $this->translate('Only those servers can be chosen, that have not yet been being in use for Connect:rirect.'); ?></span>
+        <a class="btn btn-default" href="<?php echo $this->url('edit-server') ?>"role="button"><span><?php echo $this->translate('to the cluster master data form'); ?> >></span></a>
+    </div>
+</div>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 15:45+0200\n"
-"PO-Revision-Date: 2016-09-07 15:45+0200\n"
+"POT-Creation-Date: 2016-09-07 17:48+0200\n"
+"PO-Revision-Date: 2016-09-07 17:49+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -651,20 +651,10 @@ msgid "my orders"
 msgstr "Meine Bestellungen"
 
 #: Application/view/layout/layout.phtml:96
-#: Order/view/partials/list/summary.phtml:113
-#: Order/view/partials/list/summary.phtml:129
-msgid "server"
-msgstr "Server"
-
-#: Application/view/layout/layout.phtml:99
-msgid "cluster"
-msgstr "Cluster"
-
-#: Application/view/layout/layout.phtml:102
 msgid "master data"
 msgstr "Stammdaten"
 
-#: Application/view/layout/layout.phtml:106
+#: Application/view/layout/layout.phtml:100
 msgid "orders"
 msgstr "Bestellungen"
 
@@ -679,6 +669,101 @@ msgstr "Der Server wurde erfolgreich %s."
 #: Order/view/order/process/edited.phtml:3
 msgid "updated"
 msgstr "aktualisiert"
+
+#: MasterData/view/master-data/index/index.phtml:3
+msgid "Master data"
+msgstr "Stammdaten"
+
+#: MasterData/view/master-data/index/index.phtml:6
+msgid ""
+"On the subsequent pages you can update the master data, that is available on "
+"the order."
+msgstr ""
+"Auf den nachfolgenden Seiten können Sie Stammdaten aktualisieren, die Ihnen "
+"bei der Bestellung zur Verfügung stehen."
+
+#: MasterData/view/master-data/index/index.phtml:10
+msgid "Server"
+msgstr ""
+
+#: MasterData/view/master-data/index/index.phtml:12
+msgid ""
+"Besides the server name a Server has some further parameters (relevant for "
+"Connect:Direct): \"node name\" and \"virtual node name\"."
+msgstr ""
+"Ein Server hat neben dem Servernamen einige weitere (für Connect:Direct-"
+"Verbindungen relevante) Parameter: \"Knotenname\" und \"virtueller Knotenname"
+"\"."
+
+#: MasterData/view/master-data/index/index.phtml:13
+msgid "They can be configuren via the server master data form."
+msgstr ""
+"Diese können mit Hilfe des Server-Stammdaten-Formulars konfiguriert werden."
+
+#: MasterData/view/master-data/index/index.phtml:14
+msgid ""
+"Updating of the server data is only permitted, as long as the server has not "
+"yet been being used for Connect:Direct."
+msgstr ""
+"Die Aktualisierung dieser Server-Daten ist nur möglich, solange der Server "
+"noch nicht für Connect:Direct verwendet wird."
+
+#: MasterData/view/master-data/index/index.phtml:15
+msgid "Or formally:"
+msgstr "Oder formal:"
+
+#: MasterData/view/master-data/index/index.phtml:16
+msgid ""
+"As long as no \"node name\" or \"virtual node name\" is set for the server "
+"and the server belongs to no cluster."
+msgstr ""
+"Solange für den Server kein \"Knotenname\" bzw. \"virtueller Knotenname\" "
+"festgelegt ist und der Server zu keinem Cluster gehört."
+
+#: MasterData/view/master-data/index/index.phtml:17
+msgid "to the server master data form"
+msgstr "zum Server-Stammdaten-Formular"
+
+#: MasterData/view/master-data/index/index.phtml:21
+msgid "Cluster"
+msgstr ""
+
+#: MasterData/view/master-data/index/index.phtml:23
+msgid ""
+"To address multiple servers via one name, one needs to define a cluster."
+msgstr ""
+"Um mehrere Server mit einem Name zu adressieren, muss man einen Cluster "
+"definieren."
+
+#: MasterData/view/master-data/index/index.phtml:24
+msgid ""
+"For every cluster a \"virtual node name\" and a list of servers has to be "
+"determined."
+msgstr ""
+"Für jeden Cluster muss ein \"virtueller Knotenname\" und eine Liste von "
+"Servern festgelegt werden."
+
+#: MasterData/view/master-data/index/index.phtml:25
+msgid "To create a cluster please use the cluster master data form."
+msgstr ""
+"Zum Anlegen eines Clusters verwenden Sie bitte das Cluster-Stammdaten-"
+"Formular."
+
+#: MasterData/view/master-data/index/index.phtml:26
+msgid "To the serves of a new cluster applies also:"
+msgstr "Auch für die Server eines neu zu definierenden Clusters gilt:"
+
+#: MasterData/view/master-data/index/index.phtml:27
+msgid ""
+"Only those servers can be chosen, that have not yet been being in use for "
+"Connect:rirect."
+msgstr ""
+"Es können nur solche ausgewählt werden, die noch nicht für Connect:Direct in "
+"Verwendung sind."
+
+#: MasterData/view/master-data/index/index.phtml:28
+msgid "to the cluster master data form"
+msgstr "zum Cluster-Stammdaten-Formular"
 
 #: MasterData/view/partials/fieldgroup.phtml:14
 #: Order/view/partials/fieldgroup.phtml:14
@@ -995,6 +1080,11 @@ msgstr "Endpoint"
 msgid "source"
 msgstr "Quellsystem"
 
+#: Order/view/partials/list/summary.phtml:113
+#: Order/view/partials/list/summary.phtml:129
+msgid "server"
+msgstr "Server"
+
 #: Order/view/partials/list/summary.phtml:121
 #: Order/view/partials/start/cd.phtml:31 Order/view/partials/start/cd.phtml:35
 #: Order/view/partials/start/ftgw.phtml:27
@@ -1181,6 +1271,9 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "cluster"
+#~ msgstr "Cluster"
 
 #~ msgid "(only for fixed blocking)"
 #~ msgstr "(nur bei fester Blockung)"
