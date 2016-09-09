@@ -109,7 +109,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'type' => 'textarea',
                 'name' => 'comment',
                 'options' => [
-                    'label' => _('comment'),
+                    'label' => null,
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
