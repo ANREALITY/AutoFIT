@@ -177,7 +177,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *
      * @param IncludeParameterSet $includeParameterSet
      */
-    public function setIncludeParameterSet($includeParameterSet)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
     }
@@ -195,7 +195,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *
      * @param ProtocolSet $protocolSet
      */
-    public function setProtocolSet($protocolSet)
+    public function setProtocolSet(ProtocolSet $protocolSet)
     {
         $this->protocolSet = $protocolSet;
     }
