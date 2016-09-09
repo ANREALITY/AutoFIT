@@ -16,6 +16,7 @@ $(document).ready(function() {
 	fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
+	infoBoxCrontabSource = $('#fieldgroup-specific-endpoint-source .crontab-hint');
 	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
 });
 $(document).ready(function() {
@@ -46,6 +47,7 @@ function toggleFieldServerSource(value) {
 			fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 			fieldServiceAddressSourceToggle.trigger('change');
 			fieldTransmissionInterval.parent().fadeIn('slow');
+			infoBoxCrontabSource.fadeIn('slow');
 		}
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
@@ -62,6 +64,7 @@ function toggleFieldServerSource(value) {
 			fieldServiceAddressSourceToggle.parent().fadeOut('slow');
 			fieldTransmissionInterval.val('');
 			fieldTransmissionInterval.parent().fadeOut('slow');
+			infoBoxCrontabSource.fadeOut('slow');
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
@@ -95,6 +98,7 @@ function toggleFieldServerSource(value) {
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
 			fieldTransmissionInterval.val('');
 			fieldTransmissionInterval.parent().fadeOut('slow');
+			infoBoxCrontabSource.fadeOut('slow');
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
