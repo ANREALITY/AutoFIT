@@ -10,6 +10,7 @@ $(document).ready(function() {
 	fieldTheExternalServerTarget = $('#fieldgroup-basic-endpoint-target .input-external-server');
 	fieldClusterIdTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-id');
 	fieldClusterVirtualNodeNameTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-virtual-node-name');
+	infoBoxClusterTarget = $('#fieldgroup-specific-endpoint-target .cluster-hint');
 	fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
 });
@@ -43,6 +44,7 @@ function toggleFieldServerTarget(value) {
 		fieldClusterIdTarget.val('');
 		fieldClusterVirtualNodeNameTarget.val('');
 		fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
+		infoBoxClusterTarget.fadeOut('slow');
 		fieldEndpointClusterConfigIdTarget.val('');
 		fieldEndpointClusterConfigDnsAddressTarget.val('');
 		fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
@@ -68,6 +70,7 @@ function toggleFieldServerTarget(value) {
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
 			fieldClusterVirtualNodeNameTarget.parent().fadeIn('slow');
+			infoBoxClusterTarget.fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeIn('slow');
 		}
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
@@ -75,6 +78,7 @@ function toggleFieldServerTarget(value) {
 			fieldClusterIdTarget.val('');
 			fieldClusterVirtualNodeNameTarget.val('');
 			fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
+			infoBoxClusterTargetinfoBoxClusterTarget
 			fieldEndpointClusterConfigIdTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');

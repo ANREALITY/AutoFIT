@@ -12,6 +12,7 @@ $(document).ready(function() {
 	fieldTheExternalServerSource = $('#fieldgroup-basic-endpoint-source .input-external-server');
 	fieldClusterIdSource = $('#fieldgroup-specific-endpoint-source .field-cluster-id');
 	fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
+	infoBoxClusterSource = $('#fieldgroup-specific-endpoint-source .cluster-hint');
 	fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
@@ -48,6 +49,7 @@ function toggleFieldServerSource(value) {
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
 		fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
+		infoBoxClusterSource.fadeOut('slow');
 		fieldEndpointClusterConfigIdSource.val('');
 		fieldEndpointClusterConfigDnsAddressSource.val('');
 		fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
@@ -77,6 +79,7 @@ function toggleFieldServerSource(value) {
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldClusterVirtualNodeNameSource.parent().fadeIn('slow');
+			infoBoxClusterSource.fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeIn('slow');
 			fieldTransmissionType.parent().parent().fadeIn('slow');
 		}
@@ -85,6 +88,7 @@ function toggleFieldServerSource(value) {
 			fieldClusterIdSource.val('');
 			fieldClusterVirtualNodeNameSource.val('');
 			fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
+			infoBoxClusterSource.fadeOut('slow');
 			fieldEndpointClusterConfigIdSource.val('');
 			fieldEndpointClusterConfigDnsAddressSource.val('');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
