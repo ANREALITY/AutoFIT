@@ -1,0 +1,34 @@
+<?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
+$fieldgroupName = 'specific-endpoint-source';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-source';
+$fieldgroupTitle = $this->translate('Source - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('type')),
+    $this->formRow($endpointSourceFieldset->get('username')),
+    $this->formRow($endpointSourceFieldset->get('folder')),
+    $this->formRow($endpointSourceFieldset->get('dns_address')),
+    $this->formRow($endpointSourceFieldset->get('ip')),
+    $this->formRow($endpointSourceFieldset->get('port')),
+    $this->formRow($endpointSourceFieldset->get('transmission_type')),
+    $this->formRow($endpointSourceFieldset->get('include_parameter_set')
+        ->get('include_parameters')),
+    '<div class="form-field-wrapper col-md-12 add-button-container">' . $this->formRow(
+        $endpointSourceFieldset->get('include_parameter_set')
+            ->get('add_include_parameter')) . '</div>',
+    '<fieldset class="col-md-12">' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocol_set')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+         $this->formMultiCheckbox($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
+    '</fieldset>',
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>

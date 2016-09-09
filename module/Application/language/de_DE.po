@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 11:43+0200\n"
-"PO-Revision-Date: 2016-09-09 11:43+0200\n"
+"POT-Creation-Date: 2016-09-09 15:08+0200\n"
+"PO-Revision-Date: 2016-09-09 15:08+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -48,6 +48,7 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdAs400Fieldset.php:27
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:28
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:27
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:28
 msgid "application user"
 msgstr "Verfahrensuser"
 
@@ -56,6 +57,7 @@ msgid "LinuxUnix"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:44
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:44
 #: Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
 #: Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:23
@@ -154,6 +156,23 @@ msgstr "intern"
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:81
 msgid "external"
 msgstr "extern"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:16
+msgid "ProtocolServer"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:58
+#: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
+msgid "DNS address"
+msgstr "DNS-Adresse"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:73
+msgid "IP"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:88
+msgid "port"
+msgstr "Port"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:23
 msgid "Self-Service"
@@ -289,6 +308,7 @@ msgstr ""
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
 #: Order/src/Order/Form/Fieldset/EndpointCdWindowsSourceFieldset.php:26
+#: Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:26
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:65
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:47
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
@@ -348,6 +368,14 @@ msgstr ""
 msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
 
+#: Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:14
+msgid "Source - ProtocolServer"
+msgstr ""
+
+#: Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerTargetFieldset.php:13
+msgid "Target - ProtocolServer"
+msgstr ""
+
 #: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:13
 msgid "Source - Self-Service"
 msgstr "Quellsystem - Self-Service"
@@ -355,10 +383,6 @@ msgstr "Quellsystem - Self-Service"
 #: Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceTargetFieldset.php:13
 msgid "Target - Self-Service"
 msgstr "Zielsystem - Self-Service"
-
-#: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
-msgid "DNS address"
-msgstr "DNS-Adresse"
 
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:36
 #: Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:48
@@ -880,103 +904,6 @@ msgid "During the synchronization all writing operations are locked."
 msgstr ""
 "Während der Synchronisation sind alle schreibenden Operationen gesperrt."
 
-#: Order/view/partials/crontab-info.phtml:4
-msgid "Crontab for transmission interval"
-msgstr "Crontab für das Sendeintervall"
-
-#: Order/view/partials/crontab-info.phtml:9
-msgid "For the field \"transmission interval\" is"
-msgstr "Für das Feld \"Sendeintervall\" ist"
-
-#: Order/view/partials/crontab-info.phtml:9
-#, php-format
-msgid "%s minutes"
-msgstr "%s Minuten"
-
-#: Order/view/partials/crontab-info.phtml:10
-msgid ""
-"If you need an alternative transmission interval, please set it up according "
-"to the crontab rules"
-msgstr ""
-"Benötigen Sie ein abweichendes Sendeintervall, definieren Sie es bitte nach "
-"den Crontab-Regeln"
-
-#: Order/view/partials/crontab-info.phtml:14
-#: Order/view/partials/crontab-info.phtml:22
-msgid "MINUTE"
-msgstr "MINUTE"
-
-#: Order/view/partials/crontab-info.phtml:15
-#: Order/view/partials/crontab-info.phtml:26
-msgid "HOUR"
-msgstr "STUNDE"
-
-#: Order/view/partials/crontab-info.phtml:16
-#: Order/view/partials/crontab-info.phtml:30
-msgid "DOM"
-msgstr "TDM"
-
-#: Order/view/partials/crontab-info.phtml:17
-#: Order/view/partials/crontab-info.phtml:34
-msgid "MONTH"
-msgstr "MONAT"
-
-#: Order/view/partials/crontab-info.phtml:18
-#: Order/view/partials/crontab-info.phtml:38
-msgid "DOW"
-msgstr "WT"
-
-#: Order/view/partials/crontab-info.phtml:23
-msgid "Minutes within the hour (0-59)"
-msgstr "Minuten innerhalb einer Stunde (0-59)"
-
-#: Order/view/partials/crontab-info.phtml:27
-msgid "The hour of the day (0-23)"
-msgstr "Die Stunde des Tages (0-23)"
-
-#: Order/view/partials/crontab-info.phtml:31
-msgid "The day of the month (1-31)"
-msgstr "Der Tag des Monats (1-31)"
-
-#: Order/view/partials/crontab-info.phtml:35
-msgid "The month (1-12)"
-msgstr "Der Monat (1-12)"
-
-#: Order/view/partials/crontab-info.phtml:39
-msgid "The day of the week (0-7) where 0 and 7 are Sunday."
-msgstr "Der Wochentag (0-7), wobei 0 und 7 für Sonntag stehen."
-
-#: Order/view/partials/crontab-info.phtml:43
-msgid "Examples"
-msgstr "Beispiele"
-
-#: Order/view/partials/crontab-info.phtml:48
-msgid "every fifteen minutes (perhaps at :07, :22, :37, :52)"
-msgstr "alle fünfzehn Minuten (vielleicht um :07, :22, :37, :52)"
-
-#: Order/view/partials/crontab-info.phtml:52
-msgid ""
-"every ten minutes in the first half of every hour (three times, perhaps "
-"at :04, :14, :24)"
-msgstr ""
-"alle zehn Minuten in der ersten Hälfte jeder Stunde (dreimal: vielleicht "
-"um :04, :14, :24)"
-
-#: Order/view/partials/crontab-info.phtml:56
-msgid ""
-"once every two hours every weekday (perhaps at 10:38 AM, 12:38 PM, 2:38 PM, "
-"4:38 PM)"
-msgstr ""
-"einmal alle zwei Stunden werktags (vielleicht um 10:38, 12:38, 14:38, 18:38)"
-
-#: Order/view/partials/crontab-info.phtml:60
-msgid "once a day on the 1st and 15th of every month except December"
-msgstr "einmal am Tag am 1. und 15. des  Monats außer Dezember"
-
-#: Order/view/partials/crontab-info.phtml:64
-msgid "You can generate a valid value with a converting tool like"
-msgstr "Sie können einen gültigen Wert mit einem Umrechnungstool generieren"
-
 #: Order/view/partials/fieldgroups/billing.phtml:4
 #: Order/view/partials/order-parts/billing.phtml:13
 msgid "Billing"
@@ -1029,6 +956,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdzos-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:12
@@ -1048,6 +976,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindows-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-target.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdzos-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
 #: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:12
@@ -1064,6 +993,103 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 #: Order/view/partials/fieldgroups/logical-connection.phtml:4
 msgid "Logical connection"
 msgstr "Logische Verbindung"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:4
+msgid "Crontab for transmission interval"
+msgstr "Crontab für das Sendeintervall"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:7
+msgid "For the field \"transmission interval\" is"
+msgstr "Für das Feld \"Sendeintervall\" ist"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:7
+#, php-format
+msgid "%s minutes"
+msgstr "%s Minuten"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:8
+msgid ""
+"If you need an alternative transmission interval, please set it up according "
+"to the crontab rules"
+msgstr ""
+"Benötigen Sie ein abweichendes Sendeintervall, definieren Sie es bitte nach "
+"den Crontab-Regeln"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:11
+#: Order/view/partials/info-boxes/crontab-info.phtml:19
+msgid "MINUTE"
+msgstr "MINUTE"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:12
+#: Order/view/partials/info-boxes/crontab-info.phtml:23
+msgid "HOUR"
+msgstr "STUNDE"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:13
+#: Order/view/partials/info-boxes/crontab-info.phtml:27
+msgid "DOM"
+msgstr "TDM"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:14
+#: Order/view/partials/info-boxes/crontab-info.phtml:31
+msgid "MONTH"
+msgstr "MONAT"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:15
+#: Order/view/partials/info-boxes/crontab-info.phtml:35
+msgid "DOW"
+msgstr "WT"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:20
+msgid "Minutes within the hour (0-59)"
+msgstr "Minuten innerhalb einer Stunde (0-59)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:24
+msgid "The hour of the day (0-23)"
+msgstr "Die Stunde des Tages (0-23)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:28
+msgid "The day of the month (1-31)"
+msgstr "Der Tag des Monats (1-31)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:32
+msgid "The month (1-12)"
+msgstr "Der Monat (1-12)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:36
+msgid "The day of the week (0-7) where 0 and 7 are Sunday."
+msgstr "Der Wochentag (0-7), wobei 0 und 7 für Sonntag stehen."
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:39
+msgid "Examples"
+msgstr "Beispiele"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:43
+msgid "every fifteen minutes (perhaps at :07, :22, :37, :52)"
+msgstr "alle fünfzehn Minuten (vielleicht um :07, :22, :37, :52)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:47
+msgid ""
+"every ten minutes in the first half of every hour (three times, perhaps "
+"at :04, :14, :24)"
+msgstr ""
+"alle zehn Minuten in der ersten Hälfte jeder Stunde (dreimal: vielleicht "
+"um :04, :14, :24)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:51
+msgid ""
+"once every two hours every weekday (perhaps at 10:38 AM, 12:38 PM, 2:38 PM, "
+"4:38 PM)"
+msgstr ""
+"einmal alle zwei Stunden werktags (vielleicht um 10:38, 12:38, 14:38, 18:38)"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:55
+msgid "once a day on the 1st and 15th of every month except December"
+msgstr "einmal am Tag am 1. und 15. des  Monats außer Dezember"
+
+#: Order/view/partials/info-boxes/crontab-info.phtml:58
+msgid "You can generate a valid value with a converting tool like"
+msgstr "Sie können einen gültigen Wert mit einem Umrechnungstool generieren"
 
 #: Order/view/partials/info-boxes/hint-cluster.phtml:8
 #, php-format
@@ -1105,8 +1131,8 @@ msgstr "Endpoint"
 
 #: Order/view/partials/list/summary.phtml:105
 #: Order/view/partials/start/cd.phtml:18 Order/view/partials/start/cd.phtml:22
-#: Order/view/partials/start/ftgw.phtml:14
-#: Order/view/partials/start/ftgw.phtml:18
+#: Order/view/partials/start/ftgw.phtml:15
+#: Order/view/partials/start/ftgw.phtml:19
 msgid "source"
 msgstr "Quellsystem"
 
@@ -1117,8 +1143,8 @@ msgstr "Server"
 
 #: Order/view/partials/list/summary.phtml:121
 #: Order/view/partials/start/cd.phtml:31 Order/view/partials/start/cd.phtml:35
-#: Order/view/partials/start/ftgw.phtml:27
-#: Order/view/partials/start/ftgw.phtml:31
+#: Order/view/partials/start/ftgw.phtml:28
+#: Order/view/partials/start/ftgw.phtml:32
 msgid "target"
 msgstr "Zielsystem"
 
@@ -1239,13 +1265,14 @@ msgstr "erstellt am"
 msgid "status"
 msgstr "Status"
 
-#: Order/view/partials/start/cd.phtml:13 Order/view/partials/start/ftgw.phtml:9
+#: Order/view/partials/start/cd.phtml:13
+#: Order/view/partials/start/ftgw.phtml:10
 #, php-format
 msgid "You chose file transfer interface via %s."
 msgstr "Sie haben sich für eine Filetransfer-Schnittstelle per %s entschieden."
 
 #: Order/view/partials/start/cd.phtml:14
-#: Order/view/partials/start/ftgw.phtml:10
+#: Order/view/partials/start/ftgw.phtml:11
 msgid ""
 "Please choose now the operating system plattform of the data source and of "
 "the file transfer target:"
@@ -1254,12 +1281,12 @@ msgstr ""
 "Filetransfer-Ziels aus:"
 
 #: Order/view/partials/start/cd.phtml:45
-#: Order/view/partials/start/ftgw.phtml:41
+#: Order/view/partials/start/ftgw.phtml:42
 msgid "to the order"
 msgstr "zur Bestellung"
 
 #: Order/view/partials/start/cd.phtml:50
-#: Order/view/partials/start/ftgw.phtml:46
+#: Order/view/partials/start/ftgw.phtml:47
 #, php-format
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
@@ -1297,7 +1324,11 @@ msgstr ""
 "einem Server bzw. Cluster-Server (für den Abbau aller auf einem Knoten "
 "laufenden SST / Stoppen von C:D)"
 
-#: Order/view/partials/start/ftgw.phtml:48
+#: Order/view/partials/start/ftgw.phtml:5
+msgid "Protocol Server"
+msgstr "Protokoll-Server"
+
+#: Order/view/partials/start/ftgw.phtml:49
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"

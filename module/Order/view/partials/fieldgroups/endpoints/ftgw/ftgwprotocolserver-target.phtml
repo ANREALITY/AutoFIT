@@ -1,0 +1,28 @@
+<?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-target';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
+    $this->formRow($endpointTargetFieldset->get('username')),
+    $this->formRow($endpointTargetFieldset->get('folder')),
+    $this->formRow($endpointTargetFieldset->get('dns_address')),
+    $this->formRow($endpointTargetFieldset->get('ip')),
+    $this->formRow($endpointTargetFieldset->get('port')),
+    '<fieldset>' . '<legend>' . $this->translate($endpointTargetFieldset->get('protocol_set')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+         $this->formMultiCheckbox($endpointTargetFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
+    '</fieldset>',
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>

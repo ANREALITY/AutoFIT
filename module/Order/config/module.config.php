@@ -298,6 +298,8 @@ return [
             'Order\Form\Fieldset\EndpointCdWindowsSource' => false,
             'Order\Form\Fieldset\EndpointCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointClusterConfig' => false,
+            'Order\Form\Fieldset\EndpointFtgwProtocolServerSource' => false,
+            'Order\Form\Fieldset\EndpointFtgwProtocolServerTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwSelfServiceSource' => false,
             'Order\Form\Fieldset\EndpointFtgwSelfServiceTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwWindowsSource' => false,
