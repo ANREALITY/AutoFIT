@@ -14,7 +14,7 @@ class ProtocolSetFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function __construct($name = null, $options = [])
     {
-        parent::__construct('protocol_set', $options);
+        parent::__construct('protocol_set', ['label' => _('protocols')]);
     }
 
     public function init()

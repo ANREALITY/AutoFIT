@@ -32,7 +32,7 @@ abstract class AbstractEndpointCdZosFieldset extends AbstractEndpointFieldset im
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control field-folder'
+                    'class' => 'form-control field-username'
                 ]
             ]);
     }

@@ -11,7 +11,7 @@ $fieldgroupFormRows = [
     '<fieldset>' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
          $this->formMultiCheckbox($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
-     '</fieldset>',
+    '</fieldset>',
     $this->formRow($endpointSourceFieldset->get('ftgw_username')),
     $this->formRow($endpointSourceFieldset->get('mailbox'))
 ];
