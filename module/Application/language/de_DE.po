@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 10:40+0200\n"
-"PO-Revision-Date: 2016-09-09 10:43+0200\n"
+"POT-Creation-Date: 2016-09-09 11:43+0200\n"
+"PO-Revision-Date: 2016-09-09 11:43+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -881,12 +881,12 @@ msgstr ""
 "Während der Synchronisation sind alle schreibenden Operationen gesperrt."
 
 #: Order/view/partials/crontab-info.phtml:4
-msgid "Contab for transmission interval"
-msgstr "Crontab für das Sendeinterval"
+msgid "Crontab for transmission interval"
+msgstr "Crontab für das Sendeintervall"
 
 #: Order/view/partials/crontab-info.phtml:9
 msgid "For the field \"transmission interval\" is"
-msgstr "Für das Feld \"Sendeinterval\" ist"
+msgstr "Für das Feld \"Sendeintervall\" ist"
 
 #: Order/view/partials/crontab-info.phtml:9
 #, php-format
@@ -898,7 +898,7 @@ msgid ""
 "If you need an alternative transmission interval, please set it up according "
 "to the crontab rules"
 msgstr ""
-"Benötigen Sie ein abweichendes Sendeinterval, definieren Sie es bitte nach "
+"Benötigen Sie ein abweichendes Sendeintervall, definieren Sie es bitte nach "
 "den Crontab-Regeln"
 
 #: Order/view/partials/crontab-info.phtml:14
@@ -1301,6 +1301,9 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "Contab for transmission interval"
+#~ msgstr "Crontab für das Sendeintervall"
 
 #~ msgid "New Cluster"
 #~ msgstr "Neuer Cluster"

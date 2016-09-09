@@ -45,6 +45,7 @@ function toggleFieldServerSource(value) {
 			fieldTransmissionType.parent().parent().fadeIn('slow');
 			fieldServiceAddressSourceToggle.parent().fadeIn('slow');
 			fieldServiceAddressSourceToggle.trigger('change');
+			fieldTransmissionInterval.parent().fadeIn('slow');
 		}
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
