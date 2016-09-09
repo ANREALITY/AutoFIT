@@ -10,16 +10,29 @@ return [
                         'controller' => 'MasterData\Controller\Index',
                         'action' => 'index'
                     ]
-                ]
-            ],
-            'edit-server' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => [
-                    'route' => '/master-data/server/edit',
-                    'defaults' => [
-                        'controller' => 'MasterData\Controller\Server',
-                        'action' => 'edit'
-                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'edit-server' => [
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/server/edit',
+                            'defaults' => [
+                                'controller' => 'MasterData\Controller\Server',
+                                'action' => 'edit'
+                            ]
+                        ]
+                    ],
+                    'create-cluster' => [
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/cluster/create',
+                            'defaults' => [
+                                'controller' => 'MasterData\Controller\Cluster',
+                                'action' => 'create'
+                            ]
+                        ]
+                    ],
                 ]
             ],
             'provide-servers-not-in-cd-use' => [
@@ -29,16 +42,6 @@ return [
                     'defaults' => [
                         'controller' => 'Order\Controller\Ajax',
                         'action' => 'provideServersNotInCdUse'
-                    ]
-                ]
-            ],
-            'create-cluster' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => [
-                    'route' => '/master-data/cluster/create',
-                    'defaults' => [
-                        'controller' => 'MasterData\Controller\Cluster',
-                        'action' => 'create'
                     ]
                 ]
             ],
