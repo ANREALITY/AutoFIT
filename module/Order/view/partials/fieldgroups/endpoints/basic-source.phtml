@@ -9,6 +9,7 @@ $fieldgroupFormRows = [
     $this->formRow($applicationForSourceFieldset->get('technical_short_name')),
     $this->formRow($customerForSourceFieldset->get('name')),
     $this->formRow($endpointServerConfigForSourceFieldset->get('server')->get('name')),
+    $this->partial('/partials/info-boxes/hint-server'),
     $this->formRow($endpointServerConfigForSourceFieldset->get('dns_address')),
     $this->formRow($externalServerForSourceFieldset->get('name'))
 ];

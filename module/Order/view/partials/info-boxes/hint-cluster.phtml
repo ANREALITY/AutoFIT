@@ -1,0 +1,16 @@
+<div class="col-md-12 info-box-container cluster-hint">
+    <div class="info-box">
+        <div class="header">
+            <span><?php echo $this->translate('New cluster'); ?></span>
+        </div>
+        <div class="body"><p><?php
+            echo sprintf($this->translate(
+                'You can choose an already defined cluster from the list or create a new one with the %sclusetr master data form%s.'),
+                '<a href="' . $this->url('master-data/create-cluster') . '">', '</a>'
+            );
+            ?>
+            <?php echo $this->translate('To do this please open the cluster form in a new window/tab, create a cluster, and come back to the order form.'); ?>
+            <?php echo $this->translate('The new cluster is then immediately available.'); ?>
+        </div>
+    </div>
+</div>

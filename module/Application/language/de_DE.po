@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 17:48+0200\n"
-"PO-Revision-Date: 2016-09-07 17:49+0200\n"
+"POT-Creation-Date: 2016-09-09 10:40+0200\n"
+"PO-Revision-Date: 2016-09-09 10:43+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -193,10 +193,6 @@ msgstr "Change-Nummer"
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:23
 msgid "application"
 msgstr "Verfahren"
-
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:112
-msgid "comment"
-msgstr "Kommentar"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:135
 msgid ""
@@ -772,7 +768,8 @@ msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: MasterData/view/partials/fieldgroups/cluster.phtml:4
-msgid "New Cluster"
+#: Order/view/partials/info-boxes/hint-cluster.phtml:4
+msgid "New cluster"
 msgstr "Neuer Cluster"
 
 #: MasterData/view/partials/fieldgroups/server.phtml:4
@@ -1068,6 +1065,39 @@ msgstr "Zielsystem (spezifische Einstellungen)"
 msgid "Logical connection"
 msgstr "Logische Verbindung"
 
+#: Order/view/partials/info-boxes/hint-cluster.phtml:8
+#, php-format
+msgid ""
+"You can choose an already defined cluster from the list or create a new one "
+"with the %sclusetr master data form%s."
+msgstr ""
+"Sie können einen bereits definierten Cluster verwenden oder mit Hilfe des "
+"%sStammdaten-Cluster-Formulars%s einen neuen erstellen."
+
+#: Order/view/partials/info-boxes/hint-cluster.phtml:12
+msgid ""
+"To do this please open the cluster form in a new window/tab, create a "
+"cluster, and come back to the order form."
+msgstr ""
+"Dazu öffnen Sie bitte das Cluster-Formular in einem neuen Fenster/Tab, legen "
+"einen Cluster an und wechseln zurück zu dem Bestellformular."
+
+#: Order/view/partials/info-boxes/hint-cluster.phtml:13
+msgid "The new cluster is then immediately available."
+msgstr "Der neue Cluster ist dann sofort verfügbar."
+
+#: Order/view/partials/info-boxes/hint-server.phtml:5
+msgid "Servers' virtual node name"
+msgstr "Virtueller Knotename des Servers"
+
+#: Order/view/partials/info-boxes/hint-server.phtml:8
+#, php-format
+msgid ""
+"To set the virtual node name please use the %sserver master data form%s."
+msgstr ""
+"Um den virtuellen Knotennamen des Servers zu setzen, nutzen Sie bitte das "
+"%sServer-Stammdaten-Formular%s."
+
 #: Order/view/partials/list/summary.phtml:105
 #: Order/view/partials/list/summary.phtml:121
 msgid "endpoint"
@@ -1271,6 +1301,15 @@ msgstr ""
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "New Cluster"
+#~ msgstr "Neuer Cluster"
+
+#~ msgid "Servers master data"
+#~ msgstr "Server-Stammdaten"
+
+#~ msgid "comment"
+#~ msgstr "Kommentar"
 
 #~ msgid "cluster"
 #~ msgstr "Cluster"
