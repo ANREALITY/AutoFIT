@@ -16,6 +16,7 @@ $(document).ready(function() {
 	fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
 	fieldEndpointSourceApplicationNumber = $('#fieldgroup-basic-endpoint-source .field-application-number');
 	fieldEndpointSourceServerName = $('#fieldgroup-basic-endpoint-source .input-server');
+	infoBoxServerSource = $('#fieldgroup-basic-endpoint-source .server-hint');
 	fieldEndpointSourceEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldEndpointSourceExternalServerName = $('#fieldgroup-basic-endpoint-source .input-external-server');
 });
@@ -25,6 +26,7 @@ $(document).ready(function() {
 	fieldEndpointTargetCustomerName = $('#fieldgroup-basic-endpoint-target .field-customer-name');
 	fieldEndpointTargetApplicationNumber = $('#fieldgroup-basic-endpoint-target .field-application-number');
 	fieldEndpointTargetServerName = $('#fieldgroup-basic-endpoint-target .input-server');
+	infoBoxServerTarget = $('#fieldgroup-basic-endpoint-target .server-hint');
 	fieldEndpointTargetEndpointServerConfigDnsAddress = $('#fieldgroup-basic-endpoint-target .field-endpoint-server-config-dns-address');
 	fieldEndpointTargetExternalServerName = $('#fieldgroup-basic-endpoint-target .input-external-server');
 });
@@ -88,6 +90,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceExternalServerName.val('');
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.parent().fadeIn('slow');
+		infoBoxServerSource.fadeIn('slow');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		enableEndpointSpecificForExternalSource();
@@ -98,6 +101,7 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointSourceServerName.val('');
 		fieldEndpointSourceServerName.parent().fadeOut('slow');
+		infoBoxServerSource.fadeOut('slow');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.val('');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
@@ -128,6 +132,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetExternalServerName.val('');
 		fieldEndpointTargetExternalServerName.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.parent().fadeIn('slow');
+		infoBoxServerTarget.fadeIn('slow');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
 		global.targetServerPlace = SERVER_PLACE_INTERNAL;
@@ -136,6 +141,7 @@ function toggleEndpointTargetDependentFields(value) {
 		fieldEndpointTargetApplicationNumber.parent().fadeOut('slow');
 		fieldEndpointTargetServerName.val('');
 		fieldEndpointTargetServerName.parent().fadeOut('slow');
+		infoBoxServerTarget.fadeOut('slow');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.val('');
 		fieldEndpointTargetEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointTargetExternalServerName.parent().fadeIn('slow');
