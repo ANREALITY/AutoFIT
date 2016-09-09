@@ -20,6 +20,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     const TYPE_FTGW_SELF_SERVICE = 'FtgwSelfService';
 
+    const TYPE_FTGW_PROTOCOL_SERVER = 'FtgwProtocolServer';
+
     const ROLE_SOURCE = 'source';
 
     const ROLE_TARGET = 'target';
