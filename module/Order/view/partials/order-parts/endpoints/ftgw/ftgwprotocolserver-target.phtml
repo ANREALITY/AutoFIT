@@ -1,0 +1,84 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwProtocolServer;
+use DbSystel\DataObject\IncludeParameterSet;
+/**
+ *
+ * @var EndpointFtgwProtocolServer $dataObject
+ */
+$dataObject;
+?>
+<?php
+// include parameters
+$includeParametersOutput = '-';
+if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
+    $includeParametersOutput = '<ul class="include-parameters">';
+    $index = 0;
+    foreach ($dataObject->getIncludeParameterSet()->getIncludeParameters() as $includeParameter) {
+        $includeParametersOutput .= <<<INCLUDE_PARAMETER
+<li>
+    <span>{$includeParameter->getExpression()}<span>
+</li>
+INCLUDE_PARAMETER;
+    }
+    $includeParametersOutput .= '</ul>';
+}
+?>
+<?php
+// protocols
+$protocolsOutput = '-';
+if ($dataObject->getProtocolSet() && $dataObject->getProtocolSet()->getProtocols()) {
+    $protocolsOutput = '<ul class="protocols">';
+    $index = 0;
+    foreach ($dataObject->getProtocolSet()->getProtocols() as $protocol) {
+        $protocolsOutput .= <<<SERVER
+<li>
+    <span>{$protocol->getName()}<span>
+</li>
+SERVER;
+    }
+    $protocolsOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'specific-target';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Target - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('username'),
+        'value' => $dataObject->getUsername() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('DNS address'),
+        'value' => $dataObject->getDnsAddress() ?: '-'
+    ],
+    [
+        'label' => $this->translate('IP'),
+        'value' => $dataObject->getIp() ?: '-'
+    ],
+    [
+        'label' => $this->translate('port'),
+        'value' => $dataObject->getPort() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission type'),
+        'value' => $dataObject->getTransmissionType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('protocols'),
+        'value' => $protocolsOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
