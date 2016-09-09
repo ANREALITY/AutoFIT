@@ -209,15 +209,6 @@ form .checkboxdummy {
 form .protocol-field {
   margin: 0 0 0 15px;
 }
-form .fieldgroup-container .appendix-container {
-  float: left;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 15px;
-  position: relative;
-}
 /* the checkbox labels */
 form #fieldgroup-logical_connection .notification-checkbox {
   margin-top: 20px;

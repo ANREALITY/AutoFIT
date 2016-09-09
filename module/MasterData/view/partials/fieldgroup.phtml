@@ -13,11 +13,6 @@
             <?php if($emptyView) : ?>
             <span><?php echo $this->translate('No settings needed for this area.'); ?></span>
             <?php endif; ?>
-            <?php if(!empty($appendixPartial)) : ?>
-                <div class="appendix-container">
-                <?php echo $this->partial($appendixPartial); ?>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>
