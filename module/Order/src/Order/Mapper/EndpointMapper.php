@@ -26,6 +26,7 @@ use DbSystel\DataObject\IncludeParameterSet;
 use DbSystel\DataObject\ProtocolSet;
 use DbSystel\DataObject\FileParameterSet;
 use DbSystel\DataObject\AccessConfigSet;
+use DbSystel\DataObject\EndpointFtgwProtocolServer;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -263,6 +264,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwSelfService();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
                     $this->prototype = new EndpointFtgwWindows();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER) === 0) {
+                    $this->prototype = new EndpointFtgwProtocolServer();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -668,6 +671,64 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_self_service');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                $dataObject->setId($newEndpointId);
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+                // ...
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwProtocolServer $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwProtocolServer
+     * @throws \Exception
+     */
+    protected function saveFtgwProtocolServer(EndpointFtgwProtocolServer $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
+        $data['dns_address'] = $dataObject->getDnsAddress();
+        $data['ip'] = $dataObject->getIp();
+        $data['port'] = $dataObject->getPort();
+        $data['transmission_type'] = $dataObject->getTransmissionType();
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        $newProtocolSet = $this->protocolSetMapper->save($dataObject->getProtocolSet());
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+        $data['protocol_set_id'] = $newProtocolSet->getId();
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_protocol_server');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_protocol_server');
             $action->where(['endpoint_id' => $data['endpoint_id']]);
             unset($data['endpoint_id']);
             $action->set($data);
