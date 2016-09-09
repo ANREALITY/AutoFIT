@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 15:08+0200\n"
-"PO-Revision-Date: 2016-09-09 15:08+0200\n"
+"POT-Creation-Date: 2016-09-09 17:31+0200\n"
+"PO-Revision-Date: 2016-09-09 17:31+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -68,6 +68,8 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:26
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:68
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:51
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
 msgid "folder"
 msgstr "Verzeichnis"
 
@@ -132,6 +134,8 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:61
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
 msgid "username"
 msgstr "Benutzername"
 
@@ -163,14 +167,20 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:58
 #: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:73
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:60
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:60
 msgid "IP"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:88
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:64
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
 msgid "port"
 msgstr "Port"
 
@@ -312,6 +322,8 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:65
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:47
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:68
 msgid "transmission type"
 msgstr "Übertragungsart"
 
@@ -432,6 +444,7 @@ msgstr "Ausdruck"
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:51
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:72
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 msgid "include parameters"
 msgstr "Include-Parameter"
@@ -457,7 +470,10 @@ msgstr "fehlgeschlagen"
 msgid "Secure Plus"
 msgstr ""
 
+#: Order/src/Order/Form/Fieldset/ProtocolSetFieldset.php:17
 #: Order/src/Order/Form/Fieldset/ProtocolSetFieldset.php:27
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:76
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:72
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
 msgid "protocols"
@@ -965,6 +981,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:36
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:57
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:18
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:45
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:29
 msgid "Source - specific settings"
@@ -985,6 +1002,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:19
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:40
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:54
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:45
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 msgid "Target - specific settings"
