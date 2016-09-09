@@ -865,6 +865,20 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 $protocolExists = array_key_exists('endpoint_ftgw_self_service_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_self_service_protocol_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $ftgwProtocolServerIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_protocol_server_include_parameter_set__', 'id',
+            'endpoint__', new IncludeParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
+                $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_include_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
+        $ftgwProtocolServerProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_protocol_server_protocol_set__', 'id',
+            'endpoint__', new ProtocolSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
+                $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -891,6 +905,10 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 'setAccessConfigSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerIncludeParameterSetDataObjects,
+                'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerProtocolSetDataObjects,
+                'setProtocolSet', 'getId');
         }
 
         return $dataObjects;

@@ -494,7 +494,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_windows_include_parameter' . '__' . 'expression' => 'expression',
                 'endpoint_ftgw_windows_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
             ], Select::JOIN_LEFT);
-
         $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
             [
                 'endpoint_ftgw_self_service' . '__' . 'endpoint_id' => 'endpoint_id',
@@ -513,7 +512,38 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_self_service_protocol' . '__' . 'name' => 'name',
                 'endpoint_ftgw_self_service_protocol' . '__' . 'protocol_set_id' => 'protocol_set_id'
             ], Select::JOIN_LEFT);
-
+        $select->join('endpoint_ftgw_protocol_server', 'endpoint_ftgw_protocol_server.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_protocol_server' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_protocol_server' . '__' . 'username' => 'username',
+                'endpoint_ftgw_protocol_server' . '__' . 'folder' => 'folder',
+                'endpoint_ftgw_protocol_server' . '__' . 'dns_address' => 'dns_address',
+                'endpoint_ftgw_protocol_server' . '__' . 'ip' => 'ip',
+                'endpoint_ftgw_protocol_server' . '__' . 'port' => 'port',
+                'endpoint_ftgw_protocol_server' . '__' . 'transmission_type' => 'transmission_type',
+                'endpoint_ftgw_protocol_server' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id',
+                'endpoint_ftgw_protocol_server' . '__' . 'protocol_set_id' => 'protocol_set_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_protocol_server_include_parameter_set' => 'include_parameter_set'], 'endpoint_ftgw_protocol_server_include_parameter_set.id = endpoint_ftgw_protocol_server.include_parameter_set_id',
+            [
+                'endpoint_ftgw_protocol_server_include_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_protocol_server_include_parameter' => 'include_parameter'], 'endpoint_ftgw_protocol_server_include_parameter.include_parameter_set_id = endpoint_ftgw_protocol_server_include_parameter_set.id',
+            [
+                'endpoint_ftgw_protocol_server_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_ftgw_protocol_server_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_ftgw_protocol_server_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_protocol_server_protocol_set' => 'protocol_set'], 'endpoint_ftgw_protocol_server_protocol_set.id = endpoint_ftgw_protocol_server.protocol_set_id',
+            [
+                'endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_protocol_server_protocol' => 'protocol'], 'endpoint_ftgw_protocol_server_protocol.protocol_set_id = endpoint_ftgw_protocol_server_protocol_set.id',
+            [
+                'endpoint_ftgw_protocol_server_protocol' . '__' . 'id' => 'id',
+                'endpoint_ftgw_protocol_server_protocol' . '__' . 'name' => 'name',
+                'endpoint_ftgw_protocol_server_protocol' . '__' . 'protocol_set_id' => 'protocol_set_id'
+            ], Select::JOIN_LEFT);
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
 
         $statement = $sql->prepareStatementForSqlObject($select);

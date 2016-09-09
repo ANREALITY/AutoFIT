@@ -183,6 +183,10 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
             $ftgwSelfServiceProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_ftgw_self_service_protocol__', null, null, null, null, true);
         }
+        if ($prefix === 'endpoint_ftgw_protocol_server_protocol_set__') {
+            $ftgwProtocolServerProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_protocol_server_protocol__', null, null, null, null, true);
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -190,6 +194,10 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
             // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_ftgw_self_service_protocol_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
+                    'setProtocols', 'getId');
+            }
+            if ($prefix === 'endpoint_ftgw_protocol_server_protocol_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerProtocolDataObjects,
                     'setProtocols', 'getId');
             }
         }
