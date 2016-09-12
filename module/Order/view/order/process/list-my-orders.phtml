@@ -2,6 +2,10 @@
 use DbSystel\DataObject\FileTransferRequest;
 ?>
 
+<h3>
+    <span><?php echo $this->translate('my orders'); ?></span>
+</h3>
+
 <?php
 echo $this->paginationControl(
     $paginator, 'Sliding', 'pagination', []

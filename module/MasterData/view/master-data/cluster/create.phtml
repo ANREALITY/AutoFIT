@@ -4,6 +4,11 @@ use MasterData\Form\ClusterForm;
  * @var ClusterForm $form
  */
 ?>
+
+<h3>
+    <span><?php echo $this->translate('New cluster'); ?></span>
+</h3>
+
 <?php
 $form->prepare();
 echo $this->form()->openTag($form);

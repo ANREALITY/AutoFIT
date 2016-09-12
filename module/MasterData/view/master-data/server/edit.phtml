@@ -4,6 +4,11 @@ use MasterData\Form\ServerForm;
  * @var ServerForm $form
  */
 ?>
+
+<h3>
+    <span><?php echo $this->translate('Server settings'); ?></span>
+</h3>
+
 <?php
 $form->prepare();
 echo $this->form()->openTag($form);
