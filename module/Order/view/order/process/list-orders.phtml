@@ -8,7 +8,7 @@ echo $this->paginationControl(
 );
 ?>
 
-<table class="table table-striped">
+<table class="table table-striped list">
     <tr>
         <th><?php echo $this->translate('request ID'); ?></th>
         <th><?php echo $this->translate('change number'); ?></th>
@@ -36,3 +36,9 @@ echo $this->paginationControl(
     </tr>
     <?php endforeach; ?>
 </table>
+
+<?php
+echo $this->paginationControl(
+    $paginator, 'Sliding', 'pagination', []
+);
+?>
