@@ -260,4 +260,9 @@ class FileTransferRequest extends AbstractDataObject
         $this->user = $user;
     }
 
+    public function exchangeArray()
+    {
+        return get_object_vars($this);
+    }
+
 }

@@ -137,7 +137,8 @@ class ProcessController extends AbstractActionController
         }
 
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
+        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
+        $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return [
@@ -255,7 +256,8 @@ class ProcessController extends AbstractActionController
     public function showOrderAction()
     {
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
+        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
+        $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return new ViewModel([
@@ -269,7 +271,7 @@ class ProcessController extends AbstractActionController
     {
         $userId = $this->IdentityParam('id');
         $page = $this->params()->fromRoute('page');
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
+        $paginator = $this->fileTransferRequestService->findAllWithBuldledData(
             [
                 [
                     'user_id' => $userId
@@ -277,21 +279,21 @@ class ProcessController extends AbstractActionController
             ], null, $page);
 
         return new ViewModel([
-            'fileTransferRequests' => $fileTransferRequests,
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
+            'paginator' => $paginator,
         ]);
     }
 
     public function listOrdersAction()
     {
         $page = $this->params()->fromRoute('page');
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], null, $page);
+        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], null, $page);
 
         return new ViewModel([
-            'fileTransferRequests' => $fileTransferRequests,
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
+            'paginator' => $paginator,
         ]);
     }
 

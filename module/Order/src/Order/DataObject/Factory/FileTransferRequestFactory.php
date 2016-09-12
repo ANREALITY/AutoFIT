@@ -26,7 +26,8 @@ class FileTransferRequestFactory implements FactoryInterface
             $request = $serviceLocator->get('request');
             $routerMatch = $router->match($request);
             $routerMatchParams = $routerMatch->getParams();
-            $fileTransferRequest = $fileTransferRequestService->findAllWithBuldledData([], $routerMatchParams['id'], null, false)[0];
+            $paginator = $fileTransferRequestService->findAllWithBuldledData([], $routerMatchParams['id'], null, false);
+            $fileTransferRequest = $paginator->getCurrentItems()[0];
         } else {
             $fileTransferRequest = new FileTransferRequest();
         }

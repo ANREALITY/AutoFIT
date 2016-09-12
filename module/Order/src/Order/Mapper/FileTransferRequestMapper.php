@@ -22,7 +22,7 @@ use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
 use Zend\Db\Sql\Join;
 use DbSystel\DataObject\Notification;
-use Zend\Paginator\Paginator;
+use DbSystel\Paginator\Paginator;
 use Order\Paginator\Adapter\FileTransferRequestPaginatorAdapter;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
@@ -160,7 +160,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        $fileTransferRequests = $this->findAllWithBuldledData([], $id, null, false);
+        $paginator = $this->findAllWithBuldledData([], $id, null, false);
+        $fileTransferRequests = $paginator->getCurrentItems();
         if ($fileTransferRequests) {
             return $fileTransferRequests[0];
         }
@@ -577,7 +578,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 //             print_r($dataObjects);
 //             die('###');
 
-            return $dataObjects;
+            $paginator->setCurrentItems($dataObjects);
+
+            return $paginator;
         }
 
         return [];

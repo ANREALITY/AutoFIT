@@ -1,6 +1,13 @@
 <?php
 use DbSystel\DataObject\FileTransferRequest;
 ?>
+
+<?php
+echo $this->paginationControl(
+    $paginator, 'Sliding', 'pagination', []
+);
+?>
+
 <?php
 // for translations (workaround)
 if (false) {
@@ -17,7 +24,7 @@ if (false) {
         <th><?php echo $this->translate('request summary'); ?></th>
         <th>&nbsp;</th>
     </tr>
-    <?php foreach ($fileTransferRequests as $fileTransferRequest) : ?>
+    <?php foreach ($paginator->getCurrentItems() as $fileTransferRequest) : ?>
     <tr>
         <td><?php echo $fileTransferRequest->getId(); ?></td>
         <td><a

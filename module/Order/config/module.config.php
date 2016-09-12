@@ -333,6 +333,9 @@ return [
         ],
         'strategies' => [
             'ViewJsonStrategy'
+        ],
+        'template_map' => [
+            'pagination' => __DIR__ . '/../view/partials/pagination.phtml',
         ]
     ],
     'view_helpers' => [
