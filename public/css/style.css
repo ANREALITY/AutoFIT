@@ -325,6 +325,9 @@ table.list td {
 .pagination-container {
   text-align: center;
 }
+.pagination {
+  margin: 0 0 20px 0;
+}
 .pagination > li > a,
 .pagination > li > span {
   color: #000000;
