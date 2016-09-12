@@ -113,22 +113,24 @@ return [
                 ]
             ],
             'list-my-orders' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
-                    'route' => '/list-my-orders',
+                    'route' => '/list-my-orders[/page/:page]',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'listMyOrders'
+                        'action' => 'listMyOrders',
+                        'page' => 1
                     ]
                 ]
             ],
             'list-orders' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
-                    'route' => '/list-orders',
+                    'route' => '/list-orders[/page/:page]',
                     'defaults' => [
                         'controller' => 'Order\Controller\Process',
-                        'action' => 'listOrders'
+                        'action' => 'listOrders',
+                        'page' => 1
                     ]
                 ]
             ],
