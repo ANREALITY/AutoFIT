@@ -22,6 +22,8 @@ use DbSystel\DataObject\Application;
 use DbSystel\DataObject\Environment;
 use Zend\Db\Sql\Join;
 use DbSystel\DataObject\Notification;
+use Zend\Paginator\Paginator;
+use Order\Paginator\Adapter\FileTransferRequestPaginatorAdapter;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -209,7 +211,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null)
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
@@ -546,22 +548,25 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             ], Select::JOIN_LEFT);
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
 
-        $statement = $sql->prepareStatementForSqlObject($select);
+        $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
+        $paginator = new Paginator($adapter);
+        $paginator->setCurrentPageNumber($page);
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
 //         die('');
 
-        $result = $statement->execute();
+        $resultSetArray = $paginator->getCurrentItems();
 
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            $return = $resultSet->initialize($result);
+        if ($resultSetArray) {
+            $resultSetArray = iterator_to_array($resultSetArray);
+            foreach ($resultSetArray as $key => $arrayObject) {
+                $resultSetArray[$key] = $arrayObject->getArrayCopy();
+            }
+            
+//             echo '<pre>';
+//             print_r($resultSetArray);
+//             die(__FILE__);
 
-            $resultSet = new ResultSet();
-            $resultSet->initialize($result);
-            $resultSetArray = $resultSet->toArray();
-            // echo '<pre>';
-            // print_r($resultSetArray);
             $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
                 null, null, null, false);
 
