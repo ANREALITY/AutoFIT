@@ -255,7 +255,7 @@ class ProcessController extends AbstractActionController
     public function showOrderAction()
     {
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return new ViewModel([
@@ -268,12 +268,13 @@ class ProcessController extends AbstractActionController
     public function listMyOrdersAction()
     {
         $userId = $this->IdentityParam('id');
+        $page = $this->params()->fromRoute('page');
         $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData(
             [
                 [
                     'user_id' => $userId
                 ]
-            ]);
+            ], null, $page);
 
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests,
@@ -284,7 +285,8 @@ class ProcessController extends AbstractActionController
 
     public function listOrdersAction()
     {
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData();
+        $page = $this->params()->fromRoute('page');
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], null, $page);
 
         return new ViewModel([
             'fileTransferRequests' => $fileTransferRequests,

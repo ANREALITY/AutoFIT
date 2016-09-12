@@ -160,7 +160,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        $fileTransferRequests = $this->findAllWithBuldledData([], $id);
+        $fileTransferRequests = $this->findAllWithBuldledData([], $id, null, false);
         if ($fileTransferRequests) {
             return $fileTransferRequests[0];
         }
@@ -211,7 +211,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null)
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginate = true)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
@@ -551,6 +551,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);
         $paginator->setCurrentPageNumber($page);
+        if (! $paginate) {
+            $paginator->setItemCountPerPage(null);
+        }
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
 //         die('');
