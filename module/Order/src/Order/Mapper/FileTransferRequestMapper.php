@@ -212,7 +212,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginate = true)
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginationNeeded = true)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
@@ -552,7 +552,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);
         $paginator->setCurrentPageNumber($page);
-        if (! $paginate) {
+        if (! $paginationNeeded) {
             $paginator->setItemCountPerPage(null);
         }
 
