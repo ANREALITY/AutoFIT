@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 17:31+0200\n"
-"PO-Revision-Date: 2016-09-12 19:41+0200\n"
+"POT-Creation-Date: 2016-09-13 11:52+0200\n"
+"PO-Revision-Date: 2016-09-13 12:09+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -208,8 +208,8 @@ msgid "internal and external"
 msgstr "intern und extern"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
-#: Order/view/order/process/list-my-orders.phtml:16
-#: Order/view/order/process/list-orders.phtml:7
+#: Order/view/order/process/list-my-orders.phtml:27
+#: Order/view/order/process/list-orders.phtml:18
 #: Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
@@ -683,6 +683,7 @@ msgid "home"
 msgstr "Startseite"
 
 #: Application/view/layout/layout.phtml:93
+#: Order/view/order/process/list-my-orders.phtml:6
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
@@ -691,8 +692,15 @@ msgid "master data"
 msgstr "Stammdaten"
 
 #: Application/view/layout/layout.phtml:100
+#: Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
+
+#: MasterData/view/master-data/cluster/create.phtml:9
+#: MasterData/view/partials/fieldgroups/cluster.phtml:4
+#: Order/view/partials/info-boxes/hint-cluster.phtml:4
+msgid "New cluster"
+msgstr "Neuer Cluster"
 
 #: MasterData/view/master-data/cluster/created.phtml:3
 #: MasterData/view/master-data/server/edited.phtml:3
@@ -801,20 +809,16 @@ msgstr ""
 msgid "to the cluster master data form"
 msgstr "zum Cluster-Stammdaten-Formular"
 
+#: MasterData/view/master-data/server/edit.phtml:9
+#: MasterData/view/partials/fieldgroups/server.phtml:4
+msgid "Server settings"
+msgstr "Server-Einstellungen"
+
 #: MasterData/view/partials/fieldgroup.phtml:14
 #: Order/view/partials/fieldgroup.phtml:14
 #: Order/view/partials/order-part.phtml:17
 msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
-
-#: MasterData/view/partials/fieldgroups/cluster.phtml:4
-#: Order/view/partials/info-boxes/hint-cluster.phtml:4
-msgid "New cluster"
-msgstr "Neuer Cluster"
-
-#: MasterData/view/partials/fieldgroups/server.phtml:4
-msgid "Server settings"
-msgstr "Server-Einstellungen"
 
 #: Order/view/order/process/accepted.phtml:3
 #: Order/view/order/process/canceled.phtml:3
@@ -826,7 +830,7 @@ msgid "The order has been %s successfully."
 msgstr "Die Bestellung wurde erfolgreich %s."
 
 #: Order/view/order/process/accepted.phtml:3
-#: Order/view/order/process/list-my-orders.phtml:8
+#: Order/view/order/process/list-my-orders.phtml:19
 msgid "accepted"
 msgstr "angenommen"
 
@@ -836,7 +840,7 @@ msgid "canceled"
 msgstr "storniert"
 
 #: Order/view/order/process/completed.phtml:3
-#: Order/view/order/process/list-my-orders.phtml:10
+#: Order/view/order/process/list-my-orders.phtml:21
 msgid "completed"
 msgstr "fertiggestellt"
 
@@ -853,29 +857,31 @@ msgstr "Danke für Ihre Bestellung!"
 msgid "declined"
 msgstr "abgelehnt"
 
-#: Order/view/order/process/list-my-orders.phtml:7
+#: Order/view/order/process/list-my-orders.phtml:18
 msgid "check"
 msgstr "in Überprüfung"
 
-#: Order/view/order/process/list-my-orders.phtml:9
+#: Order/view/order/process/list-my-orders.phtml:20
 msgid "processing"
 msgstr "in Bearbeitung"
 
-#: Order/view/order/process/list-my-orders.phtml:15
-#: Order/view/order/process/list-orders.phtml:6
+#: Order/view/order/process/list-my-orders.phtml:26
+#: Order/view/order/process/list-orders.phtml:17
 msgid "request ID"
 msgstr "Antrag-ID"
 
-#: Order/view/order/process/list-my-orders.phtml:17
-#: Order/view/order/process/list-orders.phtml:8
+#: Order/view/order/process/list-my-orders.phtml:28
+#: Order/view/order/process/list-orders.phtml:19
 msgid "request summary"
 msgstr "Anfragszusammenfassung"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:4
+#: Order/view/partials/order-buttons/buttons.phtml:12
 msgid "edit"
 msgstr "anpassen"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:5
+#: Order/view/partials/order-buttons/buttons.phtml:15
 msgid "cancel"
 msgstr "stornieren"
 
@@ -1166,25 +1172,17 @@ msgstr "Server"
 msgid "target"
 msgstr "Zielsystem"
 
-#: Order/view/partials/order-buttons/buttons.phtml:12
-msgid "edit order"
-msgstr "Bestellung anpassen"
-
-#: Order/view/partials/order-buttons/buttons.phtml:15
-msgid "cancel order"
-msgstr "Bestellung stornieren"
-
 #: Order/view/partials/order-buttons/buttons.phtml:20
-msgid "accept order"
-msgstr "Bestellung annehmen"
+msgid "accept"
+msgstr "annehmen"
 
 #: Order/view/partials/order-buttons/buttons.phtml:23
-msgid "decline order"
-msgstr "Bestellung ablehnen"
+msgid "decline"
+msgstr "ablehnen"
 
 #: Order/view/partials/order-buttons/buttons.phtml:26
-msgid "complete order"
-msgstr "Bestellung fertigstellen"
+msgid "complete"
+msgstr "fertigstellen"
 
 #: Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
@@ -1350,6 +1348,21 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "edit order"
+#~ msgstr "Bestellung anpassen"
+
+#~ msgid "cancel order"
+#~ msgstr "Bestellung stornieren"
+
+#~ msgid "accept order"
+#~ msgstr "Bestellung annehmen"
+
+#~ msgid "decline order"
+#~ msgstr "Bestellung ablehnen"
+
+#~ msgid "complete order"
+#~ msgstr "Bestellung fertigstellen"
 
 #~ msgid "Contab for transmission interval"
 #~ msgstr "Crontab für das Sendeintervall"
