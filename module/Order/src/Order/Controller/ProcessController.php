@@ -5,20 +5,45 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use DbSystel\DataObject\FileTransferRequest;
 use Order\Service\FileTransferRequestService;
+use Order\Form\OrderForm;
+use Order\Service\FileTransferRequestServiceInterface;
 
 class ProcessController extends AbstractActionController
 {
 
+    /**
+     * 
+     * @var FileTransferRequest
+     */
     protected $fileTransferRequest;
 
+    /**
+     * 
+     * @var FileTransferRequestServiceInterface
+     */
     protected $fileTransferRequestService;
 
+    /**
+     * @var OrderForm
+     */
     protected $orderForm;
 
+    /**
+     * 
+     * @var string
+     */
     protected $connectionType;
 
+    /**
+     *
+     * @var string
+     */
     protected $endpointSourceType;
 
+    /**
+     *
+     * @var string
+     */
     protected $endpointTargetType;
 
     public function __construct(FileTransferRequest $fileTransferRequest,

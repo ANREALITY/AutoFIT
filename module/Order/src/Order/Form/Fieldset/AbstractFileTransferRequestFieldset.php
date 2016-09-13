@@ -158,6 +158,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'required' => true
             ],
             'comment' => [
+                'required' => false,
                 'filters' => [
                     [
                         'name' => 'Callback',
