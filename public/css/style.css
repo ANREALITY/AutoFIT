@@ -16,6 +16,9 @@ dt:hover {
 textarea {
   resize: vertical;
 }
+a:focus {
+  outline: 0;
+}
 .clearer {
   display: block;
   floate: none;
@@ -328,11 +331,16 @@ table.list td {
 .pagination {
   margin: 0 0 20px 0;
 }
+.pagination > li {
+  display: inline-block;
+  margin: 0 5px;
+}
 .pagination > li > a,
 .pagination > li > span {
   color: #000000;
   background-color: #f7f7f7;
   font-weight: bold;
+  border-radius: 3px;
 }
 .pagination > li > a:hover,
 .pagination > li > span:hover,
