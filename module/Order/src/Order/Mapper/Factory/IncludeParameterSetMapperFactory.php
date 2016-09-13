@@ -22,7 +22,7 @@ class IncludeParameterSetMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new IncludeParameterSet());
 
         $service->setIncludeParameterMapper($serviceLocator->get('Order\Mapper\IncludeParameterMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

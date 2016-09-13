@@ -23,7 +23,7 @@ class ServiceInvoiceMapperFactory implements FactoryInterface
 
         $service->setApplicationMapper($serviceLocator->get('Order\Mapper\ApplicationMapper'));
         $service->setEnvironmentMapper($serviceLocator->get('Order\Mapper\EnvironmentMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

@@ -22,7 +22,7 @@ class FileParameterSetMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileParameterSet());
 
         $service->setFileParameterMapper($serviceLocator->get('Order\Mapper\FileParameterMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

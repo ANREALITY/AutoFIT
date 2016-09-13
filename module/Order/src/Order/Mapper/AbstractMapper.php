@@ -4,7 +4,7 @@ namespace Order\Mapper;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
-use DbSystel\Utility\ArrayProcessor;
+use DbSystel\Utility\TableDataProcessor;
 
 class AbstractMapper
 {
@@ -28,9 +28,9 @@ class AbstractMapper
     protected $prototype;
 
     /**
-     * @var ArrayProcessor
+     * @var TableDataProcessor
      */
-    protected $arrayProcessor;
+    protected $tableDataProcessor;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         AbstractDataObject $prototype = null)
@@ -97,19 +97,19 @@ class AbstractMapper
     }
 
     /**
-     * @return the $arrayProcessor
+     * @return the $tableDataProcessor
      */
-    public function getArrayProcessor()
+    public function getTableDataProcessor()
     {
-        return $this->arrayProcessor;
+        return $this->tableDataProcessor;
     }
 
     /**
-     * @param ArrayProcessor $arrayProcessor
+     * @param TableDataProcessor $tableDataProcessor
      */
-    public function setArrayProcessor(ArrayProcessor $arrayProcessor)
+    public function setTableDataProcessor(TableDataProcessor $tableDataProcessor)
     {
-        $this->arrayProcessor = $arrayProcessor;
+        $this->tableDataProcessor = $tableDataProcessor;
     }
 
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
@@ -128,7 +128,7 @@ class AbstractMapper
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
-            $uniqueResultSetArray = $this->arrayProcessor->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
+            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
         } elseif (is_array($identifierMakingUnique)) {
             $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
                 $result = [];
@@ -137,12 +137,12 @@ class AbstractMapper
                 }
                 return $result;
             };
-            $uniqueResultSetArray = $this->arrayProcessor->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
+            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
         }
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            if (!$this->arrayProcessor->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
+            if (!$this->tableDataProcessor->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
             $prototypeForHydration = new $prototypeClass();
@@ -150,7 +150,7 @@ class AbstractMapper
             // @todo Maybe faster with array_map(...).
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if ($this->arrayProcessor->isProperColumn($columnAlias, $prefix)) {
+                if ($this->tableDataProcessor->isProperColumn($columnAlias, $prefix)) {
                     if (is_string($prefix)) {
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;

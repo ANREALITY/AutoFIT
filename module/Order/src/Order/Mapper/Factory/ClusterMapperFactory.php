@@ -23,7 +23,7 @@ class ClusterMapperFactory implements FactoryInterface
             new Cluster());
 
         $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

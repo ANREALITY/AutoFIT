@@ -22,7 +22,7 @@ class ProtocolSetMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ProtocolSet());
 
         $service->setProtocolMapper($serviceLocator->get('Order\Mapper\ProtocolMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

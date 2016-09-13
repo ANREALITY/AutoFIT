@@ -22,7 +22,7 @@ class EndpointClusterConfigMapperFactory implements FactoryInterface
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointClusterConfig());
 
         $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
-        $service->setArrayProcessor($serviceLocator->get('DbSystel\Utility\ArrayProcessor'));
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

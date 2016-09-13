@@ -246,7 +246,8 @@ return [
             // DataObjects
             'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory',
             // utilities
-            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\Factory\ArrayProcessorFactory'
+            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\Factory\ArrayProcessorFactory',
+            'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\Factory\TableDataProcessorFactory'
         ],
         'invokables' => [
         ],
