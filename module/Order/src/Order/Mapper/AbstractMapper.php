@@ -165,22 +165,26 @@ class AbstractMapper
             }
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
+                    $objectParentIndexIdentifier = $parentPrefix . $parentIdentifier;
+                    $objectParentIndex = $row[$objectParentIndexIdentifier];
                     if ($isCollection) {
-                        if (empty($dataObjects[$row[$parentPrefix . $parentIdentifier]])) {
-                            $dataObjects[$row[$parentPrefix . $parentIdentifier]] = [];
+                        if (empty($dataObjects[$objectParentIndex])) {
+                            $dataObjects[$objectParentIndex] = [];
                         }
-                        $dataObjects[$row[$parentPrefix . $parentIdentifier]][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
+                        $dataObjects[$objectParentIndex][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     } else {
-                        $dataObjects[$row[$parentPrefix . $parentIdentifier]] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
+                        $dataObjects[$objectParentIndex] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     }
                 } elseif (! empty($childPrefix . $childIdentifier) && ! empty($row[$childPrefix . $childIdentifier])) {
+                    $objectParentIndexIdentifier = $childPrefix . $childIdentifier;
+                    $objectParentIndex = $row[$objectParentIndexIdentifier];
                     if ($isCollection) {
-                        if (empty($dataObjects[$row[$childPrefix . $childIdentifier]])) {
-                            $dataObjects[$row[$childPrefix . $childIdentifier]] = [];
+                        if (empty($dataObjects[$objectParentIndex])) {
+                            $dataObjects[$objectParentIndex] = [];
                         }
-                        $dataObjects[$row[$childPrefix . $childIdentifier]][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
+                        $dataObjects[$objectParentIndex][] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     } else {
-                        $dataObjects[$row[$childPrefix . $childIdentifier]] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
+                        $dataObjects[$objectParentIndex] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
                     }
                 } else {
                     $dataObjects[] = $this->hydrator->hydrate($objectData, $prototypeForHydration);
