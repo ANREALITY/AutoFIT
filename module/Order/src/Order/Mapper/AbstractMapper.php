@@ -142,7 +142,7 @@ class AbstractMapper
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            if (!$this->tableDataProcessor->isProperRow($row, $dataObjectCondition, $identifier, $prefix)) {
+            if (!$this->tableDataProcessor->validateArray($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
             $prototypeForHydration = new $prototypeClass();

@@ -22,7 +22,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsProperRow($row, $condition, $identifier, $prefix, $expectedResult)
     {
-        $this->assertEquals($expectedResult, $this->tableDataProcessor->isProperRow($row, $condition, $identifier, $prefix));
+        $this->assertEquals($expectedResult, $this->tableDataProcessor->validateArray($row, $condition, $identifier, $prefix));
     }
 
     /**
@@ -31,7 +31,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
     public function testIsProperRowExceptions($row, $condition, $identifier, $prefix, $expectedException)
     {
         $this->expectException($expectedException);
-        $this->tableDataProcessor->isProperRow($row, $condition, $identifier, $prefix);
+        $this->tableDataProcessor->validateArray($row, $condition, $identifier, $prefix);
     }
 
     public function provideDataForIsProperRow()

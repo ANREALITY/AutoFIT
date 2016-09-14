@@ -22,13 +22,13 @@ class TableDataProcessor extends ArrayProcessor
      *  they are array with different lengths.
      *  
      */
-    public function isProperRow(array $row, callable $condition = null, $identifier = null, $prefix = null)
+    public function validateArray(array $row, callable $condition = null, $identifier = null, $prefix = null)
     {
-        $isProper =
-            $this->isProperArrayForCondition($row, $condition) &&
-            $this->isProperArrayForIdentifier($row, $identifier, $prefix)
+        $isValid =
+            $this->validateArrayByCondition($row, $condition) &&
+            $this->validateArrayByIdentifier($row, $identifier, $prefix)
         ;
-        return $isProper;
+        return $isValid;
     }
 
     public function isProperColumn(string $columnAlias, $prefixes)
@@ -62,7 +62,7 @@ class TableDataProcessor extends ArrayProcessor
      * @return boolean
      * @throws \InvalidArgumentException
      */
-    protected function isProperArrayForIdentifier(array $row, $identifier = null, $prefix = null)
+    protected function validateArrayByIdentifier(array $row, $identifier = null, $prefix = null)
     {
         if (
             gettype($prefix) != gettype($identifier) &&
@@ -103,7 +103,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param callable $condition
      * @return boolean
      */
-    protected function isProperArrayForCondition(array $row, callable $condition = null)
+    protected function validateArrayByCondition(array $row, callable $condition = null)
     {
         $conditionOk = true;
         if ($condition && ! $condition($row)) {
