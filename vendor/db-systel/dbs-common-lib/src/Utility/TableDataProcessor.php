@@ -5,14 +5,14 @@ class TableDataProcessor extends ArrayProcessor
 {
 
     /**
-     * Checks, whether the $row of a table (two-dimensional array) is "proper".
-     * It is proper, if it contains the given $identifier (prefixed by the $prefix)
+     * Checks, whether the $array is valid.
+     * It is valid, if it contains the given $identifier (prefixed by the $prefix)
      * and the element is not NULL or '' (empty string).
      * If a $condition given, it also has to be TRUE.
      * There also may be multiple prefix-identifier pairs.
-     * In this case all prefix-identifier pairs need to be "proper".
+     * In this case all prefix-identifier pairs need to be valid.
      *
-     * @param array $row
+     * @param array $array
      * @param callable $condition
      * @param unknown $identifier
      * @param unknown $prefix
@@ -22,11 +22,11 @@ class TableDataProcessor extends ArrayProcessor
      *  they are array with different lengths.
      *  
      */
-    public function validateArray(array $row, callable $condition = null, $identifier = null, $prefix = null)
+    public function validateArray(array $array, callable $condition = null, $identifier = null, $prefix = null)
     {
         $isValid =
-            $this->validateArrayByCondition($row, $condition) &&
-            $this->validateArrayByIdentifier($row, $identifier, $prefix)
+            $this->validateArrayByCondition($array, $condition) &&
+            $this->validateArrayByIdentifier($array, $identifier, $prefix)
         ;
         return $isValid;
     }
@@ -50,19 +50,19 @@ class TableDataProcessor extends ArrayProcessor
     }
 
     /**
-     * Checks, whether the $row of a table (two-dimensional array) is "proper".
-     * It is proper, if it contains the given $identifier (prefixed by the $prefix)
+     * Checks, whether the $array is valid.
+     * It is valid, if it contains the given $identifier (prefixed by the $prefix)
      * and the element is not NULL or '' (empty string).
      * There also may be multiple prefix-identifier pairs.
-     * In this case all prefix-identifier pairs need to be "proper".
+     * In this case all prefix-identifier pairs need to be valid.
      *
-     * @param array $row
+     * @param array $array
      * @param unknown $identifier
      * @param unknown $prefix
      * @return boolean
      * @throws \InvalidArgumentException
      */
-    protected function validateArrayByIdentifier(array $row, $identifier = null, $prefix = null)
+    protected function validateArrayByIdentifier(array $array, $identifier = null, $prefix = null)
     {
         if (
             gettype($prefix) != gettype($identifier) &&
@@ -76,15 +76,15 @@ class TableDataProcessor extends ArrayProcessor
         if (is_string($identifier)) {
             $completeIdentifier = $prefix . $identifier;
             $identifierOk =
-            isset($row[$completeIdentifier]) && ! (
-                $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+            isset($array[$completeIdentifier]) && ! (
+                $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
             );
         } elseif (is_array($identifier)) {
             foreach ($identifier as $key => $partIdentifierValue) {
                 $completeIdentifier = $prefix[$key] . $partIdentifierValue;
                 $identifierOk =
-                isset($row[$completeIdentifier]) && ! (
-                    $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+                isset($array[$completeIdentifier]) && ! (
+                    $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
                     )
                     ;
                 if (! $identifierOk) {
@@ -96,17 +96,17 @@ class TableDataProcessor extends ArrayProcessor
     }
 
     /**
-     * Checks, whether the $row of a table (two-dimensional array) is "proper".
-     * It is proper, if the given $condition is TRUE.
+     * Checks, whether the $array is valid.
+     * It is valid, if the given $condition is TRUE.
      *
-     * @param array $row
+     * @param array $array
      * @param callable $condition
      * @return boolean
      */
-    protected function validateArrayByCondition(array $row, callable $condition = null)
+    protected function validateArrayByCondition(array $array, callable $condition = null)
     {
         $conditionOk = true;
-        if ($condition && ! $condition($row)) {
+        if ($condition && ! $condition($array)) {
             $conditionOk = false;
         }
         return $conditionOk;
