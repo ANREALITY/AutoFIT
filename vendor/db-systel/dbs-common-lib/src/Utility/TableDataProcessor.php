@@ -24,41 +24,10 @@ class TableDataProcessor extends ArrayProcessor
      */
     public function isProperRow(array $row, callable $condition = null, $identifier = null, $prefix = null)
     {
-        if (
-            gettype($prefix) != gettype($identifier) &&
-            ! ((is_array($prefix) && is_array($identifier)) && (count($identifier) == count($prefix)))
-        ) {
-            throw new \InvalidArgumentException('The arrays with identifiers and prefixes have to be strings or arrays of equal length.');
-        }
-        $isProper = false;
-        $conditionOk = true;
-        if ($condition && ! $condition($row)) {
-            $conditionOk = false;
-        }
-        // Preventing creating empty objects.
-        // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-        $identifierOk = true;
-        if (is_string($identifier)) {
-            $completeIdentifier = $prefix . $identifier;
-            $identifierOk =
-                isset($row[$completeIdentifier]) && ! (
-                    $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
-                )
-            ;
-        } elseif (is_array($identifier)) {
-            foreach ($identifier as $key => $partIdentifierValue) {
-                $completeIdentifier = $prefix[$key] . $partIdentifierValue;
-                $identifierOk =
-                    isset($row[$completeIdentifier]) && ! (
-                        $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
-                    )
-                    ;
-                if (! $identifierOk) {
-                    break;
-                }
-            }
-        }
-        $isProper = $conditionOk && $identifierOk;
+        $isProper =
+            $this->isProperArrayForCondition($row, $condition) &&
+            $this->isProperArrayForIdentifier($row, $identifier, $prefix)
+        ;
         return $isProper;
     }
 
@@ -78,6 +47,69 @@ class TableDataProcessor extends ArrayProcessor
             }
         }
         return $prefixIsProper;
+    }
+
+    /**
+     * Checks, whether the $row of a table (two-dimensional array) is "proper".
+     * It is proper, if it contains the given $identifier (prefixed by the $prefix)
+     * and the element is not NULL or '' (empty string).
+     * There also may be multiple prefix-identifier pairs.
+     * In this case all prefix-identifier pairs need to be "proper".
+     *
+     * @param array $row
+     * @param unknown $identifier
+     * @param unknown $prefix
+     * @return boolean
+     * @throws \InvalidArgumentException
+     */
+    protected function isProperArrayForIdentifier(array $row, $identifier = null, $prefix = null)
+    {
+        if (
+            gettype($prefix) != gettype($identifier) &&
+            ! ((is_array($prefix) && is_array($identifier)) && (count($identifier) == count($prefix)))
+        ) {
+            throw new \InvalidArgumentException('The arrays with identifiers and prefixes have to be strings or arrays of equal length.');
+        }
+        // Preventing creating empty objects.
+        // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+        $identifierOk = true;
+        if (is_string($identifier)) {
+            $completeIdentifier = $prefix . $identifier;
+            $identifierOk =
+            isset($row[$completeIdentifier]) && ! (
+                $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+            );
+        } elseif (is_array($identifier)) {
+            foreach ($identifier as $key => $partIdentifierValue) {
+                $completeIdentifier = $prefix[$key] . $partIdentifierValue;
+                $identifierOk =
+                isset($row[$completeIdentifier]) && ! (
+                    $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+                    )
+                    ;
+                if (! $identifierOk) {
+                    break;
+                }
+            }
+        }
+        return $identifierOk;
+    }
+
+    /**
+     * Checks, whether the $row of a table (two-dimensional array) is "proper".
+     * It is proper, if the given $condition is TRUE.
+     *
+     * @param array $row
+     * @param callable $condition
+     * @return boolean
+     */
+    protected function isProperArrayForCondition(array $row, callable $condition = null)
+    {
+        $conditionOk = true;
+        if ($condition && ! $condition($row)) {
+            $conditionOk = false;
+        }
+        return $conditionOk;
     }
 
 }
