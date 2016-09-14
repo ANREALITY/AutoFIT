@@ -15,11 +15,21 @@ class TableDataProcessor extends ArrayProcessor
         // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
         $identifierOk = true;
         if (is_string($identifier)) {
-            $identifierOk = ! ($row[$prefix . $identifier] === '' || $row[$prefix . $identifier] === null);
+            $completeIdentifier = $prefix . $identifier;
+            $identifierOk =
+                isset($row[$completeIdentifier]) && ! (
+                    $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+                )
+            ;
         } elseif (is_array($identifier)) {
             foreach ($identifier as $key => $partIdentifierValue) {
-                if ($row[$prefix[$key] . $partIdentifierValue] === '' || $row[$prefix[$key] . $partIdentifierValue] === null) {
-                    $identifierOk = false;
+                $completeIdentifier = $prefix[$key] . $partIdentifierValue;
+                $identifierOk =
+                    isset($row[$completeIdentifier]) && ! (
+                        $row[$completeIdentifier] === '' || $row[$completeIdentifier] === null
+                    )
+                    ;
+                if (! $identifierOk) {
                     break;
                 }
             }
