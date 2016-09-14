@@ -25,6 +25,15 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResult, $this->tableDataProcessor->isProperRow($row, $condition, $identifier, $prefix));
     }
 
+    /**
+     * @dataProvider provideDataForIsProperRowExceptions
+     */
+    public function testIsProperRowExceptions($row, $condition, $identifier, $prefix, $expectedException)
+    {
+        $this->expectException($expectedException);
+        $this->tableDataProcessor->isProperRow($row, $condition, $identifier, $prefix);
+    }
+
     public function provideDataForIsProperRow()
     {
         $testRows = [
@@ -41,6 +50,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '89',
                 'buz__desc' => 'buz desc 89',
                 'buz__foo_id' => '12',
+                null => 'qwer',
             ],
             1 => [
                 // foo data
@@ -55,6 +65,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '89',
                 'buz__desc' => 'buz desc 89',
                 'buz__foo_id' => '12',
+                null => 'qwer',
             ],
             2 => [
                 // foo data
@@ -69,6 +80,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '90',
                 'buz__desc' => 'buz desc',
                 'buz__foo_id' => '13',
+                null => 'qwer',
             ],
             3 => [
                 // foo data
@@ -83,6 +95,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '91',
                 'buz__desc' => 'buz desc',
                 'buz__foo_id' => '13',
+                null => 'qwer',
             ],
             4 => [
                 // foo data
@@ -97,6 +110,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '91',
                 'buz__desc' => 'buz desc',
                 'buz__foo_id' => '14',
+                null => 'qwer',
             ],
             5 => [
                 // foo data
@@ -111,6 +125,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '89',
                 'buz__desc' => 'buz desc 89',
                 'buz__foo_id' => '12',
+                null => 'qwer',
             ],
             6 => [
                 // foo data
@@ -125,6 +140,22 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 'buz__id' => '89',
                 'buz__desc' => 'buz desc 89',
                 'buz__foo_id' => '12',
+                null => 'qwer',
+            ],
+            9 => [
+                // foo data
+                'foo__id' => '14',
+                'foo__title' => 'foo title',
+                'foo__bar_id' => '57',
+                'bar__type' => self::BAR_TYPE_GOOD,
+                // bar data
+                'bar__id' => '57',
+                'bar__name' => 'bar name',
+                // buz data
+                'buz__id' => '91',
+                'buz__desc' => 'buz desc',
+                'buz__foo_id' => '14',
+                null => 'qwer',
             ],
         ];
 
@@ -142,7 +173,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 $typeIsOk = array_key_exists('bar' . '__' . 'type', $row) && $row['bar' . '__' . 'type'] === self::BAR_TYPE_GOOD;
                 return $typeIsOk;
             },
-            
+            9 => null,
         ];
 
         $identifiers = [
@@ -153,6 +184,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             4 => 'missing_identifier', // 'missingIdentifier'
             5 => ['id', 'missing_identifier'], // 'multipleIdentifiers' one is missing
             6 => 'id', // singleIdentifierFoo
+            9 => null, // 'nullPrefix'
         ];
 
         $prefixes = [
@@ -163,10 +195,18 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             4 => 'missing_prefix__', // 'missingPrefix'
             5 => ['foo__', 'missing_prefix__'], // 'multiplePrefixs' one is missing
             6 => 'foo__', // 'singlePrefixFoo'
+            9 => null, // 'nullIdentifier'
         ];
 
         $expectedResults = [
-            true, true, true, true, false, false, false,
+            0 => true,
+            1 => true,
+            2 => true,
+            3 => true,
+            4 => false,
+            5 => false,
+            6 => false,
+            9 => true,
         ];
 
         $data = [];
@@ -177,6 +217,75 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 $identifiers[$key],
                 $prefixes[$key],
                 $expectedResults[$key]
+            ];
+        }
+
+        return $data;
+    }
+
+    public function provideDataForIsProperRowExceptions()
+    {
+        $testRows = [
+            7 => [
+                // foo data
+                'foo__id' => '13',
+                'foo__title' => 'foo title 13',
+                'foo__bar_id' => '56',
+                // bar data
+                'bar__id' => '56',
+                'bar__name' => 'bar name 56',
+                'bar__type' => self::BAR_TYPE_GOOD,
+                // buz data
+                'buz__id' => '90',
+                'buz__desc' => 'buz desc',
+                'buz__foo_id' => '13',
+                null => 'qwer',
+            ],
+            8 => [
+                // foo data
+                'foo__id' => '13',
+                'foo__title' => 'foo title 13',
+                'foo__bar_id' => '56',
+                // bar data
+                'bar__id' => '56',
+                'bar__name' => 'bar name 56',
+                'bar__type' => self::BAR_TYPE_BAD,
+                // buz data
+                'buz__id' => '91',
+                'buz__desc' => 'buz desc',
+                'buz__foo_id' => '13',
+                null => 'qwer',
+            ],
+        ];
+
+        $conditions = [
+            7 => null,
+            8 => null,
+        ];
+
+        $identifiers = [
+            7 => ['id', 'missing_identifier'], // 'multipleIdentifiers' more than prefixes
+            8 => 'id', // singleIdentifierFoo less than prefixes
+        ];
+
+        $prefixes = [
+            7 => 'foo__', // 'singlePrefixFoo' less than identifiers
+            8 => ['foo__', 'bar__'], // 'multiplePrefixs' more than identifiers
+        ];
+
+        $expectedExceptions = [
+            7 => \InvalidArgumentException::class,
+            8 => \InvalidArgumentException::class,
+        ];
+
+        $data = [];
+        foreach ($testRows as $key => $value) {
+            $data[] = [
+                $testRows[$key],
+                $conditions[$key],
+                $identifiers[$key],
+                $prefixes[$key],
+                $expectedExceptions[$key]
             ];
         }
 

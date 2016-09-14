@@ -4,11 +4,35 @@ namespace DbSystel\Utility;
 class TableDataProcessor extends ArrayProcessor
 {
 
-    public function isProperRow(array $row, callable $dataObjectCondition = null, $identifier = null, $prefix = null)
+    /**
+     * Checks, whether the $row of a table (two-dimensional array) is "proper".
+     * It is proper, if it contains the given $identifier (prefixed by the $prefix)
+     * and the element is not NULL or '' (empty string).
+     * If a $condition given, it also has to be TRUE.
+     * There also may be multiple prefix-identifier pairs.
+     * In this case all prefix-identifier pairs need to be "proper".
+     *
+     * @param array $row
+     * @param callable $condition
+     * @param unknown $identifier
+     * @param unknown $prefix
+     * @return boolean
+     * @throws \InvalidArgumentException Will be thrown, if
+     *  the $identifier and the $prefix are not both strnings or arrays OR
+     *  they are array with different lengths.
+     *  
+     */
+    public function isProperRow(array $row, callable $condition = null, $identifier = null, $prefix = null)
     {
+        if (
+            gettype($prefix) != gettype($identifier) &&
+            ! ((is_array($prefix) && is_array($identifier)) && (count($identifier) == count($prefix)))
+        ) {
+            throw new \InvalidArgumentException('The arrays with identifiers and prefixes have to be strings or arrays of equal length.');
+        }
         $isProper = false;
         $conditionOk = true;
-        if ($dataObjectCondition && ! $dataObjectCondition($row)) {
+        if ($condition && ! $condition($row)) {
             $conditionOk = false;
         }
         // Preventing creating empty objects.
