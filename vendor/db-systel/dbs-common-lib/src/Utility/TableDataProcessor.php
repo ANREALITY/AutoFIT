@@ -20,7 +20,6 @@ class TableDataProcessor extends ArrayProcessor
      * @throws \InvalidArgumentException Will be thrown, if
      *  the $identifier and the $prefix are not both strnings or arrays OR
      *  they are array with different lengths.
-     *  
      */
     public function validateArray(array $array, callable $condition = null, $identifier = null, $prefix = null)
     {
@@ -60,7 +59,9 @@ class TableDataProcessor extends ArrayProcessor
      * @param unknown $identifier
      * @param unknown $prefix
      * @return boolean
-     * @throws \InvalidArgumentException
+     * @throws \InvalidArgumentException Will be thrown, if
+     *  the $identifier and the $prefix are not both strnings or arrays OR
+     *  they are array with different lengths.
      */
     protected function validateArrayByIdentifier(array $array, $identifier = null, $prefix = null)
     {
