@@ -14,8 +14,8 @@ class TableDataProcessor extends ArrayProcessor
      *
      * @param array $array
      * @param callable $condition
-     * @param unknown $identifier
-     * @param unknown $prefix
+     * @param string|array $identifier
+     * @param string|array $prefix
      * @return boolean
      * @throws \InvalidArgumentException Will be thrown, if
      *  the $identifier and the $prefix are not both strnings or arrays OR
@@ -56,8 +56,8 @@ class TableDataProcessor extends ArrayProcessor
      * In this case all prefix-identifier pairs need to be valid.
      *
      * @param array $array
-     * @param unknown $identifier
-     * @param unknown $prefix
+     * @param string|array $identifier
+     * @param string|array $prefix
      * @return boolean
      * @throws \InvalidArgumentException Will be thrown, if
      *  the $identifier and the $prefix are not both strnings or arrays OR
