@@ -18,23 +18,23 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider provideDataForIsProperRow
+     * @dataProvider provideDataForValidateRow
      */
-    public function testIsProperRow($row, $condition, $identifier, $prefix, $expectedResult)
+    public function testValidateRow($row, $condition, $identifier, $prefix, $expectedResult)
     {
-        $this->assertEquals($expectedResult, $this->tableDataProcessor->validateArray($row, $condition, $identifier, $prefix));
+        $this->assertEquals($expectedResult, $this->tableDataProcessor->validateRow($row, $condition, $identifier, $prefix));
     }
 
     /**
-     * @dataProvider provideDataForIsProperRowExceptions
+     * @dataProvider provideDataForValidateRowExceptions
      */
-    public function testIsProperRowExceptions($row, $condition, $identifier, $prefix, $expectedException)
+    public function testValidateRowExceptions($row, $condition, $identifier, $prefix, $expectedException)
     {
         $this->expectException($expectedException);
-        $this->tableDataProcessor->validateArray($row, $condition, $identifier, $prefix);
+        $this->tableDataProcessor->validateRow($row, $condition, $identifier, $prefix);
     }
 
-    public function provideDataForIsProperRow()
+    public function provideDataForValidateRow()
     {
         $testRows = [
             0 => [
@@ -223,7 +223,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         return $data;
     }
 
-    public function provideDataForIsProperRowExceptions()
+    public function provideDataForValidateRowExceptions()
     {
         $testRows = [
             7 => [

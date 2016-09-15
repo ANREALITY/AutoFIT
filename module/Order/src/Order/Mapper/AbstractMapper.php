@@ -142,7 +142,7 @@ class AbstractMapper
 
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
-            if (!$this->tableDataProcessor->validateArray($row, $dataObjectCondition, $identifier, $prefix)) {
+            if (!$this->tableDataProcessor->validateRow($row, $dataObjectCondition, $identifier, $prefix)) {
                 continue;
             }
             $prototypeForHydration = new $prototypeClass();
@@ -150,7 +150,7 @@ class AbstractMapper
             // @todo Maybe faster with array_map(...).
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if ($this->tableDataProcessor->isProperColumn($columnAlias, $prefix)) {
+                if ($this->tableDataProcessor->validateColumn($columnAlias, $prefix)) {
                     if (is_string($prefix)) {
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;

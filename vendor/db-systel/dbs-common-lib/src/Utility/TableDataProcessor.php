@@ -21,16 +21,16 @@ class TableDataProcessor extends ArrayProcessor
      *  the $identifier and the $prefix are not both strnings or arrays OR
      *  they are array with different lengths.
      */
-    public function validateArray(array $array, callable $condition = null, $identifier = null, $prefix = null)
+    public function validateRow(array $array, callable $condition = null, $identifier = null, $prefix = null)
     {
         $isValid =
-            $this->validateArrayByCondition($array, $condition) &&
-            $this->validateArrayByIdentifier($array, $identifier, $prefix)
+            $this->validateRowByCondition($array, $condition) &&
+            $this->validateRowByIdentifier($array, $identifier, $prefix)
         ;
         return $isValid;
     }
 
-    public function isProperColumn(string $columnAlias, $prefixes)
+    public function validateColumn(string $columnAlias, $prefixes)
     {
         $prefixIsProper = false;
         if (is_string($prefixes)) {
@@ -63,7 +63,7 @@ class TableDataProcessor extends ArrayProcessor
      *  the $identifier and the $prefix are not both strnings or arrays OR
      *  they are array with different lengths.
      */
-    protected function validateArrayByIdentifier(array $array, $identifier = null, $prefix = null)
+    protected function validateRowByIdentifier(array $array, $identifier = null, $prefix = null)
     {
         if (
             gettype($prefix) != gettype($identifier) &&
@@ -104,7 +104,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param callable $condition
      * @return boolean
      */
-    protected function validateArrayByCondition(array $array, callable $condition = null)
+    protected function validateRowByCondition(array $array, callable $condition = null)
     {
         $conditionOk = true;
         if ($condition && ! $condition($array)) {
