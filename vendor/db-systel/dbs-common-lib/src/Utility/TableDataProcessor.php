@@ -44,12 +44,12 @@ class TableDataProcessor extends ArrayProcessor
     {
         $valid = false;
         if (is_string($prefix)) {
-            if (strpos($string, $prefix) === 0) {
+            if (! empty($prefix) && strpos($string, $prefix) === 0) {
                 $valid = true;
             }
         } elseif (is_array($prefix)) {
             foreach ($prefix as $partPrefix) {
-                if (strpos($string, $partPrefix) === 0) {
+                if (! empty($prefix) && strpos($string, $partPrefix) === 0) {
                     $valid = true;
                     break;
                 }
