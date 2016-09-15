@@ -22,6 +22,75 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueByIdentifier($testArray, $identifier));
     }
 
+    /**
+     * @dataProvider provideDataForRemoveArrayColumns
+     */
+    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
+    {
+        $this->assertEquals($expectedArray, $this->arrayProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
+    }
+
+    public function testArrayUniqueBySubArray()
+    {
+        $testArray = [
+            0 => [true, false, 123],
+            2 => ['foo'],
+            4 => [true, false, 123],
+            5 => [['foo' => 'bar'], new \stdClass()],
+            7 => [4.567, 'abc', null],
+            8 => [['foo' => 'bar'], new \AppendIterator()],
+            9 => [['foo' => 'bar'], new \Exception()],
+        ];
+        $expectedArray = [
+            0 => [true, false, 123],
+            2 => ['foo'],
+            5 => [['foo' => 'bar'], new \stdClass()],
+            7 => [4.567, 'abc', null],
+        ];
+
+        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueBySubArray($testArray));
+    }
+
+    public function testStringifySubArrays()
+    {
+        $testArray = [
+            0 => [true, false, 123],
+            3 => [4.567, 'abc', null],
+            7 => [['foo' => 'bar'], new \stdClass()],
+        ];
+        $expectedArray = [
+            0 => '1||123',
+            3 => '4.567|abc|',
+            7 => 'array|object',
+        ];
+
+        $this->assertEquals($expectedArray, $this->arrayProcessor->stringifySubArrays($testArray));
+    }
+
+    public function testStringifyArray()
+    {
+        $testArray = [true, false, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
+        $expectedString = '1||123|4.567|abc||array|object';
+
+        $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray));
+    }
+
+    public function testFlattenArray()
+    {
+        $testArray = [true, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
+        $expectedArray = [true, 123, 4.567, 'abc', null, 'array', 'object'];
+
+        $this->assertEquals($expectedArray, $this->arrayProcessor->flattenArray($testArray));
+    }
+
+    /**
+     * @dataProvider provideDataForFlattenVar
+     */
+    public function testFlattenVar($testValue, $expectedValue)
+    {
+        $this->assertEquals($expectedValue, $this->arrayProcessor->flattenVar($testValue));
+    }
+
     public function provideDataForArrayUniqueByIdentifier()
     {
         $testArray = [
@@ -97,59 +166,6 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideDataForRemoveArrayColumns
-     */
-    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
-    {
-        $this->assertEquals($expectedArray, $this->arrayProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
-    }
-
-    public function testArrayUniqueBySubArray()
-    {
-        $testArray = [
-            0 => [true, false, 123],
-            2 => ['foo'],
-            4 => [true, false, 123],
-            5 => [['foo' => 'bar'], new \stdClass()],
-            7 => [4.567, 'abc', null],
-            8 => [['foo' => 'bar'], new \AppendIterator()],
-            9 => [['foo' => 'bar'], new \Exception()],
-        ];
-        $expectedArray = [
-            0 => [true, false, 123],
-            2 => ['foo'],
-            5 => [['foo' => 'bar'], new \stdClass()],
-            7 => [4.567, 'abc', null],
-        ];
-
-        $this->assertEquals($expectedArray, $this->arrayProcessor->arrayUniqueBySubArray($testArray));
-    }
-
-    public function testStringifySubArrays()
-    {
-        $testArray = [
-            0 => [true, false, 123],
-            3 => [4.567, 'abc', null],
-            7 => [['foo' => 'bar'], new \stdClass()],
-        ];
-        $expectedArray = [
-            0 => '1||123',
-            3 => '4.567|abc|',
-            7 => 'array|object',
-        ];
-
-        $this->assertEquals($expectedArray, $this->arrayProcessor->stringifySubArrays($testArray));
-    }
-
-    public function testStringifyArray()
-    {
-        $testArray = [true, false, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
-        $expectedString = '1||123|4.567|abc||array|object';
-
-        $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray));
-    }
-
     public function provideDataForRemoveArrayColumns()
     {
         $testArray = [
@@ -189,22 +205,6 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
                 $expectedArrays['forWhitelistTrue'],
             ]
         ];
-    }
-
-    public function testFlattenArray()
-    {
-        $testArray = [true, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
-        $expectedArray = [true, 123, 4.567, 'abc', null, 'array', 'object'];
-
-        $this->assertEquals($expectedArray, $this->arrayProcessor->flattenArray($testArray));
-    }
-
-    /**
-     * @dataProvider provideDataForFlattenVar
-     */
-    public function testFlattenVar($testValue, $expectedValue)
-    {
-        $this->assertEquals($expectedValue, $this->arrayProcessor->flattenVar($testValue));
     }
 
     public function provideDataForFlattenVar()
