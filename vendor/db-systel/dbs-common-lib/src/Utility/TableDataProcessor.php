@@ -21,7 +21,7 @@ class TableDataProcessor extends ArrayProcessor
      *  the $identifier and the $prefix are not both strnings or arrays OR
      *  they are array with different lengths.
      */
-    public function validateRow(array $array, callable $condition = null, $identifier = null, $prefix = null)
+    public function validateArray(array $array, callable $condition = null, $identifier = null, $prefix = null)
     {
         $isValid =
             $this->validateArrayByCondition($array, $condition) &&
