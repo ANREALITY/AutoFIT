@@ -31,7 +31,11 @@ class TableDataProcessor extends ArrayProcessor
     }
 
     /**
-     * 
+     * Checks, whether the $string is valid.
+     * It is valid, if it's prefixed by the $prefix.
+     * There also may be multiple prefixs.
+     * In this case at least one prefix match is enough.
+     *
      * @param string $string
      * @param string|array $prefix
      * @return boolean
