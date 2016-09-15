@@ -150,7 +150,7 @@ class AbstractMapper
             // @todo Maybe faster with array_map(...).
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if ($this->tableDataProcessor->validateColumnByPrefix($columnAlias, $prefix)) {
+                if ($this->tableDataProcessor->validateStringByPrefix($columnAlias, $prefix)) {
                     if (is_string($prefix)) {
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;

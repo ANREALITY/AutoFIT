@@ -24,34 +24,34 @@ class TableDataProcessor extends ArrayProcessor
     public function validateRow(array $array, callable $condition = null, $identifier = null, $prefix = null)
     {
         $isValid =
-            $this->validateRowByCondition($array, $condition) &&
-            $this->validateRowByIdentifier($array, $identifier, $prefix)
+            $this->validateArrayByCondition($array, $condition) &&
+            $this->validateArrayByIdentifier($array, $identifier, $prefix)
         ;
         return $isValid;
     }
 
     /**
      * 
-     * @param string $columnAlias
-     * @param string|array $prefixes
+     * @param string $string
+     * @param string|array $prefix
      * @return boolean
      */
-    public function validateColumnByPrefix(string $columnAlias, $prefixes)
+    public function validateStringByPrefix(string $string, $prefix)
     {
-        $prefixIsValid = false;
-        if (is_string($prefixes)) {
-            if (! empty($prefixes) && strpos($columnAlias, $prefixes) === 0) {
-                $prefixIsValid = true;
+        $valid = false;
+        if (is_string($prefix)) {
+            if (! empty($prefix) && strpos($string, $prefix) === 0) {
+                $valid = true;
             }
-        } elseif (is_array($prefixes)) {
-            foreach ($prefixes as $prefix) {
-                if (strpos($columnAlias, $prefix) === 0) {
-                    $prefixIsValid = true;
+        } elseif (is_array($prefix)) {
+            foreach ($prefix as $partPrefix) {
+                if (strpos($string, $partPrefix) === 0) {
+                    $valid = true;
                     break;
                 }
             }
         }
-        return $prefixIsValid;
+        return $valid;
     }
 
     /**
@@ -69,7 +69,7 @@ class TableDataProcessor extends ArrayProcessor
      *  the $identifier and the $prefix are not both strnings or arrays OR
      *  they are array with different lengths.
      */
-    protected function validateRowByIdentifier(array $array, $identifier = null, $prefix = null)
+    protected function validateArrayByIdentifier(array $array, $identifier = null, $prefix = null)
     {
         if (
             gettype($prefix) != gettype($identifier) &&
@@ -79,27 +79,27 @@ class TableDataProcessor extends ArrayProcessor
         }
         // Preventing creating empty objects.
         // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-        $identifierOk = true;
+        $valid = true;
         if (is_string($identifier)) {
             $completeIdentifier = $prefix . $identifier;
-            $identifierOk =
+            $valid =
             isset($array[$completeIdentifier]) && ! (
                 $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
             );
         } elseif (is_array($identifier)) {
             foreach ($identifier as $key => $partIdentifierValue) {
                 $completeIdentifier = $prefix[$key] . $partIdentifierValue;
-                $identifierOk =
-                isset($array[$completeIdentifier]) && ! (
-                    $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
+                $valid =
+                    isset($array[$completeIdentifier]) && ! (
+                        $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
                     )
-                    ;
-                if (! $identifierOk) {
+                ;
+                if (! $valid) {
                     break;
                 }
             }
         }
-        return $identifierOk;
+        return $valid;
     }
 
     /**
@@ -110,13 +110,13 @@ class TableDataProcessor extends ArrayProcessor
      * @param callable $condition
      * @return boolean
      */
-    protected function validateRowByCondition(array $array, callable $condition = null)
+    protected function validateArrayByCondition(array $array, callable $condition = null)
     {
-        $conditionOk = true;
+        $valid = true;
         if ($condition && ! $condition($array)) {
-            $conditionOk = false;
+            $valid = false;
         }
-        return $conditionOk;
+        return $valid;
     }
 
 }
