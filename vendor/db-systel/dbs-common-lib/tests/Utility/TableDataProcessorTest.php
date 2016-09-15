@@ -34,6 +34,14 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         $this->tableDataProcessor->validateRow($row, $condition, $identifier, $prefix);
     }
 
+    /**
+     * @dataProvider provideDataForValidateStringByPrefix
+     */
+    public function testValidateStringByPrefix($string, $prefix, $expectedResult)
+    {
+        $this->assertEquals($expectedResult, $this->tableDataProcessor->validateStringByPrefix($string, $prefix));
+    }
+
     public function provideDataForValidateRow()
     {
         $testRows = [
@@ -289,6 +297,44 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             ];
         }
 
+        return $data;
+    }
+
+    public function provideDataForValidateStringByPrefix()
+    {
+        $data = [
+            [
+                'string' => 'foo__qwer',
+                'prefix' => 'foo__',
+                'expected' => true
+            ],
+            [
+                'string' => 'foo__qwer',
+                'prefix' => 'bar__',
+                'expected' => false
+            ],
+            [
+                'string' => 'foo__qwer',
+                'prefix' => null,
+                'expected' => false
+            ],
+            [
+                'string' => 'foo__qwer',
+                'prefix' => [
+                    'foo__',
+                    'bar__'
+                ],
+                'expected' => true
+            ],
+            [
+                'string' => 'foo__qwer',
+                'prefix' => [
+                    'bar__',
+                    'buz__'
+                ],
+                'expected' => false
+            ],
+        ];
         return $data;
     }
 
