@@ -30,22 +30,28 @@ class TableDataProcessor extends ArrayProcessor
         return $isValid;
     }
 
-    public function validateColumn(string $columnAlias, $prefixes)
+    /**
+     * 
+     * @param string $columnAlias
+     * @param string|array $prefixes
+     * @return boolean
+     */
+    public function validateColumnByPrefix(string $columnAlias, $prefixes)
     {
-        $prefixIsProper = false;
+        $prefixIsValid = false;
         if (is_string($prefixes)) {
             if (! empty($prefixes) && strpos($columnAlias, $prefixes) === 0) {
-                $prefixIsProper = true;
+                $prefixIsValid = true;
             }
         } elseif (is_array($prefixes)) {
             foreach ($prefixes as $prefix) {
                 if (! empty($prefix) && strpos($columnAlias, $prefix) === 0) {
-                    $prefixIsProper = true;
+                    $prefixIsValid = true;
                     break;
                 }
             }
         }
-        return $prefixIsProper;
+        return $prefixIsValid;
     }
 
     /**
