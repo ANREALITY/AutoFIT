@@ -45,7 +45,7 @@ class TableDataProcessor extends ArrayProcessor
             }
         } elseif (is_array($prefixes)) {
             foreach ($prefixes as $prefix) {
-                if (! empty($prefix) && strpos($columnAlias, $prefix) === 0) {
+                if (strpos($columnAlias, $prefix) === 0) {
                     $prefixIsValid = true;
                     break;
                 }
