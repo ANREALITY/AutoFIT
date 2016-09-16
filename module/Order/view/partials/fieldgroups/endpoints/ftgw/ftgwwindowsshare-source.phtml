@@ -1,0 +1,29 @@
+<?php
+$fieldgroupName = 'specific-endpoint-source';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-source';
+$fieldgroupTitle = $this->translate('Source - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointSourceFieldset->get('type')),
+    $this->formRow($endpointSourceFieldset->get('sharename')),
+    $this->formRow($endpointSourceFieldset->get('folder')),
+    $this->formRow($endpointSourceFieldset->get('include_parameter_set')
+        ->get('include_parameters')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
+        $endpointSourceFieldset->get('include_parameter_set')
+            ->get('add_include_parameter')) . '</div>',
+    $this->formRow($endpointSourceFieldset->get('access_config_set')
+        ->get('access_configs')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
+        $endpointSourceFieldset->get('access_config_set')
+            ->get('add_access_config')) . '</div>'
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+<?php $this->inlineScript()->appendFile('/js/ftgwwindowsshare-source-hack.js'); ?>
