@@ -27,6 +27,7 @@ use DbSystel\DataObject\ProtocolSet;
 use DbSystel\DataObject\FileParameterSet;
 use DbSystel\DataObject\AccessConfigSet;
 use DbSystel\DataObject\EndpointFtgwProtocolServer;
+use DbSystel\DataObject\EndpointFtgwWindowsShare;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -266,6 +267,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwWindows();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER) === 0) {
                     $this->prototype = new EndpointFtgwProtocolServer();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE) === 0) {
+                    $this->prototype = new EndpointFtgwWindowsShare();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -790,6 +793,59 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $result = $statement->execute();
 
         if ($result instanceof ResultInterface) {
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwWindowsShare $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwWindowsShare
+     * @throws \Exception
+     */
+    protected function saveFtgwWindowsShare(EndpointFtgwWindowsShare $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['sharename'] = $dataObject->getSharename();
+        $data['folder'] = $dataObject->getFolder();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        $newAccessConfigSet = $this->accessConfigSetMapper->save($dataObject->getAccessConfigSet());
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+        $data['access_config_set_id'] = $newAccessConfigSet->getId();
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_windows_share');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_windows_share');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+            }
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
