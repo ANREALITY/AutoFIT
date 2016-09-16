@@ -181,6 +181,10 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
             $cdWindowsShareAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_cd_windows_share_access_config__', null, null, null, null, true);
         }
+        if ($prefix === 'endpoint_ftgw_windows_share_access_config_set__') {
+            $ftgwWindowsShareAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_share_access_config__', null, null, null, null, true);
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -188,6 +192,10 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
             // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigDataObjects,
+                    'setAccessConfigs', 'getId');
+            }
+            if ($prefix === 'endpoint_ftgw_windows_share_access_config_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareAccessConfigDataObjects,
                     'setAccessConfigs', 'getId');
             }
         }

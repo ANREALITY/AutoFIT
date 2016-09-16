@@ -548,6 +548,37 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_protocol_server_protocol' . '__' . 'protocol_set_id' => 'protocol_set_id'
             ], Select::JOIN_LEFT);
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
+        $select->join('endpoint_ftgw_windows_share', 'endpoint_ftgw_windows_share.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_windows_share' . '__' . 'sharename' => 'sharename',
+                'endpoint_ftgw_windows_share' . '__' . 'folder' => 'folder',
+                'endpoint_ftgw_windows_share' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id',
+                'endpoint_ftgw_windows_share' . '__' . 'access_config_set_id' => 'access_config_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_windows_share_include_parameter_set' => 'include_parameter_set'], 'endpoint_ftgw_windows_share_include_parameter_set.id = endpoint_ftgw_windows_share.include_parameter_set_id',
+            [
+                'endpoint_ftgw_windows_share_include_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_windows_share_include_parameter' => 'include_parameter'], 'endpoint_ftgw_windows_share_include_parameter.include_parameter_set_id = endpoint_ftgw_windows_share_include_parameter_set.id',
+            [
+                'endpoint_ftgw_windows_share_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_ftgw_windows_share_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_ftgw_windows_share_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_windows_share_access_config_set' => 'access_config_set'], 'endpoint_ftgw_windows_share_access_config_set.id = endpoint_ftgw_windows_share.access_config_set_id',
+            [
+                'endpoint_ftgw_windows_share_access_config_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_windows_share_access_config' => 'access_config'], 'endpoint_ftgw_windows_share_access_config.access_config_set_id = endpoint_ftgw_windows_share_access_config_set.id',
+            [
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'id' => 'id',
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'username' => 'username',
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'permission_read' => 'permission_read',
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'permission_write' => 'permission_write',
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'permission_delete' => 'permission_delete',
+                'endpoint_ftgw_windows_share_access_config' . '__' . 'access_config_set_id' => 'access_config_set_id'
+            ], Select::JOIN_LEFT);
 
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);

@@ -935,6 +935,20 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $ftgwWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_share_include_parameter_set__', 'id',
+            'endpoint__', new IncludeParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
+                $protocolExists = array_key_exists('endpoint_ftgw_windows_share_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_share_include_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
+        $ftgwWindowsShareAccessConfigSetDataObjects = $this->accessConfigSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_share_access_config_set__', 'id',
+            'endpoint__', new AccessConfigSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
+                $protocolExists = array_key_exists('endpoint_ftgw_windows_share_access_config_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_share_access_config_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -965,6 +979,10 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerProtocolSetDataObjects,
                 'setProtocolSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareIncludeParameterSetDataObjects,
+                'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareAccessConfigSetDataObjects,
+                'setAccessConfigSet', 'getId');
         }
 
         return $dataObjects;

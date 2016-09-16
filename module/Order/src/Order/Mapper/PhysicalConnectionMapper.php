@@ -25,6 +25,7 @@ use DbSystel\DataObject\EndpointCdWindows;
 use DbSystel\DataObject\EndpointCdZos;
 use DbSystel\DataObject\EndpointCdWindowsShare;
 use DbSystel\DataObject\EndpointFtgwProtocolServer;
+use DbSystel\DataObject\EndpointFtgwWindowsShare;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
@@ -412,6 +413,20 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
+        $endpointFtgwWindowsShareSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
+                    $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
+                    return $typeIsOk && $roleIsOk;
+                });
+        $endpointFtgwWindowsShareTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
+                function (array $row) {
+                    $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
+                    $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
+                    return $typeIsOk && $roleIsOk;
+                });
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -452,6 +467,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwProtocolServerSourceDataObjects,
                 'setEndpointSource', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwProtocolServerTargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwWindowsShareSourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwWindowsShareTargetDataObjects,
                 'setEndpointTarget', 'getId');
         }
 

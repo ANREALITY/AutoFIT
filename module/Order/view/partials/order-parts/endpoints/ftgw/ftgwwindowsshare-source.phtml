@@ -1,0 +1,88 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwWindowsShare;
+use DbSystel\DataObject\IncludeParameterSet;
+use DbSystel\DataObject\AccessConfigSet;
+/**
+ *
+ * @var EndpointFtgwWindowsShare $dataObject
+ */
+$dataObject;
+?>
+<?php
+// include parameters
+$includeParametersOutput = '-';
+if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
+    $includeParametersOutput = '<ul class="include-parameters">';
+    $index = 0;
+    foreach ($dataObject->getIncludeParameterSet()->getIncludeParameters() as $includeParameter) {
+        $includeParametersOutput .= <<<INCLUDE_PARAMETER
+<li>
+    <span>{$includeParameter->getExpression()}<span>
+</li>
+INCLUDE_PARAMETER;
+    }
+    $includeParametersOutput .= '</ul>';
+}
+?>
+<?php
+$flags = [
+    0 => $this->translate('no'),
+    1 => $this->translate('yes')
+];
+?>
+<?php
+// access configs
+$accessConfigsOutput = '-';
+if ($dataObject->getAccessConfigSet() && $dataObject->getAccessConfigSet() instanceof AccessConfigSet && $dataObject->getAccessConfigSet()->getAccessConfigs()) {
+    $accessConfigsOutput = '<ul class="access-configs">';
+    $index = 0;
+    foreach ($dataObject->getAccessConfigSet()->getAccessConfigs() as $accessConfig) {
+        $accessConfigsOutput .= <<<ACCESS_CONFIG
+<li>
+    <span>{$accessConfig->getUsername()}<span>
+    <ul>
+    <li>{$this->translate('read')}: {$accessConfig->getPermissionRead()}</li>
+    <li>{$this->translate('write')}: {$flags[$accessConfig->getPermissionWrite()]}</li>
+    <li>{$this->translate('delete')}: {$flags[$accessConfig->getPermissionDelete()]}</li>
+    </ul>
+</li>
+ACCESS_CONFIG;
+    }
+    $accessConfigsOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'specific-source';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Source - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('sharename'),
+        'value' => $dataObject->getSharename() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('include parameters'),
+        'value' => $includeParametersOutput
+    ],
+    [
+        'label' => $this->translate('access configurations'),
+        'value' => $accessConfigsOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

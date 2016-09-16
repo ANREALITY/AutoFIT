@@ -198,6 +198,10 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
             $ftgwProtocolServerIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_ftgw_protocol_server_include_parameter__', null, null, null, null, true);
         }
+        if ($prefix === 'endpoint_ftgw_windows_share_include_parameter_set__') {
+            $ftgwWindowsShareIncludeParameterDataObjects = $this->includeParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_share_include_parameter__', null, null, null, null, true);
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -221,6 +225,10 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
             }
             if ($prefix === 'endpoint_ftgw_protocol_server_include_parameter_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerIncludeParameterDataObjects,
+                    'setIncludeParameters', 'getId');
+            }
+            if ($prefix === 'endpoint_ftgw_windows_share_include_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareIncludeParameterDataObjects,
                     'setIncludeParameters', 'getId');
             }
         }
