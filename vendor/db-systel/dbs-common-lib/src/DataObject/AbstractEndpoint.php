@@ -24,6 +24,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     const TYPE_FTGW_WINDOWS_SHARE = 'FtgwWindowsShare';
 
+    const TYPE_FTGW_LINUX_UNIX = 'FtgwLinuxUnix';
+
     const ROLE_SOURCE = 'source';
 
     const ROLE_TARGET = 'target';
