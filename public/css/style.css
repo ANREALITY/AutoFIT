@@ -358,6 +358,9 @@ table.list td {
   color: #999999;
   background-color: #eeeeee;
 }
+.glyphicon {
+  font-size: 75%;
+}
 .glyphicon-edit {
   color: #333333;
 }
