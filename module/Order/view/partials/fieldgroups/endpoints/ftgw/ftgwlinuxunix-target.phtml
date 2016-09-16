@@ -1,0 +1,40 @@
+<?php
+if (! empty($getHelperFieldsValuesFromObject)) {
+    $dataObject = $endpointTargetFieldset->getObject();
+    // setting value for server_toggle
+    if ($dataObject->getEndpointServerConfig() && $dataObject->getEndpointServerConfig()->getServer()) {
+        $valueServerToggle = 'single_server';
+    } else {
+        $valueServerToggle = 'multiple_servers';
+    }
+    $endpointTargetFieldset->get('server_toggle')->setValue($valueServerToggle);
+}
+?>
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-target';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
+    $this->formRow($endpointTargetFieldset->get('username')),
+    $this->formRow($endpointTargetFieldset->get('folder')),
+    $this->formRow($endpointTargetFieldset->get('server_toggle')),
+    $this->partial('/partials/info-boxes/hint-cluster'),
+    $this->formRow($endpointTargetFieldset->get('service_address_toggle')),
+    $this->formRow($endpointTargetFieldset->get('service_address')),
+    $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('id')),
+    $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('dns_address')),
+    $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('cluster')->get('id')),
+    $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('cluster')->get('virtual_node_name')),
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+<?php $this->inlineScript()->appendFile('/js/ftgwlinuxunix-target-fields-dependency-management.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/ftgwlinuxunix-target-autocomplete.js'); ?>
