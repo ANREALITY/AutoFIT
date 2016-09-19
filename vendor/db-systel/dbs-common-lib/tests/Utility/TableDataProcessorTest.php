@@ -14,11 +14,11 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider provideDataForArrayUniqueByIdentifier
+     * @dataProvider provideDataForTableUniqueByIdentifier
      */
-    public function testArrayUniqueByIdentifier($testArray, $identifier, $expectedArray)
+    public function testTableUniqueByIdentifier($testArray, $identifier, $expectedArray)
     {
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->arrayUniqueByIdentifier($testArray, $identifier));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->tableUniqueByIdentifier($testArray, $identifier));
     }
 
     /**
@@ -66,7 +66,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifySubArrays($testArray));
     }
 
-    public function provideDataForArrayUniqueByIdentifier()
+    public function provideDataForTableUniqueByIdentifier()
     {
         $testArray = [
             0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],

@@ -142,7 +142,7 @@ class AbstractMapper
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
-            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
         } elseif (is_array($identifierMakingUnique)) {
             $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
                 $result = [];
@@ -151,7 +151,7 @@ class AbstractMapper
                 }
                 return $result;
             };
-            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
         }
 
         $dataObjects = [];

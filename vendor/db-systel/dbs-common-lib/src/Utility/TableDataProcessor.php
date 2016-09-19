@@ -19,12 +19,12 @@ class TableDataProcessor extends ArrayProcessor
      * @param string|array $identifier The identifying key or an array of such keys.
      * @return array
      */
-    public function arrayUniqueByIdentifier(array $table, $identifier)
+    public function tableUniqueByIdentifier(array $table, $identifier)
     {
         if (is_string($identifier)) {
-            $tableUnique = $this->arrayUniqueBySingleIdentifier($table, $identifier);
+            $tableUnique = $this->tableUniqueBySingleIdentifier($table, $identifier);
         } elseif (is_array($identifier)) {
-            $tableUnique = $this->arrayUniqueByMultipleIdentifiers($table, $identifier);
+            $tableUnique = $this->tableUniqueByMultipleIdentifiers($table, $identifier);
         }
         return $tableUnique;
     }
@@ -46,7 +46,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param string $identifier The identifying key.
      * @return array
      */
-    protected function arrayUniqueBySingleIdentifier(array $table, string $identifier)
+    protected function tableUniqueBySingleIdentifier(array $table, string $identifier)
     {
         $tableIds = array_keys($table);
         $identifierColumn = array_column($table, $identifier);
@@ -70,7 +70,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param array $identifier An array of identifying keys.
      * @return array
      */
-    protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
+    protected function tableUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
         $tableUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
