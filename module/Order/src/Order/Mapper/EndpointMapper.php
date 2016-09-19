@@ -28,6 +28,7 @@ use DbSystel\DataObject\FileParameterSet;
 use DbSystel\DataObject\AccessConfigSet;
 use DbSystel\DataObject\EndpointFtgwProtocolServer;
 use DbSystel\DataObject\EndpointFtgwWindowsShare;
+use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -269,6 +270,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwProtocolServer();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE) === 0) {
                     $this->prototype = new EndpointFtgwWindowsShare();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_LINUX_UNIX) === 0) {
+                    $this->prototype = new EndpointFtgwLinuxUnix();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -845,6 +848,64 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
                 // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwLinuxUnix $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwLinuxUnix
+     * @throws \Exception
+     */
+    protected function saveFtgwLinuxUnix(EndpointFtgwLinuxUnix $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
+        $data['transmission_type'] = $dataObject->getTransmissionType();
+        $data['transmission_interval'] = $dataObject->getTransmissionInterval();
+        $data['service_address'] = $dataObject->getServiceAddress();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
+        }
+        $newEndpointClusterConfig = $this->endpointClusterConfigMapper->save($dataObject->getEndpointClusterConfig());
+        
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
+            $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
+        }
+        $data['endpoint_cluster_config_id'] = $newEndpointClusterConfig->getId();
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_linux_unix');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_linux_unix');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+                // ...
             }
             return $dataObject;
         }
