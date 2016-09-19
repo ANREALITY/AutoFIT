@@ -138,7 +138,7 @@ class AbstractMapper
         $uniqueResultSetArray = [];
         // For cases with an inverted relationship like
         // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
-        // In otherweise in such cases some of the relevant rows can be ignored.
+        // Otherwise in such cases some of the relevant rows can be ignored.
         $identifierMakingUnique = $childIdentifier ?: $identifier;
         $prefixMakingUnique = $childPrefix ?: $prefix;
         if (is_string($prefixMakingUnique)) {
