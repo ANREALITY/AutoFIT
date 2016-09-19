@@ -10,6 +10,8 @@ use Order\Form\Fieldset\EndpointFtgwSelfServiceTargetFieldset;
 use Order\Form\Fieldset\AbstractEndpointFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwLinuxUnixSourceFieldset;
 
 class OrderForm extends Form
 {
@@ -100,6 +102,9 @@ class OrderForm extends Form
         if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
             $elementsSource[] = $endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
         }
+        if ($endpointSourceFieldset instanceof EndpointFtgwLinuxUnixSourceFieldset) {
+            $elementsSource[] = $endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
+        }
         $minOneNotEmptyValidatorSource = new MinOneNotEmpty(['elements' => $elementsSource]);
         $isValid = $minOneNotEmptyValidatorSource->isValid(null);
         if (! $isValid) {
@@ -118,6 +123,9 @@ class OrderForm extends Form
             $elementsTarget[] = $endpointTargetFieldset->get('external_server')->get('name');
         }
         if ($endpointTargetFieldset instanceof EndpointCdLinuxUnixTargetFieldset) {
+            $elementsTarget[] = $endpointTargetFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
+        }
+        if ($endpointTargetFieldset instanceof EndpointFtgwLinuxUnixTargetFieldset) {
             $elementsTarget[] = $endpointTargetFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
         }
         $minOneNotEmptyValidatorTarget = new MinOneNotEmpty(['elements' => $elementsTarget]);
