@@ -144,9 +144,14 @@ class EndpointClusterConfigMapper extends AbstractMapper implements EndpointClus
         $cdLinuxUnixClusterDataObjects = $this->clusterMapper->createDataObjects($resultSetArray,
             null, null, ['id', 'id'], ['cd_linux_unix_cluster__', 'cd_linux_unix_cluster_config__'], 'id', 'cd_linux_unix_cluster_config__', null,
             null, false);
+        $ftgwLinuxUnixClusterDataObjects = $this->clusterMapper->createDataObjects($resultSetArray,
+            null, null, ['id', 'id'], ['ftgw_linux_unix_cluster__', 'ftgw_linux_unix_cluster_config__'], 'id', 'ftgw_linux_unix_cluster_config__', null,
+            null, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixClusterDataObjects,
+                'setCluster', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixClusterDataObjects,
                 'setCluster', 'getId');
         }
 

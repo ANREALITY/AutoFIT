@@ -1010,6 +1010,20 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 $protocolExists = array_key_exists('endpoint_ftgw_windows_share_access_config_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_share_access_config_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $ftgwLinuxUnixClusterConfigDataObjects = $this->endpointClusterConfigMapper->createDataObjects($resultSetArray,
+            null, null, ['id', 'id', 'role'], ['ftgw_linux_unix_cluster_config__', 'endpoint__', 'endpoint__'], 'id', 'endpoint__', null,
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
+                $endpointClusterConfigExists = array_key_exists('ftgw_linux_unix_cluster_config' . '__' . 'id', $row) && !empty($row['ftgw_linux_unix_cluster_config' . '__' . 'id']);
+                return $typeIsOk && $endpointClusterConfigExists;
+            }, false);
+        $ftgwLinuxUnixIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_linux_unix_include_parameter_set__', 'id',
+            'endpoint__', new IncludeParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
+                $protocolExists = array_key_exists('endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -1044,6 +1058,10 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 'setIncludeParameterSet', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareAccessConfigSetDataObjects,
                 'setAccessConfigSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixClusterConfigDataObjects,
+                'setEndpointClusterConfig', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixIncludeParameterSetDataObjects,
+                'setIncludeParameterSet', 'getId');
         }
 
         return $dataObjects;

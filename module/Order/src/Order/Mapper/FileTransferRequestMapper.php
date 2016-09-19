@@ -579,6 +579,44 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_windows_share_access_config' . '__' . 'permission_delete' => 'permission_delete',
                 'endpoint_ftgw_windows_share_access_config' . '__' . 'access_config_set_id' => 'access_config_set_id'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_linux_unix', 'endpoint_ftgw_linux_unix.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_linux_unix' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_linux_unix' . '__' . 'username' => 'username',
+                'endpoint_ftgw_linux_unix' . '__' . 'folder' => 'folder',
+                'endpoint_ftgw_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
+                'endpoint_ftgw_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
+                'endpoint_ftgw_linux_unix' . '__' . 'service_address' => 'service_address'
+            ], Select::JOIN_LEFT);
+        $select->join(['ftgw_linux_unix_cluster_config' => 'endpoint_cluster_config'], 'ftgw_linux_unix_cluster_config.id = endpoint_ftgw_linux_unix.endpoint_cluster_config_id',
+            [
+                'ftgw_linux_unix_cluster_config' . '__' . 'id' => 'id',
+                'ftgw_linux_unix_cluster_config' . '__' . 'dns_address' => 'dns_address',
+                'ftgw_linux_unix_cluster_config' . '__' . 'cluster_id' => 'cluster_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['ftgw_linux_unix_cluster' => 'cluster'], 'ftgw_linux_unix_cluster.id = ftgw_linux_unix_cluster_config.cluster_id',
+            [
+                'ftgw_linux_unix_cluster' . '__' . 'id' => 'id',
+                'ftgw_linux_unix_cluster' . '__' . 'virtual_node_name' => 'virtual_node_name',
+            ], Select::JOIN_LEFT);
+        $select->join(['ftgw_linux_unix_server' => 'server'],
+            'ftgw_linux_unix_server.cluster_id = ftgw_linux_unix_cluster.id',
+            [
+                'ftgw_linux_unix_server' . '__' . 'name' => 'name',
+                'ftgw_linux_unix_server' . '__' . 'node_name' => 'node_name',
+                'ftgw_linux_unix_server' . '__' . 'virtual_node_name' => 'virtual_node_name',
+                'ftgw_linux_unix_server' . '__' . 'cluster_id' => 'cluster_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_linux_unix_include_parameter_set' => 'include_parameter_set'], 'endpoint_ftgw_linux_unix_include_parameter_set.id = endpoint_ftgw_linux_unix.include_parameter_set_id',
+            [
+                'endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_linux_unix_include_parameter' => 'include_parameter'], 'endpoint_ftgw_linux_unix_include_parameter.include_parameter_set_id = endpoint_ftgw_linux_unix_include_parameter_set.id',
+            [
+                'endpoint_ftgw_linux_unix_include_parameter' . '__' . 'id' => 'id',
+                'endpoint_ftgw_linux_unix_include_parameter' . '__' . 'expression' => 'expression',
+                'endpoint_ftgw_linux_unix_include_parameter' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
+            ], Select::JOIN_LEFT);
 
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);

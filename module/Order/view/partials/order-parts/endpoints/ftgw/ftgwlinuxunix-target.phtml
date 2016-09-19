@@ -1,0 +1,72 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwLinuxUnix;
+/**
+ *
+ * @var EndpointFtgwLinuxUnix $dataObject
+ */
+$dataObject;
+?>
+<?php
+// servers
+$includeParametersOutput = '-';
+try {
+    $servers = $dataObject->getEndpointClusterConfig()->getCluster()->getServers();
+} catch (Error $error) {
+    $servers = [];
+}
+if ($servers) {
+    $includeParametersOutput = '<ul class="servers">';
+    $index = 0;
+    foreach ($servers as $server) {
+        $includeParametersOutput .= <<<NOTIFICATION
+<li>
+    <span>{$server->getName()}<span>
+</li>
+NOTIFICATION;
+    }
+    $includeParametersOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'specific-target';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Target - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('username'),
+        'value' => $dataObject->getUsername() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('servers'),
+        'value' => $includeParametersOutput
+    ],
+    [
+        'label' => $this->translate('cluster\'s virtual node name'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getCluster() ? $dataObject->getEndpointClusterConfig()->getCluster()->getVirtualNodeName() : '-'
+    ],
+    [
+        'label' => $this->translate('cluster\'s DNS address'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getDnsAddress() ? $dataObject->getEndpointClusterConfig()->getDnsAddress() : '-'
+    ],
+    [
+        'label' => $this->translate('service address'),
+        'value' => $dataObject->getServiceAddress() ?: '-'
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>

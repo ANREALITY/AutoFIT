@@ -1,0 +1,101 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwLinuxUnix;
+use DbSystel\DataObject\IncludeParameterSet;
+/**
+ *
+ * @var EndpointFtgwLinuxUnix $dataObject
+ */
+$dataObject;
+?>
+<?php
+// servers
+$protocolsOutput = '-';
+try {
+    $servers = $dataObject->getEndpointClusterConfig()->getCluster()->getServers();
+} catch (Error $error) {
+    $servers = [];
+}
+if (!empty($servers)) {
+    $protocolsOutput = '<ul class="servers">';
+    $index = 0;
+    foreach ($servers as $server) {
+        $protocolsOutput .= <<<SERVER
+<li>
+    <span>{$server->getName()}<span>
+</li>
+SERVER;
+    }
+    $protocolsOutput .= '</ul>';
+}
+?>
+<?php
+// include parameters
+$includeParametersOutput = '-';
+if ($dataObject->getIncludeParameterSet() && $dataObject->getIncludeParameterSet() instanceof IncludeParameterSet && $dataObject->getIncludeParameterSet()->getIncludeParameters()) {
+    $includeParametersOutput = '<ul class="include-parameters">';
+    $index = 0;
+    foreach ($dataObject->getIncludeParameterSet()->getIncludeParameters() as $includeParameter) {
+        $includeParametersOutput .= <<<INCLUDE_PARAMETER
+<li>
+    <span>{$includeParameter->getExpression()}<span>
+</li>
+INCLUDE_PARAMETER;
+    }
+    $includeParametersOutput .= '</ul>';
+}
+?>
+<?php
+$orderPartCssId = 'specific-source';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Source - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('username'),
+        'value' => $dataObject->getUsername() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission type'),
+        'value' => $dataObject->getTransmissionType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission interval'),
+        'value' => $dataObject->getTransmissionInterval() ?: '-'
+    ],
+    [
+        'label' => $this->translate('servers'),
+        'value' => $protocolsOutput
+    ],
+    [
+        'label' => $this->translate('cluster\'s virtual node name'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getCluster() ? $dataObject->getEndpointClusterConfig()->getCluster()->getVirtualNodeName() : '-'
+    ],
+    [
+        'label' => $this->translate('cluster\'s DNS address'),
+        'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getDnsAddress() ? $dataObject->getEndpointClusterConfig()->getDnsAddress() : '-'
+    ],
+    [
+        'label' => $this->translate('service address'),
+        'value' => $dataObject->getServiceAddress() ?: '-'
+    ],
+    [
+        'label' => $this->translate('include parameters'),
+        'value' => $includeParametersOutput
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
