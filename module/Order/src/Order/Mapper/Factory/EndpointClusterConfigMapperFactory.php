@@ -23,6 +23,7 @@ class EndpointClusterConfigMapperFactory implements FactoryInterface
 
         $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

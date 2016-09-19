@@ -22,6 +22,7 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
 
         $service->setEndpointMapper($serviceLocator->get('Order\Mapper\EndpointMapper'));
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

@@ -23,6 +23,7 @@ class FileParameterSetMapperFactory implements FactoryInterface
 
         $service->setFileParameterMapper($serviceLocator->get('Order\Mapper\FileParameterMapper'));
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

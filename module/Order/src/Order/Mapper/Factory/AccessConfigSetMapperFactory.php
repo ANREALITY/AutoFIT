@@ -23,6 +23,7 @@ class AccessConfigSetMapperFactory implements FactoryInterface
 
         $service->setAccessConfigMapper($serviceLocator->get('Order\Mapper\AccessConfigMapper'));
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

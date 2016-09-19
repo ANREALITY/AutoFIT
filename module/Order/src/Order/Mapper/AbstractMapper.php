@@ -5,6 +5,7 @@ use Zend\Db\Adapter\AdapterInterface;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
 use DbSystel\Utility\TableDataProcessor;
+use DbSystel\Utility\StringUtility;
 
 class AbstractMapper
 {
@@ -31,6 +32,11 @@ class AbstractMapper
      * @var TableDataProcessor
      */
     protected $tableDataProcessor;
+
+    /**
+     * @var StringUtility
+     */
+    protected $stringUtility;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
         AbstractDataObject $prototype = null)
@@ -112,6 +118,14 @@ class AbstractMapper
         $this->tableDataProcessor = $tableDataProcessor;
     }
 
+    /**
+     * @param StringUtility $stringUtility
+     */
+    public function setStringUtility(StringUtility $stringUtility)
+    {
+        $this->stringUtility = $stringUtility;
+    }
+
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
@@ -150,7 +164,7 @@ class AbstractMapper
             // @todo Maybe faster with array_map(...).
             foreach ($row as $columnAlias => $value) {
                 $key = $columnAlias;
-                if ($this->tableDataProcessor->validateStringByPrefix($columnAlias, $prefix)) {
+                if ($this->stringUtility->validateStringByPrefix($columnAlias, $prefix)) {
                     if (is_string($prefix)) {
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;

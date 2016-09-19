@@ -64,6 +64,7 @@ class AbstractMapperFactory implements AbstractFactoryInterface
             new $prototypeQualifiedClassName());
 
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

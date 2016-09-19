@@ -250,6 +250,7 @@ return [
             'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\Factory\TableDataProcessorFactory'
         ],
         'invokables' => [
+            'DbSystel\Utility\StringUtility' => 'DbSystel\Utility\StringUtility'
         ],
         'abstract_factories' => [
             // mappers

@@ -31,6 +31,7 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $service->setServiceInvoicePositionMapper($serviceLocator->get('Order\Mapper\ServiceInvoicePositionMapper'));
         $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }
