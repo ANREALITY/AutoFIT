@@ -157,7 +157,8 @@ class AbstractMapper
                 }
                 return $result;
             };
-            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
+            $resultCompleteIdentifierMakingUnique = $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique);
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $resultCompleteIdentifierMakingUnique);
         }
         return $uniqueResultSetArray;
     }
