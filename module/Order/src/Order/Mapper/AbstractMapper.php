@@ -130,11 +130,17 @@ class AbstractMapper
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
     {
-        // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
-        // @todo Maybe $prototypeMap property instead of the $prototype property.
-        $prototype = $prototype ?: $this->getPrototype();
-        $prototypeClass = get_class($prototype);
+        $uniqueResultSetArray = $this->generateUniqueResultSetArray($identifier, $prefix, $childIdentifier, $childPrefix, $resultSetArray);
+        $dataObjects = $this->buildDataObjects($uniqueResultSetArray,
+            $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix,
+            $prototype, $dataObjectCondition, $isCollection
+        );
 
+        return $dataObjects;
+    }
+
+    protected function generateUniqueResultSetArray($identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, array $resultSetArray = [])
+    {
         $uniqueResultSetArray = [];
         // For cases with an inverted relationship like
         // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
@@ -153,7 +159,17 @@ class AbstractMapper
             };
             $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
         }
+        return $uniqueResultSetArray;
+    }
 
+    protected function buildDataObjects(array $uniqueResultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
+        // @todo Maybe $prototypeMap property instead of the $prototype property.
+        $prototype = $prototype ?: $this->getPrototype();
+        $prototypeClass = get_class($prototype);
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
             if (!$this->tableDataProcessor->validateArray($row, $dataObjectCondition, $identifier, $prefix)) {
