@@ -1,35 +1,39 @@
 <?php
 namespace DbSystel\Utility;
 
+/**
+ * This class provides methods to processes the data of tables / two-dimensional arrays.
+ */
 class TableDataProcessor extends ArrayProcessor
 {
 
     /**
-     * Returns the input array with only unique sub-arrays.
-     * To determinate the uniqueness of the sub-arrays
+     * Returns the input table with only unique rows.
+     * To determinate the uniqueness of the rows
      * following logic is applied:
-     * A sub-array $foo is identical to another sub-array $bar,
+     * A row $foo is identical to another row $bar,
      * if the value(-s) of the $identifier element(-s) in $foo
      * equals to the value(-s) of the correspondent element(-s) in $bar.
      *
-     * @param array $array
-     * @param mixed $identifier A value allowed as an array element's key or an array of such values.
+     * @param array $table
+     * @param string|array $identifier The identifying key or an array of such keys.
+     * @return array
      */
-    public function arrayUniqueByIdentifier(array $array, $identifier)
+    public function arrayUniqueByIdentifier(array $table, $identifier)
     {
         if (is_string($identifier)) {
-            $arrayUnique = $this->arrayUniqueBySingleIdentifier($array, $identifier);
+            $tableUnique = $this->arrayUniqueBySingleIdentifier($table, $identifier);
         } elseif (is_array($identifier)) {
-            $arrayUnique = $this->arrayUniqueByMultipleIdentifiers($array, $identifier);
+            $tableUnique = $this->arrayUniqueByMultipleIdentifiers($table, $identifier);
         }
-        return $arrayUnique;
+        return $tableUnique;
     }
 
     /**
-     * Returns the input array with only unique sub-arrays.
-     * To determinate the uniqueness of the sub-arrays
+     * Returns the input table with only unique rows.
+     * To determinate the uniqueness of the rows
      * following logic is applied:
-     * A sub-array $foo is identical to another sub-array $bar,
+     * A row $foo is identical to another row $bar,
      * if the value of the $identifier element in $foo
      * equals to the value of the correspondent element in $bar.
      *
@@ -38,38 +42,40 @@ class TableDataProcessor extends ArrayProcessor
      * Doesn't work for objects (fatal error due to converting object to string);
      * notice (due to converting array to string) and not tested for arrays.
      *
-     * @param array $array
-     * @param string $identifier A value allowed as an array element's key.
+     * @param array $table
+     * @param string $identifier The identifying key.
+     * @return array
      */
-    protected function arrayUniqueBySingleIdentifier(array $array, string $identifier)
+    protected function arrayUniqueBySingleIdentifier(array $table, string $identifier)
     {
-        $arrayIds = array_keys($array);
-        $identifierColumn = array_column($array, $identifier);
-        $identifierColumnWithIds = array_combine($arrayIds, $identifierColumn);
+        $tableIds = array_keys($table);
+        $identifierColumn = array_column($table, $identifier);
+        $identifierColumnWithIds = array_combine($tableIds, $identifierColumn);
         $identifierColumnUnique = array_unique($identifierColumnWithIds);
     
-        $arrayUnique = array_intersect_key($array, $identifierColumnUnique);
+        $tableUnique = array_intersect_key($table, $identifierColumnUnique);
     
-        return $arrayUnique;
+        return $tableUnique;
     }
 
     /**
-     * Returns the input array with only unique sub-arrays.
-     * To determinate the uniqueness of the sub-arrays
+     * Returns the input table with only unique rows.
+     * To determinate the uniqueness of the rows
      * following logic is applied:
-     * A sub-array $foo is identical to another sub-array $bar,
+     * A row $foo is identical to another row $bar,
      * if the values of the $identifier elements in $foo
      * equals to the values of the correspondent elements in $bar.
      *
-     * @param array $array
-     * @param array $identifier An array of values, that are allowed as array element's keys.
+     * @param array $table
+     * @param array $identifier An array of identifying keys.
+     * @return array
      */
     protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
         $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
-        $arrayUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
-        $arrayUnique = array_intersect_key($table, $arrayUniqueBySubArray);
-        return $arrayUnique;
+        $tableUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
+        $tableUnique = array_intersect_key($table, $tableUniqueBySubArray);
+        return $tableUnique;
     }
 
     /**
@@ -104,10 +110,10 @@ class TableDataProcessor extends ArrayProcessor
     }
 
     /**
-     * Extracts from the input $table the unique sub-arrays.
+     * Extracts the unique rows from the input $table.
      *
-     * For uniqueness check the sub-arrays get "stringified" first.
-     * The IDs of the unique result strings are then the IDs of the unique sub-arrays.
+     * For uniqueness check the rows get "stringified" first.
+     * The IDs of the unique result strings are then the IDs of the unique rows.
      *
      * @see ArrayProcessor#stringifySubArrays(...)
      *
@@ -122,23 +128,23 @@ class TableDataProcessor extends ArrayProcessor
     }
     
     /**
-     * Makes from every sub-array a string from its elements
+     * Makes from every row a string from its elements
      * (flattened and separated by the $this->implodeSeparator)
-     * and returns an array of these "strigified" sub-arrays.
-     * The indexes of the stringified sub-arrays remain the same
-     *  as the indexes of the original sub-array elements.
+     * and returns an array of these "strigified" rows.
+     * The indexes of the stringified rows remain the same
+     *  as the indexes of the original talbe's rows.
      *
      * @see ArrayProcessor#flattenArray(...)
      * @see ArrayProcessor#stringifyArray(...)
      *
-     * @param array $array
+     * @param array $table
      */
-    public function stringifySubArrays(array $array) {
-        $elementStrings = [];
-        foreach ($array as $key => $subArray) {
-            $elementStrings[$key] = $this->stringifyArray($subArray);
+    public function stringifySubArrays(array $table) {
+        $strigifiedRows = [];
+        foreach ($table as $key => $row) {
+            $strigifiedRows[$key] = $this->stringifyArray($row);
         }
-        return $elementStrings;
+        return $strigifiedRows;
     }
 
 }
