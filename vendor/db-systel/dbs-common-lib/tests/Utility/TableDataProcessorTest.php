@@ -29,7 +29,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedArray, $this->tableDataProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
     }
 
-    public function testArrayUniqueBySubArray()
+    public function testTableUniqueByRow()
     {
         $testArray = [
             0 => [true, false, 123],
@@ -47,10 +47,10 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             7 => [4.567, 'abc', null],
         ];
     
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->arrayUniqueBySubArray($testArray));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->tableUniqueByRow($testArray));
     }
 
-    public function testStringifySubArrays()
+    public function testStringifyRows()
     {
         $testArray = [
             0 => [true, false, 123],
@@ -63,7 +63,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             7 => 'array|object',
         ];
     
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifySubArrays($testArray));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifyRows($testArray));
     }
 
     public function provideDataForTableUniqueByIdentifier()
