@@ -22,11 +22,11 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider provideDataForRemoveArrayColumns
+     * @dataProvider provideDataForRemoveColumns
      */
-    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
+    public function testRemoveColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
     {
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->removeColumns($testArray, $columnNames, $isWhitelist));
     }
 
     public function testTableUniqueByRow()
@@ -141,7 +141,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function provideDataForRemoveArrayColumns()
+    public function provideDataForRemoveColumns()
     {
         $testArray = [
             ['foo' => 'qwer', 'bar' => 'asdf', 'baz' => 'yxcv', 'buz' => 'qxev'],

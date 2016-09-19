@@ -72,7 +72,7 @@ class TableDataProcessor extends ArrayProcessor
      */
     protected function tableUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
-        $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
+        $arrayForMakingUniqueByRow = $this->removeColumns($table, $identifiers, true);
         $tableUniqueBySubArray = $this->tableUniqueByRow($arrayForMakingUniqueByRow);
         $tableUnique = array_intersect_key($table, $tableUniqueBySubArray);
         return $tableUnique;
@@ -90,7 +90,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param bool $isWhitelist
      * @return array
      */
-    public function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
+    public function removeColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
         foreach ($table as $rowKey => $row) {
             if (is_array($row)) {
@@ -115,9 +115,9 @@ class TableDataProcessor extends ArrayProcessor
      * For uniqueness check the rows get "stringified" first.
      * The IDs of the unique result strings are then the IDs of the unique rows.
      *
-     * @see ArrayProcessor#stringifyRows(...)
-     *
+     * @see TableDataProcessor#stringifyRows(...)
      * @param array $table
+     * @return array
      */
     public function tableUniqueByRow(array $table = [])
     {
@@ -136,8 +136,8 @@ class TableDataProcessor extends ArrayProcessor
      *
      * @see ArrayProcessor#flattenArray(...)
      * @see ArrayProcessor#stringifyArray(...)
-     *
      * @param array $table
+     * @return array
      */
     public function stringifyRows(array $table) {
         $strigifiedRows = [];
