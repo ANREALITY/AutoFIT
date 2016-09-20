@@ -223,16 +223,18 @@ class ArrayProcessor
      */
     public function mergeArraysElementsToStrings(string $separator = null, string $placeholder = null, array ... $arrays)
     {
-        $result = [];
-        $placeholder = $placeholder ?: $this->placeholder;
-        $iterator = array_slice($arrays, 0, 1)[0];
-        foreach ($iterator as $key => $value) {
-            $newResultElementParts = [];
-            foreach ($arrays as $array) {
-                $newResultElementParts[] = isset($array[$key]) ? $this->flattenVar($array[$key]) : $placeholder;
-            }
-            $result[] = implode($separator, $newResultElementParts);
+        $index = 0;
+        $arrayMapInputVarNames = [];
+        foreach ($arrays as $array) {
+            $varName = 'array' . $index++;
+            $$varName = $array;
+            $arrayMapInputVarNames[] = '$' . $varName;
         }
+        $arrayMapInputString = implode(', ', $arrayMapInputVarNames);        
+        eval('$arraysMapped = array_map(null, ' . $arrayMapInputString . ');');
+        $result = array_map(function($subArray) use ($separator, $placeholder) {
+            return $this->stringifyArray($subArray, $separator, $placeholder);
+        }, $arraysMapped);
         return $result;
     }
 
