@@ -41,19 +41,6 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedValue, $this->arrayProcessor->flattenVar($testValue));
     }
 
-    public function provideDataForFlattenVar()
-    {
-        return [
-            [true, true],
-            [123, 123],
-            [4.567, 4.567],
-            ['abc', 'abc'],
-            [null, null],
-            [['foo' => 'bar'], 'array'],
-            [new \stdClass(), 'object'],
-        ];
-    }
-
     /**
      * @dataProvider provideDataForValidateArray
      */
@@ -70,7 +57,20 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->expectException($expectedException);
         $this->arrayProcessor->validateArray($row, $condition, $identifier, $prefix);
     }
-    
+
+    public function provideDataForFlattenVar()
+    {
+        return [
+            [true, true],
+            [123, 123],
+            [4.567, 4.567],
+            ['abc', 'abc'],
+            [null, null],
+            [['foo' => 'bar'], 'array'],
+            [new \stdClass(), 'object'],
+        ];
+    }
+
     public function provideDataForValidateArray()
     {
         $testRows = [
