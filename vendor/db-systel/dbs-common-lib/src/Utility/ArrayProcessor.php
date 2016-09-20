@@ -7,46 +7,76 @@ class ArrayProcessor
     /**
      * @var string
      */
-    protected $implodeSeparator;
+    protected $separator;
 
-    public function __construct($implodeSeparator = null)
+    /**
+     * @var string
+     */
+    protected $placeholder;
+
+    /**
+     * Creates an object and sets the default $separator and $placeholder.
+     *
+     * @param string $separator
+     * @param string $placeholder
+     */
+    public function __construct($separator = null, $placeholder = null)
     {
-        $this->setImplodeSeparator($implodeSeparator);
+        $this->setSeparator($separator);
+        $this->setPlaceholder($placeholder);
     }
 
     /**
-     * @return the $implodeSeparator
+     * @return the $separator
      */
-    public function getImplodeSeparator()
+    public function getSeparator()
     {
-        return $this->implodeSeparator;
+        return $this->separator;
     }
 
     /**
-     * @param string $implodeSeparator
+     * @param string $separator
      */
-    public function setImplodeSeparator(string $implodeSeparator = null)
+    public function setSeparator(string $separator = null)
     {
-        $this->implodeSeparator = $implodeSeparator;
+        $this->separator = $separator;
+    }
+
+    /**
+     * @return the $placeholder
+     */
+    public function getPlaceholder()
+    {
+        return $this->placeholder;
+    }
+
+    /**
+     * @param string $placeholder
+     */
+    public function setPlaceholder(string $placeholder = null)
+    {
+        $this->placeholder = $placeholder;
     }
 
     /**
      * "Flatten" the input $array first
      * (in order to avoid notices like "Array to string conversion")
-     * and returns a string from its elements separated by the $implodeSeparator.
+     * and returns a string from its elements separated by the $separator.
      * 
      * TRUE becomes '1', FALSE becomes '', NULL becomes ''.
      *
      * @see ArrayProcessor#flattenArray(...)
      *
      * @param array $array
-     * @param string $implodeSeparator
+     * @param string $separator
+     * @param string $placeholder
      */
-    public function stringifyArray(array $array, string $implodeSeparator = null)
+    public function stringifyArray(array $array, string $separator = null, string $placeholder = null)
     {
-        $implodeSeparator = $implodeSeparator ?: $this->implodeSeparator;
-        $elementPreparedForImplode = $this->flattenArray($array);
-        return implode($implodeSeparator, $elementPreparedForImplode);
+        $separator = $separator ?: $this->separator;
+        $placeholder = $placeholder ?: $this->placeholder;
+        $elementPreparedForImplode = $this->flattenArray($array, $placeholder);
+        return implode($separator, $elementPreparedForImplode);
     }
 
     /**
@@ -60,9 +90,13 @@ class ArrayProcessor
      *  (like: $elementStrings[] = is_array($subArray) ? stringify... : $subArray;).
      *
      * @param array $array
+     * @param string $placeholder
      */
-    public function flattenArray(array $array) {
-        $flatArray = array_map([$this, 'flattenVar'], $array);
+    public function flattenArray(array $array, string $placeholder = null) {
+        $placeholder = $placeholder ?: $this->placeholder;
+        $flatArray = array_map(function($value) use ($placeholder) {
+            return $this->flattenVar($value) !== null ? $this->flattenVar($value) : $placeholder;
+        }, $array);
         return $flatArray;
     }
 
@@ -190,6 +224,7 @@ class ArrayProcessor
     public function mergeArraysElementsToStrings(string $separator = null, string $placeholder = null, array ... $arrays)
     {
         $result = [];
+        $placeholder = $placeholder ?: $this->placeholder;
         $iterator = array_slice($arrays, 0, 1)[0];
         foreach ($iterator as $key => $value) {
             $newResultElementParts = [];
