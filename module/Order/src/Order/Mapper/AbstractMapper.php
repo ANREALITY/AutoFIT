@@ -150,15 +150,10 @@ class AbstractMapper
         if (is_string($prefixMakingUnique)) {
             $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
         } elseif (is_array($identifierMakingUnique)) {
-            $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
-                $result = [];
-                foreach ($prefixMakingUnique as $key => $value) {
-                    $result[] = $prefixMakingUnique[$key] . $identifierMakingUnique[$key];
-                }
-                return $result;
-            };
-            $resultCompleteIdentifierMakingUnique = $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique);
-            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $resultCompleteIdentifierMakingUnique);
+            $completeIdentifierMakingUnique = array_map(function($prefixValue, $identifierValue) {
+                return $prefixValue . $identifierValue;
+            }, $prefixMakingUnique, $identifierMakingUnique);
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique);
         }
         return $uniqueResultSetArray;
     }
