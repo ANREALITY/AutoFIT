@@ -186,7 +186,6 @@ class AbstractMapper
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;
                     } elseif (is_array($prefix)) {
-                        // @todo Replace this strange performance pest by str_replace($array, $string)!
                         foreach ($prefix as $currentPrefix) {
                             $key = str_replace($currentPrefix, '', $columnAlias);
                             $objectData[$key] = $value;
