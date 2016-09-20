@@ -381,14 +381,14 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         ];
         $expectedResults = [
             0 => [
-                0 => 'prefix_0__foo__postfix_0',
-                1 => 'prefix_1__123__postfix_1',
-                2 => 'prefix_2__4.567__postfix_2',
-                3 => 'prefix_3__1__postfix_3',
-                4 => 'prefix_4____postfix_4',
-                5 => 'prefix_5____postfix_5',
-                6 => 'prefix_6__array__postfix_6',
-                7 => 'prefix_7__object__postfix_7',
+                0 => 'prefix_0__|foo|__postfix_0',
+                1 => 'prefix_1__|123|__postfix_1',
+                2 => 'prefix_2__|4.567|__postfix_2',
+                3 => 'prefix_3__|1|__postfix_3',
+                4 => 'prefix_4__||__postfix_4',
+                5 => 'prefix_5__||__postfix_5',
+                6 => 'prefix_6__|array|__postfix_6',
+                7 => 'prefix_7__|object|__postfix_7',
             ],
             1 => [
                 0 => 'prefix_0__~~~foo~~~__postfix_0',
