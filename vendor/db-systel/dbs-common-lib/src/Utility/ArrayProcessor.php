@@ -178,4 +178,27 @@ class ArrayProcessor
         return $valid;
     }
 
+    /**
+     * Merges the elements of the input arrays among each other to strings
+     * and returns an array with thees merged strings.
+     *
+     * @param string $separator
+     * @param string $placeholder
+     * @param array ... $arrays
+     * @return string[]
+     */
+    public function mergeArraysElementsToStrings(string $separator = null, string $placeholder = null, array ... $arrays)
+    {
+        $result = [];
+        $iterator = array_slice($arrays, 0, 1)[0];
+        foreach ($iterator as $key => $value) {
+            $newResultElementParts = [];
+            foreach ($arrays as $array) {
+                $newResultElementParts[] = isset($array[$key]) ? $this->flattenVar($array[$key]) : $placeholder;
+            }
+            $result[] = implode($separator, $newResultElementParts);
+        }
+        return $result;
+    }
+
 }
