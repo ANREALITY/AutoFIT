@@ -244,13 +244,13 @@ return [
             'Order\Utility\ProperServiceNameDetector' => 'Order\Utility\Factory\ProperServiceNameDetectorFactory',
             'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory',
             // DataObjects
-            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory',
-            // utilities
-            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\Factory\ArrayProcessorFactory',
-            'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\Factory\TableDataProcessorFactory'
+            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
         ],
         'invokables' => [
-            'DbSystel\Utility\StringUtility' => 'DbSystel\Utility\StringUtility'
+            // utilities
+            'DbSystel\Utility\StringUtility' => 'DbSystel\Utility\StringUtility',
+            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
+            'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\TableDataProcessor'
         ],
         'abstract_factories' => [
             // mappers

@@ -121,7 +121,7 @@ class TableDataProcessor extends ArrayProcessor
      */
     public function tableUniqueByRow(array $table = [])
     {
-        $stringifiedRows = $this->stringifyRows($table);
+        $stringifiedRows = $this->stringifyRows($table, uniqid());
         $stringifiedRowsUnique = array_unique($stringifiedRows);
         $table = array_intersect_key($table, $stringifiedRowsUnique);
         return $table;
@@ -129,7 +129,7 @@ class TableDataProcessor extends ArrayProcessor
     
     /**
      * Makes from every row a string from its elements
-     * (flattened and separated by the $this->implodeSeparator)
+     * (flattened and separated by the $separator)
      * and returns an array of these "strigified" rows.
      * The indexes of the stringified rows remain the same
      *  as the indexes of the original talbe's rows.
@@ -137,12 +137,13 @@ class TableDataProcessor extends ArrayProcessor
      * @see ArrayProcessor#flattenArray(...)
      * @see ArrayProcessor#stringifyArray(...)
      * @param array $table
+     * @param string $separator
      * @return array
      */
-    public function stringifyRows(array $table) {
+    public function stringifyRows(array $table, string $separator = null) {
         $strigifiedRows = [];
         foreach ($table as $key => $row) {
-            $strigifiedRows[$key] = $this->stringifyArray($row);
+            $strigifiedRows[$key] = $this->stringifyArray($row, $separator);
         }
         return $strigifiedRows;
     }

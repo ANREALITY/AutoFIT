@@ -5,60 +5,6 @@ class ArrayProcessor
 {
 
     /**
-     * @var string
-     */
-    protected $separator;
-
-    /**
-     * @var string
-     */
-    protected $placeholder;
-
-    /**
-     * Creates an object and sets the default $separator and $placeholder.
-     *
-     * @param string $separator
-     * @param string $placeholder
-     */
-    public function __construct($separator = null, $placeholder = null)
-    {
-        $this->setSeparator($separator);
-        $this->setPlaceholder($placeholder);
-    }
-
-    /**
-     * @return the $separator
-     */
-    public function getSeparator()
-    {
-        return $this->separator;
-    }
-
-    /**
-     * @param string $separator
-     */
-    public function setSeparator(string $separator = null)
-    {
-        $this->separator = $separator;
-    }
-
-    /**
-     * @return the $placeholder
-     */
-    public function getPlaceholder()
-    {
-        return $this->placeholder;
-    }
-
-    /**
-     * @param string $placeholder
-     */
-    public function setPlaceholder(string $placeholder = null)
-    {
-        $this->placeholder = $placeholder;
-    }
-
-    /**
      * "Flatten" the input $array first
      * (in order to avoid notices like "Array to string conversion")
      * and returns a string from its elements separated by the $separator.
@@ -73,8 +19,6 @@ class ArrayProcessor
      */
     public function stringifyArray(array $array, string $separator = null, string $placeholder = null)
     {
-        $separator = $separator ?: $this->separator;
-        $placeholder = $placeholder ?: $this->placeholder;
         $elementPreparedForImplode = $this->flattenArray($array, $placeholder);
         return implode($separator, $elementPreparedForImplode);
     }
@@ -93,7 +37,6 @@ class ArrayProcessor
      * @param string $placeholder
      */
     public function flattenArray(array $array, string $placeholder = null) {
-        $placeholder = $placeholder ?: $this->placeholder;
         $flatArray = array_map(function($value) use ($placeholder) {
             return $this->flattenVar($value) !== null ? $this->flattenVar($value) : $placeholder;
         }, $array);
@@ -214,7 +157,7 @@ class ArrayProcessor
 
     /**
      * Merges the elements of the input arrays among each other to strings
-     * and returns an array with thees merged strings.
+     * and returns an array with these merged strings.
      *
      * @param string $separator
      * @param string $placeholder

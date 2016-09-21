@@ -7,11 +7,13 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
 {
 
     private $tableDataProcessor;
+    private $separator;
+    private $placeholder;
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->tableDataProcessor = new TableDataProcessor('|');
+        $this->tableDataProcessor = new TableDataProcessor();
     }
 
     /**
@@ -59,9 +61,9 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             7 => [['foo' => 'bar'], new \stdClass()],
         ];
         $expectedArray = [
-            0 => '1||123',
-            3 => '4.567|abc|',
-            7 => 'array|object',
+            0 => '1' . $this->separator . '' . $this->separator . '123',
+            3 => '4.567' . $this->separator . 'abc' . $this->separator . '',
+            7 => 'array' . $this->separator . 'object',
         ];
     
         $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifyRows($testArray));

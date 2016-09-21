@@ -10,17 +10,19 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
     const BAR_TYPE_BAD = 'bar type bad';
 
     private $arrayProcessor;
+    private $separator;
+    private $placeholder;
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->arrayProcessor = new ArrayProcessor('|');
+        $this->arrayProcessor = new ArrayProcessor();
     }
 
     public function testStringifyArray()
     {
         $testArray = [true, false, 123, 4.567, 'abc', null, ['foo' => 'bar'], new \stdClass()];
-        $expectedString = '1||123|4.567|abc||array|object';
+        $expectedString = '1' . $this->separator . '' . $this->separator . '123' . $this->separator . '4.567' . $this->separator . 'abc' . $this->separator . '' . $this->separator . 'array' . $this->separator . 'object';
 
         $this->assertEquals($expectedString, $this->arrayProcessor->stringifyArray($testArray));
     }
@@ -381,14 +383,14 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         ];
         $expectedResults = [
             0 => [
-                0 => 'prefix_0__|foo|__postfix_0',
-                1 => 'prefix_1__|123|__postfix_1',
-                2 => 'prefix_2__|4.567|__postfix_2',
-                3 => 'prefix_3__|1|__postfix_3',
-                4 => 'prefix_4__||__postfix_4',
-                5 => 'prefix_5__||__postfix_5',
-                6 => 'prefix_6__|array|__postfix_6',
-                7 => 'prefix_7__|object|__postfix_7',
+                0 => 'prefix_0__' . $this->separator . 'foo' . $this->separator . '__postfix_0',
+                1 => 'prefix_1__' . $this->separator . '123' . $this->separator . '__postfix_1',
+                2 => 'prefix_2__' . $this->separator . '4.567' . $this->separator . '__postfix_2',
+                3 => 'prefix_3__' . $this->separator . '1' . $this->separator . '__postfix_3',
+                4 => 'prefix_4__' . $this->separator . '' . $this->separator . '__postfix_4',
+                5 => 'prefix_5__' . $this->separator . '' . $this->separator . '__postfix_5',
+                6 => 'prefix_6__' . $this->separator . 'array' . $this->separator . '__postfix_6',
+                7 => 'prefix_7__' . $this->separator . 'object' . $this->separator . '__postfix_7',
             ],
             1 => [
                 0 => 'prefix_0__~~~foo~~~__postfix_0',
