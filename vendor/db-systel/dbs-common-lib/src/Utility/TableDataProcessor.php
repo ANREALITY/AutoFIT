@@ -91,28 +91,20 @@ class TableDataProcessor extends ArrayProcessor
      */
     public function removeColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
-        $tableKeys = array_keys($table);
-        $firstRowKey = $tableKeys[0];
-        $firstRow = $table[$firstRowKey];
-        $allColumnNames = array_keys($firstRow);
-        $resultColumns = [];
-        foreach ($allColumnNames as $columnName) {
-            $remain = $isWhitelist
-            ? in_array($columnName, $columnNames)
-            : ! in_array($columnName, $columnNames)
-            ;
-            if($remain) {
-                $resultColumns[$columnName] = array_column($table, $columnName);
+        foreach ($table as $rowKey => $row) {
+            if (is_array($row)) {
+                foreach ($row as $fieldName => $fieldValue) {
+                    $remove = $isWhitelist
+                        ? ! in_array($fieldName, $columnNames)
+                        : in_array($fieldName, $columnNames)
+                    ;
+                    if ($remove) {
+                        unset($table[$rowKey][$fieldName]);
+                    }
+                }
             }
         }
-        $index = 0;
-        $resultTable = [];
-        foreach ($resultColumns as $resultColumnName => $resultColumn) {
-            foreach ($tableKeys as $index => $tableKey) {
-                $resultTable[$tableKey][$resultColumnName] = $resultColumn[$index];
-            }
-        }
-        return $resultTable;
+        return $table;
     }
 
     /**
