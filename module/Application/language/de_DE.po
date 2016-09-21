@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-13 11:52+0200\n"
-"PO-Revision-Date: 2016-09-21 15:05+0200\n"
+"PO-Revision-Date: 2016-09-21 15:09+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1306,7 +1306,7 @@ msgstr "zur Bestellung"
 #, php-format
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
-"Example changes for ordering of %s file transfer interfaces in the PSC:"
+"Musterchanges zum Beantragen von %s-Filetransfer-Schnittstellen im PSC:"
 
 #: Order/view/partials/start/cd.phtml:52
 #, php-format
