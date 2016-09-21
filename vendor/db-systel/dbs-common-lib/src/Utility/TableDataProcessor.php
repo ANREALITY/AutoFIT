@@ -79,9 +79,8 @@ class TableDataProcessor extends ArrayProcessor
     }
 
     /**
-     * Considering the multidimensional input array as a table,
-     * removes some of its columns,
-     * means the second-level elements with the specified keys.
+     * Removes some of the table's columns
+     * (means the second-level elements with the specified keys).
      * If $isWhitelist is TRUE, all $columnNames are removed.
      * Else these are on the "whitelist" and the other are removed.
      *
