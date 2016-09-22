@@ -91,19 +91,30 @@ class TableDataProcessor extends ArrayProcessor
      */
     public function removeColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
-        foreach ($table as $rowKey => $row) {
-            if (is_array($row)) {
-                foreach ($row as $fieldName => $fieldValue) {
-                    $remove = $isWhitelist
-                        ? ! in_array($fieldName, $columnNames)
-                        : in_array($fieldName, $columnNames)
-                    ;
-                    if ($remove) {
-                        unset($table[$rowKey][$fieldName]);
-                    }
-                }
+        $tableKeys = array_keys($table);
+        $firstRowKey = $tableKeys[0];
+        $firstRow = $table[$firstRowKey];
+        $allColumnNames = array_keys($firstRow);
+        $columns = [];
+        $i = 0;
+        $arrayMapInputVarNames = [];
+        foreach ($allColumnNames as $columnName) {
+            $remain =
+                ($isWhitelist && in_array($columnName, $columnNames)) ||
+                (! $isWhitelist && ! in_array($columnName, $columnNames))
+            ;
+            if($remain) {
+                $varName = 'column' . $i++;
+                $$varName = $columns[$columnName] = array_column($table, $columnName);
+                $arrayMapInputVarNames[] = '$' . $varName;
             }
         }
+        $arrayMapInputString = implode(', ', $arrayMapInputVarNames);
+        eval('$rows = array_map(null, ' . $arrayMapInputString . ');');
+        foreach ($rows as $index => $row) {
+            $rows[$index] = array_combine(array_keys($columns), array_values($row));
+        }
+        $table = array_combine(array_keys($table), $rows);
         return $table;
     }
 
