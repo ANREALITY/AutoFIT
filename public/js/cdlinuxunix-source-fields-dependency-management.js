@@ -18,6 +18,7 @@ $(document).ready(function() {
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
 	infoBoxCrontabSource = $('#fieldgroup-specific-endpoint-source .crontab-hint');
 	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
+	infoBoxServerHintSource = $('#fieldgroup-basic-endpoint-source .server-hint');
 });
 $(document).ready(function() {
 	fieldServerSourceToggle.change(function() {
@@ -41,6 +42,7 @@ function toggleFieldServerSource(value) {
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldTheServerSource.parent().fadeIn('slow');
+			infoBoxServerHintSource.fadeIn('slow');
 			fieldTheServerNodeNameSource.parent().fadeIn('slow');
 			fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeIn('slow');
 			fieldTransmissionType.parent().parent().fadeIn('slow');
@@ -73,6 +75,7 @@ function toggleFieldServerSource(value) {
 	} else if (value == SERVER_QUANTITY_MANY) {
 		fieldTheServerSource.val('');
 		fieldTheServerSource.parent().fadeOut('slow');
+		infoBoxServerHintSource.fadeOut('slow');
 		fieldTheServerNodeNameSource.val('');
 		fieldTheServerNodeNameSource.parent().fadeOut('slow');
 		fieldTheServerEndpointServerConfigDnsAddressSource.val('');

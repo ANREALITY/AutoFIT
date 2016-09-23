@@ -13,6 +13,7 @@ $(document).ready(function() {
 	infoBoxClusterTarget = $('#fieldgroup-specific-endpoint-target .cluster-hint');
 	fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
+	infoBoxServerHintTarget = $('#fieldgroup-basic-endpoint-target .server-hint');
 });
 $(document).ready(function() {
 	fieldServerTargetToggle.change(function() {
@@ -36,6 +37,7 @@ function toggleFieldServerTarget(value) {
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
 			fieldTheServerTarget.parent().fadeIn('slow');
+			infoBoxServerHintTarget.fadeIn('slow');
 			fieldTheServerNodeNameTarget.parent().fadeIn('slow');
 			fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeIn('slow');
 			fieldServiceAddressTargetToggle.parent().fadeIn('slow');
@@ -60,6 +62,7 @@ function toggleFieldServerTarget(value) {
 	} else if (value == SERVER_QUANTITY_MANY) {
 		fieldTheServerTarget.val('');
 		fieldTheServerTarget.parent().fadeOut('slow');
+		infoBoxServerHintTarget.fadeOut('slow');
 		fieldTheServerNodeNameTarget.val('');
 		fieldTheServerNodeNameTarget.parent().fadeOut('slow');
 		fieldTheServerEndpointServerConfigDnsAddressTarget.val('');
