@@ -12,6 +12,8 @@ use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwCdLinuxUnixSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwCdLinuxUnixTargetFieldset;
 
 class OrderForm extends Form
 {
@@ -93,7 +95,10 @@ class OrderForm extends Form
     protected function validateMinOneNotEmptyValidatorSource(AbstractEndpointFieldset $endpointSourceFieldset)
     {
         $elementsSource = [];
-        if (! $endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset) {
+        if (
+            ! $endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset
+            && ! $endpointSourceFieldset instanceof EndpointFtgwCdLinuxUnixSourceFieldset
+        ) {
             $elementsSource[] = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
         }
         if (! $endpointSourceFieldset instanceof EndpointCdWindowsShareSourceFieldset) {
@@ -116,7 +121,10 @@ class OrderForm extends Form
     protected function validateMinOneNotEmptyValidatorTarget(AbstractEndpointFieldset $endpointTargetFieldset)
     {
         $elementsTarget = [];
-        if (! $endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset) {
+        if (
+            ! $endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset
+            && ! $endpointTargetFieldset instanceof EndpointFtgwCdLinuxUnixTargetFieldset
+        ) {
             $elementsTarget[] = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
         }
         if (! $endpointTargetFieldset instanceof EndpointCdWindowsShareTargetFieldset) {
