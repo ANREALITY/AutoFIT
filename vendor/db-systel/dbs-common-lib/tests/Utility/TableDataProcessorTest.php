@@ -5,31 +5,34 @@ use DbSystel\Utility\TableDataProcessor;
 
 class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
 {
+
     private $tableDataProcessor;
+    private $separator;
+    private $placeholder;
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->tableDataProcessor = new TableDataProcessor('|');
+        $this->tableDataProcessor = new TableDataProcessor();
     }
 
     /**
-     * @dataProvider provideDataForArrayUniqueByIdentifier
+     * @dataProvider provideDataForTableUniqueByIdentifier
      */
-    public function testArrayUniqueByIdentifier($testArray, $identifier, $expectedArray)
+    public function testTableUniqueByIdentifier($testArray, $identifier, $expectedArray)
     {
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->arrayUniqueByIdentifier($testArray, $identifier));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->tableUniqueByIdentifier($testArray, $identifier));
     }
 
     /**
-     * @dataProvider provideDataForRemoveArrayColumns
+     * @dataProvider provideDataForRemoveColumns
      */
-    public function testRemoveArrayColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
+    public function testRemoveColumns($testArray, $columnNames, $isWhitelist, $expectedArray)
     {
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->removeArrayColumns($testArray, $columnNames, $isWhitelist));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->removeColumns($testArray, $columnNames, $isWhitelist));
     }
 
-    public function testArrayUniqueBySubArray()
+    public function testTableUniqueByRow()
     {
         $testArray = [
             0 => [true, false, 123],
@@ -47,10 +50,10 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             7 => [4.567, 'abc', null],
         ];
     
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->arrayUniqueBySubArray($testArray));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->tableUniqueByRow($testArray));
     }
 
-    public function testStringifySubArrays()
+    public function testStringifyRows()
     {
         $testArray = [
             0 => [true, false, 123],
@@ -58,15 +61,15 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             7 => [['foo' => 'bar'], new \stdClass()],
         ];
         $expectedArray = [
-            0 => '1||123',
-            3 => '4.567|abc|',
-            7 => 'array|object',
+            0 => '1' . $this->separator . '' . $this->separator . '123',
+            3 => '4.567' . $this->separator . 'abc' . $this->separator . '',
+            7 => 'array' . $this->separator . 'object',
         ];
     
-        $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifySubArrays($testArray));
+        $this->assertEquals($expectedArray, $this->tableDataProcessor->stringifyRows($testArray));
     }
 
-    public function provideDataForArrayUniqueByIdentifier()
+    public function provideDataForTableUniqueByIdentifier()
     {
         $testArray = [
             0   => ['foo' => 'qwer',   'bar' => 'asdf',    'baz' => 'yxcv', 'buz' => 'qxev'],
@@ -141,7 +144,7 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function provideDataForRemoveArrayColumns()
+    public function provideDataForRemoveColumns()
     {
         $testArray = [
             ['foo' => 'qwer', 'bar' => 'asdf', 'baz' => 'yxcv', 'buz' => 'qxev'],

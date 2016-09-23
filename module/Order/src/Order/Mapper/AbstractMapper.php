@@ -130,30 +130,46 @@ class AbstractMapper
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
     {
+        $uniqueResultSetArray = $this->generateUniqueResultSetArray($identifier, $prefix, $childIdentifier, $childPrefix, $resultSetArray);
+        $dataObjects = $this->buildDataObjects($uniqueResultSetArray,
+            $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix,
+            $prototype, $dataObjectCondition, $isCollection
+        );
+
+        return $dataObjects;
+    }
+
+    protected function generateUniqueResultSetArray($identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, array $resultSetArray = [])
+    {
+        $uniqueResultSetArray = [];
+        // For cases with an inverted relationship like
+        // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
+        // Otherwise in such cases some of the relevant rows can be ignored.
+        $identifierMakingUnique = $childIdentifier ?: $identifier;
+        $prefixMakingUnique = $childPrefix ?: $prefix;
+        if (is_string($prefixMakingUnique)) {
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier(
+                $resultSetArray, $prefixMakingUnique . $identifierMakingUnique
+            );
+        } elseif (is_array($identifierMakingUnique)) {
+            $identifiersMakingUnique = $this->tableDataProcessor->mergeArraysElementsToStrings(
+                null, null, $prefixMakingUnique, $identifierMakingUnique
+            );
+            $uniqueResultSetArray = $this->tableDataProcessor->tableUniqueByIdentifier(
+                $resultSetArray, $identifiersMakingUnique
+            );
+        }
+        return $uniqueResultSetArray;
+    }
+
+    protected function buildDataObjects(array $uniqueResultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
         // Resolves the case of abstract entities (like Endpoint or PhysicalConnection).
         // @todo Maybe $prototypeMap property instead of the $prototype property.
         $prototype = $prototype ?: $this->getPrototype();
         $prototypeClass = get_class($prototype);
-
-        $uniqueResultSetArray = [];
-        // For cases with an inverted relationship like
-        // file_transfer_request.user_id->user.id to FileTransferRequest.User as parent->child.
-        // In otherweise in such cases some of the relevant rows can be ignored.
-        $identifierMakingUnique = $childIdentifier ?: $identifier;
-        $prefixMakingUnique = $childPrefix ?: $prefix;
-        if (is_string($prefixMakingUnique)) {
-            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $prefixMakingUnique . $identifierMakingUnique);
-        } elseif (is_array($identifierMakingUnique)) {
-            $completeIdentifierMakingUnique = function ($prefixMakingUnique, $identifierMakingUnique) {
-                $result = [];
-                foreach ($prefixMakingUnique as $key => $value) {
-                    $result[] = $prefixMakingUnique[$key] . $identifierMakingUnique[$key];
-                }
-                return $result;
-            };
-            $uniqueResultSetArray = $this->tableDataProcessor->arrayUniqueByIdentifier($resultSetArray, $completeIdentifierMakingUnique($prefixMakingUnique, $identifierMakingUnique));
-        }
-
         $dataObjects = [];
         foreach ($uniqueResultSetArray as $row) {
             if (!$this->tableDataProcessor->validateArray($row, $dataObjectCondition, $identifier, $prefix)) {
@@ -169,7 +185,6 @@ class AbstractMapper
                         $key = str_replace($prefix, '', $columnAlias);
                         $objectData[$key] = $value;
                     } elseif (is_array($prefix)) {
-                        // @todo Replace this strange performance pest by str_replace($array, $string)!
                         foreach ($prefix as $currentPrefix) {
                             $key = str_replace($currentPrefix, '', $columnAlias);
                             $objectData[$key] = $value;

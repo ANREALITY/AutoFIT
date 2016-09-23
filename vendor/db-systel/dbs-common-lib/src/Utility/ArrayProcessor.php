@@ -5,48 +5,22 @@ class ArrayProcessor
 {
 
     /**
-     * @var string
-     */
-    protected $implodeSeparator;
-
-    public function __construct($implodeSeparator = null)
-    {
-        $this->setImplodeSeparator($implodeSeparator);
-    }
-
-    /**
-     * @return the $implodeSeparator
-     */
-    public function getImplodeSeparator()
-    {
-        return $this->implodeSeparator;
-    }
-
-    /**
-     * @param string $implodeSeparator
-     */
-    public function setImplodeSeparator(string $implodeSeparator = null)
-    {
-        $this->implodeSeparator = $implodeSeparator;
-    }
-
-    /**
      * "Flatten" the input $array first
      * (in order to avoid notices like "Array to string conversion")
-     * and returns a string from its elements separated by the $implodeSeparator.
+     * and returns a string from its elements separated by the $separator.
      * 
      * TRUE becomes '1', FALSE becomes '', NULL becomes ''.
      *
      * @see ArrayProcessor#flattenArray(...)
      *
      * @param array $array
-     * @param string $implodeSeparator
+     * @param string $separator
+     * @param string $placeholder
      */
-    public function stringifyArray(array $array, string $implodeSeparator = null)
+    public function stringifyArray(array $array, string $separator = null, string $placeholder = null)
     {
-        $implodeSeparator = $implodeSeparator ?: $this->implodeSeparator;
-        $elementPreparedForImplode = $this->flattenArray($array);
-        return implode($implodeSeparator, $elementPreparedForImplode);
+        $elementPreparedForImplode = $this->flattenArray($array, $placeholder);
+        return implode($separator, $elementPreparedForImplode);
     }
 
     /**
@@ -60,9 +34,12 @@ class ArrayProcessor
      *  (like: $elementStrings[] = is_array($subArray) ? stringify... : $subArray;).
      *
      * @param array $array
+     * @param string $placeholder
      */
-    public function flattenArray(array $array) {
-        $flatArray = array_map([$this, 'flattenVar'], $array);
+    public function flattenArray(array $array, string $placeholder = null) {
+        $flatArray = array_map(function($value) use ($placeholder) {
+            return $this->flattenVar($value) !== null ? $this->flattenVar($value) : $placeholder;
+        }, $array);
         return $flatArray;
     }
 
@@ -176,6 +153,32 @@ class ArrayProcessor
             $valid = false;
         }
         return $valid;
+    }
+
+    /**
+     * Merges the elements of the input arrays among each other to strings
+     * and returns an array with these merged strings.
+     *
+     * @param string $separator
+     * @param string $placeholder
+     * @param array ... $arrays
+     * @return string[]
+     */
+    public function mergeArraysElementsToStrings(string $separator = null, string $placeholder = null, array ... $arrays)
+    {
+        $index = 0;
+        $arrayMapInputVarNames = [];
+        foreach ($arrays as $array) {
+            $varName = 'array' . $index++;
+            $$varName = $array;
+            $arrayMapInputVarNames[] = '$' . $varName;
+        }
+        $arrayMapInputString = implode(', ', $arrayMapInputVarNames);        
+        eval('$arraysMapped = array_map(null, ' . $arrayMapInputString . ');');
+        $result = array_map(function($subArray) use ($separator, $placeholder) {
+            return $this->stringifyArray($subArray, $separator, $placeholder);
+        }, $arraysMapped);
+        return $result;
     }
 
 }

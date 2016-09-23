@@ -19,12 +19,12 @@ class TableDataProcessor extends ArrayProcessor
      * @param string|array $identifier The identifying key or an array of such keys.
      * @return array
      */
-    public function arrayUniqueByIdentifier(array $table, $identifier)
+    public function tableUniqueByIdentifier(array $table, $identifier)
     {
         if (is_string($identifier)) {
-            $tableUnique = $this->arrayUniqueBySingleIdentifier($table, $identifier);
+            $tableUnique = $this->tableUniqueBySingleIdentifier($table, $identifier);
         } elseif (is_array($identifier)) {
-            $tableUnique = $this->arrayUniqueByMultipleIdentifiers($table, $identifier);
+            $tableUnique = $this->tableUniqueByMultipleIdentifiers($table, $identifier);
         }
         return $tableUnique;
     }
@@ -46,7 +46,7 @@ class TableDataProcessor extends ArrayProcessor
      * @param string $identifier The identifying key.
      * @return array
      */
-    protected function arrayUniqueBySingleIdentifier(array $table, string $identifier)
+    protected function tableUniqueBySingleIdentifier(array $table, string $identifier)
     {
         $tableIds = array_keys($table);
         $identifierColumn = array_column($table, $identifier);
@@ -70,18 +70,17 @@ class TableDataProcessor extends ArrayProcessor
      * @param array $identifier An array of identifying keys.
      * @return array
      */
-    protected function arrayUniqueByMultipleIdentifiers(array $table, array $identifiers)
+    protected function tableUniqueByMultipleIdentifiers(array $table, array $identifiers)
     {
-        $arrayForMakingUniqueByRow = $this->removeArrayColumns($table, $identifiers, true);
-        $tableUniqueBySubArray = $this->arrayUniqueBySubArray($arrayForMakingUniqueByRow);
+        $arrayForMakingUniqueByRow = $this->removeColumns($table, $identifiers, true);
+        $tableUniqueBySubArray = $this->tableUniqueByRow($arrayForMakingUniqueByRow);
         $tableUnique = array_intersect_key($table, $tableUniqueBySubArray);
         return $tableUnique;
     }
 
     /**
-     * Considering the multidimensional input array as a table,
-     * removes some of its columns,
-     * means the second-level elements with the specified keys.
+     * Removes some of the table's columns
+     * (means the second-level elements with the specified keys).
      * If $isWhitelist is TRUE, all $columnNames are removed.
      * Else these are on the "whitelist" and the other are removed.
      *
@@ -90,22 +89,15 @@ class TableDataProcessor extends ArrayProcessor
      * @param bool $isWhitelist
      * @return array
      */
-    public function removeArrayColumns(array $table, array $columnNames, bool $isWhitelist = false)
+    public function removeColumns(array $table, array $columnNames, bool $isWhitelist = false)
     {
+        $columnKeyNames = array_flip($columnNames);
         foreach ($table as $rowKey => $row) {
-            if (is_array($row)) {
-                foreach ($row as $fieldName => $fieldValue) {
-                    $remove = $isWhitelist
-                    ? !in_array($fieldName, $columnNames)
-                    : in_array($fieldName, $columnNames)
-                    ;
-                    if ($remove) {
-                        unset($table[$rowKey][$fieldName]);
-                    }
-                }
-            }
+            $table[$rowKey] = $isWhitelist
+                ? array_intersect_key($row, $columnKeyNames)
+                : array_diff_key($row, $columnKeyNames)
+            ;
         }
-    
         return $table;
     }
 
@@ -115,34 +107,35 @@ class TableDataProcessor extends ArrayProcessor
      * For uniqueness check the rows get "stringified" first.
      * The IDs of the unique result strings are then the IDs of the unique rows.
      *
-     * @see ArrayProcessor#stringifySubArrays(...)
-     *
+     * @see TableDataProcessor#stringifyRows(...)
      * @param array $table
+     * @return array
      */
-    public function arrayUniqueBySubArray(array $table = [])
+    public function tableUniqueByRow(array $table = [])
     {
-        $elementStrings = $this->stringifySubArrays($table);
-        $elementStringsUnique = array_unique($elementStrings);
-        $table = array_intersect_key($table, $elementStringsUnique);
+        $stringifiedRows = $this->stringifyRows($table, uniqid());
+        $stringifiedRowsUnique = array_unique($stringifiedRows);
+        $table = array_intersect_key($table, $stringifiedRowsUnique);
         return $table;
     }
     
     /**
      * Makes from every row a string from its elements
-     * (flattened and separated by the $this->implodeSeparator)
+     * (flattened and separated by the $separator)
      * and returns an array of these "strigified" rows.
      * The indexes of the stringified rows remain the same
      *  as the indexes of the original talbe's rows.
      *
      * @see ArrayProcessor#flattenArray(...)
      * @see ArrayProcessor#stringifyArray(...)
-     *
      * @param array $table
+     * @param string $separator
+     * @return array
      */
-    public function stringifySubArrays(array $table) {
+    public function stringifyRows(array $table, string $separator = null) {
         $strigifiedRows = [];
         foreach ($table as $key => $row) {
-            $strigifiedRows[$key] = $this->stringifyArray($row);
+            $strigifiedRows[$key] = $this->stringifyArray($row, $separator);
         }
         return $strigifiedRows;
     }
