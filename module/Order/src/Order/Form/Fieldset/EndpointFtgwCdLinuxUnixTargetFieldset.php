@@ -2,7 +2,7 @@
 namespace Order\Form\Fieldset;
 
 use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\EndpointFtgwLinuxUnix;
+use DbSystel\DataObject\EndpointFtgwCdLinuxUnix;
 
 class EndpointFtgwCdLinuxUnixTargetFieldset extends AbstractEndpointFtgwCdLinuxUnixFieldset
 {
@@ -41,13 +41,13 @@ class EndpointFtgwCdLinuxUnixTargetFieldset extends AbstractEndpointFtgwCdLinuxU
                     'label' => _('transmission type'),
                     'value_options' => [
                         [
-                            'value' => EndpointFtgwLinuxUnix::TRANSMISSION_TYPE_TXT,
-                            'label' => EndpointFtgwLinuxUnix::TRANSMISSION_TYPE_TXT,
+                            'value' => EndpointFtgwCdLinuxUnix::TRANSMISSION_TYPE_TXT,
+                            'label' => EndpointFtgwCdLinuxUnix::TRANSMISSION_TYPE_TXT,
                             'selected' => true
                         ],
                         [
-                            'value' => EndpointFtgwLinuxUnix::TRANSMISSION_TYPE_BIN,
-                            'label' => EndpointFtgwLinuxUnix::TRANSMISSION_TYPE_BIN
+                            'value' => EndpointFtgwCdLinuxUnix::TRANSMISSION_TYPE_BIN,
+                            'label' => EndpointFtgwCdLinuxUnix::TRANSMISSION_TYPE_BIN
                         ]
                     ],
                     'label_attributes' => [
