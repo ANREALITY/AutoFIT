@@ -1,4 +1,5 @@
 <?php
+$ismptyView = false;
 $fieldgroupName = 'physical_connection_end_to_end';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('directly from the source to the target') .
@@ -14,6 +15,6 @@ echo $this->partial('/partials/fieldgroup',
         'fieldgroupCssClass' => $fieldgroupCssClass,
         'fieldgroupTitle' => $fieldgroupTitle,
         'formRows' => $fieldgroupFormRows,
-        'emptyView' => false
+        'emptyView' => $ismptyView
     ]);
 ?>
