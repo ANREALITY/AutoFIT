@@ -19,6 +19,21 @@ abstract class AbstractEndpointFtgwWindowsFieldset extends AbstractEndpointField
     public function init()
     {
         parent::init();
+
+        $this->add(
+            [
+                'type' => 'text',
+                'name' => 'folder',
+                'options' => [
+                    'label' => _('folder'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control field-folder'
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()

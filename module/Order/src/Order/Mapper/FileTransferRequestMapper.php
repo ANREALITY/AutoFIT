@@ -486,6 +486,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
             [
                 'endpoint_ftgw_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_windows' . '__' . 'folder' => 'folder',
             ], Select::JOIN_LEFT);
         $select->join(['endpoint_ftgw_windows_include_parameter_set' => 'include_parameter_set'], 'endpoint_ftgw_windows_include_parameter_set.id = endpoint_ftgw_windows.include_parameter_set_id',
             [

@@ -15,6 +15,10 @@ $orderPartAttributes = [
         'label' => $this->translate('type'),
         'value' => $dataObject->getType() ?: '-'
     ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
 ];
 echo $this->partial('/partials/order-part',
     [

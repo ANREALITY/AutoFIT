@@ -6,9 +6,33 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
+     * @var string
+     */
+    protected $folder;
+
+    /**
+     *
      * @var IncludeParameterSet
      */
     protected $includeParameterSet;
+
+    /**
+     *
+     * @return the $folder
+     */
+    public function getFolder()
+    {
+        return $this->folder;
+    }
+
+    /**
+     *
+     * @param string $folder
+     */
+    public function setFolder($folder)
+    {
+        $this->folder = $folder;
+    }
 
     /**
      *

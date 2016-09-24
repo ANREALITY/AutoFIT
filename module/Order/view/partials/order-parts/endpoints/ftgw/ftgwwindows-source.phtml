@@ -33,6 +33,10 @@ $orderPartAttributes = [
         'value' => $dataObject->getType() ?: '-'
     ],
     [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
         'label' => $this->translate('include parameters'),
         'value' => $includeParametersOutput
     ],

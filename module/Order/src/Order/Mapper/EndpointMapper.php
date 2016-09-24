@@ -772,6 +772,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
+        $data['folder'] = $dataObject->getFolder();
         // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $newIncludeParameterSet = $this->includeParameterSetMapper->save($dataObject->getIncludeParameterSet());
