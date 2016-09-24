@@ -7,6 +7,7 @@ use DbSystel\DataObject\PhysicalConnectionCd;
 $dataObject;
 ?>
 <?php
+$ismptyView = false;
 $orderPartCssId = 'physical-connection-end-to-end';
 $orderPartCssClass = 'col-md-12';
 $orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('directly from the source to the target') . ')';
@@ -23,6 +24,6 @@ echo $this->partial('/partials/order-part',
         'orderPartCssClass' => $orderPartCssClass,
         'orderPartTitle' => $orderPartTitle,
         'orderPartAttributes' => $orderPartAttributes,
-        'emptyView' => false
+        'emptyView' => $ismptyView
     ]);
 ?>

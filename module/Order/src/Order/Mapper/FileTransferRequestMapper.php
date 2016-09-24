@@ -262,12 +262,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'physical_connection' . '__' . 'id' => 'id',
                 'physical_connection' . '__' . 'logical_connection_id' => 'logical_connection_id',
                 'physical_connection' . '__' . 'role' => 'role',
-                'physical_connection' . '__' . 'type' => 'type'
+                'physical_connection' . '__' . 'type' => 'type',
+                'physical_connection' . '__' . 'secure_plus' => 'secure_plus'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_cd', 'physical_connection_cd.physical_connection_id = physical_connection.id',
             [
-                'physical_connection_cd' . '__' . 'physical_connection_id' => 'physical_connection_id',
-                'physical_connection_cd' . '__' . 'secure_plus' => 'secure_plus'
+                'physical_connection_cd' . '__' . 'physical_connection_id' => 'physical_connection_id'
             ], Select::JOIN_LEFT);
         $select->join('physical_connection_ftgw', 'physical_connection_ftgw.physical_connection_id = physical_connection.id',
             [

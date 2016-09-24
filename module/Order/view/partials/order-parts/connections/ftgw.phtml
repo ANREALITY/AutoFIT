@@ -1,5 +1,6 @@
 <?php
 use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\LogicalConnection;
 /**
  *
  * @var PhysicalConnectionFtgw $dataObject
@@ -12,30 +13,52 @@ $physicalConnectionEndToMiddle;
 $physicalConnectionMiddleToEnd;
 ?>
 <?php
+$ismptyViewSource = true;
 $orderPartCssId = 'physical-connection-end-to-middle';
 $orderPartCssClass = 'col-md-6';
 $orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the source to the FTGW server') . ')';
 $orderPartAttributes = [];
+if (stripos($physicalConnectionEndToMiddle->getEndpointSource()->getType(), LogicalConnection::TYPE_FTGW . LogicalConnection::TYPE_CD) === 0) {
+    $orderPartAttributes[] =
+        [
+            'label' => $this->translate('Secure Plus'),
+            'value' => $physicalConnectionEndToMiddle->getSecurePlus() ? $this->translate('yes') : $this->translate('no'),
+            'class' => 'col-md-12'
+        ]
+    ;
+    $ismptyViewSource = false;
+}
 echo $this->partial('/partials/order-part',
     [
         'orderPartCssId' => $orderPartCssId,
         'orderPartCssClass' => $orderPartCssClass,
         'orderPartTitle' => $orderPartTitle,
         'orderPartAttributes' => $orderPartAttributes,
-        'emptyView' => true
+        'emptyView' => $ismptyViewSource
     ]);
 ?>
 <?php
+$ismptyViewTarget = true;
 $orderPartCssId = 'physical-connection-end-to-middle';
 $orderPartCssClass = 'col-md-6';
 $orderPartTitle = $this->translate('Technical connection') . ' ' . '(' . $this->translate('from the FTGW server to the target') . ')';
 $orderPartAttributes = [];
+if (stripos($physicalConnectionMiddleToEnd->getEndpointTarget()->getType(), LogicalConnection::TYPE_FTGW . LogicalConnection::TYPE_CD) === 0) {
+    $orderPartAttributes[] =
+        [
+            'label' => $this->translate('Secure Plus'),
+            'value' => $physicalConnectionMiddleToEnd->getSecurePlus() ? $this->translate('yes') : $this->translate('no'),
+            'class' => 'col-md-12'
+        ]
+    ;
+    $ismptyViewTarget = false;
+}
 echo $this->partial('/partials/order-part',
     [
         'orderPartCssId' => $orderPartCssId,
         'orderPartCssClass' => $orderPartCssClass,
         'orderPartTitle' => $orderPartTitle,
         'orderPartAttributes' => $orderPartAttributes,
-        'emptyView' => true
+        'emptyView' => $ismptyViewTarget
     ]);
 ?>
