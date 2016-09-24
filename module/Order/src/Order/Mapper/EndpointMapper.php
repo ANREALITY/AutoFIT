@@ -30,6 +30,7 @@ use DbSystel\DataObject\EndpointFtgwProtocolServer;
 use DbSystel\DataObject\EndpointFtgwWindowsShare;
 use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdLinuxUnix;
+use DbSystel\DataObject\EndpointFtgwCdWindows;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -275,6 +276,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwLinuxUnix();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_LINUX_UNIX) === 0) {
                     $this->prototype = new EndpointFtgwCdLinuxUnix();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_WINDOWS) === 0) {
+                    $this->prototype = new EndpointFtgwCdWindows();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -944,6 +947,54 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_cd_linux_unix');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+                // ...
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwCdWindows $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwCdWindows
+     * @throws \Exception
+     */
+    protected function saveFtgwCdWindows(EndpointFtgwCdWindows $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
+        $data['transmission_type'] = $dataObject->getTransmissionType() ?: new Expression('NULL');
+
+        // creating sub-objects
+        
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_cd_windows');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_cd_windows');
             $action->where(['endpoint_id' => $data['endpoint_id']]);
             unset($data['endpoint_id']);
             $action->set($data);
