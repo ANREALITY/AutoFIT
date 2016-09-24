@@ -31,6 +31,7 @@ use DbSystel\DataObject\EndpointFtgwWindowsShare;
 use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdWindows;
+use DbSystel\DataObject\EndpointFtgwCdZos;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -278,6 +279,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwCdLinuxUnix();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_WINDOWS) === 0) {
                     $this->prototype = new EndpointFtgwCdWindows();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_ZOS) === 0) {
+                    $this->prototype = new EndpointFtgwCdZos();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -1009,6 +1012,56 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             if ($newEndpointId) {
                 // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
                 // ...
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwCdZos $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwCdZos
+     * @throws \Exception
+     */
+    protected function saveFtgwCdZos(EndpointFtgwCdZos $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+
+        // creating sub-objects
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
+            $newFileParameterSet = $this->fileParameterSetMapper->save($dataObject->getFileParameterSet());
+        }
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+        if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
+            $data['file_parameter_set_id'] = $newFileParameterSet->getId();
+        }
+
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_cd_zos');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_cd_zos');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
             }
             return $dataObject;
         }
