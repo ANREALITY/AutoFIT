@@ -625,6 +625,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_cd_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_cd_windows', 'endpoint_ftgw_cd_windows.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_cd_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_windows' . '__' . 'username' => 'username',
+                'endpoint_ftgw_cd_windows' . '__' . 'folder' => 'folder',
+                'endpoint_ftgw_cd_windows' . '__' . 'transmission_type' => 'transmission_type'
+            ], Select::JOIN_LEFT);
 
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);

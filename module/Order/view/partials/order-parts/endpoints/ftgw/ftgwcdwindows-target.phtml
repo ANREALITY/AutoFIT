@@ -1,0 +1,35 @@
+<?php
+use DbSystel\DataObject\EndpointFtgwCdWindows;
+/**
+ *
+ * @var EndpointFtgwCdWindows $dataObject
+ */
+$dataObject;
+?>
+<?php
+$orderPartCssId = 'specific-target';
+$orderPartCssClass = 'col-md-6';
+$orderPartTitle = $this->translate('Target - specific settings');
+$orderPartAttributes = [
+    [
+        'label' => $this->translate('type'),
+        'value' => $dataObject->getType() ?: '-'
+    ],
+    [
+        'label' => $this->translate('folder'),
+        'value' => $dataObject->getFolder() ?: '-'
+    ],
+    [
+        'label' => $this->translate('transmission type'),
+        'value' => $dataObject->getTransmissionType() ?: '-'
+    ],
+];
+echo $this->partial('/partials/order-part',
+    [
+        'orderPartCssId' => $orderPartCssId,
+        'orderPartCssClass' => $orderPartCssClass,
+        'orderPartTitle' => $orderPartTitle,
+        'orderPartAttributes' => $orderPartAttributes,
+        'emptyView' => false
+    ]);
+?>
