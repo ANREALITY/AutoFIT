@@ -12,7 +12,7 @@ $fieldgroupFormRows = [
     $this->formRow($physicalConnectionEndToMiddleFieldset->get('role'))
 ];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
-if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
+if (stripos($endpointSourceType, LogicalConnection::TYPE_FTGW . LogicalConnection::TYPE_CD) === 0) {
     $fieldgroupFormRows[] = $this->formRow($physicalConnectionEndToMiddleFieldset->get('secure_plus'));
 }
 echo $this->partial('/partials/fieldgroup',
@@ -21,7 +21,7 @@ echo $this->partial('/partials/fieldgroup',
         'fieldgroupCssClass' => $fieldgroupCssClass,
         'fieldgroupTitle' => $fieldgroupTitle,
         'formRows' => $fieldgroupFormRows,
-        'emptyView' => true
+        'emptyView' => false
     ]);
 ?>
 <?php
@@ -35,7 +35,7 @@ $fieldgroupFormRows = [
     $this->formRow($physicalConnectionMiddleToEndFieldset->get('role'))
 ];
 // for FTGW CD connections only (e.g. FTGW CD Windows)
-if (strpos($endpointTargetType, LogicalConnection::TYPE_CD) === 0) {
+if (stripos($endpointTargetType, LogicalConnection::TYPE_FTGW . LogicalConnection::TYPE_CD) === 0) {
     $fieldgroupFormRows[] = $this->formRow($physicalConnectionMiddleToEndFieldset->get('secure_plus'));
 }
 echo $this->partial('/partials/fieldgroup',
@@ -44,6 +44,6 @@ echo $this->partial('/partials/fieldgroup',
         'fieldgroupCssClass' => $fieldgroupCssClass,
         'fieldgroupTitle' => $fieldgroupTitle,
         'formRows' => $fieldgroupFormRows,
-        'emptyView' => true
+        'emptyView' => false
     ]);
 ?>

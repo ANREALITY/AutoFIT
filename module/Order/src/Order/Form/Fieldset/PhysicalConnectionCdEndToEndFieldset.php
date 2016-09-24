@@ -18,27 +18,11 @@ class PhysicalConnectionCdEndToEndFieldset extends AbstractPhysicalConnectionFie
     public function init()
     {
         parent::init();
-
-        $this->add(
-            [
-                'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'secure_plus',
-                'options' => [
-                    'label' => _('Secure Plus'),
-                    'use_hidden_element' => true,
-                    'checked_value' => '1',
-                    'unchecked_value' => '0'
-                ]
-            ]);
     }
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [
-            'secure_plus' => [
-                'required' => true
-            ]
-        ];
+        $inputFilterSpecification = [];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 

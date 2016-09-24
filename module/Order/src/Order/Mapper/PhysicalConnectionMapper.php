@@ -152,6 +152,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         $data['id'] = $dataObject->getId();
         $data['role'] = $dataObject->getRole();
         $data['type'] = $dataObject->getType();
+        $data['secure_plus'] = $dataObject->getSecurePlus();
         // $data['foo'] = $dataObject->getFoo();
         $data['logical_connection_id'] = $dataObject->getLogicalConnection()->getId();
         // creating sub-objects
@@ -211,7 +212,6 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         $data = [];
         // data retrieved directly from the input
         // $data['foo'] = $dataObject->getFoo();
-        $data['secure_plus'] = $dataObject->getSecurePlus();
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects

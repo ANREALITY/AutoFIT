@@ -69,11 +69,27 @@ abstract class AbstractPhysicalConnectionFieldset extends Fieldset implements In
                     'value' => $this->getConcreteType()
                 ]
             ]);
+
+        $this->add(
+            [
+                'type' => 'Zend\Form\Element\Checkbox',
+                'name' => 'secure_plus',
+                'options' => [
+                    'label' => _('Secure Plus'),
+                    'use_hidden_element' => true,
+                    'checked_value' => '1',
+                    'unchecked_value' => '0'
+                ]
+            ]);
     }
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'secure_plus' => [
+                'required' => false
+            ]
+        ];
     }
 
     abstract protected function getConcreteType();

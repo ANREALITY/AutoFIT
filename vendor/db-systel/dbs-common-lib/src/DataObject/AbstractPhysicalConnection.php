@@ -30,6 +30,12 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
+     * @var boolean
+     */
+    protected $securePlus;
+
+    /**
+     *
      * @var LogicalConnection
      */
     protected $logicalConnection;
@@ -98,6 +104,24 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     *
+     * @return the $securePlus
+     */
+    public function getSecurePlus()
+    {
+        return $this->securePlus;
+    }
+
+    /**
+     *
+     * @param boolean $securePlus
+     */
+    public function setSecurePlus($securePlus)
+    {
+        $this->securePlus = $securePlus;
     }
 
     /**
