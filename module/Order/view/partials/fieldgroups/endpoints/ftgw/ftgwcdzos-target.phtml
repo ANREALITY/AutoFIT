@@ -1,0 +1,29 @@
+<?php
+$fieldgroupName = 'specific-endpoint-target';
+$fieldgroupCssClass = 'col-md-6 fieldgroup-target';
+$fieldgroupTitle = $this->translate('Target - specific settings');
+
+$test = $endpointTargetFieldset->get('file_parameter_set')->get('file_parameters');
+
+$testCollection = $endpointTargetFieldset->get('file_parameter_set')->get('file_parameters');
+$test = $this->formRow($testCollection);
+
+$fieldgroupFormRows = [
+    $this->formRow($endpointTargetFieldset->get('type')),
+    $this->formRow($endpointTargetFieldset->get('username')),
+    $this->formRow($endpointTargetFieldset->get('file_parameter_set')->get('file_parameters')),
+    '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
+        $endpointTargetFieldset->get('file_parameter_set')
+            ->get('add_file_parameter')) . '</div>',
+//     $this->formRow($endpointTargetFieldset->get('blocking')),
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+<?php $this->inlineScript()->appendFile('/js/ftgwcdzos-target-hack.js'); ?>

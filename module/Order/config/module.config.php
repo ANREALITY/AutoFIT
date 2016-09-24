@@ -316,6 +316,8 @@ return [
             'Order\Form\Fieldset\EndpointFtgwCdLinuxUnixTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdWindowsSource' => false,
             'Order\Form\Fieldset\EndpointFtgwCdWindowsTarget' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdZosSource' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdZosTarget' => false,
             'Order\Form\Fieldset\EndpointServerConfig' => false,
             'Order\Form\Fieldset\Environment' => false,
             'Order\Form\Fieldset\ExternalServer' => false,
