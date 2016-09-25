@@ -50,11 +50,14 @@ class TableDataProcessor extends ArrayProcessor
     {
         $tableIds = array_keys($table);
         $identifierColumn = array_column($table, $identifier);
-        $identifierColumnWithIds = array_combine($tableIds, $identifierColumn);
-        $identifierColumnUnique = array_unique($identifierColumnWithIds);
-    
-        $tableUnique = array_intersect_key($table, $identifierColumnUnique);
-    
+
+        $tableUnique = [];
+        if (! empty($identifierColumn)) {
+            $identifierColumnWithIds = array_combine($tableIds, $identifierColumn);
+            $identifierColumnUnique = array_unique($identifierColumnWithIds);
+            $tableUnique = array_intersect_key($table, $identifierColumnUnique);
+        }
+
         return $tableUnique;
     }
 

@@ -88,7 +88,8 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
             'singleIdentifierFoo' => 'foo',
             'singleIdentifierBar' => 'bar',
             'singleIdentifierBuz' => 'buz',
-            'multipleIdentifiers' => ['foo', 'bar']
+            'multipleIdentifiers' => ['foo', 'bar'],
+            'notExistigIdentifierXyz' => 'xyz'
         ];
         $expectedArrays = [
             'singleIdentifierFoo' => [
@@ -111,7 +112,8 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 7   => ['foo' => 'asdf',   'bar' => 'as',      'baz' => '56', 'buz' => '78'],
                 8   => ['foo' => '13',     'bar' => 'qw',      'baz' => '56', 'buz' => '78'],
                 9   => ['foo' => 'qwer',   'bar' => '34',      'baz' => '56', 'buz' => '78'],
-            ]
+            ],
+            'notExistigIdentifierXyz' => []
         ];
         return [
             // variant without singleIdentifierFoo
@@ -140,6 +142,15 @@ class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
                 $identifiers['multipleIdentifiers'],
                 // expected array
                 $expectedArrays['multipleIdentifiers'],
+            ],
+            // variant a notExistigIdentifierXyz
+            [
+                // test array,
+                $testArray,
+                // identifier
+                $identifiers['notExistigIdentifierXyz'],
+                // expected array
+                $expectedArrays['notExistigIdentifierXyz'],
             ],
         ];
     }
