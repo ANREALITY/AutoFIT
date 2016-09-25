@@ -182,6 +182,10 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
             $cdZosFileParameterDataObjects = $this->fileParameterMapper->createDataObjects($resultSetArray,
                 $identifier, $prefix, 'id', 'endpoint_cd_zos_file_parameter__', null, null, null, null, true);
         }
+        if ($prefix === 'endpoint_ftgw_cd_zos_file_parameter_set__') {
+            $ftgwCdZosFileParameterDataObjects = $this->fileParameterMapper->createDataObjects($resultSetArray,
+                $identifier, $prefix, 'id', 'endpoint_ftgw_cd_zos_file_parameter__', null, null, null, null, true);
+        }
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -189,6 +193,10 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
             // can though equal to the $dataObject->getId()!!!!!
             if ($prefix === 'endpoint_cd_zos_file_parameter_set__') {
                 $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdZosFileParameterDataObjects,
+                    'setFileParameters', 'getId');
+            }
+            if ($prefix === 'endpoint_ftgw_cd_zos_file_parameter_set__') {
+                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwCdZosFileParameterDataObjects,
                     'setFileParameters', 'getId');
             }
         }

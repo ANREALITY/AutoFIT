@@ -632,6 +632,25 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'endpoint_ftgw_cd_windows' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_cd_windows' . '__' . 'transmission_type' => 'transmission_type'
             ], Select::JOIN_LEFT);
+        $select->join('endpoint_ftgw_cd_zos', 'endpoint_ftgw_cd_zos.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_cd_zos' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_zos' . '__' . 'username' => 'username',
+                'endpoint_ftgw_cd_zos' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id',
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_cd_zos_file_parameter_set' => 'file_parameter_set'], 'endpoint_ftgw_cd_zos_file_parameter_set.id = endpoint_ftgw_cd_zos.file_parameter_set_id',
+            [
+                'endpoint_ftgw_cd_zos_file_parameter_set' . '__' . 'id' => 'id'
+            ], Select::JOIN_LEFT);
+        $select->join(['endpoint_ftgw_cd_zos_file_parameter' => 'file_parameter'], 'endpoint_ftgw_cd_zos_file_parameter.file_parameter_set_id = endpoint_ftgw_cd_zos_file_parameter_set.id',
+            [
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'id' => 'id',
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'filename' => 'filename',
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'record_length' => 'record_length',
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'blocking' => 'blocking',
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'block_size' => 'block_size',
+                'endpoint_ftgw_cd_zos_file_parameter' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id'
+            ], Select::JOIN_LEFT);
 
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
         $paginator = new Paginator($adapter);

@@ -1180,6 +1180,13 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 $protocolExists = array_key_exists('endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id']);
                 return $typeIsOk && $protocolExists;
             }, false);
+        $ftgwCdZosFileParameterSetDataObjects = $this->fileParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_cd_zos_file_parameter_set__', 'id',
+            'endpoint__', new FileParameterSet(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_ZOS;
+                $protocolExists = array_key_exists('endpoint_ftgw_cd_zos_file_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_cd_zos_file_parameter_set' . '__' . 'id']);
+                return $typeIsOk && $protocolExists;
+            }, false);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
@@ -1218,6 +1225,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 'setEndpointClusterConfig', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixIncludeParameterSetDataObjects,
                 'setIncludeParameterSet', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwCdZosFileParameterSetDataObjects,
+                'setFileParameterSet', 'getId');
         }
 
         return $dataObjects;
