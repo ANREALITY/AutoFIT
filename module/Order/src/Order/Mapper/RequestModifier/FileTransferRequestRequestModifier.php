@@ -424,4 +424,15 @@ class FileTransferRequestRequestModifier
                 ], Select::JOIN_LEFT);
         }
     }
+
+    public function addFtgwCdTandem(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
+    {
+        $select->join('endpoint_ftgw_cd_tandem', 'endpoint_ftgw_cd_tandem.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_cd_tandem' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_tandem' . '__' . 'username' => 'username',
+                'endpoint_ftgw_cd_tandem' . '__' . 'folder' => 'folder'
+            ], Select::JOIN_LEFT);
+    }
+
 }
