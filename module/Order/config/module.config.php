@@ -320,6 +320,8 @@ return [
             'Order\Form\Fieldset\EndpointFtgwCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdZosSource' => false,
             'Order\Form\Fieldset\EndpointFtgwCdZosTarget' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdTandemSource' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdTandemTarget' => false,
             'Order\Form\Fieldset\EndpointServerConfig' => false,
             'Order\Form\Fieldset\Environment' => false,
             'Order\Form\Fieldset\ExternalServer' => false,
