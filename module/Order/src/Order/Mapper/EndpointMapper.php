@@ -32,6 +32,7 @@ use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdWindows;
 use DbSystel\DataObject\EndpointFtgwCdZos;
+use DbSystel\DataObject\EndpointFtgwCdTandem;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -1058,6 +1059,51 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
+        if ($result instanceof ResultInterface) {
+            $newEndpointId = $dataObject->getId();
+            if ($newEndpointId) {
+                // creating sub-objects: in this case only now possible, since the $newEndpointId is needed
+            }
+            return $dataObject;
+        }
+        throw new \Exception('Database error in ' . __METHOD__);
+    }
+
+    /**
+     *
+     * @param EndpointFtgwCdTandem $dataObject
+     * @param boolean $isUpdate
+     *
+     * @return EndpointFtgwCdTandem
+     * @throws \Exception
+     */
+    protected function saveFtgwCdTandem(EndpointFtgwCdTandem $dataObject, bool $isUpdate)
+    {
+        $data = [];
+        // data retrieved directly from the input
+        // $data['foo'] = $dataObject->getFoo();
+        $data['username'] = $dataObject->getUsername();
+        $data['folder'] = $dataObject->getFolder();
+    
+        // creating sub-objects
+        // $newBar = $this->barMapper->save($dataObject->getBar());
+        // data from the recently persisted objects
+        $data['endpoint_id'] = $dataObject->getId();
+    
+        if (! $isUpdate) {
+            $action = new Insert('endpoint_ftgw_cd_tandem');
+            $action->values($data);
+        } else {
+            $action = new Update('endpoint_ftgw_cd_tandem');
+            $action->where(['endpoint_id' => $data['endpoint_id']]);
+            unset($data['endpoint_id']);
+            $action->set($data);
+        }
+    
+        $sql = new Sql($this->dbAdapter);
+        $statement = $sql->prepareStatementForSqlObject($action);
+        $result = $statement->execute();
+    
         if ($result instanceof ResultInterface) {
             $newEndpointId = $dataObject->getId();
             if ($newEndpointId) {
