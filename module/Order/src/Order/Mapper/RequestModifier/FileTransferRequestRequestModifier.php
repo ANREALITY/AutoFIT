@@ -435,4 +435,14 @@ class FileTransferRequestRequestModifier
             ], Select::JOIN_LEFT);
     }
 
+    public function addFtgwCdAs400(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
+    {
+        $select->join('endpoint_ftgw_cd_as400', 'endpoint_ftgw_cd_as400.endpoint_id = endpoint.id',
+            [
+                'endpoint_ftgw_cd_as400' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_as400' . '__' . 'username' => 'username',
+                'endpoint_ftgw_cd_as400' . '__' . 'folder' => 'folder'
+            ], Select::JOIN_LEFT);
+    }
+
 }

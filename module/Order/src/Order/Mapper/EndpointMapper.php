@@ -285,6 +285,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                     $this->prototype = new EndpointFtgwCdZos();
                 } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_TANDEM) === 0) {
                     $this->prototype = new EndpointFtgwCdTandem();
+                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_AS400) === 0) {
+                    $this->prototype = new EndpointFtgwCdAs400();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 

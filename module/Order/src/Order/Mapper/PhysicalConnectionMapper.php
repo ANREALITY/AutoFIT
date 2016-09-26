@@ -31,6 +31,7 @@ use DbSystel\DataObject\EndpointFtgwCdLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdWindows;
 use DbSystel\DataObject\EndpointFtgwCdZos;
 use DbSystel\DataObject\EndpointFtgwCdTandem;
+use DbSystel\DataObject\EndpointFtgwCdAs400;
 
 class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnectionMapperInterface
 {
@@ -502,6 +503,20 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
+        $endpointFtgwCdAs400SourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_AS400;
+                $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
+                return $typeIsOk && $roleIsOk;
+            });
+        $endpointFtgwCdAs400TargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
+            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
+            function (array $row) {
+                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_AS400;
+                $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
+                return $typeIsOk && $roleIsOk;
+            });
 
         foreach ($dataObjects as $key => $dataObject) {
             // DANGEROUS!!!
@@ -566,6 +581,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwCdTandemSourceDataObjects,
                 'setEndpointSource', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwCdTandemTargetDataObjects,
+                'setEndpointTarget', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwCdAs400SourceDataObjects,
+                'setEndpointSource', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointFtgwCdAs400TargetDataObjects,
                 'setEndpointTarget', 'getId');
         }
 

@@ -362,6 +362,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $this->requestModifier->addFtgwCdWindows($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwCdZos($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwCdTandem($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
+            $this->requestModifier->addFtgwCdAs400($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
         }
 
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
