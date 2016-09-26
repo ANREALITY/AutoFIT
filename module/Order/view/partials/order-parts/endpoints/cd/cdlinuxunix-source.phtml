@@ -70,6 +70,10 @@ $orderPartAttributes = [
         'value' => $dataObject->getTransmissionInterval() ?: '-'
     ],
     [
+        'label' => $this->translate('fetch interval'),
+        'value' => $dataObject->getFetchInterval() ?: '-'
+    ],
+    [
         'label' => $this->translate('servers'),
         'value' => $protocolsOutput
     ],

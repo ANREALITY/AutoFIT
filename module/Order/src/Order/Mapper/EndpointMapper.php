@@ -468,6 +468,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['folder'] = $dataObject->getFolder();
         $data['transmission_type'] = $dataObject->getTransmissionType();
         $data['transmission_interval'] = $dataObject->getTransmissionInterval();
+        $data['fetch_interval'] = $dataObject->getFetchInterval();
         $data['service_address'] = $dataObject->getServiceAddress();
 
         // creating sub-objects
@@ -887,6 +888,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['folder'] = $dataObject->getFolder();
         $data['transmission_type'] = $dataObject->getTransmissionType();
         $data['transmission_interval'] = $dataObject->getTransmissionInterval();
+        $data['fetch_interval'] = $dataObject->getFetchInterval();
         $data['service_address'] = $dataObject->getServiceAddress();
 
         // creating sub-objects

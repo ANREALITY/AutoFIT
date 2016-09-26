@@ -36,6 +36,12 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *
      * @var string
      */
+    protected $fetchInterval;
+
+    /**
+     *
+     * @var string
+     */
     protected $serviceAddress;
 
     /**
@@ -120,6 +126,24 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setTransmissionInterval($transmissionInterval)
     {
         $this->transmissionInterval = $transmissionInterval;
+    }
+
+    /**
+     *
+     * @return the $fetchInterval
+     */
+    public function getFetchInterval()
+    {
+        return $this->fetchInterval;
+    }
+
+    /**
+     *
+     * @param string $fetchInterval
+     */
+    public function setFetchInterval($fetchInterval)
+    {
+        $this->fetchInterval = $fetchInterval;
     }
 
     /**
