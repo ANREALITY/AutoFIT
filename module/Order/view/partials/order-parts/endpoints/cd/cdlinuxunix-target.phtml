@@ -55,11 +55,7 @@ $orderPartAttributes = [
     [
         'label' => $this->translate('cluster\'s DNS address'),
         'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getDnsAddress() ? $dataObject->getEndpointClusterConfig()->getDnsAddress() : '-'
-    ],
-    [
-        'label' => $this->translate('service address'),
-        'value' => $dataObject->getServiceAddress() ?: '-'
-    ],
+    ]
 ];
 echo $this->partial('/partials/order-part',
     [
