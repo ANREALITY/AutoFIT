@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 15:39+0200\n"
-"PO-Revision-Date: 2016-09-26 15:39+0200\n"
+"POT-Creation-Date: 2016-09-26 17:13+0200\n"
+"PO-Revision-Date: 2016-09-26 17:14+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -114,9 +114,9 @@ msgstr "mehrere Server"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:85
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:85
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:85
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:60
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:85
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:89
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:60
 msgid "service address"
 msgstr "Service-Adresse"
@@ -340,9 +340,9 @@ msgstr ""
 
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:20
 #: Order/src/Order/Form/Fieldset/ClusterFieldset.php:28
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:81
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:52
 msgid "cluster's virtual node name"
 msgstr "Virtueller Knotenname des Clusters"
@@ -350,9 +350,9 @@ msgstr "Virtueller Knotenname des Clusters"
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:36
 #: Order/view/partials/list/summary.phtml:108
 #: Order/view/partials/list/summary.phtml:124
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:48
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:73
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:48
 msgid "servers"
 msgstr "Server"
@@ -408,14 +408,16 @@ msgstr "Übertragungsart"
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:69
-#: Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:69
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:68
+#: Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:68
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:73
 msgid "fetch interval"
 msgstr "Abholintervall"
 
-#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:111
+#: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:110
 #: Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:135
-#: Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:111
+#: Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:110
 #: Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:135
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
@@ -469,9 +471,9 @@ msgid "Target - Zos"
 msgstr ""
 
 #: Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:85
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:56
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:81
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:85
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:56
 msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
@@ -538,10 +540,10 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:93
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:51
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:89
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:93
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:72
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:72
@@ -1141,8 +1143,8 @@ msgid "Logical connection"
 msgstr "Logische Verbindung"
 
 #: Order/view/partials/info-boxes/crontab-info.phtml:4
-msgid "Crontab for transmission interval"
-msgstr "Crontab für das Sendeintervall"
+msgid "Crontab for the transmission / fetch interval"
+msgstr "Crontab für das Sende-/ Abholintervall"
 
 #: Order/view/partials/info-boxes/crontab-info.phtml:7
 msgid "For the field \"transmission interval\" is"
@@ -1498,6 +1500,9 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "Crontab for transmission interval"
+#~ msgstr "Crontab für das Sendeintervall"
 
 #~ msgid "edit order"
 #~ msgstr "Bestellung anpassen"
