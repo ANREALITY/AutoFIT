@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-26 17:13+0200\n"
-"PO-Revision-Date: 2016-09-26 17:14+0200\n"
+"PO-Revision-Date: 2016-09-26 19:19+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1144,7 +1144,7 @@ msgstr "Logische Verbindung"
 
 #: Order/view/partials/info-boxes/crontab-info.phtml:4
 msgid "Crontab for the transmission / fetch interval"
-msgstr "Crontab für das Sende-/ Abholintervall"
+msgstr "Crontab für das Sende-/Abholintervall"
 
 #: Order/view/partials/info-boxes/crontab-info.phtml:7
 msgid "For the field \"transmission interval\" is"
