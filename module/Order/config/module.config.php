@@ -322,6 +322,8 @@ return [
             'Order\Form\Fieldset\EndpointFtgwCdZosTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdTandemSource' => false,
             'Order\Form\Fieldset\EndpointFtgwCdTandemTarget' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdAs400Source' => false,
+            'Order\Form\Fieldset\EndpointFtgwCdAs400Target' => false,
             'Order\Form\Fieldset\EndpointServerConfig' => false,
             'Order\Form\Fieldset\Environment' => false,
             'Order\Form\Fieldset\ExternalServer' => false,
