@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 	fieldEndpointSourceCustomerName = $('#fieldgroup-basic-endpoint-source .field-customer-name');
+	fieldEndpointSourceExternalServerName = $('#fieldgroup-basic-endpoint-source .input-external-server');
 });
 
 $(document).ready(function() {
@@ -17,4 +18,6 @@ $(document).ready(function() {
 function disableNeedlessSourceFields() {
 	fieldEndpointSourceCustomerName.val('');
 	fieldEndpointSourceCustomerName.parent().fadeOut('slow');
+	fieldEndpointSourceExternalServerName.val('');
+	fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 }

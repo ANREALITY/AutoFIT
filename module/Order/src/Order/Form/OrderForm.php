@@ -110,8 +110,15 @@ class OrderForm extends Form
         if ($endpointSourceFieldset instanceof EndpointFtgwLinuxUnixSourceFieldset) {
             $elementsSource[] = $endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
         }
+
         $minOneNotEmptyValidatorSource = new MinOneNotEmpty(['elements' => $elementsSource]);
-        $isValid = $minOneNotEmptyValidatorSource->isValid(null);
+
+        if ($endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset) {
+            $isValid = true;
+        } else {
+            $isValid = $minOneNotEmptyValidatorSource->isValid(null);
+        }
+        
         if (! $isValid) {
             $this->addErrorMessage('Neither a server (internal/external), nor a cluster is defined for the source endpoint.');
         }
@@ -136,8 +143,15 @@ class OrderForm extends Form
         if ($endpointTargetFieldset instanceof EndpointFtgwLinuxUnixTargetFieldset) {
             $elementsTarget[] = $endpointTargetFieldset->get('endpoint_cluster_config')->get('cluster')->get('id');
         }
+
         $minOneNotEmptyValidatorTarget = new MinOneNotEmpty(['elements' => $elementsTarget]);
-        $isValid = $minOneNotEmptyValidatorTarget->isValid(null);
+
+        if ($endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset) {
+            $isValid = true;
+        } else {
+            $isValid = $minOneNotEmptyValidatorTarget->isValid(null);
+        }
+
         if (! $isValid) {
             $this->addErrorMessage('Neither a server (internal/external), nor a cluster is defined for the target endpoint.');
         }
