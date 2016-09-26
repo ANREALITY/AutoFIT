@@ -32,6 +32,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     const TYPE_FTGW_CD_ZOS = 'FtgwCdZos';
 
+    const TYPE_FTGW_CD_TANDEM = 'FtgwCdTandem';
+
     const ROLE_SOURCE = 'source';
 
     const ROLE_TARGET = 'target';
