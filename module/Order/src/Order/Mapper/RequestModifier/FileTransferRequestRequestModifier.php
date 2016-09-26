@@ -89,8 +89,7 @@ class FileTransferRequestRequestModifier
                 'endpoint_cd_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
-                'endpoint_cd_linux_unix' . '__' . 'fetch_interval' => 'fetch_interval',
-                'endpoint_cd_linux_unix' . '__' . 'service_address' => 'service_address'
+                'endpoint_cd_linux_unix' . '__' . 'fetch_interval' => 'fetch_interval'
             ], Select::JOIN_LEFT);
         if ($requstMode == self::REQUEST_MODE_REDUCED || $requstMode == self::REQUEST_MODE_FULL) {
             $select->join(['cd_linux_unix_cluster_config' => 'endpoint_cluster_config'], 'cd_linux_unix_cluster_config.id = endpoint_cd_linux_unix.endpoint_cluster_config_id',
@@ -342,8 +341,7 @@ class FileTransferRequestRequestModifier
                 'endpoint_ftgw_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
                 'endpoint_ftgw_linux_unix' . '__' . 'transmission_interval' => 'transmission_interval',
-                'endpoint_ftgw_linux_unix' . '__' . 'fetch_interval' => 'fetch_interval',
-                'endpoint_ftgw_linux_unix' . '__' . 'service_address' => 'service_address'
+                'endpoint_ftgw_linux_unix' . '__' . 'fetch_interval' => 'fetch_interval'
             ], Select::JOIN_LEFT);
         if ($requstMode == self::REQUEST_MODE_REDUCED || $requstMode == self::REQUEST_MODE_FULL) {
             $select->join(['ftgw_linux_unix_cluster_config' => 'endpoint_cluster_config'], 'ftgw_linux_unix_cluster_config.id = endpoint_ftgw_linux_unix.endpoint_cluster_config_id',

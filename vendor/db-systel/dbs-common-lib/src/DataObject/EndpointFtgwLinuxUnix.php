@@ -40,12 +40,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @var string
-     */
-    protected $serviceAddress;
-
-    /**
-     *
      * @var IncludeParameterSet
      */
     protected $includeParameterSet;
@@ -144,24 +138,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setFetchInterval($fetchInterval)
     {
         $this->fetchInterval = $fetchInterval;
-    }
-
-    /**
-     *
-     * @return the $serviceAddress
-     */
-    public function getServiceAddress()
-    {
-        return $this->serviceAddress;
-    }
-
-    /**
-     *
-     * @param string $serviceAddress
-     */
-    public function setServiceAddress($serviceAddress)
-    {
-        $this->serviceAddress = $serviceAddress;
     }
 
     /**

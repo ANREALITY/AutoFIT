@@ -79,37 +79,6 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
         $this->add(
             [
-                'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'service_address_toggle',
-                'options' => [
-                    'label' => _('service address'),
-                    'use_hidden_element' => false,
-                    'label_attributes' => [
-                        'class' => 'col-md-12'
-                    ]
-                ],
-                'attributes' => [
-                    'class' => 'toggle-service-address'
-                ]
-            ]);
-
-        $this->add(
-            [
-                'type' => 'text',
-                'name' => 'service_address',
-                'options' => [
-                    'label' => _('IP / server name service address'),
-                    'label_attributes' => [
-                        'class' => 'col-md-12'
-                    ]
-                ],
-                'attributes' => [
-                    'class' => 'form-control field-service-address'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'name' => 'endpoint_cluster_config',
                 'type' => 'Order\Form\Fieldset\EndpointClusterConfig',
                 'options' => []
@@ -123,9 +92,6 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                 'required' => true
             ],
             'server_toggle' => [
-                'required' => false
-            ],
-            'service_address_toggle' => [
                 'required' => false
             ]
         ];

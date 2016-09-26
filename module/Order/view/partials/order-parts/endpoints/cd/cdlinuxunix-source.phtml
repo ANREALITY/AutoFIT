@@ -86,10 +86,6 @@ $orderPartAttributes = [
         'value' => $dataObject->getEndpointClusterConfig() && $dataObject->getEndpointClusterConfig()->getDnsAddress() ? $dataObject->getEndpointClusterConfig()->getDnsAddress() : '-'
     ],
     [
-        'label' => $this->translate('service address'),
-        'value' => $dataObject->getServiceAddress() ?: '-'
-    ],
-    [
         'label' => $this->translate('include parameters'),
         'value' => $includeParametersOutput
     ],

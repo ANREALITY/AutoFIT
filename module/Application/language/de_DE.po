@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 17:13+0200\n"
-"PO-Revision-Date: 2016-09-26 19:19+0200\n"
+"POT-Creation-Date: 2016-09-26 19:52+0200\n"
+"PO-Revision-Date: 2016-09-26 19:53+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -111,20 +111,6 @@ msgstr "einziger Server (s. Basis-Einstellungen)"
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:68
 msgid "multiple servers"
 msgstr "mehrere Server"
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:85
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:85
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:60
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:89
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:60
-msgid "service address"
-msgstr "Service-Adresse"
-
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:101
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:101
-msgid "IP / server name service address"
-msgstr "IP / Server-Name der Service-Adresse"
 
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdTandemFieldset.php:15
@@ -540,10 +526,10 @@ msgid "expression"
 msgstr "Ausdruck"
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:93
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:89
 #: Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:51
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:93
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:89
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:72
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:40
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:72
@@ -1069,7 +1055,7 @@ msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
 #: Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:23
+#: Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:16
 #: Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:4
@@ -1079,7 +1065,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdwindows-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-source.phtml:4
-#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-source.phtml:23
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-source.phtml:16
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
@@ -1394,6 +1380,11 @@ msgstr "Server-DNS-Adresse"
 msgid "type"
 msgstr "Typ"
 
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:60
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:60
+msgid "service address"
+msgstr "Service-Adresse"
+
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:14
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:14
 msgid "file"
@@ -1500,6 +1491,9 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "IP / server name service address"
+#~ msgstr "IP / Server-Name der Service-Adresse"
 
 #~ msgid "Crontab for transmission interval"
 #~ msgstr "Crontab für das Sendeintervall"

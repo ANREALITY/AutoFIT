@@ -8,13 +8,6 @@ if (! empty($getHelperFieldsValuesFromObject)) {
         $valueServerToggle = 'multiple_servers';
     }
     $endpointSourceFieldset->get('server_toggle')->setValue($valueServerToggle);
-    // setting value for service_address_toggle
-    if ($dataObject->getServiceAddress()) {
-        $valueServiceAddressToggle = 1;
-    } else {
-        $valueServiceAddressToggle = 0;
-    }
-    $endpointSourceFieldset->get('service_address_toggle')->setValue($valueServiceAddressToggle);
 }
 ?>
 <?php
@@ -31,8 +24,6 @@ $fieldgroupFormRows = [
     $this->partial('/partials/info-boxes/crontab-info'),
     $this->formRow($endpointSourceFieldset->get('server_toggle')),
     $this->partial('/partials/info-boxes/hint-cluster'),
-    $this->formRow($endpointSourceFieldset->get('service_address_toggle')),
-    $this->formRow($endpointSourceFieldset->get('service_address')),
     $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('id')),
     $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('dns_address')),
     $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('cluster')->get('id')),
