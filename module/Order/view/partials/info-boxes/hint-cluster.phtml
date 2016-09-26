@@ -6,7 +6,7 @@
         <div class="body"><p><?php
             echo sprintf($this->translate(
                 'You can choose an already defined cluster from the list or create a new one with the %sclusetr master data form%s.'),
-                '<a href="' . $this->url('master-data/create-cluster') . '">', '</a>'
+                '<a href="' . $this->url('master-data/create-cluster') . '" target="_blank">', '</a>'
             );
             ?>
             <?php echo $this->translate('To do this please open the cluster form in a new window/tab, create a cluster, and come back to the order form.'); ?>
