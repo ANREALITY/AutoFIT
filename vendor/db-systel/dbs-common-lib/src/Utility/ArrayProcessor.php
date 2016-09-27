@@ -195,7 +195,6 @@ class ArrayProcessor
      *
      * @param array $array
      * @param string|array $prefix
-     * @param bool $removePrefix
      * @return array
      */
     public function extractElementsWithKeyPrefixedByString(array $array, $prefix)
@@ -203,7 +202,6 @@ class ArrayProcessor
         $resultArray = [];
         // @todo Maybe faster with array_map(...).
         foreach ($array as $key => $value) {
-            $processedKey = $key;
             if ($this->stringUtility->validateStringByPrefix($key, $prefix)) {
                 if (is_string($prefix)) {
                     if (strpos($key, $prefix) === 0) {
