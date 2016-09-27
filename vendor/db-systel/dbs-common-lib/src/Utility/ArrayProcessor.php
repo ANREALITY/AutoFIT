@@ -206,17 +206,27 @@ class ArrayProcessor
             $key = $columnAlias;
             if ($this->stringUtility->validateStringByPrefix($columnAlias, $prefix)) {
                 if (is_string($prefix)) {
-                    $key = str_replace($prefix, '', $columnAlias);
-                    $objectData[$key] = $value;
+                    if (strpos($columnAlias, $prefix) === 0) {
+                        $key = str_replace($prefix, '', $columnAlias);
+                        $objectData[$key] = $value;
+                    }
                 } elseif (is_array($prefix)) {
                     foreach ($prefix as $currentPrefix) {
-                        $key = str_replace($currentPrefix, '', $columnAlias);
-                        $objectData[$key] = $value;
+                        if (strpos($columnAlias, $currentPrefix) === 0) {
+                            $key = str_replace($currentPrefix, '', $columnAlias);
+                            $objectData[$key] = $value;
+                            unset($objectData[$currentPrefix]);
+                        }
                     }
                 }
             }
         }
         return $objectData;
     }
+
+//     public function removeKeyPrefixes(array $array, $prefix)
+//     {
+        
+//     }
 
 }

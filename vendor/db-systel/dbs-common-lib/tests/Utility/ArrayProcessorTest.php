@@ -449,13 +449,9 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             ],
             'arrayPrefixBarBuz' => [
                 'asd' => '234',
-                'bar__asd' => '234',
                 'wsx' => '678',
-                'bar__wsx' => '678',
                 'lmn' => '456',
-                'buz__lmn' => '456',
                 'rfv' => '890',
-                'buz__rfv' => '890',
             ]
         ];
         $data = [
