@@ -200,14 +200,10 @@ class ArrayProcessor
                 }
             });
         } elseif (is_array($prefix)) {
-            foreach ($array as $key => $value) {
-                foreach ($prefix as $currentPrefix) {
-                    if (strpos($key, $currentPrefix) === 0) {
-                        $processedKey = str_replace($currentPrefix, '', $key);
-                        $filteredArray[$processedKey] = $value;
-                        unset($filteredArray[$currentPrefix]);
-                    }
-                }
+            foreach ($prefix as $currentPrefix) {
+                $filteredArray = array_merge(
+                    $filteredArray, $this->extractElementsWithKeyPrefixedByString($array, $currentPrefix)
+                );
             }
         }
         return $filteredArray;
