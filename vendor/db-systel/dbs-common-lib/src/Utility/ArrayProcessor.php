@@ -4,6 +4,13 @@ namespace DbSystel\Utility;
 class ArrayProcessor
 {
 
+    protected $stringUtility;
+
+    public function __construct()
+    {
+        $this->stringUtility = new StringUtility();
+    }
+
     /**
      * "Flatten" the input $array first
      * (in order to avoid notices like "Array to string conversion")
@@ -179,6 +186,37 @@ class ArrayProcessor
             return $this->stringifyArray($subArray, $separator, $placeholder);
         }, $arraysMapped);
         return $result;
+    }
+
+    /**
+     * Returs an array containing only the elements of the input $row
+     * with keys prefixed by $prefix.
+     * The keys of the result array don't contain the prefix.
+     *
+     * @param array $row
+     * @param string|array $prefix
+     * @param bool $removePrefix
+     * @return array
+     */
+    public function extractElementsWithKeyPrefixedByString(array $row, $prefix)
+    {
+        $objectData = [];
+        // @todo Maybe faster with array_map(...).
+        foreach ($row as $columnAlias => $value) {
+            $key = $columnAlias;
+            if ($this->stringUtility->validateStringByPrefix($columnAlias, $prefix)) {
+                if (is_string($prefix)) {
+                    $key = str_replace($prefix, '', $columnAlias);
+                    $objectData[$key] = $value;
+                } elseif (is_array($prefix)) {
+                    foreach ($prefix as $currentPrefix) {
+                        $key = str_replace($currentPrefix, '', $columnAlias);
+                        $objectData[$key] = $value;
+                    }
+                }
+            }
+        }
+        return $objectData;
     }
 
 }

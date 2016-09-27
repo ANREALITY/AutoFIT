@@ -68,6 +68,14 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResult, $this->arrayProcessor->mergeArraysElementsToStrings($separator, $placeholder, $array1, $array2, $array3));
     }
 
+    /**
+     * @dataProvider provideDataForExtractElementsWithKeyPrefixedByString
+     */
+    public function testExtractElementsWithKeyPrefixedByString($testArray, $prefix, $expectedResult)
+    {
+        $this->assertEquals($expectedResult, $this->arrayProcessor->extractElementsWithKeyPrefixedByString($testArray, $prefix));
+    }
+
     public function provideDataForFlattenVar()
     {
         return [
@@ -409,6 +417,53 @@ class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 $separator[1], $placeholder[1], $arrays[0], $arrays[1], $arrays[2], $expectedResults[1]
+            ]
+        ];
+        return $data;
+    }
+
+    public function provideDataForExtractElementsWithKeyPrefixedByString()
+    {
+        $data = [];
+        $testArray = [
+            'foo__qwe' => '123',
+            'bar__asd' => '234',
+            'baz__yxc' => '345',
+            'buz__lmn' => '456',
+            'foo__qsc' => '567',
+            'bar__wsx' => '678',
+            'baz__edc' => '789',
+            'buz__rfv' => '890',
+        ];
+        $prefixes = [
+            'singlePrefixFoo' => 'foo__',
+            'arrayPrefixBarBuz' => [
+                'bar__',
+                'buz__',
+            ]
+        ];
+        $expectedResults = [
+            'singlePrefixFoo' => [
+                'qwe' => '123',
+                'qsc' => '567',
+            ],
+            'arrayPrefixBarBuz' => [
+                'asd' => '234',
+                'bar__asd' => '234',
+                'wsx' => '678',
+                'bar__wsx' => '678',
+                'lmn' => '456',
+                'buz__lmn' => '456',
+                'rfv' => '890',
+                'buz__rfv' => '890',
+            ]
+        ];
+        $data = [
+            [
+                $testArray, $prefixes['singlePrefixFoo'], $expectedResults['singlePrefixFoo']
+            ],
+            [
+                $testArray, $prefixes['arrayPrefixBarBuz'], $expectedResults['arrayPrefixBarBuz']
             ]
         ];
         return $data;

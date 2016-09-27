@@ -162,6 +162,26 @@ class AbstractMapper
         return $uniqueResultSetArray;
     }
 
+    /**
+     * Takes a table (two-dimensional array) and
+     * creates objects of type of the $prototype from it.
+     * It's assumed, that the rows of the $uniqueResultSetArray are unique.
+     * That means the table cannot contain identical rows.
+     * Two rows are identical, if 
+     * That means the result DataObject set cannot contain identical objects.
+     *
+     * @param array $uniqueResultSetArray
+     * @param string|array $parentIdentifier
+     * @param string|array $parentPrefix
+     * @param string|array $identifier
+     * @param string|array $prefix
+     * @param string|array $childIdentifier
+     * @param string|array $childPrefix
+     * @param object $prototype
+     * @param callable $dataObjectCondition
+     * @param bool $isCollection
+     * @return AbstractDataObject[]
+     */
     protected function buildDataObjects(array $uniqueResultSetArray, $parentIdentifier = null, $parentPrefix = null,
         $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
         callable $dataObjectCondition = null, bool $isCollection = false)
@@ -176,22 +196,7 @@ class AbstractMapper
                 continue;
             }
             $prototypeForHydration = new $prototypeClass();
-            $objectData = [];
-            // @todo Maybe faster with array_map(...).
-            foreach ($row as $columnAlias => $value) {
-                $key = $columnAlias;
-                if ($this->stringUtility->validateStringByPrefix($columnAlias, $prefix)) {
-                    if (is_string($prefix)) {
-                        $key = str_replace($prefix, '', $columnAlias);
-                        $objectData[$key] = $value;
-                    } elseif (is_array($prefix)) {
-                        foreach ($prefix as $currentPrefix) {
-                            $key = str_replace($currentPrefix, '', $columnAlias);
-                            $objectData[$key] = $value;
-                        }
-                    }
-                }
-            }
+            $objectData = $this->tableDataProcessor->extractElementsWithKeyPrefixedByString($row, $prefix);
             if (! empty($objectData)) {
                 if (! empty($parentPrefix . $parentIdentifier) && ! empty($row[$parentPrefix . $parentIdentifier])) {
                     $objectParentIndexIdentifier = $parentPrefix . $parentIdentifier;
