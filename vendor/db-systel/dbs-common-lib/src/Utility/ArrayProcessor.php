@@ -189,39 +189,39 @@ class ArrayProcessor
     }
 
     /**
-     * Returs an array containing only the elements of the input $row
+     * Returs an array containing only the elements of the input $array
      * with keys prefixed by $prefix.
      * The keys of the result array don't contain the prefix.
      *
-     * @param array $row
+     * @param array $array
      * @param string|array $prefix
      * @param bool $removePrefix
      * @return array
      */
-    public function extractElementsWithKeyPrefixedByString(array $row, $prefix)
+    public function extractElementsWithKeyPrefixedByString(array $array, $prefix)
     {
-        $objectData = [];
+        $resultArray = [];
         // @todo Maybe faster with array_map(...).
-        foreach ($row as $columnAlias => $value) {
-            $key = $columnAlias;
-            if ($this->stringUtility->validateStringByPrefix($columnAlias, $prefix)) {
+        foreach ($array as $key => $value) {
+            $processedKey = $key;
+            if ($this->stringUtility->validateStringByPrefix($key, $prefix)) {
                 if (is_string($prefix)) {
-                    if (strpos($columnAlias, $prefix) === 0) {
-                        $key = str_replace($prefix, '', $columnAlias);
-                        $objectData[$key] = $value;
+                    if (strpos($key, $prefix) === 0) {
+                        $processedKey = str_replace($prefix, '', $key);
+                        $resultArray[$processedKey] = $value;
                     }
                 } elseif (is_array($prefix)) {
                     foreach ($prefix as $currentPrefix) {
-                        if (strpos($columnAlias, $currentPrefix) === 0) {
-                            $key = str_replace($currentPrefix, '', $columnAlias);
-                            $objectData[$key] = $value;
-                            unset($objectData[$currentPrefix]);
+                        if (strpos($key, $currentPrefix) === 0) {
+                            $processedKey = str_replace($currentPrefix, '', $key);
+                            $resultArray[$processedKey] = $value;
+                            unset($resultArray[$currentPrefix]);
                         }
                     }
                 }
             }
         }
-        return $objectData;
+        return $resultArray;
     }
 
 //     public function removeKeyPrefixes(array $array, $prefix)
