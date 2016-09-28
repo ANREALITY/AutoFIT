@@ -194,7 +194,7 @@ class ArrayProcessor
     {
         $filteredArray = [];
         if (is_string($prefix)) {
-            array_walk($array, function($value, &$keyName) use($prefix, &$filteredArray) {
+            array_walk($array, function($value, $keyName) use($prefix, &$filteredArray) {
                 if (strpos($keyName, $prefix) === 0) {
                     $filteredArray[str_replace($prefix, '', $keyName)] = $value;
                 }
