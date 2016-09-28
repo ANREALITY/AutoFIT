@@ -192,20 +192,17 @@ class ArrayProcessor
      */
     public function extractElementsWithKeyPrefixedByString(array $array, $prefix)
     {
-        $filteredArray = [];
-        if (is_string($prefix)) {
-            array_walk($array, function($value, $keyName) use($prefix, &$filteredArray) {
-                if (strpos($keyName, $prefix) === 0) {
-                    $filteredArray[str_replace($prefix, '', $keyName)] = $value;
-                }
-            });
-        } elseif (is_array($prefix)) {
-            foreach ($prefix as $currentPrefix) {
-                $filteredArray = array_merge(
-                    $filteredArray, $this->extractElementsWithKeyPrefixedByString($array, $currentPrefix)
-                );
-            }
+        if (is_array($prefix)) {
+            $prefix = implode('|', $prefix);
         }
+        $iterator = new \RegexIterator(
+            new \ArrayIterator($array),
+            '/^(' . $prefix . ')([a-zA-Z0-9_-]+)$/',
+            \RegexIterator::REPLACE,
+            \RegexIterator::USE_KEY
+        );
+        $iterator->replacement = '$2';
+        $filteredArray = iterator_to_array($iterator);
         return $filteredArray;
     }
 
