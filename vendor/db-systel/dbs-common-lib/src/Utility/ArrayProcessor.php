@@ -195,14 +195,10 @@ class ArrayProcessor
         if (is_array($prefix)) {
             $prefix = implode('|', $prefix);
         }
-        $iterator = new \RegexIterator(
-            new \ArrayIterator($array),
-            '/^(' . $prefix . ')([a-zA-Z0-9_-]+)$/',
-            \RegexIterator::REPLACE,
-            \RegexIterator::USE_KEY
-        );
-        $iterator->replacement = '$2';
-        $filteredArray = iterator_to_array($iterator);
+        $filteredKeys = preg_filter(['/(' . $prefix . ')([a-zA-Z0-9_-]+)/'], ['$2'], array_keys($array));
+        $arrayValues = array_values($array);
+        $filteredValues = array_intersect_key($arrayValues, $filteredKeys);
+        $filteredArray = array_combine($filteredKeys, $filteredValues);
         return $filteredArray;
     }
 
