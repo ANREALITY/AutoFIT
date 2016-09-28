@@ -367,7 +367,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
 
-        $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter);
+        $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter, null, null, $condition['user_id']);
         $paginator = new Paginator($adapter);
         $paginator->setCurrentPageNumber($page);
         if (! $paginationNeeded) {

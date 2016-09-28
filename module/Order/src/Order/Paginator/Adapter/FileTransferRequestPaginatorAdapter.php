@@ -5,9 +5,18 @@ use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Db\Sql\Sql;
 use Zend\Db\Sql\Expression;
+use Zend\Db\ResultSet\ResultSetInterface;
 
 class FileTransferRequestPaginatorAdapter extends DbSelect
 {
+    protected $userId;
+
+    public function __construct(Select $select, $adapterOrSqlObject, ResultSetInterface $resultSetPrototype = null, 
+        Select $countSelect = null, $userId = null)
+    {
+        parent::__construct($select, $adapterOrSqlObject, null, null);
+        $this->userId = $userId;
+    }
 
     /**
      * The SQL statement contains JOINs,
@@ -17,7 +26,7 @@ class FileTransferRequestPaginatorAdapter extends DbSelect
      * To acieve this, the method replaces the LIMIT by an IN restriction of the overriden method.
      *
      * {@inheritDoc}
-     * @see \Zend\Paginator\Adapter\DbSelect::getItems()
+     * @see DbSelect::getItems()
      */
     public function getItems($offset, $itemCountPerPage)
     {
@@ -26,6 +35,9 @@ class FileTransferRequestPaginatorAdapter extends DbSelect
         // $select->limit($itemCountPerPage);
         $relevantIds = $this->getRelevantIds($offset, $itemCountPerPage);
         $select->where->in('file_transfer_request.id', $relevantIds);
+        if ($this->userId) {
+            $select->where(['user_id = ?' => $this->userId]);
+        }
 
         $statement = $this->sql->prepareStatementForSqlObject($select);
         $result    = $statement->execute();
@@ -45,6 +57,9 @@ class FileTransferRequestPaginatorAdapter extends DbSelect
     {
         $select = new Select();
         $select->from('file_transfer_request')->columns([self::ROW_COUNT_COLUMN_NAME => new Expression('COUNT(*)')]);
+        if ($this->userId) {
+            $select->where(['user_id = ?' => $this->userId]);
+        }
 
         $statement = $this->sql->prepareStatementForSqlObject($select);
         $result    = $statement->execute();
@@ -67,6 +82,9 @@ class FileTransferRequestPaginatorAdapter extends DbSelect
         $select->columns(['id']);
         $select->offset($offset);
         $select->limit($itemCountPerPage);
+        if ($this->userId) {
+            $select->where(['user_id = ?' => $this->userId]);
+        }
 
         $statement = $this->sql->prepareStatementForSqlObject($select);
         $result    = $statement->execute();
