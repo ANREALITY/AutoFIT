@@ -110,32 +110,32 @@ class ArrayProcessor
         if (
             gettype($prefix) != gettype($identifier) &&
             ! ((is_array($prefix) && is_array($identifier)) && (count($identifier) == count($prefix)))
-            ) {
-                throw new \InvalidArgumentException('The arrays with identifiers and prefixes have to be strings or arrays of equal length.');
-            }
-            // Preventing creating empty objects.
-            // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
-            $valid = true;
-            if (is_string($identifier)) {
-                $completeIdentifier = $prefix . $identifier;
+        ) {
+            throw new \InvalidArgumentException('The arrays with identifiers and prefixes have to be strings or arrays of equal length.');
+        }
+        // Preventing creating empty objects.
+        // Example: LogicalConnection->(EndToEndPhysicalConnnection||(EndToMiddlePhysicalConnnection&&MiddleToEndPhysicalConnnection))
+        $valid = true;
+        if (is_string($identifier)) {
+            $completeIdentifier = $prefix . $identifier;
+            $valid =
+            isset($array[$completeIdentifier]) && ! (
+                $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
+                );
+        } elseif (is_array($identifier)) {
+            foreach ($identifier as $key => $partIdentifierValue) {
+                $completeIdentifier = $prefix[$key] . $partIdentifierValue;
                 $valid =
                 isset($array[$completeIdentifier]) && ! (
                     $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
-                    );
-            } elseif (is_array($identifier)) {
-                foreach ($identifier as $key => $partIdentifierValue) {
-                    $completeIdentifier = $prefix[$key] . $partIdentifierValue;
-                    $valid =
-                    isset($array[$completeIdentifier]) && ! (
-                        $array[$completeIdentifier] === '' || $array[$completeIdentifier] === null
-                        )
-                        ;
-                    if (! $valid) {
-                        break;
-                    }
+                    )
+                    ;
+                if (! $valid) {
+                    break;
                 }
             }
-            return $valid;
+        }
+        return $valid;
     }
     
     /**
