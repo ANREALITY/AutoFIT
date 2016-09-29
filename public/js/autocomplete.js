@@ -53,10 +53,14 @@ $(function() {
 				$('#order-environment-severity').val(ui.item.value);
 				return false;
 			},
+			focus: function (event, ui) {
+				this.value = ui.item.label;
+				return false;
+			},
 		}).on('focus', function(event) {
 			console.log(new Date());
 			console.log($(this));
-		$(this).autocomplete("search", this.value);
+			$(this).autocomplete("search", this.value);
 	});
 });
 /**
