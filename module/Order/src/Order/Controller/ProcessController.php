@@ -285,6 +285,23 @@ class ProcessController extends AbstractActionController
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
+        $export = $this->params()->fromQuery('export', null);
+        if ($export === 'json') {
+            echo json_encode($fileTransferRequest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+            die();
+        } elseif ($export === 'xml') {
+            $dataObjectVars = json_decode(json_encode($fileTransferRequest->jsonSerialize()), true);
+            $xml = new \SimpleXMLElement('<file_transfer_request />');
+            $this->arrayToXml($dataObjectVars, $xml);
+            $domxml = new \DOMDocument('1.0');
+            $domxml->preserveWhiteSpace = false;
+            $domxml->formatOutput = true;
+            $domxml->loadXML($xml->asXML());
+            $xmlString = $domxml->saveXML();
+            echo $xmlString;
+            die();
+        }
+
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
             'userId' => $this->IdentityParam('id'),
@@ -338,5 +355,24 @@ class ProcessController extends AbstractActionController
             ]);
     }
 
-}
+    /**
+     * Convert an array to XML
+     * @param array $array
+     * @param SimpleXMLElement $xml
+     */
+    function arrayToXml($array, &$xml){
+        foreach ($array as $key => $value) {
+            if(is_array($value)){
+                if(is_int($key)){
+                    $key = 'item';
+                }
+                $label = $xml->addChild($key);
+                $this->arrayToXml($value, $label);
+            }
+            else {
+                $xml->addChild($key, $value);
+            }
+        }
+    }
 
+}
