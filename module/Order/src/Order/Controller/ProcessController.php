@@ -7,6 +7,7 @@ use DbSystel\DataObject\FileTransferRequest;
 use Order\Service\FileTransferRequestService;
 use Order\Form\OrderForm;
 use Order\Service\FileTransferRequestServiceInterface;
+use DbSystel\DataExport\DataExporter;
 
 class ProcessController extends AbstractActionController
 {
@@ -45,6 +46,11 @@ class ProcessController extends AbstractActionController
      * @var string
      */
     protected $endpointTargetType;
+
+    /**
+     * @var DataExporter
+     */
+    protected $dataExporter;
 
     public function __construct(FileTransferRequest $fileTransferRequest,
         FileTransferRequestService $fileTransferRequestService)
@@ -87,6 +93,14 @@ class ProcessController extends AbstractActionController
     public function setEndpointTargetType($endpointTargetType)
     {
         $this->endpointTargetType = $endpointTargetType;
+    }
+
+    /**
+     * @param DataExporter $dataExporter
+     */
+    public function setDataExporter(DataExporter $dataExporter)
+    {
+        $this->dataExporter = $dataExporter;
     }
 
     public function startAction()
@@ -287,18 +301,10 @@ class ProcessController extends AbstractActionController
 
         $export = $this->params()->fromQuery('export', null);
         if ($export === 'json') {
-            echo json_encode($fileTransferRequest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+            echo $this->dataExporter->exportToJson($fileTransferRequest);
             die();
         } elseif ($export === 'xml') {
-            $dataObjectVars = json_decode(json_encode($fileTransferRequest->jsonSerialize()), true);
-            $xml = new \SimpleXMLElement('<file_transfer_request />');
-            $this->arrayToXml($dataObjectVars, $xml);
-            $domxml = new \DOMDocument('1.0');
-            $domxml->preserveWhiteSpace = false;
-            $domxml->formatOutput = true;
-            $domxml->loadXML($xml->asXML());
-            $xmlString = $domxml->saveXML();
-            echo $xmlString;
+            echo $this->dataExporter->exportToXml($fileTransferRequest);
             die();
         }
 
@@ -353,26 +359,6 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params()->fromRoute('operation'),
                 'status' => $this->params()->fromRoute('status')
             ]);
-    }
-
-    /**
-     * Convert an array to XML
-     * @param array $array
-     * @param SimpleXMLElement $xml
-     */
-    function arrayToXml($array, &$xml){
-        foreach ($array as $key => $value) {
-            if(is_array($value)){
-                if(is_int($key)){
-                    $key = 'item';
-                }
-                $label = $xml->addChild($key);
-                $this->arrayToXml($value, $label);
-            }
-            else {
-                $xml->addChild($key, $value);
-            }
-        }
     }
 
 }

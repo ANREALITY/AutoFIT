@@ -21,6 +21,7 @@ class ProcessControllerFactory implements FactoryInterface
         $connectionType = $properServiceNameDetector->getConnectionType();
         $endpointSourceType = $properServiceNameDetector->getEndpointSourceType();
         $endpointTargetType = $properServiceNameDetector->getEndpointTargetType();
+        $dataExporter = $realServiceLocator->get('DbSystel\DataExport\DataExporter');
 
         $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
         $fileTransferRequest = $realServiceLocator->get('DbSystel\DataObject\FileTransferRequest');
@@ -35,6 +36,8 @@ class ProcessControllerFactory implements FactoryInterface
             $service->setEndpointTargetType($endpointTargetType);
         } elseif ($isStartRequest) {
             $service->setConnectionType($connectionType);
+        } else {
+            $service->setDataExporter($dataExporter);
         }
 
         return $service;
