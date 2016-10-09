@@ -39,6 +39,7 @@ return [
                         'admin' => null,
                         'member' => 'UserIsOwner'
                     ],
+                    'exportOrder' => 'admin',
                     'listMyOrders' => 'member',
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',

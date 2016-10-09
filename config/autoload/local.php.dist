@@ -11,5 +11,8 @@
  * credentials from accidentally being committed into version control.
  */
 
-return array(
-);
+return [
+    'export' => [
+        'folder' => __DIR__ . '/../../data/export'
+    ]
+];

@@ -92,6 +92,17 @@ return [
                     ]
                 ]
             ],
+            'export-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/export-order/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'exportOrder',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'sync-in-progress' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [

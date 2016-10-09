@@ -38,6 +38,9 @@ class ProcessControllerFactory implements FactoryInterface
             $service->setConnectionType($connectionType);
         } else {
             $service->setDataExporter($dataExporter);
+            $config = $realServiceLocator->get('Config');
+            $exportFolder = $config['export']['folder'];
+            $service->setExportFolder($exportFolder);
         }
 
         return $service;

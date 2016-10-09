@@ -23,6 +23,7 @@ phpunit/phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
+data/export/*
 data/logs/error-*.log
 ci/*/config.xml
 ci/*/logs/*

@@ -1,25 +1,24 @@
 <?php
+
 namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Http\Response\Stream;
+use Zend\Http\Headers;
 use DbSystel\DataObject\FileTransferRequest;
-use Order\Service\FileTransferRequestService;
-use Order\Form\OrderForm;
-use Order\Service\FileTransferRequestServiceInterface;
 use DbSystel\DataExport\DataExporter;
+use Order\Service\FileTransferRequestService;
 
 class ProcessController extends AbstractActionController
 {
 
     /**
-     * 
      * @var FileTransferRequest
      */
     protected $fileTransferRequest;
 
     /**
-     * 
      * @var FileTransferRequestServiceInterface
      */
     protected $fileTransferRequestService;
@@ -30,19 +29,16 @@ class ProcessController extends AbstractActionController
     protected $orderForm;
 
     /**
-     * 
      * @var string
      */
     protected $connectionType;
 
     /**
-     *
      * @var string
      */
     protected $endpointSourceType;
 
     /**
-     *
      * @var string
      */
     protected $endpointTargetType;
@@ -52,15 +48,18 @@ class ProcessController extends AbstractActionController
      */
     protected $dataExporter;
 
-    public function __construct(FileTransferRequest $fileTransferRequest,
-        FileTransferRequestService $fileTransferRequestService)
+    /**
+     * @var ExportFolder
+     */
+    protected $exportFolder;
+
+    public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestService $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
     }
 
     /**
-     *
      * @param FormInterface $orderForm
      */
     public function setOrderForm($orderForm)
@@ -69,7 +68,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $connectionType
      */
     public function setConnectionType($connectionType)
@@ -78,7 +76,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $endpointSourceType
      */
     public function setEndpointSourceType($endpointSourceType)
@@ -87,7 +84,6 @@ class ProcessController extends AbstractActionController
     }
 
     /**
-     *
      * @param string $endpointTargetType
      */
     public function setEndpointTargetType($endpointTargetType)
@@ -101,6 +97,14 @@ class ProcessController extends AbstractActionController
     public function setDataExporter(DataExporter $dataExporter)
     {
         $this->dataExporter = $dataExporter;
+    }
+
+    /**
+     * @param string $exportFolder
+     */
+    public function setExportFolder(string $exportFolder)
+    {
+        $this->exportFolder = $exportFolder;
     }
 
     public function startAction()
@@ -299,15 +303,6 @@ class ProcessController extends AbstractActionController
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
-        $export = $this->params()->fromQuery('export', null);
-        if ($export === 'json') {
-            echo $this->dataExporter->exportToJson($fileTransferRequest);
-            die();
-        } elseif ($export === 'xml') {
-            echo $this->dataExporter->exportToXml($fileTransferRequest);
-            die();
-        }
-
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
             'userId' => $this->IdentityParam('id'),
@@ -359,6 +354,46 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params()->fromRoute('operation'),
                 'status' => $this->params()->fromRoute('status')
             ]);
+    }
+
+    public function exportOrderAction()
+    {
+        $id = $this->params()->fromRoute('id', null);
+        $format = $this->params()->fromQuery('format', null);
+        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
+        $fileTransferRequests = $paginator->getCurrentItems();
+        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+
+        $folder = $this->exportFolder;
+        $response = $this->performExport($fileTransferRequest, $id, $format, $folder);
+
+        return $response;
+    }
+
+    protected function performExport(FileTransferRequest $fileTransferRequest, $id, $format, $folder)
+    {
+        $exportResult = $format === DataExporter::EXPORT_FORMAT_JSON
+            ? $this->dataExporter->exportToJson($fileTransferRequest)
+            : $this->dataExporter->exportToXml($fileTransferRequest)
+        ;
+        $fileName = $folder . '/' . 'order_' . $id . '.' . $format;
+        $file = fopen($fileName, 'w');
+        fwrite($file, $exportResult);
+        $file = fopen($fileName, 'r');
+        $response = new Stream();
+        $response->setStream($file);
+        $response->setStatusCode(200);
+        $response->setStreamName(basename($fileName));
+
+        $headers = new Headers();
+        $headers->addHeaders(array(
+            'Content-Disposition' => 'attachment; filename="' . basename($fileName) .'"',
+            'Content-Type' => 'application/octet-stream',
+            'Content-Length' => filesize($fileName)
+        ));
+        $response->setHeaders($headers);
+
+        return $response;
     }
 
 }
