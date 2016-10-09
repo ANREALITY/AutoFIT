@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 19:52+0200\n"
-"PO-Revision-Date: 2016-09-26 19:53+0200\n"
+"POT-Creation-Date: 2016-10-09 18:26+0200\n"
+"PO-Revision-Date: 2016-10-09 18:26+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1294,6 +1294,14 @@ msgstr "ablehnen"
 msgid "complete"
 msgstr "fertigstellen"
 
+#: Order/view/partials/order-buttons/buttons.phtml:28
+msgid "JSON export"
+msgstr "JSON-Export"
+
+#: Order/view/partials/order-buttons/buttons.phtml:29
+msgid "XML export"
+msgstr "XML-Export"
+
 #: Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
 msgstr "Benutzer"
@@ -1379,11 +1387,6 @@ msgstr "Server-DNS-Adresse"
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-target.phtml:43
 msgid "type"
 msgstr "Typ"
-
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:60
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:60
-msgid "service address"
-msgstr "Service-Adresse"
 
 #: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:14
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:14
@@ -1491,6 +1494,9 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "service address"
+#~ msgstr "Service-Adresse"
 
 #~ msgid "IP / server name service address"
 #~ msgstr "IP / Server-Name der Service-Adresse"

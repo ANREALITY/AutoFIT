@@ -25,4 +25,6 @@ $fileTransferRequest;
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('complete', $fileTransferRequest->getStatus())) : ?>
     <a class="btn btn-default" href="<?php echo $this->url('complete-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('complete'); ?> <span class="glyphicon glyphicon-ok-sign"></a>
     <?php endif; ?>
+    <a class="btn btn-default" href="<?php echo $this->url('export-order', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'json']]); ?>"><?php echo $this->translate('JSON export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-json"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('export-order', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'xml']]); ?>"><?php echo $this->translate('XML export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-xml"></a>
 <?php endif; ?>

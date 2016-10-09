@@ -376,6 +376,12 @@ table.list td {
 .glyphicon-ok-sign {
   color: #3060cf;
 }
+.glyphicon-export-json {
+  color: #3075ff;
+}
+.glyphicon-export-xml {
+  color: #f67900;
+}
 .jumbotron.jumbotron-main {
   position: relative;
 }
