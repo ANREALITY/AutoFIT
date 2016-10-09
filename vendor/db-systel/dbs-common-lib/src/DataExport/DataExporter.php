@@ -6,6 +6,10 @@ use DbSystel\DataObject\AbstractDataObject;
 class DataExporter
 {
 
+    const EXPORT_FORMAT_JSON = 'json';
+
+    const EXPORT_FORMAT_XML = 'xml';
+
     const XML_DEFAULT_ROOT_ELEMENT = 'file_transfer_request';
 
     const XML_DEFAULT_ELEMENT_NAME = 'item';
