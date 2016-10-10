@@ -12,8 +12,6 @@ use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixSourceFieldset;
-use Order\Form\Fieldset\EndpointFtgwCdLinuxUnixSourceFieldset;
-use Order\Form\Fieldset\EndpointFtgwCdLinuxUnixTargetFieldset;
 
 class OrderForm extends Form
 {
@@ -97,7 +95,6 @@ class OrderForm extends Form
         $elementsSource = [];
         if (
             ! $endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset
-            && ! $endpointSourceFieldset instanceof EndpointFtgwCdLinuxUnixSourceFieldset
         ) {
             $elementsSource[] = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
         }
@@ -130,7 +127,6 @@ class OrderForm extends Form
         $elementsTarget = [];
         if (
             ! $endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset
-            && ! $endpointTargetFieldset instanceof EndpointFtgwCdLinuxUnixTargetFieldset
         ) {
             $elementsTarget[] = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
         }

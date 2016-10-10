@@ -358,7 +358,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $this->requestModifier->addFtgwProtocolServer($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwWindowsShare($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwLinuxUnix($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
-            $this->requestModifier->addFtgwCdLinuxUnix($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwCdWindows($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwCdZos($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
             $this->requestModifier->addFtgwCdTandem($select, FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED);
