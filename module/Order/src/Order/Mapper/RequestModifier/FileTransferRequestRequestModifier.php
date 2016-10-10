@@ -377,17 +377,6 @@ class FileTransferRequestRequestModifier
         }
     }
     
-    public function addFtgwCdWindows(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
-    {
-        $select->join('endpoint_ftgw_cd_windows', 'endpoint_ftgw_cd_windows.endpoint_id = endpoint.id',
-            [
-                'endpoint_ftgw_cd_windows' . '__' . 'endpoint_id' => 'endpoint_id',
-                'endpoint_ftgw_cd_windows' . '__' . 'username' => 'username',
-                'endpoint_ftgw_cd_windows' . '__' . 'folder' => 'folder',
-                'endpoint_ftgw_cd_windows' . '__' . 'transmission_type' => 'transmission_type'
-            ], Select::JOIN_LEFT);
-    }
-    
     public function addFtgwCdZos(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
         $select->join('endpoint_ftgw_cd_zos', 'endpoint_ftgw_cd_zos.endpoint_id = endpoint.id',

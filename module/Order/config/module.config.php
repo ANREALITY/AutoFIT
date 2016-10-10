@@ -326,8 +326,6 @@ return [
             'Order\Form\Fieldset\EndpointFtgwWindowsShareTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwLinuxUnixSource' => false,
             'Order\Form\Fieldset\EndpointFtgwLinuxUnixTarget' => false,
-            'Order\Form\Fieldset\EndpointFtgwCdWindowsSource' => false,
-            'Order\Form\Fieldset\EndpointFtgwCdWindowsTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdZosSource' => false,
             'Order\Form\Fieldset\EndpointFtgwCdZosTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdTandemSource' => false,
