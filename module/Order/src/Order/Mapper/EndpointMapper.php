@@ -468,7 +468,6 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $data['folder'] = $dataObject->getFolder();
         $data['transmission_type'] = $dataObject->getTransmissionType();
         $data['transmission_interval'] = $dataObject->getTransmissionInterval();
-        $data['fetch_interval'] = $dataObject->getFetchInterval();
 
         // creating sub-objects
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
