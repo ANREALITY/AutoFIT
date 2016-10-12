@@ -34,18 +34,23 @@ class FileTransferRequestPaginatorAdapter extends DbSelect
         // $select->offset($offset);
         // $select->limit($itemCountPerPage);
         $relevantIds = $this->getRelevantIds($offset, $itemCountPerPage);
-        $select->where->in('file_transfer_request.id', $relevantIds);
-        if ($this->userId) {
-            $select->where(['user_id = ?' => $this->userId]);
+        $resultArray = [];
+        if ($relevantIds) {
+            $select->where->in('file_transfer_request.id', $relevantIds);
+            if ($this->userId) {
+                $select->where(['user_id = ?' => $this->userId]);
+            }
+            
+            $statement = $this->sql->prepareStatementForSqlObject($select);
+            $result    = $statement->execute();
+            
+            $resultSet = clone $this->resultSetPrototype;
+            $resultSet->initialize($result);
+
+            $resultArray = iterator_to_array($resultSet);
         }
 
-        $statement = $this->sql->prepareStatementForSqlObject($select);
-        $result    = $statement->execute();
-
-        $resultSet = clone $this->resultSetPrototype;
-        $resultSet->initialize($result);
-
-        return iterator_to_array($resultSet);
+        return $resultArray;
     }
 
     /**
