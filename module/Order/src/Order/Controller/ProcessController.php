@@ -227,6 +227,17 @@ class ProcessController extends AbstractActionController
             ]);
     }
 
+    public function startCheckingAction()
+    {
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_CHECK,
+                'confirmationAction' => 'checkingStarted',
+            ]);
+    }
+
     public function completeAction()
     {
         return $this->forward()->dispatch('Order\Controller\Process',
@@ -287,6 +298,11 @@ class ProcessController extends AbstractActionController
     }
 
     public function declinedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function checkingStartedAction()
     {
         return new ViewModel();
     }

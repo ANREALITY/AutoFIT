@@ -370,6 +370,9 @@ table.list td {
 .glyphicon-check {
   color: #4ebe41;
 }
+.glyphicon-scale {
+  color: #00cc66;
+}
 .glyphicon-minus-sign {
   color: #e60000;
 }
@@ -377,7 +380,7 @@ table.list td {
   color: #3060cf;
 }
 .glyphicon-export-json {
-  color: #3075ff;
+  color: #3399ff;
 }
 .glyphicon-export-xml {
   color: #f67900;

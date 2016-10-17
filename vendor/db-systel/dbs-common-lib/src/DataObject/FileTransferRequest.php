@@ -4,9 +4,7 @@ namespace DbSystel\DataObject;
 class FileTransferRequest extends AbstractDataObject
 {
 
-    const STATUS_NEW = 'new';
-
-    const STATUS_EDIT = 'edit';
+    const STATUS_PENDING = 'pending';
 
     const STATUS_CANCELED = 'canceled';
 

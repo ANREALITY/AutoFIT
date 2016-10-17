@@ -70,6 +70,17 @@ return [
                     ]
                 ]
             ],
+            'start-checking-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/start-checking/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'startChecking',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'complete-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [

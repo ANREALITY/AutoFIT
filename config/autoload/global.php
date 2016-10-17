@@ -1,4 +1,6 @@
 <?php
+use DbSystel\DataObject\FileTransferRequest;
+
 /**
  * Global Configuration Override
  *
@@ -10,30 +12,39 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
-
-return array(
+return [
     'status' => [
         'order' => [
             'all' => [
-                'new', 'edit', 'canceled', 'check', 'accepted', 'declined', 'processing', 'completed'
+                FileTransferRequest::STATUS_PENDING,
+                FileTransferRequest::STATUS_CANCELED,
+                FileTransferRequest::STATUS_CHECK,
+                FileTransferRequest::STATUS_ACCEPTED,
+                FileTransferRequest::STATUS_DECLINED,
+                FileTransferRequest::STATUS_PROCESSING,
+                FileTransferRequest::STATUS_COMPLETED
             ],
             'per_operation' => [
                 'edit' => [
-                    'new', 'declined'
+                    FileTransferRequest::STATUS_PENDING,
+                    FileTransferRequest::STATUS_DECLINED
                 ],
                 'cancel' => [
-                    'new', 'declined'
+                    FileTransferRequest::STATUS_PENDING
                 ],
                 'accept' => [
-                    'new'
+                    FileTransferRequest::STATUS_CHECK
                 ],
                 'decline' => [
-                    'new'
+                    FileTransferRequest::STATUS_CHECK
+                ],
+                'startChecking' => [
+                    FileTransferRequest::STATUS_PENDING
                 ],
                 'complete' => [
-                    'accepted'
+                    FileTransferRequest::STATUS_ACCEPTED
                 ]
             ]
         ]
     ]
-);
+];
