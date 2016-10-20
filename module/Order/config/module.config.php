@@ -26,6 +26,17 @@ return [
                     ]
                 ]
             ],
+            'start-editing-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/start-editing/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'startEditing',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'edit-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
