@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 14:19+0200\n"
-"PO-Revision-Date: 2016-10-17 14:19+0200\n"
+"POT-Creation-Date: 2016-10-20 23:28+0200\n"
+"PO-Revision-Date: 2016-10-20 23:28+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -738,20 +738,20 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:90
+#: Application/view/layout/layout.phtml:89
 msgid "home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:93
+#: Application/view/layout/layout.phtml:92
 #: Order/view/order/process/list-my-orders.phtml:6
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
-#: Application/view/layout/layout.phtml:96
+#: Application/view/layout/layout.phtml:95
 msgid "master data"
 msgstr "Stammdaten"
 
-#: Application/view/layout/layout.phtml:100
+#: Application/view/layout/layout.phtml:99
 #: Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
@@ -900,6 +900,7 @@ msgid "canceled"
 msgstr "storniert"
 
 #: Order/view/order/process/checking-started.phtml:3
+#: Order/view/order/process/editing-started.phtml:3
 #, php-format
 msgid "The order's status has been successfully changed to \"%s\"."
 msgstr "Der Status der Bestellung wurde erfolgreich zum \"%s\" geändert."
@@ -926,6 +927,10 @@ msgstr "Danke für Ihre Bestellung!"
 msgid "declined"
 msgstr "abgelehnt"
 
+#: Order/view/order/process/editing-started.phtml:3
+msgid "in edit"
+msgstr "in Bearbeitung"
+
 #: Order/view/order/process/list-my-orders.phtml:18
 msgid "check"
 msgstr "in Überprüfung"
@@ -945,12 +950,11 @@ msgid "request summary"
 msgstr "Anfragszusammenfassung"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:4
-#: Order/view/partials/order-buttons/buttons.phtml:12
 msgid "edit"
-msgstr "anpassen"
+msgstr "in Bearbeitung"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:5
-#: Order/view/partials/order-buttons/buttons.phtml:15
+#: Order/view/partials/order-buttons/buttons.phtml:18
 msgid "cancel"
 msgstr "stornieren"
 
@@ -1261,27 +1265,35 @@ msgstr "Server"
 msgid "target"
 msgstr "Zielsystem"
 
-#: Order/view/partials/order-buttons/buttons.phtml:20
+#: Order/view/partials/order-buttons/buttons.phtml:12
+msgid "start editing"
+msgstr "Editierung starten"
+
+#: Order/view/partials/order-buttons/buttons.phtml:15
+msgid "update"
+msgstr "anpassen"
+
+#: Order/view/partials/order-buttons/buttons.phtml:23
 msgid "accept"
 msgstr "annehmen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:23
+#: Order/view/partials/order-buttons/buttons.phtml:26
 msgid "decline"
 msgstr "ablehnen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:26
+#: Order/view/partials/order-buttons/buttons.phtml:29
 msgid "start check"
 msgstr "Überprüfung starten"
 
-#: Order/view/partials/order-buttons/buttons.phtml:29
+#: Order/view/partials/order-buttons/buttons.phtml:32
 msgid "complete"
 msgstr "fertigstellen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:31
+#: Order/view/partials/order-buttons/buttons.phtml:34
 msgid "JSON export"
 msgstr "JSON-Export"
 
-#: Order/view/partials/order-buttons/buttons.phtml:32
+#: Order/view/partials/order-buttons/buttons.phtml:35
 msgid "XML export"
 msgstr "XML-Export"
 
