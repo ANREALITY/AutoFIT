@@ -12,6 +12,7 @@ echo $this->partial('/partials/fieldgroup',
         'fieldgroupCssClass' => $fieldgroupCssClass,
         'fieldgroupTitle' => $fieldgroupTitle,
         'formRows' => $fieldgroupFormRows,
-        'emptyView' => true
+        'emptyView' => false
     ]);
 ?>
+<?php $this->inlineScript()->appendFile('/js/ftgwwindows-target-hack.js'); ?>
