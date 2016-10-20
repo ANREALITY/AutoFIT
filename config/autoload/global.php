@@ -16,21 +16,26 @@ return [
     'status' => [
         'order' => [
             'all' => [
+                FileTransferRequest::STATUS_EDIT,
                 FileTransferRequest::STATUS_PENDING,
                 FileTransferRequest::STATUS_CANCELED,
                 FileTransferRequest::STATUS_CHECK,
                 FileTransferRequest::STATUS_ACCEPTED,
                 FileTransferRequest::STATUS_DECLINED,
-                FileTransferRequest::STATUS_PROCESSING,
                 FileTransferRequest::STATUS_COMPLETED
             ],
             'per_operation' => [
-                'edit' => [
+                'startEditing' => [
                     FileTransferRequest::STATUS_PENDING,
                     FileTransferRequest::STATUS_DECLINED
                 ],
+                'edit' => [
+                    FileTransferRequest::STATUS_EDIT
+                ],
                 'cancel' => [
-                    FileTransferRequest::STATUS_PENDING
+                    FileTransferRequest::STATUS_EDIT,
+                    FileTransferRequest::STATUS_PENDING,
+                    FileTransferRequest::STATUS_DECLINED
                 ],
                 'accept' => [
                     FileTransferRequest::STATUS_CHECK
