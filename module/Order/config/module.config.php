@@ -48,6 +48,17 @@ return [
                     ]
                 ]
             ],
+            'submit-order' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/order/process/submit/:id',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'submit',
+                        'id' => ''
+                    ]
+                ]
+            ],
             'cancel-order' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [

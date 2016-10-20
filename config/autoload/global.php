@@ -32,6 +32,9 @@ return [
                 'edit' => [
                     FileTransferRequest::STATUS_EDIT
                 ],
+                'submit' => [
+                    FileTransferRequest::STATUS_EDIT
+                ],
                 'cancel' => [
                     FileTransferRequest::STATUS_EDIT,
                     FileTransferRequest::STATUS_PENDING,

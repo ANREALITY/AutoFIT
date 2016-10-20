@@ -206,6 +206,17 @@ class ProcessController extends AbstractActionController
         ];
     }
 
+    public function submitAction()
+    {
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_PENDING,
+                'confirmationAction' => 'created',
+            ]);
+    }
+
     public function cancelAction()
     {
         return $this->forward()->dispatch('Order\Controller\Process',

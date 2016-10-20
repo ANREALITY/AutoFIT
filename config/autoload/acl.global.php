@@ -26,6 +26,10 @@ return [
                         'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
                     ],
+                    'submit' => [
+                        'admin' => 'UserIsOwner',
+                        'member' => 'UserIsOwner'
+                    ],
                     'cancel' => [
                         'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
