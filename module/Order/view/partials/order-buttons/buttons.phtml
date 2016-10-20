@@ -8,8 +8,11 @@ use DbSystel\DataObject\User;
 $fileTransferRequest;
 ?>
 <?php if ($userId == $fileTransferRequest->getUser()->getId()) : ?>
+    <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('startEditing', $fileTransferRequest->getStatus())) : ?>
+    <a class="btn btn-default" href="<?php echo $this->url('start-editing-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('start editing'); ?> <span class="glyphicon glyphicon-pencil"></a>
+    <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('edit-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('edit'); ?> <span class="glyphicon glyphicon-edit"></span></a>
+    <a class="btn btn-default" href="<?php echo $this->url('edit-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('update'); ?> <span class="glyphicon glyphicon-edit"></span></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('cancel', $fileTransferRequest->getStatus())) : ?>
     <a class="btn btn-default" href="<?php echo $this->url('cancel-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('cancel'); ?> <span class="glyphicon glyphicon-remove-sign"></a>
