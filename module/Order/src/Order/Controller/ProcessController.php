@@ -145,6 +145,17 @@ class ProcessController extends AbstractActionController
         ];
     }
 
+    public function startEditingAction()
+    {
+        return $this->forward()->dispatch('Order\Controller\Process',
+            [
+                'action' => 'updateStatus',
+                'operation' => $this->params('action'),
+                'status' => FileTransferRequest::STATUS_EDIT,
+                'confirmationAction' => 'editingStarted',
+            ]);
+    }
+
     public function editAction()
     {
         if ($this->IsInSync()) {
@@ -279,6 +290,11 @@ class ProcessController extends AbstractActionController
     }
 
     public function createdAction()
+    {
+        return new ViewModel();
+    }
+
+    public function editingStartedAction()
     {
         return new ViewModel();
     }
