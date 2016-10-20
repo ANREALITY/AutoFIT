@@ -18,6 +18,10 @@ return [
                     'index' => 'member',
                     'start' => 'member',
                     'create' => 'member',
+                    'startEditing' => [
+                        'admin' => 'UserIsOwner',
+                        'member' => 'UserIsOwner'
+                    ],
                     'edit' => [
                         'admin' => 'UserIsOwner',
                         'member' => 'UserIsOwner'
@@ -31,6 +35,7 @@ return [
                     'startChecking' => 'admin',
                     'complete' => 'admin',
                     'created' => 'member',
+                    'checkingStarted' => 'member',
                     'edited' => 'member',
                     'canceled' => 'member',
                     'accepted' => 'admin',
