@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-20 23:28+0200\n"
-"PO-Revision-Date: 2016-10-20 23:28+0200\n"
+"POT-Creation-Date: 2016-10-21 13:18+0200\n"
+"PO-Revision-Date: 2016-10-21 13:20+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -295,11 +295,11 @@ msgstr "lesen"
 
 #: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:52
 msgid "write"
-msgstr ""
+msgstr "schreiben"
 
 #: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:67
 msgid "delete"
-msgstr ""
+msgstr "löschen"
 
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:22
 #: Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:80
@@ -549,7 +549,11 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:47
+#: Order/src/Order/Form/OrderForm.php:52 Order/src/Order/Form/OrderForm.php:56
+msgid "save"
+msgstr "speichern"
+
+#: Order/src/Order/Form/OrderForm.php:69 Order/src/Order/Form/OrderForm.php:73
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -770,7 +774,7 @@ msgstr "Der Server wurde erfolgreich %s."
 
 #: MasterData/view/master-data/cluster/created.phtml:3
 #: MasterData/view/master-data/server/edited.phtml:3
-#: Order/view/order/process/edited.phtml:3
+#: Order/view/order/process/updated.phtml:3
 msgid "updated"
 msgstr "aktualisiert"
 
@@ -884,7 +888,9 @@ msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 #: Order/view/order/process/canceled.phtml:3
 #: Order/view/order/process/completed.phtml:3
 #: Order/view/order/process/declined.phtml:3
-#: Order/view/order/process/edited.phtml:3
+#: Order/view/order/process/saved.phtml:3
+#: Order/view/order/process/submitted.phtml:3
+#: Order/view/order/process/updated.phtml:3
 #, php-format
 msgid "The order has been %s successfully."
 msgstr "Die Bestellung wurde erfolgreich %s."
@@ -919,6 +925,7 @@ msgid "We have received the form."
 msgstr "Wie haben das Formular erhalten."
 
 #: Order/view/order/process/created.phtml:3
+#: Order/view/order/process/submitted.phtml:5
 msgid "Thanks for your order!"
 msgstr "Danke für Ihre Bestellung!"
 
@@ -954,7 +961,7 @@ msgid "edit"
 msgstr "in Bearbeitung"
 
 #: Order/view/order/process/operation-denied-for-status.phtml:5
-#: Order/view/partials/order-buttons/buttons.phtml:18
+#: Order/view/partials/order-buttons/buttons.phtml:21
 msgid "cancel"
 msgstr "stornieren"
 
@@ -978,9 +985,17 @@ msgstr ""
 msgid "new"
 msgstr "neu"
 
+#: Order/view/order/process/saved.phtml:3
+msgid "saved"
+msgstr "gespeichert"
+
 #: Order/view/order/process/start.phtml:11
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
+
+#: Order/view/order/process/submitted.phtml:3
+msgid "submitted"
+msgstr "eingereicht"
 
 #: Order/view/order/process/sync-in-progress.phtml:2
 msgid "The synchronization is in progress."
@@ -1273,27 +1288,31 @@ msgstr "Editierung starten"
 msgid "update"
 msgstr "anpassen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:23
+#: Order/view/partials/order-buttons/buttons.phtml:18
+msgid "submit"
+msgstr "einreichen"
+
+#: Order/view/partials/order-buttons/buttons.phtml:26
 msgid "accept"
 msgstr "annehmen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:26
+#: Order/view/partials/order-buttons/buttons.phtml:29
 msgid "decline"
 msgstr "ablehnen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:29
+#: Order/view/partials/order-buttons/buttons.phtml:32
 msgid "start check"
 msgstr "Überprüfung starten"
 
-#: Order/view/partials/order-buttons/buttons.phtml:32
+#: Order/view/partials/order-buttons/buttons.phtml:35
 msgid "complete"
 msgstr "fertigstellen"
 
-#: Order/view/partials/order-buttons/buttons.phtml:34
+#: Order/view/partials/order-buttons/buttons.phtml:37
 msgid "JSON export"
 msgstr "JSON-Export"
 
-#: Order/view/partials/order-buttons/buttons.phtml:35
+#: Order/view/partials/order-buttons/buttons.phtml:38
 msgid "XML export"
 msgstr "XML-Export"
 
