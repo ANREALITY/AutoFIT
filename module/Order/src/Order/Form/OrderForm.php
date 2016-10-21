@@ -46,35 +46,21 @@ class OrderForm extends Form
         $this->add(
             [
                 'name' => 'save',
-                'type' => 'Button',
                 'attributes' => [
                     'type' => 'submit',
                     'value' => _('save'),
                     'class' => 'btn btn-default'
-                ],
-                'options' => [
-                    'label' => _('save'),
-                    'label_options' => [
-                        'disable_html_escape' => true,
-                    ]
-                ],
+                ]
             ]);
 
         $this->add(
             [
                 'name' => 'submit',
-                'type' => 'Button',
                 'attributes' => [
                     'type' => 'submit',
                     'value' => _('binding order'),
                     'class' => 'btn btn-default'
-                ],
-                'options' => [
-                    'label' => _('binding order'),
-                    'label_options' => [
-                        'disable_html_escape' => true,
-                    ]
-                ],
+                ]
             ]);
     }
 
