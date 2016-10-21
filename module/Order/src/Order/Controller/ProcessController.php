@@ -129,10 +129,18 @@ class ProcessController extends AbstractActionController
             if ($this->orderForm->isValid()) {
                 $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
+                if(isset($request->getPost()->toArray()['submit'])) {
+                    $status = FileTransferRequest::STATUS_PENDING;
+                    $successAction = 'submitted';
+                } else {
+                    $status = FileTransferRequest::STATUS_EDIT;
+                    $successAction = 'saved';
+                }
+                $this->fileTransferRequest->setStatus($status);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
-                        'action' => 'created'
+                        'action' => $successAction
                     ]);
             }
         }
@@ -182,11 +190,18 @@ class ProcessController extends AbstractActionController
             if ($this->orderForm->isValid()) {
                 $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
-                $this->fileTransferRequest->setStatus(FileTransferRequest::STATUS_PENDING);
+                if(isset($request->getPost()->toArray()['submit'])) {
+                    $status = FileTransferRequest::STATUS_PENDING;
+                    $successAction = 'submitted';
+                } else {
+                    $status = FileTransferRequest::STATUS_EDIT;
+                    $successAction = 'updated';
+                }
+                $this->fileTransferRequest->setStatus($status);
                 $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
-                        'action' => 'edited'
+                        'action' => $successAction
                     ]);
             }
         }
@@ -213,7 +228,7 @@ class ProcessController extends AbstractActionController
                 'action' => 'updateStatus',
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_PENDING,
-                'confirmationAction' => 'created',
+                'confirmationAction' => 'submitted',
             ]);
     }
 
@@ -300,7 +315,7 @@ class ProcessController extends AbstractActionController
             ]);
     }
 
-    public function createdAction()
+    public function savedAction()
     {
         return new ViewModel();
     }
@@ -310,7 +325,12 @@ class ProcessController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function editedAction()
+    public function updatedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function submittedAction()
     {
         return new ViewModel();
     }
