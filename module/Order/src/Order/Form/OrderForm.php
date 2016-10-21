@@ -12,6 +12,10 @@ use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsShareSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
 
 class OrderForm extends Form
 {
@@ -98,7 +102,10 @@ class OrderForm extends Form
         ) {
             $elementsSource[] = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
         }
-        if (! $endpointSourceFieldset instanceof EndpointCdWindowsShareSourceFieldset) {
+        if (! $endpointSourceFieldset instanceof EndpointCdWindowsShareSourceFieldset
+            && ! $endpointSourceFieldset instanceof EndpointFtgwWindowsShareSourceFieldset
+            && ! $endpointSourceFieldset instanceof EndpointFtgwLinuxUnixSourceFieldset
+            && ! $endpointSourceFieldset instanceof EndpointFtgwWindowsSourceFieldset) {
             $elementsSource[] = $endpointSourceFieldset->get('external_server')->get('name');
         }
         if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
@@ -130,7 +137,10 @@ class OrderForm extends Form
         ) {
             $elementsTarget[] = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
         }
-        if (! $endpointTargetFieldset instanceof EndpointCdWindowsShareTargetFieldset) {
+        if (! $endpointTargetFieldset instanceof EndpointCdWindowsShareTargetFieldset
+            && ! $endpointTargetFieldset instanceof EndpointFtgwWindowsShareTargetFieldset
+            && ! $endpointTargetFieldset instanceof EndpointFtgwLinuxUnixTargetFieldset
+            && ! $endpointTargetFieldset instanceof EndpointFtgwWindowsTargetFieldset) {
             $elementsTarget[] = $endpointTargetFieldset->get('external_server')->get('name');
         }
         if ($endpointTargetFieldset instanceof EndpointCdLinuxUnixTargetFieldset) {
