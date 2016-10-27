@@ -10,6 +10,8 @@ use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataExport\DataExporter;
 use Order\Service\FileTransferRequestService;
 use DbSystel\DataObject\AuditLog;
+use Order\Service\FileTransferRequestServiceInterface;
+use Order\Form\OrderForm;
 
 class ProcessController extends AbstractActionController
 {
@@ -50,7 +52,7 @@ class ProcessController extends AbstractActionController
     protected $dataExporter;
 
     /**
-     * @var ExportFolder
+     * @var string
      */
     protected $exportFolder;
 
@@ -138,7 +140,11 @@ class ProcessController extends AbstractActionController
                     $successAction = 'saved';
                 }
                 $this->fileTransferRequest->setStatus($status);
-                $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_CREATED);
+                if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
+                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
+                }
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
                         'action' => $successAction
@@ -162,6 +168,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_EDIT,
                 'confirmationAction' => 'editingStarted',
+                'auditLogAction' => AuditLog::ACTION_ORDER_EDITING_STARTED
             ]);
     }
 
@@ -199,7 +206,11 @@ class ProcessController extends AbstractActionController
                     $successAction = 'updated';
                 }
                 $this->fileTransferRequest->setStatus($status);
-                $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_UPDATED);
+                if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
+                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
+                }
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
                         'action' => $successAction
@@ -230,6 +241,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_PENDING,
                 'confirmationAction' => 'submitted',
+                'auditLogAction' => AuditLog::ACTION_ORDER_SUBMITTED
             ]);
     }
 
@@ -241,6 +253,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_CANCELED,
                 'confirmationAction' => 'canceled',
+                'auditLogAction' => AuditLog::ACTION_ORDER_CANCELED
             ]);
     }
 
@@ -252,6 +265,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_ACCEPTED,
                 'confirmationAction' => 'accepted',
+                'auditLogAction' => AuditLog::ACTION_ORDER_ACCEPTED
             ]);
     }
 
@@ -263,6 +277,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_DECLINED,
                 'confirmationAction' => 'declined',
+                'auditLogAction' => AuditLog::ACTION_ORDER_DECLINED
             ]);
     }
 
@@ -274,6 +289,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_CHECK,
                 'confirmationAction' => 'checkingStarted',
+                'auditLogAction' => AuditLog::ACTION_ORDER_CHECKING_STARTED
             ]);
     }
 
@@ -285,6 +301,7 @@ class ProcessController extends AbstractActionController
                 'operation' => $this->params('action'),
                 'status' => FileTransferRequest::STATUS_COMPLETED,
                 'confirmationAction' => 'completed',
+                'auditLogAction' => AuditLog::ACTION_ORDER_COMPLETED
             ]);
     }
 
@@ -309,6 +326,10 @@ class ProcessController extends AbstractActionController
 
         $this->fileTransferRequest->setStatus($status);
         $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+
+        if ($this->params('auditLogAction')) {
+            $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), $this->params('auditLogAction'));
+        }
 
         return $this->forward()->dispatch('Order\Controller\Process',
             [
@@ -367,9 +388,6 @@ class ProcessController extends AbstractActionController
         $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
-
-        // Example code. Delete it!
-        $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $id, AuditLog::ACTION_ORDER_FOO_BAR);
 
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
@@ -434,6 +452,8 @@ class ProcessController extends AbstractActionController
 
         $folder = $this->exportFolder;
         $response = $this->performExport($fileTransferRequest, $id, $format, $folder);
+
+        $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $fileTransferRequest->getId(), AuditLog::ACTION_ORDER_EXPORTED);
 
         return $response;
     }

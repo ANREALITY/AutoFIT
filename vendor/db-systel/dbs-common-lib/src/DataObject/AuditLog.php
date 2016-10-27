@@ -34,9 +34,6 @@ class AuditLog extends AbstractDataObject
 
     const ACTION_CLUSTER_CREATED = 'cluster.created';
 
-    // Example code. Delete it!
-    const ACTION_ORDER_FOO_BAR = 'foo.bar';
-
     /**
      *
      * @var int
