@@ -9,6 +9,8 @@ use Zend\Http\Headers;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataExport\DataExporter;
 use Order\Service\FileTransferRequestService;
+use DbSystel\DataObject\AuditLog;
+use DbSystel\DataObject\User;
 
 class ProcessController extends AbstractActionController
 {
@@ -366,6 +368,16 @@ class ProcessController extends AbstractActionController
         $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+
+        $auditLog = new AuditLog();
+        $auditLog->setResuorceType('order');
+        $auditLog->setResuorceId($id);
+        $auditLog->setAction('foo.bar');
+        $user = new User();
+        $userId = $this->IdentityParam('id');
+        $user->setId($userId);
+        $auditLog->setUser($user);
+        $this->AuditLogger()->log($auditLog);
 
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
