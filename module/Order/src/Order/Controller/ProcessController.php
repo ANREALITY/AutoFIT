@@ -9,6 +9,7 @@ use Zend\Http\Headers;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataExport\DataExporter;
 use Order\Service\FileTransferRequestService;
+use DbSystel\DataObject\AuditLog;
 
 class ProcessController extends AbstractActionController
 {
@@ -367,7 +368,8 @@ class ProcessController extends AbstractActionController
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
-        $this->AuditLogger()->log('order', $id, 'foo.bar');
+        // Example code. Delete it!
+        $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $id, AuditLog::ACTION_ORDER_FOO_BAR);
 
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
