@@ -25,11 +25,17 @@ class AuditLogger extends AbstractPlugin
         $this->user = $user;
     }
 
-    public function log(AuditLog $auditLog, User $user = null)
+    public function log($resourceType = null, $resourceId = null, $action = null, $userId = null)
     {
-        if ($user) {
+        $auditLog = new AuditLog();
+        $auditLog->setResuorceType($resourceType);
+        $auditLog->setResuorceId($resourceId);
+        $auditLog->setAction($action);
+        if ($userId) {
+            $user = new User();
+            $user->setId($userId);
             $auditLog->setUser($user);
-        } elseif (! $auditLog->getUser() && $this->user) {
+        } elseif ($this->user) {
             $auditLog->setUser($this->user);
         }
         $this->auditLogService->saveOne($auditLog);
