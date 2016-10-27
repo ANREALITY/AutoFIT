@@ -21,6 +21,7 @@ use AuditLogging\Paginator\Adapter\AuditLogPaginatorAdapter;
 use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\UserMapperInterface;
+use Zend\Db\Sql\Expression;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -180,7 +181,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         $data['resource_id'] = $dataObject->getResuorceId();
         $data['action'] = $dataObject->getAction();
         $data['event_datetime'] = $dataObject->getEventDatetime();
-        $data['user_id'] = $dataObject->getUser()->getId();
+        $data['user_id'] = $dataObject->getUser() ? $dataObject->getUser()->getId() : new Expression('NULL');
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         // data from the recently persisted objects

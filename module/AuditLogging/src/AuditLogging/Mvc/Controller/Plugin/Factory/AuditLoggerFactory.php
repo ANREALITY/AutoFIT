@@ -4,6 +4,7 @@ namespace AuditLogging\Mvc\Controller\Plugin\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use AuditLogging\Mvc\Controller\Plugin\AuditLogger;
+use DbSystel\DataObject\User;
 
 class AuditLoggerFactory implements FactoryInterface
 {
@@ -17,8 +18,12 @@ class AuditLoggerFactory implements FactoryInterface
         $realServiceLocator = $serviceLocator->getServiceLocator();
 
         $auditLogService = $realServiceLocator->get('AuditLogging\Service\AuditLogService');
-        
-        return new AuditLogger($auditLogService);
+        $user = new User();
+        $userId = $serviceLocator->get('IdentityParam')('id');
+        $user->setId($userId);
+        $service = new AuditLogger($auditLogService, $user);
+
+        return $service;
     }
 
 }
