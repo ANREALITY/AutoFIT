@@ -6,6 +6,7 @@ use Zend\View\Model\ViewModel;
 use DbSystel\DataObject\Server;
 use Order\Service\ServerService;
 use MasterData\Form\ServerForm;
+use DbSystel\DataObject\AuditLog;
 
 class ServerController extends AbstractActionController
 {
@@ -56,7 +57,10 @@ class ServerController extends AbstractActionController
         if ($request->isPost()) {
             $this->serverForm->setData($request->getPost());
             if ($this->serverForm->isValid()) {
-                $this->serverService->saveOne($this->server);
+                $this->server = $this->serverService->saveOne($this->server);
+                if(isset($request->getPost()->toArray()['server']['virtual_node_name'])) {
+                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_SERVER, $this->server->getName(), AuditLog::ACTION_SERVER_VIRTUAL_NODE_NAME_ADDED);
+                }
                 return $this->forward()->dispatch('MasterData\Controller\Server',
                     [
                         'action' => 'edited'

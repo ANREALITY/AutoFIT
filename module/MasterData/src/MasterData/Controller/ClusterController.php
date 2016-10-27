@@ -6,6 +6,7 @@ use Zend\View\Model\ViewModel;
 use DbSystel\DataObject\Cluster;
 use Order\Service\ClusterService;
 use MasterData\Form\ClusterForm;
+use DbSystel\DataObject\AuditLog;
 
 class ClusterController extends AbstractActionController
 {
@@ -56,7 +57,8 @@ class ClusterController extends AbstractActionController
         if ($request->isPost()) {
             $this->clusterForm->setData($request->getPost());
             if ($this->clusterForm->isValid()) {
-                $this->clusterService->saveOne($this->cluster);
+                $this->cluster = $this->clusterService->saveOne($this->cluster);
+                $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_CLUSTER, $this->cluster->getId(), AuditLog::ACTION_CLUSTER_CREATED);
                 return $this->forward()->dispatch('MasterData\Controller\Cluster',
                     [
                         'action' => 'created'
