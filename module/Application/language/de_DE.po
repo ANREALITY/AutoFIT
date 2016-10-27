@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 13:18+0200\n"
-"PO-Revision-Date: 2016-10-21 13:20+0200\n"
+"POT-Creation-Date: 2016-10-27 19:20+0200\n"
+"PO-Revision-Date: 2016-10-27 19:22+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -549,11 +549,11 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:52 Order/src/Order/Form/OrderForm.php:56
+#: Order/src/Order/Form/OrderForm.php:51
 msgid "save"
 msgstr "speichern"
 
-#: Order/src/Order/Form/OrderForm.php:69 Order/src/Order/Form/OrderForm.php:73
+#: Order/src/Order/Form/OrderForm.php:61
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -767,16 +767,13 @@ msgid "New cluster"
 msgstr "Neuer Cluster"
 
 #: MasterData/view/master-data/cluster/created.phtml:3
-#: MasterData/view/master-data/server/edited.phtml:3
 #, php-format
-msgid "The server has been %s successfully."
-msgstr "Der Server wurde erfolgreich %s."
+msgid "The cluster has been %s successfully."
+msgstr "Der Cluster wurde erfolgreich %s."
 
 #: MasterData/view/master-data/cluster/created.phtml:3
-#: MasterData/view/master-data/server/edited.phtml:3
-#: Order/view/order/process/updated.phtml:3
-msgid "updated"
-msgstr "aktualisiert"
+msgid "created"
+msgstr "erstellt"
 
 #: MasterData/view/master-data/index/index.phtml:3
 msgid "Master data"
@@ -877,6 +874,16 @@ msgstr "zum Cluster-Stammdaten-Formular"
 #: MasterData/view/partials/fieldgroups/server.phtml:4
 msgid "Server settings"
 msgstr "Server-Einstellungen"
+
+#: MasterData/view/master-data/server/edited.phtml:3
+#, php-format
+msgid "The server has been %s successfully."
+msgstr "Der Server wurde erfolgreich %s."
+
+#: MasterData/view/master-data/server/edited.phtml:3
+#: Order/view/order/process/updated.phtml:3
+msgid "updated"
+msgstr "aktualisiert"
 
 #: MasterData/view/partials/fieldgroup.phtml:14
 #: Order/view/partials/fieldgroup.phtml:14
