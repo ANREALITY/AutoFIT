@@ -22,10 +22,12 @@ class IndexController extends AbstractActionController
     public function listAction()
     {
         $page = $this->params()->fromRoute('page');
-        $paginator = $this->auditLogService->findAllWithBuldledData([], null, $page);
+        $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
+        $paginator = $this->auditLogService->findAllWithBuldledData($criteria, null, $page);
 
         return new ViewModel([
             'paginator' => $paginator,
+            'query' => $this->params()->fromQuery()
         ]);
     }
 

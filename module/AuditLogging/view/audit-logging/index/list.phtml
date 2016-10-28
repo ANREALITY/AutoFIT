@@ -8,7 +8,7 @@ use DbSystel\DataObject\AuditLog;
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list']
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list', 'query' => $query]
 );
 ?>
 
@@ -44,6 +44,6 @@ echo $this->paginationControl(
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list']
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list', 'query' => $query]
 );
 ?>

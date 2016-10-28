@@ -164,12 +164,22 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             ]);
         }
 
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (array_key_exists('user_id', $condition)) {
+        foreach ($criteria as $key => $condition) {
+            if (is_string($condition)) {
+                if ($key === 'username') {
                     $select->where(
                         [
-                            'user_id = ?' => $condition['user_id']
+                            'user.username = ?' => $condition
+                        ]);
+                } elseif ($key === 'resuorce_type') {
+                    $select->where(
+                        [
+                            'audit_log.resource_type = ?' => $condition
+                        ]);
+                } elseif ($key === 'change_number') {
+                    $select->where(
+                        [
+                            'file_transfer_request.change_number = ?' => $condition
                         ]);
                 }
             }
