@@ -29,6 +29,8 @@ use Order\Mapper\ClusterMapperInterface;
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
 
+    const PAGINATION_ITEM_COUNT_PER_PAGE = 25;
+
     /**
      *
      * @var AuditLog
@@ -188,7 +190,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
         $adapter = new AuditLogPaginatorAdapter($select, $this->dbAdapter, null, null);
         $paginator = new Paginator($adapter);
-        $paginator->setItemCountPerPage(25);
+        $paginator->setItemCountPerPage(self::PAGINATION_ITEM_COUNT_PER_PAGE);
         $paginator->setCurrentPageNumber($page);
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
