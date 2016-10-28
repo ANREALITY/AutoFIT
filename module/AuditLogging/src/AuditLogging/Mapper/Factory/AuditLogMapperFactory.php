@@ -28,6 +28,8 @@ class AuditLogMapperFactory implements FactoryInterface
 
         $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
         $service->setFileTransferRequestMapper($serviceLocator->get('Order\Mapper\FileTransferRequestMapper'));
+        $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
+        $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
 
         return $service;
     }

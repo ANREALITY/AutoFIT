@@ -23,6 +23,8 @@ use Order\Mapper\AbstractMapper;
 use Order\Mapper\UserMapperInterface;
 use Zend\Db\Sql\Expression;
 use Order\Mapper\FileTransferRequestMapperInterface;
+use Order\Mapper\ServerMapperInterface;
+use Order\Mapper\ClusterMapperInterface;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -44,6 +46,18 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
      * @var FileTransferRequestMapperInterface
      */
     protected $fileTransferRequestMapper;
+
+    /**
+     *
+     * @var ServerMapperInterface
+     */
+    protected $serverMapper;
+
+    /**
+     *
+     * @var ClusterMapperInterface
+     */
+    protected $clusterMapper;
 
     /**
      * @var AuditLogRequestModifier
@@ -80,6 +94,22 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     public function setRequestModifier(AuditLogRequestModifier $auditLogRequestModifier)
     {
         $this->requestModifier = $auditLogRequestModifier;
+    }
+
+    /**
+     * @param ServerMapperInterface $serverMapper
+     */
+    public function setServerMapper($serverMapper)
+    {
+        $this->serverMapper = $serverMapper;
+    }
+
+    /**
+     * @param ClusterMapperInterface $clusterMapper
+     */
+    public function setClusterMapper($clusterMapper)
+    {
+        $this->clusterMapper = $clusterMapper;
     }
 
     /**
@@ -151,6 +181,8 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             ], Join::JOIN_LEFT);
 
         $this->requestModifier->addFileTransferRequest($select);
+        $this->requestModifier->addServer($select);
+        $this->requestModifier->addCluster($select);
 
         $select->order(['audit_log__' . 'id' => 'ASC']);
 
@@ -237,11 +269,19 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             $prefix);
         $fileTransferRequestDataObjects = $this->fileTransferRequestMapper->createDataObjects($resultSetArray, null, null,
             'id', 'file_transfer_request__', $identifier, $prefix);
+        $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
+            'name', 'server__', $identifier, $prefix);
+        $clusterDataObjects = $this->clusterMapper->createDataObjects($resultSetArray, null, null,
+            'id', 'cluster__', $identifier, $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $fileTransferRequestDataObjects,
                 'setFileTransferRequest', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
+                'setServer', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $clusterDataObjects,
+                'setCluster', 'getId');
         }
 
         return $dataObjects;

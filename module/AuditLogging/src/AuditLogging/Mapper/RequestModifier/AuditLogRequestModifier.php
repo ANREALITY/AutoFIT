@@ -23,4 +23,25 @@ class AuditLogRequestModifier
             ], Select::JOIN_LEFT);
     }
 
+    public function addServer(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
+    {
+        $select->join('server', new Expression(
+            'audit_log.resource_type = \'' . AuditLog::RESSOURCE_TYPE_SERVER . '\' AND server.name = audit_log.resource_id'),
+            [
+                'server' . '__' . 'name' => 'name',
+                'server' . '__' . 'node_name' => 'node_name',
+                'server' . '__' . 'virtual_node_name' => 'virtual_node_name'
+            ], Select::JOIN_LEFT);
+    }
+
+    public function addCluster(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
+    {
+        $select->join('cluster', new Expression(
+            'audit_log.resource_type = \'' . AuditLog::RESSOURCE_TYPE_CLUSTER . '\' AND cluster.id = audit_log.resource_id'),
+            [
+                'cluster' . '__' . 'id' => 'id',
+                'cluster' . '__' . 'virtual_node_name' => 'virtual_node_name'
+            ], Select::JOIN_LEFT);
+    }
+
 }

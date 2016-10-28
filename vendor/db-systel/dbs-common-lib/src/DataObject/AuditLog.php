@@ -78,6 +78,18 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
+     * @var Server
+     */
+    protected $server;
+
+    /**
+     *
+     * @var Cluster
+     */
+    protected $cluster;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -87,7 +99,7 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @param number $id            
+     * @param number $id
      */
     public function setId($id)
     {
@@ -105,7 +117,7 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @param string $resourceType            
+     * @param string $resourceType
      */
     public function setResourceType($resourceType)
     {
@@ -123,7 +135,7 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @param string $resourceId            
+     * @param string $resourceId
      */
     public function setResourceId($resourceId)
     {
@@ -141,7 +153,7 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @param string $action            
+     * @param string $action
      */
     public function setAction($action)
     {
@@ -159,7 +171,7 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @param string $eventDatetime            
+     * @param string $eventDatetime
      */
     public function setEventDatetime($eventDatetime)
     {
@@ -183,7 +195,9 @@ class AuditLog extends AbstractDataObject
     {
         $this->user = $user;
     }
+
     /**
+     *
      * @return the $fileTransferRequest
      */
     public function getFileTransferRequest()
@@ -192,11 +206,48 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
+     *
      * @param FileTransferRequest $fileTransferRequest
      */
     public function setFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
         $this->fileTransferRequest = $fileTransferRequest;
+    }
+
+    /**
+     *
+     * @return the $server
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     *
+     * @param Server $server
+     */
+    public function setServer(Server $server)
+    {
+        $this->server = $server;
+    }
+
+    /**
+     *
+     * @return the $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
+    }
+
+    /**
+     *
+     * @param Cluster $cluster
+     */
+    public function setCluster(Cluster $cluster)
+    {
+        $this->cluster = $cluster;
     }
 
 }
