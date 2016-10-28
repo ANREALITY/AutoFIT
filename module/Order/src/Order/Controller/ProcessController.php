@@ -56,7 +56,7 @@ class ProcessController extends AbstractActionController
      */
     protected $exportFolder;
 
-    public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestService $fileTransferRequestService)
+    public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestServiceInterface $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
