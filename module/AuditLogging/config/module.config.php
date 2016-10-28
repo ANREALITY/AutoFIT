@@ -32,6 +32,11 @@ return [
             // mappers
             'AuditLogging\Mapper\AuditLogMapper' => 'AuditLogging\Mapper\Factory\AuditLogMapperFactory',
         ],
+        'invokables' => [
+            // database request modifiers
+            'AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier' => 'AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier',
+            // utilities
+        ],
         'abstract_factories' => [
             // mappers
             // services

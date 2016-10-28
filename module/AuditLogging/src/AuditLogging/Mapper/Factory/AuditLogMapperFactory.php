@@ -21,10 +21,13 @@ class AuditLogMapperFactory implements FactoryInterface
         $service = new AuditLogMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AuditLog());
 
+        $service->setRequestModifier($serviceLocator->get('AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier'));
+
         $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
         $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
 
         $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
+        $service->setFileTransferRequestMapper($serviceLocator->get('Order\Mapper\FileTransferRequestMapper'));
 
         return $service;
     }

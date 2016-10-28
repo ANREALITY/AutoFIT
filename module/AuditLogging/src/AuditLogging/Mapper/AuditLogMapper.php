@@ -22,6 +22,7 @@ use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\UserMapperInterface;
 use Zend\Db\Sql\Expression;
+use Order\Mapper\FileTransferRequestMapperInterface;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -40,9 +41,14 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
     /**
      *
-     * @var type
+     * @var FileTransferRequestMapperInterface
      */
-    protected $type;
+    protected $fileTransferRequestMapper;
+
+    /**
+     * @var AuditLogRequestModifier
+     */
+    protected $requestModifier;
 
     public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, AuditLog $prototype)
     {
@@ -51,11 +57,29 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
     /**
      *
-     * @param UserMapperInterface $userMapper
+     * @param UserMapperInterface $fileTransferRequestMapper
      */
     public function setUserMapper(UserMapperInterface $userMapper)
     {
         $this->userMapper = $userMapper;
+    }
+
+    /**
+     *
+     * @param FileTransferRequestMapperInterface $userMapper
+     */
+    public function setFileTransferRequestMapper(FileTransferRequestMapperInterface $fileTransferRequestMapper)
+    {
+        $this->fileTransferRequestMapper = $fileTransferRequestMapper;
+    }
+
+    /**
+     *
+     * @param AuditLogRequestModifier $auditLogRequestModifier
+     */
+    public function setRequestModifier(AuditLogRequestModifier $auditLogRequestModifier)
+    {
+        $this->requestModifier = $auditLogRequestModifier;
     }
 
     /**
@@ -125,6 +149,8 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                 'user' . '__' . 'role' => 'role',
                 'user' . '__' . 'username' => 'username'
             ], Join::JOIN_LEFT);
+
+        $this->requestModifier->addFileTransferRequest($select);
 
         $select->order(['audit_log__' . 'id' => 'ASC']);
 
@@ -209,9 +235,13 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
         $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user__', $identifier,
             $prefix);
+        $fileTransferRequestDataObjects = $this->fileTransferRequestMapper->createDataObjects($resultSetArray, null, null,
+            'id', 'file_transfer_request__', $identifier, $prefix);
 
         foreach ($dataObjects as $key => $dataObject) {
             $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $fileTransferRequestDataObjects,
+                'setFileTransferRequest', 'getId');
         }
 
         return $dataObjects;

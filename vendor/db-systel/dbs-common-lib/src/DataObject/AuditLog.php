@@ -72,6 +72,12 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
+     * @var FileTransferRequest
+     */
+    protected $fileTransferRequest;
+
+    /**
+     *
      * @return the $id
      */
     public function getId()
@@ -173,9 +179,24 @@ class AuditLog extends AbstractDataObject
      *
      * @param User $user
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
+    }
+    /**
+     * @return the $fileTransferRequest
+     */
+    public function getFileTransferRequest()
+    {
+        return $this->fileTransferRequest;
+    }
+
+    /**
+     * @param FileTransferRequest $fileTransferRequest
+     */
+    public function setFileTransferRequest(FileTransferRequest $fileTransferRequest)
+    {
+        $this->fileTransferRequest = $fileTransferRequest;
     }
 
 }
