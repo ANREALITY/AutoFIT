@@ -1,0 +1,14 @@
+<?php
+use DbSystel\DataObject\AuditLog;
+/**
+ * @var AuditLog $auditLog
+ */
+?>
+
+<?php
+$cluster = $auditLog->getFileTransferRequest();
+?>
+
+#<?php echo $cluster->getId(); ?>
+
+(<a href='<?php echo $this->url('show-order', ['id' => $cluster->getId()]); ?>'><?php echo $cluster->getChangeNumber(); ?></a>)

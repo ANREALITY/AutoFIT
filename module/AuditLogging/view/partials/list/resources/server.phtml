@@ -1,0 +1,14 @@
+<?php
+use DbSystel\DataObject\AuditLog;
+/**
+ * @var AuditLog $auditLog
+ */
+?>
+
+<?php
+$cluster = $auditLog->getServer();
+?>
+
+<?php echo $cluster->getName(); ?>
+
+(<?php echo $cluster->getNodeName() ?: '-'; ?>/<?php echo $cluster->getVirtualNodeName() ?: '-'; ?>)
