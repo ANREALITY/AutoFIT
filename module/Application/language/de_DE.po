@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 19:20+0200\n"
-"PO-Revision-Date: 2016-10-27 19:22+0200\n"
+"POT-Creation-Date: 2016-10-27 23:16+0200\n"
+"PO-Revision-Date: 2016-10-27 23:17+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -760,6 +760,39 @@ msgstr "Stammdaten"
 msgid "orders"
 msgstr "Bestellungen"
 
+#: AuditLogging/view/audit-logging/index/list.phtml:6
+msgid "Audit log"
+msgstr ""
+
+#: AuditLogging/view/audit-logging/index/list.phtml:34
+msgid "ID"
+msgstr ""
+
+#: AuditLogging/view/audit-logging/index/list.phtml:35
+msgid "time"
+msgstr "Zeit"
+
+#: AuditLogging/view/audit-logging/index/list.phtml:36
+#: Order/view/partials/order-parts/billing.phtml:38
+msgid "user"
+msgstr "Benutzer"
+
+#: AuditLogging/view/audit-logging/index/list.phtml:37
+msgid "resource type"
+msgstr "Ressource-Typ"
+
+#: AuditLogging/view/audit-logging/index/list.phtml:38
+msgid "resource ID"
+msgstr "Ressource-ID"
+
+#: AuditLogging/view/audit-logging/index/list.phtml:39
+msgid "action"
+msgstr "Aktion"
+
+#: AuditLogging/view/audit-logging/index/list.phtml:39
+msgid "event"
+msgstr "Ereignis"
+
 #: MasterData/view/master-data/cluster/create.phtml:9
 #: MasterData/view/partials/fieldgroups/cluster.phtml:4
 #: Order/view/partials/info-boxes/hint-cluster.phtml:4
@@ -1322,10 +1355,6 @@ msgstr "JSON-Export"
 #: Order/view/partials/order-buttons/buttons.phtml:38
 msgid "XML export"
 msgstr "XML-Export"
-
-#: Order/view/partials/order-parts/billing.phtml:38
-msgid "user"
-msgstr "Benutzer"
 
 #: Order/view/partials/order-parts/connections/cd.phtml:17
 #: Order/view/partials/order-parts/connections/ftgw.phtml:25

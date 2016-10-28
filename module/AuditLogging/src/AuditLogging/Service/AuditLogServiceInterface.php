@@ -18,7 +18,7 @@ interface AuditLogServiceInterface
      *
      * @return AuditLog[]
      */
-    public function findAll();
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null);
 
     /**
      *

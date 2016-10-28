@@ -42,5 +42,8 @@ return [
         'template_path_stack' => [
             __DIR__ . '/../view'
         ],
+        'template_map' => [
+            'pagination_audit_logging' => __DIR__ . '/../view/partials/pagination.phtml',
+        ]
     ]
 ];

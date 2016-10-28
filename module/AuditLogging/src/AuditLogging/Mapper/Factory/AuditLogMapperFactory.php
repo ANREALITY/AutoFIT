@@ -21,6 +21,9 @@ class AuditLogMapperFactory implements FactoryInterface
         $service = new AuditLogMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
             $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AuditLog());
 
+        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+
         $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
 
         return $service;

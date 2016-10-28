@@ -1,7 +1,5 @@
 <?php
-namespace Order\Mapper\RequestModifier;
-
-use Zend\Db\Sql\Select;
+namespace AuditLogging\Mapper\RequestModifier;
 
 class AuditLogRequestModifier
 {

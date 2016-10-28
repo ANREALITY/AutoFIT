@@ -1,1 +1,48 @@
-Action "list", controller "Index", module "AuditLogging".
+<?php
+use DbSystel\DataObject\AuditLog;
+?>
+
+<h3>
+    <span><?php echo $this->translate('Audit log'); ?></span>
+</h3>
+
+<?php
+echo $this->paginationControl(
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list']
+);
+?>
+
+<table class="table table-striped list">
+    <colgroup>
+       <col style="width: 5%;">
+       <col style="width: 15%;">
+       <col style="width: 20%;">
+       <col style="width: 15%;">
+       <col style="width: 15%;">
+       <col style="width: 30%;">
+    </colgroup>
+    <tr>
+        <th><?php echo $this->translate('ID'); ?></th>
+        <th><?php echo $this->translate('time'); ?></th>
+        <th><?php echo $this->translate('user'); ?></th>
+        <th><?php echo $this->translate('resource type'); ?></th>
+        <th><?php echo $this->translate('resource ID'); ?></th>
+        <th><?php echo $this->translate('action') . '/' . $this->translate('event'); ?></th>
+    </tr>
+    <?php foreach ($paginator->getCurrentItems() as $auditLog) : ?>
+    <tr>
+        <td><?php echo $auditLog->getId(); ?></td>
+        <td><?php echo $auditLog->getEventDatetime(); ?></td>
+        <td><?php echo $auditLog->getUser() ? $auditLog->getUser()->getId() : null; ?></td>
+        <td><?php echo $auditLog->getResourceType(); ?></td>
+        <td><?php echo $auditLog->getResourceId(); ?></td>
+        <td><?php echo $auditLog->getAction(); ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<?php
+echo $this->paginationControl(
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list']
+);
+?>
