@@ -17,7 +17,6 @@ use DbSystel\DataObject\Environment;
 use Zend\Db\Sql\Join;
 use DbSystel\DataObject\Notification;
 use DbSystel\Paginator\Paginator;
-use AuditLogging\Paginator\Adapter\AuditLogPaginatorAdapter;
 use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\UserMapperInterface;
@@ -25,6 +24,7 @@ use Zend\Db\Sql\Expression;
 use Order\Mapper\FileTransferRequestMapperInterface;
 use Order\Mapper\ServerMapperInterface;
 use Order\Mapper\ClusterMapperInterface;
+use Zend\Paginator\Adapter\DbSelect;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -188,7 +188,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
         $select->order(['audit_log__' . 'id' => 'ASC']);
 
-        $adapter = new AuditLogPaginatorAdapter($select, $this->dbAdapter, null, null);
+        $adapter = new DbSelect($select, $this->dbAdapter, null, null);
         $paginator = new Paginator($adapter);
         $paginator->setItemCountPerPage(self::PAGINATION_ITEM_COUNT_PER_PAGE);
         $paginator->setCurrentPageNumber($page);
