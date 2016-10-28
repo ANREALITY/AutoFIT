@@ -201,4 +201,20 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         throw new \Exception('Database error in ' . __METHOD__);
     }
 
+    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+        callable $dataObjectCondition = null, bool $isCollection = false)
+    {
+        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+
+        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user__', $identifier,
+            $prefix);
+
+        foreach ($dataObjects as $key => $dataObject) {
+            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
+        }
+
+        return $dataObjects;
+    }
+
 }

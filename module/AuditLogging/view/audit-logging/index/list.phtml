@@ -33,7 +33,7 @@ echo $this->paginationControl(
     <tr>
         <td><?php echo $auditLog->getId(); ?></td>
         <td><?php echo $auditLog->getEventDatetime(); ?></td>
-        <td><?php echo $auditLog->getUser() ? $auditLog->getUser()->getId() : null; ?></td>
+        <td><?php echo $auditLog->getUser() ? $auditLog->getUser()->getUsername() : null; ?></td>
         <td><?php echo $auditLog->getResourceType(); ?></td>
         <td><?php echo $auditLog->getResourceId(); ?></td>
         <td><?php echo $auditLog->getAction(); ?></td>
