@@ -44,13 +44,13 @@ class AuditLog extends AbstractDataObject
      *
      * @var string
      */
-    protected $resuorceType;
+    protected $resourceType;
 
     /**
      *
      * @var string
      */
-    protected $resuorceId;
+    protected $resourceId;
 
     /**
      *
@@ -90,38 +90,38 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return the $resuorceType
+     * @return the $resourceType
      */
-    public function getResuorceType()
+    public function getResourceType()
     {
-        return $this->resuorceType;
+        return $this->resourceType;
     }
 
     /**
      *
-     * @param string $resuorceType            
+     * @param string $resourceType            
      */
-    public function setResuorceType($resuorceType)
+    public function setResourceType($resourceType)
     {
-        $this->resuorceType = $resuorceType;
+        $this->resourceType = $resourceType;
     }
 
     /**
      *
-     * @return the $resuorceId
+     * @return the $resourceId
      */
-    public function getResuorceId()
+    public function getResourceId()
     {
-        return $this->resuorceId;
+        return $this->resourceId;
     }
 
     /**
      *
-     * @param string $resuorceId            
+     * @param string $resourceId            
      */
-    public function setResuorceId($resuorceId)
+    public function setResourceId($resourceId)
     {
-        $this->resuorceId = $resuorceId;
+        $this->resourceId = $resourceId;
     }
 
     /**

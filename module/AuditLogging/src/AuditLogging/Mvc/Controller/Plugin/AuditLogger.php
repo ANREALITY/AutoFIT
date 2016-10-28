@@ -28,8 +28,8 @@ class AuditLogger extends AbstractPlugin
     public function log($resourceType = null, $resourceId = null, $action = null, $userId = null)
     {
         $auditLog = new AuditLog();
-        $auditLog->setResuorceType($resourceType);
-        $auditLog->setResuorceId($resourceId);
+        $auditLog->setResourceType($resourceType);
+        $auditLog->setResourceId($resourceId);
         $auditLog->setAction($action);
         if ($userId) {
             $user = new User();
