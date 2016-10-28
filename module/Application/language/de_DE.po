@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-27 23:16+0200\n"
-"PO-Revision-Date: 2016-10-27 23:17+0200\n"
+"PO-Revision-Date: 2016-10-28 14:28+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -762,7 +762,7 @@ msgstr "Bestellungen"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:6
 msgid "Audit log"
-msgstr ""
+msgstr "Audit-Log"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:34
 msgid "ID"
