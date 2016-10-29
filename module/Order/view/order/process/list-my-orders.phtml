@@ -36,7 +36,7 @@ if (false) {
     </tr>
     <?php foreach ($paginator->getCurrentItems() as $fileTransferRequest) : ?>
     <tr>
-        <td><?php echo $fileTransferRequest->getId(); ?></td>
+        <td>#<?php echo $fileTransferRequest->getId(); ?></td>
         <td><a
             href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>
             <br />
