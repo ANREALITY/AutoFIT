@@ -12,6 +12,7 @@ use Order\Service\FileTransferRequestService;
 use DbSystel\DataObject\AuditLog;
 use Order\Service\FileTransferRequestServiceInterface;
 use Order\Form\OrderForm;
+use Zend\Form\FormInterface;
 
 class ProcessController extends AbstractActionController
 {
@@ -65,7 +66,7 @@ class ProcessController extends AbstractActionController
     /**
      * @param FormInterface $orderForm
      */
-    public function setOrderForm($orderForm)
+    public function setOrderForm(FormInterface $orderForm)
     {
         $this->orderForm = $orderForm;
     }
