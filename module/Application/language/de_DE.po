@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 23:16+0200\n"
-"PO-Revision-Date: 2016-10-28 14:28+0200\n"
+"POT-Creation-Date: 2016-10-29 12:50+0200\n"
+"PO-Revision-Date: 2016-10-29 12:57+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -16,6 +16,61 @@ msgstr ""
 "X-Poedit-SearchPath-0: Application\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPath-2: Order\n"
+
+#: AuditLogging/src/AuditLogging/Form/AuditLogForm.php:32
+msgid "show"
+msgstr "anzeigen"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:18
+#: Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:28
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:28
+#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
+#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:57
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:40
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
+#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:61
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-source.phtml:19
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:19
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-source.phtml:25
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:61
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:57
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:40
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
+msgid "username"
+msgstr "Benutzername"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:33
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
+#: Order/view/order/process/list-my-orders.phtml:33
+#: Order/view/order/process/list-orders.phtml:24
+#: Order/view/partials/order-parts/billing.phtml:30
+msgid "change number"
+msgstr "Change-Nummer"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:48
+#: AuditLogging/view/audit-logging/index/list.phtml:36
+msgid "resource type"
+msgstr "Ressource-Typ"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:17
+msgid "date and time"
+msgstr "Datum und Zeit"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:21
+msgid "descending"
+msgstr "absteigend"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:26
+msgid "ascending"
+msgstr "aufsteigend"
 
 #: ErrorHandling/src/ErrorHandling/Handler/ErrorHandler.php:76
 #: ErrorHandling/view/exception.phtml:2
@@ -140,31 +195,6 @@ msgstr "Sharename"
 msgid "Zos"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:28
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:28
-#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
-#: Order/src/Order/Form/Fieldset/UserFieldset.php:35
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:57
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:40
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdtandem-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:25
-#: Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:61
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-source.phtml:19
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:19
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-source.phtml:25
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:61
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:57
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:40
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
-msgid "username"
-msgstr "Benutzername"
-
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:26
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:15
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:15
@@ -232,13 +262,6 @@ msgstr "Verbindungstyp"
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:85
 msgid "internal and external"
 msgstr "intern und extern"
-
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
-#: Order/view/order/process/list-my-orders.phtml:33
-#: Order/view/order/process/list-orders.phtml:24
-#: Order/view/partials/order-parts/billing.phtml:30
-msgid "change number"
-msgstr "Change-Nummer"
 
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:83
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
@@ -764,34 +787,45 @@ msgstr "Bestellungen"
 msgid "Audit log"
 msgstr "Audit-Log"
 
-#: AuditLogging/view/audit-logging/index/list.phtml:34
+#: AuditLogging/view/audit-logging/index/list.phtml:33
 msgid "ID"
 msgstr ""
 
-#: AuditLogging/view/audit-logging/index/list.phtml:35
+#: AuditLogging/view/audit-logging/index/list.phtml:34
 msgid "time"
 msgstr "Zeit"
 
-#: AuditLogging/view/audit-logging/index/list.phtml:36
+#: AuditLogging/view/audit-logging/index/list.phtml:35
 #: Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
 msgstr "Benutzer"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:37
-msgid "resource type"
-msgstr "Ressource-Typ"
-
-#: AuditLogging/view/audit-logging/index/list.phtml:38
 msgid "resource ID"
 msgstr "Ressource-ID"
 
-#: AuditLogging/view/audit-logging/index/list.phtml:39
+#: AuditLogging/view/audit-logging/index/list.phtml:38
 msgid "action"
 msgstr "Aktion"
 
-#: AuditLogging/view/audit-logging/index/list.phtml:39
+#: AuditLogging/view/audit-logging/index/list.phtml:38
 msgid "event"
 msgstr "Ereignis"
+
+#: AuditLogging/view/partials/fieldgroup.phtml:14
+#: MasterData/view/partials/fieldgroup.phtml:14
+#: Order/view/partials/fieldgroup.phtml:14
+#: Order/view/partials/order-part.phtml:17
+msgid "No settings needed for this area."
+msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
+
+#: AuditLogging/view/partials/list/form/fieldgroups/filter.phtml:4
+msgid "filtering"
+msgstr "Filterung"
+
+#: AuditLogging/view/partials/list/form/fieldgroups/sort.phtml:4
+msgid "sorting"
+msgstr "Sortierung"
 
 #: MasterData/view/master-data/cluster/create.phtml:9
 #: MasterData/view/partials/fieldgroups/cluster.phtml:4
@@ -917,12 +951,6 @@ msgstr "Der Server wurde erfolgreich %s."
 #: Order/view/order/process/updated.phtml:3
 msgid "updated"
 msgstr "aktualisiert"
-
-#: MasterData/view/partials/fieldgroup.phtml:14
-#: Order/view/partials/fieldgroup.phtml:14
-#: Order/view/partials/order-part.phtml:17
-msgid "No settings needed for this area."
-msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: Order/view/order/process/accepted.phtml:3
 #: Order/view/order/process/canceled.phtml:3
@@ -1540,6 +1568,9 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "Filtering"
+#~ msgstr "Filterung"
 
 #~ msgid "The order's Status has been successfully changed to \"%s\"."
 #~ msgstr "Der Status der Bestellung wurde erfolgreich zum \"%s\" geändert."
