@@ -13,12 +13,23 @@ return [
                     ]
                 ]
             ],
+            'provide-users' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/audit-logging/ajax/provide-users',
+                    'defaults' => [
+                        'controller' => 'AuditLogging\Controller\Ajax',
+                        'action' => 'provideUsers'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [
         'invokables' => [],
         'factories' => [
             'AuditLogging\Controller\Index' => 'AuditLogging\Controller\Factory\IndexControllerFactory',
+            'AuditLogging\Controller\Ajax' => 'AuditLogging\Controller\Factory\AjaxControllerFactory',
         ]
     ],
     'controller_plugins' => [

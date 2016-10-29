@@ -86,10 +86,10 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (array_key_exists('username', $condition)) {
+                if (! empty($condition['username'])) {
                     $select->where(
                         [
-                            'username = ?' => $condition['username']
+                            'username LIKE ?' => '%' . $condition['username'] . '%'
                         ]);
                 }
             }

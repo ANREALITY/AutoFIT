@@ -14,4 +14,10 @@ interface UserServiceInterface
      */
     public function findOneByUsername(string $username);
 
+    /**
+     *
+     * @param string $username
+     */
+    public function findAllForAutocomplete(string $username = null);
+
 }

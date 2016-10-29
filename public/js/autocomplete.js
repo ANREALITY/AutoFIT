@@ -241,3 +241,28 @@ var initAutocompleteClusterServer = function() {
 $(document).ready(function() {
 	initAutocompleteClusterServer();
 });
+/**
+ * Autocompletion for the field username.
+ */
+$(function() {
+	$(".autocomplete-username")
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/audit-logging/ajax/provide-users?"
+					+ "data[username]=" + request.term,
+					{},
+					function(data) {
+						response(data.slice(0, 25));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});

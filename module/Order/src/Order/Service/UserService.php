@@ -34,4 +34,19 @@ class UserService extends AbstractService implements UserServiceInterface
         return $this->mapper->findOneByUsername($username);
     }
 
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllForAutocomplete(string $username = null)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'username' => $username
+                ]
+            ]);
+    }
+
 }

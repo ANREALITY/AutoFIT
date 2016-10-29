@@ -71,6 +71,9 @@ return [
                 'AuditLogging\Controller\Index' => [
                     'all' => 'admin'
                 ],
+                'AuditLogging\Controller\Ajax' => [
+                    'all' => 'admin'
+                ],
             ]
         ],
         'redirect_route' => [
