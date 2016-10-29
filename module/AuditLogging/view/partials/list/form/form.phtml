@@ -1,0 +1,58 @@
+<?php
+use AuditLogging\Form\AuditLogForm;
+/**
+ * @var AuditLogForm $form
+ */
+?>
+
+<?php
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+<?php
+// // validation errors
+// echo $this->partial('/partials/validation-errors',
+//     [
+//         'form' => $form,
+//     ]);
+?>
+
+<?php
+$filterFieldset = $form->get('filter');
+// $sortFieldset = $form->get('sort');
+?>
+
+<?php
+// filter
+echo $this->partial('/partials/list/form/fieldgroups/filter',
+    [
+        // Fieldsets
+        'filterFieldset' => $filterFieldset,
+        // DataObjects
+        // no DataObjects
+        // misc values
+        // no misc values
+    ]);
+?>
+
+<?php
+// // filter
+// echo $this->partial('/partials/fieldgroups/sort',
+//     [
+//         // Fieldsets
+//         'sortFieldset' => $sortFieldset,
+//         // DataObjects
+//         // no DataObjects
+//         // misc values
+//         // no misc values
+//     ]);
+?>
+
+<div class="form-group">
+    <div class="controls"><?php echo $this->formElement($form->get('submit')); ?></div>
+</div>
+
+<?php
+echo $this->form()->closeTag();
+?>

@@ -43,6 +43,25 @@ return [
             'AuditLogging\Service\Factory\AbstractServiceFactory'
         ]
     ],
+    'form_elements' => [
+        'invokables' => [
+            // fieldsets
+            'AuditLogging\Form\Fieldset\Filter' => 'AuditLogging\Form\Fieldset\FilterFieldset',
+        ],
+        'factories' => [
+            // forms
+            'AuditLogging\Form\AuditLogForm' => 'AuditLogging\Form\Factory\AuditLogFormFactory',
+            // fieldsets
+            'AuditLogging\Form\Fieldset\Filter' => 'AuditLogging\Form\Fieldset\Factory\FilterFieldsetFactory',
+            // 'AuditLogging\Form\Fieldset\Sort' => 'AuditLogging\Form\Fieldset\Factory\SortFieldsetFactory',
+        ],
+        'abstract_factories' => [
+            // fieldsets
+        ],
+        'shared' => [
+            'AuditLogging\Form\Fieldset\Filter' => false,
+        ]
+    ],
     'view_manager' => [
         'template_path_stack' => [
             __DIR__ . '/../view'

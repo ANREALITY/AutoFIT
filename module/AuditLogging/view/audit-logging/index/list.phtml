@@ -7,6 +7,14 @@ use DbSystel\DataObject\AuditLog;
 </h3>
 
 <?php
+// form
+echo $this->partial('/partials/list/form/form',
+    [
+        'form' => $form,
+    ]);
+?>
+
+<?php
 echo $this->paginationControl(
     $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list', 'query' => $query]
 );
