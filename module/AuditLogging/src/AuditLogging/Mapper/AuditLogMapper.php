@@ -185,12 +185,13 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             }
         }
 
+        $select->order(['audit_log.datetime' => Select::ORDER_DESCENDING]);
         foreach ($sorting as $key => $condition) {
             if (is_string($condition) && ! empty($condition)) {
                 if ($key === 'datetime') {
                     $direction = strtoupper($condition) === Select::ORDER_ASCENDING
                         ? Select::ORDER_ASCENDING : Select::ORDER_DESCENDING;
-                    $select->order([$key => $direction]);
+                    $select->order(['audit_log.' . $key => $direction]);
                 }
             }
         }
@@ -205,8 +206,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         $this->requestModifier->addFileTransferRequest($select);
         $this->requestModifier->addServer($select);
         $this->requestModifier->addCluster($select);
-
-        $select->order(['audit_log__' . 'id' => 'ASC']);
 
         $adapter = new DbSelect($select, $this->dbAdapter, null, null);
         $paginator = new Paginator($adapter);
