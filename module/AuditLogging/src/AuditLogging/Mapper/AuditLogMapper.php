@@ -171,7 +171,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                         [
                             'user.username = ?' => $condition
                         ]);
-                } elseif ($key === 'resuorce_type') {
+                } elseif ($key === 'resource_type') {
                     $select->where(
                         [
                             'audit_log.resource_type = ?' => $condition
