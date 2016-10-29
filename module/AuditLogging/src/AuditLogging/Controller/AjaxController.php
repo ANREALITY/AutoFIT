@@ -31,15 +31,13 @@ class AjaxController extends AbstractActionController
     public function provideUsersAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $username = isset($data['username']) ? $data['username'] : null;
             $dataList = $this->userService->findAllForAutocomplete($data['username'])->toArray();
             $dataList = array_column($dataList, 'username');
-        } else {
-            $dataList = ['error' => 'Acces only for AJAX requests!'];
         }
 
         return new JsonModel($dataList);
@@ -48,15 +46,13 @@ class AjaxController extends AbstractActionController
     public function provideFileTransferRequestsAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $changeNumber = isset($data['change_number']) ? $data['change_number'] : null;
             $dataList = $this->fileTransferRequestService->findAllForAutocomplete($data['change_number'])->toArray();
             $dataList = array_column($dataList, 'change_number');
-        } else {
-            $dataList = ['error' => 'Acces only for AJAX requests!'];
         }
 
 
