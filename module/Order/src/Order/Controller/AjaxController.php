@@ -57,16 +57,15 @@ class AjaxController extends AbstractActionController
     public function provideApplicationsAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
                 $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name'])->toArray();
+                $dataList = array_column($dataList, 'technical_short_name');
             }
         }
-
-        $dataList = array_column($dataList, 'technical_short_name');
 
         return new JsonModel($dataList);
     }
@@ -74,14 +73,14 @@ class AjaxController extends AbstractActionController
     public function provideEnvironmentsAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name'])) {
                 $data['name'] = isset($data['name']) ? $data['name'] : null;
                 $dataList = $this->environmentService->findAllByApplicationAndName(
-                    $data['application_technical_short_name'], $data['name'])->toArray();
+                $data['application_technical_short_name'], $data['name'])->toArray();
             }
         }
 
@@ -91,15 +90,14 @@ class AjaxController extends AbstractActionController
     public function provideServersAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $data['endpoint_type_name'] = isset($data['endpoint_type_name']) ? $data['endpoint_type_name'] : null;
             $dataList = $this->serverService->findAllForAutocomplete($data['name'], $data['endpoint_type_name'])->toArray();
+            $dataList = array_column($dataList, 'name');
         }
-
-        $dataList = array_column($dataList, 'name');
 
         return new JsonModel($dataList);
     }
@@ -107,14 +105,13 @@ class AjaxController extends AbstractActionController
     public function provideServersNotInCdUseAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $dataList = $this->serverService->findAllNotInCdUseForAutocomplete($data['name'])->toArray();
+            $dataList = array_column($dataList, 'name');
         }
-
-        $dataList = array_column($dataList, 'name');
 
         return new JsonModel($dataList);
     }
@@ -122,14 +119,13 @@ class AjaxController extends AbstractActionController
     public function provideServersNotInClusterAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $dataList = $this->serverService->findAllNotInClusterForAutocomplete($data['name'])->toArray();
+            $dataList = array_column($dataList, 'name');
         }
-
-        $dataList = array_column($dataList, 'name');
 
         return new JsonModel($dataList);
     }
@@ -137,17 +133,16 @@ class AjaxController extends AbstractActionController
     public function provideServiceInvoicePositionsBasicAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllBasicForAutocomplete(
-                    $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $dataList = array_column($dataList, 'number');
             }
         }
-
-        $dataList = array_column($dataList, 'number');
 
         return new JsonModel($dataList);
     }
@@ -155,17 +150,16 @@ class AjaxController extends AbstractActionController
     public function provideServiceInvoicePositionsPersonalAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllPersonalForAutocomplete(
-                    $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                $dataList = array_column($dataList, 'number');
             }
         }
-
-        $dataList = array_column($dataList, 'number');
 
         return new JsonModel($dataList);
     }
@@ -173,12 +167,12 @@ class AjaxController extends AbstractActionController
     public function provideClustersAction()
     {
         $request = $this->getRequest();
-        $dataList = [];
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
 
-        if (true || $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-                $data['virtual_node_name'] = isset($data['virtual_node_name']) ? $data['virtual_node_name'] : null;
-                $dataList = $this->clusterService->findAllForAutocomplete($data['virtual_node_name'])->toArray();
+            $data['virtual_node_name'] = isset($data['virtual_node_name']) ? $data['virtual_node_name'] : null;
+            $dataList = $this->clusterService->findAllForAutocomplete($data['virtual_node_name'])->toArray();
         }
 
         return new JsonModel($dataList);
