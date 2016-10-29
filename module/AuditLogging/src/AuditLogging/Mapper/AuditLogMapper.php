@@ -165,7 +165,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         }
 
         foreach ($criteria as $key => $condition) {
-            if (is_string($condition)) {
+            if (is_string($condition) && ! empty($condition)) {
                 if ($key === 'username') {
                     $select->where(
                         [
