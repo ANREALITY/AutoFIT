@@ -12,7 +12,7 @@ class SortFieldset extends Fieldset implements InputFilterProviderInterface
         $this->add(
             [
                 'type' => 'radio',
-                'name' => 'event_datetime',
+                'name' => 'datetime',
                 'options' => [
                     'label' => _('date and time'),
                     'value_options' => [

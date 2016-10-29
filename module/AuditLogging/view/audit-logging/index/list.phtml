@@ -40,7 +40,7 @@ echo $this->paginationControl(
     <?php foreach ($paginator->getCurrentItems() as $auditLog) : ?>
     <tr>
         <td>#<?php echo $auditLog->getId(); ?></td>
-        <td><?php echo $auditLog->getEventDatetime(); ?></td>
+        <td><?php echo $auditLog->getDatetime(); ?></td>
         <td><?php echo $auditLog->getUser() ? $auditLog->getUser()->getUsername() : null; ?></td>
         <td><?php echo $auditLog->getResourceType(); ?></td>
         <td><?php echo $auditLog->getResourceId() && $auditLog->getResourceType() ? $this->partial('/partials/list/resources/' . $auditLog->getResourceType(), [

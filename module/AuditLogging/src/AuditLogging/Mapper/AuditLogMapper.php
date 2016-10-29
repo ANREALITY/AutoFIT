@@ -156,7 +156,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                 $prefix . 'resource_type' => 'resource_type',
                 $prefix . 'resource_id' => 'resource_id',
                 $prefix . 'action' => 'action',
-                $prefix . 'event_datetime' => 'event_datetime',
+                $prefix . 'datetime' => 'datetime',
             ]);
         if ($id) {
             $select->where([
@@ -187,7 +187,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
         foreach ($sorting as $key => $condition) {
             if (is_string($condition) && ! empty($condition)) {
-                if ($key === 'event_datetime') {
+                if ($key === 'datetime') {
                     $direction = strtoupper($condition) === Select::ORDER_ASCENDING
                         ? Select::ORDER_ASCENDING : Select::ORDER_DESCENDING;
                     $select->order([$key => $direction]);
@@ -257,7 +257,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         $data['resource_type'] = $dataObject->getResourceType();
         $data['resource_id'] = $dataObject->getResourceId();
         $data['action'] = $dataObject->getAction();
-        $data['event_datetime'] = $dataObject->getEventDatetime();
+        $data['datetime'] = $dataObject->getDatetime();
         $data['user_id'] = $dataObject->getUser() ? $dataObject->getUser()->getId() : new Expression('NULL');
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());

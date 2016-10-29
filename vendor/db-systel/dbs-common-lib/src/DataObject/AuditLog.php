@@ -62,7 +62,7 @@ class AuditLog extends AbstractDataObject
      *
      * @var string
      */
-    protected $eventDatetime;
+    protected $datetime;
 
     /**
      *
@@ -162,20 +162,20 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return the $eventDatetime
+     * @return the $datetime
      */
-    public function getEventDatetime()
+    public function getDatetime()
     {
-        return $this->eventDatetime;
+        return $this->datetime;
     }
 
     /**
      *
-     * @param string $eventDatetime
+     * @param string $datetime
      */
-    public function setEventDatetime($eventDatetime)
+    public function setDatetime($datetime)
     {
-        $this->eventDatetime = $eventDatetime;
+        $this->datetime = $datetime;
     }
 
     /**
