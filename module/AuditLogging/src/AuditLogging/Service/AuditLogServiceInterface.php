@@ -2,6 +2,7 @@
 namespace AuditLogging\Service;
 
 use DbSystel\DataObject\AuditLog;
+use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 
 interface AuditLogServiceInterface
 {
@@ -18,7 +19,7 @@ interface AuditLogServiceInterface
      *
      * @return AuditLog[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null);
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = []);
 
     /**
      *

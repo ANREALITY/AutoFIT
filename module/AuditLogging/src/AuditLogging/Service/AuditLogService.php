@@ -4,6 +4,7 @@ namespace AuditLogging\Service;
 use AuditLogging\Mapper\AuditLogMapperInterface;
 use DbSystel\DataObject\AuditLog;
 use Order\Service\AbstractService;
+use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 
 class AuditLogService extends AbstractService implements AuditLogServiceInterface
 {
@@ -28,9 +29,9 @@ class AuditLogService extends AbstractService implements AuditLogServiceInterfac
      * {@inheritDoc}
      *
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null)
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])
     {
-        return $this->mapper->findAllWithBuldledData($criteria, $id, $page);
+        return $this->mapper->findAllWithBuldledData($criteria, $id, $page, $requstMode, $sorting);
     }
 
     /**

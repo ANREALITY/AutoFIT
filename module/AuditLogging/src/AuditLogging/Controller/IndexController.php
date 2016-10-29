@@ -37,7 +37,8 @@ class IndexController extends AbstractActionController
     {
         $page = $this->params()->fromRoute('page');
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
-        $paginator = $this->auditLogService->findAllWithBuldledData($criteria, null, $page);
+        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
+        $paginator = $this->auditLogService->findAllWithBuldledData($criteria, null, $page, null, $sorting);
 
         $this->auditLogForm->setData($this->getRequest()->getQuery());
 

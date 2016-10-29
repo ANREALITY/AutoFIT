@@ -145,7 +145,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
      *
      * @return array|AuditLog[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED)
+    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('audit_log');
@@ -181,6 +181,16 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                         [
                             'file_transfer_request.change_number = ?' => $condition
                         ]);
+                }
+            }
+        }
+
+        foreach ($sorting as $key => $condition) {
+            if (is_string($condition) && ! empty($condition)) {
+                if ($key === 'event_datetime') {
+                    $direction = strtoupper($condition) === Select::ORDER_ASCENDING
+                        ? Select::ORDER_ASCENDING : Select::ORDER_DESCENDING;
+                    $select->order([$key => $direction]);
                 }
             }
         }

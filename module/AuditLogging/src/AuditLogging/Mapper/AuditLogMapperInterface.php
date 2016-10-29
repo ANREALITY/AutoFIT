@@ -18,7 +18,7 @@ interface AuditLogMapperInterface
      *
      * @return array|AuditLog[]
      */
-    public function findAllWithBuldledData(array $criteria, $id, $page, $requstMode);
+    public function findAllWithBuldledData(array $criteria, $id, $page, $requstMode, array $sorting = []);
 
     /**
      *

@@ -1,7 +1,7 @@
 <?php
 $fieldgroupName = 'filter';
-$fieldgroupCssClass = 'col-md-11 fieldgroup-filter';
-$fieldgroupTitle = null;
+$fieldgroupCssClass = 'col-md-7 fieldgroup-filter';
+$fieldgroupTitle = $this->translate('filtering');
 $fieldgroupFormRows = [
     $this->formRow($filterFieldset->get('username')),
     $this->formRow($filterFieldset->get('change_number')),
@@ -16,4 +16,5 @@ echo $this->partial('/partials/fieldgroup',
         'emptyView' => false
     ]);
 ?>
+
 <?php /*$this->inlineScript()->appendFile('/js/audit-log-filter-autocomplete.js');*/ ?>

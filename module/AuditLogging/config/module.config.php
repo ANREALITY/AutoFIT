@@ -47,6 +47,7 @@ return [
         'invokables' => [
             // fieldsets
             'AuditLogging\Form\Fieldset\Filter' => 'AuditLogging\Form\Fieldset\FilterFieldset',
+            'AuditLogging\Form\Fieldset\Sort' => 'AuditLogging\Form\Fieldset\SortFieldset',
         ],
         'factories' => [
             // forms

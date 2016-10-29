@@ -17,12 +17,12 @@ class AuditLogForm extends Form
                 'options' => []
             ]);
 
-//         $this->add(
-//             [
-//                 'name' => 'sort',
-//                 'type' => 'AuditLogging\Form\Fieldset\Sort',
-//                 'options' => []
-//             ]);
+        $this->add(
+            [
+                'name' => 'sort',
+                'type' => 'AuditLogging\Form\Fieldset\Sort',
+                'options' => []
+            ]);
 
         $this->add(
             [
