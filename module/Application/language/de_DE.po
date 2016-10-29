@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-29 12:50+0200\n"
-"PO-Revision-Date: 2016-10-29 12:57+0200\n"
+"POT-Creation-Date: 2016-10-29 14:38+0200\n"
+"PO-Revision-Date: 2016-10-29 14:40+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "show"
 msgstr "anzeigen"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:18
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:19
 #: Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:28
 #: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:28
 #: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
@@ -47,7 +47,7 @@ msgstr "anzeigen"
 msgid "username"
 msgstr "Benutzername"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:33
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
 #: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
 #: Order/view/order/process/list-my-orders.phtml:33
 #: Order/view/order/process/list-orders.phtml:24
@@ -55,10 +55,36 @@ msgstr "Benutzername"
 msgid "change number"
 msgstr "Change-Nummer"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:48
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:49
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: AuditLogging/view/audit-logging/index/list.phtml:36
 msgid "resource type"
 msgstr "Ressource-Typ"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:67
+msgid "all resource types"
+msgstr "alle Ressource-Typen"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:72
+#: Application/view/layout/layout.phtml:99
+#: Order/view/order/process/list-orders.phtml:6
+msgid "orders"
+msgstr "Bestellungen"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:77
+#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:36
+#: Order/view/partials/list/summary.phtml:108
+#: Order/view/partials/list/summary.phtml:124
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
+#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:48
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
+#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:48
+msgid "servers"
+msgstr "Server"
+
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:82
+msgid "clusters"
+msgstr "Cluster"
 
 #: AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:17
 msgid "date and time"
@@ -344,16 +370,6 @@ msgstr ""
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:52
 msgid "cluster's virtual node name"
 msgstr "Virtueller Knotenname des Clusters"
-
-#: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:36
-#: Order/view/partials/list/summary.phtml:108
-#: Order/view/partials/list/summary.phtml:124
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
-#: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:48
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
-#: Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:48
-msgid "servers"
-msgstr "Server"
 
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:60
 msgid "add a server"
@@ -777,11 +793,6 @@ msgstr "Meine Bestellungen"
 #: Application/view/layout/layout.phtml:95
 msgid "master data"
 msgstr "Stammdaten"
-
-#: Application/view/layout/layout.phtml:99
-#: Order/view/order/process/list-orders.phtml:6
-msgid "orders"
-msgstr "Bestellungen"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:6
 msgid "Audit log"
@@ -1568,6 +1579,9 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "all types"
+#~ msgstr "alle Typen"
 
 #~ msgid "Filtering"
 #~ msgstr "Filterung"

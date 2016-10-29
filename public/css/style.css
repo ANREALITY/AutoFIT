@@ -81,6 +81,9 @@ a:focus {
   background: #0099ff;
 }
 /* bootstrap #start# */
+select {
+  display: block;
+}
 input[type="checkbox"],
 input[type="radio"] {
   display: inline-block;

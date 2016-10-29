@@ -3,6 +3,7 @@ namespace AuditLogging\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use DbSystel\DataObject\AuditLog;
 
 class FilterFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -42,10 +43,32 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(
             [
+                'type' => 'select',
                 'name' => 'resource_type',
-                'type' => 'text',
                 'options' => [
                     'label' => _('resource type'),
+                    'value_options' => [
+                        [
+                            'value' => '',
+                            'label' => _('all resource types'),
+                            'selected' => true
+                        ],
+                        [
+                            'value' => AuditLog::RESSOURCE_TYPE_ORDER,
+                            'label' => _('orders'),
+                            'selected' => false
+                        ],
+                        [
+                            'value' => AuditLog::RESSOURCE_TYPE_SERVER,
+                            'label' => _('servers'),
+                            'selected' => false
+                        ],
+                        [
+                            'value' => AuditLog::RESSOURCE_TYPE_CLUSTER,
+                            'label' => _('clusters'),
+                            'selected' => false
+                        ],
+                    ],
                     'label_attributes' => [
                         'class' => 'col-md-4'
                     ]
