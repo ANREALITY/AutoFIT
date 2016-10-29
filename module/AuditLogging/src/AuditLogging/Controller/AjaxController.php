@@ -44,4 +44,20 @@ class AjaxController extends AbstractActionController
         return new JsonModel($dataList);
     }
 
+    public function provideFileTransferRequestsAction()
+    {
+        $request = $this->getRequest();
+        $dataList = [];
+
+        if (true || $request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $changeNumber = isset($data['change_number']) ? $data['change_number'] : null;
+            $dataList = $this->fileTransferRequestService->findAllForAutocomplete($data['change_number'])->toArray();
+        }
+
+        $dataList = array_column($dataList, 'change_number');
+
+        return new JsonModel($dataList);
+    }
+
 }

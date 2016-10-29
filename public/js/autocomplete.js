@@ -266,3 +266,28 @@ $(function() {
 		$(this).autocomplete("search", this.value);
 	});
 });
+/**
+ * Autocompletion for the field username.
+ */
+$(function() {
+	$(".autocomplete-change-number")
+		.autocomplete({
+			autoFocus : true,
+			delay : 500,
+			minLength : 0,
+			source : function(request, response) {
+				$.get(
+					"/audit-logging/ajax/provide-file-transfer-requests?"
+					+ "data[change_number]=" + request.term,
+					{},
+					function(data) {
+						response(data.slice(0, 25));
+					}
+				);
+			}
+		}).on('focus', function(event) {
+			console.log(new Date());
+			console.log($(this));
+		$(this).autocomplete("search", this.value);
+	});
+});	

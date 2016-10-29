@@ -42,4 +42,19 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
         return $this->mapper->save($fileTransferRequest);
     }
 
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllForAutocomplete(string $changeNumber = null)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'change_number' => $changeNumber
+                ]
+            ]);
+    }
+
 }

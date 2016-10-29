@@ -23,6 +23,16 @@ return [
                     ]
                 ]
             ],
+            'provide-file-transfer-requests' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/audit-logging/ajax/provide-file-transfer-requests',
+                    'defaults' => [
+                        'controller' => 'AuditLogging\Controller\Ajax',
+                        'action' => 'provideFileTransferRequests'
+                    ]
+                ]
+            ],
         ]
     ],
     'controllers' => [

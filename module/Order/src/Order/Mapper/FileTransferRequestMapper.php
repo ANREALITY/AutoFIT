@@ -209,6 +209,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
 
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (! empty($condition['change_number'])) {
+                    $select->where(
+                        [
+                            'change_number LIKE ?' => '%' . $condition['change_number'] . '%'
+                        ]);
+                }
+            }
+        }
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 

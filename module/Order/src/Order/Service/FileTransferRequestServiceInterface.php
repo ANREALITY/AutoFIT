@@ -27,4 +27,10 @@ interface FileTransferRequestServiceInterface
      */
     public function saveOne(FileTransferRequest $fileTransferRequestRequest);
 
+    /**
+     *
+     * @param string $changeNumber
+     */
+    public function findAllForAutocomplete(string $changeNumber = null);
+
 }
