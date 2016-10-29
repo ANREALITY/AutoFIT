@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-29 14:38+0200\n"
-"PO-Revision-Date: 2016-10-29 14:40+0200\n"
+"POT-Creation-Date: 2016-10-29 21:03+0200\n"
+"PO-Revision-Date: 2016-10-29 21:03+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -56,22 +56,21 @@ msgid "change number"
 msgstr "Change-Nummer"
 
 #: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:49
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: AuditLogging/view/audit-logging/index/list.phtml:36
 msgid "resource type"
 msgstr "Ressource-Typ"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:67
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:53
 msgid "all resource types"
 msgstr "alle Ressource-Typen"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:72
-#: Application/view/layout/layout.phtml:99
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:58
+#: Application/view/layout/layout.phtml:100
 #: Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:77
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:36
 #: Order/view/partials/list/summary.phtml:108
 #: Order/view/partials/list/summary.phtml:124
@@ -82,7 +81,7 @@ msgstr "Bestellungen"
 msgid "servers"
 msgstr "Server"
 
-#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:82
+#: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:68
 msgid "clusters"
 msgstr "Cluster"
 
@@ -781,18 +780,22 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: Application/view/layout/layout.phtml:89
+#: Application/view/layout/layout.phtml:90
 msgid "home"
 msgstr "Startseite"
 
-#: Application/view/layout/layout.phtml:92
+#: Application/view/layout/layout.phtml:93
 #: Order/view/order/process/list-my-orders.phtml:6
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
-#: Application/view/layout/layout.phtml:95
+#: Application/view/layout/layout.phtml:96
 msgid "master data"
 msgstr "Stammdaten"
+
+#: Application/view/layout/layout.phtml:103
+msgid "audit log"
+msgstr "Audit-Log"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:6
 msgid "Audit log"
