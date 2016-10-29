@@ -97,6 +97,9 @@ $currentIdentity = $authenticationService->getIdentity();
                     <li
                         class="backend<?php echo $currentRoute == 'list-orders' ? ' active' : null;?>"><a
                         href="<?php echo $this->url('list-orders') ?>"><?php echo $this->translate('orders') ?></a></li>
+                    <li
+                        class="backend<?php echo $currentRoute == 'list' ? ' active' : null;?>"><a
+                        href="<?php echo $this->url('list') ?>"><?php echo $this->translate('Audit log') ?></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
