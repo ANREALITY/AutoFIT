@@ -105,7 +105,15 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'ip' => [
+                'validators' => [
+                    [
+                        'name' => 'Ip'
+                    ]
+                ]
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
