@@ -99,6 +99,16 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                     ],
                 ]
             ],
+            'folder' => [
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9,_+-\.\/]*$/'
+                        ]
+                    ],
+                ]
+            ],
             'server_toggle' => [
                 'required' => false
             ]

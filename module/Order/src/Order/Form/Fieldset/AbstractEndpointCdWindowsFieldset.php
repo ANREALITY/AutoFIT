@@ -38,7 +38,18 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'folder' => [
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9,_+-\.\/]*$/'
+                        ]
+                    ],
+                ]
+            ],
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
