@@ -32,7 +32,19 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'expression' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'max' => 50
+                        ]
+                    ],
+                ]
+            ],
+        ];
     }
 
 }
