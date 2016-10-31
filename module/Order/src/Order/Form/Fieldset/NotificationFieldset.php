@@ -3,7 +3,6 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Validator\EmailAddress;
 
 class NotificationFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -72,7 +71,9 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     ]
                 ],
                 'validators' => [
-                    new EmailAddress()
+                    [
+                        'name' => 'EmailAddress'
+                    ]
                 ]
             ]
         ];
