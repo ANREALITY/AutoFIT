@@ -40,6 +40,28 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
 
         $this->add(
             [
+                'name' => 'application_technical_short_name',
+                'type' => 'text',
+                'options' => [
+                    'label' => _('application'),
+                    'label_attributes' => []
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control autocomplete-application',
+                    'id' => 'order' . '-' . 'application-number'
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'environment',
+                'type' => 'Order\Form\Fieldset\Environment',
+                'options' => []
+            ]);
+
+        $this->add(
+            [
                 'name' => 'change_number',
                 'type' => 'text',
                 'options' => [
@@ -77,30 +99,8 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
 
         $this->add(
             [
-                'name' => 'application_technical_short_name',
-                'type' => 'text',
-                'options' => [
-                    'label' => _('application'),
-                    'label_attributes' => []
-                ],
-                'attributes' => [
-                    'required' => 'required',
-                    'class' => 'form-control autocomplete-application',
-                    'id' => 'order' . '-' . 'application-number'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'type' => 'Order\Form\Fieldset\ServiceInvoicePositionPersonal',
                 'name' => 'service_invoice_position_personal',
-                'options' => []
-            ]);
-
-        $this->add(
-            [
-                'name' => 'environment',
-                'type' => 'Order\Form\Fieldset\Environment',
                 'options' => []
             ]);
 
