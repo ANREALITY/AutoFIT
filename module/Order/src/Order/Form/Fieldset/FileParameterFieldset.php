@@ -100,6 +100,20 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                     ],
                 ]
             ],
+            'record_length' => [
+                'validators' => [
+                    [
+                        'name' => 'Digits'
+                    ],
+                    [
+                        'name' => 'Between',
+                        'options' => [
+                            'min' => 0,
+                            'max' => 32760
+                        ]
+                    ]
+                ]
+            ],
         ];
     }
 
