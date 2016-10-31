@@ -89,7 +89,18 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'filename' => [
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9,\.]*$/'
+                        ]
+                    ],
+                ]
+            ],
+        ];
     }
 
 }
