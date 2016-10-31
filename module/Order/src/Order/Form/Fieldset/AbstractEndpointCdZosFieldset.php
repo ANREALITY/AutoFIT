@@ -39,7 +39,25 @@ abstract class AbstractEndpointCdZosFieldset extends AbstractEndpointFieldset im
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'username' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'max' => 8
+                        ]
+                    ],
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9#@\$]*$/'
+                        ]
+                    ],
+                ]
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
