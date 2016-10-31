@@ -89,7 +89,15 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
     {
         $inputFilterSpecification = [
             'username' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'max' => 8
+                        ]
+                    ],
+                ]
             ],
             'server_toggle' => [
                 'required' => false

@@ -89,7 +89,15 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
     {
         $inputFilterSpecification = [
             'username' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'max' => 8
+                        ]
+                    ],
+                ]
             ],
             'server_toggle' => [
                 'required' => false
