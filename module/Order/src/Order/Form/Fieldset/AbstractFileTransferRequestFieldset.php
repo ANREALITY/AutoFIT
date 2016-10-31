@@ -155,7 +155,17 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 ],
             ],
             'application_technical_short_name' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'options' => [
+                            'table' => 'application',
+                            'field' => 'technical_short_name',
+                            'adapter' => $this->dbAdapter
+                        ]
+                    ]
+                ],
             ],
             'comment' => [
                 'required' => false,
