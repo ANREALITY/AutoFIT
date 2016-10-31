@@ -63,7 +63,21 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
     {
         $inputFilterSpecification = [
             'sharename' => [
-                'required' => true
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 4
+                        ]
+                    ],
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9,_+-]*$/'
+                        ]
+                    ],
+                ]
             ]
         ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
