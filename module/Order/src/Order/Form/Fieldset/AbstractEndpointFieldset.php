@@ -56,6 +56,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'field-server-place'
                 ]
             ]);
@@ -128,6 +129,9 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                         ]
                     ]
                 ]
+            ],
+            'server_place' => [
+                'required' => true
             ]
         ];
     }

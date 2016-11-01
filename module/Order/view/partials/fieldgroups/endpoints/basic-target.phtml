@@ -1,11 +1,17 @@
 <?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
 $fieldgroupName = 'basic-endpoint-target';
 $fieldgroupCssClass = 'col-md-6 fieldgroup-target';
 $fieldgroupTitle = $this->translate('Target - basic settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('role')),
     $this->formRow($endpointTargetFieldset->get('contact_person')),
-    $this->formRow($endpointTargetFieldset->get('server_place')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('server_place')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointTargetFieldset->get('server_place'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->formRow($applicationForTargetFieldset->get('technical_short_name')),
     $this->formRow($customerForTargetFieldset->get('name')),
     $this->formRow($endpointServerConfigForTargetFieldset->get('server')->get('name')),
