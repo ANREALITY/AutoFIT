@@ -45,9 +45,13 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
                 'type' => 'text',
                 'name' => 'name',
                 'options' => [
-                    'label' => _('environment')
+                    'label' => _('environment'),
+                    'label_attributes' => [
+                        'class' => 'required'
+                    ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control',
                     'id' => 'order' . '-' . 'environment-name'
                 ]
@@ -58,7 +62,7 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
     {
         return [
             'severity' => [
-                'required' => false,
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'Zend\Validator\Db\RecordExists',

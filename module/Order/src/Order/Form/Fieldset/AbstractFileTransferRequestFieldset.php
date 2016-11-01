@@ -44,7 +44,9 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'type' => 'text',
                 'options' => [
                     'label' => _('application'),
-                    'label_attributes' => []
+                    'label_attributes' => [
+                        'class' => 'required'
+                    ]
                 ],
                 'attributes' => [
                     'required' => 'required',
@@ -67,7 +69,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'options' => [
                     'label' => _('change number'),
                     'label_attributes' => [
-                        'class' => 'col-md-6'
+                        'class' => 'col-md-6 required'
                     ]
                 ],
                 'attributes' => [

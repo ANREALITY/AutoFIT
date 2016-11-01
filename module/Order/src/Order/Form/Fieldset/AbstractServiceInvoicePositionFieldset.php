@@ -33,7 +33,10 @@ abstract class AbstractServiceInvoicePositionFieldset extends Fieldset implement
                 'type' => 'text',
                 'name' => 'number',
                 'options' => [
-                    'label' => _('service invoice position number')
+                    'label' => _('service invoice position number'),
+                    'label_attributes' => [
+                        'class' => 'required'
+                    ]
                 ],
                 'attributes' => [
                     'required' => 'required',
