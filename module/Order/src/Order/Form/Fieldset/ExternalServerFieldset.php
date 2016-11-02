@@ -35,7 +35,7 @@ class ExternalServerFieldset extends Fieldset implements InputFilterProviderInte
                 'options' => [
                     'label' => _('external server'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required-conditionally'
                     ]
                 ],
                 'attributes' => [

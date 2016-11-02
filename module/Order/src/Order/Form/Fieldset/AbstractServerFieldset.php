@@ -35,7 +35,7 @@ abstract class AbstractServerFieldset extends Fieldset implements InputFilterPro
                 'options' => [
                     'label' => _('server name'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required-conditionally'
                     ]
                 ],
                 'attributes' => [

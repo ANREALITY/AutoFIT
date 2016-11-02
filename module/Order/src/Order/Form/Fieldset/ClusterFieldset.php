@@ -27,7 +27,7 @@ class ClusterFieldset extends AbstractClusterFieldset
             'options' => [
                 'label' => _('cluster\'s virtual node name'),
                 'label_attributes' => [
-                    'class' => 'col-md-12'
+                    'class' => 'col-md-12 required-conditionally'
                 ]
             ],
             'attributes' => [
