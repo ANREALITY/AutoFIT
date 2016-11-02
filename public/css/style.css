@@ -421,3 +421,8 @@ form.ftgw legend.required:before {
   content: '* ';
   color: #0099ff;
 }
+form label.required-conditionally:before,
+form legend.required-conditionally:before {
+  content: '* ';
+  color: #999999;
+}
