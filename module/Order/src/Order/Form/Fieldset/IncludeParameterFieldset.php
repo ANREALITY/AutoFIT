@@ -21,11 +21,25 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                 'options' => [
                     'label' => _('expression'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-11 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-expression'
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'remove-include-parameter',
+                'type' => 'button',
+                'options' => [
+                    'label' => '–'
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default button-remove remove-include-parameter-button',
+                    'value' => _('remove an include parameter')
                 ]
             ]);
     }
