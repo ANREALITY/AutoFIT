@@ -28,7 +28,7 @@ class AccessConfigSetFieldset extends Fieldset implements InputFilterProviderInt
                         'type' => 'Order\Form\Fieldset\AccessConfig'
                     ),
                     'label_attributes' => [
-                        'class' => 'col-md-12 access-configs'
+                        'class' => 'col-md-12 required access-configs'
                     ]
                 ]
             ]);

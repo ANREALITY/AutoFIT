@@ -21,10 +21,11 @@ class AccessConfigFieldset extends Fieldset implements InputFilterProviderInterf
                 'options' => [
                     'label' => _('username'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -77,7 +78,19 @@ class AccessConfigFieldset extends Fieldset implements InputFilterProviderInterf
 
     public function getInputFilterSpecification()
     {
-        return [];
+        return [
+            'username' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9\-]+\\\\[a-zA-Z0-9\-]+$/'
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
 }
