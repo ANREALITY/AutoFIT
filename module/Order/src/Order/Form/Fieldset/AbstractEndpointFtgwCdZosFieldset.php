@@ -32,7 +32,7 @@ abstract class AbstractEndpointFtgwCdZosFieldset extends AbstractEndpointFieldse
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control field-username'
+                    'class' => 'form-control field-username required'
                 ]
             ]);
     }
@@ -52,7 +52,7 @@ abstract class AbstractEndpointFtgwCdZosFieldset extends AbstractEndpointFieldse
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9#@\$]*$/'
+                            'pattern' => '/^[a-zA-Z0-9#]*$/'
                         ]
                     ],
                 ]
