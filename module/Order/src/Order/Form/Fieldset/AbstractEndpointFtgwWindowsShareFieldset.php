@@ -68,13 +68,32 @@ abstract class AbstractEndpointFtgwWindowsShareFieldset extends AbstractEndpoint
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 4
+                            'min' => 4,
+                            'max' => 13
                         ]
                     ],
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9,_+-]*$/'
+                            'pattern' => '/^[a-zA-Z0-9]*$/'
+                        ]
+                    ],
+                ]
+            ],
+            'folder' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 1,
+                            'max' => 15
+                        ]
+                    ],
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9-]*$/'
                         ]
                     ],
                 ]
