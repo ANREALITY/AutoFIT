@@ -27,7 +27,7 @@ abstract class AbstractEndpointCdZosFieldset extends AbstractEndpointFieldset im
                 'options' => [
                     'label' => _('username'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
