@@ -41,7 +41,7 @@ class FileParameterSetFieldset extends Fieldset implements InputFilterProviderIn
                     'label' => _('+')
                 ],
                 'attributes' => [
-                    'class' => 'btn btn-default',
+                    'class' => 'btn btn-default button-add',
                     'id' => 'add-file-parameter-button',
                     'value' => _('add an file parameter')
                 ]

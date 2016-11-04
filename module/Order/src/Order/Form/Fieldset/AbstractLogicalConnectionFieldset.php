@@ -100,7 +100,7 @@ abstract class AbstractLogicalConnectionFieldset extends Fieldset implements Inp
                     'label' => _('+')
                 ],
                 'attributes' => [
-                    'class' => 'btn btn-default',
+                    'class' => 'btn btn-default button-add',
                     'id' => 'add-notification-button',
                     'value' => _('add a notification')
                 ]

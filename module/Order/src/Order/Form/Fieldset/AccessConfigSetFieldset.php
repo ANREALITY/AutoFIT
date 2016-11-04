@@ -41,7 +41,7 @@ class AccessConfigSetFieldset extends Fieldset implements InputFilterProviderInt
                     'label' => _('+')
                 ],
                 'attributes' => [
-                    'class' => 'btn btn-default add-access-config-button',
+                    'class' => 'btn btn-default add-access-config-button button-add',
                     'value' => _('add an access config')
                 ]
             ]);
