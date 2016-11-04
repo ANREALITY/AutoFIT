@@ -7,6 +7,8 @@ use Zend\InputFilter\InputFilterProviderInterface;
 class IncludeParameterFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
+    const DEFAULT_EXPRESSION = '.*';
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct('include_parameter', $options);
@@ -26,6 +28,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                 ],
                 'attributes' => [
                     'required' => 'required',
+                    'value' => static::DEFAULT_EXPRESSION,
                     'class' => 'form-control field-expression'
                 ]
             ]);
