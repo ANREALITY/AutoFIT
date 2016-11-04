@@ -28,7 +28,7 @@ class FileParameterSetFieldset extends Fieldset implements InputFilterProviderIn
                         'type' => 'Order\Form\Fieldset\FileParameter'
                     ),
                     'label_attributes' => [
-                        'class' => 'col-md-12 file-parameters'
+                        'class' => 'col-md-12 required file-parameters'
                     ]
                 ]
             ]);
