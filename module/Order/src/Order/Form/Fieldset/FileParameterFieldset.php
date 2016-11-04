@@ -22,10 +22,11 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'options' => [
                     'label' => _('filename'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-filename'
                 ]
             ]);
@@ -37,10 +38,11 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'options' => [
                     'label' => _('record length'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-record-length'
                 ]
             ]);
@@ -91,16 +93,18 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
     {
         return [
             'filename' => [
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9,\.]*$/'
+                            'pattern' => '/^[A-Z0-9\.]*$/'
                         ]
                     ],
                 ]
             ],
             'record_length' => [
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'Digits'
@@ -109,7 +113,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                         'name' => 'Between',
                         'options' => [
                             'min' => 0,
-                            'max' => 32760
+                            'max' => 27926
                         ]
                     ]
                 ]
@@ -123,7 +127,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                         'name' => 'Between',
                         'options' => [
                             'min' => 0,
-                            'max' => 32760
+                            'max' => 27930
                         ]
                     ]
                 ]
