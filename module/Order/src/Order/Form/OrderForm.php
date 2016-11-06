@@ -3,6 +3,7 @@ namespace Order\Form;
 
 use Zend\Form\Form;
 use DbSystel\Validator\MinOneNotEmpty;
+use DbSystel\Validator\MaxOneNotEmpty;
 use Order\Form\Fieldset\EndpointFtgwSelfServiceSourceFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixSourceFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixTargetFieldset;
@@ -16,6 +17,8 @@ use Order\Form\Fieldset\EndpointFtgwWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwProtocolServerSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwProtocolServerTargetFieldset;
 
 class OrderForm extends Form
 {
@@ -98,8 +101,12 @@ class OrderForm extends Form
             $endpointSourceFieldset = $physicalConnectionFtgwEndToMiddleFieldset->get('endpoint_source');
             $endpointTargetFieldset = $physicalConnectionFtgwMiddleToEndFieldset->get('endpoint_target');
         }
-        $isValidEndpintSource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
-        $isValidEndpintTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
+        $minOneServerExternalServerOrClusterNotEmptySource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
+        $onesIpOrDnsNotEmptySource = $this->validateOnesIpOrDnsNotEmptySource($endpointSourceFieldset);
+        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource;
+        $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
+        $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
+        $isValidEndpintTarget = $minOneServerExternalServerOrClusterNotEmptyTarget && $onesIpOrDnsNotEmptyTarget;
         $isValid = $isValidBasic && $isValidEndpintSource && $isValidEndpintTarget;
         return $isValid;
     }
@@ -170,6 +177,52 @@ class OrderForm extends Form
 
         if (! $isValid) {
             $this->addErrorMessage('Neither a server (internal/external), nor a cluster is defined for the target endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateOnesIpOrDnsNotEmptySource(AbstractEndpointFieldset $endpointSourceFieldset)
+    {
+        $isValid = true;
+
+        $elementsSource = [];
+        if ($endpointSourceFieldset instanceof EndpointFtgwProtocolServerSourceFieldset) {
+            $elementsSource[] = $endpointSourceFieldset->get('ip');
+            $elementsSource[] = $endpointSourceFieldset->get('dns_address');
+        }
+
+        $minOneNotEmptyValidatorSource = new MinOneNotEmpty(['elements' => $elementsSource]);
+        $maxOneNotEmptyValidatorSource = new MaxOneNotEmpty(['elements' => $elementsSource]);
+
+        if ($endpointSourceFieldset instanceof EndpointFtgwProtocolServerSourceFieldset) {
+            $isValid = $minOneNotEmptyValidatorSource->isValid(null) && $maxOneNotEmptyValidatorSource->isValid(null);
+        }
+
+        if (! $isValid) {
+            $this->addErrorMessage('Either the IP or the DNS address (but only ones from them) may and must be defined for the source endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateOnesIpOrDnsNotEmptyTarget(AbstractEndpointFieldset $endpointTargetFieldset)
+    {
+        $isValid = true;
+
+        $elementsTarget = [];
+        if ($endpointTargetFieldset instanceof EndpointFtgwProtocolServerTargetFieldset) {
+            $elementsTarget[] = $endpointTargetFieldset->get('ip');
+            $elementsTarget[] = $endpointTargetFieldset->get('dns_address');
+        }
+
+        $minOneNotEmptyValidatorTarget = new MinOneNotEmpty(['elements' => $elementsTarget]);
+        $maxOneNotEmptyValidatorTarget = new MaxOneNotEmpty(['elements' => $elementsTarget]);
+
+        if ($endpointTargetFieldset instanceof EndpointFtgwProtocolServerTargetFieldset) {
+            $isValid = $minOneNotEmptyValidatorTarget->isValid(null) && $maxOneNotEmptyValidatorTarget->isValid(null);
+        }
+
+        if (! $isValid) {
+            $this->addErrorMessage('Either the IP or the DNS address (but only ones from them) may and must be defined for the target endpoint.');
         }
         return $isValid;
     }

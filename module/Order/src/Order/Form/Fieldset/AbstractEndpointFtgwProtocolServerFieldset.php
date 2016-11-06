@@ -57,7 +57,7 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
             'options' => [
                 'label' => _('DNS address'),
                 'label_attributes' => [
-                    'class' => 'col-md-12'
+                    'class' => 'col-md-12 required-conditionally'
                 ]
             ],
             'attributes' => [
@@ -72,7 +72,7 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 'options' => [
                     'label' => _('IP'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required-conditionally'
                     ]
                 ],
                 'attributes' => [
@@ -87,10 +87,11 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 'options' => [
                     'label' => _('port'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-port'
                 ]
             ]);
@@ -106,10 +107,37 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
+            'dns_address' => [
+                'required' => false,
+                'validators' => [
+                    [
+                        'name' => 'Regex',
+                        'options' => [
+                            'pattern' => '/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/'
+                        ]
+                    ],
+                ]
+            ],
             'ip' => [
+                'required' => false,
                 'validators' => [
                     [
                         'name' => 'Ip'
+                    ]
+                ]
+            ],
+            'port' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'Digits'
+                    ],
+                    [
+                        'name' => 'Between',
+                        'options' => [
+                            'min' => 0,
+                            'max' => 65535
+                        ]
                     ]
                 ]
             ]
