@@ -11,6 +11,7 @@ class Protocol extends AbstractDataObject
     const PROTOCOLS = [
         'FTP' => 'FTP',
         'FTPs' => 'FTPs',
+        'SFTP' => 'SFTP',
         // 'HTTP' => 'HTTP',
         'HTTPs' => 'HTTPs',
         'WebDAV' => 'WebDAV'
