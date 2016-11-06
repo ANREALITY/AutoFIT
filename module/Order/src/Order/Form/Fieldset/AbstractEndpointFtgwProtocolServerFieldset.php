@@ -126,7 +126,7 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
         $this->add(
             [
                 'name' => 'protocol_set',
-                'type' => 'Order\Form\Fieldset\ProtocolSet',
+                'type' => 'Order\Form\Fieldset\ProtocolSetProtocolServer',
                 'options' => []
             ]);
     }

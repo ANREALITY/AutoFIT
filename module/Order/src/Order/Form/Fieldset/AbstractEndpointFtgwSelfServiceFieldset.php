@@ -30,7 +30,7 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
         $this->add(
             [
                 'name' => 'protocol_set',
-                'type' => 'Order\Form\Fieldset\ProtocolSet',
+                'type' => 'Order\Form\Fieldset\ProtocolSetForSelfService',
                 'options' => []
             ]);
 

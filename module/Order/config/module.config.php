@@ -372,7 +372,8 @@ return [
             'Order\Form\Fieldset\FileTransferRequestFtgw' => false,
             'Order\Form\Fieldset\IncludeParameter' => false,
             'Order\Form\Fieldset\IncludeParameterSet' => false,
-            'Order\Form\Fieldset\ProtocolSet' => false,
+            'Order\Form\Fieldset\ProtocolSetForSelfService' => false,
+            'Order\Form\Fieldset\ProtocolSetForProtocolServer' => false,
             'Order\Form\Fieldset\LogicalConnectionCd' => false,
             'Order\Form\Fieldset\LogicalConnectionFtgw' => false,
             'Order\Form\Fieldset\Notification' => false,
@@ -407,7 +408,8 @@ return [
     ],
     'hydrators' => [
         'factories' => [
-            'DbSystel\Hydrator\ProtocolSetHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
+            'DbSystel\Hydrator\ProtocolSetForSelfServiceHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
+            'DbSystel\Hydrator\ProtocolSetForProtocolServerHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
             'DbSystel\Hydrator\ProtocolHydrator' => 'DbSystel\Hydrator\Factory\ProtocolHydratorFactory'
         ]
     ]

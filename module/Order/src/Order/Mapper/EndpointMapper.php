@@ -32,6 +32,8 @@ use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\EndpointFtgwCdZos;
 use DbSystel\DataObject\EndpointFtgwCdTandem;
 use DbSystel\DataObject\EndpointFtgwCdAs400;
+use DbSystel\DataObject\ProtocolSetForSelfService;
+use DbSystel\DataObject\ProtocolSetForProtocolServer;
 
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
@@ -1125,7 +1127,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 return $typeIsOk && $protocolExists;
             }, false);
         $ftgwSelfServiceProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_self_service_protocol_set__', 'id',
-            'endpoint__', new ProtocolSet(),
+            'endpoint__', new ProtocolSetForSelfService(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
                 $protocolExists = array_key_exists('endpoint_ftgw_self_service_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_self_service_protocol_set' . '__' . 'id']);
@@ -1139,7 +1141,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
                 return $typeIsOk && $protocolExists;
             }, false);
         $ftgwProtocolServerProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_protocol_server_protocol_set__', 'id',
-            'endpoint__', new ProtocolSet(),
+            'endpoint__', new ProtocolSetForProtocolServer(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
                 $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id']);

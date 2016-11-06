@@ -5,7 +5,7 @@ use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use DbSystel\DataObject\Protocol;
 
-class ProtocolSetFieldset extends Fieldset implements InputFilterProviderInterface
+class ProtocolSetForProtocolServerFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     const PROTOCOLS_DUMMY_VALUE = 0;
