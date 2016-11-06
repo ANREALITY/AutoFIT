@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-29 21:03+0200\n"
-"PO-Revision-Date: 2016-10-29 21:03+0200\n"
+"POT-Creation-Date: 2016-11-06 13:41+0100\n"
+"PO-Revision-Date: 2016-11-06 13:42+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -48,7 +48,7 @@ msgid "username"
 msgstr "Benutzername"
 
 #: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:70
 #: Order/view/order/process/list-my-orders.phtml:33
 #: Order/view/order/process/list-orders.phtml:24
 #: Order/view/partials/order-parts/billing.phtml:30
@@ -65,7 +65,6 @@ msgid "all resource types"
 msgstr "alle Ressource-Typen"
 
 #: AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:58
-#: Application/view/layout/layout.phtml:100
 #: Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
@@ -246,20 +245,26 @@ msgstr "extern"
 msgid "ProtocolServer"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:58
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:59
+msgid "address type"
+msgstr "Adresstyp"
+
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:63
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:84
 #: Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:73
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:68
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:99
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:60
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:60
 msgid "IP"
 msgstr ""
 
-#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:88
+#: Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:114
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:64
 #: Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
 msgid "port"
@@ -288,7 +293,7 @@ msgstr "Verbindungstyp"
 msgid "internal and external"
 msgstr "intern und extern"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:83
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
 #: Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
 #: Order/view/partials/list/summary.phtml:102
 #: Order/view/partials/order-parts/billing.phtml:16
@@ -297,7 +302,7 @@ msgstr "intern und extern"
 msgid "application"
 msgstr "Verfahren"
 
-#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:135
+#: Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:137
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
@@ -337,15 +342,15 @@ msgstr "Servername"
 msgid "service invoice position number"
 msgstr "LSP"
 
-#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:37
+#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:38
 msgid "read"
 msgstr "lesen"
 
-#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:52
+#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:53
 msgid "write"
 msgstr "schreiben"
 
-#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:67
+#: Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:68
 msgid "delete"
 msgstr "löschen"
 
@@ -359,7 +364,7 @@ msgstr "Zugriffseinstellungen"
 
 #: Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:45
 msgid "add an access config"
-msgstr ""
+msgstr "Zugriffseinstellungssatz hinzufügen"
 
 #: Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:20
 #: Order/src/Order/Form/Fieldset/ClusterFieldset.php:28
@@ -515,15 +520,15 @@ msgstr "externer Server"
 msgid "filename"
 msgstr "Dateiname"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:38
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:39
 msgid "record length"
 msgstr "Satzlänge"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:53
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:55
 msgid "blocking"
 msgstr "Blockung"
 
-#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:79
+#: Order/src/Order/Form/Fieldset/FileParameterFieldset.php:81
 msgid "block size (only for fixed blocking)"
 msgstr "Blockgröße (nur bei fester Blockung)"
 
@@ -537,9 +542,13 @@ msgstr "Dateiparameter"
 msgid "add an file parameter"
 msgstr "Dateiparameter hinzufügen"
 
-#: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:22
+#: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:24
 msgid "expression"
 msgstr "Ausdruck"
+
+#: Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:45
+msgid "remove an include parameter"
+msgstr ""
 
 #: Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:22
 #: Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:85
@@ -556,15 +565,15 @@ msgstr "Include-Parameter"
 msgid "add an include parameter"
 msgstr "Include-Parameter hinzufügen"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:23
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:22
 msgid "email"
 msgstr "Email"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:38
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:37
 msgid "successful"
 msgstr "erfolgreich"
 
-#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:53
+#: Order/src/Order/Form/Fieldset/NotificationFieldset.php:52
 msgid "failed"
 msgstr "fehlgeschlagen"
 
@@ -587,11 +596,11 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: Order/src/Order/Form/OrderForm.php:51
+#: Order/src/Order/Form/OrderForm.php:54
 msgid "save"
 msgstr "speichern"
 
-#: Order/src/Order/Form/OrderForm.php:61
+#: Order/src/Order/Form/OrderForm.php:64
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -779,23 +788,6 @@ msgstr "Ein Fehler ist aufgetreten"
 #: Application/view/layout/layout.phtml:17
 msgid "AutoFIT"
 msgstr ""
-
-#: Application/view/layout/layout.phtml:90
-msgid "home"
-msgstr "Startseite"
-
-#: Application/view/layout/layout.phtml:93
-#: Order/view/order/process/list-my-orders.phtml:6
-msgid "my orders"
-msgstr "Meine Bestellungen"
-
-#: Application/view/layout/layout.phtml:96
-msgid "master data"
-msgstr "Stammdaten"
-
-#: Application/view/layout/layout.phtml:103
-msgid "audit log"
-msgstr "Audit-Log"
 
 #: AuditLogging/view/audit-logging/index/list.phtml:6
 msgid "Audit log"
@@ -1020,6 +1012,10 @@ msgstr "abgelehnt"
 msgid "in edit"
 msgstr "in Bearbeitung"
 
+#: Order/view/order/process/list-my-orders.phtml:6
+msgid "my orders"
+msgstr "Meine Bestellungen"
+
 #: Order/view/order/process/list-my-orders.phtml:18
 msgid "check"
 msgstr "in Überprüfung"
@@ -1132,12 +1128,12 @@ msgstr "vom Quellsystem zum FTGW-Server"
 msgid "from the FTGW server to the target"
 msgstr "vom FTGW-Server zum Zielsystem"
 
-#: Order/view/partials/fieldgroups/endpoints/basic-source.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/basic-source.phtml:7
 #: Order/view/partials/order-parts/endpoints/basic-source.phtml:12
 msgid "Source - basic settings"
 msgstr "Quellsystem (Grundeinstellungen)"
 
-#: Order/view/partials/fieldgroups/endpoints/basic-target.phtml:4
+#: Order/view/partials/fieldgroups/endpoints/basic-target.phtml:7
 #: Order/view/partials/order-parts/endpoints/basic-target.phtml:12
 msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
@@ -1152,7 +1148,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-source.phtml:16
-#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-source.phtml:7
+#: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-source.phtml:19
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
 #: Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindowsshare-source.phtml:4
@@ -1582,6 +1578,15 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "home"
+#~ msgstr "Startseite"
+
+#~ msgid "master data"
+#~ msgstr "Stammdaten"
+
+#~ msgid "audit log"
+#~ msgstr "Audit-Log"
 
 #~ msgid "all types"
 #~ msgstr "alle Typen"

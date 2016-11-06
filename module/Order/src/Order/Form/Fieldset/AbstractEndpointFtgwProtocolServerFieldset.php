@@ -51,6 +51,33 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 ]
             ]);
 
+        $this->add(
+            [
+                'type' => 'radio',
+                'name' => 'address_toggle',
+                'options' => [
+                    'label' => _('address type'),
+                    'value_options' => [
+                        [
+                            'value' => 'dns_address',
+                            'label' => _('DNS address'),
+                            'selected' => true
+                        ],
+                        [
+                            'value' => 'ip',
+                            'label' => _('IP')
+                        ]
+                    ],
+                    'label_attributes' => [
+                        'class' => 'col-md-12'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'toggle-address'
+                ]
+            ]);
+
         $this->add([
             'name' => 'dns_address',
             'type' => 'text',
@@ -107,6 +134,9 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
+            'server_toggle' => [
+                'required' => false
+            ],
             'dns_address' => [
                 'required' => false,
                 'validators' => [

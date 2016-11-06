@@ -2,6 +2,18 @@
 use Zend\Form\View\Helper\FormMultiCheckbox;
 ?>
 <?php
+if (! empty($getHelperFieldsValuesFromObject)) {
+    $dataObject = $endpointTargetFieldset->getObject();
+    // setting value for address_toggle
+    if ($dataObject->getDnsAddress()) {
+        $valueAddressToggle = 'dns_address';
+    } else {
+        $valueAddressToggle = 'ip';
+    }
+    $endpointTargetFieldset->get('address_toggle')->setValue($valueAddressToggle);
+}
+?>
+<?php
 $fieldgroupName = 'specific-endpoint-target';
 $fieldgroupCssClass = 'col-md-6 fieldgroup-target';
 $fieldgroupTitle = $this->translate('Target - specific settings');
@@ -9,6 +21,10 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('type')),
     $this->formRow($endpointTargetFieldset->get('username')),
     $this->formRow($endpointTargetFieldset->get('folder')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('address_toggle')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointTargetFieldset->get('address_toggle'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->formRow($endpointTargetFieldset->get('dns_address')),
     $this->formRow($endpointTargetFieldset->get('ip')),
     $this->formRow($endpointTargetFieldset->get('port')),
@@ -26,3 +42,4 @@ echo $this->partial('/partials/fieldgroup',
         'emptyView' => false
     ]);
 ?>
+<?php $this->inlineScript()->appendFile('/js/ftgwprotocolserver-target-fields-dependency-management.js'); ?>
