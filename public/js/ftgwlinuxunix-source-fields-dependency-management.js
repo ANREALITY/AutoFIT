@@ -14,7 +14,6 @@ $(document).ready(function() {
 	fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
 	fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
-	fieldFetchInterval = $('#fieldgroup-specific-endpoint-source .field-fetch-interval');
 	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
 	infoBoxServerHintSource = $('#fieldgroup-basic-endpoint-source .server-hint');
 });
@@ -41,8 +40,6 @@ function toggleFieldServerSource(value) {
 			fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeIn('slow');
 			fieldTransmissionType.parent().parent().fadeIn('slow');
 			fieldTransmissionInterval.parent().fadeIn('slow');
-			fieldFetchInterval.val('');
-			fieldFetchInterval.parent().fadeOut('slow');
 		}
 		fieldClusterIdSource.val('');
 		fieldClusterVirtualNodeNameSource.val('');
@@ -56,7 +53,6 @@ function toggleFieldServerSource(value) {
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
 			fieldTransmissionInterval.val('');
 			fieldTransmissionInterval.parent().fadeOut('slow');
-			fieldFetchInterval.parent().fadeIn('slow');
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
@@ -77,8 +73,6 @@ function toggleFieldServerSource(value) {
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeIn('slow');
 			fieldTransmissionType.parent().parent().fadeIn('slow');
 			fieldTransmissionInterval.parent().fadeIn('slow');
-			fieldFetchInterval.val('');
-			fieldFetchInterval.parent().fadeOut('slow');
 		}
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
@@ -91,7 +85,6 @@ function toggleFieldServerSource(value) {
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
 			fieldTransmissionInterval.val('');
 			fieldTransmissionInterval.parent().fadeOut('slow');
-			fieldFetchInterval.parent().fadeIn('slow');
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}

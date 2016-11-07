@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-07 14:08+0100\n"
-"PO-Revision-Date: 2016-11-07 14:08+0100\n"
+"POT-Creation-Date: 2016-11-07 18:23+0100\n"
+"PO-Revision-Date: 2016-11-07 18:23+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -66,7 +66,7 @@ msgstr "anzeigen"
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:61
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:57
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:40
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:40
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:40
 msgid "username"
 msgstr "Benutzername"
@@ -94,7 +94,7 @@ msgstr "alle Ressource-Typen"
 #: module/Order/view/partials/list/summary.phtml:124
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:48
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:73
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:48
 msgid "servers"
 msgstr "Server"
@@ -180,7 +180,7 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:23
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:61
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:44
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:44
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:44
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:19
@@ -272,20 +272,20 @@ msgstr "Adresstyp"
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:63
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:85
 #: module/Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:68
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:100
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:60
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
 msgid "IP"
 msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:115
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:64
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "port"
 msgstr "Port"
@@ -390,7 +390,7 @@ msgstr "Zugriffseinstellungssatz hinzufügen"
 #: module/Order/src/Order/Form/Fieldset/ClusterFieldset.php:28
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:81
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:52
 msgid "cluster's virtual node name"
 msgstr "Virtueller Knotenname des Clusters"
@@ -429,7 +429,7 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:47
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:65
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:60
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:60
 msgid "transmission type"
 msgstr "Übertragungsart"
@@ -442,8 +442,7 @@ msgid "transmission interval"
 msgstr "Sendeintervall"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:95
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:111
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:136
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:95
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
 
@@ -495,15 +494,10 @@ msgstr ""
 #: module/Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:81
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:56
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:85
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:81
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:56
 msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
-
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:69
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:73
-msgid "fetch interval"
-msgstr "Abholintervall"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:14
 msgid "Source - ProtocolServer"
@@ -574,8 +568,8 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:85
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:51
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:76
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:89
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:72
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:85
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:64
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:40
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:72
 msgid "include parameters"
@@ -598,6 +592,7 @@ msgid "failed"
 msgstr "fehlgeschlagen"
 
 #: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:11
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
 msgid "protocol"
 msgstr "Protokoll"
@@ -605,7 +600,6 @@ msgstr "Protokoll"
 #: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:23
 #: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:11
 #: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:23
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:76
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
 msgid "protocols"
@@ -1192,7 +1186,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-source.phtml:12
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-source.phtml:18
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:50
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:45
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:37
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:28
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:29
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:57
@@ -1235,12 +1229,12 @@ msgid "Logical connection"
 msgstr "Logische Verbindung"
 
 #: module/Order/view/partials/info-boxes/crontab-info.phtml:4
-msgid "Crontab for the transmission / fetch interval"
-msgstr "Crontab für das Sende-/Abholintervall"
+msgid "Crontab for the transmission interval"
+msgstr "Crontab für das Sendeintervall"
 
 #: module/Order/view/partials/info-boxes/crontab-info.phtml:7
-msgid "For the field \"transmission interval\" is"
-msgstr "Für das Feld \"Sendeintervall\" ist"
+msgid "The default value is"
+msgstr "Der Standard-Wert"
 
 #: module/Order/view/partials/info-boxes/crontab-info.phtml:7
 #, php-format
@@ -1610,6 +1604,15 @@ msgstr "Protokoll-Server"
 #, php-format
 msgid "%s Initial setup of a FileGateway interface"
 msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+
+#~ msgid "For the field \"transmission interval\" is"
+#~ msgstr "Für das Feld \"Sendeintervall\" ist"
+
+#~ msgid "fetch interval"
+#~ msgstr "Abholintervall"
+
+#~ msgid "Crontab for the transmission / fetch interval"
+#~ msgstr "Crontab für das Sende-/Abholintervall"
 
 #~ msgid "all types"
 #~ msgstr "alle Typen"
