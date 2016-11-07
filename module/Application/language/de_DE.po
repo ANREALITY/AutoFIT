@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 15:26+0100\n"
-"PO-Revision-Date: 2016-11-06 15:27+0100\n"
+"POT-Creation-Date: 2016-11-07 14:08+0100\n"
+"PO-Revision-Date: 2016-11-07 14:08+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -67,7 +67,7 @@ msgstr "anzeigen"
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:57
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:40
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:40
 msgid "username"
 msgstr "Benutzername"
 
@@ -181,7 +181,7 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:61
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:44
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:44
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-source.phtml:36
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:19
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:68
@@ -273,20 +273,20 @@ msgstr "Adresstyp"
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:85
 #: module/Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:68
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:100
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:60
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:60
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
 msgid "IP"
 msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:115
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:64
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "port"
 msgstr "Port"
 
@@ -430,7 +430,7 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:65
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:68
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:60
 msgid "transmission type"
 msgstr "Übertragungsart"
 
@@ -441,9 +441,9 @@ msgstr "Übertragungsart"
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:94
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:110
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:135
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:95
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:111
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:136
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
 
@@ -500,7 +500,7 @@ msgstr ""
 msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:68
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:69
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:73
 msgid "fetch interval"
 msgstr "Abholintervall"
@@ -597,10 +597,15 @@ msgstr "erfolgreich"
 msgid "failed"
 msgstr "fehlgeschlagen"
 
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetFieldset.php:17
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetFieldset.php:27
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:11
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
+msgid "protocol"
+msgstr "Protokoll"
+
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:23
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:11
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:23
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:76
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:72
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
 msgid "protocols"
@@ -1218,7 +1223,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:12
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:54
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-target.phtml:33
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:45
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:37
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:28
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindows-target.phtml:12
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-target.phtml:40
@@ -1734,9 +1739,6 @@ msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 
 #~ msgid "Error reference: %s"
 #~ msgstr "Fehler-Referenz: %s"
-
-#~ msgid "protocol"
-#~ msgstr "Protokoll"
 
 #~ msgid "successful transfer"
 #~ msgstr "erfolgreiche Übertragung"
