@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="AutoFIT" default="full-build">
 
-	<property name="pdepend" value="/usr/share/.composer/vendor/bin/pdepend" />
-	<property name="phpmd" value="/usr/share/.composer/vendor/bin/phpmd" />
-	<property name="phpcpd" value="/usr/share/.composer/vendor/bin/phpcpd" />
-	<property name="phpcs" value="/usr/share/.composer/vendor/bin/phpcs" />
-	<property name="phploc" value="/usr/share/.composer/vendor/bin/phploc" />
-	<property name="phpdox" value="/usr/share/.composer/vendor/bin/phpdox" />
-	<property name="phpunit" value="./vendor/bin/phpunit" />
+	<property name="pdepend" value="./vendor/bin/pdepend" />
+	<property name="phpmd" value="./vendor/bin/phpmd" />
+	<property name="phpcpd" value="./vendor/bin/phpcpd" />
+	<property name="phpcs" value="./vendor/bin/phpcs" />
+	<property name="phploc" value="./vendor/bin/phploc" />
+	<property name="phpdox" value="./vendor/bin/phpdox" />
+    <property name="phpunit" value="./vendor/bin/phpunit" />
 	<!--
-	<property name="phpunit" value="$COMPOSER_HOME/vendor/bin/phpunit" />
-	<property name="phpunit" value="%COMPOSER_HOME%\vendor\bin\phpunit" />
+    <property name="phpunit" value="$COMPOSER_HOME/vendor/bin/phpunit" />
+    <property name="phpunit" value="%COMPOSER_HOME%\vendor\bin\phpunit" />
+	<property name="phpunit" value="./vendor/bin/phpunit" />
+	<property name="phpunit" value=".\vendor\bin\phpunit" />
+    <property name="phpunit" value="./vendor/phpunit/phpunit/phpunit" />
+    <property name="phpunit" value=".\vendor\phpunit\phpunit\phpunit" />
 	-->
 
 	<target name="full-build" depends="prepare,static-analysis,phpdox,phpunit,-check-failure" description="Performs static analysis, runs the tests, and generates project documentation." />
@@ -112,13 +116,48 @@
 		</exec>
 		<property name="phploc.done" value="true" />
 	</target>
-	<target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
-		<exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
-			<arg value="--configuration" />
-			<arg path="${basedir}/phpunit/phpunit.xml" />
-		</exec>
-		<property name="phpunit.done" value="true" />
-	</target>
+    <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
+        <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
+            <arg value="--configuration" />
+            <arg path="${basedir}/phpunit/phpunit.xml" />
+        </exec>
+        <property name="phpunit.done" value="true" />
+    </target>
+    <!--
+    <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
+        <exec executable="phpdbg" resultproperty="result.phpunit" taskname="phpunit">
+            <arg value="-qrr" />
+            <arg value="${phpunit}" />
+            <arg value="- -configuration" />
+            <arg path="${basedir}/phpunit/phpunit.xml" />
+        </exec>
+        <property name="phpunit.done" value="true" />
+    </target>
+    -->
+	<!--
+    <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
+        <exec executable="cmd" resultproperty="result.phpunit" taskname="phpunit">
+            <arg value="/c" />
+            <arg value="${phpunit}" />
+            <arg value="- -configuration" />
+            <arg path="${basedir}/phpunit/phpunit.xml" />
+        </exec>
+        <property name="phpunit.done" value="true" />
+    </target>
+	-->
+    <!--
+    <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
+        <exec executable="cmd" resultproperty="result.phpunit" taskname="phpunit">
+            <arg value="/c" />
+            <arg value="phpdbg" />
+            <arg value="-qrr" />                        
+            <arg value="${phpunit}" />
+            <arg value="- -configuration" />
+            <arg path="${basedir}/phpunit/phpunit.xml" />
+        </exec>
+        <property name="phpunit.done" value="true" />
+    </target>
+    -->
 	<target name="-check-failure">
 		<fail message="PHPUnit did not finish successfully">
 			<condition>
