@@ -134,7 +134,8 @@ class OrderForm extends Form
 
         $minOneNotEmptyValidatorSource = new MinOneNotEmpty(['elements' => $elementsSource]);
 
-        if ($endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset) {
+        if ($endpointSourceFieldset instanceof EndpointFtgwSelfServiceSourceFieldset
+            || $endpointSourceFieldset instanceof EndpointFtgwProtocolServerSourceFieldset) {
             $isValid = true;
         } else {
             $isValid = $minOneNotEmptyValidatorSource->isValid(null);
@@ -169,7 +170,8 @@ class OrderForm extends Form
 
         $minOneNotEmptyValidatorTarget = new MinOneNotEmpty(['elements' => $elementsTarget]);
 
-        if ($endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset) {
+        if ($endpointTargetFieldset instanceof EndpointFtgwSelfServiceTargetFieldset
+            || $endpointTargetFieldset instanceof EndpointFtgwProtocolServerTargetFieldset) {
             $isValid = true;
         } else {
             $isValid = $minOneNotEmptyValidatorTarget->isValid(null);
