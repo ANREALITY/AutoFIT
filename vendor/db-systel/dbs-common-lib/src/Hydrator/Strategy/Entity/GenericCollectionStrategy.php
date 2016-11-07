@@ -87,6 +87,10 @@ class GenericCollectionStrategy implements StrategyInterface
     public function hydrate($array)
     {
         $collection = [];
+        // hack for radio buttons
+        if (is_string($array)) {
+            $array = [$array];
+        }
         if (is_array($array)) {
             foreach ($array as $element) {
                 // the variant for non-array elements
