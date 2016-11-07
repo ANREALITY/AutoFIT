@@ -21,13 +21,18 @@ abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilt
     protected function getValueOptions()
     {
         $valueOptions = [];
-        foreach (Protocol::PROTOCOLS as $key => $value) {
+        foreach ($this->getProtocols() as $key => $value) {
             $valueOptions[] = [
                 'value' => $key,
                 'label' => $value
             ];
         }
         return $valueOptions;
+    }
+
+    protected function getProtocols()
+    {
+        return Protocol::PROTOCOLS;
     }
 
 }

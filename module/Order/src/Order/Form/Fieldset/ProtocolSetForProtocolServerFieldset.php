@@ -32,4 +32,13 @@ class ProtocolSetForProtocolServerFieldset extends AbstractProtocolSetFieldset
             ]);
     }
 
+    protected function getProtocols()
+    {
+        $protocols = parent::getProtocols();
+        if (array_key_exists('WebDAV', $protocols)) {
+            unset($protocols['WebDAV']);
+        }
+        return $protocols;
+    }
+
 }
