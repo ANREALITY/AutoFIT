@@ -34,7 +34,7 @@ $fieldgroupFormRows = [
     '<div class="form-field-wrapper col-md-12 add-button-container">' . $this->formRow(
         $endpointSourceFieldset->get('include_parameter_set')
             ->get('add_include_parameter')) . '</div>',
-    '<fieldset class="col-md-12">' . '<legend>' . $this->translate($endpointSourceFieldset->get('protocol_set')
+    '<fieldset class="col-md-12">' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
          $this->formMultiCheckbox($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
     '</fieldset>',

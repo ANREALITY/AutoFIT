@@ -25,6 +25,9 @@ abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilt
                         'class' => 'col-md-1 protocol-field'
                     ],
                     'value_options' => $this->getValueOptions()
+                ],
+                'attributes' => [
+                    'required' => 'required'
                 ]
             ]);
     }

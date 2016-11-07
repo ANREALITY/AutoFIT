@@ -28,7 +28,7 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('dns_address')),
     $this->formRow($endpointTargetFieldset->get('ip')),
     $this->formRow($endpointTargetFieldset->get('port')),
-    '<fieldset>' . '<legend>' . $this->translate($endpointTargetFieldset->get('protocol_set')
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
          $this->formMultiCheckbox($endpointTargetFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
     '</fieldset>',
