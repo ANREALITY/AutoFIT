@@ -51,10 +51,11 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
                 'options' => [
                     'label' => _('transmission interval'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-transmission-interval',
                     'value' => '0,15,30,45 * * * *'
                 ]
@@ -88,7 +89,7 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
     {
         $inputFilterSpecification = [
             'transmission_interval' => [
-                'required' => false,
+                'required' => true,
                 'filters' => [
                     [
                         'name' => 'Zend\Filter\StringTrim'
