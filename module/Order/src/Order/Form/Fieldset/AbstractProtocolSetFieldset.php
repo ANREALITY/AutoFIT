@@ -8,10 +8,6 @@ use DbSystel\DataObject\Protocol;
 abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    const PROTOCOLS_DUMMY_VALUE = 0;
-    
-    const PROTOCOLS_DUMMY_LABEL = 'dummy';
-    
     public function __construct($name = null, $options = [])
     {
         parent::__construct('protocol_set', ['label' => _('protocols')]);
@@ -28,15 +24,18 @@ abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilt
                     'label_attributes' => [
                         'class' => 'col-md-1 protocol-field'
                     ],
-                    'value_options' => $this->getValueOptions(),
-                    'selected' => static::PROTOCOLS_DUMMY_VALUE
+                    'value_options' => $this->getValueOptions()
                 ]
             ]);
     }
     
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'protocols' => [
+                'required' => true
+            ]
+        ];
         return array_merge([], $inputFilterSpecification);
     }
     
@@ -49,14 +48,6 @@ abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilt
                 'label' => $value
             ];
         }
-        $valueOptions[] = [
-            'value' => static::PROTOCOLS_DUMMY_VALUE,
-            'label' => static::PROTOCOLS_DUMMY_LABEL,
-            'selected' => true,
-            'label_attributes' => [
-                'class' => 'checkboxdummy'
-            ]
-        ];
         return $valueOptions;
     }
 
