@@ -8,30 +8,6 @@ use DbSystel\DataObject\Protocol;
 abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    public function __construct($name = null, $options = [])
-    {
-        parent::__construct('protocol_set', ['label' => _('protocols')]);
-    }
-    
-    public function init()
-    {
-        $this->add(
-            [
-                'type' => 'multi_checkbox',
-                'name' => 'protocols',
-                'options' => [
-                    'label' => _('protocols'),
-                    'label_attributes' => [
-                        'class' => 'col-md-1 protocol-field'
-                    ],
-                    'value_options' => $this->getValueOptions()
-                ],
-                'attributes' => [
-                    'required' => 'required'
-                ]
-            ]);
-    }
-    
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
@@ -41,7 +17,7 @@ abstract class AbstractProtocolSetFieldset extends Fieldset implements InputFilt
         ];
         return array_merge([], $inputFilterSpecification);
     }
-    
+
     protected function getValueOptions()
     {
         $valueOptions = [];

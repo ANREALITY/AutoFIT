@@ -36,7 +36,7 @@ $fieldgroupFormRows = [
             ->get('add_include_parameter')) . '</div>',
     '<fieldset class="col-md-12">' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
-         $this->formMultiCheckbox($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
+         $this->formRadio($endpointSourceFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
     '</fieldset>',
 ];
 echo $this->partial('/partials/fieldgroup',

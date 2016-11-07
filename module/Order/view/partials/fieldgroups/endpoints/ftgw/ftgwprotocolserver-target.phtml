@@ -30,7 +30,7 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('port')),
     '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
-         $this->formMultiCheckbox($endpointTargetFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
+         $this->formRadio($endpointTargetFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .
     '</fieldset>',
 ];
 echo $this->partial('/partials/fieldgroup',

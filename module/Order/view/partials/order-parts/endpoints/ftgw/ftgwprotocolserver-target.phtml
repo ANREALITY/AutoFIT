@@ -25,18 +25,10 @@ INCLUDE_PARAMETER;
 ?>
 <?php
 // protocols
-$protocolsOutput = '-';
+$protocolOutput = '-';
 if ($dataObject->getProtocolSet() && $dataObject->getProtocolSet()->getProtocols()) {
-    $protocolsOutput = '<ul class="protocols">';
-    $index = 0;
-    foreach ($dataObject->getProtocolSet()->getProtocols() as $protocol) {
-        $protocolsOutput .= <<<SERVER
-<li>
-    <span>{$protocol->getName()}<span>
-</li>
-SERVER;
-    }
-    $protocolsOutput .= '</ul>';
+    $protocol = $dataObject->getProtocolSet()->getProtocols()[0];
+    $protocolOutput = $protocol ? $protocol->getName() : '-' ;
 }
 ?>
 <?php
@@ -69,8 +61,8 @@ $orderPartAttributes = [
         'value' => $dataObject->getTransmissionType() ?: '-'
     ],
     [
-        'label' => $this->translate('protocols'),
-        'value' => $protocolsOutput
+        'label' => $this->translate('protocol'),
+        'value' => $protocolOutput
     ],
 ];
 echo $this->partial('/partials/order-part',
