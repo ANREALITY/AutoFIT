@@ -21,7 +21,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 'options' => [
                     'label' => _('email'),
                     'label_attributes' => [
-                        'class' => 'col-md-6'
+                        'class' => 'col-md-7'
                     ]
                 ],
                 'attributes' => [
@@ -56,6 +56,19 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                     'label_attributes' => [
                         'class' => 'col-md-2 notification-checkbox'
                     ]
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'remove-notification',
+                'type' => 'button',
+                'options' => [
+                    'label' => '–'
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default button-remove remove-notification-button',
+                    'value' => _('remove an notification')
                 ]
             ]);
     }

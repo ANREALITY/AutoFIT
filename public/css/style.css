@@ -208,8 +208,6 @@ form .protocol-field {
 /* the checkbox labels */
 form #fieldgroup-logical_connection .notification-checkbox {
   margin-top: 20px;
-  margin-left: 100px;
-  margin-right: -50px;
 }
 form input.input-error {
   color: #ff0000;

@@ -1,19 +1,37 @@
 /**
- * Dynamic adding of notification field(-set-)s.
+ * Dynamic adding & removing of notification field(-set-)s.
  */
 // Constants are supported in IE from v11. http://caniuse.com/#search=const
+const NOTIFICATIONS_MIN_NUMBER = 0;
 const NOTIFICATIONS_MAX_NUMBER = 5;
 $(document).ready(function() {
 	addNotificationButton = $('#add-notification-button');
 	addNotificationButton.on('click', addNotification);
+	removeNotificationButton = $('.remove-notification-button');
+	removeNotificationButton.on('click', removeNotification);
 });
 function addNotification() {
     var currentCount = $('#fieldgroup-logical_connection fieldset:first > fieldset').length;
+    console.log('add start | current:' + currentCount);
     var template = $('#fieldgroup-logical_connection fieldset:first > span').data('template');
     template = template.replace(/__index__/g, currentCount);
     if (currentCount < NOTIFICATIONS_MAX_NUMBER) {
         $('#fieldgroup-logical_connection fieldset:first').append(template);
+    	removeNotificationButton = $('.remove-notification-button');
+    	removeNotificationButton.on('click', removeNotification);
     }
+    currentCount = $('#fieldgroup-logical_connection fieldset:first > fieldset').length;
+    console.log('add stop | current:' + currentCount);
+    return false;
+}
+function removeNotification() {
+    var currentCount = $('#fieldgroup-logical_connection fieldset:first > fieldset').length;
+    console.log('remove start | current:' + currentCount);
+    if (currentCount > NOTIFICATIONS_MIN_NUMBER) {
+    	$(this).parent().remove();
+    }
+    currentCount = $('#fieldgroup-logical_connection fieldset:first > fieldset').length;
+    console.log('remove stop | current:' + currentCount);
     return false;
 }
 /**
