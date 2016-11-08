@@ -68,7 +68,7 @@ class NotificationFieldset extends Fieldset implements InputFilterProviderInterf
                 ],
                 'attributes' => [
                     'class' => 'btn btn-default button-remove remove-notification-button',
-                    'value' => _('remove an notification')
+                    'value' => _('remove a notification')
                 ]
             ]);
     }
