@@ -21,12 +21,25 @@ class AccessConfigFieldset extends Fieldset implements InputFilterProviderInterf
                 'options' => [
                     'label' => _('username'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-11 required'
                     ]
                 ],
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control'
+                ]
+            ]);
+
+        $this->add(
+            [
+                'name' => 'remove-access-config',
+                'type' => 'button',
+                'options' => [
+                    'label' => '–'
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default button-remove remove-access-config-button',
+                    'value' => _('remove an access config')
                 ]
             ]);
 
