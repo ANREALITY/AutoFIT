@@ -25,7 +25,7 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
                 'type' => 'text',
                 'name' => 'folder',
                 'options' => [
-                    'label' => _('interface directory'),
+                    'label' => _('folder'),
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
