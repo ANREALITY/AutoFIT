@@ -22,7 +22,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'options' => [
                     'label' => _('filename'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-11 required'
                     ]
                 ],
                 'attributes' => [
@@ -33,12 +33,25 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
 
         $this->add(
             [
+                'name' => 'remove-file-parameter',
+                'type' => 'button',
+                'options' => [
+                    'label' => '–'
+                ],
+                'attributes' => [
+                    'class' => 'btn btn-default button-remove remove-file-parameter-button',
+                    'value' => _('remove an file parameter')
+                ]
+            ]);
+
+        $this->add(
+            [
                 'name' => 'record_length',
                 'type' => 'text',
                 'options' => [
                     'label' => _('record length'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-11 required'
                     ]
                 ],
                 'attributes' => [
@@ -65,7 +78,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                         ]
                     ],
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-11'
                     ]
                 ],
                 'attributes' => [
@@ -80,7 +93,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'options' => [
                     'label' => _('block size (only for fixed blocking)'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-11'
                     ]
                 ],
                 'attributes' => [
