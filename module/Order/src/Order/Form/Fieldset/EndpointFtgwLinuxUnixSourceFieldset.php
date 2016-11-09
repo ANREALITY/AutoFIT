@@ -81,7 +81,7 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
                 ],
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Regex',
+                        'name' => 'Regex',
                         'options' => [
                             'pattern' => '/' . '^((0*([0-9]|[1-5][0-9])|\*)(-0*([0-9]|[1-5][0-9]))?(\/\d+)?,)*' .
                                  '(0*([0-9]|[1-5][0-9])|\*)(-0*([0-9]|[1-5][0-9]))?(\/\d+)?\s' .
