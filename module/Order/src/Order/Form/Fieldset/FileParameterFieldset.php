@@ -82,6 +82,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'field-blocking'
                 ]
             ]);
@@ -131,7 +132,11 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                     ]
                 ]
             ],
+            'blocking' => [
+                'required' => true,
+            ],
             'block_size' => [
+                'required' => false,
                 'validators' => [
                     [
                         'name' => 'Digits'
