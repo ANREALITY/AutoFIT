@@ -44,7 +44,7 @@ abstract class AbstractEndpointFtgwWindowsFieldset extends AbstractEndpointField
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9_-\\\\]*$/'
+                            'pattern' => '/^[a-zA-Z0-9_\-\\\\]*$/'
                         ]
                     ],
                 ]
