@@ -44,7 +44,7 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9,_+-\.\:\\\\]*$/'
+                            'pattern' => '/^[a-zA-Z0-9_-\\\\]*$/'
                         ]
                     ],
                 ]
