@@ -122,7 +122,8 @@ class OrderForm extends Form
         if (! $endpointSourceFieldset instanceof EndpointCdWindowsShareSourceFieldset
             && ! $endpointSourceFieldset instanceof EndpointFtgwWindowsShareSourceFieldset
             && ! $endpointSourceFieldset instanceof EndpointFtgwLinuxUnixSourceFieldset
-            && ! $endpointSourceFieldset instanceof EndpointFtgwWindowsSourceFieldset) {
+            && ! $endpointSourceFieldset instanceof EndpointFtgwWindowsSourceFieldset
+            && ! $endpointSourceFieldset instanceof EndpointFtgwProtocolServerSourceFieldset) {
             $elementsSource[] = $endpointSourceFieldset->get('external_server')->get('name');
         }
         if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
@@ -158,7 +159,8 @@ class OrderForm extends Form
         if (! $endpointTargetFieldset instanceof EndpointCdWindowsShareTargetFieldset
             && ! $endpointTargetFieldset instanceof EndpointFtgwWindowsShareTargetFieldset
             && ! $endpointTargetFieldset instanceof EndpointFtgwLinuxUnixTargetFieldset
-            && ! $endpointTargetFieldset instanceof EndpointFtgwWindowsTargetFieldset) {
+            && ! $endpointTargetFieldset instanceof EndpointFtgwWindowsTargetFieldset
+            && ! $endpointTargetFieldset instanceof EndpointFtgwProtocolServerTargetFieldset) {
             $elementsTarget[] = $endpointTargetFieldset->get('external_server')->get('name');
         }
         if ($endpointTargetFieldset instanceof EndpointCdLinuxUnixTargetFieldset) {
