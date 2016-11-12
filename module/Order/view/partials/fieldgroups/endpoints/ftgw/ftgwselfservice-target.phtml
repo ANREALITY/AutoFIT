@@ -7,7 +7,10 @@ $fieldgroupCssClass = 'col-md-6 fieldgroup-target';
 $fieldgroupTitle = $this->translate('Target - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('type')),
-    $this->formRow($endpointTargetFieldset->get('connection_type')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('connection_type')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointTargetFieldset->get('connection_type'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('protocol_set')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
          $this->formMultiCheckbox($endpointTargetFieldset->get('protocol_set')->get('protocols'), FormMultiCheckbox::LABEL_PREPEND) .

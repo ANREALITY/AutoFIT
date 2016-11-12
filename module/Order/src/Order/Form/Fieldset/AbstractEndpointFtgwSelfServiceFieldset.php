@@ -41,10 +41,11 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('FTWG user'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -56,10 +57,11 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('mailbox'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -88,13 +90,27 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'field-connection-type'
                 ]
             ]);
     }
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'ftgw_username' => [
+                'required' => true
+            ],
+            'mailbox' => [
+                'required' => true
+            ],
+            'connection_type' => [
+                'required' => true
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
