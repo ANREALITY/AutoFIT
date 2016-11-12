@@ -143,7 +143,8 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/'
+                            'pattern' => '/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/',
+                            'message' => _('The input does not match against the DNS pattern')
                         ]
                     ],
                 ]

@@ -110,9 +110,10 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'Regex',
+                        'name' => 'DbSystel\Validator\Regex',
                         'options' => [
-                            'pattern' => '/^[A-Z0-9\.]*$/'
+                            'pattern' => '/^[A-Z0-9\.]*$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "."'
                         ]
                     ],
                 ]

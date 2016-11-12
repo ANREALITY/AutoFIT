@@ -102,9 +102,10 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
             'folder' => [
                 'validators' => [
                     [
-                        'name' => 'Regex',
+                        'name' => 'DbSystel\Validator\Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9,_+-\.\/]*$/'
+                            'pattern' => '/^[a-zA-Z0-9,_+\-\.\/]*$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", ",", "_", "+", "-", ".", "/"'
                         ]
                     ],
                 ]
