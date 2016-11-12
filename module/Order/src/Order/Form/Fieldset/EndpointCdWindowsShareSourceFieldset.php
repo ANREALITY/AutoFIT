@@ -38,6 +38,10 @@ class EndpointCdWindowsShareSourceFieldset extends AbstractEndpointCdWindowsShar
                     'label_attributes' => [
                         'class' => 'col-md-12'
                     ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'field-transmission-type'
                 ]
             ]);
 
@@ -51,7 +55,11 @@ class EndpointCdWindowsShareSourceFieldset extends AbstractEndpointCdWindowsShar
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'transmission_type' => [
+                'required' => true
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
