@@ -27,7 +27,7 @@ abstract class AbstractEndpointFtgwWindowsShareFieldset extends AbstractEndpoint
                 'options' => [
                     'label' => _('sharename'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
@@ -43,10 +43,11 @@ abstract class AbstractEndpointFtgwWindowsShareFieldset extends AbstractEndpoint
                 'options' => [
                     'label' => _('interface directory'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
