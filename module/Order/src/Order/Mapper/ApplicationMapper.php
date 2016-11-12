@@ -60,8 +60,13 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
                             'application.active = ?' => $condition['active']
                         ]);
                 }
+                if (array_key_exists('with_invoice_positions_only', $condition) && $condition['with_invoice_positions_only'] === true) {
+                    $select->join('service_invoice', 'service_invoice.application_technical_short_name = application.technical_short_name');
+                }
             }
         }
+
+        $select->group('application.technical_short_name');
 
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
