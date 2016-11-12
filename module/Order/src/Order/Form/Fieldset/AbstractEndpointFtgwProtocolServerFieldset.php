@@ -27,7 +27,7 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 'options' => [
                     'label' => _('application user'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
@@ -43,10 +43,11 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 'options' => [
                     'label' => _('folder'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-folder'
                 ]
             ]);
@@ -134,8 +135,14 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
-            'server_toggle' => [
-                'required' => false
+            'username' => [
+                'required' => true
+            ],
+            'folder' => [
+                'required' => true
+            ],
+            'address_toggle' => [
+                'required' => true
             ],
             'dns_address' => [
                 'required' => false,

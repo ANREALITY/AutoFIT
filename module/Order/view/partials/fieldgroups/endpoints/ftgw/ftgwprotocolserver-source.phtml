@@ -28,7 +28,10 @@ $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('dns_address')),
     $this->formRow($endpointSourceFieldset->get('ip')),
     $this->formRow($endpointSourceFieldset->get('port')),
-    $this->formRow($endpointSourceFieldset->get('transmission_type')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('transmission_type')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointSourceFieldset->get('transmission_type'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')
         ->get('include_parameters')),
     '<div class="form-field-wrapper col-md-12 add-button-container">' . $this->formRow(
