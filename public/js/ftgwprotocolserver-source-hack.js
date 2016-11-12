@@ -12,7 +12,6 @@ $(document).ready(function() {
 		fieldEndpointSourceExternalServerName.val('');
 		fieldEndpointSourceExternalServerName.parent().fadeOut('slow');
 		infoBoxServerHintSource.fadeOut('slow');
-		console.log(12345);
 	});
 	fieldEndpointSourceServerPlace.filter(':checked').trigger('change');
 });;
