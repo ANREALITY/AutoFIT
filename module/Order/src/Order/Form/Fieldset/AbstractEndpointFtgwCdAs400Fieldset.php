@@ -26,7 +26,7 @@ abstract class AbstractEndpointFtgwCdAs400Fieldset extends AbstractEndpointField
                 'options' => [
                     'label' => _('application user'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [

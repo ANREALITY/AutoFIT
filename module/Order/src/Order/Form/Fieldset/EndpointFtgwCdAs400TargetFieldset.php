@@ -24,10 +24,11 @@ class EndpointFtgwCdAs400TargetFieldset extends AbstractEndpointFtgwCdAs400Field
                 'options' => [
                     'label' => _('folder'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-folder'
                 ]
             ]);
@@ -35,7 +36,11 @@ class EndpointFtgwCdAs400TargetFieldset extends AbstractEndpointFtgwCdAs400Field
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'folder' => [
+                'required' => true
+            ]
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 
