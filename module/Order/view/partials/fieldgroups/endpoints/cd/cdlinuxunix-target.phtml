@@ -1,4 +1,7 @@
 <?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
 if (! empty($getHelperFieldsValuesFromObject)) {
     $dataObject = $endpointTargetFieldset->getObject();
     // setting value for server_toggle
@@ -18,7 +21,10 @@ $fieldgroupFormRows = [
     $this->formRow($endpointTargetFieldset->get('type')),
     $this->formRow($endpointTargetFieldset->get('username')),
     $this->formRow($endpointTargetFieldset->get('folder')),
-    $this->formRow($endpointTargetFieldset->get('server_toggle')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointTargetFieldset->get('server_toggle')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointTargetFieldset->get('server_toggle'), FormMultiCheckbox::LABEL_APPEND) .
+        '</fieldset>',
     $this->partial('/partials/info-boxes/hint-cluster'),
     $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('id')),
     $this->formRow($endpointTargetFieldset->get('endpoint_cluster_config')->get('dns_address')),

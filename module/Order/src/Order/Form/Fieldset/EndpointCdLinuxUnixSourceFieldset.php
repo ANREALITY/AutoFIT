@@ -36,10 +36,11 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                         ]
                     ],
                     'label_attributes' => [
-                        'class' => 'col-md-12 '
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'field-transmission-type'
                 ]
             ]);
@@ -96,6 +97,9 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                         ]
                     ]
                 ]
+            ],
+            'transmission_type' => [
+                'required' => true
             ]
         ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);

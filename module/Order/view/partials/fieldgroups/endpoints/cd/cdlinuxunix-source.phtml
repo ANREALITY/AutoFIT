@@ -1,4 +1,7 @@
 <?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
 if (! empty($getHelperFieldsValuesFromObject)) {
     $dataObject = $endpointSourceFieldset->getObject();
     // setting value for server_toggle
@@ -18,10 +21,16 @@ $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('username')),
     $this->formRow($endpointSourceFieldset->get('folder')),
-    $this->formRow($endpointSourceFieldset->get('transmission_type')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('transmission_type')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointSourceFieldset->get('transmission_type'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->formRow($endpointSourceFieldset->get('transmission_interval')),
     $this->partial('/partials/info-boxes/crontab-info'),
-    $this->formRow($endpointSourceFieldset->get('server_toggle')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('server_toggle')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointSourceFieldset->get('server_toggle'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->partial('/partials/info-boxes/hint-cluster'),
     $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('id')),
     $this->formRow($endpointSourceFieldset->get('endpoint_cluster_config')->get('dns_address')),
