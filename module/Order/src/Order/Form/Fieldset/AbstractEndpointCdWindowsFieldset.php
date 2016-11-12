@@ -42,9 +42,10 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
             'folder' => [
                 'validators' => [
                     [
-                        'name' => 'Regex',
+                        'name' => 'DbSystel\Validator\Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9_:\-\\\\]*$/'
+                            'pattern' => '/^[a-zA-Z0-9_:\-\\\\]*$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", "_", ":", "-", "\\"',
                         ]
                     ],
                 ]
