@@ -27,7 +27,7 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                 'options' => [
                     'label' => _('sharename'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
