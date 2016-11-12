@@ -64,6 +64,8 @@ class AjaxController extends AbstractActionController
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
                 $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name'])->toArray();
                 $dataList = array_column($dataList, 'technical_short_name');
+            } else {
+                $dataList = [];
             }
         }
 
@@ -81,6 +83,8 @@ class AjaxController extends AbstractActionController
                 $data['name'] = isset($data['name']) ? $data['name'] : null;
                 $dataList = $this->environmentService->findAllByApplicationAndName(
                 $data['application_technical_short_name'], $data['name'])->toArray();
+            } else {
+                $dataList = [];
             }
         }
 
@@ -141,6 +145,8 @@ class AjaxController extends AbstractActionController
                 $dataList = $this->serviceInvoicePositionService->findAllBasicForAutocomplete(
                 $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
                 $dataList = array_column($dataList, 'number');
+            } else {
+                $dataList = [];
             }
         }
 
@@ -158,6 +164,8 @@ class AjaxController extends AbstractActionController
                 $dataList = $this->serviceInvoicePositionService->findAllPersonalForAutocomplete(
                 $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
                 $dataList = array_column($dataList, 'number');
+            } else {
+                $dataList = [];
             }
         }
 
