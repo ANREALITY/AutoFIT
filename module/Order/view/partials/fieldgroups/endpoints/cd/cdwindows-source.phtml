@@ -1,11 +1,17 @@
 <?php
+use Zend\Form\View\Helper\FormMultiCheckbox;
+?>
+<?php
 $fieldgroupName = 'specific-endpoint-source';
 $fieldgroupCssClass = 'col-md-6 fieldgroup-source';
 $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('folder')),
-    $this->formRow($endpointSourceFieldset->get('transmission_type')),
+    '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('transmission_type')
+        ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
+        $this->formRadio($endpointSourceFieldset->get('transmission_type'), FormMultiCheckbox::LABEL_APPEND) .
+    '</fieldset>',
     $this->formRow($endpointSourceFieldset->get('include_parameter_set')
         ->get('include_parameters')),
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(

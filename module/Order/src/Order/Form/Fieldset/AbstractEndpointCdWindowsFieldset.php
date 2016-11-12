@@ -27,10 +27,11 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
                 'options' => [
                     'label' => _('folder'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -40,6 +41,7 @@ abstract class AbstractEndpointCdWindowsFieldset extends AbstractEndpointFieldse
     {
         $inputFilterSpecification = [
             'folder' => [
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'DbSystel\Validator\Regex',
