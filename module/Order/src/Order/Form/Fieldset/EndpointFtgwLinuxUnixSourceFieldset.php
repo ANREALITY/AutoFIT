@@ -40,6 +40,7 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'field-transmission-type'
                 ]
             ]);
@@ -96,6 +97,9 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
                         ]
                     ]
                 ]
+            ],
+            'transmission_type' => [
+                'required' => true
             ]
         ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);

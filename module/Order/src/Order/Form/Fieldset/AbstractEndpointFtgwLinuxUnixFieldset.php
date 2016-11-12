@@ -27,7 +27,7 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
                 'options' => [
                     'label' => _('application user'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
@@ -43,10 +43,11 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
                 'options' => [
                     'label' => _('folder'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control field-folder'
                 ]
             ]);
@@ -73,6 +74,7 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'toggle-server'
                 ]
             ]);
@@ -100,6 +102,7 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
                 ]
             ],
             'folder' => [
+                'required' => true,
                 'validators' => [
                     [
                         'name' => 'DbSystel\Validator\Regex',
@@ -111,7 +114,7 @@ abstract class AbstractEndpointFtgwLinuxUnixFieldset extends AbstractEndpointFie
                 ]
             ],
             'server_toggle' => [
-                'required' => false
+                'required' => true
             ]
         ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
