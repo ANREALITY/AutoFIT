@@ -25,10 +25,11 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
                 'options' => [
                     'label' => _('contact person'),
                     'label_attributes' => [
-                        'class' => 'col-md-12'
+                        'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
+                    'required' => 'required',
                     'class' => 'form-control',
                     'maxlength' => static::CONTACT_PERCON_MAX_LENGTH
                 ]
@@ -117,6 +118,7 @@ abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterP
     {
         return [
             'contact_person' => [
+                'required' => true,
                 'filters' => [
                     [
                         'name' => 'Callback',
