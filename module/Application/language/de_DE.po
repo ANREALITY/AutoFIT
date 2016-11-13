@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-07 18:23+0100\n"
-"PO-Revision-Date: 2016-11-07 18:23+0100\n"
+"POT-Creation-Date: 2016-11-12 13:45+0100\n"
+"PO-Revision-Date: 2016-11-12 13:45+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -161,6 +161,7 @@ msgid "LinuxUnix"
 msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:44
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:44
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:44
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:28
@@ -214,12 +215,6 @@ msgstr ""
 msgid "Windows"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:28
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:44
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsShareFieldset.php:44
-msgid "interface directory"
-msgstr "Schnittstellenverzeichnis"
-
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:16
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsShareFieldset.php:16
 msgid "WindowsShare"
@@ -233,6 +228,11 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-target.phtml:47
 msgid "sharename"
 msgstr "Sharename"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:44
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsShareFieldset.php:44
+msgid "interface directory"
+msgstr "Schnittstellenverzeichnis"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:16
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:16
@@ -289,6 +289,10 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "port"
 msgstr "Port"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:147
+msgid "The input does not match against the DNS pattern"
+msgstr "Die Eingabe entspricht nicht dem DNS-Muster."
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:23
 msgid "Self-Service"
@@ -362,15 +366,19 @@ msgstr "Servername"
 msgid "service invoice position number"
 msgstr "LSP"
 
-#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:38
+#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:42
+msgid "remove an access config"
+msgstr ""
+
+#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:51
 msgid "read"
 msgstr "lesen"
 
-#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:53
+#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:66
 msgid "write"
 msgstr "schreiben"
 
-#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:68
+#: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:81
 msgid "delete"
 msgstr "löschen"
 
@@ -534,15 +542,19 @@ msgstr "externer Server"
 msgid "filename"
 msgstr "Dateiname"
 
-#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:39
+#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:43
+msgid "remove an file parameter"
+msgstr ""
+
+#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:52
 msgid "record length"
 msgstr "Satzlänge"
 
-#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:55
+#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:68
 msgid "blocking"
 msgstr "Blockung"
 
-#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:81
+#: module/Order/src/Order/Form/Fieldset/FileParameterFieldset.php:95
 msgid "block size (only for fixed blocking)"
 msgstr "Blockgröße (nur bei fester Blockung)"
 
@@ -590,6 +602,10 @@ msgstr "erfolgreich"
 #: module/Order/src/Order/Form/Fieldset/NotificationFieldset.php:52
 msgid "failed"
 msgstr "fehlgeschlagen"
+
+#: module/Order/src/Order/Form/Fieldset/NotificationFieldset.php:71
+msgid "remove a notification"
+msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:11
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
