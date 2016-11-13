@@ -156,17 +156,6 @@ return [
                     ]
                 ]
             ],
-            'list-my-orders' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => [
-                    'route' => '/list-my-orders[/page/:page]',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'listMyOrders',
-                        'page' => 1
-                    ]
-                ]
-            ],
             'list-orders' => [
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => [
@@ -178,6 +167,17 @@ return [
                     ]
                 ]
             ],
+            'list-my-orders' => [
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => [
+                    'route' => '/list-my-orders[/page/:page]',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Process',
+                        'action' => 'listMyOrders',
+                        'page' => 1
+                    ]
+                ]
+            ],
             'provide-applications' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
@@ -185,6 +185,16 @@ return [
                     'defaults' => [
                         'controller' => 'Order\Controller\Ajax',
                         'action' => 'provideApplications'
+                    ]
+                ]
+            ],
+            'provide-service-invoice-positions' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-service-invoice-positions',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServiceInvoicePositions'
                     ]
                 ]
             ],
@@ -218,26 +228,6 @@ return [
                     ]
                 ]
             ],
-            'provide-servers' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-servers',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServers'
-                    ]
-                ]
-            ],
-            'provide-service-invoice-positions' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-service-invoice-positions',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServiceInvoicePositions'
-                    ]
-                ]
-            ],
             'provide-clusters' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => [
@@ -245,6 +235,16 @@ return [
                     'defaults' => [
                         'controller' => 'Order\Controller\Ajax',
                         'action' => 'provideclusters'
+                    ]
+                ]
+            ],
+            'provide-servers' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-servers',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideServers'
                     ]
                 ]
             ]

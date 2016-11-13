@@ -9,26 +9,6 @@
 return [
     'router' => [
         'routes' => [
-            'home' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => [
-                    'route' => '/',
-                    'defaults' => [
-                        'controller' => 'Application\Controller\Index',
-                        'action' => 'index'
-                    ]
-                ]
-            ],
-            'error403' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => [
-                    'route' => '/error/403',
-                    'defaults' => [
-                        'controller' => 'Application\Controller\Error',
-                        'action' => 'error403'
-                    ]
-                ]
-            ],
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -57,7 +37,27 @@ return [
                         ]
                     ]
                 ]
-            ]
+            ],
+            'error403' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/error/403',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Error',
+                        'action' => 'error403'
+                    ]
+                ]
+            ],
+            'home' => [
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => [
+                    'route' => '/',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index'
+                    ]
+                ]
+            ],
         ]
     ],
     'service_manager' => [
