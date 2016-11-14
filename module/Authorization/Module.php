@@ -19,13 +19,16 @@ class Module
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\ClassMapAutoloader' => [
+                __DIR__ . '/../../data/cache' . '/' . 'autoload_classmap.application.php',
+            ],
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                )
-            )
-        );
+                ]
+            ]
+        ];
     }
 
     public function onBootstrap(EventInterface $event)
