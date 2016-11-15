@@ -47,7 +47,6 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('server');
-        $select->limit(25);
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
