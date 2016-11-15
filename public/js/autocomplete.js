@@ -1,6 +1,7 @@
 /**
  * Autocompletion for the field order-application-number.
  */
+const AUTOCOMPLETE_APPLICATIONS_LIMIT = 25;
 $(function() {
 	$(".autocomplete-application")
 		.autocomplete({
@@ -13,7 +14,7 @@ $(function() {
 					+ "data[technical_short_name]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_APPLICATIONS_LIMIT));
 					}
 				);
 			}
@@ -26,6 +27,7 @@ $(function() {
 /**
  * Autocompletion for the field order-environment-name.
  */
+const AUTOCOMPLETE_ENVIRONMENTS_LIMIT = 25;
 $(function() {
 	$("#order-environment-name")
 		.autocomplete({
@@ -66,6 +68,7 @@ $(function() {
 /**
  * Autocompletion for the field order-service-invoice-position-basic-number.
  */
+const AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_BASIC_LIMIT = 25;
 $(function() {
 	$("#order-service-invoice-position-basic-number")
 		.autocomplete({
@@ -80,7 +83,7 @@ $(function() {
 					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_BASIC_LIMIT));
 					}
 				);
 			}
@@ -93,6 +96,7 @@ $(function() {
 /**
  * Autocompletion for the field order-service-invoice-position-personal-number.
  */
+const AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_PERSONAL_LIMIT = 25;
 $(function() {
 	$("#order-service-invoice-position-personal-number")
 		.autocomplete({
@@ -107,7 +111,7 @@ $(function() {
 					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_PERSONAL_LIMIT));
 					}
 				);
 			}
@@ -120,6 +124,7 @@ $(function() {
 /**
  * Autocompletion for the field (billing|physical-connection-endpoint-source)-server-name.
  */
+const AUTOCOMPLETE_SERVERS_SOUCE_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServerSource = function() {
 	var physicalConnectionEndpointSourceServerName = $('.fieldgroup-source .autocomplete-server');
@@ -136,7 +141,7 @@ var initAutocompleteServerSource = function() {
 					+ '&' + "data[endpoint_type_name]=" + physicalConnectionEndpointSourceType.val(),
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVERS_SOUCE_LIMIT));
 					}
 				);
 			}
@@ -152,6 +157,7 @@ $(document).ready(function() {
 /**
  * Autocompletion for the field (billing|physical-connection-endpoint-target)-server-name.
  */
+const AUTOCOMPLETE_SERVERS_TARGET_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServerTarget = function() {
 	var physicalConnectionEndpointTargetServerName = $('.fieldgroup-target .autocomplete-server');
@@ -168,7 +174,7 @@ var initAutocompleteServerTarget = function() {
 					+ '&' + "data[endpoint_type_name]=" + physicalConnectionEndpointTargetType.val(),
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVERS_TARGET_LIMIT));
 					}
 				);
 			}
@@ -184,6 +190,7 @@ $(document).ready(function() {
 /**
  * Autocompletion for the field server-name.
  */
+const AUTOCOMPLETE_SERVERS_NOT_IN_USE_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServerNotInCdUse = function() {
 	var serverNotInCdUseName = $('.fieldgroup-server .autocomplete-server');
@@ -198,7 +205,7 @@ var initAutocompleteServerNotInCdUse = function() {
 					+ "data[name]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVERS_NOT_IN_USE_LIMIT));
 					}
 				);
 			}
@@ -214,6 +221,7 @@ $(document).ready(function() {
 /**
  * Autocompletion for the field cluster-server-name.
  */
+const AUTOCOMPLETE_SERVERS_NOT_IN_CLUSTER_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteClusterServer = function() {
 	var clusterServerName = $('#fieldgroup-cluster .autocomplete-server');
@@ -228,7 +236,7 @@ var initAutocompleteClusterServer = function() {
 					+ "data[name]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_SERVERS_NOT_IN_CLUSTER_LIMIT));
 					}
 				);
 			}
@@ -244,6 +252,7 @@ $(document).ready(function() {
 /**
  * Autocompletion for the field username.
  */
+const AUTOCOMPLETE_USERS_LIMIT = 25;
 $(function() {
 	$(".autocomplete-username")
 		.autocomplete({
@@ -256,7 +265,7 @@ $(function() {
 					+ "data[username]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_USERS_LIMIT));
 					}
 				);
 			}
@@ -269,6 +278,7 @@ $(function() {
 /**
  * Autocompletion for the field username.
  */
+const AUTOCOMPLETE_FILE_TRANSFER_REQUESTS_LIMIT = 25;
 $(function() {
 	$(".autocomplete-change-number")
 		.autocomplete({
@@ -281,7 +291,7 @@ $(function() {
 					+ "data[change_number]=" + request.term,
 					{},
 					function(data) {
-						response(data.slice(0, 25));
+						response(data.slice(0, AUTOCOMPLETE_FILE_TRANSFER_REQUESTS_LIMIT));
 					}
 				);
 			}
