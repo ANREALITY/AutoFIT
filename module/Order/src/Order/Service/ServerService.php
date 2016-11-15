@@ -10,6 +10,8 @@ use Zend\Db\Sql\Where;
 class ServerService extends AbstractService implements ServerServiceInterface
 {
 
+    const LIMIT_AUTOCOMPLETE = 25;
+
     /**
      *
      * @var ServerMapperInterface
@@ -37,7 +39,8 @@ class ServerService extends AbstractService implements ServerServiceInterface
                 [
                     'name' => $name,
                     'active' => true,
-                    'endpoint_type_name' => $endpointTypeName
+                    'endpoint_type_name' => $endpointTypeName,
+                    'limit' => self::LIMIT_AUTOCOMPLETE
                 ]
             ]);
     }
@@ -57,6 +60,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'node_name' => null,
                     'virtual_node_name' => null,
                     'cluster_id' => null,
+                    'limit' => self::LIMIT_AUTOCOMPLETE
                 ]
             ]);
     }
@@ -76,6 +80,7 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'node_name' => null,
                     'virtual_node_name' => null,
                     'cluster_id' => null,
+                    'limit' => self::LIMIT_AUTOCOMPLETE
                 ]
             ]);
     }

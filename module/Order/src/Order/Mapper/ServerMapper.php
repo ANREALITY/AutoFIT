@@ -47,6 +47,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('server');
+        $select->limit(25);
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
@@ -95,6 +96,9 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                     $select->where->expression(
                         'LOWER(endpoint_type.name) = LOWER(?)', $condition['endpoint_type_name']
                     );
+                }
+                if (array_key_exists('limit', $condition)) {
+                    $select->limit($condition['limit']);
                 }
             }
         }
