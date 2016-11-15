@@ -1,0 +1,10 @@
+<?php
+return [
+    'module' => [
+        'audit-logging' => [
+            'pagination' => [
+                'items_per_page' => 50
+            ]
+        ]
+    ]
+];
