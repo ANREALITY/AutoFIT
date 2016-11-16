@@ -65,7 +65,7 @@ class Cluster extends AbstractDataObject
      *
      * @param string $virtualNodeName
      */
-    public function setVirtualNodeName(string $virtualNodeName)
+    public function setVirtualNodeName($virtualNodeName)
     {
         $this->virtualNodeName = $virtualNodeName;
     }
