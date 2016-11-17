@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-12 13:45+0100\n"
-"PO-Revision-Date: 2016-11-12 13:45+0100\n"
+"POT-Creation-Date: 2016-11-17 15:23+0100\n"
+"PO-Revision-Date: 2016-11-17 15:23+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -73,7 +73,7 @@ msgstr "Benutzername"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:70
-#: module/Order/view/order/process/list-my-orders.phtml:33
+#: module/Order/view/order/process/list-my-orders.phtml:34
 #: module/Order/view/order/process/list-orders.phtml:24
 #: module/Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
@@ -190,18 +190,18 @@ msgstr ""
 msgid "folder"
 msgstr "Verzeichnis"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:59
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:59
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:60
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:60
 msgid "server variant"
 msgstr "Server-Vatiante"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:63
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:63
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:64
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:64
 msgid "single server (s. basic settings)"
 msgstr "einziger Server (s. Basis-Einstellungen)"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:68
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:68
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:69
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:69
 msgid "multiple servers"
 msgstr "mehrere Server"
 
@@ -245,19 +245,19 @@ msgstr ""
 msgid "contact person"
 msgstr "Ansprechpartner"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:42
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:43
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:19
 #: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:19
 msgid "server place"
 msgstr "Serverstandort"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:46
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:76
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:47
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:78
 msgid "internal"
 msgstr "intern"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:51
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:81
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:52
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:83
 msgid "external"
 msgstr "extern"
 
@@ -265,32 +265,32 @@ msgstr "extern"
 msgid "ProtocolServer"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:59
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:60
 msgid "address type"
 msgstr "Adresstyp"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:63
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:85
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:64
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:86
 #: module/Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:68
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:100
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:69
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:101
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
 msgid "IP"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:115
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:116
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "port"
 msgstr "Port"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:147
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:154
 msgid "The input does not match against the DNS pattern"
 msgstr "Die Eingabe entspricht nicht dem DNS-Muster."
 
@@ -302,18 +302,18 @@ msgstr ""
 msgid "FTWG user"
 msgstr "FTGW User"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:57
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:58
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:43
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:43
 msgid "mailbox"
 msgstr "Mailbox"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:72
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:74
 #: module/Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:85
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:87
 msgid "internal and external"
 msgstr "intern und extern"
 
@@ -442,15 +442,15 @@ msgstr ""
 msgid "transmission type"
 msgstr "Übertragungsart"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:52
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:52
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:53
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:53
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:69
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:69
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:95
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:95
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:96
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:96
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
 
@@ -1064,19 +1064,23 @@ msgstr "in Überprüfung"
 msgid "processing"
 msgstr "in Bearbeitung"
 
-#: module/Order/view/order/process/list-my-orders.phtml:32
+#: module/Order/view/order/process/list-my-orders.phtml:22
+msgid "pending"
+msgstr "eingereicht"
+
+#: module/Order/view/order/process/list-my-orders.phtml:33
 #: module/Order/view/order/process/list-orders.phtml:23
 msgid "request ID"
 msgstr "Antrag-ID"
 
-#: module/Order/view/order/process/list-my-orders.phtml:34
+#: module/Order/view/order/process/list-my-orders.phtml:35
 #: module/Order/view/order/process/list-orders.phtml:25
 msgid "request summary"
 msgstr "Anfragszusammenfassung"
 
 #: module/Order/view/order/process/operation-denied-for-status.phtml:4
 msgid "edit"
-msgstr "in Bearbeitung"
+msgstr "in Erfassung"
 
 #: module/Order/view/order/process/operation-denied-for-status.phtml:5
 #: module/Order/view/partials/order-buttons/buttons.phtml:21
@@ -1179,15 +1183,15 @@ msgid "Target - basic settings"
 msgstr "Zielsystem (Grundeinstellungen)"
 
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdas400-source.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:16
+#: module/Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-source.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdtandem-source.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:4
+#: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:7
+#: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:7
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdzos-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdas400-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-source.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-source.phtml:16
+#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-source.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-source.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-source.phtml:7
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-source.phtml:4
@@ -1210,7 +1214,7 @@ msgid "Source - specific settings"
 msgstr "Quellsystem (spezifische Einstellungen)"
 
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdas400-target.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:16
+#: module/Order/view/partials/fieldgroups/endpoints/cd/cdlinuxunix-target.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdtandem-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindows-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-target.phtml:4
@@ -1218,7 +1222,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdas400-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-target.phtml:4
-#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-target.phtml:16
+#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwlinuxunix-target.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwprotocolserver-target.phtml:19
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwselfservice-target.phtml:7
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwwindows-target.phtml:4
