@@ -75,6 +75,8 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
             }
         }
 
+        $select->group('environment.severity');
+
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
 
