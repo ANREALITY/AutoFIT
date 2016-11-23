@@ -9,7 +9,8 @@ $fieldgroupFormRows = [
         ->get('include_parameters')),
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
         $endpointSourceFieldset->get('include_parameter_set')
-            ->get('add_include_parameter')) . '</div>'
+            ->get('add_include_parameter')) . '</div>',
+    $this->partial('/partials/info-boxes/include-parameter-info')
 ];
 echo $this->partial('/partials/fieldgroup',
     [
