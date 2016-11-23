@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 12:25+0100\n"
-"PO-Revision-Date: 2016-11-23 12:25+0100\n"
+"POT-Creation-Date: 2016-11-23 13:14+0100\n"
+"PO-Revision-Date: 2016-11-23 13:14+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1042,6 +1042,7 @@ msgid "completed"
 msgstr "fertiggestellt"
 
 #: module/Order/view/order/process/create.phtml:172
+#: module/Order/view/order/process/edit.phtml:206
 #, php-format
 msgid "The fields marked with %s are mandatory."
 msgstr "Die mit %s markierten Felder sind Pflicht-Felder."
@@ -1385,6 +1386,14 @@ msgid ""
 msgstr ""
 "Um den virtuellen Knotennamen des Servers zu setzen, nutzen Sie bitte das "
 "%sServer-Stammdaten-Formular%s."
+
+#: module/Order/view/partials/info-boxes/include-parameter-info.phtml:4
+msgid "Hint to the input"
+msgstr "Hinweis zur Eingabe"
+
+#: module/Order/view/partials/info-boxes/include-parameter-info.phtml:7
+msgid "filename / sample"
+msgstr "Dateiname / -muster"
 
 #: module/Order/view/partials/list/summary.phtml:105
 #: module/Order/view/partials/list/summary.phtml:121

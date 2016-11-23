@@ -18,6 +18,7 @@ $fieldgroupFormRows = [
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
         $endpointSourceFieldset->get('include_parameter_set')
             ->get('add_include_parameter')) . '</div>',
+    $this->partial('/partials/info-boxes/include-parameter-info'),
     $this->formRow($endpointSourceFieldset->get('access_config_set')
         ->get('access_configs')),
     '<div class="form-field-wrapper col-md-6 add-button-container">' . $this->formRow(
