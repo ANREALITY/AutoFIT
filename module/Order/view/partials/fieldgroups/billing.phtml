@@ -2,6 +2,12 @@
 $fieldgroupName = 'billing';
 $fieldgroupCssClass = 'col-md-12';
 $fieldgroupTitle = $this->translate('Billing');
+
+// change number hack
+if ($action === 'edit') {
+    $fileTransferRequestFieldset->get('change_number')->setAttribute('readonly', 'readonly');
+}
+
 $fieldgroupFormRows = [
     $this->formRow($fileTransferRequestFieldset->get('id')),
     '<div class="form-field-wrapper col-md-6">' . $this->formRow(
