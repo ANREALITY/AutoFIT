@@ -98,8 +98,8 @@ class AccessConfigFieldset extends Fieldset implements InputFilterProviderInterf
                     [
                         'name' => 'DbSystel\Validator\Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9\-]+\\\\[a-zA-Z0-9\-]+$/',
-                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", "-", "\"'
+                            'pattern' => '/^[a-zA-Z0-9]+\\\\[a-zA-Z0-9]+$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", "\"'
                         ]
                     ]
                 ]
