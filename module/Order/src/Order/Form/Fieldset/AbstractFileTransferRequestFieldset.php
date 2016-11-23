@@ -43,7 +43,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'name' => 'application_technical_short_name',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('application'),
+                    'label' => _('application according to TransICT'),
                     'label_attributes' => [
                         'class' => 'required'
                     ]

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-17 15:23+0100\n"
-"PO-Revision-Date: 2016-11-17 15:23+0100\n"
+"POT-Creation-Date: 2016-11-23 12:13+0100\n"
+"PO-Revision-Date: 2016-11-23 12:13+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate;gettext;_\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: module/Application\n"
 "X-Poedit-SearchPath-1: module\n"
 "X-Poedit-SearchPath-2: module/Order\n"
@@ -318,13 +318,8 @@ msgid "internal and external"
 msgstr "intern und extern"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
-#: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
-#: module/Order/view/partials/list/summary.phtml:102
-#: module/Order/view/partials/order-parts/billing.phtml:16
-#: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:23
-#: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:23
-msgid "application"
-msgstr "Verfahren"
+msgid "application according to TransICT"
+msgstr "Verfahren laut TransICT"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:137
 msgid ""
@@ -393,6 +388,14 @@ msgstr "Zugriffseinstellungen"
 #: module/Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:45
 msgid "add an access config"
 msgstr "Zugriffseinstellungssatz hinzufügen"
+
+#: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
+#: module/Order/view/partials/list/summary.phtml:102
+#: module/Order/view/partials/order-parts/billing.phtml:16
+#: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:23
+#: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:23
+msgid "application"
+msgstr "Verfahren"
 
 #: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:20
 #: module/Order/src/Order/Form/Fieldset/ClusterFieldset.php:28
