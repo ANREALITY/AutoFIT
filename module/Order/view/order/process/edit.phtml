@@ -203,6 +203,10 @@ echo $this->partial('/partials/fieldgroups/comment',
 
 <div class="clearer"></div>
 
+<div class="hint-mandatory col-md-12"><?php echo sprintf($this->translate('The fields marked with %s are mandatory.'), '<span class="mandatory-' . strtolower($connectionType) . '">*</span>'); ?></div>
+
+<div class="clearer"></div>
+
 <div class="form-group">
     <div class="controls"><?php echo $this->formElement($form->get('save')); ?>
     <?php echo $this->formElement($form->get('submit')); ?></div>

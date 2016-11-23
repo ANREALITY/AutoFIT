@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 12:13+0100\n"
-"PO-Revision-Date: 2016-11-23 12:13+0100\n"
+"POT-Creation-Date: 2016-11-23 12:25+0100\n"
+"PO-Revision-Date: 2016-11-23 12:25+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1040,6 +1040,11 @@ msgstr "in Überprüfung"
 #: module/Order/view/order/process/list-my-orders.phtml:21
 msgid "completed"
 msgstr "fertiggestellt"
+
+#: module/Order/view/order/process/create.phtml:172
+#, php-format
+msgid "The fields marked with %s are mandatory."
+msgstr "Die mit %s markierten Felder sind Pflicht-Felder."
 
 #: module/Order/view/order/process/created.phtml:2
 msgid "We have received the form."
