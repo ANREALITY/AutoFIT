@@ -27,7 +27,6 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'value' => static::DEFAULT_EXPRESSION,
                     'class' => 'form-control field-expression'
                 ]
@@ -51,7 +50,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
     {
         return [
             'expression' => [
-                'required' => true,
+                'required' => false,
                 'validators' => [
                     [
                         'name' => 'StringLength',

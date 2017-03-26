@@ -38,22 +38,6 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
 
         $this->add(
             [
-                'type' => 'text',
-                'name' => 'folder',
-                'options' => [
-                    'label' => _('folder'),
-                    'label_attributes' => [
-                        'class' => 'col-md-12 required'
-                    ]
-                ],
-                'attributes' => [
-                    'required' => 'required',
-                    'class' => 'form-control field-folder'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'type' => 'radio',
                 'name' => 'server_toggle',
                 'options' => [
@@ -97,18 +81,6 @@ abstract class AbstractEndpointCdLinuxUnixFieldset extends AbstractEndpointField
                         'name' => 'StringLength',
                         'options' => [
                             'max' => 8
-                        ]
-                    ],
-                ]
-            ],
-            'folder' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'DbSystel\Validator\Regex',
-                        'options' => [
-                            'pattern' => '/^[a-zA-Z0-9,_+\-\.\/]*$/',
-                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", ",", "_", "+", "-", ".", "/"'
                         ]
                     ],
                 ]

@@ -20,6 +20,21 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
 
         $this->add(
             [
+                'type' => 'text',
+                'name' => 'folder',
+                'options' => [
+                    'label' => _('folder'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12 required'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control field-folder'
+                ]
+            ]);
+
+        $this->add(
+            [
                 'type' => 'radio',
                 'name' => 'transmission_type',
                 'options' => [
@@ -40,7 +55,6 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'field-transmission-type'
                 ]
             ]);
@@ -56,7 +70,6 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control field-transmission-interval',
                     'value' => '0,15,30,45 * * * *'
                 ]
@@ -73,8 +86,20 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
+            'folder' => [
+                'required' => false,
+                'validators' => [
+                    [
+                        'name' => 'DbSystel\Validator\Regex',
+                        'options' => [
+                            'pattern' => '/^[a-zA-Z0-9,_+\-\.\/]*$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", ",", "_", "+", "-", ".", "/"'
+                        ]
+                    ],
+                ]
+            ],
             'transmission_interval' => [
-                'required' => true,
+                'required' => false,
                 'filters' => [
                     [
                         'name' => 'Zend\Filter\StringTrim'
@@ -99,7 +124,7 @@ class EndpointCdLinuxUnixSourceFieldset extends AbstractEndpointCdLinuxUnixField
                 ]
             ],
             'transmission_type' => [
-                'required' => true
+                'required' => false
             ]
         ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
