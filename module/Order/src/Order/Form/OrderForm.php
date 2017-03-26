@@ -19,6 +19,7 @@ use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwProtocolServerSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwProtocolServerTargetFieldset;
+use DbSystel\DataObject\Server;
 
 class OrderForm extends Form
 {
@@ -103,7 +104,8 @@ class OrderForm extends Form
         }
         $minOneServerExternalServerOrClusterNotEmptySource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
         $onesIpOrDnsNotEmptySource = $this->validateOnesIpOrDnsNotEmptySource($endpointSourceFieldset);
-        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource;
+        $folderIsNotEmptySource = $this->validateFolderIsNotEmptySource($endpointSourceFieldset);
+        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource && $folderIsNotEmptySource;
         $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
         $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
         $isValidEndpintTarget = $minOneServerExternalServerOrClusterNotEmptyTarget && $onesIpOrDnsNotEmptyTarget;
@@ -227,6 +229,23 @@ class OrderForm extends Form
 
         if (! $isValid) {
             $this->addErrorMessage('Either the IP or the DNS address (but only ones from them) may and must be defined for the target endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateFolderIsNotEmptySource(AbstractEndpointFieldset $endpointSourceFieldset)
+    {
+        $isValid = true;
+
+        if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
+            if ($endpointSourceFieldset->get('server_place')->getValue() == Server::PLACE_INTERNAL) {
+                $test = $endpointSourceFieldset->get('folder')->getValue();
+                $isValid = ! empty($endpointSourceFieldset->get('folder')->getValue());
+            }
+        }
+
+        if (! $isValid) {
+            $this->addErrorMessage('A folder must be defined for the source endpoint.');
         }
         return $isValid;
     }
