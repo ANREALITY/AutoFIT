@@ -105,7 +105,9 @@ class OrderForm extends Form
         $minOneServerExternalServerOrClusterNotEmptySource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
         $onesIpOrDnsNotEmptySource = $this->validateOnesIpOrDnsNotEmptySource($endpointSourceFieldset);
         $folderIsNotEmptySource = $this->validateFolderIsNotEmptySource($endpointSourceFieldset);
-        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource && $folderIsNotEmptySource;
+        $transmissionTypeIsNotEmptySource = $this->validateTransmissionTypeIsNotEmptySource($endpointSourceFieldset);
+        $transmissionIntervalIsNotEmptySource = $this->validateTransmissionIntervalIsNotEmptySource($endpointSourceFieldset);
+        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource && $folderIsNotEmptySource && $transmissionTypeIsNotEmptySource && $transmissionIntervalIsNotEmptySource;
         $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
         $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
         $isValidEndpintTarget = $minOneServerExternalServerOrClusterNotEmptyTarget && $onesIpOrDnsNotEmptyTarget;
@@ -246,6 +248,40 @@ class OrderForm extends Form
 
         if (! $isValid) {
             $this->addErrorMessage('A folder must be defined for the source endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateTransmissionTypeIsNotEmptySource(AbstractEndpointFieldset $endpointSourceFieldset)
+    {
+        $isValid = true;
+
+        if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
+            if ($endpointSourceFieldset->get('server_place')->getValue() == Server::PLACE_INTERNAL) {
+                $test = $endpointSourceFieldset->get('transmission_type')->getValue();
+                $isValid = ! empty($endpointSourceFieldset->get('transmission_type')->getValue());
+            }
+        }
+
+        if (! $isValid) {
+            $this->addErrorMessage('A transmission type must be defined for the source endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateTransmissionIntervalIsNotEmptySource(AbstractEndpointFieldset $endpointSourceFieldset)
+    {
+        $isValid = true;
+
+        if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
+            if ($endpointSourceFieldset->get('server_place')->getValue() == Server::PLACE_INTERNAL) {
+                $test = $endpointSourceFieldset->get('transmission_interval')->getValue();
+                $isValid = ! empty($endpointSourceFieldset->get('transmission_interval')->getValue());
+            }
+        }
+
+        if (! $isValid) {
+            $this->addErrorMessage('A transmission interval must be defined for the source endpoint.');
         }
         return $isValid;
     }
