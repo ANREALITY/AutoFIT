@@ -239,7 +239,8 @@ class OrderForm extends Form
     {
         $isValid = true;
 
-        if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset) {
+        if ($endpointSourceFieldset instanceof EndpointCdLinuxUnixSourceFieldset
+            || $endpointSourceFieldset instanceof EndpointFtgwProtocolServerSourceFieldset) {
             if ($endpointSourceFieldset->get('server_place')->getValue() == Server::PLACE_INTERNAL) {
                 $test = $endpointSourceFieldset->get('folder')->getValue();
                 $isValid = ! empty($endpointSourceFieldset->get('folder')->getValue());

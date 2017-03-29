@@ -19,6 +19,22 @@ class EndpointFtgwProtocolServerTargetFieldset extends AbstractEndpointFtgwProto
 
         $this->add(
             [
+                'type' => 'text',
+                'name' => 'folder',
+                'options' => [
+                    'label' => _('folder'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12 required'
+                    ]
+                ],
+                'attributes' => [
+                    'required' => 'required',
+                    'class' => 'form-control field-folder'
+                ]
+            ]);
+
+        $this->add(
+            [
                 'name' => 'file_parameter_set',
                 'type' => 'Order\Form\Fieldset\FileParameterSet',
                 'options' => []
@@ -27,7 +43,11 @@ class EndpointFtgwProtocolServerTargetFieldset extends AbstractEndpointFtgwProto
 
     public function getInputFilterSpecification()
     {
-        $inputFilterSpecification = [];
+        $inputFilterSpecification = [
+            'folder' => [
+                'required' => true
+            ],
+        ];
         return array_merge(parent::getInputFilterSpecification(), $inputFilterSpecification);
     }
 

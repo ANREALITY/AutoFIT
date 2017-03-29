@@ -20,6 +20,21 @@ class EndpointFtgwProtocolServerSourceFieldset extends AbstractEndpointFtgwProto
 
         $this->add(
             [
+                'type' => 'text',
+                'name' => 'folder',
+                'options' => [
+                    'label' => _('folder'),
+                    'label_attributes' => [
+                        'class' => 'col-md-12 required'
+                    ]
+                ],
+                'attributes' => [
+                    'class' => 'form-control field-folder'
+                ]
+            ]);
+
+        $this->add(
+            [
                 'type' => 'radio',
                 'name' => 'transmission_type',
                 'options' => [
@@ -56,6 +71,9 @@ class EndpointFtgwProtocolServerSourceFieldset extends AbstractEndpointFtgwProto
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
+            'folder' => [
+                'required' => false
+            ],
             'transmission_type' => [
                 'required' => true
             ]

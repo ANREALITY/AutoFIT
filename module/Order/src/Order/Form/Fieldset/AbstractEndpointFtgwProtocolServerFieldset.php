@@ -38,22 +38,6 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
 
         $this->add(
             [
-                'type' => 'text',
-                'name' => 'folder',
-                'options' => [
-                    'label' => _('folder'),
-                    'label_attributes' => [
-                        'class' => 'col-md-12 required'
-                    ]
-                ],
-                'attributes' => [
-                    'required' => 'required',
-                    'class' => 'form-control field-folder'
-                ]
-            ]);
-
-        $this->add(
-            [
                 'type' => 'radio',
                 'name' => 'address_toggle',
                 'options' => [
@@ -136,9 +120,6 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
     {
         $inputFilterSpecification = [
             'username' => [
-                'required' => true
-            ],
-            'folder' => [
                 'required' => true
             ],
             'address_toggle' => [
