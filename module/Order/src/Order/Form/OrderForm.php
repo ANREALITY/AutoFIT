@@ -106,6 +106,7 @@ class OrderForm extends Form
             $endpointSourceFieldset = $physicalConnectionFtgwEndToMiddleFieldset->get('endpoint_source');
             $endpointTargetFieldset = $physicalConnectionFtgwMiddleToEndFieldset->get('endpoint_target');
         }
+
         $minOneServerExternalServerOrClusterNotEmptySource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
         $onesIpOrDnsNotEmptySource = $this->validateOnesIpOrDnsNotEmptySource($endpointSourceFieldset);
         $folderIsNotEmptySource = $this->validateFolderIsNotEmptySource($endpointSourceFieldset);
@@ -125,7 +126,14 @@ class OrderForm extends Form
 
         $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
         $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
-        $isValidEndpintTarget = $minOneServerExternalServerOrClusterNotEmptyTarget && $onesIpOrDnsNotEmptyTarget;
+        $serverMatchesEndpointTypeTarget = true;
+        if (! empty($endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name'))) {
+            $serverMatchesEndpointTypeTarget = $this->validateServerMatchesEndpointTypeTarget($endpointTargetFieldset);
+        }
+        $isValidEndpintTarget =
+            $minOneServerExternalServerOrClusterNotEmptyTarget
+            && $onesIpOrDnsNotEmptyTarget
+            && $serverMatchesEndpointTypeTarget;
 
         $isValid = $isValidBasic && $isValidEndpintSource && $isValidEndpintTarget;
         return $isValid;
@@ -319,6 +327,26 @@ class OrderForm extends Form
 
         if (! $isValid) {
             $this->addErrorMessage('The server for the source endpoint does not match the endpoint type.');
+        }
+        return $isValid;
+    }
+
+    protected function validateServerMatchesEndpointTypeTarget(AbstractEndpointFieldset $endpointTargetFieldset)
+    {
+        $isValid = true;
+
+        $reflection = new \ReflectionClass($endpointTargetFieldset);
+        $endpointType = str_ireplace(['Endpoint', 'TargetFieldset'], '', $reflection->getShortName());
+        $validator = new ServerMatchesEndpointType([
+            'adapter' => $this->dbAdapter,
+            'endpoint_type_name' => $endpointType
+        ]);
+        $serverNameField = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
+        $serverName = $serverNameField->getValue();
+        $isValid = $validator->isValid($serverName);
+
+        if (! $isValid) {
+            $this->addErrorMessage('The server for the target endpoint does not match the endpoint type.');
         }
         return $isValid;
     }

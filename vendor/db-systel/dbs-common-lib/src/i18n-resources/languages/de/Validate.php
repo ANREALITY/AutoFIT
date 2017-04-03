@@ -12,5 +12,6 @@ return [
     'A transmission type must be defined for the source endpoint.' => 'Es muss eine Übertragungsart für den den Quellenendpoint definiert sein.',
     'A transmission interval must be defined for the source endpoint.' => 'Es muss ein Sendeintervall für den den Quellenendpoint definiert sein.',
     'The server for the source endpoint does not match the endpoint type.' => 'Der Server für den Quellenendpoint entspricht nicht dem Typ des Quellenendpoints.',
+    'The server for the target endpoint does not match the endpoint type.' => 'Der Server für den Zielendpoint entspricht nicht dem Typ des Zielendpoints.',
     // ...
 ];
