@@ -1,25 +1,26 @@
 <?php
 namespace Order\Form;
 
-use Zend\Form\Form;
-use DbSystel\Validator\MinOneNotEmpty;
+use DbSystel\DataObject\Server;
 use DbSystel\Validator\MaxOneNotEmpty;
-use Order\Form\Fieldset\EndpointFtgwSelfServiceSourceFieldset;
+use DbSystel\Validator\MinOneNotEmpty;
+use Order\Form\Fieldset\AbstractEndpointFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixSourceFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixTargetFieldset;
-use Order\Form\Fieldset\EndpointFtgwSelfServiceTargetFieldset;
-use Order\Form\Fieldset\AbstractEndpointFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareTargetFieldset;
-use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwLinuxUnixSourceFieldset;
-use Order\Form\Fieldset\EndpointFtgwWindowsShareSourceFieldset;
-use Order\Form\Fieldset\EndpointFtgwWindowsTargetFieldset;
-use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
-use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwProtocolServerSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwProtocolServerTargetFieldset;
-use DbSystel\DataObject\Server;
+use Order\Form\Fieldset\EndpointFtgwSelfServiceSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwSelfServiceTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsShareSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
+use Order\Form\Fieldset\EndpointFtgwWindowsTargetFieldset;
+use Zend\Form\Form;
+use Order\Validator\Db\ServerMatchesEndpointType;
 
 class OrderForm extends Form
 {
@@ -28,11 +29,14 @@ class OrderForm extends Form
 
     protected $errorMessages = [];
 
-    public function __construct($name = null, $options = [], string $fileTransferRequestFieldsetServiceName)
+    protected $dbAdapter;
+
+    public function __construct($name = null, $options = [], string $fileTransferRequestFieldsetServiceName, $dbAdapter)
     {
         parent::__construct('create_file_transfer_request');
 
         $this->fileTransferRequestFieldsetServiceName = $fileTransferRequestFieldsetServiceName;
+        $this->dbAdapter = $dbAdapter;
     }
 
     public function init()
@@ -107,10 +111,22 @@ class OrderForm extends Form
         $folderIsNotEmptySource = $this->validateFolderIsNotEmptySource($endpointSourceFieldset);
         $transmissionTypeIsNotEmptySource = $this->validateTransmissionTypeIsNotEmptySource($endpointSourceFieldset);
         $transmissionIntervalIsNotEmptySource = $this->validateTransmissionIntervalIsNotEmptySource($endpointSourceFieldset);
-        $isValidEndpintSource = $minOneServerExternalServerOrClusterNotEmptySource && $onesIpOrDnsNotEmptySource && $folderIsNotEmptySource && $transmissionTypeIsNotEmptySource && $transmissionIntervalIsNotEmptySource;
+        $serverMatchesEndpointTypeSource = true;
+        if (! empty($endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name'))) {
+            $serverMatchesEndpointTypeSource = $this->validateServerMatchesEndpointTypeSource($endpointSourceFieldset);
+        }
+        $isValidEndpintSource =
+            $minOneServerExternalServerOrClusterNotEmptySource
+            && $onesIpOrDnsNotEmptySource
+            && $folderIsNotEmptySource
+            && $transmissionTypeIsNotEmptySource
+            && $transmissionIntervalIsNotEmptySource
+            && $serverMatchesEndpointTypeSource;
+
         $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
         $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
         $isValidEndpintTarget = $minOneServerExternalServerOrClusterNotEmptyTarget && $onesIpOrDnsNotEmptyTarget;
+
         $isValid = $isValidBasic && $isValidEndpintSource && $isValidEndpintTarget;
         return $isValid;
     }
@@ -283,6 +299,26 @@ class OrderForm extends Form
 
         if (! $isValid) {
             $this->addErrorMessage('A transmission interval must be defined for the source endpoint.');
+        }
+        return $isValid;
+    }
+
+    protected function validateServerMatchesEndpointTypeSource(AbstractEndpointFieldset $endpointSourceFieldset)
+    {
+        $isValid = true;
+
+        $reflection = new \ReflectionClass($endpointSourceFieldset);
+        $endpointType = str_ireplace(['Endpoint', 'SourceFieldset'], '', $reflection->getShortName());
+        $validator = new ServerMatchesEndpointType([
+            'adapter' => $this->dbAdapter,
+            'endpoint_type_name' => $endpointType
+        ]);
+        $serverNameField = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
+        $serverName = $serverNameField->getValue();
+        $isValid = $validator->isValid($serverName);
+
+        if (! $isValid) {
+            $this->addErrorMessage('The server for the source endpoint does not match the endpoint type.');
         }
         return $isValid;
     }
