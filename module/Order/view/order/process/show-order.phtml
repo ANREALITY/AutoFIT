@@ -36,8 +36,10 @@ $endpointTargetTypeLabel = $endpointTypes[strtolower($endpointTargetType)];
 ?>
 
 <?php
-$header = sprintf($this->translate('%s order details for a connection from %s to %s'), $connectionTypeLabel, 
-    $endpointSourceTypeLabel, $endpointTargetTypeLabel);
+// $this->translate('%s order details for a connection from %s to %s')
+$header = sprintf(
+    '%s-Verbindung von %s zu %s',
+    $connectionTypeLabel, $endpointSourceTypeLabel, $endpointTargetTypeLabel);
 ?>
 <h3>
 	<span><?php echo $header; ?></span>
