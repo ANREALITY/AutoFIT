@@ -3,6 +3,37 @@ use DbSystel\DataObject\LogicalConnection;
 ?>
 
 <?php
+$connectionTypes = [
+    'cd' => 'CD',
+    'ftgw' => 'FTGW'
+];
+?>
+<?php
+
+$endpointTypes = [
+    'cdlinuxunix' => 'Linux/Unix',
+    'cdtandem' => 'Tandem',
+    'cdas400' => 'AS400',
+    'cdwindows' => 'Windows',
+    'cdwindowsshare' => 'Windows Share',
+    'cdzos' => 'ZOS'
+];
+?>
+<?php
+$connectionTypeLabel = $connectionTypes[strtolower($connectionType)];
+$endpointSourceTypeLabel = $endpointTypes[strtolower($endpointSourceType)];
+$endpointTargetTypeLabel = $endpointTypes[strtolower($endpointTargetType)];
+?>
+
+<?php
+$header = sprintf($this->translate('%s order form for a connection from %s to %s'), $connectionTypeLabel, 
+    $endpointSourceTypeLabel, $endpointTargetTypeLabel);
+?>
+<h3>
+	<span><?php echo $header; ?></span>
+</h3>
+
+<?php
 $formClass = strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0 ? 'cd' : 'ftgw';
 $form->setAttribute('class', $formClass)->prepare();
 echo $this->form()->openTag($form);
@@ -10,10 +41,9 @@ echo $this->form()->openTag($form);
 
 <?php
 // validation errors
-echo $this->partial('/partials/validation-errors',
-    [
-        'form' => $form,
-    ]);
+echo $this->partial('/partials/validation-errors', [
+    'form' => $form
+]);
 ?>
 
 <?php
@@ -45,7 +75,7 @@ $externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server
 
 <?php
 // billing
-echo $this->partial('/partials/fieldgroups/billing',
+echo $this->partial('/partials/fieldgroups/billing', 
     [
         // Fieldsets
         'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
@@ -54,14 +84,15 @@ echo $this->partial('/partials/fieldgroups/billing',
         'serviceInvoicePositionBasicFieldset' => $serviceInvoicePositionBasicFieldset,
         'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset,
         'action' => 'create'
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <?php
 // endpoint source (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
+echo $this->partial('/partials/fieldgroups/endpoints/basic-source', 
     [
         // Fieldsets
         'endpointSourceFieldset' => $endpointSourceFieldset,
@@ -69,14 +100,15 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-source',
         'customerForSourceFieldset' => $customerForSourceFieldset,
         'endpointServerConfigForSourceFieldset' => $endpointServerConfigForSourceFieldset,
         'externalServerForSourceFieldset' => $externalServerForSourceFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <?php
 // endpoint target (basic settings)
-echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
+echo $this->partial('/partials/fieldgroups/endpoints/basic-target', 
     [
         // Fieldsets
         'endpointTargetFieldset' => $endpointTargetFieldset,
@@ -84,46 +116,50 @@ echo $this->partial('/partials/fieldgroups/endpoints/basic-target',
         'customerForTargetFieldset' => $customerForTargetFieldset,
         'endpointServerConfigForTargetFieldset' => $endpointServerConfigForTargetFieldset,
         'externalServerForTargetFieldset' => $externalServerForTargetFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <div class="clearer"></div>
 
 <?php
 // endpoint source (specific settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source',
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source', 
     [
         // Fieldsets
         'endpointSourceFieldset' => $endpointSourceFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <?php
 // endpoint target (specific settings)
-echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
+echo $this->partial('/partials/fieldgroups/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target', 
     [
         // Fieldsets
         'endpointTargetFieldset' => $endpointTargetFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <div class="clearer"></div>
 
 <?php
 // logical connection
-echo $this->partial('/partials/fieldgroups/logical-connection',
+echo $this->partial('/partials/fieldgroups/logical-connection', 
     [
         // Fieldsets
         'logicalConnectionFieldset' => $logicalConnectionFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <div class="clearer"></div>
@@ -131,15 +167,16 @@ echo $this->partial('/partials/fieldgroups/logical-connection',
 <?php
 // physical connections
 if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
-    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
             // Fieldsets
             'physicalConnectionEndToEndFieldset' => $physicalConnectionEndToEndFieldset
-            // misc values
-            // no misc values
-        ]);
+        ]
+        // misc values
+        // no misc values
+        );
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
-    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType,
+    echo $this->partial('/partials/fieldgroups/connections/' . $connectionType, 
         [
             // Fieldsets
             'physicalConnectionEndToMiddleFieldset' => $physicalConnectionEndToMiddleFieldset,
@@ -155,7 +192,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 
 <?php
 // comment
-echo $this->partial('/partials/fieldgroups/comment',
+echo $this->partial('/partials/fieldgroups/comment', 
     [
         // Fieldsets
         'fileTransferRequestFieldset' => $fileTransferRequestFieldset,
@@ -163,9 +200,10 @@ echo $this->partial('/partials/fieldgroups/comment',
         'environmentFieldset' => $environmentFieldset,
         'serviceInvoicePositionBasicFieldset' => $serviceInvoicePositionBasicFieldset,
         'serviceInvoicePositionPersonalFieldset' => $serviceInvoicePositionPersonalFieldset
-        // misc values
-        // no misc values
-    ]);
+    ]
+    // misc values
+    // no misc values
+    );
 ?>
 
 <div class="clearer"></div>
@@ -175,7 +213,7 @@ echo $this->partial('/partials/fieldgroups/comment',
 <div class="clearer"></div>
 
 <div class="form-group">
-    <div class="controls"><?php echo $this->formElement($form->get('save')); ?>
+	<div class="controls"><?php echo $this->formElement($form->get('save')); ?>
     <?php echo $this->formElement($form->get('submit')); ?></div>
 </div>
 
