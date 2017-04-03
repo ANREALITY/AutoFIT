@@ -400,7 +400,8 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors'
+            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors',
+            'orderTypeDetector' => 'Order\View\Helper\OrderTypeDetector',
         ],
         'factories' => [
             'OrderStatusChecker' => 'Order\View\Helper\Factory\OrderStatusCheckerFactory',
