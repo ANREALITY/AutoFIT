@@ -75,7 +75,7 @@ function removeIncludeParameter() {
  */
 //Constants are supported in IE from v11. http://caniuse.com/#search=const
 const ACCESS_CONFIGS_SOURCE_MIN_NUMBER = 1;
-const ACCESS_CONFIGS_SOURCE_MAX_NUMBER = 10;
+// const ACCESS_CONFIGS_SOURCE_MAX_NUMBER = 10;
 $(document).ready(function() {
 	addAccessConfigSourceButton = $('#fieldgroup-specific-endpoint-source .add-access-config-button');
 	addAccessConfigSourceButton.on('click', addAccessConfigSource);
@@ -87,11 +87,11 @@ function addAccessConfigSource() {
     console.log('add start | current:' + currentCount);
     var template = $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first > span').data('template');
     template = template.replace(/__index__/g, currentCount);
-    if (currentCount < ACCESS_CONFIGS_SOURCE_MAX_NUMBER) {
+//    if (currentCount < ACCESS_CONFIGS_SOURCE_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first').append(template);
     	removeAccessConfigButton = $('.remove-access-config-button');
     	removeAccessConfigButton.on('click', removeAccessConfig);
-    }
+//    }
     currentCount = $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first > fieldset').length;
     console.log('add stop | current:' + currentCount);
     return false;
@@ -111,7 +111,7 @@ function removeAccessConfig() {
  */
 //Constants are supported in IE from v11. http://caniuse.com/#search=const
 const ACCESS_CONFIGS_TARGET_MIN_NUMBER = 1;
-const ACCESS_CONFIGS_TARGET_MAX_NUMBER = 10;
+// const ACCESS_CONFIGS_TARGET_MAX_NUMBER = 10;
 $(document).ready(function() {
 	addAccessConfigTargetButton = $('#fieldgroup-specific-endpoint-target .add-access-config-button');
 	addAccessConfigTargetButton.on('click', addAccessConfigTarget);
@@ -123,11 +123,11 @@ function addAccessConfigTarget() {
     console.log('add start | current:' + currentCount);
     var template = $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first > span').data('template');
     template = template.replace(/__index__/g, currentCount);
-    if (currentCount < ACCESS_CONFIGS_TARGET_MAX_NUMBER) {
+//    if (currentCount < ACCESS_CONFIGS_TARGET_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first').append(template);
     	removeAccessConfigButton = $('.remove-access-config-button');
     	removeAccessConfigButton.on('click', removeAccessConfig);
-    }
+//    }
     currentCount = $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first > fieldset').length;
     console.log('add stop | current:' + currentCount);
     return false;
