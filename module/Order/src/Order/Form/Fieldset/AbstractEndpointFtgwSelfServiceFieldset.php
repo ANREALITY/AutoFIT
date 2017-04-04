@@ -41,11 +41,10 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('FTWG user'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -57,11 +56,10 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
                 'options' => [
                     'label' => _('mailbox'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
-                    'required' => 'required',
                     'class' => 'form-control'
                 ]
             ]);
@@ -101,12 +99,6 @@ abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointF
     public function getInputFilterSpecification()
     {
         $inputFilterSpecification = [
-            'ftgw_username' => [
-                'required' => true
-            ],
-            'mailbox' => [
-                'required' => true
-            ],
             'connection_type' => [
                 'required' => true
             ]
