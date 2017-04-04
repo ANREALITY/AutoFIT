@@ -70,7 +70,7 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 4,
-                            'max' => 13
+                            'max' => 15
                         ]
                     ],
                     [
@@ -89,7 +89,7 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                         'name' => 'StringLength',
                         'options' => [
                             'min' => 1,
-                            'max' => 15
+                            'max' => 20
                         ]
                     ],
                     [
