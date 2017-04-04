@@ -113,7 +113,7 @@ class OrderForm extends Form
         $transmissionTypeIsNotEmptySource = $this->validateTransmissionTypeIsNotEmptySource($endpointSourceFieldset);
         $transmissionIntervalIsNotEmptySource = $this->validateTransmissionIntervalIsNotEmptySource($endpointSourceFieldset);
         $serverMatchesEndpointTypeSource = true;
-        if (! empty($endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name'))) {
+        if (! empty($endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name')->getValue())) {
             $serverMatchesEndpointTypeSource = $this->validateServerMatchesEndpointTypeSource($endpointSourceFieldset);
         }
         $isValidEndpintSource =
@@ -127,7 +127,7 @@ class OrderForm extends Form
         $minOneServerExternalServerOrClusterNotEmptyTarget = $this->validateMinOneNotEmptyValidatorTarget($endpointTargetFieldset);
         $onesIpOrDnsNotEmptyTarget = $this->validateOnesIpOrDnsNotEmptyTarget($endpointTargetFieldset);
         $serverMatchesEndpointTypeTarget = true;
-        if (! empty($endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name'))) {
+        if (! empty($endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name')->getValue())) {
             $serverMatchesEndpointTypeTarget = $this->validateServerMatchesEndpointTypeTarget($endpointTargetFieldset);
         }
         $isValidEndpintTarget =

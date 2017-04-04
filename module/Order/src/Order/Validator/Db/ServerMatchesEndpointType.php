@@ -47,7 +47,7 @@ class ServerMatchesEndpointType extends AbstractDb
         // filtering by name
         $select->where(
             [
-                'server.name LIKE ?' => '%' . $value . '%'
+                'server.name = ?' => $value
             ]);
         // filtering by endpoint type
         $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],
