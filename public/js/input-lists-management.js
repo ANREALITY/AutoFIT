@@ -39,7 +39,7 @@ function removeNotification() {
  */
 //Constants are supported in IE from v11. http://caniuse.com/#search=const
 const INCLUDE_PARAMETERS_MIN_NUMBER = 1;
-const INCLUDE_PARAMETERS_MAX_NUMBER = 5;
+// const INCLUDE_PARAMETERS_MAX_NUMBER = 5;
 $(document).ready(function() {
 	addIncludeParameterButton = $('#add-include-parameter-button');
 	addIncludeParameterButton.on('click', addIncludeParameter);
@@ -51,11 +51,11 @@ function addIncludeParameter() {
     console.log('add start | current:' + currentCount);
     var template = $('#fieldgroup-specific-endpoint-source .include-parameters fieldset:first > span').data('template');
     template = template.replace(/__index__/g, currentCount);
-    if (currentCount < INCLUDE_PARAMETERS_MAX_NUMBER) {
+//    if (currentCount < INCLUDE_PARAMETERS_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-source .include-parameters fieldset:first').append(template);
     	removeIncludeParameterButton = $('.remove-include-parameter-button');
     	removeIncludeParameterButton.on('click', removeIncludeParameter);
-    }
+//    }
     currentCount = $('#fieldgroup-specific-endpoint-source .include-parameters fieldset:first > fieldset').length;
     console.log('add stop | current:' + currentCount);
     return false;
