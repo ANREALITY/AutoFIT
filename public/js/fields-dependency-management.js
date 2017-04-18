@@ -36,6 +36,7 @@ $(document).ready(function() {
 	// fieldApplicationUserSource = $('#fieldgroup-specific-endpoint-source .field-application-user');
 	fieldIncludeParameterExpressionSource = $('#fieldgroup-specific-endpoint-source .include-parameters .field-expression');
 	buttonAddIncludeParameter = $('#fieldgroup-specific-endpoint-source #add-include-parameter-button');
+	infoBoxIncludeParameterSource = $('#fieldgroup-specific-endpoint-source .include-parameter-info');
 });
 // EndpointTarget specific
 // ...
@@ -161,12 +162,14 @@ function disableEndpointSpecificForExternalSource() {
 	fieldIncludeParameterExpressionSource.val('');
 	fieldIncludeParameterExpressionSource.parent().parent().parent().parent().fadeOut('slow');
 	buttonAddIncludeParameter.parent().fadeOut('slow');
+	infoBoxIncludeParameterSource.fadeOut('slow');
 }
 function enableEndpointSpecificForExternalSource() {
 	fieldFolderSource.parent().fadeIn('slow');
 	// fieldApplicationUserSource.parent().fadeIn('slow');
 	fieldIncludeParameterExpressionSource.parent().parent().parent().parent().fadeIn('slow');
 	buttonAddIncludeParameter.parent().fadeIn('slow');
+	infoBoxIncludeParameterSource.fadeIn('slow');
 }
 // EndpointSource specific #stop#
 

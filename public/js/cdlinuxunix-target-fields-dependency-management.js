@@ -67,7 +67,7 @@ function toggleFieldServerTarget(value) {
 			fieldClusterIdTarget.val('');
 			fieldClusterVirtualNodeNameTarget.val('');
 			fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
-			infoBoxClusterTargetinfoBoxClusterTarget
+			infoBoxClusterTarget.fadeOut('slow');
 			fieldEndpointClusterConfigIdTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
