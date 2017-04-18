@@ -80,7 +80,7 @@ $(document).ready(function() {
 	addAccessConfigSourceButton = $('#fieldgroup-specific-endpoint-source .add-access-config-button');
 	addAccessConfigSourceButton.on('click', addAccessConfigSource);
 	removeAccessConfigButton = $('.remove-access-config-button');
-	removeAccessConfigButton.on('click', removeAccessConfig);
+	removeAccessConfigButton.on('click', removeAccessConfigSource);
 });
 function addAccessConfigSource() {
     var currentCount = $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first > fieldset').length;
@@ -90,13 +90,13 @@ function addAccessConfigSource() {
 //    if (currentCount < ACCESS_CONFIGS_SOURCE_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first').append(template);
     	removeAccessConfigButton = $('.remove-access-config-button');
-    	removeAccessConfigButton.on('click', removeAccessConfig);
+    	removeAccessConfigButton.on('click', removeAccessConfigSource);
 //    }
     currentCount = $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first > fieldset').length;
     console.log('add stop | current:' + currentCount);
     return false;
 }
-function removeAccessConfig() {
+function removeAccessConfigSource() {
     var currentCount = $('#fieldgroup-specific-endpoint-source .access-configs fieldset:first > fieldset').length;
     console.log('remove start | current:' + currentCount);
     if (currentCount > ACCESS_CONFIGS_SOURCE_MIN_NUMBER) {
@@ -116,7 +116,7 @@ $(document).ready(function() {
 	addAccessConfigTargetButton = $('#fieldgroup-specific-endpoint-target .add-access-config-button');
 	addAccessConfigTargetButton.on('click', addAccessConfigTarget);
 	removeAccessConfigButton = $('.remove-access-config-button');
-	removeAccessConfigButton.on('click', removeAccessConfig);
+	removeAccessConfigButton.on('click', removeAccessConfigTarget);
 });
 function addAccessConfigTarget() {
     var currentCount = $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first > fieldset').length;
@@ -126,13 +126,13 @@ function addAccessConfigTarget() {
 //    if (currentCount < ACCESS_CONFIGS_TARGET_MAX_NUMBER) {
         $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first').append(template);
     	removeAccessConfigButton = $('.remove-access-config-button');
-    	removeAccessConfigButton.on('click', removeAccessConfig);
+    	removeAccessConfigButton.on('click', removeAccessConfigTarget);
 //    }
     currentCount = $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first > fieldset').length;
     console.log('add stop | current:' + currentCount);
     return false;
 }
-function removeAccessConfig() {
+function removeAccessConfigTarget() {
     var currentCount = $('#fieldgroup-specific-endpoint-target .access-configs fieldset:first > fieldset').length;
     console.log('remove start | current:' + currentCount);
     if (currentCount > ACCESS_CONFIGS_TARGET_MIN_NUMBER) {
