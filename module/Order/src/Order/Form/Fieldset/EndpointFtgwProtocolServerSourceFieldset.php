@@ -25,7 +25,7 @@ class EndpointFtgwProtocolServerSourceFieldset extends AbstractEndpointFtgwProto
                 'options' => [
                     'label' => _('folder'),
                     'label_attributes' => [
-                        'class' => 'col-md-12 required'
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
