@@ -4,6 +4,10 @@ namespace DbSystel\DataObject;
 class ProductType extends AbstractDataObject
 {
 
+    const NAME_CD = 'cd';
+
+    const NAME_FTGW = 'fgw';
+
     /**
      *
      * @var string
