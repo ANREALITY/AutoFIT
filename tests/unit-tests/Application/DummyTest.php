@@ -1,7 +1,7 @@
 <?php
-namespace Application;
+namespace Test\UnitTest\Application;
 
-class DummyTest extends \PHPUnit_Framework_TestCase
+class DummyUnitTest extends \PHPUnit_Framework_TestCase
 {
     public function testDummy()
     {
