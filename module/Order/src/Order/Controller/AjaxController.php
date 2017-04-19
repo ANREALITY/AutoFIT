@@ -143,7 +143,11 @@ class AjaxController extends AbstractActionController
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllBasicForAutocomplete(
-                $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                    $data['number'],
+                    $data['application_technical_short_name'],
+                    $data['environment_severity'],
+                    $data['connection_type']
+                )->toArray();
                 $dataList = array_column($dataList, 'number');
             } else {
                 $dataList = [];
@@ -162,7 +166,11 @@ class AjaxController extends AbstractActionController
             $data = $request->getQuery('data');
             if (! empty($data['application_technical_short_name']) && ! empty($data['environment_severity'])) {
                 $dataList = $this->serviceInvoicePositionService->findAllPersonalForAutocomplete(
-                $data['number'], $data['application_technical_short_name'], $data['environment_severity'])->toArray();
+                    $data['number'],
+                    $data['application_technical_short_name'],
+                    $data['environment_severity'],
+                    $data['connection_type']
+                )->toArray();
                 $dataList = array_column($dataList, 'number');
             } else {
                 $dataList = [];
