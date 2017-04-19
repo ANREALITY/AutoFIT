@@ -36,7 +36,7 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
                     'label' => _('environment')
                 ],
                 'attributes' => [
-                    'id' => 'order' . '-' . 'environment-severity'
+                    'id' => 'order-environment-severity'
                 ]
             ]);
 
@@ -53,7 +53,7 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control',
-                    'id' => 'order' . '-' . 'environment-name'
+                    'id' => 'order-environment-name'
                 ]
             ]);
     }

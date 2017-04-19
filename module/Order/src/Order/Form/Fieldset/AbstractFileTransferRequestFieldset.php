@@ -51,7 +51,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'attributes' => [
                     'required' => 'required',
                     'class' => 'form-control autocomplete-application',
-                    'id' => 'order' . '-' . 'application-number'
+                    'id' => 'order-application-number'
                 ]
             ]);
 
