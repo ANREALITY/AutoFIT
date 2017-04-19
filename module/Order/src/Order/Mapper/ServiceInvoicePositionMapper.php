@@ -70,12 +70,20 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                             'service_invoice_position.number LIKE ?' => '%' . $condition['number'] . '%'
                         ]);
                 }
-                if (array_key_exists('article_type', $condition)) {
+                if (array_key_exists('article_type', $condition) || array_key_exists('product_type_name', $condition)) {
                     $select->join('article', 'article.sku = service_invoice_position.article_sku', []);
-                    $select->where(
-                        [
-                            'article.type' => $condition['article_type']
-                        ]);
+                    if (array_key_exists('article_type', $condition)) {
+                        $select->where(
+                            [
+                                'article.type' => $condition['article_type']
+                            ]);
+                    }
+                    if (array_key_exists('product_type_name', $condition)) {
+                        $select->where(
+                            [
+                                'article.product_type_name = ?' => $condition['product_type_name']
+                            ]);
+                    }
                 }
                 if (array_key_exists('application_technical_short_name', $condition)) {
                     $select->join(
