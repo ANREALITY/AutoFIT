@@ -80,7 +80,8 @@ $(function() {
 					"/order/ajax/provide-service-invoice-positions-basic?"
 					+ "data[number]=" + request.term
 					+ "&data[application_technical_short_name]=" + $('#order-application-number').val()
-					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
+					+ "&data[environment_severity]=" + $('#order-environment-severity').val()
+					+ "&data[connection_type]=" + $('#logical-connection-type').val(),
 					{},
 					function(data) {
 						response(data.slice(0, AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_BASIC_LIMIT));
@@ -108,7 +109,8 @@ $(function() {
 					"/order/ajax/provide-service-invoice-positions-personal?"
 					+ "data[number]=" + request.term
 					+ "&data[application_technical_short_name]=" + $('#order-application-number').val()
-					+ "&data[environment_severity]=" + $('#order-environment-severity').val(),
+					+ "&data[environment_severity]=" + $('#order-environment-severity').val()
+					+ "&data[connection_type]=" + $('#logical-connection-type').val(),
 					{},
 					function(data) {
 						response(data.slice(0, AUTOCOMPLETE_SERVICE_INVOICE_POSITIONS_PERSONAL_LIMIT));
