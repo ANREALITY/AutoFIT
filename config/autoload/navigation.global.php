@@ -14,12 +14,12 @@ return [
                 'label' => _('master data'),
                 'route' => 'master-data',
             ],
-        ],
-        'admin' => [
             [
                 'label' => _('orders'),
                 'route' => 'list-orders',
             ],
+        ],
+        'admin' => [
             [
                 'label' => _('audit log'),
                 'route' => 'list',
