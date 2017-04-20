@@ -71,7 +71,7 @@
 			<fileset dir="${basedir}/module/">
 				<include name="**/*.php" />
 			</fileset>
-			<fileset dir="${basedir}/phpunit/tests">
+			<fileset dir="${basedir}/tests">
 				<include name="**/*.php" />
 			</fileset>
 		</apply>
@@ -112,7 +112,7 @@
 			<arg value="--log-xml" />
 			<arg value="${basedir}/build/logs/phploc.xml" />
 			<arg path="${basedir}/module" />
-			<arg path="${basedir}/phpunit/tests" />
+			<arg path="${basedir}/tests" />
 		</exec>
 		<property name="phploc.done" value="true" />
 	</target>
