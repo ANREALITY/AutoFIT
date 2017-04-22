@@ -10,12 +10,12 @@
 >
 	<testsuites>
 		<testsuite name="app-only">
-			<directory suffix="Test.php">tests/unit-tests/Application</directory>
+			<directory suffix="Test.php">tests/unit/Application</directory>
 			<!--
-			<directory suffix="Test.php">tests/unit-tests/Order</directory>
-			<directory suffix="Test.php">tests/unit-tests/DataExchange</directory>
-			<directory suffix="Test.php">tests/unit-tests/Administration</directory>
-			<directory suffix="Test.php">tests/unit-tests/AccesControl</directory>
+			<directory suffix="Test.php">tests/unit/Order</directory>
+			<directory suffix="Test.php">tests/unit/DataExchange</directory>
+			<directory suffix="Test.php">tests/unit/Administration</directory>
+			<directory suffix="Test.php">tests/unit/AccesControl</directory>
 			-->
 		</testsuite>
 		<testsuite name="app-libs">

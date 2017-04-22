@@ -1,5 +1,5 @@
 <?php
-namespace Test\UnitTest\Application;
+namespace Tests\UnitTests\UnitTest\Application;
 
 class DummyUnitTest extends \PHPUnit_Framework_TestCase
 {
