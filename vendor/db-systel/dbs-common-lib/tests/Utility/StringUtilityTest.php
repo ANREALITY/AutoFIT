@@ -1,5 +1,5 @@
 <?php
-namespace Utility;
+namespace DbSystel\Tests\Utility;
 
 use DbSystel\Utility\TableDataProcessor;
 use DbSystel\Utility\StringUtility;
