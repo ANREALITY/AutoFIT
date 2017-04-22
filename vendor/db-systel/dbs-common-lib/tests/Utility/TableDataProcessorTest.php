@@ -1,9 +1,10 @@
 <?php
 namespace DbSystel\Tests\Utility;
 
+use PHPUnit\Framework\TestCase;
 use DbSystel\Utility\TableDataProcessor;
 
-class TableDataProcessorTest extends \PHPUnit_Framework_TestCase
+class TableDataProcessorTest extends TestCase
 {
 
     private $tableDataProcessor;

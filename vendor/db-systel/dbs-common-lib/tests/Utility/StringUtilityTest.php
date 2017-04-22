@@ -1,10 +1,11 @@
 <?php
 namespace DbSystel\Tests\Utility;
 
+use PHPUnit\Framework\TestCase;
 use DbSystel\Utility\TableDataProcessor;
 use DbSystel\Utility\StringUtility;
 
-class StringUtilityTest extends \PHPUnit_Framework_TestCase
+class StringUtilityTest extends TestCase
 {
 
     private $stringUtility;

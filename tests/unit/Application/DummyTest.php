@@ -1,7 +1,9 @@
 <?php
 namespace Tests\UnitTests\UnitTest\Application;
 
-class DummyUnitTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class DummyUnitTest extends TestCase
 {
     public function testDummy()
     {

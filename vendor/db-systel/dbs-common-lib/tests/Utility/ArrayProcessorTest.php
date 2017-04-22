@@ -1,9 +1,10 @@
 <?php
 namespace DbSystel\Tests\Utility;
 
+use PHPUnit\Framework\TestCase;
 use DbSystel\Utility\ArrayProcessor;
 
-class ArrayProcessorTest extends \PHPUnit_Framework_TestCase
+class ArrayProcessorTest extends TestCase
 {
     
     const BAR_TYPE_GOOD = 'bar type good';
