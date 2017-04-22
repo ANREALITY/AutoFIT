@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	bootstrap="tests/Bootstrap.php"
+	cacheTokens="false"
+	colors="true"
+>
+	<testsuites>
+		<testsuite name="app-only">
+			<directory suffix="Test.php">tests/unit-tests/Application</directory>
+			<!--
+			<directory suffix="Test.php">tests/unit-tests/Order</directory>
+			<directory suffix="Test.php">tests/unit-tests/DataExchange</directory>
+			<directory suffix="Test.php">tests/unit-tests/Administration</directory>
+			<directory suffix="Test.php">tests/unit-tests/AccesControl</directory>
+			-->
+		</testsuite>
+		<testsuite name="app-libs">
+			<directory suffix="Test.php">vendor/db-systel/dbs-common-lib/tests/Hydrator</directory>
+		</testsuite>
+	</testsuites>
+	<logging>
+		<log type="coverage-html" target="build/coverage"/>
+		<log type="coverage-clover" target="build/logs/clover.xml"/>
+		<log type="coverage-crap4j" target="build/logs/crap4j.xml"/>
+		<log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+	</logging>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">module/**/src</directory>
+			<directory suffix=".php">vendor/db-systel/**/src</directory>
+			<exclude>
+				<directory suffix=".php">vendor/db-systel/**/tests</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+</phpunit>

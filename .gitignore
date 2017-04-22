@@ -19,7 +19,7 @@ vendor/*
 node_modules
 public/web.config
 public/components
-phpunit/phpunit.xml
+phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
