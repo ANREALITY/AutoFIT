@@ -1,7 +1,6 @@
 <?php
 namespace Authentication;
 
-use Authentication\Model\Storage;
 use Zend\Authentication\AuthenticationService;
 use Authentication\Adapter\DbTable as AuthenticationAdapter;
 use Zend\Authentication\Storage\Session;
