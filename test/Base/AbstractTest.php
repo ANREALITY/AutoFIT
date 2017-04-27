@@ -4,6 +4,7 @@ namespace Test\Base;
 use PHPUnit\DbUnit\Database\Connection;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 use PHPUnit\DbUnit\TestCase;
+use PDO;
 
 /**
  * Class AbstractTest
@@ -13,6 +14,14 @@ use PHPUnit\DbUnit\TestCase;
 abstract class AbstractTest extends TestCase
 {
 
+    /**
+     * @var array
+     */
+    static private $dbConfigs;
+    /**
+     * @var PDO
+     */
+    static private $pdo;
     /**
      * @var Connection
      */
@@ -29,13 +38,13 @@ abstract class AbstractTest extends TestCase
     public function getConnection()
     {
         if (! $this->connection) {
-            $dbConfigs = (require_once __DIR__ . '/../../config/autoload/test/test.local.php')['db'];
-            $database = $dbConfigs['database'];
-            $user = $dbConfigs['username'];
-            $password = $dbConfigs['password'];
-            $dsn = $dbConfigs['dsn'];
-            $pdo = new \PDO($dsn, $user, $password);
-            $this->connection = $this->createDefaultDBConnection($pdo, $database);
+            if (! self::$dbConfigs) {
+                self::$dbConfigs = (require_once __DIR__ . '/../../config/autoload/test/test.local.php')['db'];
+            }
+            if (! self::$pdo) {
+                self::$pdo = new PDO(self::$dbConfigs['dsn'], self::$dbConfigs['username'], self::$dbConfigs['password']);
+            }
+            $this->connection = $this->createDefaultDBConnection(self::$pdo, self::$dbConfigs['database']);
         }
         return $this->connection;
     }
