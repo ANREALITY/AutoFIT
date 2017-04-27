@@ -59,7 +59,8 @@
         "zendframework/zend-view": "^2.5",
         "zendframework/zendxml": "^1.0.1",
         "zendframework/zend-xmlrpc": "^2.5",
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^6.1",
+        "phpunit/dbunit": "^3.0"
     },
     "require-dev": {
     }
