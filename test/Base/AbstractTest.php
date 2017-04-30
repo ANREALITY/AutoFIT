@@ -2,7 +2,6 @@
 namespace Test\Base;
 
 use PHPUnit\DbUnit\Database\Connection;
-use PHPUnit\DbUnit\DataSet\IDataSet;
 use PHPUnit\DbUnit\TestCase;
 use PDO;
 
