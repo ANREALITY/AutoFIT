@@ -29,6 +29,15 @@ class Bootstrap
 
         $serviceManager->get('ModuleManager')->loadModules();
         static::$serviceManager = $serviceManager;
+
+        $configs = require_once __DIR__ . '/../config/autoload/test/test.local.php';
+        $dbConfigs = $configs['test']['db'];
+        $databaseInitializer = new DatabaseInitializer($dbConfigs);
+
+        $schemaSql = file_get_contents(__DIR__ . '/../data/database/schema.sql');
+        $storedProceduresSql = file_get_contents(__DIR__ . '/../data/database/stored-procedures.sql');
+        $basicDataSql = file_get_contents(__DIR__ . '/../data/database/basic-data.sql');
+        $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql);
     }
 
     public static function chroot()
