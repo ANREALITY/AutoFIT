@@ -6,11 +6,11 @@ use PHPUnit\DbUnit\TestCase;
 use PDO;
 
 /**
- * Class AbstractTest
+ * Class AbstractUnitTest
  *
  * @package Test\Base
  */
-abstract class AbstractTest extends TestCase
+abstract class AbstractIntegrationTest extends TestCase
 {
 
     /**
