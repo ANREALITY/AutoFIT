@@ -1,12 +1,18 @@
 <?php
-namespace Base;
+namespace Test\Base;
 
 use PHPUnit\DbUnit\DataSet\AbstractDataSet;
 use PHPUnit\DbUnit\DataSet\DefaultTable;
 use PHPUnit\DbUnit\DataSet\DefaultTableIterator;
 use PHPUnit\DbUnit\DataSet\DefaultTableMetadata;
-use \InvalidArgumentException;
+use InvalidArgumentException;
 
+/**
+ * Class ArrayDataSet
+ *
+ * @package Test\Base
+ * @link https://phpunit.de/manual/current/en/database.html
+ */
 class ArrayDataSet extends AbstractDataSet
 {
 
