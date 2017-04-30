@@ -1,6 +1,7 @@
 <?php
 namespace Test;
 
+use Test\Base\DatabaseInitializer;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
@@ -25,8 +26,6 @@ class Bootstrap
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
-
-        $test = $serviceManager->get('ApplicationConfig');
 
         $serviceManager->get('ModuleManager')->loadModules();
         static::$serviceManager = $serviceManager;
@@ -61,7 +60,7 @@ class Bootstrap
             'Zend\Loader\StandardAutoloader' => array(
                 'autoregister_zf' => true,
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+                    __NAMESPACE__ => __DIR__,
                 ),
             ),
         ));
