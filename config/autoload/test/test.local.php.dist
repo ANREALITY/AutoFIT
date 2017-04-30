@@ -10,18 +10,27 @@
  * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
  * credentials from accidentally being committed into version control.
  */
-
 return [
-    'db' => [
-        'driver' => 'Pdo',
-        'username' => 'USERNAME',
-        'password' => 'PASSWORD',
-        'dsn' => 'mysql:dbname=DATABASE_test;host=localhost',
-        'driver_options' => [
-            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+    'test' => [
+        'db' => [
+            'driver' => 'Pdo',
+            'username' => 'USERNAME',
+            'password' => 'PASSWORD',
+            'database' => 'autofit_test',
+            'host' => 'HOST',
+            'dsn' => 'mysql:dbname=autofit_test;host=localhost',
+            'driver_options' => [
+                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+            ],
+            'scripts' => [
+                'schema' => __DIR__ . '/../../../data/database/schema.sql',
+                'stored-procedures' => __DIR__ . '/../../../data/database/stored-procedures.sql',
+                'basic-data' => __DIR__ . '/../../../data/database/basic-data.sql',
+            ]
+        ],
+        'export' => [
+            'folder' => __DIR__ . '/../../../data/test/export'
         ]
-    ],
-    'export' => [
-        'folder' => __DIR__ . '/../../data/test/export'
     ]
 ];
+
