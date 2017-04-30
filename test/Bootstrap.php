@@ -34,9 +34,9 @@ class Bootstrap
         $dbConfigs = $configs['test']['db'];
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
 
-        $schemaSql = file_get_contents(__DIR__ . '/../data/database/schema.sql');
-        $storedProceduresSql = file_get_contents(__DIR__ . '/../data/database/stored-procedures.sql');
-        $basicDataSql = file_get_contents(__DIR__ . '/../data/database/basic-data.sql');
+        $schemaSql = file_get_contents($dbConfigs['scripts']['schema']);
+        $storedProceduresSql = file_get_contents($dbConfigs['scripts']['stored-procedures']);
+        $basicDataSql = file_get_contents($dbConfigs['scripts']['basic-data']);
         $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql);
     }
 
