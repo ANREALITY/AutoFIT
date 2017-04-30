@@ -1,5 +1,5 @@
 <?php
-namespace Test\Base;
+namespace DbSystel\Test;
 
 use PHPUnit\DbUnit\DataSet\AbstractDataSet;
 use PHPUnit\DbUnit\DataSet\DefaultTable;

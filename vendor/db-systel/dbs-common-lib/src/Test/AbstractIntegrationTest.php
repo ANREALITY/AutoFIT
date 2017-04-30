@@ -1,7 +1,8 @@
 <?php
-namespace Test\Base;
+namespace DbSystel\Test;
 
 use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\InvalidArgumentException;
 use PHPUnit\DbUnit\TestCase;
 use PDO;
 
@@ -38,7 +39,10 @@ abstract class AbstractIntegrationTest extends TestCase
     {
         if (! $this->connection) {
             if (! self::$dbConfigs) {
-                self::$dbConfigs = (require_once __DIR__ . '/../../config/autoload/test/test.local.php')['db'];
+                throw new InvalidArgumentException(
+                    'Set the database configuration first.'
+                    . ' '. 'Use the ' . self::class . '::setDbConfigs(...).'
+                );
             }
             if (! self::$pdo) {
                 self::$pdo = new PDO(self::$dbConfigs['dsn'], self::$dbConfigs['username'], self::$dbConfigs['password']);
@@ -46,6 +50,11 @@ abstract class AbstractIntegrationTest extends TestCase
             $this->connection = $this->createDefaultDBConnection(self::$pdo, self::$dbConfigs['database']);
         }
         return $this->connection;
+    }
+
+    public static function setDbConfigs(array $dbConfigs)
+    {
+        self::$dbConfigs = $dbConfigs;
     }
 
 }

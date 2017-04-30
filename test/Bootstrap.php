@@ -1,7 +1,8 @@
 <?php
 namespace Test;
 
-use Test\Base\DatabaseInitializer;
+use DbSystel\Test\AbstractIntegrationTest;
+use DbSystel\Test\DatabaseInitializer;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
@@ -38,6 +39,8 @@ class Bootstrap
         $storedProceduresSql = file_get_contents($dbConfigs['scripts']['stored-procedures']);
         $basicDataSql = file_get_contents($dbConfigs['scripts']['basic-data']);
         $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql);
+
+        AbstractIntegrationTest::setDbConfigs($dbConfigs);
     }
 
     public static function chroot()

@@ -1,5 +1,5 @@
 <?php
-namespace Test\Base;
+namespace DbSystel\Test;
 
 use PDO;
 use Mysqli;
