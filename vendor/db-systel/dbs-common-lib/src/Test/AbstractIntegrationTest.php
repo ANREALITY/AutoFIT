@@ -9,7 +9,7 @@ use PDO;
 /**
  * Class AbstractUnitTest
  *
- * @package Test\Base
+ * @package DbSystel\Test
  */
 abstract class AbstractIntegrationTest extends TestCase
 {

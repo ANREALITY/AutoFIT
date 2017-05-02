@@ -10,7 +10,7 @@ use InvalidArgumentException;
 /**
  * Class ArrayDataSet
  *
- * @package Test\Base
+ * @package DbSystel\Test
  * @link https://phpunit.de/manual/current/en/database.html
  */
 class ArrayDataSet extends AbstractDataSet

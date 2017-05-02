@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class AbstractUnitTest
  *
- * @package Test\Base
+ * @package DbSystel\Test
  */
 abstract class AbstractUnitTest extends TestCase
 {

@@ -4,6 +4,11 @@ namespace DbSystel\Test;
 use PDO;
 use Mysqli;
 
+/**
+ * Class DatabaseInitializer
+ *
+ * @package DbSystel\Test
+ */
 class DatabaseInitializer
 {
 
