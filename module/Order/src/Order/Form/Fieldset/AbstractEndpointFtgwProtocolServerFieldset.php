@@ -25,14 +25,14 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                 'type' => 'text',
                 'name' => 'username',
                 'options' => [
-                    'label' => _('application user'),
+                    'label' => _('username'),
                     'label_attributes' => [
                         'class' => 'col-md-12 required'
                     ]
                 ],
                 'attributes' => [
                     'required' => 'required',
-                    'class' => 'form-control field-application-user'
+                    'class' => 'form-control field-username'
                 ]
             ]);
 
