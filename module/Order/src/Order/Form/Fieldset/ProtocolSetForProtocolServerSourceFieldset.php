@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 
-class ProtocolSetForProtocolServerFieldset extends AbstractProtocolSetForProtocolServerFieldset
+class ProtocolSetForProtocolServerSourceFieldset extends AbstractProtocolSetForProtocolServerFieldset
 {
 
     public function __construct($name = null, $options = [])
