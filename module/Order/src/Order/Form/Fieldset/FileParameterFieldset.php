@@ -146,7 +146,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                         'name' => 'Between',
                         'options' => [
                             'min' => 0,
-                            'max' => 27930
+                            'max' => 32756
                         ]
                     ]
                 ]
