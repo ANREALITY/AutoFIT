@@ -107,13 +107,6 @@ abstract class AbstractEndpointFtgwProtocolServerFieldset extends AbstractEndpoi
                     'class' => 'form-control field-port'
                 ]
             ]);
-
-        $this->add(
-            [
-                'name' => 'protocol_set',
-                'type' => 'Order\Form\Fieldset\ProtocolSetForProtocolServerSource',
-                'options' => []
-            ]);
     }
 
     public function getInputFilterSpecification()

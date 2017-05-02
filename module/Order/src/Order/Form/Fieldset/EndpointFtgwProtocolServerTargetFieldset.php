@@ -38,6 +38,13 @@ class EndpointFtgwProtocolServerTargetFieldset extends AbstractEndpointFtgwProto
                 'type' => 'Order\Form\Fieldset\FileParameterSet',
                 'options' => []
             ]);
+
+        $this->add(
+            [
+                'name' => 'protocol_set',
+                'type' => 'Order\Form\Fieldset\ProtocolSetForProtocolServerTarget',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()

@@ -374,6 +374,7 @@ return [
             'Order\Form\Fieldset\IncludeParameterSet' => false,
             'Order\Form\Fieldset\ProtocolSetForSelfService' => false,
             'Order\Form\Fieldset\ProtocolSetForProtocolServerSource' => false,
+            'Order\Form\Fieldset\ProtocolSetForProtocolServerTarget' => false,
             'Order\Form\Fieldset\LogicalConnectionCd' => false,
             'Order\Form\Fieldset\LogicalConnectionFtgw' => false,
             'Order\Form\Fieldset\Notification' => false,

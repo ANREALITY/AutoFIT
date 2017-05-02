@@ -25,6 +25,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         'FileParameterSet',
         'ProtocolSetForSelfService',
         'ProtocolSetForProtocolServerSource',
+        'ProtocolSetForProtocolServerTarget',
     ];
 
     /**
