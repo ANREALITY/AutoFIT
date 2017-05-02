@@ -81,7 +81,8 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $prototypeClassName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
+        $classNameRoot = str_ireplace([self::NAMESPACE_FIELDSET . '\\', 'Source', 'Target'], '', $requestedName);
+        $prototypeClassName = $classNameRoot;
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
