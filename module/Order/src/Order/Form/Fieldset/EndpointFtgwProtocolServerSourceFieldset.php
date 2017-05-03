@@ -29,7 +29,7 @@ class EndpointFtgwProtocolServerSourceFieldset extends AbstractEndpointFtgwProto
                     ]
                 ],
                 'attributes' => [
-                    'class' => 'form-control field-folder'
+                    'class' => 'form-control'
                 ]
             ]);
 
