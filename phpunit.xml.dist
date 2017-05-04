@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.1/phpunit.xsd"
 	backupGlobals="false"
 	backupStaticAttributes="false"
-	bootstrap="tests/Bootstrap.php"
+	bootstrap="test/Bootstrap.php"
 	cacheTokens="false"
 	colors="true"
 >
 	<testsuites>
-		<testsuite name="app-only">
-			<directory suffix="Test.php">tests/unit/Application</directory>
-			<!--
-			<directory suffix="Test.php">tests/unit/Order</directory>
-			<directory suffix="Test.php">tests/unit/DataExchange</directory>
-			<directory suffix="Test.php">tests/unit/Administration</directory>
-			<directory suffix="Test.php">tests/unit/AccesControl</directory>
-			-->
+		<testsuite name="unit-app-only">
+			<directory suffix="Test.php">test/Unit</directory>
 		</testsuite>
-		<testsuite name="app-libs">
-			<directory suffix="Test.php">vendor/db-systel/dbs-common-lib/tests/Hydrator</directory>
+		<testsuite name="integration-app-only">
+			<directory suffix="Test.php">test/Integration</directory>
+		</testsuite>
+		<testsuite name="app-lib">
+			<directory suffix="Test.php">vendor/db-systel/dbs-common-lib/tests</directory>
 		</testsuite>
 	</testsuites>
 	<logging>
