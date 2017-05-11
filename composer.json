@@ -64,5 +64,18 @@
         "zendframework/zftool": "^0.1.0"
     },
     "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Logging\\": "module/Logging/src/",
+            "ErrorHandling\\": "module/ErrorHandling/src/",
+            "Authentication\\": "module/Authentication/src/",
+            "Authorization\\": "module/Authorization/src/",
+            "AuditLogging\\": "module/AuditLogging/src/",
+            "MasterData\\": "module/MasterData/src/",
+            "Order\\": "module/Order/src/",
+            "Application\\": "module/Application/src/",
+            "DbSystel\\": "vendor/db-systel/dbs-common-lib/src/"
+        }
     }
 }

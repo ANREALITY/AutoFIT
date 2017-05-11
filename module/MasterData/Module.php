@@ -12,7 +12,7 @@ class Module
     {
         return [
             'Zend\Loader\ClassMapAutoloader' => [
-                __DIR__ . '/../../data/cache' . '/' . 'autoload_classmap.application.php',
+                __DIR__ . '/../../vendor/composer' . '/' . 'autoload_classmap.php',
             ],
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
