@@ -38,7 +38,10 @@ class Bootstrap
         $schemaSql = file_get_contents($dbConfigs['scripts']['schema']);
         $storedProceduresSql = file_get_contents($dbConfigs['scripts']['stored-procedures']);
         $basicDataSql = file_get_contents($dbConfigs['scripts']['basic-data']);
-        $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql);
+        $testDataSql = array_map(function ($sqlFile) {
+            return file_get_contents($sqlFile);
+        }, $dbConfigs['scripts']['test-data']);
+        $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql, $testDataSql);
 
         AbstractIntegrationTest::setDbConfigs($dbConfigs);
     }

@@ -42,7 +42,7 @@ class DatabaseInitializer
         $this->database = $dbConfigs['database'];
     }
 
-    public function setUp(string $schemaSql, string $storedProceduresSql, string $basicDataSql)
+    public function setUp(string $schemaSql, string $storedProceduresSql, string $basicDataSql, array $testDataSqlSet = [])
     {
         $this->dropDatabase();
         $this->createDatabase();
@@ -50,6 +50,7 @@ class DatabaseInitializer
         $this->createSchema($schemaSql);
         $this->createStoredProcedures($storedProceduresSql);
         $this->createBasicData($basicDataSql);
+        $this->createTestData($testDataSqlSet);
     }
 
     public function tearDown()
@@ -75,6 +76,13 @@ class DatabaseInitializer
     protected function createBasicData(string $sql)
     {
         $this->pdo->exec($sql);
+    }
+
+    protected function createTestData(array $sqlSet = [])
+    {
+        foreach ($sqlSet as $sql) {
+            $this->pdo->exec($sql);
+        }
     }
 
     protected function createStoredProcedures(string $sql)
