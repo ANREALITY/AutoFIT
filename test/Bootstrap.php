@@ -31,7 +31,10 @@ class Bootstrap
         $serviceManager->get('ModuleManager')->loadModules();
         static::$serviceManager = $serviceManager;
 
-        $configs = require_once __DIR__ . '/../config/autoload/test/test.local.php';
+        $configs = array_merge_recursive(
+            require_once __DIR__ . '/../config/autoload/test/test.global.php',
+            require_once __DIR__ . '/../config/autoload/test/test.local.php'
+        );
         $dbConfigs = $configs['test']['db'];
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
 
