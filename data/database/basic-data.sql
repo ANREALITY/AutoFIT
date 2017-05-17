@@ -82,13 +82,6 @@ insert  into `server_type`(`id`,`name`) values
 (4,'windows'),
 (7,'windowsshare');
 
-/*Data for the table `synchronization` */
-
-insert  into `synchronization`(`id`,`in_progress`,`type`,`last_sync`) values 
-(7,0,'server','2017-03-23 09:26:31'),
-(8,0,'billing','2017-03-24 06:34:56'),
-(9,0,'application','2017-03-23 19:10:50');
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
