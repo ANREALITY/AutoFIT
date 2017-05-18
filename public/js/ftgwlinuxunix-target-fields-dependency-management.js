@@ -30,6 +30,8 @@ function toggleFieldServerTarget(value) {
 		value = global.targetServerQuantity;
 	}
 	if (value == SERVER_QUANTITY_ONE) {
+        // manipulating basic fields
+        // manipulating specific fields
         fieldClusterIdTarget.val('');
         fieldClusterVirtualNodeNameTarget.val('');
         fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
@@ -39,43 +41,47 @@ function toggleFieldServerTarget(value) {
         fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
             // manipulating basic fields
+            fieldTheServerTarget.parent().fadeIn('slow');
+            fieldTheServerNodeNameTarget.parent().fadeIn('slow');
+            fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeIn('slow');
+            infoBoxServerHintTarget.fadeIn('slow');
+            // manipulating specific fields
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
-
-			fieldTheServerTarget.parent().fadeIn('slow');
-			infoBoxServerHintTarget.fadeIn('slow');
-			fieldTheServerNodeNameTarget.parent().fadeIn('slow');
-			fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeIn('slow');
 		}
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
             // manipulating basic fields
+            // manipulating specific fields
 			fieldServerTargetToggle.parent().parent().fadeOut('slow');
 		}
 		global.targetServerQuantity = SERVER_QUANTITY_ONE;
 	} else if (value == SERVER_QUANTITY_MANY) {
-		fieldTheServerTarget.val('');
-		fieldTheServerTarget.parent().fadeOut('slow');
-		infoBoxServerHintTarget.fadeOut('slow');
-		fieldTheServerNodeNameTarget.val('');
-		fieldTheServerNodeNameTarget.parent().fadeOut('slow');
-		fieldTheServerEndpointServerConfigDnsAddressTarget.val('');
-		fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeOut('slow');
+        // manipulating basic fields
+        fieldTheServerTarget.val('');
+        fieldTheServerTarget.parent().fadeOut('slow');
+        fieldTheServerNodeNameTarget.val('');
+        fieldTheServerNodeNameTarget.parent().fadeOut('slow');
+        fieldTheServerEndpointServerConfigDnsAddressTarget.val('');
+        fieldTheServerEndpointServerConfigDnsAddressTarget.parent().fadeOut('slow');
+        infoBoxServerHintTarget.fadeOut('slow');
+        // manipulating specific fields
+
 		if (global.targetServerPlace != SERVER_PLACE_EXTERNAL) {
             // manipulating basic fields
+            // manipulating specific fields
 			fieldServerTargetToggle.parent().parent().fadeIn('slow');
-
-			fieldClusterVirtualNodeNameTarget.parent().fadeIn('slow');
-			infoBoxClusterTarget.fadeIn('slow');
+            fieldClusterVirtualNodeNameTarget.parent().fadeIn('slow');
+            infoBoxClusterTarget.fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeIn('slow');
 		}
 		if (global.targetServerPlace != SERVER_PLACE_INTERNAL) {
             // manipulating basic fields
+            // manipulating specific fields
 			fieldServerTargetToggle.parent().parent().fadeOut('slow');
-
-			fieldClusterIdTarget.val('');
-			fieldClusterVirtualNodeNameTarget.val('');
-			fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
-			infoBoxClusterTargetinfoBoxClusterTarget
-			fieldEndpointClusterConfigIdTarget.val('');
+            fieldClusterIdTarget.val('');
+            fieldClusterVirtualNodeNameTarget.val('');
+            fieldClusterVirtualNodeNameTarget.parent().fadeOut('slow');
+            infoBoxClusterTarget.fadeOut('slow');
+            fieldEndpointClusterConfigIdTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.val('');
 			fieldEndpointClusterConfigDnsAddressTarget.parent().fadeOut('slow');
 		}
