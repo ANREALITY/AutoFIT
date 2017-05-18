@@ -2,12 +2,15 @@
 const TRANSMISSION_TYPE_TXT = 'txt';
 
 $(document).ready(function() {
+    // basic
 	basicFieldEndpointSourceServerPlace = $('#fieldgroup-basic-endpoint-source .field-server-place');
-	fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
 	fieldTheServerSource = $('#fieldgroup-basic-endpoint-source .input-server');
 	fieldTheServerNodeNameSource = $('#fieldgroup-basic-endpoint-source .field-server-node-name');
 	fieldTheServerEndpointServerConfigDnsAddressSource = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldTheExternalServerSource = $('#fieldgroup-basic-endpoint-source .input-external-server');
+    infoBoxServerHintSource = $('#fieldgroup-basic-endpoint-source .server-hint');
+    // specific
+    fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
 	fieldClusterIdSource = $('#fieldgroup-specific-endpoint-source .field-cluster-id');
 	fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
 	infoBoxClusterSource = $('#fieldgroup-specific-endpoint-source .cluster-hint');
@@ -16,7 +19,6 @@ $(document).ready(function() {
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
 	infoBoxCrontabSource = $('#fieldgroup-specific-endpoint-source .crontab-hint');
 	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
-	infoBoxServerHintSource = $('#fieldgroup-basic-endpoint-source .server-hint');
 });
 $(document).ready(function() {
 	fieldServerSourceToggle.change(function() {
@@ -41,7 +43,9 @@ function toggleFieldServerSource(value) {
         fieldEndpointClusterConfigDnsAddressSource.val('');
         fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
+			// manipulating basic fields
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
+
 			fieldTheServerSource.parent().fadeIn('slow');
 			infoBoxServerHintSource.fadeIn('slow');
 			fieldTheServerNodeNameSource.parent().fadeIn('slow');
@@ -51,7 +55,9 @@ function toggleFieldServerSource(value) {
 			infoBoxCrontabSource.fadeIn('slow');
 		}
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
+            // manipulating basic fields
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
+
 			fieldTransmissionInterval.val('');
 			fieldTransmissionInterval.parent().fadeOut('slow');
 			infoBoxCrontabSource.fadeOut('slow');
@@ -68,7 +74,9 @@ function toggleFieldServerSource(value) {
 		fieldTheServerEndpointServerConfigDnsAddressSource.val('');
 		fieldTheServerEndpointServerConfigDnsAddressSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
+            // manipulating basic fields
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
+
 			fieldClusterVirtualNodeNameSource.parent().fadeIn('slow');
 			infoBoxClusterSource.fadeIn('slow');
 			fieldEndpointClusterConfigDnsAddressSource.parent().fadeIn('slow');
@@ -77,7 +85,9 @@ function toggleFieldServerSource(value) {
 			infoBoxCrontabSource.fadeOut('slow');
 		}
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
+            // manipulating basic fields
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
+
 			fieldClusterIdSource.val('');
 			fieldClusterVirtualNodeNameSource.val('');
 			fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
