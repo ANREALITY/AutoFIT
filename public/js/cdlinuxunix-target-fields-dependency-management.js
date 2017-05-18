@@ -14,7 +14,6 @@ $(document).ready(function() {
     infoBoxClusterTarget = $('#fieldgroup-specific-endpoint-target .cluster-hint');
     fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
     fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
-    // specific misc
 });
 $(document).ready(function() {
 	fieldServerTargetToggle.change(function() {
