@@ -7,13 +7,14 @@ $(document).ready(function() {
 	fieldTheServerEndpointServerConfigDnsAddressTarget = $('#fieldgroup-basic-endpoint-target .field-endpoint-server-config-dns-address');
 	fieldTheExternalServerTarget = $('#fieldgroup-basic-endpoint-target .input-external-server');
 	infoBoxServerHintTarget = $('#fieldgroup-basic-endpoint-target .server-hint');
-	// specific
-	fieldServerTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-server');
-	fieldClusterIdTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-id');
-	fieldClusterVirtualNodeNameTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-virtual-node-name');
-	infoBoxClusterTarget = $('#fieldgroup-specific-endpoint-target .cluster-hint');
-	fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
-	fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
+    // specific server related
+    fieldServerTargetToggle = $('#fieldgroup-specific-endpoint-target .toggle-server');
+    fieldClusterIdTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-id');
+    fieldClusterVirtualNodeNameTarget = $('#fieldgroup-specific-endpoint-target .field-cluster-virtual-node-name');
+    infoBoxClusterTarget = $('#fieldgroup-specific-endpoint-target .cluster-hint');
+    fieldEndpointClusterConfigIdTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-id');
+    fieldEndpointClusterConfigDnsAddressTarget = $('#fieldgroup-specific-endpoint-target .field-endpoint-cluster-config-dns-address');
+    // specific misc
 });
 $(document).ready(function() {
 	fieldServerTargetToggle.change(function() {

@@ -9,13 +9,14 @@ $(document).ready(function() {
 	fieldTheServerEndpointServerConfigDnsAddressSource = $('#fieldgroup-basic-endpoint-source .field-endpoint-server-config-dns-address');
 	fieldTheExternalServerSource = $('#fieldgroup-basic-endpoint-source .input-external-server');
     infoBoxServerHintSource = $('#fieldgroup-basic-endpoint-source .server-hint');
-    // specific
+    // specific server related
     fieldServerSourceToggle = $('#fieldgroup-specific-endpoint-source .toggle-server');
-	fieldClusterIdSource = $('#fieldgroup-specific-endpoint-source .field-cluster-id');
-	fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
-	infoBoxClusterSource = $('#fieldgroup-specific-endpoint-source .cluster-hint');
-	fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
-	fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
+    fieldClusterIdSource = $('#fieldgroup-specific-endpoint-source .field-cluster-id');
+    fieldClusterVirtualNodeNameSource = $('#fieldgroup-specific-endpoint-source .field-cluster-virtual-node-name');
+    infoBoxClusterSource = $('#fieldgroup-specific-endpoint-source .cluster-hint');
+    fieldEndpointClusterConfigIdSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-id');
+    fieldEndpointClusterConfigDnsAddressSource = $('#fieldgroup-specific-endpoint-source .field-endpoint-cluster-config-dns-address');
+    // specific misc
 	fieldTransmissionInterval = $('#fieldgroup-specific-endpoint-source .field-transmission-interval');
 	fieldTransmissionType = $('#fieldgroup-specific-endpoint-source .field-transmission-type');
 });
