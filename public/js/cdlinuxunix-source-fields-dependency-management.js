@@ -33,6 +33,13 @@ function toggleFieldServerSource(value) {
 		value = global.sourceServerQuantity;
 	}
 	if (value == SERVER_QUANTITY_ONE) {
+        fieldClusterIdSource.val('');
+        fieldClusterVirtualNodeNameSource.val('');
+        fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
+        infoBoxClusterSource.fadeOut('slow');
+        fieldEndpointClusterConfigIdSource.val('');
+        fieldEndpointClusterConfigDnsAddressSource.val('');
+        fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
 		if (global.sourceServerPlace != SERVER_PLACE_EXTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeIn('slow');
 			fieldTheServerSource.parent().fadeIn('slow');
@@ -43,14 +50,6 @@ function toggleFieldServerSource(value) {
 			fieldTransmissionInterval.parent().fadeIn('slow');
 			infoBoxCrontabSource.fadeIn('slow');
 		}
-		fieldClusterIdSource.val('');
-		fieldClusterVirtualNodeNameSource.val('');
-		fieldClusterVirtualNodeNameSource.parent().fadeOut('slow');
-		infoBoxClusterSource.fadeOut('slow');
-		fieldEndpointClusterConfigIdSource.val('');
-		fieldEndpointClusterConfigDnsAddressSource.val('');
-		fieldEndpointClusterConfigDnsAddressSource.parent().fadeOut('slow');
-
 		if (global.sourceServerPlace != SERVER_PLACE_INTERNAL) {
 			fieldServerSourceToggle.parent().parent().fadeOut('slow');
 			fieldTransmissionInterval.val('');
@@ -59,7 +58,6 @@ function toggleFieldServerSource(value) {
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
-
 		global.sourceServerQuantity = SERVER_QUANTITY_ONE;
 	} else if (value == SERVER_QUANTITY_MANY) {
 		fieldTheServerSource.val('');
@@ -93,7 +91,6 @@ function toggleFieldServerSource(value) {
 			fieldTransmissionType.val(TRANSMISSION_TYPE_TXT).attr('checked', true);
 			fieldTransmissionType.parent().parent().fadeOut('slow');
 		}
-
 		global.sourceServerQuantity = SERVER_QUANTITY_MANY;
 	}
 }
