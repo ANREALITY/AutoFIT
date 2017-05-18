@@ -31,13 +31,6 @@ $(document).ready(function() {
 	fieldEndpointTargetExternalServerName = $('#fieldgroup-basic-endpoint-target .input-external-server');
 });
 // EndpointSource specific
-$(document).ready(function() {
-	fieldFolderSource = $('#fieldgroup-specific-endpoint-source .field-folder');
-	// fieldApplicationUserSource = $('#fieldgroup-specific-endpoint-source .field-application-user');
-	fieldIncludeParameterExpressionSource = $('#fieldgroup-specific-endpoint-source .include-parameters .field-expression');
-	buttonAddIncludeParameter = $('#fieldgroup-specific-endpoint-source #add-include-parameter-button');
-	infoBoxIncludeParameterSource = $('#fieldgroup-specific-endpoint-source .include-parameter-info');
-});
 // EndpointTarget specific
 // ...
 // fields #stop#
@@ -94,8 +87,6 @@ function toggleEndpointSourceDependentFields(value) {
 		infoBoxServerSource.fadeIn('slow');
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeIn('slow');
 
-		enableEndpointSpecificForExternalSource();
-
 		global.sourceServerPlace = SERVER_PLACE_INTERNAL;
 	} else if (value == SERVER_PLACE_EXTERNAL) {
 		fieldEndpointSourceApplicationNumber.val('');
@@ -107,8 +98,6 @@ function toggleEndpointSourceDependentFields(value) {
 		fieldEndpointSourceEndpointServerConfigDnsAddress.parent().fadeOut('slow');
 		fieldEndpointSourceExternalServerName.parent().fadeIn('slow');
 		fieldEndpointSourceCustomerName.parent().fadeIn('slow');
-
-		disableEndpointSpecificForExternalSource();
 
 		global.sourceServerPlace = SERVER_PLACE_EXTERNAL;
 	}
@@ -154,23 +143,7 @@ function toggleEndpointTargetDependentFields(value) {
 // EndpointTarget basic #stop#
 
 // EndpointSource specific #start#
-function disableEndpointSpecificForExternalSource() {
-	fieldFolderSource.val('');
-	fieldFolderSource.parent().fadeOut('slow');
-	// fieldApplicationUserSource.val('');
-	// fieldApplicationUserSource.parent().fadeOut('slow');
-	fieldIncludeParameterExpressionSource.val('');
-	fieldIncludeParameterExpressionSource.parent().parent().parent().parent().fadeOut('slow');
-	buttonAddIncludeParameter.parent().fadeOut('slow');
-	infoBoxIncludeParameterSource.fadeOut('slow');
-}
-function enableEndpointSpecificForExternalSource() {
-	fieldFolderSource.parent().fadeIn('slow');
-	// fieldApplicationUserSource.parent().fadeIn('slow');
-	fieldIncludeParameterExpressionSource.parent().parent().parent().parent().fadeIn('slow');
-	buttonAddIncludeParameter.parent().fadeIn('slow');
-	infoBoxIncludeParameterSource.fadeIn('slow');
-}
+// ...
 // EndpointSource specific #stop#
 
 // EndpointTarget specific #start#
