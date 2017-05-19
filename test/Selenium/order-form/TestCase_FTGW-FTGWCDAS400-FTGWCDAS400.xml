@@ -9,10 +9,10 @@
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="common/TestCase_SetUp.xml">TestCase_SetUp</a></td></tr>
-<tr><td><a href="loaders/TestCase_loader_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400.xml">TestCase_loader_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400</a></td></tr>
+<tr><td><a href="loaders/TestCase_loader_FTGW-FTGWCDAS400-FTGWCDAS400.xml">TestCase_loader_FTGW-FTGWCDAS400-FTGWCDAS400</a></td></tr>
 <tr><td><a href="common/TestCase_billing-FTGW.xml">TestCase_billing-FTGW</a></td></tr>
-<tr><td><a href="endpoints/TestCase_endpoint_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400_source.xml">TestCase_endpoint_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400_source</a></td></tr>
-<tr><td><a href="endpoints/TestCase_endpoint_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400_target.xml">TestCase_endpoint_TestCase_FTGW-FTGWCDAS400-FTGWCDAS400_target</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWCDAS400-FTGWCDAS400_source.xml">TestCase_endpoint_FTGW-FTGWCDAS400-FTGWCDAS400_source</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWCDAS400-FTGWCDAS400_target.xml">TestCase_endpoint_FTGW-FTGWCDAS400-FTGWCDAS400_target</a></td></tr>
 <tr><td><a href="common/TestCase_logical-connection.xml">TestCase_logical-connection</a></td></tr>
 <tr><td><a href="common/TestCase_physical-connection-FTGW_source.xml">TestCase_physical-connection-FTGW_source</a></td></tr>
 <tr><td><a href="common/TestCase_physical-connection-FTGW_target.xml">TestCase_physical-connection-FTGW_target</a></td></tr>
