@@ -11,6 +11,11 @@
 <thead>
 <tr><td rowspan="1" colspan="3">TestCase_physical-connection-FTGW_target</td></tr>
 </thead><tbody>
+<tr>
+	<td>click</td>
+	<td>document.create_file_transfer_request.elements['file_transfer_request[logical_connection][physical_connection_middle_to_end][secure_plus]'][1]</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
