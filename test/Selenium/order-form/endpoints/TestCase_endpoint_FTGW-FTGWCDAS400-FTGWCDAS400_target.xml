@@ -11,11 +11,6 @@
 <thead>
 <tr><td rowspan="1" colspan="3">FTGW-FTGWCDAS400-FTGWCDAS400</td></tr>
 </thead><tbody>
-<tr>
-	<td>open</td>
-	<td>${host}/order/process/create/ftgw/ftgwcdas400/ftgwcdas400?foo=bar</td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>

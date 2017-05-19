@@ -11,11 +11,6 @@
 <thead>
 <tr><td rowspan="1" colspan="3">CD-CDAS400-CDAS400</td></tr>
 </thead><tbody>
-<tr>
-	<td>open</td>
-	<td>${host}/order/process/create/CD/CdAs400/CdAs400?foo=bar</td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>

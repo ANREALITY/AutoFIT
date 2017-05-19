@@ -11,11 +11,6 @@
 <thead>
 <tr><td rowspan="1" colspan="3">CD-CDLinuxUnix-CDLinuxUnix</td></tr>
 </thead><tbody>
-<tr>
-	<td>open</td>
-	<td>${host}/order/process/create/cd/cdlinuxunix/cdlinuxunix</td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>
