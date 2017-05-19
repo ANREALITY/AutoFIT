@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="common/TestCase_SetUp.xml">TestCase_SetUp</a></td></tr>
+<tr><td><a href="loaders/TestCase_loader_TestCase_FTGW-FTGWSelfService-FTGWSelfService.xml">TestCase_loader_TestCase_FTGW-FTGWSelfService-FTGWSelfService</a></td></tr>
+<tr><td><a href="common/TestCase_billing-CD.xml">TestCase_billing-CD</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_TestCase_FTGW-FTGWSelfService-FTGWSelfService_source.xml">TestCase_endpoint_TestCase_FTGW-FTGWSelfService-FTGWSelfService_source</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_TestCase_FTGW-FTGWSelfService-FTGWSelfService_target.xml">TestCase_endpoint_TestCase_FTGW-FTGWSelfService-FTGWSelfService_target</a></td></tr>
+<tr><td><a href="common/TestCase_logical-connection.xml">TestCase_logical-connection</a></td></tr>
+<tr><td><a href="common/TestCase_physical-connection-FTGW_source.xml">TestCase_physical-connection-FTGW_source</a></td></tr>
+<tr><td><a href="common/TestCase_physical-connection-FTGW_target.xml">TestCase_physical-connection-FTGW_target</a></td></tr>
+<tr><td><a href="common/TestCase_comment.xml">TestCase_comment</a></td></tr>
+</tbody></table>
+</body>
+</html>
