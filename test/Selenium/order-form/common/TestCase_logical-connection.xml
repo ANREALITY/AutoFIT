@@ -11,6 +11,16 @@
 <thead>
 <tr><td rowspan="1" colspan="3">TestCase_logical-connection</td></tr>
 </thead><tbody>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][notifications][0][email]</td>
+	<td>foo@foo.com</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.create_file_transfer_request.elements['file_transfer_request[logical_connection][notifications][0][success]'][1]</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 </body>
