@@ -39,4 +39,4 @@ build/phpcs.xml
 build/phpdox.xml
 build/phploc.xml
 build/phpmd.xml
-test/Selenium/order-form/TestCase_SetUp.xml
+test/Selenium/order-form/common/TestCase_SetUp.xml
