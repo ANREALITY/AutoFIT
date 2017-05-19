@@ -12,9 +12,34 @@
 <tr><td rowspan="1" colspan="3">TestCase_billing-CD</td></tr>
 </thead><tbody>
 <tr>
-	<td></td>
-	<td></td>
-	<td></td>
+	<td>type</td>
+	<td>name=file_transfer_request[application_technical_short_name]</td>
+	<td>comgate</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[environment][name]</td>
+	<td>Produktion</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[environment][severity]</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[change_number]</td>
+	<td>C10100001</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[service_invoice_position_basic][number]</td>
+	<td>LSP1308427</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[service_invoice_position_personal][number]</td>
+	<td>LSP1330793</td>
 </tr>
 </tbody></table>
 </body>
