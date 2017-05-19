@@ -11,6 +11,11 @@
 <thead>
 <tr><td rowspan="1" colspan="3">TestCase_comment</td></tr>
 </thead><tbody>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[comment]</td>
+	<td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+</tr>
 
 </tbody></table>
 </body>
