@@ -39,7 +39,7 @@
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][folder]</td>
-	<td>C:\path\to\folder\source</td>
+	<td>foldersource</td>
 </tr>
 <tr>
 	<td>type</td>

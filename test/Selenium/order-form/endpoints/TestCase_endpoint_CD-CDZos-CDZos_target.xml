@@ -34,12 +34,12 @@
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][username]</td>
-	<td>usernametarget</td>
+	<td>usertgt</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][file_parameter_set][file_parameters][0][filename]</td>
-	<td>filename1target</td>
+	<td>filenameatarget</td>
 </tr>
 <tr>
 	<td>type</td>
