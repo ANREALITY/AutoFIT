@@ -14,8 +14,6 @@
 <tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWWindowsShare-FTGWWindowsShare_source.xml">TestCase_endpoint_FTGW-FTGWWindowsShare-FTGWWindowsShare_source</a></td></tr>
 <tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWWindowsShare-FTGWWindowsShare_target.xml">TestCase_endpoint_FTGW-FTGWWindowsShare-FTGWWindowsShare_target</a></td></tr>
 <tr><td><a href="common/TestCase_logical-connection.xml">TestCase_logical-connection</a></td></tr>
-<tr><td><a href="common/TestCase_physical-connection-FTGW_source.xml">TestCase_physical-connection-FTGW_source</a></td></tr>
-<tr><td><a href="common/TestCase_physical-connection-FTGW_target.xml">TestCase_physical-connection-FTGW_target</a></td></tr>
 <tr><td><a href="common/TestCase_comment.xml">TestCase_comment</a></td></tr>
 </tbody></table>
 </body>

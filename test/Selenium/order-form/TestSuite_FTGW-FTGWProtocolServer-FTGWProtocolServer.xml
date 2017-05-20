@@ -9,13 +9,11 @@
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="common/TestCase_SetUp.xml">TestCase_SetUp</a></td></tr>
-<tr><td><a href="loaders/TestCase_loader_FTGW-FTGWSelfService-FTGWSelfService.xml">TestCase_loader_FTGW-FTGWSelfService-FTGWSelfService</a></td></tr>
+<tr><td><a href="loaders/TestCase_loader_FTGW-FTGWProtocolServer-FTGWProtocolServer.xml">TestCase_loader_FTGW-FTGWProtocolServer-FTGWProtocolServer</a></td></tr>
 <tr><td><a href="common/TestCase_billing-FTGW.xml">TestCase_billing-FTGW</a></td></tr>
-<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWSelfService-FTGWSelfService_source.xml">TestCase_endpoint_FTGW-FTGWSelfService-FTGWSelfService_source</a></td></tr>
-<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWSelfService-FTGWSelfService_target.xml">TestCase_endpoint_FTGW-FTGWSelfService-FTGWSelfService_target</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWProtocolServer-FTGWProtocolServer_source.xml">TestCase_endpoint_FTGW-FTGWProtocolServer-FTGWProtocolServer_source</a></td></tr>
+<tr><td><a href="endpoints/TestCase_endpoint_FTGW-FTGWProtocolServer-FTGWProtocolServer_target.xml">TestCase_endpoint_FTGW-FTGWProtocolServer-FTGWProtocolServer_target</a></td></tr>
 <tr><td><a href="common/TestCase_logical-connection.xml">TestCase_logical-connection</a></td></tr>
-<tr><td><a href="common/TestCase_physical-connection-FTGW_source.xml">TestCase_physical-connection-FTGW_source</a></td></tr>
-<tr><td><a href="common/TestCase_physical-connection-FTGW_target.xml">TestCase_physical-connection-FTGW_target</a></td></tr>
 <tr><td><a href="common/TestCase_comment.xml">TestCase_comment</a></td></tr>
 </tbody></table>
 </body>
