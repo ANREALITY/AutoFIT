@@ -12,30 +12,45 @@
 <tr><td rowspan="1" colspan="3">FTGW-FTGWWindowsShare-FTGWWindowsShare</td></tr>
 </thead><tbody>
 	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][contact_person]</td>
-		<td>Amelia Fieldmouse</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][application][technical_short_name]</td>
-		<td>KSB</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][server][name]</td>
-		<td>wincdprd.tech.rz.db.de</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
-		<td>dnstarget</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][folder]</td>
-		<td>/path/to/folder/target</td>
-	</tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][contact_person]</td>
+	<td>Amelia Fieldmouse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][application][technical_short_name]</td>
+	<td>KSB</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][server][name]</td>
+	<td>wincdprd.tech.rz.db.de</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
+	<td>dnsaddresstarget</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][sharename]</td>
+	<td>sharenametarget</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][folder]</td>
+	<td>C:\path\to\folder\target</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][access_config_set][access_configs][0][username]</td>
+	<td>BKU\username1target</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.create_file_transfer_request.elements['file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][access_config_set][access_configs][0][permission_read]'][1]</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

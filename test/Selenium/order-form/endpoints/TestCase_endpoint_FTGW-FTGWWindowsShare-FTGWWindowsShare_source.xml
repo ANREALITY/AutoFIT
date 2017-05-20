@@ -12,25 +12,45 @@
 <tr><td rowspan="1" colspan="3">FTGW-FTGWWindowsShare-FTGWWindowsShare</td></tr>
 </thead><tbody>
 	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][contact_person]</td>
-		<td>Howard Rockerduck</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][application][technical_short_name]</td>
-		<td>KM-SPI</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][server][name]</td>
-		<td>wincdabn.tech.rz.db.de</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][dns_address]</td>
-		<td>dnssource</td>
-	</tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][contact_person]</td>
+	<td>Howard Rockerduck</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][application][technical_short_name]</td>
+	<td>KM-SPI</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][server][name]</td>
+	<td>wincdabn.tech.rz.db.de</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][dns_address]</td>
+	<td>dnsaddresssource</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][sharename]</td>
+	<td>sharenamesource</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][folder]</td>
+	<td>C:\path\to\folder\source</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][access_config_set][access_configs][0][username]</td>
+	<td>BKU\username1source</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.create_file_transfer_request.elements['file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][access_config_set][access_configs][0][permission_read]'][1]</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

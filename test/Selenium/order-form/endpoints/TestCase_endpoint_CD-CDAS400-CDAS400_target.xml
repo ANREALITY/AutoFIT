@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
-	<td>dnstarget</td>
+	<td>dnsaddresstarget</td>
 </tr>
 <tr>
 	<td>type</td>

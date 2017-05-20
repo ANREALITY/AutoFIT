@@ -12,25 +12,45 @@
 <tr><td rowspan="1" colspan="3">CD-CDZos-CDZos</td></tr>
 </thead><tbody>
 	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][contact_person]</td>
-		<td>Amelia Fieldmouse</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][application][technical_short_name]</td>
-		<td>KSB</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][endpoint_server_config][server][name]</td>
-		<td>a44</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
-		<td>dnstarget</td>
-	</tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][contact_person]</td>
+	<td>Amelia Fieldmouse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][application][technical_short_name]</td>
+	<td>KSB</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][endpoint_server_config][server][name]</td>
+	<td>a44</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
+	<td>dnsaddresstarget</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][username]</td>
+	<td>usernametarget</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][file_parameter_set][file_parameters][0][filename]</td>
+	<td>filename1target</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][file_parameter_set][file_parameters][0][record_length]</td>
+	<td>64</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_end_to_end][endpoint_target][file_parameter_set][file_parameters][0][block_size]</td>
+	<td>27930</td>
+</tr>
 </tbody></table>
 </body>
 </html>

@@ -12,10 +12,25 @@
 <tr><td rowspan="1" colspan="3">FTGW-FTGWSelfService-FTGWSelfService</td></tr>
 </thead><tbody>
 	<tr>
-		<td>type</td>
-		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][contact_person]</td>
-		<td>Amelia Fieldmouse</td>
-	</tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][contact_person]</td>
+	<td>Amelia Fieldmouse</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][protocol_set][protocols][]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][ftgw_username]</td>
+	<td>ftgwuserbanetarget</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][mailbox]</td>
+	<td>mailboxtarget</td>
+</tr>
 </tbody></table>
 </body>
 </html>
