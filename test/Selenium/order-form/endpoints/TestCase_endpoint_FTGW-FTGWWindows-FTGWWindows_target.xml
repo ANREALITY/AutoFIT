@@ -11,11 +11,31 @@
 <thead>
 <tr><td rowspan="1" colspan="3">FTGW-FTGWWindows-FTGWWindows</td></tr>
 </thead><tbody>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][contact_person]</td>
+		<td>Amelia Fieldmouse</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][application][technical_short_name]</td>
+		<td>KSB</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][server][name]</td>
+		<td>abnsrd90131</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][endpoint_server_config][dns_address]</td>
+		<td>dnstarget</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_middle_to_end][endpoint_target][folder]</td>
+		<td>/path/to/folder/target</td>
+	</tr>
 </tbody></table>
 </body>
 </html>

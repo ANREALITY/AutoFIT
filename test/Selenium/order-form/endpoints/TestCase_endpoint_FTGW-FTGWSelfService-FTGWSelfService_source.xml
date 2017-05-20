@@ -11,11 +11,11 @@
 <thead>
 <tr><td rowspan="1" colspan="3">FTGW-FTGWSelfService-FTGWSelfService</td></tr>
 </thead><tbody>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][contact_person]</td>
+		<td>Howard Rockerduck</td>
+	</tr>
 </tbody></table>
 </body>
 </html>

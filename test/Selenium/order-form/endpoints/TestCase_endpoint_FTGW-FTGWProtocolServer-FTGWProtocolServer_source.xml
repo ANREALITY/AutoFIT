@@ -11,11 +11,26 @@
 <thead>
 <tr><td rowspan="1" colspan="3">FTGW-FTGWProtocolServer-FTGWProtocolServer</td></tr>
 </thead><tbody>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][contact_person]</td>
+		<td>Howard Rockerduck</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][application][technical_short_name]</td>
+		<td>KM-SPI</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][dns_address]</td>
+		<td>dnssource</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][username]</td>
+		<td>usersource</td>
+	</tr>
 </tbody></table>
 </body>
 </html>
