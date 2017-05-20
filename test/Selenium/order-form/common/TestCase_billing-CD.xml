@@ -9,7 +9,7 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">TestCase_billing-CD</td></tr>
+    <tr><td rowspan="1" colspan="3">TestCase_billing-CD</td></tr>
 </thead><tbody>
 <tr>
 	<td>type</td>
@@ -19,12 +19,12 @@
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[environment][name]</td>
-	<td>Produktion</td>
+	<td>Entwicklung</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[environment][severity]</td>
-	<td>20</td>
+	<td>5</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -34,12 +34,12 @@
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[service_invoice_position_basic][number]</td>
-	<td>LSP1308427</td>
+	<td>LSP3407738</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=file_transfer_request[service_invoice_position_personal][number]</td>
-	<td>LSP1330793</td>
+	<td>LSP3407744</td>
 </tr>
 </tbody></table>
 </body>
