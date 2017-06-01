@@ -44,7 +44,8 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
                     'article_type' => Article::TYPE_BASIC,
-                    'active' => true
+                    'active' => true,
+                    'available' => true
                 ]
             ]);
     }
@@ -68,7 +69,8 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
                     'article_type' => Article::TYPE_PERSONAL,
-                    'active' => true
+                    'active' => true,
+                    'available' => true
                 ]
             ]);
     }

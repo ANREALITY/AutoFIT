@@ -118,6 +118,14 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                             ]);
                     }
                 }
+                if (array_key_exists('available', $condition)) {
+                    if ($condition['available'] == true) {
+                        $select->where(
+                            [
+                                'service_invoice_position.order_quantity > ?' => 0
+                            ]);
+                    }
+                }
             }
         }
 
