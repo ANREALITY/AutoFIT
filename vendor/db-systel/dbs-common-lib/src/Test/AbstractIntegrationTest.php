@@ -45,7 +45,12 @@ abstract class AbstractIntegrationTest extends TestCase
                 );
             }
             if (! self::$pdo) {
-                self::$pdo = new PDO(self::$dbConfigs['dsn'], self::$dbConfigs['username'], self::$dbConfigs['password']);
+                self::$pdo = new PDO(
+                    self::$dbConfigs['dsn'],
+                    self::$dbConfigs['username'],
+                    self::$dbConfigs['password'],
+                    [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
+                );
             }
             $this->connection = $this->createDefaultDBConnection(self::$pdo, self::$dbConfigs['database']);
         }

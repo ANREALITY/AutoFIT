@@ -18,7 +18,7 @@ return [
             'password' => 'PASSWORD',
             'database' => 'autofit_test',
             'host' => 'HOST',
-            'dsn' => 'mysql:dbname=autofit_test;host=localhost',
+            'dsn' => 'mysql:dbname=autofit_test;host=HOST',
             'driver_options' => [
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
             ],

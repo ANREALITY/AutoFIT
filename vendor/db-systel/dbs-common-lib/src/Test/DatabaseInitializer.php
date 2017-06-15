@@ -28,9 +28,10 @@ class DatabaseInitializer
     public function __construct(array $dbConfigs)
     {
         $this->pdo = new PDO(
-        'mysql:host=' . $dbConfigs['host'] . ';charset=utf8',
+            $dbConfigs['dsn'],
             $dbConfigs['username'],
-            $dbConfigs['password']
+            $dbConfigs['password'],
+            [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
         );
 
         $this->mysqli = new Mysqli(
