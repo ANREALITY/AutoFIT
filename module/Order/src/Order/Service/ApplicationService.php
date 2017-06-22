@@ -34,7 +34,7 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
                 [
                     'technical_short_name' => $technicalShortName,
                     'active' => true,
-                    'with_invoice_positions_only' => true
+                    'with_invoice_positions_only' => false
                 ]
             ]);
     }
