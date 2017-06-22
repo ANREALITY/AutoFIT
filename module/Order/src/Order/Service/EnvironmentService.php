@@ -34,7 +34,7 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
                 [
                     'application_technical_short_name' => $applicationTechnicalShortName,
                     'name' => $name,
-                    'with_invoice_positions_only' => true
+                    'with_invoice_positions_only' => false
                 ]
             ]);
     }
