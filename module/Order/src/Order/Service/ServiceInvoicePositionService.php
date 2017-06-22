@@ -72,6 +72,35 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
     }
 
     /**
+     * @param string $number
+     * @param string $applicationTechnicalShortName
+     * @param int $environmentSeverity
+     * @param string $connectionType
+     * @param string $articleType
+     * @return array|ServiceInvoicePosition[]
+     */
+    public function findValidForOrder(
+        string $number,
+        string $applicationTechnicalShortName,
+        int $environmentSeverity,
+        string $connectionType,
+        string $articleType
+    ) {
+        return $this->mapper->findAll(
+            [
+                [
+                    'number' => $number,
+                    'application_technical_short_name' => $applicationTechnicalShortName,
+                    'environment_severity' => $environmentSeverity,
+                    'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
+                    'article_type' => $articleType,
+                    'active' => true,
+                    'available' => true
+                ]
+            ]);
+    }
+
+    /**
      *
      * {@inheritDoc}
      *
