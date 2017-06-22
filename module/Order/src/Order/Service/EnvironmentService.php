@@ -27,7 +27,7 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
      * {@inheritDoc}
      *
      */
-    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null)
+    public function findAllForAutocomplete(string $applicationTechnicalShortName, string $name = null)
     {
         return $this->mapper->findAll(
             [

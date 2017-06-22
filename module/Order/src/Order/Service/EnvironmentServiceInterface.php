@@ -19,7 +19,7 @@ interface EnvironmentServiceInterface
      * @param string $applicationTechnicalShortName
      * @param string $name
      */
-    public function findAllByApplicationAndName(string $applicationTechnicalShortName, string $name = null);
+    public function findAllForAutocomplete(string $applicationTechnicalShortName, string $name = null);
 
     /**
      *
