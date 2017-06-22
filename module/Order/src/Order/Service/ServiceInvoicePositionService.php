@@ -43,9 +43,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'application_technical_short_name' => $applicationTechnicalShortName,
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
-                    'article_type' => Article::TYPE_BASIC,
-                    'active' => true,
-                    'available' => true
+                    'article_type' => Article::TYPE_BASIC
                 ]
             ]);
     }
@@ -68,9 +66,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'application_technical_short_name' => $applicationTechnicalShortName,
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
-                    'article_type' => Article::TYPE_PERSONAL,
-                    'active' => true,
-                    'available' => true
+                    'article_type' => Article::TYPE_PERSONAL
                 ]
             ]);
     }
