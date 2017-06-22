@@ -192,7 +192,11 @@ class OrderForm extends Form
         $isValid = ! empty($validServiceInvoicePositions);
 
         if (! $isValid) {
-            $this->addErrorMessage('The service invoice position (' . strtolower($articleType) . ') is invalid.');
+            $errorMessage = $articleType === Article::TYPE_BASIC
+                ? sprintf('The basic service invoice position is invalid.', strtolower($articleType))
+                : sprintf('The personal service invoice position is invalid.', strtolower($articleType))
+            ;
+            $this->addErrorMessage($errorMessage);
         }
         return $isValid;
     }
