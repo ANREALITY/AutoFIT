@@ -16,8 +16,15 @@ class OrderFormFactory implements FactoryInterface
             'Order\Utility\ProperServiceNameDetector');
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
         $dbAdapter = $dbAdapter = $serviceLocator->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $serviceInvoicePositionService = $serviceLocator->getServiceLocator()->get('Order\Service\ServiceInvoicePositionService');
 
-        $form = new OrderForm(null, [], $fileTransferRequestFieldsetServiceName, $dbAdapter);
+        $form = new OrderForm(
+            null,
+            [],
+            $fileTransferRequestFieldsetServiceName,
+            $dbAdapter,
+            $serviceInvoicePositionService
+        );
         $form->setAttribute('method', 'post')
             ->setHydrator(new ClassMethods())
             ->setInputFilter(new InputFilter());

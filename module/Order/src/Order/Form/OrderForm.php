@@ -1,10 +1,15 @@
 <?php
 namespace Order\Form;
 
+use DbSystel\DataObject\Article;
+use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
 use DbSystel\Validator\MaxOneNotEmpty;
 use DbSystel\Validator\MinOneNotEmpty;
 use Order\Form\Fieldset\AbstractEndpointFieldset;
+use Order\Form\Fieldset\AbstractFileTransferRequestFieldset;
+use Order\Form\Fieldset\AbstractServiceInvoicePositionFieldset;
+use Order\Form\Fieldset\ApplicationFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixSourceFieldset;
 use Order\Form\Fieldset\EndpointCdLinuxUnixTargetFieldset;
 use Order\Form\Fieldset\EndpointCdWindowsShareSourceFieldset;
@@ -19,6 +24,8 @@ use Order\Form\Fieldset\EndpointFtgwWindowsShareSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsShareTargetFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsSourceFieldset;
 use Order\Form\Fieldset\EndpointFtgwWindowsTargetFieldset;
+use Order\Form\Fieldset\EnvironmentFieldset;
+use Order\Service\ServiceInvoicePositionServiceInterface;
 use Zend\Form\Form;
 use Order\Validator\Db\ServerMatchesEndpointType;
 
@@ -31,12 +38,21 @@ class OrderForm extends Form
 
     protected $dbAdapter;
 
-    public function __construct($name = null, $options = [], string $fileTransferRequestFieldsetServiceName, $dbAdapter)
-    {
+    /** @var ServiceInvoicePositionServiceInterface */
+    protected $serviceInvoicePositionService;
+
+    public function __construct(
+        $name = null,
+        $options = [],
+        string $fileTransferRequestFieldsetServiceName,
+        $dbAdapter,
+        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService
+    ) {
         parent::__construct('create_file_transfer_request');
 
         $this->fileTransferRequestFieldsetServiceName = $fileTransferRequestFieldsetServiceName;
         $this->dbAdapter = $dbAdapter;
+        $this->serviceInvoicePositionService = $serviceInvoicePositionService;
     }
 
     public function init()
@@ -107,6 +123,21 @@ class OrderForm extends Form
             $endpointTargetFieldset = $physicalConnectionFtgwMiddleToEndFieldset->get('endpoint_target');
         }
 
+        $connectionType = $this->getConnectionTypeFromFileTransferRequestFieldsetServiceName(
+            $this->fileTransferRequestFieldsetServiceName
+        );
+        $serviceInvoicePositionBasicIsValid = $this->validateServiceInvoicePosition(
+            $this->get('file_transfer_request'),
+            $connectionType,
+            Article::TYPE_BASIC
+        );
+        $serviceInvoicePositionPersonalIsValid = $this->validateServiceInvoicePosition(
+            $this->get('file_transfer_request'),
+            $connectionType,
+            Article::TYPE_PERSONAL
+        );
+        $isValidBilling = $serviceInvoicePositionBasicIsValid && $serviceInvoicePositionPersonalIsValid;
+
         $minOneServerExternalServerOrClusterNotEmptySource = $this->validateMinOneNotEmptyValidatorSource($endpointSourceFieldset);
         $onesIpOrDnsNotEmptySource = $this->validateOnesIpOrDnsNotEmptySource($endpointSourceFieldset);
         $folderIsNotEmptySource = $this->validateFolderIsNotEmptySource($endpointSourceFieldset);
@@ -135,7 +166,34 @@ class OrderForm extends Form
             && $onesIpOrDnsNotEmptyTarget
             && $serverMatchesEndpointTypeTarget;
 
-        $isValid = $isValidBasic && $isValidEndpintSource && $isValidEndpintTarget;
+        $isValid = $isValidBasic && $isValidBilling && $isValidEndpintSource && $isValidEndpintTarget;
+        return $isValid;
+    }
+
+    protected function validateServiceInvoicePosition(
+        AbstractFileTransferRequestFieldset $fileTransferRequestFieldset,
+        string $connectionType,
+        string $articleType
+    ) {
+        $isValid = false;
+        $applicationTechnicalShortName = $fileTransferRequestFieldset->get('application_technical_short_name')->getValue();
+        $environmentSeverity = $fileTransferRequestFieldset->get('environment')->get('severity')->getValue();
+        $serviceInvoicePositionFieldset = $articleType === Article::TYPE_BASIC
+            ? $fileTransferRequestFieldset->get('service_invoice_position_basic')
+            : $fileTransferRequestFieldset->get('service_invoice_position_personal')
+        ;
+        $validServiceInvoicePositions = $this->serviceInvoicePositionService->findValidForOrder(
+            $serviceInvoicePositionFieldset->get('number')->getValue(),
+            $applicationTechnicalShortName,
+            $environmentSeverity,
+            $connectionType,
+            $articleType
+        )->toArray();
+        $isValid = ! empty($validServiceInvoicePositions);
+
+        if (! $isValid) {
+            $this->addErrorMessage('The service invoice position (' . strtolower($articleType) . ') is invalid.');
+        }
         return $isValid;
     }
 
@@ -348,6 +406,20 @@ class OrderForm extends Form
             $this->addErrorMessage('The server for the target endpoint does not match the endpoint type.');
         }
         return $isValid;
+    }
+
+    protected function getConnectionTypeFromFileTransferRequestFieldsetServiceName(string $fileTransferRequestFieldsetServiceName)
+    {
+        $connectionType = null;
+        $cdPattern = '/' . LogicalConnection::TYPE_CD . '$/i';
+        $ftgwPattern = '/' . LogicalConnection::TYPE_FTGW . '$/i';
+        $matches = [];
+        if (preg_match($cdPattern, $fileTransferRequestFieldsetServiceName, $matches) === 1) {
+            $connectionType = LogicalConnection::TYPE_CD;
+        } elseif (preg_match($ftgwPattern, $fileTransferRequestFieldsetServiceName, $matches) === 1) {
+            $connectionType = LogicalConnection::TYPE_FTGW;
+        }
+        return $connectionType;
     }
 
 }
