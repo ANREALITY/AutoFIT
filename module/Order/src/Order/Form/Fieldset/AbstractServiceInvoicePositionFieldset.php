@@ -49,17 +49,7 @@ abstract class AbstractServiceInvoicePositionFieldset extends Fieldset implement
     {
         return [
             'number' => [
-                'required' => true,
-                'validators' => [
-                    [
-                        'name' => 'Zend\Validator\Db\RecordExists',
-                        'options' => [
-                            'table' => 'service_invoice_position',
-                            'field' => 'number',
-                            'adapter' => $this->dbAdapter
-                        ]
-                    ]
-                ]
+                'required' => true
             ]
         ];
     }
