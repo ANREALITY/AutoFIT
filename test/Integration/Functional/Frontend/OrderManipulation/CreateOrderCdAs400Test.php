@@ -17,6 +17,27 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
      */
     public function testSomething()
     {
+        $request = new Request();
+        $request->setMethod(Request::METHOD_POST);
+
+        $inputArray = [
+            'file_transfer_request' => [
+                'id' => '195',
+                'application_technical_short_name' => 'KSP',
+                'environment' => [
+                    'severity' => '13',
+                    'name' => 'Abnahme'
+                ],
+                'change_number' => 'C10000001'
+            ]
+        ];
+        // $inputArrayObject = new \ArrayObject($inputArray);
+        $request->setPost(new Parameters($inputArray));
+        $request->setUri('http://autofit.db-systel.work.loc/order/process/edit/195');
+        $client = new Client();
+        $response = $client->send($request);
+        $breakpoint = null;
+
         $this->markTestSkipped(__METHOD__);
     }
 
