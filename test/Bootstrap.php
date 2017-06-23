@@ -1,9 +1,12 @@
 <?php
+use Zend\ServiceManager\ServiceManager;
+
 namespace Test;
 
 use DbSystel\Test\AbstractIntegrationTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Loader\AutoloaderFactory;
+use Zend\Mvc\Application;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
 use RuntimeException;
@@ -16,6 +19,7 @@ chdir(__DIR__);
  */
 class Bootstrap
 {
+    /** @var ServiceManager */
     protected static $serviceManager;
 
     public static function init()
@@ -27,13 +31,21 @@ class Bootstrap
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
-
         $serviceManager->get('ModuleManager')->loadModules();
+
+        $application = new Application($config, $serviceManager);
+        $application->bootstrap();
+
         static::$serviceManager = $serviceManager;
 
         $configs = array_merge_recursive(
             require_once __DIR__ . '/../config/autoload/test/test.global.php',
-            require_once __DIR__ . '/../config/autoload/test/test.local.php'
+            require_once __DIR__ . '/../config/autoload/test/test.local.php',
+            // modules (manual loading for now) todo automate this!
+            require_once __DIR__ . '/../config/autoload/module/audit-logging.local.php',
+            require_once __DIR__ . '/../config/autoload/module/authorization.global.php',
+            require_once __DIR__ . '/../config/autoload/module/error-handling.local.php',
+            require_once __DIR__ . '/../config/autoload/module/zenddevelopertools.local.php'
         );
         $dbConfigs = $configs['test']['db'];
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
