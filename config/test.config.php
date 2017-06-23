@@ -18,6 +18,7 @@ return [
             $rootPath . '/vendor',
         ],
         'config_glob_paths' => [
+            'config/autoload/module/{,*.}{global,local}.php',
             'config/autoload/test/{,*.}{global,local}.php',
         ],
         'config_cache_enabled' => false,
