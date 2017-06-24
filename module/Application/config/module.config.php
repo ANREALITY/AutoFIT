@@ -6,6 +6,8 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+use Zend\Mvc\I18n\TranslatorFactory as MvcTranslator;
+
 return [
     'router' => [
         'routes' => [
@@ -62,13 +64,15 @@ return [
     ],
     'service_manager' => [
         'invokables' => [],
-        'factories' => [],
+        'factories' => [
+            'TranslatorInterface' => MvcTranslator::class
+        ],
         'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory'
         ],
         'aliases' => [
-            'translator' => 'MvcTranslator'
+            'translator' => 'TranslatorInterface',
         ]
     ],
     'translator' => [
