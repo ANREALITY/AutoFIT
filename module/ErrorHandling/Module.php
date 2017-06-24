@@ -62,10 +62,15 @@ class Module
             ->getSharedManager();
         $serviceManager = $event->getApplication()->getServiceManager();
         $sharedManager->attach('Zend\Mvc\Application',
-            [
-                MvcEvent::EVENT_DISPATCH_ERROR,
-                MvcEvent::EVENT_RENDER_ERROR
-            ],
+            MvcEvent::EVENT_DISPATCH_ERROR,
+            function ($event) use($serviceManager) {
+                $handler = $event->getApplication()
+                    ->getServiceManager()
+                    ->get('ErrorHandling\Handler\ExceptionHandler');
+                $handler->handle($event);
+            });
+        $sharedManager->attach('Zend\Mvc\Application',
+            MvcEvent::EVENT_RENDER_ERROR,
             function ($event) use($serviceManager) {
                 $handler = $event->getApplication()
                     ->getServiceManager()
