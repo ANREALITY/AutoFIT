@@ -1,7 +1,6 @@
 <?php
 namespace AuditLogging\Service\Factory;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
