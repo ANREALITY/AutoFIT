@@ -2,15 +2,15 @@
 namespace AuditLogging\Controller\Factory;
 
 use AuditLogging\Controller\IndexController;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class IndexControllerFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
 
         $formElementManager = $realServiceLocator->get('FormElementManager');
         $auditLogForm = $formElementManager->get('AuditLogging\Form\AuditLogForm');

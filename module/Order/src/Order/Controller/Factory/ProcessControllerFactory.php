@@ -2,16 +2,16 @@
 namespace Order\Controller\Factory;
 
 use Order\Controller\ProcessController;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use DbSystel\DataObject\FileTransferRequest;
 
 class ProcessControllerFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
 
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();

@@ -1,18 +1,18 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use DbSystel\DataObject\LogicalConnection;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 use Order\Form\Fieldset\LogicalConnectionCdFieldset;
 use Order\Form\Fieldset\LogicalConnectionFtgwFieldset;
 
 class LogicalConnectionFieldsetFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
         $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
@@ -34,7 +34,7 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
         }
 
-        $hydrator = $serviceLocator->getServiceLocator()
+        $hydrator = $container->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);

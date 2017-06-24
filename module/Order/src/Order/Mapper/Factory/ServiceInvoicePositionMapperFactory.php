@@ -1,8 +1,8 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Mapper\ServiceInvoicePositionMapper;
 use DbSystel\DataObject\ServiceInvoicePosition;
 
@@ -16,14 +16,14 @@ class ServiceInvoicePositionMapperFactory implements FactoryInterface
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new ServiceInvoicePositionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ServiceInvoicePosition());
+        $service = new ServiceInvoicePositionMapper($container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ServiceInvoicePosition());
 
-        $service->setServiceInvoiceMapper($serviceLocator->get('Order\Mapper\ServiceInvoiceMapper'));
-        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+        $service->setServiceInvoiceMapper($container->get('Order\Mapper\ServiceInvoiceMapper'));
+        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

@@ -1,20 +1,20 @@
 <?php
 namespace Authorization\Acl\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Authorization\Acl\Acl;
 
 class AclFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $config = $serviceLocator->get('Config');
+        $config = $container->get('Config');
         $assertions = [
-            'UserIsOwner' => $serviceLocator->get('Assertion\UserIsOwner')
+            'UserIsOwner' => $container->get('Assertion\UserIsOwner')
         ];
-        $routeMatch = $serviceLocator->get('Application')
+        $routeMatch = $container->get('Application')
             ->getMvcEvent()
             ->getRouteMatch();
         $routeMatchParams = $routeMatch->getParams();

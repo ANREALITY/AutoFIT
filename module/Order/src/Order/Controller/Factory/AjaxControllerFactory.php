@@ -2,15 +2,15 @@
 namespace Order\Controller\Factory;
 
 use Order\Controller\AjaxController;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class AjaxControllerFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
         $applicationService = $realServiceLocator->get('Order\Service\ApplicationService');
         $environmentService = $realServiceLocator->get('Order\Service\EnvironmentService');
         $serverService = $realServiceLocator->get('Order\Service\ServerService');

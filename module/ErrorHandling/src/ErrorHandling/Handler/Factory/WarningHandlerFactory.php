@@ -1,18 +1,18 @@
 <?php
 namespace ErrorHandling\Handler\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use ErrorHandling\Handler\WarningHandler;
 
 class WarningHandlerFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $config = $serviceLocator->get('Config')['errors'];
-        $logger = $serviceLocator->get('Logging\Logger\ErrorLogger');
-        $translator = $serviceLocator->get('translator');
+        $config = $container->get('Config')['errors'];
+        $logger = $container->get('Logging\Logger\ErrorLogger');
+        $translator = $container->get('translator');
         $service = new WarningHandler($config, $logger, $translator);
         return $service;
     }

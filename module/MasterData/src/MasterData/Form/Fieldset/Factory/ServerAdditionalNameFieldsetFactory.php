@@ -1,25 +1,25 @@
 <?php
 namespace MasterData\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use MasterData\Form\Fieldset\ServerAdditionalNameFieldset;
 use DbSystel\DataObject\Server;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class ServerAdditionalNameFieldsetFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldset = new ServerAdditionalNameFieldset(null, []);
-        $hydrator = $serviceLocator->getServiceLocator()
+        $hydrator = $container->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new Server();
         $fieldset->setObject($prototype);
 
-        $dbAdapter = $serviceLocator->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
         $fieldset->setDbAdapter($dbAdapter);
 
         return $fieldset;

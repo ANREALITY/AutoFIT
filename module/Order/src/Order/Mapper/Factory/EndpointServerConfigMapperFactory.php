@@ -1,8 +1,8 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Mapper\EndpointServerConfigMapper;
 use DbSystel\DataObject\EndpointServerConfig;
 
@@ -16,14 +16,14 @@ class EndpointServerConfigMapperFactory implements FactoryInterface
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new EndpointServerConfigMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointServerConfig());
+        $service = new EndpointServerConfigMapper($container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointServerConfig());
 
-        $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
-        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+        $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
+        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

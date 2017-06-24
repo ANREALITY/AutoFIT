@@ -1,8 +1,8 @@
 <?php
 namespace Order\Utility\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Utility\RequestAnalyzer;
 
 class RequestAnalyzerFactory implements FactoryInterface
@@ -14,17 +14,17 @@ class RequestAnalyzerFactory implements FactoryInterface
      *
      * @see FactoryInterface::createService()
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $router = $serviceLocator->get('router');
-        $request = $serviceLocator->get('request');
+        $router = $container->get('router');
+        $request = $container->get('request');
         $routerMatch = $router->match($request);
 
         $routerMatchParams = $routerMatch->getParams();
         $requestQuery = $request->getQuery()->toArray();
         $requestPost = $request->getPost();
 
-        $config = $serviceLocator->get('Config');
+        $config = $container->get('Config');
         $orderStatusChangingActions = isset($config['status']['order']['per_operation'])
             ? array_keys($config['status']['order']['per_operation']) : [];
 

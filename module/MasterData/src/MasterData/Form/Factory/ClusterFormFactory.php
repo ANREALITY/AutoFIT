@@ -1,8 +1,8 @@
 <?php
 namespace MasterData\Form\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilter;
@@ -11,7 +11,7 @@ use MasterData\Form\ClusterForm;
 class ClusterFormFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $form = new ClusterForm();
         $form->setAttribute('method', 'post')

@@ -3,8 +3,8 @@ namespace AuditLogging\Mapper\Factory;
 
 use AuditLogging\Mapper\AuditLogMapper;
 use DbSystel\DataObject\AuditLog;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class AuditLogMapperFactory implements FactoryInterface
 {
@@ -16,20 +16,20 @@ class AuditLogMapperFactory implements FactoryInterface
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new AuditLogMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AuditLog());
+        $service = new AuditLogMapper($container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AuditLog());
 
-        $service->setRequestModifier($serviceLocator->get('AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier'));
+        $service->setRequestModifier($container->get('AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier'));
 
-        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
-        $service->setUserMapper($serviceLocator->get('Order\Mapper\UserMapper'));
-        $service->setFileTransferRequestMapper($serviceLocator->get('Order\Mapper\FileTransferRequestMapper'));
-        $service->setServerMapper($serviceLocator->get('Order\Mapper\ServerMapper'));
-        $service->setClusterMapper($serviceLocator->get('Order\Mapper\ClusterMapper'));
+        $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
+        $service->setFileTransferRequestMapper($container->get('Order\Mapper\FileTransferRequestMapper'));
+        $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
+        $service->setClusterMapper($container->get('Order\Mapper\ClusterMapper'));
 
         return $service;
     }

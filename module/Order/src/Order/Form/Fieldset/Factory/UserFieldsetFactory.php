@@ -1,21 +1,21 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Order\Form\Fieldset\UserFieldset;
 use DbSystel\DataObject\User;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class UserFieldsetFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $authenticationService = $serviceLocator->getServiceLocator()->get('AuthenticationService');
+        $authenticationService = $container->getServiceLocator()->get('AuthenticationService');
         $username = $authenticationService->getIdentity()['username'];
 
         $fieldset = new UserFieldset(null, [], $username);
-        $hydrator = $serviceLocator->getServiceLocator()
+        $hydrator = $container->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);

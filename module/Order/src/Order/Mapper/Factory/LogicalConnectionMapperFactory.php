@@ -3,8 +3,8 @@ namespace Order\Mapper\Factory;
 
 use Order\Mapper\LogicalConnectionMapper;
 use DbSystel\DataObject\LogicalConnection;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class LogicalConnectionMapperFactory implements FactoryInterface
 {
@@ -16,15 +16,15 @@ class LogicalConnectionMapperFactory implements FactoryInterface
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new LogicalConnectionMapper($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection());
+        $service = new LogicalConnectionMapper($container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection());
 
-        $service->setPhysicalConnectionMapper($serviceLocator->get('Order\Mapper\PhysicalConnectionMapper'));
-        $service->setNotificationMapper($serviceLocator->get('Order\Mapper\NotificationMapper'));
-        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+        $service->setPhysicalConnectionMapper($container->get('Order\Mapper\PhysicalConnectionMapper'));
+        $service->setNotificationMapper($container->get('Order\Mapper\NotificationMapper'));
+        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

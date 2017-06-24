@@ -1,8 +1,8 @@
 <?php
 namespace Order\Utility\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Utility\ProperServiceNameDetector;
 use DbSystel\DataObject\FileTransferRequest;
 
@@ -15,13 +15,13 @@ class ProperServiceNameDetectorFactory implements FactoryInterface
      *
      * @see FactoryInterface::createService()
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $fileTransferRequest = $serviceLocator->get('DbSystel\DataObject\FileTransferRequest');
+        $fileTransferRequest = $container->get('DbSystel\DataObject\FileTransferRequest');
 
         if (!$fileTransferRequest->getId()) {
-            $router = $serviceLocator->get('router');
-            $request = $serviceLocator->get('request');
+            $router = $container->get('router');
+            $request = $container->get('request');
             $routerMatch = $router->match($request);
             $params = $routerMatch->getParams();
         } else {

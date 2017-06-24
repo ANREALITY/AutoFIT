@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Form\OrderForm;
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilter;
@@ -10,13 +10,13 @@ use Zend\InputFilter\InputFilter;
 class OrderFormFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
+        $properServiceNameDetector = $container->getServiceLocator()->get(
             'Order\Utility\ProperServiceNameDetector');
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
-        $dbAdapter = $dbAdapter = $serviceLocator->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
-        $serviceInvoicePositionService = $serviceLocator->getServiceLocator()->get('Order\Service\ServiceInvoicePositionService');
+        $dbAdapter = $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $serviceInvoicePositionService = $container->getServiceLocator()->get('Order\Service\ServiceInvoicePositionService');
 
         $form = new OrderForm(
             null,

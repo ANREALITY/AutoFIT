@@ -1,8 +1,8 @@
 <?php
 namespace Order\DataObject\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use DbSystel\DataObject\FileTransferRequest;
 
 class FileTransferRequestFactory implements FactoryInterface
@@ -14,16 +14,16 @@ class FileTransferRequestFactory implements FactoryInterface
      *
      * @see FactoryInterface::createService()
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $requestAnalyzer = $serviceLocator->get('Order\Utility\RequestAnalyzer');
+        $requestAnalyzer = $container->get('Order\Utility\RequestAnalyzer');
         $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
         $isOrderStatusChangingRequest = $requestAnalyzer->isOrderStatusChangingRequest();
         
         if ($isOrderEditRequest || $isOrderStatusChangingRequest) {
-            $fileTransferRequestService = $serviceLocator->get('Order\Service\FileTransferRequestService');
-            $router = $serviceLocator->get('router');
-            $request = $serviceLocator->get('request');
+            $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
+            $router = $container->get('router');
+            $request = $container->get('request');
             $routerMatch = $router->match($request);
             $routerMatchParams = $routerMatch->getParams();
             $paginator = $fileTransferRequestService->findAllWithBuldledData([], $routerMatchParams['id'], null, false);

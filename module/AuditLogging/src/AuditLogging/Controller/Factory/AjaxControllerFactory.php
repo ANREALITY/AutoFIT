@@ -2,15 +2,15 @@
 namespace AuditLogging\Controller\Factory;
 
 use AuditLogging\Controller\AjaxController;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class AjaxControllerFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
         $userService = $realServiceLocator->get('Order\Service\UserService');
         $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
 

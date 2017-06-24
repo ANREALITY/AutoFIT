@@ -1,8 +1,8 @@
 <?php
 namespace AuditLogging\Form\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use AuditLogging\Form\AuditLogForm;
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilter;
@@ -10,7 +10,7 @@ use Zend\InputFilter\InputFilter;
 class AuditLogFormFactory implements FactoryInterface
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $form = new AuditLogForm('audit_log');
         $form->setAttribute('method', 'get')

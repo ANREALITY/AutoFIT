@@ -1,8 +1,8 @@
 <?php
 namespace Order\Mvc\Controller\Plugin\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 use Order\Mvc\Controller\Plugin\IsInSync;
 
 class IsInSyncFactory implements FactoryInterface
@@ -14,9 +14,9 @@ class IsInSyncFactory implements FactoryInterface
      *
      * @see FactoryInterface::createService()
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $realServiceLocator = $container->getServiceLocator();
 
         $synchronizationService = $realServiceLocator->get('Order\Service\SynchronizationService');
 
