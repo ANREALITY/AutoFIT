@@ -39,7 +39,7 @@ return [
                 ]
             ],
             'error403' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/error/403',
                     'defaults' => [
@@ -49,7 +49,7 @@ return [
                 ]
             ],
             'home' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/',
                     'defaults' => [

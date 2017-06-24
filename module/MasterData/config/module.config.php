@@ -3,7 +3,7 @@ return [
     'router' => [
         'routes' => [
             'master-data' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/master-data',
                     'defaults' => [
@@ -14,7 +14,7 @@ return [
                 'may_terminate' => true,
                 'child_routes' => [
                     'edit-server' => [
-                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'type' => 'Zend\Router\Http\Segment',
                         'options' => [
                             'route' => '/server/edit',
                             'defaults' => [
@@ -24,7 +24,7 @@ return [
                         ]
                     ],
                     'create-cluster' => [
-                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'type' => 'Zend\Router\Http\Segment',
                         'options' => [
                             'route' => '/cluster/create',
                             'defaults' => [
@@ -36,7 +36,7 @@ return [
                 ]
             ],
             'provide-servers-not-in-cd-use' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-servers-not-in-cd-use',
                     'defaults' => [
@@ -46,7 +46,7 @@ return [
                 ]
             ],
             'provide-servers-not-in-cluster' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-servers-not-in-cluster',
                     'defaults' => [

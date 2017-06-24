@@ -3,7 +3,7 @@ return [
     'router' => [
         'routes' => [
             'list' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/audit-logging/list[/page/:page]',
                     'defaults' => [
@@ -14,7 +14,7 @@ return [
                 ]
             ],
             'provide-users' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/audit-logging/ajax/provide-users',
                     'defaults' => [
@@ -24,7 +24,7 @@ return [
                 ]
             ],
             'provide-file-transfer-requests' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/audit-logging/ajax/provide-file-transfer-requests',
                     'defaults' => [

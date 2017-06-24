@@ -3,7 +3,7 @@ return [
     'router' => [
         'routes' => [
             'start-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/start-order[/:connectionType]',
                     'defaults' => [
@@ -14,7 +14,7 @@ return [
                 ]
             ],
             'create-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/create/:connectionType/:endpointSourceType/:endpointTargetType',
                     'defaults' => [
@@ -27,7 +27,7 @@ return [
                 ]
             ],
             'start-editing-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/start-editing/:id',
                     'defaults' => [
@@ -38,7 +38,7 @@ return [
                 ]
             ],
             'edit-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/edit/:id',
                     'defaults' => [
@@ -49,7 +49,7 @@ return [
                 ]
             ],
             'submit-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/submit/:id',
                     'defaults' => [
@@ -60,7 +60,7 @@ return [
                 ]
             ],
             'cancel-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/cancel/:id',
                     'defaults' => [
@@ -71,7 +71,7 @@ return [
                 ]
             ],
             'accept-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/accept/:id',
                     'defaults' => [
@@ -82,7 +82,7 @@ return [
                 ]
             ],
             'decline-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/decline/:id',
                     'defaults' => [
@@ -93,7 +93,7 @@ return [
                 ]
             ],
             'start-checking-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/start-checking/:id',
                     'defaults' => [
@@ -104,7 +104,7 @@ return [
                 ]
             ],
             'complete-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/complete/:id',
                     'defaults' => [
@@ -115,7 +115,7 @@ return [
                 ]
             ],
             'show-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/show-order/:id',
                     'defaults' => [
@@ -126,7 +126,7 @@ return [
                 ]
             ],
             'export-order' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/export-order/:id',
                     'defaults' => [
@@ -137,7 +137,7 @@ return [
                 ]
             ],
             'sync-in-progress' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/sync-in-progress',
                     'defaults' => [
@@ -147,7 +147,7 @@ return [
                 ]
             ],
             'operation-denied-for-status' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/order/process/operation-denied-for-status[/:operation][/:status]',
                     'defaults' => [
@@ -157,7 +157,7 @@ return [
                 ]
             ],
             'list-orders' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/list-orders[/page/:page]',
                     'defaults' => [
@@ -168,7 +168,7 @@ return [
                 ]
             ],
             'list-my-orders' => [
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => 'Zend\Router\Http\Segment',
                 'options' => [
                     'route' => '/list-my-orders[/page/:page]',
                     'defaults' => [
@@ -179,7 +179,7 @@ return [
                 ]
             ],
             'provide-applications' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-applications',
                     'defaults' => [
@@ -189,7 +189,7 @@ return [
                 ]
             ],
             'provide-service-invoice-positions' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-service-invoice-positions',
                     'defaults' => [
@@ -199,7 +199,7 @@ return [
                 ]
             ],
             'provide-service-invoice-positions-basic' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-service-invoice-positions-basic',
                     'defaults' => [
@@ -209,7 +209,7 @@ return [
                 ]
             ],
             'provide-service-invoice-positions-personal' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-service-invoice-positions-personal',
                     'defaults' => [
@@ -219,7 +219,7 @@ return [
                 ]
             ],
             'provide-environments' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-environments',
                     'defaults' => [
@@ -229,7 +229,7 @@ return [
                 ]
             ],
             'provide-clusters' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-clusters',
                     'defaults' => [
@@ -239,7 +239,7 @@ return [
                 ]
             ],
             'provide-servers' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Zend\Router\Http\Literal',
                 'options' => [
                     'route' => '/order/ajax/provide-servers',
                     'defaults' => [
