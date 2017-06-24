@@ -2,7 +2,8 @@
 namespace Order\Service\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
 class AbstractServiceFactory implements AbstractFactoryInterface
 {
@@ -37,7 +38,7 @@ class AbstractServiceFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         $canCreateServiceWithName = false;
 
@@ -59,14 +60,14 @@ class AbstractServiceFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::createServiceWithName()
      */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $serviceClassName = str_replace(self::NAMESPACE_SERVICE . '\\', '', $requestedName);
         $prototypeClassName = preg_replace('/' . self::NAME_PART_SERVICE . '$/', '', $serviceClassName);
         $mapperClassName = $prototypeClassName . self::NAME_PART_MAPPER;
         $mapperQualifiedClassName = self::NAMESPACE_MAPPER . '\\' . $mapperClassName;
 
-        $service = new $requestedName($serviceLocator->get($mapperQualifiedClassName));
+        $service = new $requestedName($container->get($mapperQualifiedClassName));
 
         return $service;
     }

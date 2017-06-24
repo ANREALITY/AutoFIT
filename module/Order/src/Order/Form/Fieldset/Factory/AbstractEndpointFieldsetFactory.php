@@ -2,7 +2,8 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 
 class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
@@ -44,7 +45,7 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         $canCreateServiceWithName = false;
 
@@ -66,7 +67,7 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::createServiceWithName()
      */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldsetName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
         $prototypeClassName = preg_replace('/(Source|Target)$/i', '', $fieldsetName);
@@ -74,7 +75,7 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
-        $hydratorManager = $serviceLocator->getServiceLocator()->get('HydratorManager');
+        $hydratorManager = $container->getServiceLocator()->get('HydratorManager');
         try {
             $hydrator = $hydratorManager->get(self::NAMESPACE_HYDRATOR . '\\' . $prototypeClassName . 'Hydrator');
         } catch (ServiceNotFoundException $e) {

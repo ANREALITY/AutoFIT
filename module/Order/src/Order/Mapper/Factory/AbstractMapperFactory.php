@@ -2,7 +2,8 @@
 namespace Order\Mapper\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
 class AbstractMapperFactory implements AbstractFactoryInterface
 {
@@ -31,7 +32,7 @@ class AbstractMapperFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         $canCreateServiceWithName = false;
 
@@ -53,18 +54,18 @@ class AbstractMapperFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::createServiceWithName()
      */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $mapperClassName = str_replace(self::NAMESPACE_MAPPER . '\\', '', $requestedName);
         $prototypeClassName = str_replace(self::NAME_PART_MAPPER, '', $mapperClassName);
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
 
-        $service = new $requestedName($serviceLocator->get('Zend\Db\Adapter\Adapter'),
-            $serviceLocator->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+        $service = new $requestedName($container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new $prototypeQualifiedClassName());
 
-        $service->setTableDataProcessor($serviceLocator->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($serviceLocator->get('DbSystel\Utility\StringUtility'));
+        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
+        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

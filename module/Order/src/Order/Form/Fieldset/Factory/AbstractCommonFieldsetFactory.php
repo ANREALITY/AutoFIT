@@ -2,7 +2,8 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 
 class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
@@ -58,7 +59,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         $canCreateServiceWithName = false;
 
@@ -80,7 +81,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
      *
      * @see AbstractFactoryInterface::createServiceWithName()
      */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $classNameRoot = str_ireplace([self::NAMESPACE_FIELDSET . '\\', 'Source', 'Target'], '', $requestedName);
         $prototypeClassName = $classNameRoot;
@@ -88,7 +89,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
-        $hydratorManager = $serviceLocator->getServiceLocator()->get('HydratorManager');
+        $hydratorManager = $container->getServiceLocator()->get('HydratorManager');
         try {
             $hydrator = $hydratorManager->get(self::NAMESPACE_HYDRATOR . '\\' . $prototypeClassName . 'Hydrator');
         } catch (ServiceNotFoundException $e) {
@@ -99,7 +100,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $service->setObject($prototype);
 
         if (method_exists($service, 'setDbAdapter')) {
-            $dbAdapter = $serviceLocator->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+            $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
             $service->setDbAdapter($dbAdapter);
         }
 

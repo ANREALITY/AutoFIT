@@ -2,7 +2,8 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\AbstractFactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\AbstractEndpoint;
 use DbSystel\DataObject\AbstractPhysicalConnection;
@@ -52,7 +53,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         $canCreateServiceWithName = false;
 
@@ -77,14 +78,14 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
      *
      * @see AbstractFactoryInterface::createServiceWithName()
      */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldsetName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
         $prototypeClassName = preg_replace('/(EndToEnd|EndToMiddle|MiddleToEnd)$/i', '', $fieldsetName);
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
-        $properServiceNameDetector = $serviceLocator->getServiceLocator()->get(
+        $properServiceNameDetector = $container->getServiceLocator()->get(
             'Order\Utility\ProperServiceNameDetector');
 
         if (strcasecmp($this->connectionType, LogicalConnection::TYPE_CD) === 0) {
@@ -103,7 +104,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
                 $service = new $fieldsetQualifiedClassName(null, [], $endpointTargetFieldsetServiceName);
             }
         }
-        $hydrator = $serviceLocator->getServiceLocator()
+        $hydrator = $container->getServiceLocator()
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $service->setHydrator($hydrator);
