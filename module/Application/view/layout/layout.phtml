@@ -1,13 +1,15 @@
 <?php
 
 use DbSystel\DataObject\User;
+use Zend\Authentication\AuthenticationService;
+use Zend\View\Helper\Navigation\Menu;
+use Zend\View\Renderer\PhpRenderer;
+
 echo $this->doctype();
 ?>
 
 <?php
-$authenticationService = $this->getHelperPluginManager()
-    ->getServiceLocator()
-    ->get('AuthenticationService');
+/** @var AuthenticationService $authenticationService */
 $currentIdentity = $authenticationService->getIdentity();
 ?>
 

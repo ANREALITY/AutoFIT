@@ -11,10 +11,6 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Validator\AbstractValidator;
-use Zend\View\Model\ViewModel;
-use Zend\Mvc\Router\RouteMatch;
-use Zend\Mvc\Application;
-use Zend\Stdlib\ResponseInterface;
 
 class Module
 {
@@ -33,6 +29,12 @@ class Module
         $translator->addTranslationFile('phpArray',
             './vendor/db-systel/dbs-common-lib/src/i18n-resources/languages/de/Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
+
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
+
+        $authenticationService = $serviceManager->get('AuthenticationService');
+        $viewModel->authenticationService = $authenticationService;
     }
 
     public function getServiceConfig()
