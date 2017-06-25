@@ -88,7 +88,7 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
         $this->add(
             [
                 'name' => 'logical_connection',
-                'type' => 'Order\Form\Fieldset\LogicalConnection' . $this->getConcreteType(),
+                'type' => 'Order\Form\Fieldset\LogicalConnection' . ucfirst(strtolower($this->getConcreteType())),
                 'options' => []
             ]);
 
