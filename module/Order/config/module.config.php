@@ -1,4 +1,7 @@
 <?php
+use Order\Mvc\Controller\Plugin\Factory\IdentityParamFactory;
+use Order\Mvc\Controller\Plugin\IdentityParam;
+
 return [
     'router' => [
         'routes' => [
@@ -259,9 +262,12 @@ return [
     ],
     'controller_plugins' => [
         'factories' => [
-            'IdentityParam' => 'Order\Mvc\Controller\Plugin\Factory\IdentityParamFactory',
+            IdentityParam::class => IdentityParamFactory::class,
             'IsInSync' => 'Order\Mvc\Controller\Plugin\Factory\IsInSyncFactory',
             'OrderStatusChecker' => 'Order\Mvc\Controller\Plugin\Factory\OrderStatusCheckerFactory',
+        ],
+        'aliases' => [
+            'IdentityParam' => IdentityParam::class,
         ]
     ],
     'service_manager' => [
