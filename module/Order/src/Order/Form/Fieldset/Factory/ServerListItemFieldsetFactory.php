@@ -12,14 +12,14 @@ class ServerListItemFieldsetFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldset = new ServerListItemFieldset(null, []);
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new Server();
         $fieldset->setObject($prototype);
 
-        $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $fieldset->setDbAdapter($dbAdapter);
 
         return $fieldset;

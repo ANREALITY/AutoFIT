@@ -84,7 +84,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
-        $properServiceNameDetector = $container->getServiceLocator()->get(
+        $properServiceNameDetector = $container->get(
             'Order\Utility\ProperServiceNameDetector');
 
         if (strcasecmp($this->connectionType, LogicalConnection::TYPE_CD) === 0) {
@@ -103,7 +103,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
                 $service = new $fieldsetQualifiedClassName(null, [], $endpointTargetFieldsetServiceName);
             }
         }
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $service->setHydrator($hydrator);

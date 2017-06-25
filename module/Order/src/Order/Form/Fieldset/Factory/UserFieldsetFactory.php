@@ -11,11 +11,11 @@ class UserFieldsetFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $authenticationService = $container->getServiceLocator()->get('AuthenticationService');
+        $authenticationService = $container->get('AuthenticationService');
         $username = $authenticationService->getIdentity()['username'];
 
         $fieldset = new UserFieldset(null, [], $username);
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);

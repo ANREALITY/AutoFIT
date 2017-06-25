@@ -14,9 +14,9 @@ class OrderStatusCheckerFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
 
-        $config = $realServiceLocator->get('Config');
+
+        $config = $container->get('Config');
         $orderStatusConfig = isset($config['status']['order']) ? $config['status']['order'] : [];
         
         return new OrderStatusChecker($orderStatusConfig);

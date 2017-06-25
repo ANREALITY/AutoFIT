@@ -12,11 +12,11 @@ class OrderFormFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $properServiceNameDetector = $container->getServiceLocator()->get(
+        $properServiceNameDetector = $container->get(
             'Order\Utility\ProperServiceNameDetector');
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
-        $dbAdapter = $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
-        $serviceInvoicePositionService = $container->getServiceLocator()->get('Order\Service\ServiceInvoicePositionService');
+        $dbAdapter = $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
+        $serviceInvoicePositionService = $container->get('Order\Service\ServiceInvoicePositionService');
 
         $form = new OrderForm(
             null,

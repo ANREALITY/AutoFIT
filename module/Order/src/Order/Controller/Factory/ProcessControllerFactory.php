@@ -11,24 +11,24 @@ class ProcessControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
 
-        $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
+
+        $requestAnalyzer = $container->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
         $isStartRequest = $requestAnalyzer->isStartRequest();
-        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $properServiceNameDetector = $container->get('Order\Utility\ProperServiceNameDetector');
         $connectionType = $properServiceNameDetector->getConnectionType();
         $endpointSourceType = $properServiceNameDetector->getEndpointSourceType();
         $endpointTargetType = $properServiceNameDetector->getEndpointTargetType();
-        $dataExporter = $realServiceLocator->get('DbSystel\DataExport\DataExporter');
+        $dataExporter = $container->get('DbSystel\DataExport\DataExporter');
 
-        $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
-        $fileTransferRequest = $realServiceLocator->get('DbSystel\DataObject\FileTransferRequest');
+        $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
+        $fileTransferRequest = $container->get('DbSystel\DataObject\FileTransferRequest');
         $service = new ProcessController($fileTransferRequest, $fileTransferRequestService);
 
         if ($isOrderRequest || $isOrderEditRequest) {
-            $formElementManager = $realServiceLocator->get('FormElementManager');
+            $formElementManager = $container->get('FormElementManager');
             $orderForm = $formElementManager->get('Order\Form\OrderForm');
             $service->setOrderForm($orderForm);
             $service->setConnectionType($connectionType);
@@ -38,7 +38,7 @@ class ProcessControllerFactory implements FactoryInterface
             $service->setConnectionType($connectionType);
         } else {
             $service->setDataExporter($dataExporter);
-            $config = $realServiceLocator->get('Config');
+            $config = $container->get('Config');
             $exportFolder = $config['export']['folder'];
             $service->setExportFolder($exportFolder);
         }

@@ -67,7 +67,7 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $service->setHydrator($hydrator);
@@ -75,7 +75,7 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
         $service->setObject($prototype);
 
         if (method_exists($service, 'setDbAdapter')) {
-            $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+            $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
             $service->setDbAdapter($dbAdapter);
         }
 

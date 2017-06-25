@@ -12,11 +12,11 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
-        $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
+
+        $requestAnalyzer = $container->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
         $isOrderEditRequest = $requestAnalyzer->isOrderEditRequest();
-        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $properServiceNameDetector = $container->get('Order\Utility\ProperServiceNameDetector');
         $connectionType = $properServiceNameDetector->getConnectionType();
 
         $physicalConnectionEndToEndFieldsetServiceName = ($isOrderRequest || $isOrderEditRequest) &&
@@ -34,7 +34,7 @@ class LogicalConnectionFieldsetFactory implements FactoryInterface
                 $physicalConnectionEndToMiddleFieldsetServiceName, $physicalConnectionMiddleToEndFieldsetServiceName);
         }
 
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);

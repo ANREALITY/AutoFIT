@@ -16,9 +16,9 @@ class IsInSyncFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
 
-        $synchronizationService = $realServiceLocator->get('Order\Service\SynchronizationService');
+
+        $synchronizationService = $container->get('Order\Service\SynchronizationService');
 
         return new IsInSync($synchronizationService);
     }

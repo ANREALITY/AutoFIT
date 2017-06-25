@@ -11,10 +11,10 @@ class ServerControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
-        $serverService = $realServiceLocator->get('Order\Service\ServerService');
 
-        $formElementManager = $realServiceLocator->get('FormElementManager');
+        $serverService = $container->get('Order\Service\ServerService');
+
+        $formElementManager = $container->get('FormElementManager');
         $serverForm = $formElementManager->get('MasterData\Form\ServerForm');
 
         $service = new ServerController(new Server(), $serverService);

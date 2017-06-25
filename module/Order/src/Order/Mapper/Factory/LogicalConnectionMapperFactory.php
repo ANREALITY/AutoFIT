@@ -12,7 +12,7 @@ class LogicalConnectionMapperFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ContainerInterface $container
      *
      * @return mixed
      */

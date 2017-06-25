@@ -88,7 +88,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
-        $hydratorManager = $container->getServiceLocator()->get('HydratorManager');
+        $hydratorManager = $container->get('HydratorManager');
         try {
             $hydrator = $hydratorManager->get(self::NAMESPACE_HYDRATOR . '\\' . $prototypeClassName . 'Hydrator');
         } catch (ServiceNotFoundException $e) {
@@ -99,7 +99,7 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $service->setObject($prototype);
 
         if (method_exists($service, 'setDbAdapter')) {
-            $dbAdapter = $container->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+            $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
             $service->setDbAdapter($dbAdapter);
         }
 

@@ -16,9 +16,9 @@ class IdentityParamFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
 
-        $authenticationService = $realServiceLocator->get('AuthenticationService');
+
+        $authenticationService = $container->get('AuthenticationService');
 
         return new IdentityParam($authenticationService);
     }

@@ -10,12 +10,12 @@ class IndexControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
 
-        $formElementManager = $realServiceLocator->get('FormElementManager');
+
+        $formElementManager = $container->get('FormElementManager');
         $auditLogForm = $formElementManager->get('AuditLogging\Form\AuditLogForm');
 
-        $auditLogService = $realServiceLocator->get('AuditLogging\Service\AuditLogService');
+        $auditLogService = $container->get('AuditLogging\Service\AuditLogService');
         $service = new IndexController($auditLogService);
         $service->setAuditLogForm($auditLogForm);
 

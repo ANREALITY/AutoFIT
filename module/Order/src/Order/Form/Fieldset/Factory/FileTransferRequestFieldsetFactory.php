@@ -13,10 +13,10 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
-        $requestAnalyzer = $realServiceLocator->get('Order\Utility\RequestAnalyzer');
+
+        $requestAnalyzer = $container->get('Order\Utility\RequestAnalyzer');
         $isOrderRequest = $requestAnalyzer->isOrderRequest();
-        $properServiceNameDetector = $realServiceLocator->get('Order\Utility\ProperServiceNameDetector');
+        $properServiceNameDetector = $container->get('Order\Utility\ProperServiceNameDetector');
         $connectionType = $properServiceNameDetector->getConnectionType();
 
         if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
@@ -25,13 +25,13 @@ class FileTransferRequestFieldsetFactory implements FactoryInterface
             $fieldset = new FileTransferRequestFtgwFieldset();
         }
 
-        $hydrator = $container->getServiceLocator()
+        $hydrator = $container
             ->get('HydratorManager')
             ->get('Zend\Hydrator\ClassMethods');
         $fieldset->setHydrator($hydrator);
         $prototype = new FileTransferRequest();
         $fieldset->setObject($prototype);
-        $dbAdapter = $realServiceLocator->get('Zend\Db\Adapter\Adapter');
+        $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $fieldset->setDbAdapter($dbAdapter);
 
         return $fieldset;

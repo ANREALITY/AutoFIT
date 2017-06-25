@@ -10,9 +10,8 @@ class AjaxControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $realServiceLocator = $container->getServiceLocator();
-        $userService = $realServiceLocator->get('Order\Service\UserService');
-        $fileTransferRequestService = $realServiceLocator->get('Order\Service\FileTransferRequestService');
+        $userService = $container->get('Order\Service\UserService');
+        $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
 
         $service = new AjaxController($userService, $fileTransferRequestService);
 
