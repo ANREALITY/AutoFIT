@@ -23,6 +23,8 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
 
     protected function setUp()
     {
+        // disabled for now
+        /*
         $uri = new Http();
         $uri->setScheme('http');
         $uri->setHost('autofit.db-systel.work.loc');
@@ -58,7 +60,6 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
         ]);
         $this->event      = new MvcEvent();
         $this->event->setRouteMatch($this->routeMatch);
-        /** @var TreeRouteStack $router */
         $router = TreeRouteStack::factory($config['router']);
         $router->setRequestUri($uri);
 
@@ -69,6 +70,7 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
 
         $this->controller = $controllerManager->get('Order\Controller\Process');
         $this->controller->setEvent($this->event);
+        */
     }
 
     /**
