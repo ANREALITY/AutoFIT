@@ -1,18 +1,12 @@
 <?php
 namespace DbSystel\Hydrator\Factory;
 
-use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\Application;
-use DbSystel\DataObject\Customer;
-use DbSystel\DataObject\PhysicalConnectionCd;
-use DbSystel\DataObject\Server;
-use DbSystel\DataObject\User;
-use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
 use DbSystel\DataObject\Protocol;
 use DbSystel\Hydrator\Strategy\Entity\GenericCollectionStrategy;
+use DbSystel\Hydrator\Strategy\Entity\GenericEntityStrategy;
+use Interop\Container\ContainerInterface;
+use Zend\Hydrator\HydratorPluginManager;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ProtocolSetHydratorFactory implements FactoryInterface
 {
@@ -20,14 +14,14 @@ class ProtocolSetHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ContainerInterface $container
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $rotocolSetHydrator = $serviceLocator->get('Zend\Hydrator\ClassMethods');
-        $protocolHydrator = $serviceLocator->get('DbSystel\Hydrator\ProtocolHydrator');
+        $rotocolSetHydrator = $container->get(HydratorPluginManager::class)->get('Zend\Hydrator\ClassMethods');
+        $protocolHydrator = $container->get('DbSystel\Hydrator\ProtocolHydrator');
 
         $rotocolSetHydrator->addStrategy('protocols', new GenericCollectionStrategy($protocolHydrator, new Protocol()));
 
@@ -35,4 +29,5 @@ class ProtocolSetHydratorFactory implements FactoryInterface
         
         return $rotocolSetHydrator;
     }
+
 }

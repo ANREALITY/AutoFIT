@@ -1,10 +1,9 @@
 <?php
 namespace DbSystel\Hydrator\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 use DbSystel\Hydrator\ProtocolHydrator;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ProtocolHydratorFactory implements FactoryInterface
 {
@@ -12,11 +11,11 @@ class ProtocolHydratorFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator            
+     * @param ContainerInterface $container
      *
      * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $protocolHydrator = new ProtocolHydrator();
 
@@ -26,4 +25,5 @@ class ProtocolHydratorFactory implements FactoryInterface
 
         return $protocolHydrator;
     }
+
 }
