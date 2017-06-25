@@ -295,7 +295,7 @@ table.list td {
   /* prevent horizontal scrollbar */
   overflow-x: hidden;
 }
-.navbar-inverse .navbar-nav > li.backend > a {
+.navbar-inverse .navbar-nav.backend > li > a {
   color: #dd0000;
 }
 .navbar-inverse .navbar-nav > li > a {
