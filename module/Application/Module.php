@@ -8,8 +8,10 @@
  */
 namespace Application;
 
+use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Router\Http\RouteMatch;
 use Zend\Validator\AbstractValidator;
 
 class Module
@@ -35,6 +37,26 @@ class Module
 
         $authenticationService = $serviceManager->get('AuthenticationService');
         $viewModel->authenticationService = $authenticationService;
+
+        // Get event manager.
+        $eventManager = $e->getApplication()->getEventManager();
+        $sharedEventManager = $eventManager->getSharedManager();
+        // Register the event listener method.
+        $sharedEventManager->attach(
+            AbstractActionController::class,
+            MvcEvent::EVENT_DISPATCH,
+            [$this, 'onDispatch'],
+            100
+        );
+    }
+
+    public function onDispatch(MvcEvent $mvcEvent)
+    {
+        $viewModel = $mvcEvent->getApplication()->getMvcEvent()->getViewModel();
+        $routeMatch = $mvcEvent->getRouteMatch();
+        $viewModel->currentRoute = $routeMatch instanceof RouteMatch
+            ? $routeMatch->getMatchedRouteName() : null
+        ;
     }
 
     public function getServiceConfig()
