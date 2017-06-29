@@ -1,53 +1,74 @@
 <?php
-use Zend\ServiceManager\ServiceManager;
-
 namespace Test;
 
 use DbSystel\Test\AbstractIntegrationTest;
 use DbSystel\Test\DatabaseInitializer;
+use RuntimeException;
 use Zend\Loader\AutoloaderFactory;
-use Zend\Mvc\Application;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
 
 /**
- * Test bootstrap, for setting up autoloading
+ * Sets up the MVC (application, service manager, autoloading) and the database.
  */
 class Bootstrap
 {
+
     /** @var ServiceManager */
     protected static $serviceManager;
 
+    /**
+     * Sets up the
+     */
     public static function init()
     {
+        // autoloading setup
         static::initAutoloader();
 
-        // use ModuleManager to load this module and it's dependencies
-        $config = require_once __DIR__ . '/../config/test.config.php';
+        // main configuration
+        $config = require_once __DIR__ . '/../config/application.config.php';
 
-        $serviceManager = new ServiceManager(new ServiceManagerConfig());
-        $serviceManager->setService('ApplicationConfig', $config);
-        $serviceManager->get('ModuleManager')->loadModules();
+        // service manager setup
+        // self::setUpServiceManager($config);
+        $serviceManagerConfig = isset($config['service_manager']) ? $config['service_manager'] : [];
+        $serviceManagerConfigObject = new ServiceManagerConfig($serviceManagerConfig);
+        // $serviceManagerConfigArray = $serviceManagerConfigObject->toArray();
 
-        $application = new Application($config, $serviceManager);
-        $application->bootstrap();
+        static::$serviceManager = new ServiceManager();
+        $serviceManagerConfigObject->configureServiceManager(self::$serviceManager);
 
-        static::$serviceManager = $serviceManager;
+        // application setup
+        // self::bootstrapApplication($config);
+        static::$serviceManager->setService('ApplicationConfig', $config);
 
-        $configs = array_merge_recursive(
-            require_once __DIR__ . '/../config/autoload/test/test.global.php',
-            require_once __DIR__ . '/../config/autoload/test/test.local.php',
-            // modules (manual loading for now) todo automate this!
-            require_once __DIR__ . '/../config/autoload/module/audit-logging.local.php',
-            require_once __DIR__ . '/../config/autoload/module/authorization.global.php',
-            require_once __DIR__ . '/../config/autoload/module/error-handling.local.php',
-            require_once __DIR__ . '/../config/autoload/module/zenddevelopertools.local.php'
-        );
-        $dbConfigs = $configs['test']['db'];
+        static::$serviceManager->get('ModuleManager')->loadModules();
+
+        $listenersFromAppConfig     = isset($configuration['listeners']) ? $configuration['listeners'] : [];
+        $config                     = static::$serviceManager->get('config');
+        $listenersFromConfigService = isset($config['listeners']) ? $config['listeners'] : [];
+
+        $listeners = array_unique(array_merge($listenersFromConfigService, $listenersFromAppConfig));
+
+        $application = static::$serviceManager->get('Application');
+
+        $application->bootstrap($listeners);
+
+        // database setup
+        $dbConfigs = static::$serviceManager->get('Config')['db'];
+        self::setUpDatabase($dbConfigs);
+    }
+
+    public static function chroot()
+    {
+        $rootPath = dirname(static::findParentPath('module'));
+        chdir($rootPath);
+    }
+
+    public static function setUpDatabase(array $dbConfigs)
+    {
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
 
         $schemaSql = file_get_contents($dbConfigs['scripts']['schema']);
@@ -59,17 +80,6 @@ class Bootstrap
         $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql, $testDataSql);
 
         AbstractIntegrationTest::setDbConfigs($dbConfigs);
-    }
-
-    public static function chroot()
-    {
-        $rootPath = dirname(static::findParentPath('module'));
-        chdir($rootPath);
-    }
-
-    public static function getServiceManager()
-    {
-        return static::$serviceManager;
     }
 
     protected static function initAutoloader()
@@ -109,6 +119,7 @@ class Bootstrap
         }
         return $dir . '/' . $path;
     }
+
 }
 
 Bootstrap::init();
