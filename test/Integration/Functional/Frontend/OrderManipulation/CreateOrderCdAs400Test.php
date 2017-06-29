@@ -11,9 +11,10 @@ use Zend\Mvc\Router\Http\TreeRouteStack;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Router\SimpleRouteStack;
 use Zend\Stdlib\Parameters;
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Zend\Uri\Http;
 
-class CreateOrderCdAs400Test extends AbstractIntegrationTest
+class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 {
     protected $controller;
     protected $request;
@@ -23,6 +24,11 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
 
     protected function setUp()
     {
+        $this->setApplicationConfig(
+            include __DIR__ . '/../../../../../config/application.config.php'
+        );
+        parent::setUp();
+
         // disabled for now
         /*
         $uri = new Http();
@@ -78,6 +84,15 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
      */
     public function testSomething()
     {
+
+//        $this->markTestSkipped(__METHOD__);
+        $this->dispatch('/order/process/start-order/cd');
+        $this->assertResponseStatusCode(200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Process');
+        $this->assertControllerClass('ProcessController');
+        $this->assertMatchedRouteName('start-order');
+
 //        $request = new Request();
 //        $request->setMethod(Request::METHOD_POST);
 //
@@ -98,8 +113,6 @@ class CreateOrderCdAs400Test extends AbstractIntegrationTest
 //        $client = new Client();
 //        $response = $client->send($request);
 //        $breakpoint = null;
-
-        $this->markTestSkipped(__METHOD__);
     }
 
     /**
