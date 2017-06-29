@@ -34,6 +34,7 @@ return [
         ],
         'config_glob_paths' => [
             $configGlobPathsPrefix . 'config/autoload/module/{,*.}{global,local}.php',
+            $configGlobPathsPrefix . 'config/autoload/{,*.}{global,local}.php',
             $configGlobPathsPrefix . 'config/autoload/' . $configFilePrefix . '{,*.}{global,local}.php',
         ],
         'config_cache_enabled' => true,
