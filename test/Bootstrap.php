@@ -18,12 +18,12 @@ class Bootstrap
 {
 
     /** @var ServiceManager */
-    protected static $serviceManager;
+    protected $serviceManager;
 
     /**
      * Sets up the
      */
-    public static function init()
+    public function init()
     {
         // autoloading setup
         static::initAutoloader();
@@ -37,37 +37,37 @@ class Bootstrap
         $serviceManagerConfigObject = new ServiceManagerConfig($serviceManagerConfig);
         // $serviceManagerConfigArray = $serviceManagerConfigObject->toArray();
 
-        static::$serviceManager = new ServiceManager();
-        $serviceManagerConfigObject->configureServiceManager(self::$serviceManager);
+        $this->serviceManager = new ServiceManager();
+        $serviceManagerConfigObject->configureServiceManager($this->serviceManager);
 
         // application setup
         // self::bootstrapApplication($config);
-        static::$serviceManager->setService('ApplicationConfig', $config);
+        $this->serviceManager->setService('ApplicationConfig', $config);
 
-        static::$serviceManager->get('ModuleManager')->loadModules();
+        $this->serviceManager->get('ModuleManager')->loadModules();
 
         $listenersFromAppConfig     = isset($configuration['listeners']) ? $configuration['listeners'] : [];
-        $config                     = static::$serviceManager->get('config');
+        $config                     = $this->serviceManager->get('config');
         $listenersFromConfigService = isset($config['listeners']) ? $config['listeners'] : [];
 
         $listeners = array_unique(array_merge($listenersFromConfigService, $listenersFromAppConfig));
 
-        $application = static::$serviceManager->get('Application');
+        $application = $this->serviceManager->get('Application');
 
         $application->bootstrap($listeners);
 
         // database setup
-        $dbConfigs = static::$serviceManager->get('Config')['db'];
+        $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
     }
 
-    public static function chroot()
+    public function chroot()
     {
         $rootPath = dirname(static::findParentPath('module'));
         chdir($rootPath);
     }
 
-    public static function setUpDatabase(array $dbConfigs)
+    public function setUpDatabase(array $dbConfigs)
     {
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
 
@@ -82,7 +82,7 @@ class Bootstrap
         AbstractIntegrationTest::setDbConfigs($dbConfigs);
     }
 
-    protected static function initAutoloader()
+    protected function initAutoloader()
     {
         $vendorPath = static::findParentPath('vendor');
 
@@ -106,7 +106,7 @@ class Bootstrap
         ));
     }
 
-    protected static function findParentPath($path)
+    protected function findParentPath($path)
     {
         $dir = __DIR__;
         $previousDir = '.';
@@ -122,5 +122,6 @@ class Bootstrap
 
 }
 
-Bootstrap::init();
-Bootstrap::chroot();
+$bootstrap = new Bootstrap();
+$bootstrap->init();
+$bootstrap->chroot();
