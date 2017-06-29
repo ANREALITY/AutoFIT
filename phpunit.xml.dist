@@ -8,6 +8,9 @@
 	cacheTokens="false"
 	colors="true"
 >
+	<php>
+		<env name="RUNTIME_CONTEXT" value="testing" />
+	</php>
 	<testsuites>
 		<testsuite name="unit-app-only">
 			<directory suffix="Test.php">test/Unit</directory>
