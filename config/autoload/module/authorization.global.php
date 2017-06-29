@@ -48,7 +48,7 @@ return [
                     'completed' => 'admin',
                     'showOrder' => [
                         'admin' => null,
-                        'member' => 'UserIsOwner'
+                        'member' => null
                     ],
                     'exportOrder' => 'admin',
                     'listMyOrders' => 'member',
