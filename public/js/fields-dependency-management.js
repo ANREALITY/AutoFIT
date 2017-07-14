@@ -53,6 +53,10 @@ $(document).ready(function() {
 		console.log('change');
 		updateEnvironmentDependentFields(this.value);
 	});
+    fieldEnvironmentName.focus(function() {
+        console.log('focus');
+        updateApplicationDependentFields(this.value);
+    });
 });
 function updateApplicationDependentFields(value) {
 	fieldEnvironmentSeverity.val('');
