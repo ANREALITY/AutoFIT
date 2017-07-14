@@ -17,6 +17,12 @@ class Regex extends ZendRegex
 
     public function __construct($pattern)
     {
+        $this->setUpMesages($pattern);
+        parent::__construct($pattern);
+    }
+
+    protected function setUpMesages($pattern)
+    {
         $this->messageVariables['patternUserFriendly'] = 'patternUserFriendly';
         $this->messageVariables['patternUserFriendlyNegative'] = 'patternUserFriendlyNegative';
         if (array_key_exists('patternUserFriendly', $pattern)) {
@@ -31,7 +37,6 @@ class Regex extends ZendRegex
                 'The input may not contain the following characters: %patternUserFriendlyNegative%.'
             ;
         }
-        parent::__construct($pattern);
     }
 
 }
