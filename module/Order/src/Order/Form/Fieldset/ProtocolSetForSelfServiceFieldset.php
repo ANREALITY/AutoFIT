@@ -17,7 +17,7 @@ class ProtocolSetForSelfServiceFieldset extends AbstractProtocolSetFieldset
 
         $this->add(
             [
-                'type' => 'multi_checkbox',
+                'type' => 'MultiCheckbox',
                 'name' => 'protocols',
                 'options' => [
                     'label' => _('protocols'),
