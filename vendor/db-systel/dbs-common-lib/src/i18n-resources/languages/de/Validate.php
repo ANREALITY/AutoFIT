@@ -8,6 +8,7 @@ return [
     "Either the IP or the DNS address (but only ones from them) may and must be defined for the source endpoint." => "Entweder die IP oder die DNS-Adresse (aber nur eins von beiden) darf und muss für den Quellenendpoint definiert sein.",
     "Either the IP or the DNS address (but only ones from them) may and must be defined for the target endpoint." => "Entweder die IP oder die DNS-Adresse (aber nur eins von beiden) darf und muss für den Zielendpoint definiert sein.",
     'The input may only contain the following characters: %patternUserFriendly%.' => 'Die Eingabe darf nur folgende Zeichen enthalten: %patternUserFriendly%.',
+    'The input may only contain the following characters: %patternUserFriendly%. The username needs to contain the domain, e.g.: BKU\MaxMustermann.' => 'Die Eingabe darf nur folgende Zeichen enthalten: %patternUserFriendly%. Der Benutzername muss die Domäne enthalten, z.B. "BKU\MaxMustermann".',
     'The input may not contain the following characters: %patternUserFriendlyNegative%.' => 'Die Eingabe darf folgende Zeichen nicht enthalten: %patternUserFriendlyNegative%.',
     'A folder must be defined for the source endpoint.' => 'Es muss ein Verzeichnis für den den Quellenendpoint definiert sein.',
     'A transmission type must be defined for the source endpoint.' => 'Es muss eine Übertragungsart für den den Quellenendpoint definiert sein.',
