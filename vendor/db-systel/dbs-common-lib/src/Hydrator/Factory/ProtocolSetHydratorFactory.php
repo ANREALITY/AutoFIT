@@ -21,7 +21,7 @@ class ProtocolSetHydratorFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $rotocolSetHydrator = $container->get(HydratorPluginManager::class)->get('Zend\Hydrator\ClassMethods');
-        $protocolHydrator = $container->get('DbSystel\Hydrator\ProtocolHydrator');
+        $protocolHydrator = $container->get(HydratorPluginManager::class)->get('DbSystel\Hydrator\ProtocolHydrator');
 
         $rotocolSetHydrator->addStrategy('protocols', new GenericCollectionStrategy($protocolHydrator, new Protocol()));
 
