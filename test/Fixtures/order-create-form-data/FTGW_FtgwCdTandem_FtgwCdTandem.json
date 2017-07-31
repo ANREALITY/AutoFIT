@@ -1,0 +1,88 @@
+{
+  "file_transfer_request": {
+    "id": "",
+    "application_technical_short_name": "comgate",
+    "environment": {
+      "severity": "5",
+      "name": "Entwicklung"
+    },
+    "change_number": "C12345678",
+    "service_invoice_position_basic": {
+      "number": "LSP3407732"
+    },
+    "user": {
+      "id": "",
+      "username": "undefined"
+    },
+    "service_invoice_position_personal": {
+      "number": "LSP3407735"
+    },
+    "logical_connection": {
+      "physical_connection_end_to_middle": {
+        "endpoint_source": {
+          "role": "source",
+          "contact_person": "Howard Rockerduck",
+          "server_place": "internal",
+          "application": {
+            "technical_short_name": "KM-SPI"
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": "epa-neu"
+            },
+            "dns_address": "dnsaddresssource"
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "FtgwCdTandem",
+          "username": "usersource"
+        },
+        "type": "FTGW",
+        "role": "end_to_middle",
+        "secure_plus": "1"
+      },
+      "physical_connection_middle_to_end": {
+        "endpoint_target": {
+          "role": "target",
+          "contact_person": "Amelia Fieldmouse",
+          "server_place": "internal",
+          "application": {
+            "technical_short_name": "KSB"
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": "epa3"
+            },
+            "dns_address": "dnsaddresstarget"
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "FtgwCdTandem",
+          "username": "usertarget",
+          "folder": "\/path\/to\/folder\/target"
+        },
+        "type": "FTGW",
+        "role": "middle_to_end",
+        "secure_plus": "1"
+      },
+      "type": "FTGW",
+      "notifications": [
+        {
+          "email": "foo@foo.com",
+          "success": "1",
+          "failure": "0"
+        }
+      ]
+    },
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+  },
+  "save": "speichern"
+}
