@@ -93,6 +93,11 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertControllerClass('ProcessController');
         $this->assertMatchedRouteName('start-order');
 
+//        $request = $this->getApplication()->getMvcEvent()->getRequest();
+//        $response = $this->getApplication()->getMvcEvent()->getResponse();
+//        $result = $this->getApplication()->getMvcEvent()->getResult();
+//        $breakpoint = null;
+
 //        $request = new Request();
 //        $request->setMethod(Request::METHOD_POST);
 //
