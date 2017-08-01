@@ -103,22 +103,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $dispatchParams = json_decode($fixtureJson, true);
         $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
 
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_transfer_request');
-        $select->where(['file_transfer_request.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
-        $hydrator = new ClassMethods();
-        /** @var FileTransferRequest $dataObject */
-        $dataObject = $hydrator->hydrate($data, new FileTransferRequest());
-
-        $this->assertEquals(
-            $dispatchParams['file_transfer_request']['change_number'],
-            $dataObject->getChangeNumber()
-        );
-        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $dataObject->getStatus());
-
+        $this->assertFileTransferRequest($dispatchParams);
     }
 
     /**
@@ -168,6 +153,25 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 //        $client = new Client();
 //        $response = $client->send($request);
 //        $breakpoint = null;
+    }
+
+    protected function assertFileTransferRequest(array $dispatchParams)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('file_transfer_request');
+        $select->where(['file_transfer_request.id = ?' => 1]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+        $hydrator = new ClassMethods();
+        /** @var FileTransferRequest $dataObject */
+        $dataObject = $hydrator->hydrate($data, new FileTransferRequest());
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['change_number'],
+            $dataObject->getChangeNumber()
+        );
+        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $dataObject->getStatus());
     }
 
     /**
