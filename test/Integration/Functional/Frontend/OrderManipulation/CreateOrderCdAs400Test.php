@@ -53,16 +53,12 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $data = $result->current();
-        $hydrator = new ClassMethods();
-        $prototype = new FileTransferRequest();
-        /** @var FileTransferRequest $dataObject */
-        $dataObject = $hydrator->hydrate($data, $prototype);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['change_number'],
-            $dataObject->getChangeNumber()
+            $data['change_number']
         );
-        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $dataObject->getStatus());
+        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $data['status']);
     }
 
     protected function assertLogicalConnection(array $dispatchParams)
@@ -73,14 +69,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $data = $result->current();
-        $hydrator = new ClassMethods();
-        $prototype = new LogicalConnection();
-        /** @var LogicalConnection $dataObject */
-        $dataObject = $hydrator->hydrate($data, $prototype);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['type']),
-            strtolower($dataObject->getType())
+            strtolower($data['type'])
         );
     }
 
@@ -92,24 +84,20 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $data = $result->current();
-        $hydrator = new ClassMethods();
-        $prototype = new PhysicalConnectionCd();
-        /** @var PhysicalConnectionCd $dataObject */
-        $dataObject = $hydrator->hydrate($data, $prototype);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['type']),
-            strtolower($dataObject->getType())
+            strtolower($data['type'])
         );
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['role']),
-            strtolower($dataObject->getRole())
+            strtolower($data['role'])
         );
     }
 
     protected function assertPhysicalConnectionFtgwEndToMiddle(array $dispatchParams)
     {
-        
+
     }
 
     protected function assertPhysicalConnectionFtgwMiddleToEnd(array $dispatchParams)
