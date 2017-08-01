@@ -98,6 +98,14 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 //        $result = $this->getApplication()->getMvcEvent()->getResult();
 //        $breakpoint = null;
 
+//        $test1 = $this->getRequest();
+//        $test2 = $this->getRequest()->getPost()->toArray();
+//        $test3 = json_encode($this->getRequest()->getPost()->toArray());
+//        $test4 = json_decode($test3, true);
+//
+//        $parameters = new Parameters($test4);
+//        $request->setPost($parameters);
+
 //        $request = new Request();
 //        $request->setMethod(Request::METHOD_POST);
 //
