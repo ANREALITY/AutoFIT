@@ -3,6 +3,7 @@
 namespace Order\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 use Zend\Http\Response\Stream;
 use Zend\Http\Headers;
@@ -129,6 +130,15 @@ class ProcessController extends AbstractActionController
         $request = $this->getRequest();
 
         if ($request->isPost()) {
+
+//            $test1 = $this->getRequest();
+//            $test2 = $this->getRequest()->getPost()->toArray();
+//            $test3 = json_encode($this->getRequest()->getPost()->toArray());
+//            $test4 = json_decode($test3, true);
+//
+//            $parameters = new Parameters($test4);
+//            $request->setPost($parameters);
+
             $this->orderForm->setData($request->getPost());
             if ($this->orderForm->isValid()) {
                 $username = $this->IdentityParam('username');
