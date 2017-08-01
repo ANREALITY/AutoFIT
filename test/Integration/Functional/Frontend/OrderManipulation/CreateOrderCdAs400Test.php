@@ -1,11 +1,15 @@
 <?php
 namespace Test\Integration\Functional\Frontend\OrderManipulation;
 
+use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Test\AbstractIntegrationTest;
 use DbSystel\Test\ArrayDataSet;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 use Test\Bootstrap;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
+use Zend\Hydrator\ClassMethods;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\Http\TreeRouteStack;
 use Zend\Mvc\Router\RouteMatch;
@@ -21,6 +25,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
     protected $response;
     protected $routeMatch;
     protected $event;
+    /** @var Adapter */
+    protected $dbAdapter;
 
     protected function setUp()
     {
@@ -28,6 +34,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             include __DIR__ . '/../../../../../config/application.config.php'
         );
         parent::setUp();
+        $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 
         // disabled for now
         /*
@@ -77,6 +84,41 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->controller = $controllerManager->get('Order\Controller\Process');
         $this->controller->setEvent($this->event);
         */
+    }
+
+    public function testCdAs400()
+    {
+
+//        $test1 = $this->getRequest();
+//        $test2 = $this->getRequest()->getPost()->toArray();
+//        $test3 = json_encode($this->getRequest()->getPost()->toArray());
+//        $test4 = json_decode($test3, true);
+
+        $dispatchUrl = '/order/process/create/cd/cdas400/cdas400';
+        $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
+        $fixturesFolder = $fixturesRootFolder . '/' . 'order-create-form-data';
+        $fixtureFile = 'CD_CdAs400_CdAs400.json';
+        $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
+        $fixtureJson = file_get_contents($fixtureFilePath);
+        $dispatchParams = json_decode($fixtureJson, true);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('file_transfer_request');
+        $select->where(['file_transfer_request.id = ?' => 1]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+        $hydrator = new ClassMethods();
+        /** @var FileTransferRequest $dataObject */
+        $dataObject = $hydrator->hydrate($data, new FileTransferRequest());
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['change_number'],
+            $dataObject->getChangeNumber()
+        );
+        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $dataObject->getStatus());
+
     }
 
     /**
