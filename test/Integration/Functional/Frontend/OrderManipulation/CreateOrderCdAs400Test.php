@@ -177,10 +177,6 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
             $data['username']
         );
-        $this->assertEquals(
-            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['folder'],
-            $data['folder']
-        );
     }
 
     protected function assertEndpointCdAs400Target(array $dispatchParams)
