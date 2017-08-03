@@ -7,6 +7,7 @@ use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\PhysicalConnectionCd;
 use DbSystel\Test\AbstractIntegrationTest;
 use DbSystel\Test\ArrayDataSet;
+use DbSystel\Test\DatabaseInitializer;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 use Test\Bootstrap;
 use Zend\Db\Adapter\Adapter;
@@ -39,8 +40,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
          * But so we don't need to care about IDs and duplicated entries.
          */
         $dbConfigs = $this->getApplicationServiceLocator()->get('Config')['db'];
-        $bootstrap = new Bootstrap();
-        $bootstrap->setUpDatabase($dbConfigs);
+        $databaseInitializer = new DatabaseInitializer($dbConfigs);
+        $databaseInitializer->setUp();
     }
 
     public function testCdAs400()
