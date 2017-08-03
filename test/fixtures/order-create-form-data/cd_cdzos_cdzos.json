@@ -1,0 +1,92 @@
+{
+  "file_transfer_request": {
+    "id": "",
+    "application_technical_short_name": "comgate",
+    "environment": {
+      "severity": "5",
+      "name": "Entwicklung"
+    },
+    "change_number": "C12345678",
+    "service_invoice_position_basic": {
+      "number": "LSP3407738"
+    },
+    "user": {
+      "id": "",
+      "username": "undefined"
+    },
+    "service_invoice_position_personal": {
+      "number": "LSP3407744"
+    },
+    "logical_connection": {
+      "physical_connection_end_to_end": {
+        "endpoint_source": {
+          "role": "source",
+          "contact_person": "Howard Rockerduck",
+          "server_place": "internal",
+          "application": {
+            "technical_short_name": "KM-SPI"
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": "a34"
+            },
+            "dns_address": "dnsaddresssource"
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "CdZos",
+          "username": "usersrc"
+        },
+        "endpoint_target": {
+          "role": "target",
+          "contact_person": "Amelia Fieldmouse",
+          "server_place": "internal",
+          "application": {
+            "technical_short_name": "KSB"
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": "a44"
+            },
+            "dns_address": "dnsaddresstarget"
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "CdZos",
+          "username": "usertgt",
+          "file_parameter_set": {
+            "file_parameters": [
+              {
+                "filename": "filenameatarget",
+                "record_length": "64",
+                "blocking": "vb",
+                "block_size": "27930"
+              }
+            ]
+          }
+        },
+        "type": "CD",
+        "role": "end_to_end",
+        "secure_plus": "1"
+      },
+      "type": "CD",
+      "notifications": [
+        {
+          "email": "foo@foo.com",
+          "success": "1",
+          "failure": "0"
+        }
+      ]
+    },
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+  },
+  "save": "speichern"
+}

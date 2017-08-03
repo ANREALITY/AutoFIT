@@ -1,0 +1,99 @@
+{
+  "file_transfer_request": {
+    "id": "",
+    "application_technical_short_name": "comgate",
+    "environment": {
+      "severity": "5",
+      "name": "Entwicklung"
+    },
+    "change_number": "C12345678",
+    "service_invoice_position_basic": {
+      "number": "LSP3407732"
+    },
+    "user": {
+      "id": "",
+      "username": "undefined"
+    },
+    "service_invoice_position_personal": {
+      "number": "LSP3407735"
+    },
+    "logical_connection": {
+      "physical_connection_end_to_middle": {
+        "endpoint_source": {
+          "role": "source",
+          "contact_person": "Howard Rockerduck",
+          "server_place": "external",
+          "application": {
+            "technical_short_name": ""
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": ""
+            },
+            "dns_address": ""
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "FtgwSelfService",
+          "connection_type": "internal",
+          "protocol_set": {
+            "protocols": [
+              "FTP"
+            ]
+          },
+          "ftgw_username": "ftgwusernamesource",
+          "mailbox": "mailboxsource"
+        },
+        "type": "FTGW",
+        "role": "end_to_middle"
+      },
+      "physical_connection_middle_to_end": {
+        "endpoint_target": {
+          "role": "target",
+          "contact_person": "Amelia Fieldmouse",
+          "server_place": "external",
+          "application": {
+            "technical_short_name": ""
+          },
+          "customer": {
+            "name": ""
+          },
+          "endpoint_server_config": {
+            "server": {
+              "name": ""
+            },
+            "dns_address": ""
+          },
+          "external_server": {
+            "name": ""
+          },
+          "type": "FtgwSelfService",
+          "connection_type": "internal",
+          "protocol_set": {
+            "protocols": [
+              "FTP"
+            ]
+          },
+          "ftgw_username": "ftgwuserbanetarget",
+          "mailbox": "mailboxtarget"
+        },
+        "type": "FTGW",
+        "role": "middle_to_end"
+      },
+      "type": "FTGW",
+      "notifications": [
+        {
+          "email": "foo@foo.com",
+          "success": "1",
+          "failure": "0"
+        }
+      ]
+    },
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+  },
+  "save": "speichern"
+}

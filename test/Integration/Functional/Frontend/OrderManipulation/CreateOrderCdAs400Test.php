@@ -35,7 +35,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $dispatchUrl = '/order/process/create/cd/cdas400/cdas400';
         $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
         $fixturesFolder = $fixturesRootFolder . '/' . 'order-create-form-data';
-        $fixtureFile = 'CD_CdAs400_CdAs400.json';
+        $fixtureFile = 'cd_cdas400_cdas400.json';
         $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
         $fixtureJson = file_get_contents($fixtureFilePath);
         $dispatchParams = json_decode($fixtureJson, true);
