@@ -182,21 +182,23 @@ class OrderForm extends Form
             ? $fileTransferRequestFieldset->get('service_invoice_position_basic')
             : $fileTransferRequestFieldset->get('service_invoice_position_personal')
         ;
-        $validServiceInvoicePositions = $this->serviceInvoicePositionService->findValidForOrder(
-            $serviceInvoicePositionFieldset->get('number')->getValue(),
-            $applicationTechnicalShortName,
-            $environmentSeverity,
-            $connectionType,
-            $articleType
-        )->toArray();
-        $isValid = ! empty($validServiceInvoicePositions);
+        if ($environmentSeverity) {
+            $validServiceInvoicePositions = $this->serviceInvoicePositionService->findValidForOrder(
+                $serviceInvoicePositionFieldset->get('number')->getValue(),
+                $applicationTechnicalShortName,
+                $environmentSeverity,
+                $connectionType,
+                $articleType
+            )->toArray();
+            $isValid = ! empty($validServiceInvoicePositions);
 
-        if (! $isValid) {
-            $errorMessage = $articleType === Article::TYPE_BASIC
-                ? sprintf('The basic service invoice position is invalid.', strtolower($articleType))
-                : sprintf('The personal service invoice position is invalid.', strtolower($articleType))
-            ;
-            $this->addErrorMessage($errorMessage);
+            if (! $isValid) {
+                $errorMessage = $articleType === Article::TYPE_BASIC
+                    ? sprintf('The basic service invoice position is invalid.', strtolower($articleType))
+                    : sprintf('The personal service invoice position is invalid.', strtolower($articleType))
+                ;
+                $this->addErrorMessage($errorMessage);
+            }
         }
         return $isValid;
     }
