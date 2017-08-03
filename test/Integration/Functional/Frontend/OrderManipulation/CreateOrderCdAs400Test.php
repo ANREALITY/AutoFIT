@@ -42,8 +42,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertLogicalConnection($dispatchParams);
         $this->assertPhysicalConnectionCd($dispatchParams);
         $this->assertPhysicalConnectionCdEndToEnd($dispatchParams);
-        $this->assertEndpointSource($dispatchParams);
-        $this->assertEndpointTarget($dispatchParams);
+        $this->assertEndpointCdSource($dispatchParams);
+        $this->assertEndpointCdTarget($dispatchParams);
         $this->assertEndpointCdAs400Source($dispatchParams);
         $this->assertEndpointCdAs400Target($dispatchParams);
     }
@@ -123,7 +123,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         // @todo
     }
 
-    protected function assertEndpointSource(array $dispatchParams)
+    protected function assertEndpointCdSource(array $dispatchParams)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('endpoint');
@@ -142,7 +142,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         );
     }
 
-    protected function assertEndpointTarget(array $dispatchParams)
+    protected function assertEndpointCdTarget(array $dispatchParams)
     {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('endpoint');
@@ -159,6 +159,16 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['server_place'],
             $data['server_place']
         );
+    }
+
+    protected function assertEndpointFtgwSource(array $dispatchParams)
+    {
+        // @todo
+    }
+
+    protected function assertEndpointFtgwTarget(array $dispatchParams)
+    {
+        // @todo
     }
 
     protected function assertEndpointCdAs400Source(array $dispatchParams)
