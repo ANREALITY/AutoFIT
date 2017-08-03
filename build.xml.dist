@@ -135,11 +135,13 @@
 		</exec>
 		<property name="phpunit.done" value="true" />
 	</target>
+    -->
+    <!--
     <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit">
         <exec executable="phpdbg" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="-qrr" />
             <arg value="${phpunit}" />
-            <arg value="- -configuration" />
+            <arg value="-|-configuration" />
             <arg path="${basedir}/phpunit.xml" />
         </exec>
         <property name="phpunit.done" value="true" />
@@ -150,7 +152,7 @@
         <exec executable="cmd" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="/c" />
             <arg value="${phpunit}" />
-            <arg value="- -configuration" />
+            <arg value="-|-configuration" />
             <arg path="${basedir}/phpunit.xml" />
         </exec>
         <property name="phpunit.done" value="true" />
@@ -163,7 +165,7 @@
             <arg value="phpdbg" />
             <arg value="-qrr" />                        
             <arg value="${phpunit}" />
-            <arg value="- -configuration" />
+            <arg value="-|-configuration" />
             <arg path="${basedir}/phpunit.xml" />
         </exec>
         <property name="phpunit.done" value="true" />
