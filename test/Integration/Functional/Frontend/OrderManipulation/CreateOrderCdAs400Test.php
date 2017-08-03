@@ -32,13 +32,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     public function testCdAs400()
     {
-        $dispatchUrl = '/order/process/create/cd/cdas400/cdas400';
-        $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
-        $fixturesFolder = $fixturesRootFolder . '/' . 'order-create-form-data';
-        $fixtureFile = 'cd_cdas400_cdas400.json';
-        $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
-        $fixtureJson = file_get_contents($fixtureFilePath);
-        $dispatchParams = json_decode($fixtureJson, true);
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdas400';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
         $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
 
         $this->assertFileTransferRequest($dispatchParams);
@@ -196,6 +193,30 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
             $data['folder']
         );
+    }
+
+    protected function getDispatchUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
+    {
+        $endpointTargetType = $endpointTargetType ?: $endpointSourceType;
+        $dispatchUrl = strtolower(
+            '/order/process/create'
+            . '/' . $connectionType
+            . '/' . $endpointSourceType
+            . '/' . $endpointTargetType
+        );
+        return $dispatchUrl;
+    }
+
+    protected function getDispatchParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
+    {
+        $endpointTargetType = $endpointTargetType ?: $endpointSourceType;
+        $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
+        $fixturesFolder = $fixturesRootFolder . '/' . 'order-create-form-data';
+        $fixtureFile = $connectionType . '_' . $endpointSourceType . '_' . $endpointTargetType . '.json';
+        $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
+        $fixtureJson = file_get_contents($fixtureFilePath);
+        $dispatchParams = json_decode($fixtureJson, true);
+        return $dispatchParams;
     }
 
 }
