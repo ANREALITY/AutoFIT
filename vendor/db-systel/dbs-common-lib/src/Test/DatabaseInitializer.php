@@ -24,6 +24,10 @@ class DatabaseInitializer
      * @var string
      */
     private $database;
+    /**
+     * @var array
+     */
+    private $dbConfigs;
 
     public function __construct(array $dbConfigs)
     {
@@ -41,10 +45,18 @@ class DatabaseInitializer
             $dbConfigs['database']
         );
         $this->database = $dbConfigs['database'];
+        $this->dbConfigs = $dbConfigs;
     }
 
-    public function setUp(string $schemaSql, string $storedProceduresSql, string $basicDataSql, array $testDataSqlSet = [])
+    public function setUp()
     {
+        $schemaSql = file_get_contents($this->dbConfigs['scripts']['schema']);
+        $storedProceduresSql = file_get_contents($this->dbConfigs['scripts']['stored-procedures']);
+        $basicDataSql = file_get_contents($this->dbConfigs['scripts']['basic-data']);
+        $testDataSqlSet = array_map(function ($sqlFile) {
+            return file_get_contents($sqlFile);
+        }, $this->dbConfigs['scripts']['test-data']);
+
         $this->dropDatabase();
         $this->createDatabase();
         $this->useDatabase();

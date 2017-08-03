@@ -67,15 +67,7 @@ class Bootstrap
     protected function setUpDatabase(array $dbConfigs)
     {
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
-
-        $schemaSql = file_get_contents($dbConfigs['scripts']['schema']);
-        $storedProceduresSql = file_get_contents($dbConfigs['scripts']['stored-procedures']);
-        $basicDataSql = file_get_contents($dbConfigs['scripts']['basic-data']);
-        $testDataSql = array_map(function ($sqlFile) {
-            return file_get_contents($sqlFile);
-        }, $dbConfigs['scripts']['test-data']);
-        $databaseInitializer->setUp($schemaSql, $storedProceduresSql, $basicDataSql, $testDataSql);
-
+        $databaseInitializer->setUp();
         AbstractIntegrationTest::setDbConfigs($dbConfigs);
     }
 
