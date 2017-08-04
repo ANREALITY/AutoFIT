@@ -44,6 +44,22 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $databaseInitializer->setUp();
     }
 
+    /**
+     * Testing the controller action basic stuff using the example of CdAs400.
+     */
+    public function testRouteCreateOrder()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdas400';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl);
+        $this->assertResponseStatusCode(200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Process');
+        $this->assertControllerClass('ProcessController');
+        $this->assertMatchedRouteName('create-order');
+    }
+
     public function testCdAs400()
     {
         $connectionType = 'cd';
