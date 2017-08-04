@@ -3,6 +3,7 @@ namespace Test\Integration\Functional\Frontend\OrderManipulation;
 
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Test\DatabaseInitializer;
+use Order\Form\OrderForm;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
@@ -39,6 +40,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
         $this->assertMatchedRouteName('create-order');
+        // checking the form
+        $form = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
+        $this->assertNotNull($form);
+        $this->assertInstanceOf(OrderForm::class, $form);
     }
 
     /**
