@@ -110,12 +110,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertFileTransferRequest(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_transfer_request');
-        $select->where(['file_transfer_request.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('file_transfer_request', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['change_number'],
@@ -126,12 +121,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertLogicalConnection(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('logical_connection');
-        $select->where(['logical_connection.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('logical_connection', 'id', 1);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['type']),
@@ -141,12 +131,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertPhysicalConnectionCd(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('physical_connection');
-        $select->where(['physical_connection.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['type']),
@@ -160,12 +145,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertPhysicalConnectionCdEndToEnd(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('physical_connection');
-        $select->where(['physical_connection.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['secure_plus'],
@@ -175,12 +155,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertPhysicalConnectionFtgwEndToMiddle(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('physical_connection');
-        $select->where(['physical_connection.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['secure_plus'],
@@ -190,12 +165,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertPhysicalConnectionFtgwMiddleToEnd(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('physical_connection');
-        $select->where(['physical_connection.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('physical_connection', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['secure_plus'],
@@ -205,12 +175,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdSource(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint');
-        $select->where(['endpoint.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['contact_person'],
@@ -224,12 +189,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdTarget(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint');
-        $select->where(['endpoint.id = ?' => 2]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['contact_person'],
@@ -243,12 +203,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointFtgwSource(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint');
-        $select->where(['endpoint.id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['contact_person'],
@@ -262,12 +217,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointFtgwTarget(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint');
-        $select->where(['endpoint.id = ?' => 2]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['contact_person'],
@@ -281,12 +231,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdAs400Source(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_cd_as400');
-        $select->where(['endpoint_cd_as400.endpoint_id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -296,12 +241,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdAs400Target(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_cd_as400');
-        $select->where(['endpoint_cd_as400.endpoint_id = ?' => 2]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -315,12 +255,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdTandemSource(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_cd_tandem');
-        $select->where(['endpoint_cd_tandem.endpoint_id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -330,12 +265,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointCdTandemTarget(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_cd_tandem');
-        $select->where(['endpoint_cd_tandem.endpoint_id = ?' => 2]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -349,12 +279,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointFtgwCdAs400Source(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_ftgw_cd_as400');
-        $select->where(['endpoint_ftgw_cd_as400.endpoint_id = ?' => 1]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -364,12 +289,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertEndpointFtgwCdAs400Target(array $dispatchParams)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_ftgw_cd_as400');
-        $select->where(['endpoint_ftgw_cd_as400.endpoint_id = ?' => 2]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
+        $data = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -403,6 +323,17 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $fixtureJson = file_get_contents($fixtureFilePath);
         $dispatchParams = json_decode($fixtureJson, true);
         return $dispatchParams;
+    }
+
+    protected function retrieveActualData($table, $idColumn, $idValue)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select($table);
+        $select->where([$table . '.' . $idColumn . ' = ?' => $idValue]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+        return $data;
     }
 
 }
