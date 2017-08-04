@@ -14,6 +14,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     /** @var Adapter */
     protected $dbAdapter;
+    protected $databaseResetedForTestingSpecificEndpointProperties = 0;
 
     protected function setUp()
     {
@@ -22,8 +23,6 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         );
         parent::setUp();
         $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
-
-        $this->setUpDatabase();
     }
 
     /**
@@ -31,6 +30,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
      */
     public function testRouteCreateOrder()
     {
+        $this->setUpDatabase();
+
         $connectionType = 'cd';
         $endpointSourceType = 'cdas400';
         $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
@@ -51,6 +52,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
      */
     public function testCommonPropertiesForCd()
     {
+        $this->setUpDatabase();
+
         $connectionType = 'cd';
         $endpointSourceType = 'cdas400';
         $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
@@ -70,6 +73,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
      */
     public function testCommonPropertiesForFtgw()
     {
+        $this->setUpDatabase();
+
         $connectionType = 'ftgw';
         $endpointSourceType = 'ftgwcdas400';
         $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
@@ -94,6 +99,11 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $connectionTypeLabel, $endpointSourceTypeLabel, $endpointTargetTypeLabel = null
     )
     {
+        if (! $this->databaseResetedForTestingSpecificEndpointProperties) {
+            $this->setUpDatabase();
+            $this->databaseResetedForTestingSpecificEndpointProperties = true;
+        }
+
         $connectionType = strtolower($connectionTypeLabel);
         $endpointTargetTypeLabel = $endpointTargetTypeLabel ?: $endpointSourceTypeLabel;
         $endpointSourceType = strtolower($endpointSourceTypeLabel);
