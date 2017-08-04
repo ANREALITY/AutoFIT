@@ -134,6 +134,18 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEndpointCdTandemTarget($dispatchParams);
     }
 
+    public function testCdZos()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdzos';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
+        $this->assertEndpointCdZosSource($dispatchParams);
+        $this->assertEndpointCdZosTarget($dispatchParams);
+    }
+
     public function testFtgwCdAs400()
     {
         $connectionType = 'ftgw';
@@ -348,6 +360,26 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
             $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointCdZosSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
+            $actualData['username']
+        );
+    }
+
+    protected function assertEndpointCdZosTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
+            $actualData['username']
         );
     }
 
