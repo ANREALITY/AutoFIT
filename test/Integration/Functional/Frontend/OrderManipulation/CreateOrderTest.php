@@ -9,7 +9,7 @@ use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
+class CreateOrderTest extends AbstractHttpControllerTestCase
 {
 
     /** @var Adapter */
