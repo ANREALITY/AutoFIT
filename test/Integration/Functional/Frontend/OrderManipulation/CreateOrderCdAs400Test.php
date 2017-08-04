@@ -149,10 +149,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Ftgw',
                 'endpointSourceTypeLabel' => 'FtgwCdTandem',
             ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwCdZos',
-//            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdZos',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwLinuxUnix',
@@ -502,6 +502,26 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
             $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointFtgwCdZosSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
+            $actualData['username']
+        );
+    }
+
+    protected function assertEndpointFtgwCdZosTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
+            $actualData['username']
         );
     }
 
