@@ -161,14 +161,14 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Ftgw',
                 'endpointSourceTypeLabel' => 'FtgwProtocolServer',
             ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwSelfService',
-//            ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwWindows',
-//            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwSelfService',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwWindows',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwWindowsShare',
@@ -614,6 +614,62 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['port'],
             $actualData['port']
+        );
+    }
+
+    protected function assertEndpointFtgwSelfServiceSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['connection_type'],
+            $actualData['connection_type']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['ftgw_username'],
+            $actualData['ftgw_username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['mailbox'],
+            $actualData['mailbox']
+        );
+    }
+
+    protected function assertEndpointFtgwSelfServiceTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['connection_type'],
+            $actualData['connection_type']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['ftgw_username'],
+            $actualData['ftgw_username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['mailbox'],
+            $actualData['mailbox']
+        );
+    }
+
+    protected function assertEndpointFtgwWindowsSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointFtgwWindowsTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
         );
     }
 
