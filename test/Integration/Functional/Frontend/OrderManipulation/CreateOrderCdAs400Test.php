@@ -45,7 +45,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
     }
 
     /**
-     * Testing the controller action basic stuff using the example of CdAs400.
+     * Testing the controller action basic stuff using the example of cd_cdas400_cdas400.
      */
     public function testRouteCreateOrder()
     {
@@ -60,7 +60,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertMatchedRouteName('create-order');
     }
 
-    public function testCdAs400()
+    /**
+     * Testing the basic stuff, that is common for all CD forms, using the example of cd_cdas400_cdas400.
+     */
+    public function testCommonPropertiesForCd()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdas400';
@@ -74,6 +77,35 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertPhysicalConnectionCdEndToEnd($dispatchParams);
         $this->assertEndpointCdSource($dispatchParams);
         $this->assertEndpointCdTarget($dispatchParams);
+    }
+
+    /**
+     * Testing the basic stuff, that is common for all FTGW forms, using the example of ftgw_ftgwcdas400_ftgwcdas400.
+     */
+    public function testCommonPropertiesForFtgw()
+    {
+        $connectionType = 'ftgw';
+        $endpointSourceType = 'ftgwcdas400';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
+        $this->assertFileTransferRequest($dispatchParams);
+        $this->assertLogicalConnection($dispatchParams);
+        $this->assertPhysicalConnectionFtgwEndToMiddle($dispatchParams);
+        $this->assertPhysicalConnectionFtgwMiddleToEnd($dispatchParams);
+        $this->assertEndpointFtgwSource($dispatchParams);
+        $this->assertEndpointFtgwTarget($dispatchParams);
+    }
+
+    public function testCdAs400()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdas400';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
         $this->assertEndpointCdAs400Source($dispatchParams);
         $this->assertEndpointCdAs400Target($dispatchParams);
     }
@@ -98,12 +130,6 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
         $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
 
-        $this->assertFileTransferRequest($dispatchParams);
-        $this->assertLogicalConnection($dispatchParams);
-        $this->assertPhysicalConnectionFtgwEndToMiddle($dispatchParams);
-        $this->assertPhysicalConnectionFtgwMiddleToEnd($dispatchParams);
-        $this->assertEndpointFtgwSource($dispatchParams);
-        $this->assertEndpointFtgwTarget($dispatchParams);
         $this->assertEndpointFtgwCdAs400Source($dispatchParams);
         $this->assertEndpointFtgwCdAs400Target($dispatchParams);
     }
