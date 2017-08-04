@@ -133,10 +133,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Cd',
                 'endpointSourceTypeLabel' => 'CdWindows',
             ],
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdWindowsShare',
-//            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdWindowsShare',
+            ],
             [
                 'connectionTypeLabel' => 'Cd',
                 'endpointSourceTypeLabel' => 'CdZos',
@@ -399,6 +399,38 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
     {
         $actualData = $this->retrieveActualData('endpoint_cd_windows', 'endpoint_id', 2);
 
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointCdWindowsShareSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['sharename'],
+            $actualData['sharename']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['transmission_type'],
+            $actualData['transmission_type']
+        );
+    }
+
+    protected function assertEndpointCdWindowsShareTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['sharename'],
+            $actualData['sharename']
+        );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
             $actualData['folder']
