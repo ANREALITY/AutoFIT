@@ -110,194 +110,194 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
     protected function assertFileTransferRequest(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('file_transfer_request', 'id', 1);
+        $actualData = $this->retrieveActualData('file_transfer_request', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['change_number'],
-            $data['change_number']
+            $actualData['change_number']
         );
-        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $data['status']);
+        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $actualData['status']);
     }
 
     protected function assertLogicalConnection(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('logical_connection', 'id', 1);
+        $actualData = $this->retrieveActualData('logical_connection', 'id', 1);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['type']),
-            strtolower($data['type'])
+            strtolower($actualData['type'])
         );
     }
 
     protected function assertPhysicalConnectionCd(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('physical_connection', 'id', 1);
+        $actualData = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['type']),
-            strtolower($data['type'])
+            strtolower($actualData['type'])
         );
         $this->assertEquals(
             strtolower($dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['role']),
-            strtolower($data['role'])
+            strtolower($actualData['role'])
         );
     }
 
     protected function assertPhysicalConnectionCdEndToEnd(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('physical_connection', 'id', 1);
+        $actualData = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['secure_plus'],
-            $data['secure_plus']
+            $actualData['secure_plus']
         );
     }
 
     protected function assertPhysicalConnectionFtgwEndToMiddle(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('physical_connection', 'id', 1);
+        $actualData = $this->retrieveActualData('physical_connection', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['secure_plus'],
-            $data['secure_plus']
+            $actualData['secure_plus']
         );
     }
 
     protected function assertPhysicalConnectionFtgwMiddleToEnd(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('physical_connection', 'id', 2);
+        $actualData = $this->retrieveActualData('physical_connection', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['secure_plus'],
-            $data['secure_plus']
+            $actualData['secure_plus']
         );
     }
 
     protected function assertEndpointCdSource(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint', 'id', 1);
+        $actualData = $this->retrieveActualData('endpoint', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['contact_person'],
-            $data['contact_person']
+            $actualData['contact_person']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['server_place'],
-            $data['server_place']
+            $actualData['server_place']
         );
     }
 
     protected function assertEndpointCdTarget(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint', 'id', 2);
+        $actualData = $this->retrieveActualData('endpoint', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['contact_person'],
-            $data['contact_person']
+            $actualData['contact_person']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['server_place'],
-            $data['server_place']
+            $actualData['server_place']
         );
     }
 
     protected function assertEndpointFtgwSource(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint', 'id', 1);
+        $actualData = $this->retrieveActualData('endpoint', 'id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['contact_person'],
-            $data['contact_person']
+            $actualData['contact_person']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['server_place'],
-            $data['server_place']
+            $actualData['server_place']
         );
     }
 
     protected function assertEndpointFtgwTarget(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint', 'id', 2);
+        $actualData = $this->retrieveActualData('endpoint', 'id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['contact_person'],
-            $data['contact_person']
+            $actualData['contact_person']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['server_place'],
-            $data['server_place']
+            $actualData['server_place']
         );
     }
 
     protected function assertEndpointCdAs400Source(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
-            $data['username']
+            $actualData['username']
         );
     }
 
     protected function assertEndpointCdAs400Target(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
-            $data['username']
+            $actualData['username']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
-            $data['folder']
+            $actualData['folder']
         );
     }
 
     protected function assertEndpointCdTandemSource(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
-            $data['username']
+            $actualData['username']
         );
     }
 
     protected function assertEndpointCdTandemTarget(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
-            $data['username']
+            $actualData['username']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
-            $data['folder']
+            $actualData['folder']
         );
     }
 
     protected function assertEndpointFtgwCdAs400Source(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 1);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
-            $data['username']
+            $actualData['username']
         );
     }
 
     protected function assertEndpointFtgwCdAs400Target(array $dispatchParams)
     {
-        $data = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
-            $data['username']
+            $actualData['username']
         );
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
-            $data['folder']
+            $actualData['folder']
         );
     }
 
