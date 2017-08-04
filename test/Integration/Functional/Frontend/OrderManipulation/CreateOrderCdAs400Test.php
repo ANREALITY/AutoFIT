@@ -101,8 +101,6 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $connectionTypeLabel, $endpointSourceTypeLabel, $endpointTargetTypeLabel = null
     )
     {
-        $this->setUpDatabase();
-
         $connectionType = strtolower($connectionTypeLabel);
         $endpointTargetTypeLabel = $endpointTargetTypeLabel ?: $endpointSourceTypeLabel;
         $endpointSourceType = strtolower($endpointSourceTypeLabel);
