@@ -145,10 +145,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Ftgw',
                 'endpointSourceTypeLabel' => 'FtgwCdAs400',
             ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwCdTandem',
-//            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdTandem',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwCdZos',
@@ -470,6 +470,30 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
     protected function assertEndpointFtgwCdAs400Target(array $dispatchParams)
     {
         $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
+            $actualData['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointFtgwCdTandemSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
+            $actualData['username']
+        );
+    }
+
+    protected function assertEndpointFtgwCdTandemTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
