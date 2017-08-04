@@ -91,106 +91,46 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEndpointFtgwTarget($dispatchParams);
     }
 
-//    /**
-//     * @dataProvider provideDataForSpecificEndpointProperties
-//     * @param string $connectionTypeLabel
-//     * @param string $endpointSourceTypeLabel
-//     * @param string $endpointTargetTypeLabel
-//     */
-//    public function testSpecificEndpointProperties(
-//        $connectionTypeLabel, $endpointSourceTypeLabel, $endpointTargetTypeLabel = null
-//    )
-//    {
-//        $this->setUpDatabase();
-//
-//        $connectionType = strtolower($connectionTypeLabel);
-//        $endpointTargetTypeLabel = $endpointTargetTypeLabel ?: $endpointSourceTypeLabel;
-//        $endpointSourceType = strtolower($endpointSourceTypeLabel);
-//        $endpointTargetType = strtolower($endpointTargetTypeLabel);
-//
-//        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType, $endpointTargetType);
-//        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType, $endpointTargetType);
-//        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
-//
-//        $this->{'assertEndpoint' . $endpointSourceTypeLabel . 'Source'}($dispatchParams);
-//        $this->{'assertEndpoint' . $endpointTargetTypeLabel . 'Target'}($dispatchParams);
-//    }
-
-    public function testCdAs400()
+    /**
+     * @dataProvider provideDataForSpecificEndpointProperties
+     * @param string $connectionTypeLabel
+     * @param string $endpointSourceTypeLabel
+     * @param string $endpointTargetTypeLabel
+     */
+    public function testSpecificEndpointProperties(
+        $connectionTypeLabel, $endpointSourceTypeLabel, $endpointTargetTypeLabel = null
+    )
     {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdas400';
-        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->setUpDatabase();
+
+        $connectionType = strtolower($connectionTypeLabel);
+        $endpointTargetTypeLabel = $endpointTargetTypeLabel ?: $endpointSourceTypeLabel;
+        $endpointSourceType = strtolower($endpointSourceTypeLabel);
+        $endpointTargetType = strtolower($endpointTargetTypeLabel);
+
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType, $endpointTargetType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType, $endpointTargetType);
         $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
 
-        $this->assertEndpointCdAs400Source($dispatchParams);
-        $this->assertEndpointCdAs400Target($dispatchParams);
+        $this->{'assertEndpoint' . $endpointSourceTypeLabel . 'Source'}($dispatchParams);
+        $this->{'assertEndpoint' . $endpointTargetTypeLabel . 'Target'}($dispatchParams);
     }
 
-    public function testCdLinuxUnix()
+    public function provideDataForSpecificEndpointProperties()
     {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdlinuxunix';
-        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
-        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
-
-        $this->assertEndpointCdLinuxUnixSource($dispatchParams);
-        $this->assertEndpointCdLinuxUnixTarget($dispatchParams);
-    }
-
-    public function testCdTandem()
-    {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdtandem';
-        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
-        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
-
-        $this->assertEndpointCdTandemSource($dispatchParams);
-        $this->assertEndpointCdTandemTarget($dispatchParams);
-    }
-
-    public function testCdZos()
-    {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdzos';
-        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
-        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
-
-        $this->assertEndpointCdZosSource($dispatchParams);
-        $this->assertEndpointCdZosTarget($dispatchParams);
-    }
-
-    public function testFtgwCdAs400()
-    {
-        $connectionType = 'ftgw';
-        $endpointSourceType = 'ftgwcdas400';
-        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
-        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
-
-        $this->assertEndpointFtgwCdAs400Source($dispatchParams);
-        $this->assertEndpointFtgwCdAs400Target($dispatchParams);
-    }
-
-//    public function provideDataForSpecificEndpointProperties()
-//    {
-//        return [
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdAs400',
-//            ],
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdLinuxUnix',
-//            ],
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdTandem',
-//            ],
+        return [
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdAs400',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdLinuxUnix',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdTandem',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Cd',
 //                'endpointSourceTypeLabel' => 'CdWindows',
@@ -199,14 +139,14 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 //                'connectionTypeLabel' => 'Cd',
 //                'endpointSourceTypeLabel' => 'CdWindowsShare',
 //            ],
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdZos',
-//            ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwCdAs400',
-//            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdZos',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdAs400',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwCdTandem',
@@ -235,8 +175,8 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwWindowsShare',
 //            ],
-//        ];
-//    }
+        ];
+    }
 
     protected function assertFileTransferRequest(array $dispatchParams)
     {
