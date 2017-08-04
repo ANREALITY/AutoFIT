@@ -34,14 +34,7 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         parent::setUp();
         $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 
-        /*
-         * Complete database setup for every single test.
-         * It makes the tests much, much slower.
-         * But so we don't need to care about IDs and duplicated entries.
-         */
-        $dbConfigs = $this->getApplicationServiceLocator()->get('Config')['db'];
-        $databaseInitializer = new DatabaseInitializer($dbConfigs);
-        $databaseInitializer->setUp();
+        $this->setUpDatabase();
     }
 
     /**
@@ -440,6 +433,18 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $result = $statement->execute();
         $data = $result->current();
         return $data;
+    }
+
+    protected function setUpDatabase()
+    {
+        /*
+         * Complete database setup for every single test.
+         * It makes the tests much, much slower.
+         * But so we don't need to care about IDs and duplicated entries.
+         */
+        $dbConfigs = $this->getApplicationServiceLocator()->get('Config')['db'];
+        $databaseInitializer = new DatabaseInitializer($dbConfigs);
+        $databaseInitializer->setUp();
     }
 
 }
