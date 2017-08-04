@@ -78,6 +78,18 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEndpointCdAs400Target($dispatchParams);
     }
 
+    public function testCdTandem()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdtandem';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
+        $this->assertEndpointCdTandemSource($dispatchParams);
+        $this->assertEndpointCdTandemTarget($dispatchParams);
+    }
+
     public function testFtgwCdAs400()
     {
         $connectionType = 'ftgw';
@@ -287,6 +299,40 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('endpoint_cd_as400');
         $select->where(['endpoint_cd_as400.endpoint_id = ?' => 2]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
+            $data['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
+            $data['folder']
+        );
+    }
+
+    protected function assertEndpointCdTandemSource(array $dispatchParams)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('endpoint_cd_tandem');
+        $select->where(['endpoint_cd_tandem.endpoint_id = ?' => 1]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
+            $data['username']
+        );
+    }
+
+    protected function assertEndpointCdTandemTarget(array $dispatchParams)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select('endpoint_cd_tandem');
+        $select->where(['endpoint_cd_tandem.endpoint_id = ?' => 2]);
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $data = $result->current();
