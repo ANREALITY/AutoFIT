@@ -1,28 +1,16 @@
 <?php
 namespace Test\Integration\Functional\Frontend\OrderManipulation;
 
-use DbSystel\DataObject\AbstractEndpoint;
 use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\PhysicalConnectionCd;
-use DbSystel\Test\AbstractIntegrationTest;
-use DbSystel\Test\ArrayDataSet;
 use DbSystel\Test\DatabaseInitializer;
-use PHPUnit\DbUnit\DataSet\IDataSet;
-use Test\Bootstrap;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
-use Zend\Hydrator\ClassMethods;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 {
-    protected $controller;
-    protected $request;
-    protected $response;
-    protected $routeMatch;
-    protected $event;
+
     /** @var Adapter */
     protected $dbAdapter;
 
@@ -112,68 +100,6 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
 
         $this->{'assertEndpoint' . $endpointSourceTypeLabel . 'Source'}($dispatchParams);
         $this->{'assertEndpoint' . $endpointTargetTypeLabel . 'Target'}($dispatchParams);
-    }
-
-    public function provideDataForSpecificEndpointProperties()
-    {
-        return [
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdAs400',
-            ],
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdLinuxUnix',
-            ],
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdTandem',
-            ],
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdWindows',
-            ],
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdWindowsShare',
-            ],
-            [
-                'connectionTypeLabel' => 'Cd',
-                'endpointSourceTypeLabel' => 'CdZos',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwCdAs400',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwCdTandem',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwCdZos',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwLinuxUnix',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwProtocolServer',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwSelfService',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwWindows',
-            ],
-            [
-                'connectionTypeLabel' => 'Ftgw',
-                'endpointSourceTypeLabel' => 'FtgwWindowsShare',
-            ],
-        ];
     }
 
     protected function assertFileTransferRequest(array $dispatchParams)
@@ -699,6 +625,68 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
             $actualData['folder']
         );
+    }
+
+    public function provideDataForSpecificEndpointProperties()
+    {
+        return [
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdAs400',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdLinuxUnix',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdTandem',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdWindows',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdWindowsShare',
+            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdZos',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdAs400',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdTandem',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwCdZos',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwLinuxUnix',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwProtocolServer',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwSelfService',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwWindows',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwWindowsShare',
+            ],
+        ];
     }
 
     protected function getDispatchUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
