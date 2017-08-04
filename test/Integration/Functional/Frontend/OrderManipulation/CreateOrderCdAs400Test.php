@@ -129,10 +129,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Cd',
                 'endpointSourceTypeLabel' => 'CdTandem',
             ],
-//            [
-//                'connectionTypeLabel' => 'Cd',
-//                'endpointSourceTypeLabel' => 'CdWindows',
-//            ],
+            [
+                'connectionTypeLabel' => 'Cd',
+                'endpointSourceTypeLabel' => 'CdWindows',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Cd',
 //                'endpointSourceTypeLabel' => 'CdWindowsShare',
@@ -375,6 +375,30 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
             $actualData['username']
         );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointCdWindowsSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['transmission_type'],
+            $actualData['transmission_type']
+        );
+    }
+
+    protected function assertEndpointCdWindowsTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'endpoint_id', 2);
+
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
             $actualData['folder']
