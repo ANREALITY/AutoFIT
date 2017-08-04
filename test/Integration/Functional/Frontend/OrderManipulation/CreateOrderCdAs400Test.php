@@ -153,10 +153,10 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
                 'connectionTypeLabel' => 'Ftgw',
                 'endpointSourceTypeLabel' => 'FtgwCdZos',
             ],
-//            [
-//                'connectionTypeLabel' => 'Ftgw',
-//                'endpointSourceTypeLabel' => 'FtgwLinuxUnix',
-//            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwLinuxUnix',
+            ],
 //            [
 //                'connectionTypeLabel' => 'Ftgw',
 //                'endpointSourceTypeLabel' => 'FtgwProtocolServer',
@@ -522,6 +522,42 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
             $actualData['username']
+        );
+    }
+
+    protected function assertEndpointFtgwLinuxUnixSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
+            $actualData['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['transmission_type'],
+            $actualData['transmission_type']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['transmission_interval'],
+            $actualData['transmission_interval']
+        );
+    }
+
+    protected function assertEndpointFtgwLinuxUnixTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
+            $actualData['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
         );
     }
 
