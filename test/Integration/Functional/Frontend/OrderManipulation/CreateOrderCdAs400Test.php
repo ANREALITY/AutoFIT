@@ -110,6 +110,18 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
         $this->assertEndpointCdAs400Target($dispatchParams);
     }
 
+    public function testCdLinuxUnix()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $dispatchUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
+        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
+        $this->dispatch($dispatchUrl, Request::METHOD_POST, $dispatchParams);
+
+        $this->assertEndpointCdLinuxUnixSource($dispatchParams);
+        $this->assertEndpointCdLinuxUnixTarget($dispatchParams);
+    }
+
     public function testCdTandem()
     {
         $connectionType = 'cd';
@@ -268,6 +280,42 @@ class CreateOrderCdAs400Test extends AbstractHttpControllerTestCase
     protected function assertEndpointCdAs400Target(array $dispatchParams)
     {
         $actualData = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 2);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
+            $actualData['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointCdLinuxUnixSource(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'endpoint_id', 1);
+
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
+            $actualData['username']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['transmission_type'],
+            $actualData['transmission_type']
+        );
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['transmission_interval'],
+            $actualData['transmission_interval']
+        );
+    }
+
+    protected function assertEndpointCdLinuxUnixTarget(array $dispatchParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'endpoint_id', 2);
 
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
