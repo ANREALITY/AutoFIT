@@ -70,6 +70,10 @@ class EditOrderTest extends AbstractHttpControllerTestCase
             $fileFransferRequestFieldset->get('change_number')->getValue()
         );
         $this->assertEquals(
+            $logicalConnectionData['notifications'][0]['email'],
+            $logicalConnectionFieldset->get('notifications')->get(0)->get('email')->getValue()
+        );
+        $this->assertEquals(
             $fileFransferRequestData['service_invoice_position_basic']['number'],
             $fileFransferRequestFieldset->get('service_invoice_position_basic')->get('number')->getValue()
         );
