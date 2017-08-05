@@ -41,9 +41,10 @@ class CreateOrderTest extends AbstractHttpControllerTestCase
         $this->assertControllerClass('ProcessController');
         $this->assertMatchedRouteName('create-order');
         // checking the form
-        $form = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
-        $this->assertNotNull($form);
-        $this->assertInstanceOf(OrderForm::class, $form);
+        /** @var OrderForm $orderForm */
+        $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
+        $this->assertNotNull($orderForm);
+        $this->assertInstanceOf(OrderForm::class, $orderForm);
     }
 
     /**
