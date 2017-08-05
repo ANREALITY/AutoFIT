@@ -81,6 +81,10 @@ class EditOrderTest extends AbstractHttpControllerTestCase
             $endpointSourceData['endpoint_server_config']['server']['name'],
             $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name')->getValue()
         );
+        $this->assertEquals(
+            $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
+            $endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')->get(0)->get('expression')->getValue()
+        );
     }
 
     protected function getDispatchUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
