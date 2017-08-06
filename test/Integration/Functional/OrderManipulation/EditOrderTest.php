@@ -1,5 +1,5 @@
 <?php
-namespace Test\Integration\Functional\Frontend\OrderManipulation;
+namespace Test\Integration\Functional\OrderManipulation;
 
 use Order\Form\OrderForm;
 use Zend\Http\Request;

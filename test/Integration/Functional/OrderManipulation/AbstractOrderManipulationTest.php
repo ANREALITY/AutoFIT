@@ -1,5 +1,5 @@
 <?php
-namespace Test\Integration\Functional\Frontend\OrderManipulation;
+namespace Test\Integration\Functional\OrderManipulation;
 
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\Test\DatabaseInitializer;
@@ -17,7 +17,7 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
     protected function setUp()
     {
         $this->setApplicationConfig(
-            include __DIR__ . '/../../../../../config/application.config.php'
+            include __DIR__ . '/../../../../config/application.config.php'
         );
         parent::setUp();
         $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');

@@ -1,5 +1,5 @@
 <?php
-namespace Test\Integration\Functional\Frontend\OrderManipulation;
+namespace Test\Integration\Functional\OrderManipulation;
 
 use DbSystel\DataObject\FileTransferRequest;
 use Order\Form\OrderForm;
