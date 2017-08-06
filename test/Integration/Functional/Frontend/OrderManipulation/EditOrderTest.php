@@ -8,7 +8,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
 {
 
     /**
-     * Testing the controller action basic stuff using the example of cd_cdas400_cdas400.
+     * Testing the whole editing process.
      */
     public function testRouteEditOrder()
     {
