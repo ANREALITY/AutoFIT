@@ -36,9 +36,8 @@ class CreateOrderTest extends AbstractOrderManipulationTest
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdas400';
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType);
         $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
-        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
+        $this->createOrder($connectionType, $endpointSourceType);
 
         $this->assertFileTransferRequest($createParams);
         $this->assertLogicalConnection($createParams);
@@ -55,9 +54,8 @@ class CreateOrderTest extends AbstractOrderManipulationTest
     {
         $connectionType = 'ftgw';
         $endpointSourceType = 'ftgwcdas400';
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType);
         $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
-        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
+        $this->createOrder($connectionType, $endpointSourceType);
 
         $this->assertFileTransferRequest($createParams);
         $this->assertLogicalConnection($createParams);
@@ -82,9 +80,8 @@ class CreateOrderTest extends AbstractOrderManipulationTest
         $endpointSourceType = strtolower($endpointSourceTypeLabel);
         $endpointTargetType = strtolower($endpointTargetTypeLabel);
 
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType, $endpointTargetType);
         $createParams = $this->getCreateParams($connectionType, $endpointSourceType, $endpointTargetType);
-        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
+        $this->createOrder($connectionType, $endpointSourceType, $endpointTargetType);
 
         $this->{'assertEndpoint' . $endpointSourceTypeLabel . 'Source'}($createParams);
         $this->{'assertEndpoint' . $endpointTargetTypeLabel . 'Target'}($createParams);

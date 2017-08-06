@@ -1,10 +1,12 @@
 <?php
 namespace Test\Integration\Functional\Frontend\OrderManipulation;
 
+use DbSystel\DataObject\LogicalConnection;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Sql\Sql;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use Zend\Http\Request;
 
 abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestCase
 {
@@ -21,6 +23,17 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
         $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 
         $this->setUpDatabase();
+    }
+
+    protected function createOrder(
+        string $connectionType, string $endpointSourceType, string $endpointTargetType = null, $reset = true
+    ) {
+        if ($reset) {
+            $this->reset();
+        }
+        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType, $endpointTargetType);
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType, $endpointTargetType);
+        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
     }
 
     protected function getCreateUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
