@@ -16,11 +16,13 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
 
     protected function setUp()
     {
+        ini_set('memory_limit', '1024M');
+
         $this->setApplicationConfig(
             include __DIR__ . '/../../../../config/application.config.php'
         );
         parent::setUp();
-        $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $this->dbAdapter = $this->dbAdapter ?: $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 
         $this->setUpDatabase();
     }
