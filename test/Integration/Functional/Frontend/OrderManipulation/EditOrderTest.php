@@ -14,9 +14,8 @@ class EditOrderTest extends AbstractOrderManipulationTest
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType);
         $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
-        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
+        $this->createOrder($connectionType, $endpointSourceType);
 
         $this->reset();
 
