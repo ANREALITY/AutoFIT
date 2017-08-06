@@ -23,19 +23,19 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
         $this->setUpDatabase();
     }
 
-    protected function getDispatchUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
+    protected function getCreateUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
     {
         $endpointTargetType = $endpointTargetType ?: $endpointSourceType;
-        $dispatchUrl = strtolower(
+        $createUrl = strtolower(
             '/order/process/create'
             . '/' . $connectionType
             . '/' . $endpointSourceType
             . '/' . $endpointTargetType
         );
-        return $dispatchUrl;
+        return $createUrl;
     }
 
-    protected function getDispatchParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
+    protected function getCreateParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
     {
         $endpointTargetType = $endpointTargetType ?: $endpointSourceType;
         $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
@@ -43,8 +43,8 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
         $fixtureFile = $connectionType . '_' . $endpointSourceType . '_' . $endpointTargetType . '.json';
         $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
         $fixtureJson = file_get_contents($fixtureFilePath);
-        $dispatchParams = json_decode($fixtureJson, true);
-        return $dispatchParams;
+        $createParams = json_decode($fixtureJson, true);
+        return $createParams;
     }
 
     protected function retrieveActualData($table, $idColumn, $idValue)

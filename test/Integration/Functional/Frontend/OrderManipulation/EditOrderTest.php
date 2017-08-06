@@ -10,19 +10,19 @@ class EditOrderTest extends AbstractOrderManipulationTest
     /**
      * Testing the whole editing process.
      */
-    public function testRouteEditOrder()
+    public function testCompleteProcess()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
-        $dispatchCreateUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
-        $dispatchParams = $this->getDispatchParams($connectionType, $endpointSourceType);
-        $this->dispatch($dispatchCreateUrl, Request::METHOD_POST, $dispatchParams);
+        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType);
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
+        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
 
         $this->reset();
 
         $orderId = 1;
-        $dispatchEditUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($dispatchEditUrl);
+        $editUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($editUrl);
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
@@ -33,7 +33,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
         /** @var OrderForm $orderForm */
         $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
 
-        $fileFransferRequestData = $dispatchParams['file_transfer_request'];
+        $fileFransferRequestData = $createParams['file_transfer_request'];
         $fileFransferRequestFieldset = $orderForm->get('file_transfer_request');
         $logicalConnectionData = $fileFransferRequestData['logical_connection'];
         $logicalConnectionFieldset = $fileFransferRequestFieldset->get('logical_connection');
@@ -72,15 +72,15 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
-        $dispatchParams['file_transfer_request']['id'] = $orderId;
+        $createParams['file_transfer_request']['id'] = $orderId;
         $newComment = 'new comment...';
-        $dispatchParams['file_transfer_request']['comment'] = $newComment;
-        $dispatchEditUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($dispatchEditUrl, Request::METHOD_POST, $dispatchParams);
+        $createParams['file_transfer_request']['comment'] = $newComment;
+        $editUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($editUrl, Request::METHOD_POST, $createParams);
 
         // checking the data saving
         $this->assertEquals(
-            $dispatchParams['file_transfer_request']['comment'],
+            $createParams['file_transfer_request']['comment'],
             $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
         );
     }
