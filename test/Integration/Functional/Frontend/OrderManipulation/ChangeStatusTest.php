@@ -21,29 +21,38 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
     ];
 
     /**
-     * Testing the order status changes made by the frontend user (by the example of the cd_cdas400_cdas400).
+     * Testing the order status changes workflow
+     * edit->pending->edit->canceled
+     * made by the frontend user (by the example of the cd_cdas400_cdas400).
      */
-    public function testProcessForUser()
+    public function testWorkflowEditPendingEditCanceled()
     {
         $this->createOrder('cd', 'cdas400');
 
-        $this->reset();
+        $orderId = 1;
+
+        $this->assertStatusChange($orderId, 'submit');
+        $this->assertStatusChange($orderId, 'start-editing');
+        $this->assertStatusChange($orderId, 'cancel');
+    }
+
+    /**
+     * Testing the order status changes workflow
+     * edit->pending->canceled
+     * made by the frontend user (by the example of the cd_cdas400_cdas400).
+     */
+    public function testWorkflowEditEditCanceled()
+    {
+        $this->createOrder('cd', 'cdas400');
 
         $orderId = 1;
-        $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
-        $this->assertEquals(FileTransferRequest::STATUS_EDIT, $actualData['status']);
 
-        $statusUrlSegment = 'submit';
-        $this->changeStatus($orderId, $statusUrlSegment);
-        $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
-        $this->assertEquals(self::$actionsToStatusesMap[$statusUrlSegment], $actualData['status']);
+        $this->assertStatusChange($orderId, 'start-editing');
+        $this->assertStatusChange($orderId, 'cancel');
+    }
 
-        $statusUrlSegment = 'start-editing';
-        $this->changeStatus($orderId, $statusUrlSegment);
-        $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
-        $this->assertEquals(self::$actionsToStatusesMap[$statusUrlSegment], $actualData['status']);
-
-        $statusUrlSegment = 'cancel';
+    protected function assertStatusChange($orderId, $statusUrlSegment)
+    {
         $this->changeStatus($orderId, $statusUrlSegment);
         $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
         $this->assertEquals(self::$actionsToStatusesMap[$statusUrlSegment], $actualData['status']);
