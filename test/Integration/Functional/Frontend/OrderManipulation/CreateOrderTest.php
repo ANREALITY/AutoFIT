@@ -13,9 +13,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
      */
     public function testRouting()
     {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdas400';
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType);
+        $createUrl = $this->getCreateUrl('cd', 'cdas400');
         $this->dispatch($createUrl);
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('Order');
