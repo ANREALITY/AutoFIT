@@ -31,8 +31,6 @@ class EditOrderTest extends AbstractHttpControllerTestCase
      */
     public function testRouteEditOrder()
     {
-//        $this->markTestSkipped(__METHOD__);
-
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
         $dispatchCreateUrl = $this->getDispatchUrl($connectionType, $endpointSourceType);
@@ -49,6 +47,7 @@ class EditOrderTest extends AbstractHttpControllerTestCase
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
         $this->assertMatchedRouteName('edit-order');
+
         // checking the form
         /** @var OrderForm $orderForm */
         $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
@@ -98,15 +97,10 @@ class EditOrderTest extends AbstractHttpControllerTestCase
         $dispatchEditUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($dispatchEditUrl, Request::METHOD_POST, $dispatchParams);
 
-        $this->reset();
-
-        $dispatchEditUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($dispatchEditUrl);
-        /** @var OrderForm $orderForm */
-        $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
+        // checking the data saving
         $this->assertEquals(
             $dispatchParams['file_transfer_request']['comment'],
-            $orderForm->get('file_transfer_request')->get('comment')->getValue()
+            $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
         );
     }
 
@@ -132,6 +126,17 @@ class EditOrderTest extends AbstractHttpControllerTestCase
         $fixtureJson = file_get_contents($fixtureFilePath);
         $dispatchParams = json_decode($fixtureJson, true);
         return $dispatchParams;
+    }
+
+    protected function retrieveActualData($table, $idColumn, $idValue)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select($table);
+        $select->where([$table . '.' . $idColumn . ' = ?' => $idValue]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+        return $data;
     }
 
     protected function setUpDatabase()
