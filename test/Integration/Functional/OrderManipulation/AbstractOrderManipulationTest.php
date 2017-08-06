@@ -83,4 +83,15 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
         $databaseInitializer->setUp();
     }
 
+    protected function tearDown()
+    {
+        $reflectionObject = new \ReflectionObject($this);
+        foreach ($reflectionObject->getProperties() as $prop) {
+            if (!$prop->isStatic() && 0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_')) {
+                $prop->setAccessible(true);
+                $prop->setValue($this, null);
+            }
+        }
+    }
+
 }
