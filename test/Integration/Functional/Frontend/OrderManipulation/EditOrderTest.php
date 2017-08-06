@@ -89,6 +89,25 @@ class EditOrderTest extends AbstractHttpControllerTestCase
             $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
             $endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')->get(0)->get('expression')->getValue()
         );
+
+        $this->reset();
+
+        $dispatchParams['file_transfer_request']['id'] = $orderId;
+        $newComment = 'new comment...';
+        $dispatchParams['file_transfer_request']['comment'] = $newComment;
+        $dispatchEditUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($dispatchEditUrl, Request::METHOD_POST, $dispatchParams);
+
+        $this->reset();
+
+        $dispatchEditUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($dispatchEditUrl);
+        /** @var OrderForm $orderForm */
+        $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
+        $this->assertEquals(
+            $dispatchParams['file_transfer_request']['comment'],
+            $orderForm->get('file_transfer_request')->get('comment')->getValue()
+        );
     }
 
     protected function getDispatchUrl(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
