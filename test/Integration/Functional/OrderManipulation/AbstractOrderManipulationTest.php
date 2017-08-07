@@ -1,14 +1,13 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
-use DbSystel\DataObject\LogicalConnection;
+use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Sql\Sql;
-use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 use Zend\Http\Request;
 
-abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestCase
+abstract class AbstractOrderManipulationTest extends AbstractControllerTest
 {
 
     /** @var Adapter */
