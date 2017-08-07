@@ -963,6 +963,16 @@ CREATE TABLE IF NOT EXISTS `audit_log` (
 
 CREATE INDEX `fk_audit_log_user_idx` ON `audit_log` (`user_id` ASC);
 
+-- -----------------------------------------------------
+-- Table `test`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `test` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `foo` VARCHAR(50) NULL,
+  `bar` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
