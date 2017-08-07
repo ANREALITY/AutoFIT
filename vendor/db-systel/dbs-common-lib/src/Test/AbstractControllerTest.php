@@ -3,6 +3,7 @@ namespace DbSystel\Test;
 
 use PDO;
 use PHPUnit\DbUnit\Database\DefaultConnection;
+use Zend\Db\Adapter\Adapter;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
@@ -20,10 +21,15 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
      */
     static private $applicationConfigPath;
 
+    /** @var Adapter */
+    protected $dbAdapter;
+
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
+
         $this->setApplicationConfig(include self::$applicationConfigPath);
+        $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
     }
 
     /**

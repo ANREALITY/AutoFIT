@@ -3,22 +3,17 @@ namespace Test\Integration\Functional\OrderManipulation;
 
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
-use Zend\Db\Adapter\Adapter;
 use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
 
 abstract class AbstractOrderManipulationTest extends AbstractControllerTest
 {
 
-    /** @var Adapter */
-    protected $dbAdapter;
-
     protected function setUp()
     {
         ini_set('memory_limit', '640M');
 
         parent::setUp();
-        $this->dbAdapter = $this->dbAdapter ?: $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 
         $this->setUpDatabase();
     }
