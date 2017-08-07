@@ -1,13 +1,15 @@
 <?php
-namespace Tests\UnitTests\UnitTest\Application;
+namespace Tests\UnitTests\UnitTest;
 
-use PHPUnit\Framework\TestCase;
+use DbSystel\Test\AbstractUnitTest;
 
-class DummyUnitTest extends TestCase
+class DummyUnitTest extends AbstractUnitTest
 {
+
     public function testDummy()
     {
         $this->assertTrue(true);
         $this->assertFalse(false);
     }
+
 }
