@@ -16,7 +16,7 @@ abstract class AbstractOrderManipulationTest extends AbstractHttpControllerTestC
 
     protected function setUp()
     {
-        ini_set('memory_limit', '256M');
+        ini_set('memory_limit', '128M');
 
         $this->setApplicationConfig(
             include __DIR__ . '/../../../../config/application.config.php'
