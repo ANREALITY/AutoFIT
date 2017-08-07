@@ -5,6 +5,7 @@ $configGlobPathsPrefix = getenv('RUNTIME_CONTEXT') === 'testing'
     ? __DIR__ . '/../' : './';
 $configFilePrefix = getenv('RUNTIME_CONTEXT') === 'testing'
         ? 'test' . '/' : null;
+$configCacheEnabled = getenv('RUNTIME_CONTEXT') !== 'testing';
 
 return [
     'modules' => [
@@ -37,7 +38,7 @@ return [
             $configGlobPathsPrefix . 'config/autoload/{,*.}{global,local}.php',
             $configGlobPathsPrefix . 'config/autoload/' . $configFilePrefix . '{,*.}{global,local}.php',
         ],
-        'config_cache_enabled' => true,
+        'config_cache_enabled' => $configCacheEnabled,
         'config_cache_key' => 'app_config',
         'module_map_cache_enabled' => false,
         'module_map_cache_key' => 'module_map',
