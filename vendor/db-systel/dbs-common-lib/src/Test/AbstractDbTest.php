@@ -3,7 +3,7 @@ namespace DbSystel\Test;
 
 use PHPUnit\DbUnit\Database\Connection;
 use PHPUnit\DbUnit\InvalidArgumentException;
-use PHPUnit\DbUnit\TestCase;
+use PHPUnit\DbUnit\TestCase as DbTestCase;
 use PDO;
 
 /**
@@ -11,7 +11,7 @@ use PDO;
  *
  * @package DbSystel\Test
  */
-abstract class AbstractIntegrationTest extends TestCase
+abstract class AbstractDbTest extends DbTestCase
 {
 
     /**

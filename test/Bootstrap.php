@@ -1,7 +1,7 @@
 <?php
 namespace Test;
 
-use DbSystel\Test\AbstractIntegrationTest;
+use DbSystel\Test\AbstractDbTest;
 use DbSystel\Test\DatabaseInitializer;
 use RuntimeException;
 use Zend\Loader\AutoloaderFactory;
@@ -68,7 +68,7 @@ class Bootstrap
     {
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
         $databaseInitializer->setUp();
-        AbstractIntegrationTest::setDbConfigs($dbConfigs);
+        AbstractDbTest::setDbConfigs($dbConfigs);
     }
 
     protected function initAutoloader()
