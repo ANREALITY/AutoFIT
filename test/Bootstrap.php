@@ -1,6 +1,7 @@
 <?php
 namespace Test;
 
+use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\AbstractDbTest;
 use DbSystel\Test\DatabaseInitializer;
 use RuntimeException;
@@ -20,6 +21,13 @@ class Bootstrap
     /** @var ServiceManager */
     protected $serviceManager;
 
+    protected $applicationConfigPath;
+
+    public function __construct()
+    {
+        $this->applicationConfigPath = __DIR__ . '/../config/application.config.php';
+    }
+
     /**
      * Sets up the
      */
@@ -27,12 +35,12 @@ class Bootstrap
     {
         // autoloading setup
         static::initAutoloader();
-        // main configuration
-        $config = require_once __DIR__ . '/../config/application.config.php';
+        // application configuration
+        $applicationConfig = require_once $this->applicationConfigPath;
         // service manager setup
-        $this->setUpServiceManager($config);
+        $this->setUpServiceManager($applicationConfig);
         // application setup
-        $this->bootstrapApplication($config);
+        $this->bootstrapApplication($applicationConfig);
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
