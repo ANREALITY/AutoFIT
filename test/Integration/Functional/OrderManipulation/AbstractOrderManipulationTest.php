@@ -17,9 +17,6 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
     {
         ini_set('memory_limit', '640M');
 
-        $this->setApplicationConfig(
-            include __DIR__ . '/../../../../config/application.config.php'
-        );
         parent::setUp();
         $this->dbAdapter = $this->dbAdapter ?: $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
 

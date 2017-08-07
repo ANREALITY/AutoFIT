@@ -77,6 +77,7 @@ class Bootstrap
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
         $databaseInitializer->setUp();
         AbstractDbTest::setDbConfigs($dbConfigs);
+        AbstractControllerTest::setApplicationConfigPath($this->applicationConfigPath);
     }
 
     protected function initAutoloader()
