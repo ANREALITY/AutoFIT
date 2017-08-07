@@ -11,8 +11,6 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
 
     protected function setUp()
     {
-        ini_set('memory_limit', '640M');
-
         parent::setUp();
 
         $this->setUpDatabase();
