@@ -2,6 +2,7 @@
 namespace Test\Integration\Functional\OrderManipulation;
 
 use Order\Form\OrderForm;
+use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 
 class EditOrderTest extends AbstractOrderManipulationTest
@@ -70,16 +71,38 @@ class EditOrderTest extends AbstractOrderManipulationTest
         );
 
         $this->reset();
+    }
+
+    /**
+     * Testing, that the other user cannot edit the order.
+     */
+    public function testPermittingAccessForNoCreator()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
+        $this->createOrder($connectionType, $endpointSourceType);
+
+        $this->reset();
+
+        $orderId = 1;
+
+        $_SERVER['AUTH_USER'] = 'undefined2';
 
         $createParams['file_transfer_request']['id'] = $orderId;
-        $newComment = 'new comment...';
-        $createParams['file_transfer_request']['comment'] = $newComment;
+        $originalComment = $createParams['file_transfer_request']['comment'];
+        $editedComment = 'new comment...';
+        $createParams['file_transfer_request']['comment'] = $editedComment;
         $editUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($editUrl, Request::METHOD_POST, $createParams);
 
+        // checking rouintg
+        $this->assertResponseStatusCode(Response::STATUS_CODE_302);
+        $this->assertRedirectTo('/error/403');
+
         // checking the data saving
         $this->assertEquals(
-            $createParams['file_transfer_request']['comment'],
+            $originalComment,
             $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
         );
     }
