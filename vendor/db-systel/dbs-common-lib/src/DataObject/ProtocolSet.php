@@ -24,7 +24,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -42,7 +42,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      *
-     * @return the $endpoint
+     * @return AbstractEndpoint $endpoint
      */
     public function getEndpoint()
     {
@@ -60,7 +60,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      *
-     * @return the $protocols
+     * @return Protocol[] $protocols
      */
     public function getProtocols()
     {

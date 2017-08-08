@@ -58,7 +58,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -76,7 +76,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $folder
+     * @return string $folder
      */
     public function getFolder()
     {
@@ -94,7 +94,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $transmissionType
+     * @return string $transmissionType
      */
     public function getTransmissionType()
     {
@@ -112,7 +112,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $port
+     * @return string $port
      */
     public function getPort()
     {
@@ -130,7 +130,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $ip
+     * @return string $ip
      */
     public function getIp()
     {
@@ -148,7 +148,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $dnsAddress
+     * @return string $dnsAddress
      */
     public function getDnsAddress()
     {
@@ -166,7 +166,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $includeParameterSet
+     * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -184,7 +184,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
 
     /**
      *
-     * @return the $protocolSet
+     * @return ProtocolSet $protocolSet
      */
     public function getProtocolSet()
     {

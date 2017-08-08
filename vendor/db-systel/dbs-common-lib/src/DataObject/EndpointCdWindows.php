@@ -28,7 +28,7 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return the $folder
+     * @return string $folder
      */
     public function getFolder()
     {
@@ -46,7 +46,7 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return the $transmissionType
+     * @return string $transmissionType
      */
     public function getTransmissionType()
     {
@@ -64,7 +64,7 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return the $includeParameterSet
+     * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
     {

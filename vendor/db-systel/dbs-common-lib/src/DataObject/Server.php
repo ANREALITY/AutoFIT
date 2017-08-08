@@ -52,7 +52,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $name
+     * @return string $name
      */
     public function getName()
     {
@@ -70,7 +70,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $serverType
+     * @return ServerType $serverType
      */
     public function getServerType()
     {
@@ -88,7 +88,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $active
+     * @return boolean $active
      */
     public function getActive()
     {
@@ -106,7 +106,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $cluster
+     * @return Cluster $cluster
      */
     public function getCluster()
     {
@@ -124,7 +124,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $nodeName
+     * @return string $nodeName
      */
     public function getNodeName()
     {
@@ -142,7 +142,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $virtualNodeName
+     * @return string $virtualNodeName
      */
     public function getVirtualNodeName()
     {
@@ -160,7 +160,7 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return the $endpointServerConfigs
+     * @return EndpointServerConfig[] $endpointServerConfigs
      */
     public function getEndpointServerConfigs()
     {

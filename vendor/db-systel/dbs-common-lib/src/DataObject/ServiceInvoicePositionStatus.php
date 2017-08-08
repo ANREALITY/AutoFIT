@@ -12,7 +12,7 @@ class ServiceInvoicePositionStatus extends AbstractDataObject
 
     /**
      *
-     * @return the $name
+     * @return string $name
      */
     public function getName()
     {

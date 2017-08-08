@@ -18,7 +18,7 @@ class EndpointCdAs400 extends AbstractEndpoint
 
     /**
      *
-     * @return the $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -36,7 +36,7 @@ class EndpointCdAs400 extends AbstractEndpoint
 
     /**
      *
-     * @return the $folder
+     * @return string $folder
      */
     public function getFolder()
     {

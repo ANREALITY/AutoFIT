@@ -36,7 +36,7 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -54,7 +54,7 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return the $virtualNodeName
+     * @return string $virtualNodeName
      */
     public function getVirtualNodeName()
     {
@@ -72,7 +72,7 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return the $servers
+     * @return Server[] $servers
      */
     public function getServers()
     {
@@ -90,7 +90,7 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return the $endpoints
+     * @return AbstractEndpoint[] $endpoints
      */
     public function getEndpoints()
     {
@@ -108,7 +108,7 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return the $endpointClusterConfigs
+     * @return EndpointClusterConfig[] $endpointClusterConfigs
      */
     public function getEndpointClusterConfigs()
     {

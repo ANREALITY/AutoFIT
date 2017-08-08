@@ -30,7 +30,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return the $sharename
+     * @return string $sharename
      */
     public function getSharename()
     {
@@ -48,7 +48,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return the $folder
+     * @return string $folder
      */
     public function getFolder()
     {
@@ -66,7 +66,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return the $includeParameterSet
+     * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -84,7 +84,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return the $accessConfigSet
+     * @return AccessConfigSet $accessConfigSet
      */
     public function getAccessConfigSet()
     {

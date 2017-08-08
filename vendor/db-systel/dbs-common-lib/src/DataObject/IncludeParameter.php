@@ -24,7 +24,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -42,7 +42,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @return the $expression
+     * @return string $expression
      */
     public function getExpression()
     {
@@ -60,7 +60,7 @@ class IncludeParameter extends AbstractDataObject
 
     /**
      *
-     * @return the $includeParameterSet
+     * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
     {

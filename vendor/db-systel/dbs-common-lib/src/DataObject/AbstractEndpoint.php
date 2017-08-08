@@ -98,7 +98,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -116,7 +116,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $role
+     * @return string $role
      */
     public function getRole()
     {
@@ -134,7 +134,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $type
+     * @return string $type
      */
     public function getType()
     {
@@ -152,7 +152,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $serverPlace
+     * @return string $serverPlace
      */
     public function getServerPlace()
     {
@@ -170,7 +170,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $contactPerson
+     * @return string $contactPerson
      */
     public function getContactPerson()
     {
@@ -188,7 +188,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $physicalConnection
+     * @return AbstractPhysicalConnection $physicalConnection
      */
     public function getPhysicalConnection()
     {
@@ -205,7 +205,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return the $externalServer
+     * @return ExternalServer $externalServer
      */
     public function getExternalServer()
     {
@@ -222,7 +222,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $application
+     * @return Application $application
      */
     public function getApplication()
     {
@@ -240,7 +240,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $customer
+     * @return Customer $customer
      */
     public function getCustomer()
     {
@@ -258,7 +258,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return the $endpointServerConfig
+     * @return EndpointServerConfig $endpointServerConfig
      */
     public function getEndpointServerConfig()
     {

@@ -18,7 +18,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
 
     /**
      *
-     * @return the $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -36,7 +36,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
 
     /**
      *
-     * @return the $fileParameterSet
+     * @return FileParameterSet $fileParameterSet
      */
     public function getFileParameterSet()
     {

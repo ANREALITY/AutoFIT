@@ -30,7 +30,7 @@ class ServiceInvoice extends AbstractDataObject
 
     /**
      *
-     * @return the $number
+     * @return string $number
      */
     public function getNumber()
     {
@@ -48,7 +48,7 @@ class ServiceInvoice extends AbstractDataObject
 
     /**
      *
-     * @return the $description
+     * @return string $description
      */
     public function getDescription()
     {
@@ -66,7 +66,7 @@ class ServiceInvoice extends AbstractDataObject
 
     /**
      *
-     * @return the $application
+     * @return Application $application
      */
     public function getApplication()
     {
@@ -84,7 +84,7 @@ class ServiceInvoice extends AbstractDataObject
 
     /**
      *
-     * @return the $environment
+     * @return Environment $environment
      */
     public function getEnvironment()
     {

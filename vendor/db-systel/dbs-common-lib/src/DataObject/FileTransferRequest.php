@@ -80,7 +80,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -98,7 +98,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $changeNumber
+     * @return string $changeNumber
      */
     public function getChangeNumber()
     {
@@ -116,7 +116,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $status
+     * @return string $status
      */
     public function getStatus()
     {
@@ -134,7 +134,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $comment
+     * @return string $comment
      */
     public function getComment()
     {
@@ -152,7 +152,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $created
+     * @return string $created
      */
     public function getCreated()
     {
@@ -170,7 +170,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $updated
+     * @return string $updated
      */
     public function getUpdated()
     {
@@ -188,7 +188,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $logicalConnection
+     * @return LogicalConnection $logicalConnection
      */
     public function getLogicalConnection()
     {
@@ -206,7 +206,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $serviceInvoicePositionBasic
+     * @return ServiceInvoicePosition $serviceInvoicePositionBasic
      */
     public function getServiceInvoicePositionBasic()
     {
@@ -224,7 +224,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $serviceInvoicePositionPersonal
+     * @return ServiceInvoicePosition $serviceInvoicePositionPersonal
      */
     public function getServiceInvoicePositionPersonal()
     {
@@ -242,7 +242,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return the $user
+     * @return User $user
      */
     public function getUser()
     {

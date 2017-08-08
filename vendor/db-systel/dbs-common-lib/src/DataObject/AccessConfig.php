@@ -42,7 +42,7 @@ class AccessConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class AccessConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -77,7 +77,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return the $permissionRead
+     * @return bool $permissionRead
      */
     public function getPermissionRead()
     {
@@ -95,7 +95,7 @@ class AccessConfig extends AbstractDataObject
 
 
     /**
-     * @return the $permissionWrite
+     * @return bool $permissionWrite
      */
     public function getPermissionWrite()
     {
@@ -113,7 +113,7 @@ class AccessConfig extends AbstractDataObject
 
 
     /**
-     * @return the $permissionDelete
+     * @return bool $permissionDelete
      */
     public function getPermissionDelete()
     {
@@ -132,7 +132,7 @@ class AccessConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $accessConfigSet
+     * @return AccessConfigSet $accessConfigSet
      */
     public function getAccessConfigSet()
     {

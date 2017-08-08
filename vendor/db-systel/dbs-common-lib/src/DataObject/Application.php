@@ -24,7 +24,7 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return the $technicalShortName
+     * @return string $technicalShortName
      */
     public function getTechnicalShortName()
     {
@@ -42,7 +42,7 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return the $technicalId
+     * @return string $technicalId
      */
     public function getTechnicalId()
     {
@@ -60,7 +60,7 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return the $active
+     * @return boolean $active
      */
     public function getActive()
     {

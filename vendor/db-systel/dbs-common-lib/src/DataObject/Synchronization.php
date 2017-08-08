@@ -36,7 +36,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -54,7 +54,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return the $inProgress
+     * @return boolean $inProgress
      */
     public function getInProgress()
     {
@@ -72,7 +72,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return the $type
+     * @return string $type
      */
     public function getType()
     {
@@ -90,7 +90,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return the $lastSync
+     * @return int $lastSync
      */
     public function getLastSync()
     {

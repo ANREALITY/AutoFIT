@@ -17,7 +17,7 @@ class ExternalServer extends AbstractDataObject
     protected $name;
 
     /**
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -34,7 +34,7 @@ class ExternalServer extends AbstractDataObject
 
     /**
      *
-     * @return the $name
+     * @return string $name
      */
     public function getName()
     {

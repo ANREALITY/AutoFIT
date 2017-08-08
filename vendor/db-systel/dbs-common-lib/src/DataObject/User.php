@@ -34,7 +34,7 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -52,7 +52,7 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return the $username
+     * @return string $username
      */
     public function getUsername()
     {
@@ -70,7 +70,7 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return the $role
+     * @return string $role
      */
     public function getRole()
     {

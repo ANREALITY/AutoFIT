@@ -18,7 +18,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
-     * @return the $folder
+     * @return string $folder
      */
     public function getFolder()
     {
@@ -36,7 +36,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
-     * @return the $includeParameterSet
+     * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
     {

@@ -30,7 +30,7 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -48,7 +48,7 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $dnsAddress
+     * @return string $dnsAddress
      */
     public function getDnsAddress()
     {
@@ -66,7 +66,7 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $server
+     * @return Server $server
      */
     public function getServer()
     {
@@ -84,7 +84,7 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return the $endpoint
+     * @return AbstractEndpoint $endpoint
      */
     public function getEndpoint()
     {

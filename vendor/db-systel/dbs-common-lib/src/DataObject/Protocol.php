@@ -37,7 +37,7 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -55,7 +55,7 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return the $name
+     * @return string $name
      */
     public function getName()
     {
@@ -73,7 +73,7 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return the $protocolSet
+     * @return ProtocolSet $protocolSet
      */
     public function getProtocolSet()
     {

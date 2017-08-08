@@ -54,7 +54,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $id
+     * @return int $id
      */
     public function getId()
     {
@@ -72,7 +72,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $role
+     * @return string $role
      */
     public function getRole()
     {
@@ -90,7 +90,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $type
+     * @return string $type
      */
     public function getType()
     {
@@ -108,7 +108,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $securePlus
+     * @return boolean $securePlus
      */
     public function getSecurePlus()
     {
@@ -126,7 +126,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $logicalConnection
+     * @return LogicalConnection $logicalConnection
      */
     public function getLogicalConnection()
     {
@@ -144,7 +144,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $endpointSource
+     * @return AbstractEndpoint $endpointSource
      */
     public function getEndpointSource()
     {
@@ -162,7 +162,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return the $endpointTarget
+     * @return AbstractEndpoint $endpointTarget
      */
     public function getEndpointTarget()
     {
