@@ -83,6 +83,7 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
                 $prop->setValue($this, null);
             }
         }
+        unset($_SERVER['AUTH_USER']);
     }
 
 }

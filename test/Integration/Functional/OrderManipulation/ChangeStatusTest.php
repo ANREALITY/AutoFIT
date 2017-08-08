@@ -100,11 +100,16 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
         if ($reset) {
             $this->reset();
         }
+        $userModified = false;
         if (array_key_exists($statusUrlSegment, self::$actionsToStatusesMap[Acl::ROLE_ADMIN])) {
             $_SERVER['AUTH_USER'] = 'undefined2';
+            $userModified = true;
         }
         $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
         $this->dispatch($changeStatusUrl);
+        if ($userModified) {
+            unset($_SERVER['AUTH_USER']);
+        }
     }
 
 }
