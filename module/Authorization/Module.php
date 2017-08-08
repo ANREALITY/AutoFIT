@@ -3,7 +3,8 @@ namespace Authorization;
 
 use Zend\EventManager\EventInterface;
 use Authorization\Acl\Acl;
-use Zend\Http\Response;
+use Zend\Http\PhpEnvironment\Response;
+use Zend\Mvc\Application;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\MvcEvent;
 use Zend\Http\Request as HttpRequest;
@@ -63,9 +64,17 @@ class Module
                 if (! empty($redirectRoute)) {
                     $url = $event->getRouter()->assemble($redirectRoute['params'], $redirectRoute['options']);
                     $response->getHeaders()->addHeaderLine('Location', $url);
-                    $response->setStatusCode(Response::STATUS_CODE_403);
+                    $response->setStatusCode(Response::STATUS_CODE_302);
                     $response->sendHeaders();
-                    exit();
+                    // To avoid additional processing
+                    // we can attach a listener for Event Route with a high priority
+                    $stopCallBack = function($event) use ($response){
+                        $event->stopPropagation();
+                        return $response;
+                    };
+                    //Attach the "break" as a listener with a high priority
+                    $event->getApplication()->getEventManager()->attach(MvcEvent::EVENT_ROUTE, $stopCallBack,-10000);
+                    return $response;
                 } else {
                     // simple variant
                     // $response->setContent(
