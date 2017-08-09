@@ -1,6 +1,8 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
+use Authorization\Acl\Acl;
+use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Db\Sql\Sql;
@@ -8,6 +10,20 @@ use Zend\Http\Request;
 
 abstract class AbstractOrderManipulationTest extends AbstractControllerTest
 {
+
+    static protected $actionsToStatusesMap = [
+        Acl::ROLE_MEMBER => [
+            'start-editing' => FileTransferRequest::STATUS_EDIT,
+            'submit' => FileTransferRequest::STATUS_PENDING,
+            'cancel' => FileTransferRequest::STATUS_CANCELED,
+        ],
+        Acl::ROLE_ADMIN => [
+            'start-checking' => FileTransferRequest::STATUS_CHECK,
+            'accept' => FileTransferRequest::STATUS_ACCEPTED,
+            'decline' => FileTransferRequest::STATUS_DECLINED,
+            'complete' => FileTransferRequest::STATUS_COMPLETED,
+        ]
+    ];
 
     protected function setUp()
     {
@@ -84,6 +100,24 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
             }
         }
         unset($_SERVER['AUTH_USER']);
+    }
+
+    protected function changeStatus(
+        string $orderId, string $statusUrlSegment, $reset = true
+    ) {
+        if ($reset) {
+            $this->reset();
+        }
+        $userModified = false;
+        if (array_key_exists($statusUrlSegment, self::$actionsToStatusesMap[Acl::ROLE_ADMIN])) {
+            $_SERVER['AUTH_USER'] = 'undefined2';
+            $userModified = true;
+        }
+        $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
+        $this->dispatch($changeStatusUrl);
+        if ($userModified) {
+            unset($_SERVER['AUTH_USER']);
+        }
     }
 
 }
