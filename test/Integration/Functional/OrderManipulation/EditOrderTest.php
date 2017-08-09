@@ -20,6 +20,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
+        // checking the case "no data -> form with data"
         $orderId = 1;
         $editUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($editUrl);
@@ -29,7 +30,6 @@ class EditOrderTest extends AbstractOrderManipulationTest
         $this->assertControllerClass('ProcessController');
         $this->assertMatchedRouteName('edit-order');
 
-        // checking the form
         /** @var OrderForm $orderForm */
         $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);
 
@@ -69,8 +69,6 @@ class EditOrderTest extends AbstractOrderManipulationTest
             $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
             $endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')->get(0)->get('expression')->getValue()
         );
-
-        $this->reset();
     }
 
     /**
