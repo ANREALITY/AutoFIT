@@ -167,4 +167,21 @@ class EditOrderTest extends AbstractOrderManipulationTest
         );
     }
 
+    public function testHandlingNotExistentOrder()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $this->createOrder($connectionType, $endpointSourceType);
+
+        $this->reset();
+
+        // testing the redirecting for a not existent order
+        $orderId = 2;
+        $showUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($showUrl);
+        // checking rouintg
+        $this->assertResponseStatusCode(Response::STATUS_CODE_302);
+        $this->assertRedirectTo('/error/403');
+    }
+
 }

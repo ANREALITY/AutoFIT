@@ -35,8 +35,11 @@ class UserIsOwner implements AssertionInterface
 
     protected function isUserOwner($orderId = null)
     {
-        $order = $this->fileTransferRequestService->findOne($orderId);
-        $orderOwnerId = $order->getUser()->getId();
+        $orderOwnerId = null;
+        try {
+            $order = $this->fileTransferRequestService->findOne($orderId);
+            $orderOwnerId = $order->getUser()->getId();
+        } catch (\InvalidArgumentException $exception) {}
         return $this->userId == $orderOwnerId;
     }
 
