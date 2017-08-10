@@ -3,6 +3,7 @@ namespace Test\Integration\Functional\OrderDataOutput;
 
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\FileTransferRequest;
+use Zend\Http\PhpEnvironment\Response;
 
 class ShowOrderTest extends AbstractOrderOutputTest
 {
@@ -20,7 +21,7 @@ class ShowOrderTest extends AbstractOrderOutputTest
         $orderId = 1;
         $showUrl = '/show-order/' . $orderId;
         $this->dispatch($showUrl);
-        $this->assertResponseStatusCode(200);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
@@ -68,7 +69,7 @@ class ShowOrderTest extends AbstractOrderOutputTest
         // testing the access by a non-owner member user
         $_SERVER['AUTH_USER'] = 'foo';
         $this->dispatch($showUrl);
-        $this->assertResponseStatusCode(200);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         /** @var FileTransferRequest $fileTransferRequestForAnotherUser */
         $fileTransferRequestForAnotherUser = $this->getApplication()->getMvcEvent()->getResult()->getVariable('fileTransferRequest', null);
         $this->assertNotNull($fileTransferRequestForAnotherUser);

@@ -3,6 +3,7 @@ namespace Test\Integration\Functional\OrderManipulation;
 
 use DbSystel\DataObject\FileTransferRequest;
 use Order\Form\OrderForm;
+use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 
 class CreateOrderTest extends AbstractOrderManipulationTest
@@ -15,7 +16,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
     {
         $createUrl = $this->getCreateUrl('cd', 'cdas400');
         $this->dispatch($createUrl);
-        $this->assertResponseStatusCode(200);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');

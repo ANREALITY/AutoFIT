@@ -26,7 +26,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
         $orderId = 1;
         $editUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($editUrl);
-        $this->assertResponseStatusCode(200);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
