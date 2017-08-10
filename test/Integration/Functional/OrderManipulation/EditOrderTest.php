@@ -1,7 +1,9 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
+use DbSystel\DataObject\FileTransferRequest;
 use Order\Form\OrderForm;
+use Order\Service\UserService;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 
@@ -82,6 +84,34 @@ class EditOrderTest extends AbstractOrderManipulationTest
         $this->assertEquals(
             $editedComment,
             $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
+        );
+    }
+
+    /**
+     * Testing, that the order cannot be edited in the improper status.
+     */
+    public function testPermittingAccessInImproperStatus()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdas400';
+        $this->createOrder($connectionType, $endpointSourceType);
+
+        $this->reset();
+
+        $orderId = 1;
+
+        $this->changeStatus($orderId, UserService::DEFAULT_MEMBER_USERNAME, 'submit');
+
+        $this->reset();
+
+        // checking the case "no data -> form with data"
+        $orderId = 1;
+        $editUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($editUrl);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_302);
+        $this->assertRedirectTo(
+            '/order/process/operation-denied-for-status/'
+            . 'edit' . '/' . FileTransferRequest::STATUS_PENDING
         );
     }
 
