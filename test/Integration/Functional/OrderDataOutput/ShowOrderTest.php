@@ -3,12 +3,17 @@ namespace Test\Integration\Functional\OrderDataOutput;
 
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 use DbSystel\DataObject\FileTransferRequest;
+use Order\Service\UserService;
 use Zend\Http\PhpEnvironment\Response;
 
 class ShowOrderTest extends AbstractOrderOutputTest
 {
 
-    public function testShowOrder()
+    /**
+     * @dataProvider provideDataForShowOrder
+     * @param string $username
+     */
+    public function testShowOrder(string $username)
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
@@ -16,6 +21,8 @@ class ShowOrderTest extends AbstractOrderOutputTest
         $this->createOrder($connectionType, $endpointSourceType);
 
         $this->reset();
+
+        $_SERVER['AUTH_USER'] = $username;
 
         // testing the access by the owner
         $orderId = 1;
@@ -63,19 +70,18 @@ class ShowOrderTest extends AbstractOrderOutputTest
             $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
             $endpointSource->getIncludeParameterSet()->getIncludeParameters()[0]->getExpression()
         );
+    }
 
-        $this->reset();
-
-        // testing the access by a non-owner member user
-        $_SERVER['AUTH_USER'] = 'foo';
-        $this->dispatch($showUrl);
-        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
-        /** @var FileTransferRequest $fileTransferRequestForAnotherUser */
-        $fileTransferRequestForAnotherUser = $this->getApplication()->getMvcEvent()->getResult()->getVariable('fileTransferRequest', null);
-        $this->assertNotNull($fileTransferRequestForAnotherUser);
-        $this->assertInstanceOf(FileTransferRequest::class, $fileTransferRequestForAnotherUser);
-        $this->assertEquals($orderId, $fileTransferRequestForAnotherUser->getId());
-        $this->assertEquals($fileTransferRequestData['change_number'], $fileTransferRequestForAnotherUser->getChangeNumber());
+    public function provideDataForShowOrder()
+    {
+        return [
+            'owner' => [
+                'username' => UserService::DEFAULT_MEMBER_USERNAME,
+            ],
+            'nonOwner' => [
+                'username' => 'foo',
+            ],
+        ];
     }
 
 }
