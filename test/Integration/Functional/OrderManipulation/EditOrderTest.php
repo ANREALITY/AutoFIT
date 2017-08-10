@@ -10,10 +10,7 @@ use Zend\Http\Request;
 class EditOrderTest extends AbstractOrderManipulationTest
 {
 
-    /**
-     * Testing the whole editing process.
-     */
-    public function testCompleteProcess()
+    public function testInputNonOutputFormWithData()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
@@ -22,7 +19,6 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
-        // checking the case "no data -> form with data"
         $orderId = 1;
         $editUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($editUrl);
@@ -71,10 +67,18 @@ class EditOrderTest extends AbstractOrderManipulationTest
             $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
             $endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')->get(0)->get('expression')->getValue()
         );
+    }
+
+    public function testInputDataActionSaving()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
+        $this->createOrder($connectionType, $endpointSourceType);
 
         $this->reset();
 
-        // checking the data saving
+        $orderId = 1;
         $editParams = $createParams;
         $editParams['file_transfer_request']['id'] = $orderId;
         $editedComment = 'edited comment...';
@@ -91,10 +95,11 @@ class EditOrderTest extends AbstractOrderManipulationTest
     /**
      * Testing, that the order cannot be edited in the improper status.
      */
-    public function testPermittingAccessInImproperStatus()
+    public function testPermittedInImproperStatus()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdas400';
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
         $this->createOrder($connectionType, $endpointSourceType);
 
         $this->reset();
@@ -105,21 +110,32 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
-        // checking the case "no data -> form with data"
-        $orderId = 1;
+        $editParams = $createParams;
+        $editParams['file_transfer_request']['id'] = $orderId;
+        $originalComment = $editParams['file_transfer_request']['comment'];
+        $editedComment = 'new comment...';
+        $editParams['file_transfer_request']['comment'] = $editedComment;
         $editUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($editUrl);
+        $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
+
+        // checking rouintg
         $this->assertResponseStatusCode(Response::STATUS_CODE_302);
         $this->assertRedirectTo(
             '/order/process/operation-denied-for-status/'
             . 'edit' . '/' . FileTransferRequest::STATUS_PENDING
+        );
+
+        // checking, that the data is not changed
+        $this->assertEquals(
+            $originalComment,
+            $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
         );
     }
 
     /**
      * Testing, that the other user cannot edit the order.
      */
-    public function testPermittingAccessForNoCreator()
+    public function testPermittedForNoCreator()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
