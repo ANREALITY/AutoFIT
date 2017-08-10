@@ -2,6 +2,7 @@
 namespace Test\Integration\Functional\OrderManipulation;
 
 use Authorization\Acl\Acl;
+use Order\Service\UserService;
 
 class ChangeStatusTest extends AbstractOrderManipulationTest
 {
@@ -17,9 +18,9 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
 
         $orderId = 1;
 
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'submit');
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'start-editing');
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'cancel');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'submit');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'start-editing');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'cancel');
     }
 
     /**
@@ -33,8 +34,8 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
 
         $orderId = 1;
 
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'start-editing');
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'cancel');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'start-editing');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'cancel');
     }
 
     /**
@@ -48,10 +49,10 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
 
         $orderId = 1;
 
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'submit');
-        $this->assertStatusChange($orderId, Acl::ROLE_ADMIN, 'start-checking');
-        $this->assertStatusChange($orderId, Acl::ROLE_ADMIN, 'accept');
-        $this->assertStatusChange($orderId, Acl::ROLE_ADMIN, 'complete');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'submit');
+        $this->assertStatusChange($orderId, self::DEFAULT_ADMIN_USERNAME, Acl::ROLE_ADMIN, 'start-checking');
+        $this->assertStatusChange($orderId, self::DEFAULT_ADMIN_USERNAME, Acl::ROLE_ADMIN, 'accept');
+        $this->assertStatusChange($orderId, self::DEFAULT_ADMIN_USERNAME, Acl::ROLE_ADMIN, 'complete');
     }
 
     /**
@@ -65,14 +66,14 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
 
         $orderId = 1;
 
-        $this->assertStatusChange($orderId, Acl::ROLE_MEMBER, 'submit');
-        $this->assertStatusChange($orderId, Acl::ROLE_ADMIN, 'start-checking');
-        $this->assertStatusChange($orderId, Acl::ROLE_ADMIN, 'decline');
+        $this->assertStatusChange($orderId, UserService::DEFAULT_MEMBER_USERNAME, Acl::ROLE_MEMBER, 'submit');
+        $this->assertStatusChange($orderId, self::DEFAULT_ADMIN_USERNAME, Acl::ROLE_ADMIN, 'start-checking');
+        $this->assertStatusChange($orderId, self::DEFAULT_ADMIN_USERNAME, Acl::ROLE_ADMIN, 'decline');
     }
 
-    protected function assertStatusChange($orderId, $role, $statusUrlSegment)
+    protected function assertStatusChange($orderId, $username, $role, $statusUrlSegment)
     {
-        $this->changeStatus($orderId, $statusUrlSegment);
+        $this->changeStatus($orderId, $username, $statusUrlSegment);
         $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
         $this->assertEquals(self::$actionsToStatusesMap[$role][$statusUrlSegment], $actualData['status']);
     }

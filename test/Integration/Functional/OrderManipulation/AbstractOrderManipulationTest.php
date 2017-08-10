@@ -11,6 +11,11 @@ use Zend\Http\Request;
 abstract class AbstractOrderManipulationTest extends AbstractControllerTest
 {
 
+    /**
+     * @var string
+     */
+    const DEFAULT_ADMIN_USERNAME = 'undefined2';
+
     static protected $actionsToStatusesMap = [
         Acl::ROLE_MEMBER => [
             'start-editing' => FileTransferRequest::STATUS_EDIT,
@@ -103,21 +108,18 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
     }
 
     protected function changeStatus(
-        string $orderId, string $statusUrlSegment, $reset = true
+        string $orderId, string $username, string $statusUrlSegment, $reset = true
     ) {
         if ($reset) {
             $this->reset();
         }
-        $userModified = false;
-        if (array_key_exists($statusUrlSegment, self::$actionsToStatusesMap[Acl::ROLE_ADMIN])) {
-            $_SERVER['AUTH_USER'] = 'undefined2';
-            $userModified = true;
-        }
+
+        $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
+        $_SERVER['AUTH_USER'] = $username;
+
         $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
         $this->dispatch($changeStatusUrl);
-        if ($userModified) {
-            unset($_SERVER['AUTH_USER']);
-        }
+        $_SERVER['AUTH_USER'] = $oldUsername;
     }
 
 }
