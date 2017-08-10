@@ -69,6 +69,20 @@ class EditOrderTest extends AbstractOrderManipulationTest
             $endpointSourceData['include_parameter_set']['include_parameters'][0]['expression'],
             $endpointSourceFieldset->get('include_parameter_set')->get('include_parameters')->get(0)->get('expression')->getValue()
         );
+
+        $this->reset();
+
+        $createParams['file_transfer_request']['id'] = $orderId;
+        $editedComment = 'edited comment...';
+        $createParams['file_transfer_request']['comment'] = $editedComment;
+        $editUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($editUrl, Request::METHOD_POST, $createParams);
+
+        // checking the data saving
+        $this->assertEquals(
+            $editedComment,
+            $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
+        );
     }
 
     /**
