@@ -74,6 +74,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
+        // checking the data saving
         $editParams = $createParams;
         $editParams['file_transfer_request']['id'] = $orderId;
         $editedComment = 'edited comment...';
@@ -81,7 +82,6 @@ class EditOrderTest extends AbstractOrderManipulationTest
         $editUrl = '/order/process/edit/' . $orderId;
         $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
 
-        // checking the data saving
         $this->assertEquals(
             $editedComment,
             $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
