@@ -17,17 +17,15 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
     const DEFAULT_ADMIN_USERNAME = 'undefined2';
 
     static protected $actionsToStatusesMap = [
-        Acl::ROLE_MEMBER => [
-            'start-editing' => FileTransferRequest::STATUS_EDIT,
-            'submit' => FileTransferRequest::STATUS_PENDING,
-            'cancel' => FileTransferRequest::STATUS_CANCELED,
-        ],
-        Acl::ROLE_ADMIN => [
-            'start-checking' => FileTransferRequest::STATUS_CHECK,
-            'accept' => FileTransferRequest::STATUS_ACCEPTED,
-            'decline' => FileTransferRequest::STATUS_DECLINED,
-            'complete' => FileTransferRequest::STATUS_COMPLETED,
-        ]
+        // member
+        'start-editing' => FileTransferRequest::STATUS_EDIT,
+        'submit' => FileTransferRequest::STATUS_PENDING,
+        'cancel' => FileTransferRequest::STATUS_CANCELED,
+        // admin
+        'start-checking' => FileTransferRequest::STATUS_CHECK,
+        'accept' => FileTransferRequest::STATUS_ACCEPTED,
+        'decline' => FileTransferRequest::STATUS_DECLINED,
+        'complete' => FileTransferRequest::STATUS_COMPLETED,
     ];
 
     protected function setUp()
