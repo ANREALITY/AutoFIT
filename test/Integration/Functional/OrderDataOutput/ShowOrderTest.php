@@ -72,6 +72,25 @@ class ShowOrderTest extends AbstractOrderOutputTest
         );
     }
 
+    public function testHandlingNotExistentOrderId()
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $this->createOrder($connectionType, $endpointSourceType);
+
+        $this->reset();
+
+        // testing the access by the owner
+        $orderId = 2;
+        $showUrl = '/show-order/' . $orderId;
+        $this->dispatch($showUrl);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_404);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Process');
+        $this->assertControllerClass('ProcessController');
+        $this->assertMatchedRouteName('show-order');
+    }
+
     public function provideDataForShowOrder()
     {
         return [

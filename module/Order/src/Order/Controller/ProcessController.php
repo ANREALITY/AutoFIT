@@ -2,6 +2,7 @@
 
 namespace Order\Controller;
 
+use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
@@ -390,6 +391,11 @@ class ProcessController extends AbstractActionController
         $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequests = $paginator->getCurrentItems();
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+
+        if (! $fileTransferRequest) {
+            $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+            return;
+        }
 
         return new ViewModel([
             'fileTransferRequest' => $fileTransferRequest,
