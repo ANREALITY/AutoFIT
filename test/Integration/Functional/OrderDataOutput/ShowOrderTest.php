@@ -65,8 +65,8 @@ class ShowOrderTest extends AbstractOrderOutputTest
 
         $this->reset();
 
-        // testing the access by a non-owner
-        $_SERVER['AUTH_USER'] = 'undefined2';
+        // testing the access by a non-owner member user
+        $_SERVER['AUTH_USER'] = 'foo';
         $this->dispatch($showUrl);
         $this->assertResponseStatusCode(200);
         /** @var FileTransferRequest $fileTransferRequestForAnotherUser */
