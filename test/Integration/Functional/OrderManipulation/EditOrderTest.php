@@ -74,11 +74,12 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $this->reset();
 
-        $createParams['file_transfer_request']['id'] = $orderId;
+        $editParams = $createParams;
+        $editParams['file_transfer_request']['id'] = $orderId;
         $editedComment = 'edited comment...';
-        $createParams['file_transfer_request']['comment'] = $editedComment;
+        $editParams['file_transfer_request']['comment'] = $editedComment;
         $editUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($editUrl, Request::METHOD_POST, $createParams);
+        $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
 
         // checking the data saving
         $this->assertEquals(
@@ -131,18 +132,19 @@ class EditOrderTest extends AbstractOrderManipulationTest
 
         $_SERVER['AUTH_USER'] = 'undefined2';
 
-        $createParams['file_transfer_request']['id'] = $orderId;
-        $originalComment = $createParams['file_transfer_request']['comment'];
+        $editParams = $createParams;
+        $editParams['file_transfer_request']['id'] = $orderId;
+        $originalComment = $editParams['file_transfer_request']['comment'];
         $editedComment = 'new comment...';
-        $createParams['file_transfer_request']['comment'] = $editedComment;
+        $editParams['file_transfer_request']['comment'] = $editedComment;
         $editUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($editUrl, Request::METHOD_POST, $createParams);
+        $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
 
         // checking rouintg
         $this->assertResponseStatusCode(Response::STATUS_CODE_302);
         $this->assertRedirectTo('/error/403');
 
-        // checking the data saving
+        // checking, that the data is not changed
         $this->assertEquals(
             $originalComment,
             $this->retrieveActualData('file_transfer_request', 'id', 1)['comment']
