@@ -17,7 +17,7 @@ class ShowOrderTest extends AbstractOrderOutputTest
 
         $this->reset();
 
-        // testing the accss by the owner
+        // testing the access by the owner
         $orderId = 1;
         $showUrl = '/show-order/' . $orderId;
         $this->dispatch($showUrl);
