@@ -1,6 +1,7 @@
 <?php
 namespace Authentication;
 
+use Order\Service\UserService;
 use Zend\Authentication\AuthenticationService;
 use Authentication\Adapter\DbTable as AuthenticationAdapter;
 use Zend\Authentication\Storage\Session;
@@ -38,7 +39,7 @@ class Module
                         $username = strrchr($_SERVER['AUTH_USER'], "\\") ? str_ireplace("\\", '',
                             strrchr($_SERVER['AUTH_USER'], "\\")) : $_SERVER['AUTH_USER'];
                     } else {
-                        $username = 'undefined';
+                        $username = UserService::DEFAULT_MEMBER_USERNAME;
                     }
                     $authenticationAdapter = new AuthenticationAdapter($userService, $username);
                     $authenticationService = new AuthenticationService();
