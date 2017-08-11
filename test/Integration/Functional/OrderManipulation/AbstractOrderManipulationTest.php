@@ -91,6 +91,7 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
         $dbConfigs = $this->getApplicationServiceLocator()->get('Config')['db'];
         $databaseInitializer = new DatabaseInitializer($dbConfigs);
         $databaseInitializer->setUp();
+        $databaseInitializer->tearDown();
     }
 
     protected function tearDown()
