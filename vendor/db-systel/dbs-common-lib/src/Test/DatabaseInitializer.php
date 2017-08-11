@@ -31,19 +31,6 @@ class DatabaseInitializer
 
     public function __construct(array $dbConfigs)
     {
-        $this->pdo = new PDO(
-            $dbConfigs['dsn'],
-            $dbConfigs['username'],
-            $dbConfigs['password'],
-            [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
-        );
-
-        $this->mysqli = new Mysqli(
-            $dbConfigs['host'],
-            $dbConfigs['username'],
-            $dbConfigs['password'],
-            $dbConfigs['database']
-        );
         $this->database = $dbConfigs['database'];
         $this->dbConfigs = $dbConfigs;
     }
@@ -68,45 +55,57 @@ class DatabaseInitializer
 
     public function tearDown()
     {
-        // do nothing
+        $this->pdo = null;
     }
 
     protected function createDatabase()
     {
-        $this->pdo->exec('CREATE DATABASE IF NOT EXISTS ' . $this->database . ';');
+        $this->getDatabaseConnection()->exec('CREATE DATABASE IF NOT EXISTS ' . $this->database . ';');
     }
 
     protected function useDatabase()
     {
-        $this->pdo->exec('USE ' . $this->database . ';');
+        $this->getDatabaseConnection()->exec('USE ' . $this->database . ';');
     }
 
     protected function createSchema(string $sql)
     {
-        $this->pdo->exec($sql);
+        $this->getDatabaseConnection()->exec($sql);
     }
 
     protected function createBasicData(string $sql)
     {
-        $this->pdo->exec($sql);
+        $this->getDatabaseConnection()->exec($sql);
     }
 
     protected function createTestData(array $sqlSet = [])
     {
         foreach ($sqlSet as $sql) {
-            $this->pdo->exec($sql);
+            $this->getDatabaseConnection()->exec($sql);
         }
     }
 
     protected function createStoredProcedures(string $sql)
     {
-        $statement = $this->pdo->prepare($sql);
+        $statement = $this->getDatabaseConnection()->prepare($sql);
         $statement->execute();
     }
 
     protected function dropDatabase()
     {
-        $this->pdo->exec('DROP DATABASE IF EXISTS ' . $this->database . ';');
+        $this->getDatabaseConnection()->exec('DROP DATABASE IF EXISTS ' . $this->database . ';');
+    }
+
+    protected function getDatabaseConnection() {
+
+        $this->pdo = $this->pdo ?: new PDO(
+            $this->dbConfigs['dsn'],
+            $this->dbConfigs['username'],
+            $this->dbConfigs['password'],
+            [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
+        );
+
+        return $this->pdo;
     }
 
 }
