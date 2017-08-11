@@ -53,4 +53,11 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
         self::$applicationConfigPath = $applicationConfigPath;
     }
 
+    protected function tearDown()
+    {
+        if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
+            $this->dbAdapter->getDriver()->getConnection()->disconnect();
+        }
+    }
+
 }
