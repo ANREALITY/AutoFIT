@@ -11,6 +11,11 @@ class AbstractMapper
 {
 
     /**
+     * @var integer
+     */
+    const DEFAULT_ITEM_COUNT_PER_PAGE = 10;
+
+    /**
      *
      * @var AdapterInterface
      */
@@ -29,6 +34,11 @@ class AbstractMapper
     protected $prototype;
 
     /**
+     * @var integer
+     */
+    protected $itemCountPerPage;
+
+    /**
      * @var TableDataProcessor
      */
     protected $tableDataProcessor;
@@ -38,14 +48,18 @@ class AbstractMapper
      */
     protected $stringUtility;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        AbstractDataObject $prototype = null)
-    {
+    public function __construct(
+        AdapterInterface $dbAdapter,
+        HydratorInterface $hydrator,
+        AbstractDataObject $prototype = null,
+        int $itemCountPerPage = null
+    ) {
         $this->setDbAdapter($dbAdapter);
         $this->setHydrator($hydrator);
         if ($prototype) {
             $this->setPrototype($prototype);
         }
+        $this->itemCountPerPage = $itemCountPerPage ?: self::DEFAULT_ITEM_COUNT_PER_PAGE;
     }
 
     /**

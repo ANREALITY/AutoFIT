@@ -18,8 +18,17 @@ class AuditLogMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new AuditLogMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AuditLog());
+        $config = $container->get('Config');
+        $itemCountPerPage = isset($config['module']['order']['pagination']['items_per_page'])
+            ? $config['module']['audit-logging']['pagination']['items_per_page'] : null
+        ;
+
+        $service = new AuditLogMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new AuditLog(),
+            $itemCountPerPage
+        );
 
         $service->setRequestModifier($container->get('AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier'));
 

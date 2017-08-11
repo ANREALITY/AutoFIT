@@ -21,8 +21,17 @@ class FileTransferRequestMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new FileTransferRequestMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileTransferRequest());
+        $config = $container->get('Config');
+        $itemCountPerPage = isset($config['module']['order']['pagination']['items_per_page'])
+            ? $config['module']['order']['pagination']['items_per_page'] : null
+        ;
+
+        $service = new FileTransferRequestMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new FileTransferRequest(),
+            $itemCountPerPage
+        );
 
         $service->setUserPrototype(new User());
         $service->setLogicalConnectionPrototype(new LogicalConnection());

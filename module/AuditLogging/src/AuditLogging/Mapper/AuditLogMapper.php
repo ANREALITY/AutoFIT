@@ -66,9 +66,13 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
      */
     protected $requestModifier;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, AuditLog $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
+    public function __construct(
+        AdapterInterface $dbAdapter,
+        HydratorInterface $hydrator,
+        AuditLog $prototype,
+        int $itemCountPerPage = null
+    ) {
+        parent::__construct($dbAdapter, $hydrator, $prototype, $itemCountPerPage);
     }
 
     /**
@@ -209,7 +213,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
         $adapter = new DbSelect($select, $this->dbAdapter, null, null);
         $paginator = new Paginator($adapter);
-        $paginator->setItemCountPerPage(self::PAGINATION_ITEM_COUNT_PER_PAGE);
+        $paginator->setItemCountPerPage($this->itemCountPerPage);
         $paginator->setCurrentPageNumber($page);
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());

@@ -70,10 +70,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     protected $requestModifier;
 
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileTransferRequest $prototype,
-        string $prefix = null, string $identifier = null)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype, $prefix, $identifier);
+    public function __construct(
+        AdapterInterface $dbAdapter,
+        HydratorInterface $hydrator,
+        FileTransferRequest $prototype,
+        int $itemCountPerPage = null
+    ) {
+        parent::__construct($dbAdapter, $hydrator, $prototype, $itemCountPerPage);
     }
 
     /**
@@ -380,8 +383,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter, null, null, $userId);
         $paginator = new Paginator($adapter);
         $paginator->setCurrentPageNumber($page);
-        if (! $paginationNeeded) {
-            $paginator->setItemCountPerPage(null);
+        if ($paginationNeeded) {
+            $paginator->setItemCountPerPage($this->itemCountPerPage);
         }
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
