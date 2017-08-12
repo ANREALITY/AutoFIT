@@ -111,6 +111,60 @@ class MiscDataOutputTest extends AbstractControllerTest
         ];
     }
 
+    public function testGetServers()
+    {
+        $name = 'aceip';
+        $endpointTypeName = 'CdLinuxUnix';
+        $getApplicationsUrl = '/order/ajax/provide-servers?'
+            . 'data[name]=' . $name
+            . '&' . 'data[endpoint_type_name]=' . $endpointTypeName
+        ;
+        $this->dispatch($getApplicationsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-servers');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            'aceip-100v', 'aceip-101v', 'aceip-200v', 'aceip-201v',
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
+    public function testGetClusters()
+    {
+        $virtualNodeName = 'f';
+        $getApplicationsUrl = '/order/ajax/provide-clusters?'
+            . 'data[virtual_node_name]=' . $virtualNodeName
+        ;
+        $this->dispatch($getApplicationsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-clusters');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            [
+                'id' => 1,
+                'virtual_node_name' => 'foo',
+                'servers' => null,
+                'endpoints' => null,
+                'endpoint_cluster_configs' => null,
+            ]
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
     protected function tearDown()
     {
         parent::tearDown();
