@@ -55,6 +55,7 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
 
     protected function tearDown()
     {
+        parent::tearDown();
         if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
             $this->dbAdapter->getDriver()->getConnection()->disconnect();
         }
