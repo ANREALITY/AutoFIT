@@ -1,6 +1,8 @@
 <?php
 namespace Test\Integration\Functional\MiscDataOutput;
 
+use DbSystel\DataObject\Article;
+use DbSystel\DataObject\LogicalConnection;
 use DbSystel\Test\AbstractControllerTest;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\View\Model\JsonModel;
@@ -58,6 +60,55 @@ class MiscDataOutputTest extends AbstractControllerTest
             ]
         ];
         $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
+    /**
+     * @param $articleType
+     * @param $serviceInvoicePositionNumber
+     * @param $expectedResult
+     * @dataProvider provideDataForServiceInvoicePositions
+     */
+    public function testServiceInvoicePositions($articleType, $serviceInvoicePositionNumber, $expectedResult)
+    {
+        $applicationTechnicalShortName = 'comgate';
+        $name = 'ent';
+        $getApplicationsUrl = '/order/ajax/provide-service-invoice-positions-' . strtolower($articleType) . '?'
+            . 'data[application_technical_short_name]=' . $applicationTechnicalShortName
+            . '&' . 'data[connection_type]=' . LogicalConnection::TYPE_CD
+            . '&' . 'data[environment_severity]=' . 5
+            . '&' . 'data[number]=' . $serviceInvoicePositionNumber
+        ;
+        $this->dispatch($getApplicationsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-service-invoice-positions-' . strtolower($articleType));
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            0 => $expectedResult
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
+    public function provideDataForServiceInvoicePositions()
+    {
+        return [
+            [
+                'articleType' => Article::TYPE_BASIC,
+                'serviceInvoicePositionNumber' => 'p340',
+                'expectedResult' => 'LSP3407738',
+            ],
+            [
+                'articleType' => Article::TYPE_PERSONAL,
+                'serviceInvoicePositionNumber' => 'p340',
+                'expectedResult' => 'LSP3407744',
+            ],
+        ];
     }
 
     protected function tearDown()
