@@ -6,6 +6,7 @@ return [
             'stored-procedures' => __DIR__ . '/../../../data/database/stored-procedures.sql',
             'basic-data' => __DIR__ . '/../../../data/database/basic-data.sql',
             'test-data' => [
+                'cluster' => __DIR__ . '/../../../data/database/test-data/cluster.sql',
                 'server' => __DIR__ . '/../../../data/database/test-data/server.sql',
                 'application' => __DIR__ . '/../../../data/database/test-data/application.sql',
                 'article' => __DIR__ . '/../../../data/database/test-data/article.sql',

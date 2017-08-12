@@ -5,8 +5,8 @@
 
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('a34', 1, '2017-03-13 14:08:39', NULL, NULL, 2, NULL);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('a44', 1, '2017-03-13 14:08:39', NULL, NULL, 2, NULL);
-INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsrd90130', 1, '2017-03-13 14:08:39', NULL, NULL, 4, NULL);
-INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsrd90131', 1, '2017-03-13 14:08:39', NULL, NULL, 4, NULL);
+INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsrd90130', 1, '2017-03-13 14:08:39', NULL, NULL, 4, 1);
+INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsrd90131', 1, '2017-03-13 14:08:39', NULL, NULL, 4, 1);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsrddakc0', 1, '2017-03-13 14:08:39', NULL, NULL, 4, NULL);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsva90132', 1, '2017-03-13 14:08:39', NULL, NULL, 4, NULL);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('abnsva91028', 1, '2017-03-13 14:08:39', NULL, NULL, 4, NULL);
