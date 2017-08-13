@@ -1,9 +1,9 @@
 <?php
 namespace Test\Integration\Functional\MasterDataManipulation;
 
-use DbSystel\Test\AbstractControllerTest;
+use Test\Integration\Functional\AbstractOrderRelatedTest;
 
-abstract class AbstractMasterDataManipulationTest extends AbstractControllerTest
+abstract class AbstractMasterDataManipulationTest extends AbstractOrderRelatedTest
 {
 
     /** @var string */

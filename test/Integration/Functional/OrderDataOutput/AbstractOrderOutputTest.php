@@ -1,12 +1,11 @@
 <?php
 namespace Test\Integration\Functional\OrderDataOutput;
 
-use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
-use Zend\Db\Sql\Sql;
+use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\Request;
 
-abstract class AbstractOrderOutputTest extends AbstractControllerTest
+abstract class AbstractOrderOutputTest extends AbstractOrderRelatedTest
 {
 
     protected function setUp()

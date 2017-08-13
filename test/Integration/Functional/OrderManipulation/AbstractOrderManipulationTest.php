@@ -1,13 +1,12 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
-use Authorization\Acl\Acl;
 use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
+use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\Request;
 
-abstract class AbstractOrderManipulationTest extends AbstractControllerTest
+abstract class AbstractOrderManipulationTest extends AbstractOrderRelatedTest
 {
 
     /**
