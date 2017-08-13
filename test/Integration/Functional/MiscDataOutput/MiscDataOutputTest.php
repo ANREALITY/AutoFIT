@@ -10,7 +10,7 @@ use Zend\View\Model\JsonModel;
 class MiscDataOutputTest extends AbstractControllerTest
 {
 
-    public function testGetApplications()
+    public function testProvideApplications()
     {
         $technicalShortName = 'comga';
         $getApplicationsUrl = '/order/ajax/provide-applications?'
@@ -33,7 +33,7 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
-    public function testGetEnvironments()
+    public function testProvideEnvironments()
     {
         $applicationTechnicalShortName = 'comgate';
         $name = 'ent';
@@ -68,7 +68,7 @@ class MiscDataOutputTest extends AbstractControllerTest
      * @param $expectedResult
      * @dataProvider provideDataForServiceInvoicePositions
      */
-    public function testServiceInvoicePositions($articleType, $serviceInvoicePositionNumber, $expectedResult)
+    public function testProvideServiceInvoicePositions($articleType, $serviceInvoicePositionNumber, $expectedResult)
     {
         $applicationTechnicalShortName = 'comgate';
         $name = 'ent';
@@ -95,23 +95,7 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
-    public function provideDataForServiceInvoicePositions()
-    {
-        return [
-            [
-                'articleType' => Article::TYPE_BASIC,
-                'serviceInvoicePositionNumber' => 'p340',
-                'expectedResult' => 'LSP3407738',
-            ],
-            [
-                'articleType' => Article::TYPE_PERSONAL,
-                'serviceInvoicePositionNumber' => 'p340',
-                'expectedResult' => 'LSP3407744',
-            ],
-        ];
-    }
-
-    public function testGetServers()
+    public function testProvideServers()
     {
         $name = 'aceip';
         $endpointTypeName = 'CdLinuxUnix';
@@ -136,7 +120,7 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
-    public function testGetClusters()
+    public function testProvideClusters()
     {
         $virtualNodeName = 'f';
         $getApplicationsUrl = '/order/ajax/provide-clusters?'
@@ -165,7 +149,7 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
-    public function testGetServersNotInCdUse()
+    public function testProvideServersNotInCdUse()
     {
         $name = 'bnsva';
         $getApplicationsUrl = '/order/ajax/provide-servers-not-in-cd-use?'
@@ -188,7 +172,7 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
-    public function testGetServersNotInCluster()
+    public function testProvideServersNotInCluster()
     {
         $name = 'rerf';
         $getApplicationsUrl = '/order/ajax/provide-servers-not-in-cluster?'
@@ -209,6 +193,22 @@ class MiscDataOutputTest extends AbstractControllerTest
             'ererf210', 'ererf220'
         ];
         $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
+    public function provideDataForServiceInvoicePositions()
+    {
+        return [
+            [
+                'articleType' => Article::TYPE_BASIC,
+                'serviceInvoicePositionNumber' => 'p340',
+                'expectedResult' => 'LSP3407738',
+            ],
+            [
+                'articleType' => Article::TYPE_PERSONAL,
+                'serviceInvoicePositionNumber' => 'p340',
+                'expectedResult' => 'LSP3407744',
+            ],
+        ];
     }
 
     protected function tearDown()
