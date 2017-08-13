@@ -3,7 +3,7 @@ namespace Test\Integration\Functional\MasterDataManipulation;
 
 use DbSystel\Test\AbstractControllerTest;
 
-abstract class AbstractDataManipulationTest extends AbstractControllerTest
+abstract class AbstractMasterDataManipulationTest extends AbstractControllerTest
 {
 
     /** @var string */

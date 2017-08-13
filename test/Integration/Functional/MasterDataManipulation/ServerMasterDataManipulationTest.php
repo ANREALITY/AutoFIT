@@ -5,7 +5,7 @@ use MasterData\Form\ServerForm;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 
-class ServerDataManipulationTest extends AbstractDataManipulationTest
+class ServerMasterDataManipulationTest extends AbstractMasterDataManipulationTest
 {
 
     public function testInputNoneOutputForm()

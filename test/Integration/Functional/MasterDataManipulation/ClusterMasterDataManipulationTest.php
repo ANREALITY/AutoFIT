@@ -5,7 +5,7 @@ use MasterData\Form\ClusterForm;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 
-class ClusterDataManipulationTest extends AbstractDataManipulationTest
+class ClusterMasterDataManipulationTest extends AbstractMasterDataManipulationTest
 {
 
     public function testInputNoneOutputForm()
