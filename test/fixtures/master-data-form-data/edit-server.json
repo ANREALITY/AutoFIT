@@ -1,0 +1,7 @@
+{
+  "server": {
+    "name": "epa3",
+    "virtual_node_name": "epa3servervirtualnodename"
+  },
+  "submit": "Server aktualisieren"
+}

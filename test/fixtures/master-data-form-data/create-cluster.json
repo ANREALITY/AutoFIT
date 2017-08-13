@@ -1,0 +1,14 @@
+{
+  "cluster": {
+    "virtual_node_name": "clustervirtualnodename",
+    "servers": [
+      {
+        "name": "ble1"
+      },
+      {
+        "name": "ble2"
+      }
+    ]
+  },
+  "submit": "Cluster erstellen"
+}
