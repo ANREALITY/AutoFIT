@@ -57,9 +57,20 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
     protected function tearDown()
     {
         parent::tearDown();
+
         if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
             $this->dbAdapter->getDriver()->getConnection()->disconnect();
         }
+
+        $reflectionObject = new \ReflectionObject($this);
+        foreach ($reflectionObject->getProperties() as $prop) {
+            if (!$prop->isStatic() && 0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_')) {
+                $prop->setAccessible(true);
+                $prop->setValue($this, null);
+            }
+        }
+
+        unset($_SERVER['AUTH_USER']);
     }
 
     protected function retrieveActualData($table, $idColumn, $idValue)

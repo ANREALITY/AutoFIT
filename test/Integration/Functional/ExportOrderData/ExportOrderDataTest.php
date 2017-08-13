@@ -2,11 +2,12 @@
 namespace Test\Integration\Functional\ExportOrderData;
 
 use DbSystel\DataExport\DataExporter;
+use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Test\Integration\Functional\OrderManipulation\AbstractOrderManipulationTest;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Response\Stream;
 
-class ExportOrderDataTest extends AbstractOrderManipulationTest
+class ExportOrderDataTest extends AbstractOrderRelatedTest
 {
 
     /**
