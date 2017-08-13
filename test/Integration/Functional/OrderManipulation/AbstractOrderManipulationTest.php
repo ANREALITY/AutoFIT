@@ -5,7 +5,6 @@ use Authorization\Acl\Acl;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
-use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
 
 abstract class AbstractOrderManipulationTest extends AbstractControllerTest
@@ -68,17 +67,6 @@ abstract class AbstractOrderManipulationTest extends AbstractControllerTest
         $fixtureJson = file_get_contents($fixtureFilePath);
         $createParams = json_decode($fixtureJson, true);
         return $createParams;
-    }
-
-    protected function retrieveActualData($table, $idColumn, $idValue)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select($table);
-        $select->where([$table . '.' . $idColumn . ' = ?' => $idValue]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        $data = $result->current();
-        return $data;
     }
 
     protected function setUpDatabase()

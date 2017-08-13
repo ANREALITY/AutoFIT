@@ -4,6 +4,7 @@ namespace DbSystel\Test;
 use PDO;
 use PHPUnit\DbUnit\Database\DefaultConnection;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Sql;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
@@ -59,6 +60,17 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
         if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
             $this->dbAdapter->getDriver()->getConnection()->disconnect();
         }
+    }
+
+    protected function retrieveActualData($table, $idColumn, $idValue)
+    {
+        $sql = new Sql($this->dbAdapter);
+        $select = $sql->select($table);
+        $select->where([$table . '.' . $idColumn . ' = ?' => $idValue]);
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $data = $result->current();
+        return $data;
     }
 
 }
