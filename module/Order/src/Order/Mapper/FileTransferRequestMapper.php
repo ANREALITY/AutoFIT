@@ -380,38 +380,68 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $select->order(['file_transfer_request__' . 'id' => 'ASC']);
 
         $userId = isset($condition['user_id']) ? $condition['user_id'] : null;
-        $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter, null, null, $userId);
-        $paginator = new Paginator($adapter);
-        $paginator->setCurrentPageNumber($page);
-        if ($paginationNeeded) {
-            $paginator->setItemCountPerPage($this->itemCountPerPage);
-        }
+
+        if (! $id) {
+            $adapter = new FileTransferRequestPaginatorAdapter($select, $this->dbAdapter, null, null, $userId);
+            $paginator = new Paginator($adapter);
+            $paginator->setCurrentPageNumber($page);
+            if ($paginationNeeded) {
+                $paginator->setItemCountPerPage($this->itemCountPerPage);
+            }
 
 //         echo $select->getSqlString($this->dbAdapter->getPlatform());
 //         die('');
 
-        $resultSetArray = $paginator->getCurrentItems();
+            $resultSetArray = $paginator->getCurrentItems();
 
-        if ($resultSetArray) {
-            $resultSetArray = iterator_to_array($resultSetArray);
-            foreach ($resultSetArray as $key => $arrayObject) {
-                $resultSetArray[$key] = $arrayObject->getArrayCopy();
-            }
-            
+            if ($resultSetArray) {
+                $resultSetArray = iterator_to_array($resultSetArray);
+                foreach ($resultSetArray as $key => $arrayObject) {
+                    $resultSetArray[$key] = $arrayObject->getArrayCopy();
+                }
+
 //             echo '<pre>';
 //             print_r($resultSetArray);
 //             die(__FILE__);
 
-            $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
-                null, null, null, false);
+                $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
+                    null, null, null, false);
 
 //             echo '<pre>';
 //             print_r($dataObjects);
 //             die('###');
 
-            $paginator->setCurrentItems($dataObjects);
+                $paginator->setCurrentItems($dataObjects);
 
-            return $paginator;
+                return $paginator;
+            }
+
+        } else {
+            $statement = $sql->prepareStatementForSqlObject($select);
+
+//         echo $select->getSqlString($this->dbAdapter->getPlatform());
+//         die('');
+
+            $result = $statement->execute();
+
+            if ($result instanceof ResultInterface && $result->isQueryResult()) {
+                $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
+                $return = $resultSet->initialize($result);
+
+                $resultSet = new ResultSet();
+                $resultSet->initialize($result);
+                $resultSetArray = $resultSet->toArray();
+                // echo '<pre>';
+                // print_r($resultSetArray);
+                $dataObjects = $this->createDataObjects($resultSetArray, null, null, 'id', 'file_transfer_request__', null,
+                    null, null, null, false);
+
+//             echo '<pre>';
+//             print_r($dataObjects);
+//             die('###');
+
+                return $dataObjects;
+            }
         }
 
         return [];

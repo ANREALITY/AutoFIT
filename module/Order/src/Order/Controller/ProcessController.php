@@ -388,8 +388,7 @@ class ProcessController extends AbstractActionController
     public function showOrderAction()
     {
         $id = $this->params()->fromRoute('id', null);
-        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
-        $fileTransferRequests = $paginator->getCurrentItems();
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         if (! $fileTransferRequest) {
@@ -454,8 +453,7 @@ class ProcessController extends AbstractActionController
     {
         $id = $this->params()->fromRoute('id', null);
         $format = $this->params()->fromQuery('format', null);
-        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
-        $fileTransferRequests = $paginator->getCurrentItems();
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         $folder = $this->exportFolder;
