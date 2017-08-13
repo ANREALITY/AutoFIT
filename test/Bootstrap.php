@@ -1,6 +1,7 @@
 <?php
 namespace Test;
 
+use DbSystel\Test\AbstractControllerDbTest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\AbstractDbTest;
 use DbSystel\Test\DatabaseInitializer;
@@ -79,6 +80,8 @@ class Bootstrap
         $databaseInitializer->setUp();
         AbstractDbTest::setDbConfigs($dbConfigs);
         AbstractControllerTest::setApplicationConfigPath($this->applicationConfigPath);
+        AbstractControllerDbTest::setDbConfigs($dbConfigs);
+        AbstractControllerDbTest::setApplicationConfigPath($this->applicationConfigPath);
     }
 
     protected function initAutoloader()
