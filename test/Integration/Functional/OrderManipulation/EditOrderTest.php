@@ -10,7 +10,7 @@ use Zend\Http\Request;
 class EditOrderTest extends AbstractOrderManipulationTest
 {
 
-    public function testInputNonOutputFormWithData()
+    public function testInputNoneOutputFormWithData()
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
