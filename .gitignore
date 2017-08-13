@@ -25,6 +25,7 @@ codeception/tests/_output
 data/cache/*
 data/export/*
 data/logs/error-*.log
+data/test/export/*
 ci/*/config.xml
 ci/*/logs/*
 !ci/*/logs/empty
