@@ -1,0 +1,187 @@
+{
+    "id": "5",
+    "change_number": "C00000015",
+    "status": "edit",
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
+    "created": "2017-08-13 11:33:42",
+    "updated": null,
+    "logical_connection": {
+        "id": "5",
+        "type": "CD",
+        "physical_connection_end_to_end": {
+            "id": "5",
+            "role": "end_to_end",
+            "type": "CD",
+            "secure_plus": "1",
+            "logical_connection": null,
+            "endpoint_source": {
+                "sharename": "sharenamesource",
+                "folder": "foldersource",
+                "transmission_type": "txt",
+                "include_parameter_set": {
+                    "id": "3",
+                    "endpoint": null,
+                    "include_parameters": [
+                        {
+                            "id": "3",
+                            "expression": ".*",
+                            "include_parameter_set": null
+                        }
+                    ]
+                },
+                "access_config_set": {
+                    "id": "1",
+                    "endpoint": null,
+                    "access_configs": [
+                        {
+                            "id": "1",
+                            "username": "BKU\\username1source",
+                            "permission_read": "1",
+                            "permission_write": "0",
+                            "permission_delete": "0",
+                            "access_config_set": null
+                        }
+                    ]
+                },
+                "id": "9",
+                "role": "source",
+                "type": "CdWindowsShare",
+                "server_place": "internal",
+                "contact_person": "Howard Rockerduck",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KM-SPI",
+                    "technical_id": "TVF1698",
+                    "active": null
+                },
+                "customer": {
+                    "id": "9",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "9",
+                    "dns_address": "dnsaddresssource",
+                    "server": {
+                        "name": "wincdabn.tech.rz.db.de",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            },
+            "endpoint_target": {
+                "sharename": "sharenametarget",
+                "folder": "foldertarget",
+                "transmission_type": null,
+                "include_parameter_set": null,
+                "access_config_set": {
+                    "id": "2",
+                    "endpoint": null,
+                    "access_configs": [
+                        {
+                            "id": "2",
+                            "username": "BKU\\username1target",
+                            "permission_read": "1",
+                            "permission_write": "0",
+                            "permission_delete": "0",
+                            "access_config_set": null
+                        }
+                    ]
+                },
+                "id": "10",
+                "role": "target",
+                "type": "CdWindowsShare",
+                "server_place": "internal",
+                "contact_person": "Amelia Fieldmouse",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KSB",
+                    "technical_id": "TVF1909",
+                    "active": null
+                },
+                "customer": {
+                    "id": "10",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "10",
+                    "dns_address": "dnsaddresstarget",
+                    "server": {
+                        "name": "wincdprd.tech.rz.db.de",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            }
+        },
+        "physical_connection_end_to_middle": null,
+        "physical_connection_middle_to_end": null,
+        "notifications": [
+            {
+                "id": "5",
+                "email": "foo@foo.com",
+                "success": "1",
+                "failure": "0",
+                "logical_connection": null
+            }
+        ]
+    },
+    "service_invoice_position_basic": {
+        "number": "LSP3407738",
+        "order_quantity": "1",
+        "description": "MDW Middleware Spezial- verfahrensintegriert Filetransfer",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "service_invoice_position_personal": {
+        "number": "LSP3407744",
+        "order_quantity": "2",
+        "description": "MDW Middleware Spezial- verfahrensintegriert Support Filetransfer Bron",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "user": {
+        "id": "1",
+        "username": "undefined",
+        "role": "admin"
+    }
+}

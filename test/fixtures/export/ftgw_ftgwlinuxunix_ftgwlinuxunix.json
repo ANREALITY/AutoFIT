@@ -1,0 +1,179 @@
+{
+    "id": "10",
+    "change_number": "C00000024",
+    "status": "edit",
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
+    "created": "2017-08-13 11:35:21",
+    "updated": null,
+    "logical_connection": {
+        "id": "10",
+        "type": "FTGW",
+        "physical_connection_end_to_end": null,
+        "physical_connection_end_to_middle": {
+            "id": "13",
+            "role": "end_to_middle",
+            "type": "FTGW",
+            "secure_plus": null,
+            "logical_connection": null,
+            "endpoint_source": {
+                "username": "usersrc",
+                "folder": "/path/to/folder/source",
+                "transmission_type": "txt",
+                "transmission_interval": "0,15,30,45 * * * *",
+                "include_parameter_set": {
+                    "id": "4",
+                    "endpoint": null,
+                    "include_parameters": [
+                        {
+                            "id": "4",
+                            "expression": ".*",
+                            "include_parameter_set": null
+                        }
+                    ]
+                },
+                "endpoint_cluster_config": {
+                    "id": "3",
+                    "dns_address": null,
+                    "cluster": null
+                },
+                "id": "19",
+                "role": "source",
+                "type": "FtgwLinuxUnix",
+                "server_place": "internal",
+                "contact_person": "Howard Rockerduck",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KM-SPI",
+                    "technical_id": "TVF1698",
+                    "active": null
+                },
+                "customer": {
+                    "id": "19",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "19",
+                    "dns_address": "dnsaddresssource",
+                    "server": {
+                        "name": "abweiler",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            },
+            "endpoint_target": null
+        },
+        "physical_connection_middle_to_end": {
+            "id": "14",
+            "role": "middle_to_end",
+            "type": "FTGW",
+            "secure_plus": null,
+            "logical_connection": null,
+            "endpoint_source": null,
+            "endpoint_target": {
+                "username": "usertgt",
+                "folder": "/path/to/folder/target",
+                "transmission_type": null,
+                "transmission_interval": null,
+                "include_parameter_set": null,
+                "endpoint_cluster_config": {
+                    "id": "4",
+                    "dns_address": null,
+                    "cluster": null
+                },
+                "id": "20",
+                "role": "target",
+                "type": "FtgwLinuxUnix",
+                "server_place": "internal",
+                "contact_person": "Amelia Fieldmouse",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KSB",
+                    "technical_id": "TVF1909",
+                    "active": null
+                },
+                "customer": {
+                    "id": "20",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "20",
+                    "dns_address": "dnsaddresstarget",
+                    "server": {
+                        "name": "aceip-100v",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            }
+        },
+        "notifications": [
+            {
+                "id": "10",
+                "email": "foo@foo.com",
+                "success": "1",
+                "failure": "0",
+                "logical_connection": null
+            }
+        ]
+    },
+    "service_invoice_position_basic": {
+        "number": "LSP3407732",
+        "order_quantity": "1",
+        "description": "MDW Middleware Filetransfer Gateway Basis",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "service_invoice_position_personal": {
+        "number": "LSP3407735",
+        "order_quantity": "1",
+        "description": "MDW Middleware Filetransfer Gateway Support Bronze",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "user": {
+        "id": "1",
+        "username": "undefined",
+        "role": "admin"
+    }
+}

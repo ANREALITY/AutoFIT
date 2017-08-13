@@ -1,0 +1,145 @@
+{
+    "id": "1",
+    "change_number": "C00000011",
+    "status": "edit",
+    "comment": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
+    "created": "2017-08-13 11:32:07",
+    "updated": null,
+    "logical_connection": {
+        "id": "1",
+        "type": "CD",
+        "physical_connection_end_to_end": {
+            "id": "1",
+            "role": "end_to_end",
+            "type": "CD",
+            "secure_plus": "1",
+            "logical_connection": null,
+            "endpoint_source": {
+                "username": "usersource",
+                "folder": null,
+                "id": "1",
+                "role": "source",
+                "type": "CdAs400",
+                "server_place": "internal",
+                "contact_person": "Howard Rockerduck",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KM-SPI",
+                    "technical_id": "TVF1698",
+                    "active": null
+                },
+                "customer": {
+                    "id": "1",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "1",
+                    "dns_address": "dnsaddresssource",
+                    "server": {
+                        "name": "blber200",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            },
+            "endpoint_target": {
+                "username": "usertarget",
+                "folder": "/path/to/folder/target",
+                "id": "2",
+                "role": "target",
+                "type": "CdAs400",
+                "server_place": "internal",
+                "contact_person": "Amelia Fieldmouse",
+                "physical_connection": null,
+                "external_server": null,
+                "application": {
+                    "technical_short_name": "KSB",
+                    "technical_id": "TVF1909",
+                    "active": null
+                },
+                "customer": {
+                    "id": "2",
+                    "name": ""
+                },
+                "endpoint_server_config": {
+                    "id": "2",
+                    "dns_address": "dnsaddresstarget",
+                    "server": {
+                        "name": "efproxy",
+                        "server_type": null,
+                        "active": "1",
+                        "node_name": null,
+                        "virtual_node_name": null,
+                        "cluster": null,
+                        "endpoint_server_configs": null
+                    },
+                    "endpoint": null
+                }
+            }
+        },
+        "physical_connection_end_to_middle": null,
+        "physical_connection_middle_to_end": null,
+        "notifications": [
+            {
+                "id": "1",
+                "email": "foo@foo.com",
+                "success": "1",
+                "failure": "0",
+                "logical_connection": null
+            }
+        ]
+    },
+    "service_invoice_position_basic": {
+        "number": "LSP3407738",
+        "order_quantity": "1",
+        "description": "MDW Middleware Spezial- verfahrensintegriert Filetransfer",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "service_invoice_position_personal": {
+        "number": "LSP3407744",
+        "order_quantity": "2",
+        "description": "MDW Middleware Spezial- verfahrensintegriert Support Filetransfer Bron",
+        "status": "Aktiv",
+        "service_invoice": {
+            "number": "LS019420",
+            "description": "LS fur Entwicklung AVB RedHat",
+            "application": {
+                "technical_short_name": "comgate",
+                "technical_id": "TVF2590",
+                "active": "1"
+            },
+            "environment": {
+                "severity": "5",
+                "name": "Entwicklung",
+                "short_name": "E"
+            }
+        },
+        "article": null
+    },
+    "user": {
+        "id": "1",
+        "username": "undefined",
+        "role": "admin"
+    }
+}
