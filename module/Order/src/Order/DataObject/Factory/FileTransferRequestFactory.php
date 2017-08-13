@@ -1,6 +1,7 @@
 <?php
 namespace Order\DataObject\Factory;
 
+use DbSystel\Paginator\Paginator;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use DbSystel\DataObject\FileTransferRequest;
@@ -26,8 +27,15 @@ class FileTransferRequestFactory implements FactoryInterface
             $request = $container->get('request');
             $routerMatch = $router->match($request);
             $routerMatchParams = $routerMatch->getParams();
-            $paginator = $fileTransferRequestService->findAllWithBuldledData([], $routerMatchParams['id'], null, false);
-            $fileTransferRequest = $paginator->getCurrentItems()[0];
+            $fileTransferRequestsRetrievingResult = $fileTransferRequestService->findAllWithBuldledData([], $routerMatchParams['id'], null, false);
+            if (is_object($fileTransferRequestsRetrievingResult) && $fileTransferRequestsRetrievingResult instanceof Paginator) {
+                $fileTransferRequest = $fileTransferRequestsRetrievingResult->getCurrentItems()[0];
+            } elseif (is_array($fileTransferRequestsRetrievingResult)) {
+                $fileTransferRequest = $fileTransferRequestsRetrievingResult[0];
+            } else {
+                $fileTransferRequest = null;
+            }
+
         } else {
             $fileTransferRequest = new FileTransferRequest();
         }

@@ -222,8 +222,7 @@ class ProcessController extends AbstractActionController
         }
 
         $id = $this->params()->fromRoute('id', null);
-        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
-        $fileTransferRequests = $paginator->getCurrentItems();
+        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
         $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
 
         return [

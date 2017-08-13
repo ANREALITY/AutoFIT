@@ -178,8 +178,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        $paginator = $this->findAllWithBuldledData([], $id, null, false);
-        $fileTransferRequests = $paginator->getCurrentItems();
+        $fileTransferRequests = $this->findAllWithBuldledData([], $id, null, false);
         if ($fileTransferRequests) {
             return $fileTransferRequests[0];
         }
