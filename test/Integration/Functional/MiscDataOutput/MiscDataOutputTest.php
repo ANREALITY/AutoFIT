@@ -165,6 +165,52 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
+    public function testGetServersNotInCdUse()
+    {
+        $name = 'bnsva';
+        $getApplicationsUrl = '/order/ajax/provide-servers-not-in-cd-use?'
+            . 'data[name]=' . $name
+        ;
+        $this->dispatch($getApplicationsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-servers-not-in-cd-use');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            'abnsva90132', 'abnsva91028'
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
+    public function testGetServersNotInCluster()
+    {
+        $name = 'rerf';
+        $getApplicationsUrl = '/order/ajax/provide-servers-not-in-cluster?'
+            . 'data[name]=' . $name
+        ;
+        $this->dispatch($getApplicationsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('Order');
+        $this->assertControllerName('Order\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-servers-not-in-cluster');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            'ererf210', 'ererf220'
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+    }
+
     protected function tearDown()
     {
         parent::tearDown();
