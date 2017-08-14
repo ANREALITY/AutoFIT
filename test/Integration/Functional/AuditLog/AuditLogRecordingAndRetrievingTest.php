@@ -91,7 +91,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         }
     }
 
-    protected function assertRetrievingLogEntries(int $orderId)
+    protected function assertRetrievingLogEntries()
     {
         $this->reset();
         $_SERVER['AUTH_USER'] = 'undefined';
@@ -115,9 +115,10 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         $this->assertEquals($entiresTotalNumber, $paginator->getTotalItemCount());
         /** @var AuditLog[] $currentEntries */
         $currentEntries = $paginator->getCurrentItems();
-        $this->assertEquals($currentEntries[0]->getId(), $entiresTotalNumber);
-        $this->assertEquals($currentEntries[0]->getResourceId(), 1);
-        $this->assertEquals($currentEntries[0]->getResourceType(), AuditLog::RESSOURCE_TYPE_ORDER);
+        $currentEntry = $currentEntries[0];
+        $this->assertEquals($currentEntry->getId(), $entiresTotalNumber);
+        $this->assertEquals($currentEntry->getResourceId(), 1);
+        $this->assertEquals($currentEntry->getResourceType(), AuditLog::RESSOURCE_TYPE_ORDER);
 
         // list audit log entries filterred
         $this->reset();
