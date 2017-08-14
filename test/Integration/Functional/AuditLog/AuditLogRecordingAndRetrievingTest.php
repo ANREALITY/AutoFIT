@@ -25,7 +25,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         $orderId = 1;
         $this->createLogEntriesForTesting($orderId);
         $this->assertCreateLogEntryOnEvent($orderId);
-        $this->assertRetrievingLogEntries($orderId);
+        $this->assertRetrievingLogEntries();
     }
 
     protected function assertCreateLogEntryOnEvent(int $orderId)
@@ -115,8 +115,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         $this->assertEquals($entiresTotalNumber, $paginator->getTotalItemCount());
         /** @var AuditLog[] $currentEntries */
         $currentEntries = $paginator->getCurrentItems();
-        $currentEntry = $currentEntries[0];
-        $this->assertEquals($currentEntry->getId(), $entiresTotalNumber);
+        $currentEntry = reset($currentEntries);
         $this->assertEquals($currentEntry->getResourceId(), 1);
         $this->assertEquals($currentEntry->getResourceType(), AuditLog::RESSOURCE_TYPE_ORDER);
 
@@ -136,8 +135,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         /** @var AuditLog[] $currentEntries */
         $currentEntries = $paginator->getCurrentItems();
         $this->assertEquals($entiresTotalNumber, count($currentEntries));
-        $firstEntry = $currentEntries[0];
-        $this->assertEquals(6, $firstEntry->getId());
+        $firstEntry = reset($currentEntries);
         $this->assertEquals(1, $firstEntry->getResourceId());
         $this->assertEquals(AuditLog::RESSOURCE_TYPE_ORDER, $currentEntries[0]->getResourceType());
 
