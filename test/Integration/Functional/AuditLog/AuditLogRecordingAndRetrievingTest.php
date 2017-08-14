@@ -10,7 +10,7 @@ use Zend\Db\Sql\Sql;
 use Zend\Http\Request;
 use Zend\Hydrator\ClassMethods;
 
-class AuditLogRecordingTest extends AbstractOrderRelatedTest
+class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
 {
 
     public function testCreateLogEntryOnEvent()
