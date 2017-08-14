@@ -149,6 +149,20 @@ class ListOrdersTest extends AbstractOrderOutputTest
         );
     }
 
+    protected function createOrders()
+    {
+        foreach ($this->getOrderTypes() as $username => $orderTypes) {
+            $_SERVER['AUTH_USER'] = $username;
+            foreach ($orderTypes as $connectionType => $endpointTypes) {
+                foreach ($endpointTypes as $endpointType) {
+                    parent::createOrder($connectionType, $endpointType, null);
+                }
+            }
+        }
+
+        unset($_SERVER['AUTH_USER']);
+    }
+
     protected function getOrderTypes(string $username = null)
     {
         $orderTypes = [];
