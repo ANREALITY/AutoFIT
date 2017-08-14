@@ -2,22 +2,30 @@
 namespace Test\Integration\Functional\AuditLog;
 
 use DbSystel\DataObject\AuditLog;
+use DbSystel\Paginator\Paginator;
 use Order\Service\UserService;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Sql;
+use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;
 use Zend\Hydrator\ClassMethods;
 
 class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
 {
 
+    /**
+     * @var int
+     */
+    const ITEMS_PER_PAGE = 3;
+
     public function testCreateLogEntryOnEvent()
     {
         $orderId = 1;
         $this->createLogEntriesForTesting($orderId);
         $this->assertCreateLogEntryOnEvent($orderId);
+        $this->assertRetrievingLogEntries($orderId);
     }
 
     protected function assertCreateLogEntryOnEvent(int $orderId)
@@ -34,7 +42,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         $resultSet = new HydratingResultSet($hydrator, new AuditLog());
         $data = $resultSet->initialize($result);
 
-        /** @var AuditLog[] */
+        /** @var AuditLog[] $auditLogEntries */
         $auditLogEntries = [];
         /** @var AuditLog $auditLogEntry */
         foreach ($data as $auditLogEntry) {
@@ -81,6 +89,57 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
             $this->assertEquals($auditLogEntry->getResourceType(), $expectedData[$counter]['resource_type']);
             $counter++;
         }
+    }
+
+    protected function assertRetrievingLogEntries(int $orderId)
+    {
+        $this->reset();
+        $_SERVER['AUTH_USER'] = 'undefined';
+        $auditLogUrl = '/audit-logging/list';
+        $this->dispatch($auditLogUrl);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_302);
+        $this->assertModuleName('AuditLogging');
+        $this->assertControllerName('AuditLogging\Controller\Index');
+        $this->assertControllerClass('IndexController');
+        $this->assertMatchedRouteName('list');
+
+        // list audit log entries
+        $this->reset();
+        $_SERVER['AUTH_USER'] = 'undefined2';
+        $auditLogUrl = '/audit-logging/list';
+        $this->dispatch($auditLogUrl);
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        /** @var Paginator $paginator */
+        $paginator = $this->getApplication()->getMvcEvent()->getResult()->getVariable('paginator', null);
+        $entiresTotalNumber = 6;
+        $this->assertEquals($entiresTotalNumber, $paginator->getTotalItemCount());
+        /** @var AuditLog[] $currentEntries */
+        $currentEntries = $paginator->getCurrentItems();
+        $this->assertEquals($currentEntries[0]->getId(), $entiresTotalNumber);
+        $this->assertEquals($currentEntries[0]->getResourceId(), 1);
+        $this->assertEquals($currentEntries[0]->getResourceType(), AuditLog::RESSOURCE_TYPE_ORDER);
+
+        // list audit log entries filterred
+        $this->reset();
+        $_SERVER['AUTH_USER'] = 'undefined2';
+        $auditLogUrl = '/audit-logging/list' . '?'
+            . 'filter[username]=' . 'undefined2'
+            . '&' . 'filter[change_number]=' . 'C00000011'
+            . '&' . 'filter[resource_type]=' . AuditLog::RESSOURCE_TYPE_ORDER
+        ;
+        $this->dispatch($auditLogUrl);
+        /** @var Paginator $paginator */
+        $paginator = $this->getApplication()->getMvcEvent()->getResult()->getVariable('paginator', null);
+        $entiresTotalNumber = 3;
+        $this->assertEquals($entiresTotalNumber, $paginator->getTotalItemCount());
+        /** @var AuditLog[] $currentEntries */
+        $currentEntries = $paginator->getCurrentItems();
+        $this->assertEquals($entiresTotalNumber, count($currentEntries));
+        $firstEntry = $currentEntries[0];
+        $this->assertEquals(6, $firstEntry->getId());
+        $this->assertEquals(1, $firstEntry->getResourceId());
+        $this->assertEquals(AuditLog::RESSOURCE_TYPE_ORDER, $currentEntries[0]->getResourceType());
+
     }
 
     protected function createLogEntriesForTesting(int $orderId)
