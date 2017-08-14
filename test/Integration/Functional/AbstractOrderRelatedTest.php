@@ -1,12 +1,11 @@
 <?php
 namespace Test\Integration\Functional;
 
-use DbSystel\Test\AbstractControllerDbTest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Http\PhpEnvironment\Request;
 
-class AbstractOrderRelatedTest extends AbstractControllerDbTest
+class AbstractOrderRelatedTest extends AbstractControllerTest
 {
 
     protected function getCreateParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)

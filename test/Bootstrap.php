@@ -80,8 +80,7 @@ class Bootstrap
         $databaseInitializer->setUp();
         AbstractDbTest::setDbConfigs($dbConfigs);
         AbstractControllerTest::setApplicationConfigPath($this->applicationConfigPath);
-        AbstractControllerDbTest::setDbConfigs($dbConfigs);
-        AbstractControllerDbTest::setApplicationConfigPath($this->applicationConfigPath);
+        AbstractControllerTest::setDbConfigs($dbConfigs);
     }
 
     protected function initAutoloader()
