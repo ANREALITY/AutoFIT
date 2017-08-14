@@ -120,33 +120,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return AuditLog
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        $paginator = $this->findAllWithBuldledData([], $id, null, false);
-        $auditLogs = $paginator->getCurrentItems();
-        if ($auditLogs) {
-            return $auditLogs[0];
-        }
-
-        throw new \InvalidArgumentException("AuditLog with given ID:{$id} not found.");
-    }
-
-    /**
-     *
-     * @return array|AuditLog[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|AuditLog[]
      */
     public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])

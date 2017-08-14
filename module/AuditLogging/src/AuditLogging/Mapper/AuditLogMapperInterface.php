@@ -8,14 +8,6 @@ interface AuditLogMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return AuditLog
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
      * @return array|AuditLog[]
      */
     public function findAllWithBuldledData(array $criteria, $id, $page, $requstMode, array $sorting = []);
