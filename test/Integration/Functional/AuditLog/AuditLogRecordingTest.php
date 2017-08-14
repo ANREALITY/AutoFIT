@@ -50,15 +50,13 @@ class AuditLogRecordingTest extends AbstractOrderRelatedTest
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $hydrator = new ClassMethods();
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $resultSet = new HydratingResultSet($hydrator, new AuditLog());
-            $data = $resultSet->initialize($result);
+        $resultSet = new HydratingResultSet($hydrator, new AuditLog());
+        $data = $resultSet->initialize($result);
 
-            /** @var AuditLog $auditLogEntry */
-            foreach ($data as $auditLogEntry) {
-                /** @var AuditLog[] */
-                $auditLogEntries[] = $auditLogEntry;
-            }
+        /** @var AuditLog $auditLogEntry */
+        foreach ($data as $auditLogEntry) {
+            /** @var AuditLog[] */
+            $auditLogEntries[] = $auditLogEntry;
         }
 
         $this->assertEquals(6, $data->count());
