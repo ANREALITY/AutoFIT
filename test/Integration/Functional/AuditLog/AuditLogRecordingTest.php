@@ -53,9 +53,10 @@ class AuditLogRecordingTest extends AbstractOrderRelatedTest
         $resultSet = new HydratingResultSet($hydrator, new AuditLog());
         $data = $resultSet->initialize($result);
 
+        /** @var AuditLog[] */
+        $auditLogEntries = [];
         /** @var AuditLog $auditLogEntry */
         foreach ($data as $auditLogEntry) {
-            /** @var AuditLog[] */
             $auditLogEntries[] = $auditLogEntry;
         }
 
