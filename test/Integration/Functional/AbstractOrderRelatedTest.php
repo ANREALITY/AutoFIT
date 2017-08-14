@@ -46,10 +46,6 @@ class AbstractOrderRelatedTest extends AbstractControllerTest
     protected function changeStatus(
         string $orderId, string $username, string $statusUrlSegment, $reset = true
     ) {
-        if ($reset) {
-            $this->reset();
-        }
-
         $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
         if ($username) {
             $_SERVER['AUTH_USER'] = $username;

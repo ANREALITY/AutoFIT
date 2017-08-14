@@ -73,6 +73,7 @@ class ChangeStatusTest extends AbstractOrderManipulationTest
 
     protected function assertStatusChange($orderId, $username, $statusUrlSegment)
     {
+        $this->reset();
         $this->changeStatus($orderId, $username, $statusUrlSegment);
         $actualData = $this->retrieveActualData('file_transfer_request', 'id', $orderId);
         $this->assertEquals(self::$actionsToStatusesMap[$statusUrlSegment], $actualData['status']);
