@@ -51,11 +51,17 @@ class AbstractOrderRelatedTest extends AbstractControllerTest
         }
 
         $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
-        $_SERVER['AUTH_USER'] = $username;
+        if ($username) {
+            $_SERVER['AUTH_USER'] = $username;
+        }
 
         $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
         $this->dispatch($changeStatusUrl);
-        $_SERVER['AUTH_USER'] = $oldUsername;
+        if ($oldUsername) {
+            $_SERVER['AUTH_USER'] = $oldUsername;
+        } else {
+            unset($_SERVER['AUTH_USER']);
+        }
     }
 
     protected function setUpDatabase()
