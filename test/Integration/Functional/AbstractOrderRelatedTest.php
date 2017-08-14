@@ -1,12 +1,30 @@
 <?php
 namespace Test\Integration\Functional;
 
+use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Http\PhpEnvironment\Request;
 
 class AbstractOrderRelatedTest extends AbstractControllerTest
 {
+
+    /**
+     * @var string
+     */
+    const DEFAULT_ADMIN_USERNAME = 'undefined2';
+
+    static protected $actionsToStatusesMap = [
+        // member
+        'start-editing' => FileTransferRequest::STATUS_EDIT,
+        'submit' => FileTransferRequest::STATUS_PENDING,
+        'cancel' => FileTransferRequest::STATUS_CANCELED,
+        // admin
+        'start-checking' => FileTransferRequest::STATUS_CHECK,
+        'accept' => FileTransferRequest::STATUS_ACCEPTED,
+        'decline' => FileTransferRequest::STATUS_DECLINED,
+        'complete' => FileTransferRequest::STATUS_COMPLETED,
+    ];
 
     protected function getCreateParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
     {
