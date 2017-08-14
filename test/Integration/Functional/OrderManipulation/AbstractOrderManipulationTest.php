@@ -31,30 +31,4 @@ abstract class AbstractOrderManipulationTest extends AbstractOrderRelatedTest
         $this->setUpDatabase();
     }
 
-    protected function createOrder(
-        string $connectionType, string $endpointSourceType, string $endpointTargetType = null, $reset = true
-    ) {
-        if ($reset) {
-            $this->reset();
-        }
-        $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType, $endpointTargetType);
-        $createParams = $this->getCreateParams($connectionType, $endpointSourceType, $endpointTargetType);
-        $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
-    }
-
-    protected function changeStatus(
-        string $orderId, string $username, string $statusUrlSegment, $reset = true
-    ) {
-        if ($reset) {
-            $this->reset();
-        }
-
-        $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
-        $_SERVER['AUTH_USER'] = $username;
-
-        $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
-        $this->dispatch($changeStatusUrl);
-        $_SERVER['AUTH_USER'] = $oldUsername;
-    }
-
 }

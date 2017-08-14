@@ -43,6 +43,21 @@ class AbstractOrderRelatedTest extends AbstractControllerTest
         return $createUrl;
     }
 
+    protected function changeStatus(
+        string $orderId, string $username, string $statusUrlSegment, $reset = true
+    ) {
+        if ($reset) {
+            $this->reset();
+        }
+
+        $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
+        $_SERVER['AUTH_USER'] = $username;
+
+        $changeStatusUrl = '/order/process/' . $statusUrlSegment . '/' . $orderId;
+        $this->dispatch($changeStatusUrl);
+        $_SERVER['AUTH_USER'] = $oldUsername;
+    }
+
     protected function setUpDatabase()
     {
         /*
