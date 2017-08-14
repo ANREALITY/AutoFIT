@@ -24,14 +24,21 @@ class AuditLogOutputTest extends AbstractControllerTest
      */
     protected function getDataSet()
     {
+        $entries = $this->getEntries();
         return new ArrayDataSet([
-            'test' => [
-                [
-                    'foo' => 'foo',
-                    'bar' => 'bar'
-                ],
-            ],
+            'audit_log' => $entries,
         ]);
+    }
+
+    protected function getEntries()
+    {
+        $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
+        $fixturesFolder = $fixturesRootFolder . '/' . 'audit-log-data';
+        $fixtureFile = 'entries' . '.json';
+        $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
+        $fixtureJson = file_get_contents($fixtureFilePath);
+        $entries = json_decode($fixtureJson, true);
+        return $entries;
     }
 
     protected function tearDown()
