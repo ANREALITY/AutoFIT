@@ -15,32 +15,13 @@ class AuditLogRecordingTest extends AbstractOrderRelatedTest
 
     public function testCreateLogEntryOnEvent()
     {
-        $connectionType = 'cd';
-        $endpointSourceType = 'cdas400';
-        $this->createOrder($connectionType, $endpointSourceType);
-
-        $this->reset();
-
         $orderId = 1;
-        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
-        $editParams = $createParams;
-        $editParams['file_transfer_request']['id'] = $orderId;
-        $editedComment = 'edited comment...';
-        $editParams['file_transfer_request']['comment'] = $editedComment;
-        $editUrl = '/order/process/edit/' . $orderId;
-        $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
+        $this->createLogEntriesForTesting($orderId);
+        $this->assertCreateLogEntryOnEvent($orderId);
+    }
 
-        $this->reset();
-
-        $this->changeStatus($orderId, UserService::DEFAULT_MEMBER_USERNAME, 'submit');
-        $this->reset();
-        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'start-checking');
-        $this->reset();
-        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'accept');
-        $this->reset();
-        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'complete');
-
-
+    protected function assertCreateLogEntryOnEvent(int $orderId)
+    {
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('audit_log');
         $select->where([
@@ -100,6 +81,33 @@ class AuditLogRecordingTest extends AbstractOrderRelatedTest
             $this->assertEquals($auditLogEntry->getResourceType(), $expectedData[$counter]['resource_type']);
             $counter++;
         }
+    }
+
+    protected function createLogEntriesForTesting(int $orderId)
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdas400';
+        $this->createOrder($connectionType, $endpointSourceType);
+
+        $this->reset();
+
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType);
+        $editParams = $createParams;
+        $editParams['file_transfer_request']['id'] = $orderId;
+        $editedComment = 'edited comment...';
+        $editParams['file_transfer_request']['comment'] = $editedComment;
+        $editUrl = '/order/process/edit/' . $orderId;
+        $this->dispatch($editUrl, Request::METHOD_POST, $editParams);
+
+        $this->reset();
+
+        $this->changeStatus($orderId, UserService::DEFAULT_MEMBER_USERNAME, 'submit');
+        $this->reset();
+        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'start-checking');
+        $this->reset();
+        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'accept');
+        $this->reset();
+        $this->changeStatus($orderId, self::DEFAULT_ADMIN_USERNAME, 'complete');
     }
 
 }
