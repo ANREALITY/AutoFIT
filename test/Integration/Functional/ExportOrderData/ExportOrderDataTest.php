@@ -86,4 +86,10 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
         ;
     }
 
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->setUpDatabase();
+    }
+
 }
