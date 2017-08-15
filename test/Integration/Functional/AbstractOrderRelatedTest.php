@@ -6,7 +6,7 @@ use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\DatabaseInitializer;
 use Zend\Http\PhpEnvironment\Request;
 
-class AbstractOrderRelatedTest extends AbstractControllerTest
+abstract class AbstractOrderRelatedTest extends AbstractControllerTest
 {
 
     /**
