@@ -15,11 +15,6 @@ class ListOrdersTest extends AbstractOrderOutputTest
      */
     const ITEMS_PER_PAGE = 3;
 
-    protected function setUp()
-    {
-        parent::setUp();
-    }
-
     public function testListMyOrders()
     {
         $this->createOrders();
