@@ -56,8 +56,6 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
 
     protected function tearDown()
     {
-        parent::tearDown();
-
         if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
             $this->dbAdapter->getDriver()->getConnection()->disconnect();
         }
@@ -70,7 +68,13 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
             }
         }
 
+        $this->reset();
+        $this->application = null;
+        gc_collect_cycles();
+
         unset($_SERVER['AUTH_USER']);
+
+        parent::tearDown();
     }
 
     protected function retrieveActualData($table, $idColumn, $idValue)
