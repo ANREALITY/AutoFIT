@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class IncludeParameterSet
+ * IncludeParameterSet
  *
  * @package DbSystel\DataObject
  */

@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class PhysicalConnectionCd
+ * PhysicalConnectionCd
  *
  * @package DbSystel\DataObject
  */

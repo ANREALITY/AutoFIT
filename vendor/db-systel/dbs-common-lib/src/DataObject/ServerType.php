@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ServerType
+ * ServerType
  *
  * @package DbSystel\DataObject
  */

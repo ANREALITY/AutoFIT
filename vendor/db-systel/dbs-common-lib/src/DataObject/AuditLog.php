@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class AuditLog
+ * AuditLog
  *
  * @package DbSystel\DataObject
  */

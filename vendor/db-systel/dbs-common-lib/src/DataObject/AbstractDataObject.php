@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class AbstractDataObject
+ * AbstractDataObject
  *
  * @package DbSystel\DataObject
  */

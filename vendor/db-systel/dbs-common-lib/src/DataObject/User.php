@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class User
+ * User
  *
  * @package DbSystel\DataObject
  */

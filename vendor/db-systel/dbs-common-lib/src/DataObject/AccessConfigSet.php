@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class AccessConfigSet
+ * AccessConfigSet
  *
  * @package DbSystel\DataObject
  */

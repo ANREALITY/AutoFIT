@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ExternalServer
+ * ExternalServer
  *
  * @package DbSystel\DataObject
  */

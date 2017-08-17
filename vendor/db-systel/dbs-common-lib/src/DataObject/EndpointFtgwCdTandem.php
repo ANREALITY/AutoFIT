@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointFtgwCdTandem
+ * EndpointFtgwCdTandem
  *
  * @package DbSystel\DataObject
  */

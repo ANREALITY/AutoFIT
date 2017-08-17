@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class Environment
+ * Environment
  *
  * @package DbSystel\DataObject
  */

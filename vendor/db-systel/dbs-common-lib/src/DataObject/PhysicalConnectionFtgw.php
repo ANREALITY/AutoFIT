@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class PhysicalConnectionFtgw
+ * PhysicalConnectionFtgw
  *
  * @package DbSystel\DataObject
  */

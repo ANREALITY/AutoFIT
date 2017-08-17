@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class Cluster
+ * Cluster
  *
  * @package DbSystel\DataObject
  */

@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointServerConfig
+ * EndpointServerConfig
  *
  * @package DbSystel\DataObject
  */

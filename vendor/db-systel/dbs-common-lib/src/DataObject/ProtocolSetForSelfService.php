@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ProtocolSetForSelfService
+ * ProtocolSetForSelfService
  *
  * @package DbSystel\DataObject
  */

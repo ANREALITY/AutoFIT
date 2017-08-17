@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class FileParameter
+ * FileParameter
  *
  * @package DbSystel\DataObject
  */

@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ProtocolSetForProtocolServer
+ * ProtocolSetForProtocolServer
  *
  * @package DbSystel\DataObject
  */

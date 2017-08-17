@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ProductType
+ * ProductType
  *
  * @package DbSystel\DataObject
  */

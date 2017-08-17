@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class FileTransferRequest
+ * FileTransferRequest
  *
  * @package DbSystel\DataObject
  */

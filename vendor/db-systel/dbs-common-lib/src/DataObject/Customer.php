@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class Customer
+ * Customer
  *
  * @package DbSystel\DataObject
  */

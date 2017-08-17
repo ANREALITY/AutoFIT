@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class AbstractPhysicalConnection
+ * AbstractPhysicalConnection
  *
  * @package DbSystel\DataObject
  */

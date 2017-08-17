@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class Notification
+ * Notification
  *
  * @package DbSystel\DataObject
  */

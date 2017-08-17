@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class Synchronization
+ * Synchronization
  *
  * @package DbSystel\DataObject
  */

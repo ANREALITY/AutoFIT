@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class LogicalConnection
+ * LogicalConnection
  *
  * @package DbSystel\DataObject
  */

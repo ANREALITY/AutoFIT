@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointFtgwWindowsShare
+ * EndpointFtgwWindowsShare
  *
  * @package DbSystel\DataObject
  */

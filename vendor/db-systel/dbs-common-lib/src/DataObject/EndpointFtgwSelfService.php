@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointFtgwSelfService
+ * EndpointFtgwSelfService
  *
  * @package DbSystel\DataObject
  */

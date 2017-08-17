@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointClusterConfig
+ * EndpointClusterConfig
  *
  * @package DbSystel\DataObject
  */

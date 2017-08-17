@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointCdLinuxUnix
+ * EndpointCdLinuxUnix
  *
  * @package DbSystel\DataObject
  */

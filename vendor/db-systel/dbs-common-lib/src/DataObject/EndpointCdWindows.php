@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointCdWindows
+ * EndpointCdWindows
  *
  * @package DbSystel\DataObject
  */

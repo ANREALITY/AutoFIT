@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class ServiceInvoicePositionStatus
+ * ServiceInvoicePositionStatus
  *
  * @package DbSystel\DataObject
  */

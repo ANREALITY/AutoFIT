@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 /**
- * Class EndpointFtgwProtocolServer
+ * EndpointFtgwProtocolServer
  *
  * @package DbSystel\DataObject
  */
