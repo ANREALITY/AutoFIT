@@ -42,67 +42,56 @@ abstract class AbstractEndpoint extends AbstractDataObject
     const ROLE_TARGET = 'target';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $role;
 
     /**
-     *
      * @var string
      */
     private $type;
 
     /**
-     *
      * @var string
      */
     private $serverPlace;
 
     /**
-     *
      * @var string
      */
     private $contactPerson;
 
     /**
-     *
      * @var AbstractPhysicalConnection
      */
     private $physicalConnection;
 
     /**
-     *
      * @var ExternalServer
      */
     private $externalServer;
 
     /**
-     *
      * @var Application
      */
     private $application;
 
     /**
-     *
      * @var Customer
      */
     private $customer;
 
     /**
-     *
      * @var EndpointServerConfig
      */
     private $endpointServerConfig;
 
     /**
-     *
      * @param integer $id
      * @return AbstractEndpoint
      */
@@ -114,7 +103,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -123,7 +111,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $role
      * @return AbstractEndpoint
      */
@@ -135,7 +122,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $role
      */
     public function getRole()
@@ -144,7 +130,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $type
      * @return AbstractEndpoint
      */
@@ -156,7 +141,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $type
      */
     public function getType()
@@ -165,7 +149,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $serverPlace
      * @return AbstractEndpoint
      */
@@ -177,7 +160,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $serverPlace
      */
     public function getServerPlace()
@@ -186,7 +168,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $contactPerson
      * @return AbstractEndpoint
      */
@@ -198,7 +179,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $contactPerson
      */
     public function getContactPerson()
@@ -207,7 +187,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractPhysicalConnection $physicalConnection
      * @return AbstractEndpoint
      */
@@ -219,7 +198,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractPhysicalConnection $physicalConnection
      */
     public function getPhysicalConnection()
@@ -247,7 +225,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param Application $application
      * @return AbstractEndpoint
      */
@@ -259,7 +236,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return Application $application
      */
     public function getApplication()
@@ -268,7 +244,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param Customer $customer
      * @return AbstractEndpoint
      */
@@ -280,7 +255,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return Customer $customer
      */
     public function getCustomer()
@@ -289,7 +263,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @param EndpointServerConfig $endpointServerConfig
      * @return AbstractEndpoint
      */
@@ -301,7 +274,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
      * @return EndpointServerConfig $endpointServerConfig
      */
     public function getEndpointServerConfig()

@@ -10,19 +10,16 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
 {
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var string
      */
     private $folder;
 
     /**
-     *
      * @param string $username
      * @return EndpointFtgwCdAs400
      */
@@ -34,7 +31,6 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -43,7 +39,6 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $folder
      * @return EndpointFtgwCdAs400
      */
@@ -55,7 +50,6 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $folder
      */
     public function getFolder()

@@ -14,43 +14,36 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var string
      */
     private $folder;
 
     /**
-     *
      * @var string
      */
     private $transmissionType;
 
     /**
-     *
      * @var string
      */
     private $transmissionInterval;
 
     /**
-     *
      * @var IncludeParameterSet
      */
     private $includeParameterSet;
 
     /**
-     *
      * @var EndpointClusterConfig
      */
     private $endpointClusterConfig;
 
     /**
-     *
      * @param string $username
      * @return EndpointCdLinuxUnix
      */
@@ -62,7 +55,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -71,7 +63,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $folder
      * @return EndpointCdLinuxUnix
      */
@@ -83,7 +74,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $folder
      */
     public function getFolder()
@@ -92,7 +82,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionType
      * @return EndpointCdLinuxUnix
      */
@@ -104,7 +93,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionType
      */
     public function getTransmissionType()
@@ -113,7 +101,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionInterval
      * @return EndpointCdLinuxUnix
      */
@@ -125,7 +112,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionInterval
      */
     public function getTransmissionInterval()
@@ -134,7 +120,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param IncludeParameterSet $includeParameterSet
      * @return EndpointCdLinuxUnix
      */
@@ -146,7 +131,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
@@ -155,7 +139,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param EndpointClusterConfig $endpointClusterConfig
      * @return EndpointCdLinuxUnix
      */
@@ -167,7 +150,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return EndpointClusterConfig $endpointClusterConfig
      */
     public function getEndpointClusterConfig()

@@ -10,19 +10,16 @@ class ServerType extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @param integer $id
      * @return ServerType
      */
@@ -34,7 +31,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -43,7 +39,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $name
      * @return ServerType
      */
@@ -55,7 +50,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()

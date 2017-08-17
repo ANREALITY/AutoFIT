@@ -10,25 +10,21 @@ class IncludeParameterSet extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var AbstractEndpoint
      */
     private $endpoint;
 
     /**
-     *
      * @var IncludeParameter[]
      */
     private $includeParameters;
 
     /**
-     *
      * @param integer $id
      * @return IncludeParameterSet
      */
@@ -40,7 +36,6 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -49,7 +44,6 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractEndpoint $endpoint
      * @return IncludeParameterSet
      */
@@ -61,7 +55,6 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractEndpoint $endpoint
      */
     public function getEndpoint()
@@ -70,7 +63,6 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param IncludeParameter[] $includeParameters
      * @return IncludeParameterSet
      */
@@ -82,7 +74,6 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return IncludeParameter[] $includeParameters
      */
     public function getIncludeParameters()

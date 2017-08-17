@@ -10,25 +10,21 @@ class IncludeParameter extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $expression;
 
     /**
-     *
      * @var IncludeParameterSet
      */
     private $includeParameterSet;
 
     /**
-     *
      * @param integer $id
      * @return IncludeParameter
      */
@@ -40,7 +36,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -49,7 +44,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $expression
      * @return IncludeParameter
      */
@@ -61,7 +55,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $expression
      */
     public function getExpression()
@@ -70,7 +63,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param IncludeParameterSet $includeParameterSet
      * @return IncludeParameter
      */
@@ -82,7 +74,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()

@@ -14,25 +14,21 @@ class EndpointCdWindows extends AbstractEndpoint
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
-     *
      * @var string
      */
     private $folder;
 
     /**
-     *
      * @var string
      */
     private $transmissionType;
 
     /**
-     *
      * @var IncludeParameterSet
      */
     private $includeParameterSet;
 
     /**
-     *
      * @param string $folder
      * @return EndpointCdWindows
      */
@@ -44,7 +40,6 @@ class EndpointCdWindows extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $folder
      */
     public function getFolder()
@@ -53,7 +48,6 @@ class EndpointCdWindows extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionType
      * @return EndpointCdWindows
      */
@@ -65,7 +59,6 @@ class EndpointCdWindows extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionType
      */
     public function getTransmissionType()
@@ -74,7 +67,6 @@ class EndpointCdWindows extends AbstractEndpoint
     }
 
     /**
-     *
      * @param IncludeParameterSet $includeParameterSet
      * @return EndpointCdWindows
      */
@@ -86,7 +78,6 @@ class EndpointCdWindows extends AbstractEndpoint
     }
 
     /**
-     *
      * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()

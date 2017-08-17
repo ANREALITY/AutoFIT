@@ -10,19 +10,16 @@ class EndpointCdZos extends AbstractEndpoint
 {
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var FileParameterSet
      */
     private $fileParameterSet;
 
     /**
-     *
      * @param string $username
      * @return EndpointCdZos
      */
@@ -34,7 +31,6 @@ class EndpointCdZos extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -43,7 +39,6 @@ class EndpointCdZos extends AbstractEndpoint
     }
 
     /**
-     *
      * @param FileParameterSet $fileParameterSet
      * @return EndpointCdZos
      */
@@ -55,7 +50,6 @@ class EndpointCdZos extends AbstractEndpoint
     }
 
     /**
-     *
      * @return FileParameterSet $fileParameterSet
      */
     public function getFileParameterSet()

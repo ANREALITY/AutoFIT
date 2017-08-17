@@ -24,67 +24,56 @@ class FileTransferRequest extends AbstractDataObject
     const STATUS_COMPLETED = 'completed';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $changeNumber;
 
     /**
-     *
      * @var string
      */
     private $status;
 
     /**
-     *
      * @var string
      */
     private $comment;
 
     /**
-     *
      * @var string
      */
     private $created;
 
     /**
-     *
      * @var string
      */
     private $updated;
 
     /**
-     *
      * @var LogicalConnection
      */
     private $logicalConnection;
 
     /**
-     *
      * @var ServiceInvoicePosition
      */
     private $serviceInvoicePositionBasic;
 
     /**
-     *
      * @var ServiceInvoicePosition
      */
     private $serviceInvoicePositionPersonal;
 
     /**
-     *
      * @var User
      */
     private $user;
 
     /**
-     *
      * @param integer $id
      * @return FileTransferRequest
      */
@@ -96,7 +85,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -105,7 +93,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $changeNumber
      * @return FileTransferRequest
      */
@@ -117,7 +104,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $changeNumber
      */
     public function getChangeNumber()
@@ -126,7 +112,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $status
      * @return FileTransferRequest
      */
@@ -138,7 +123,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $status
      */
     public function getStatus()
@@ -147,7 +131,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $comment
      * @return FileTransferRequest
      */
@@ -159,7 +142,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $comment
      */
     public function getComment()
@@ -168,7 +150,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $created
      * @return FileTransferRequest
      */
@@ -180,7 +161,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $created
      */
     public function getCreated()
@@ -189,7 +169,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $updated
      * @return FileTransferRequest
      */
@@ -201,7 +180,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $updated
      */
     public function getUpdated()
@@ -210,7 +188,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param LogicalConnection $logicalConnection
      * @return FileTransferRequest
      */
@@ -222,7 +199,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return LogicalConnection $logicalConnection
      */
     public function getLogicalConnection()
@@ -231,7 +207,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param ServiceInvoicePosition $serviceInvoicePositionBasic
      * @return FileTransferRequest
      */
@@ -243,7 +218,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return ServiceInvoicePosition $serviceInvoicePositionBasic
      */
     public function getServiceInvoicePositionBasic()
@@ -252,7 +226,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
      * @return FileTransferRequest
      */
@@ -264,7 +237,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return ServiceInvoicePosition $serviceInvoicePositionPersonal
      */
     public function getServiceInvoicePositionPersonal()
@@ -273,7 +245,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @param User $user
      * @return FileTransferRequest
      */
@@ -285,7 +256,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     *
      * @return User $user
      */
     public function getUser()

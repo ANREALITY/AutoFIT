@@ -14,43 +14,36 @@ class FileParameter extends AbstractDataObject
     const BLOCKING_FIXED = 'fb';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $filename;
 
     /**
-     *
      * @var integer
      */
     private $recordLength;
 
     /**
-     *
      * @var string
      */
     private $blocking;
 
     /**
-     *
      * @var integer
      */
     private $blockSize;
 
     /**
-     *
      * @var FileParameterSet
      */
     private $fileParameterSet;
 
     /**
-     *
      * @param integer $id
      * @return FileParameter
      */
@@ -62,7 +55,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -71,7 +63,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $filename
      * @return FileParameter
      */
@@ -83,7 +74,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $filename
      */
     public function getFilename()
@@ -92,7 +82,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param integer $recordLength
      * @return FileParameter
      */
@@ -104,7 +93,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $recordLength
      */
     public function getRecordLength()
@@ -113,7 +101,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $blocking
      * @return FileParameter
      */
@@ -125,7 +112,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $blocking
      */
     public function getBlocking()
@@ -134,7 +120,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param integer $blockSize
      * @return FileParameter
      */
@@ -146,7 +131,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $blockSize
      */
     public function getBlockSize()
@@ -155,7 +139,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @param FileParameterSet $fileParameterSet
      * @return FileParameter
      */
@@ -167,7 +150,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     *
      * @return FileParameterSet $fileParameterSet
      */
     public function getFileParameterSet()

@@ -20,25 +20,21 @@ class User extends AbstractDataObject
     const ROLE_ADMIN = 'admin';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var string
      */
     private $role;
 
     /**
-     *
      * @param integer $id
      * @return User
      */
@@ -50,7 +46,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -59,7 +54,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $username
      * @return User
      */
@@ -71,7 +65,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -80,7 +73,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     *
      * @param boolean $role
      * @return User
      */
@@ -92,7 +84,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $role
      */
     public function getRole()

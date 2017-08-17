@@ -16,31 +16,26 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     const CONNECTION_TYPE_BOTH = 'both';
 
     /**
-     *
      * @var string
      */
     private $ftgwUsername;
 
     /**
-     *
      * @var string
      */
     private $mailbox;
 
     /**
-     *
      * @var string
      */
     private $connectionType;
 
     /**
-     *
      * @var ProtocolSet
      */
     private $protocolSet;
 
     /**
-     *
      * @param string $ftgwUsername
      * @return EndpointFtgwSelfService
      */
@@ -52,7 +47,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $ftgwUsername
      */
     public function getFtgwUsername()
@@ -61,7 +55,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $mailbox
      * @return EndpointFtgwSelfService
      */
@@ -73,7 +66,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $mailbox
      */
     public function getMailbox()
@@ -82,7 +74,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $connectionType
      * @return EndpointFtgwSelfService
      */
@@ -94,7 +85,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $connectionType
      */
     public function getConnectionType()
@@ -103,7 +93,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @param ProtocolSet $protocolSet
      * @return EndpointFtgwSelfService
      */
@@ -115,7 +104,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     *
      * @return ProtocolSet $protocolSet
      */
     public function getProtocolSet()

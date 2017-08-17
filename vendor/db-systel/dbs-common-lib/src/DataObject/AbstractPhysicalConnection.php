@@ -16,49 +16,41 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     const ROLE_MIDDLE_TO_END = 'middle_to_end';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $role;
 
     /**
-     *
      * @var string
      */
     private $type;
 
     /**
-     *
      * @var boolean
      */
     private $securePlus;
 
     /**
-     *
      * @var LogicalConnection
      */
     private $logicalConnection;
 
     /**
-     *
      * @var AbstractEndpoint @relationshipInversion
      */
     private $endpointSource;
 
     /**
-     *
      * @var AbstractEndpoint @relationshipInversion
      */
     private $endpointTarget;
 
     /**
-     *
      * @param integer $id
      * @return AbstractPhysicalConnection
      */
@@ -70,7 +62,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -79,7 +70,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $role
      * @return AbstractPhysicalConnection
      */
@@ -91,7 +81,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $role
      */
     public function getRole()
@@ -100,7 +89,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $type
      * @return AbstractPhysicalConnection
      */
@@ -112,7 +100,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $type
      */
     public function getType()
@@ -121,7 +108,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param boolean $securePlus
      * @return AbstractPhysicalConnection
      */
@@ -133,7 +119,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return boolean $securePlus
      */
     public function getSecurePlus()
@@ -142,7 +127,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param LogicalConnection $logicalConnection
      * @return AbstractPhysicalConnection
      */
@@ -154,7 +138,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return LogicalConnection $logicalConnection
      */
     public function getLogicalConnection()
@@ -163,7 +146,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractEndpoint $endpointSource
      * @return AbstractPhysicalConnection
      */
@@ -175,7 +157,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractEndpoint $endpointSource
      */
     public function getEndpointSource()
@@ -184,7 +165,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractEndpoint $endpointTarget
      * @return AbstractPhysicalConnection
      */
@@ -196,7 +176,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractEndpoint $endpointTarget
      */
     public function getEndpointTarget()

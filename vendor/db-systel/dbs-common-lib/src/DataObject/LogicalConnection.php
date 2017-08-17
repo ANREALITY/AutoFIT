@@ -14,43 +14,36 @@ class LogicalConnection extends AbstractDataObject
     const TYPE_FTGW = 'FTGW';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $type;
 
     /**
-     *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
     private $physicalConnectionEndToEnd;
 
     /**
-     *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
     private $physicalConnectionEndToMiddle;
 
     /**
-     *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
     private $physicalConnectionMiddleToEnd;
 
     /**
-     *
      * @var Notification[]
      */
     private $notifications;
 
     /**
-     *
      * @param integer $id
      * @return LogicalConnection
      */
@@ -62,7 +55,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -71,7 +63,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $type
      * @return LogicalConnection
      */
@@ -83,7 +74,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $type
      */
     public function getType()
@@ -92,7 +82,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractPhysicalConnection $physicalConnectionEndToEnd
      * @return LogicalConnection
      */
@@ -104,7 +93,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractPhysicalConnection $physicalConnectionEndToEnd
      */
     public function getPhysicalConnectionEndToEnd()
@@ -113,7 +101,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractPhysicalConnection $physicalConnectionEndToMiddle
      * @return LogicalConnection
      */
@@ -125,7 +112,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractPhysicalConnection $physicalConnectionEndToMiddle
      */
     public function getPhysicalConnectionEndToMiddle()
@@ -134,7 +120,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractPhysicalConnection $physicalConnectionMiddleToEnd
      * @return LogicalConnection
      */
@@ -146,7 +131,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractPhysicalConnection $physicalConnectionMiddleToEnd
      */
     public function getPhysicalConnectionMiddleToEnd()
@@ -155,7 +139,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @param Notification[] $notifications
      * @return LogicalConnection
      */
@@ -167,7 +150,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     *
      * @return Notification[] $notifications
      */
     public function getNotifications()

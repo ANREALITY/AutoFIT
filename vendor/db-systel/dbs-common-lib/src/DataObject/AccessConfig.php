@@ -10,43 +10,36 @@ class AccessConfig extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var bool
      */
     private $permissionRead;
 
     /**
-     *
      * @var bool
      */
     private $permissionWrite;
 
     /**
-     *
      * @var bool
      */
     private $permissionDelete;
 
     /**
-     *
      * @var AccessConfigSet
      */
     private $accessConfigSet;
 
     /**
-     *
      * @param integer $id
      * @return AccessConfig
      */
@@ -58,7 +51,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -67,7 +59,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $username
      * @return AccessConfig
      */
@@ -79,7 +70,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -145,7 +135,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     *
      * @param AccessConfigSet $accessConfigSet
      * @return AccessConfig
      */
@@ -157,7 +146,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     *
      * @return AccessConfigSet $accessConfigSet
      */
     public function getAccessConfigSet()

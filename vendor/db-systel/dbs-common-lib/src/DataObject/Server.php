@@ -14,49 +14,41 @@ class Server extends AbstractDataObject
     const PLACE_EXTERNAL = 'external';
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @var ServerType
      */
     private $serverType;
 
     /**
-     *
      * @var boolean
      */
     private $active;
 
     /**
-     *
      * @var string
      */
     private $nodeName;
 
     /**
-     *
      * @var string
      */
     private $virtualNodeName;
 
     /**
-     *
      * @var Cluster
      */
     private $cluster;
 
     /**
-     *
      * @var EndpointServerConfig[]
      */
     private $endpointServerConfigs;
 
     /**
-     *
      * @param string $name
      * @return Server
      */
@@ -68,7 +60,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()
@@ -77,7 +68,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param ServerType $serverType
      * @return Server
      */
@@ -89,7 +79,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return ServerType $serverType
      */
     public function getServerType()
@@ -98,7 +87,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param boolean $active
      * @return Server
      */
@@ -110,7 +98,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return boolean $active
      */
     public function getActive()
@@ -119,7 +106,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param Cluster $cluster
      * @return Server
      */
@@ -131,7 +117,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return Cluster $cluster
      */
     public function getCluster()
@@ -140,7 +125,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $nodeName
      * @return Server
      */
@@ -152,7 +136,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $nodeName
      */
     public function getNodeName()
@@ -161,7 +144,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $virtualNodeName
      * @return Server
      */
@@ -173,7 +155,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $virtualNodeName
      */
     public function getVirtualNodeName()
@@ -182,7 +163,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @param EndpointServerConfig[] $endpointServerConfigs
      * @return Server
      */
@@ -194,7 +174,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     *
      * @return EndpointServerConfig[] $endpointServerConfigs
      */
     public function getEndpointServerConfigs()

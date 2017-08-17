@@ -14,43 +14,36 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
-     *
      * @var string
      */
     private $username;
 
     /**
-     *
      * @var string
      */
     private $folder;
 
     /**
-     *
      * @var string
      */
     private $transmissionType;
 
     /**
-     *
      * @var string
      */
     private $transmissionInterval;
 
     /**
-     *
      * @var IncludeParameterSet
      */
     private $includeParameterSet;
 
     /**
-     *
      * @var EndpointClusterConfig
      */
     private $endpointClusterConfig;
 
     /**
-     *
      * @param string $username
      * @return EndpointFtgwLinuxUnix
      */
@@ -62,7 +55,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $username
      */
     public function getUsername()
@@ -71,7 +63,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $folder
      * @return EndpointFtgwLinuxUnix
      */
@@ -83,7 +74,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $folder
      */
     public function getFolder()
@@ -92,7 +82,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionType
      * @return EndpointFtgwLinuxUnix
      */
@@ -104,7 +93,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionType
      */
     public function getTransmissionType()
@@ -113,7 +101,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionInterval
      * @return EndpointFtgwLinuxUnix
      */
@@ -125,7 +112,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionInterval
      */
     public function getTransmissionInterval()
@@ -134,7 +120,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param IncludeParameterSet $includeParameterSet
      * @return EndpointFtgwLinuxUnix
      */
@@ -146,7 +131,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
@@ -155,7 +139,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @param EndpointClusterConfig $endpointClusterConfig
      * @return EndpointFtgwLinuxUnix
      */
@@ -167,7 +150,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     *
      * @return EndpointClusterConfig $endpointClusterConfig
      */
     public function getEndpointClusterConfig()

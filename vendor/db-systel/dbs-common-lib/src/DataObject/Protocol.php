@@ -10,7 +10,6 @@ class Protocol extends AbstractDataObject
 {
 
     /**
-     *
      * @var array
      */
     const PROTOCOLS = [
@@ -23,25 +22,21 @@ class Protocol extends AbstractDataObject
     ];
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @var ProtocolSet
      */
     private $protocolSet;
 
     /**
-     *
      * @param integer $id
      * @return Protocol
      */
@@ -53,7 +48,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -62,7 +56,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $name
      * @return Protocol
      */
@@ -74,7 +67,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()
@@ -83,7 +75,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     *
      * @param ProtocolSet $protocolSet
      * @return Protocol
      */
@@ -95,7 +86,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     *
      * @return ProtocolSet $protocolSet
      */
     public function getProtocolSet()

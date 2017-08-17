@@ -10,25 +10,21 @@ class FileParameterSet extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var AbstractEndpoint
      */
     private $endpoint;
 
     /**
-     *
      * @var FileParameter[]
      */
     private $fileParameters;
 
     /**
-     *
      * @param integer $id
      * @return FileParameterSet
      */
@@ -40,7 +36,6 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -49,7 +44,6 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractEndpoint $endpoint
      * @return FileParameterSet
      */
@@ -61,7 +55,6 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractEndpoint $endpoint
      */
     public function getEndpoint()
@@ -70,7 +63,6 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param FileParameter[] $fileParameters
      * @return FileParameterSet
      */
@@ -82,7 +74,6 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return FileParameter[] $fileParameters
      */
     public function getFileParameters()

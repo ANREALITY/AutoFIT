@@ -14,19 +14,16 @@ class ProductType extends AbstractDataObject
     const NAME_FTGW = 'fgw';
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @var string
      */
     private $longName;
 
     /**
-     *
      * @param string $name
      * @return ProductType
      */
@@ -38,7 +35,6 @@ class ProductType extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()
@@ -47,7 +43,6 @@ class ProductType extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $longName
      * @return ProductType
      */
@@ -59,7 +54,6 @@ class ProductType extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $longName
      */
     public function getLongName()

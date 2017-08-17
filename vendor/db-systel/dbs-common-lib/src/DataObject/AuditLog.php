@@ -40,61 +40,51 @@ class AuditLog extends AbstractDataObject
     const ACTION_CLUSTER_CREATED = 'cluster.created';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $resourceType;
 
     /**
-     *
      * @var string
      */
     private $resourceId;
 
     /**
-     *
      * @var string
      */
     private $action;
 
     /**
-     *
      * @var string
      */
     private $datetime;
 
     /**
-     *
      * @var User
      */
     private $user;
 
     /**
-     *
      * @var FileTransferRequest
      */
     private $fileTransferRequest;
 
     /**
-     *
      * @var Server
      */
     private $server;
 
     /**
-     *
      * @var Cluster
      */
     private $cluster;
 
     /**
-     *
      * @param integer $id
      * @return AuditLog
      */
@@ -106,7 +96,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -115,7 +104,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $resourceType
      * @return AuditLog
      */
@@ -127,7 +115,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $resourceType
      */
     public function getResourceType()
@@ -136,7 +123,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $resourceId
      * @return AuditLog
      */
@@ -148,7 +134,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $resourceId
      */
     public function getResourceId()
@@ -157,7 +142,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $action
      * @return AuditLog
      */
@@ -169,7 +153,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $action
      */
     public function getAction()
@@ -178,7 +161,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $datetime
      * @return AuditLog
      */
@@ -190,7 +172,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $datetime
      */
     public function getDatetime()
@@ -199,7 +180,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param User $user
      * @return AuditLog
      */
@@ -211,7 +191,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return User $user
      */
     public function getUser()
@@ -220,7 +199,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param FileTransferRequest $fileTransferRequest
      * @return AuditLog
      */
@@ -232,7 +210,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return FileTransferRequest $fileTransferRequest
      */
     public function getFileTransferRequest()
@@ -241,7 +218,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param Server $server
      * @return AuditLog
      */
@@ -253,7 +229,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return Server $server
      */
     public function getServer()
@@ -262,7 +237,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @param Cluster $cluster
      * @return AuditLog
      */
@@ -274,7 +248,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     *
      * @return Cluster $cluster
      */
     public function getCluster()

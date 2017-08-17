@@ -10,31 +10,26 @@ class ServiceInvoice extends AbstractDataObject
 {
 
     /**
-     *
      * @var string
      */
     private $number;
 
     /**
-     *
      * @var string
      */
     private $description;
 
     /**
-     *
      * @var Application
      */
     private $application;
 
     /**
-     *
      * @var Environment
      */
     private $environment;
 
     /**
-     *
      * @param string $number
      * @return ServiceInvoice
      */
@@ -46,7 +41,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $number
      */
     public function getNumber()
@@ -55,7 +49,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $description
      * @return ServiceInvoice
      */
@@ -67,7 +60,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $description
      */
     public function getDescription()
@@ -76,7 +68,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @param Application $application
      * @return ServiceInvoice
      */
@@ -88,7 +79,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @return Application $application
      */
     public function getApplication()
@@ -97,7 +87,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @param Environment $environment
      * @return ServiceInvoice
      */
@@ -109,7 +98,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     *
      * @return Environment $environment
      */
     public function getEnvironment()

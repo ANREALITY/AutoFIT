@@ -10,19 +10,16 @@ class Customer extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @param integer $id
      * @return Customer
      */
@@ -34,7 +31,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -43,7 +39,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $name
      * @return Customer
      */
@@ -55,7 +50,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()

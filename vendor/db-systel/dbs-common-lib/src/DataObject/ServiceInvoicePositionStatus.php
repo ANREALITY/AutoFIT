@@ -10,13 +10,11 @@ class ServiceInvoicePositionStatus extends AbstractDataObject
 {
 
     /**
-     *
      * @var string
      */
     private $name;
 
     /**
-     *
      * @param string $name
      * @return ServiceInvoicePositionStatus
      */
@@ -28,7 +26,6 @@ class ServiceInvoicePositionStatus extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()

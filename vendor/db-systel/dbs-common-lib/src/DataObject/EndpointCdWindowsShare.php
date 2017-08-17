@@ -14,37 +14,31 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
-     *
      * @var string
      */
     private $sharename;
 
     /**
-     *
      * @var string
      */
     private $folder;
 
     /**
-     *
      * @var string
      */
     private $transmissionType;
 
     /**
-     *
      * @var IncludeParameterSet
      */
     private $includeParameterSet;
 
     /**
-     *
      * @var AccessConfigSet
      */
     private $accessConfigSet;
 
     /**
-     *
      * @param string $sharename
      * @return EndpointCdWindowsShare
      */
@@ -56,7 +50,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $sharename
      */
     public function getSharename()
@@ -65,7 +58,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $folder
      * @return EndpointCdWindowsShare
      */
@@ -77,7 +69,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $folder
      */
     public function getFolder()
@@ -86,7 +77,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @param string $transmissionType
      * @return EndpointCdWindowsShare
      */
@@ -98,7 +88,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @return string $transmissionType
      */
     public function getTransmissionType()
@@ -107,7 +96,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @param IncludeParameterSet $includeParameterSet
      * @return EndpointCdWindowsShare
      */
@@ -119,7 +107,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @return IncludeParameterSet $includeParameterSet
      */
     public function getIncludeParameterSet()
@@ -128,7 +115,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @param AccessConfigSet $accessConfigSet
      * @return EndpointCdWindowsShare
      */
@@ -140,7 +126,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     *
      * @return AccessConfigSet $accessConfigSet
      */
     public function getAccessConfigSet()

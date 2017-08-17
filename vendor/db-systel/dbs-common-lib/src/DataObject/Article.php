@@ -16,31 +16,26 @@ class Article extends AbstractDataObject
     const TYPE_ON_DEMAND = 'on-demand';
 
     /**
-     *
      * @var string
      */
     private $sku;
 
     /**
-     *
      * @var string
      */
     private $description;
 
     /**
-     *
      * @var string
      */
     private $type;
 
     /**
-     *
      * @var ProductType
      */
     private $productType;
 
     /**
-     *
      * @param string $sku
      * @return Article
      */
@@ -52,7 +47,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $sku
      */
     public function getSku()
@@ -61,7 +55,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $description
      * @return Article
      */
@@ -73,7 +66,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $description
      */
     public function getDescription()
@@ -82,7 +74,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $type
      * @return Article
      */
@@ -94,7 +85,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $type
      */
     public function getType()
@@ -103,7 +93,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @param ProductType $productType
      * @return Article
      */
@@ -115,7 +104,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     *
      * @return ProductType $productType
      */
     public function getProductType()

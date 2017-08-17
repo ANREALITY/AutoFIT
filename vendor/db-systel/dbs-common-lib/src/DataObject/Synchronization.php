@@ -16,31 +16,26 @@ class Synchronization extends AbstractDataObject
     const TYPE_SERVER = 'server';
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var boolean
      */
     private $inProgress;
 
     /**
-     *
      * @var string
      */
     private $type;
 
     /**
-     *
      * @var integer
      */
     private $lastSync;
 
     /**
-     *
      * @param integer $id
      * @return Synchronization
      */
@@ -52,7 +47,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -61,7 +55,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @param boolean $inProgress
      * @return Synchronization
      */
@@ -73,7 +66,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @return boolean $inProgress
      */
     public function getInProgress()
@@ -82,7 +74,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $type
      * @return Synchronization
      */
@@ -94,7 +85,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $type
      */
     public function getType()
@@ -103,7 +93,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @param integer $lastSync
      * @return Synchronization
      */
@@ -115,7 +104,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $lastSync
      */
     public function getLastSync()

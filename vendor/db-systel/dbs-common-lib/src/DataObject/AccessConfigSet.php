@@ -10,25 +10,21 @@ class AccessConfigSet extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var AbstractEndpoint
      */
     private $endpoint;
 
     /**
-     *
      * @var AccessConfig[]
      */
     private $accessConfigs;
 
     /**
-     *
      * @param integer $id
      * @return AccessConfigSet
      */
@@ -40,7 +36,6 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return integer $id
      */
     public function getId()
@@ -49,7 +44,6 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param AbstractEndpoint $endpoint
      * @return AccessConfigSet
      */
@@ -61,7 +55,6 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return AbstractEndpoint $endpoint
      */
     public function getEndpoint()
@@ -70,7 +63,6 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     *
      * @param AccessConfig[] $accessConfigs
      * @return AccessConfigSet
      */
@@ -82,7 +74,6 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     *
      * @return AccessConfig[] $accessConfigs
      */
     public function getAccessConfigs()

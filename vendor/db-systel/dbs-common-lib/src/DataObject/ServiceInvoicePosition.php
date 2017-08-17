@@ -17,43 +17,36 @@ class ServiceInvoicePosition extends AbstractDataObject
     const STATUS_HARWARE_SUPPLIED = 'Technik bereitgestellt';
 
     /**
-     *
      * @var string
      */
     private $number;
 
     /**
-     *
      * @var string
      */
     private $orderQuantity;
 
     /**
-     *
      * @var string
      */
     private $description;
 
     /**
-     *
      * @var string
      */
     private $status;
 
     /**
-     *
      * @var ServiceInvoice
      */
     private $serviceInvoice;
 
     /**
-     *
      * @var Article
      */
     private $article;
 
     /**
-     *
      * @param string $number
      * @return ServiceInvoicePosition
      */
@@ -65,7 +58,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $number
      */
     public function getNumber()
@@ -74,7 +66,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $orderQuantity
      * @return ServiceInvoicePosition
      */
@@ -86,7 +77,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $orderQuantity
      */
     public function getOrderQuantity()
@@ -95,7 +85,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $description
      * @return ServiceInvoicePosition
      */
@@ -107,7 +96,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $description
      */
     public function getDescription()
@@ -116,7 +104,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $status
      * @return ServiceInvoicePosition
      */
@@ -128,7 +115,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $status
      */
     public function getStatus()
@@ -137,7 +123,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @param \DbSystel\DataObject\ServiceInvoice $serviceInvoice
      */
     public function setServiceInvoice($serviceInvoice)
@@ -148,7 +133,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return ServiceInvoice $serviceInvoice
      */
     public function getServiceInvoice()
@@ -157,7 +141,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @param \DbSystel\DataObject\Article $article
      */
     public function setArticle($article)
@@ -168,7 +151,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     *
      * @return Article $article
      */
     public function getArticle()

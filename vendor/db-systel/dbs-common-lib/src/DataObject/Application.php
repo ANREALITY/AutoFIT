@@ -10,25 +10,21 @@ class Application extends AbstractDataObject
 {
 
     /**
-     *
      * @var string
      */
     private $technicalShortName;
 
     /**
-     *
      * @var string
      */
     private $technicalId;
 
     /**
-     *
      * @var boolean
      */
     private $active;
 
     /**
-     *
      * @param string $technicalShortName
      * @return Application
      */
@@ -40,7 +36,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $technicalShortName
      */
     public function getTechnicalShortName()
@@ -49,7 +44,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $technicalId
      * @return Application
      */
@@ -61,7 +55,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $technicalId
      */
     public function getTechnicalId()
@@ -70,7 +63,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     *
      * @param boolean $active
      * @return Application
      */
@@ -82,7 +74,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     *
      * @return boolean $active
      */
     public function getActive()

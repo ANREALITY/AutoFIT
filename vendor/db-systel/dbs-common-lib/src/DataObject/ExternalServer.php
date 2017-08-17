@@ -10,13 +10,11 @@ class ExternalServer extends AbstractDataObject
 {
 
     /**
-     *
      * @var integer
      */
     private $id;
 
     /**
-     *
      * @var string
      */
     private $name;
@@ -41,7 +39,6 @@ class ExternalServer extends AbstractDataObject
     }
 
     /**
-     *
      * @param string $name
      * @return ExternalServer
      */
@@ -53,7 +50,6 @@ class ExternalServer extends AbstractDataObject
     }
 
     /**
-     *
      * @return string $name
      */
     public function getName()
