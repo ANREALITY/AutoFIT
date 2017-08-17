@@ -20,17 +20,17 @@ class AccessConfig extends AbstractDataObject
     private $username;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $permissionRead;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $permissionWrite;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $permissionDelete;
 
@@ -89,7 +89,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return bool $permissionRead
+     * @return boolean $permissionRead
      */
     public function getPermissionRead()
     {
@@ -108,7 +108,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return bool $permissionWrite
+     * @return boolean $permissionWrite
      */
     public function getPermissionWrite()
     {
@@ -127,7 +127,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return bool $permissionDelete
+     * @return boolean $permissionDelete
      */
     public function getPermissionDelete()
     {
