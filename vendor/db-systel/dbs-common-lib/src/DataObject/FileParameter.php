@@ -51,6 +51,8 @@ class FileParameter extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -69,6 +71,8 @@ class FileParameter extends AbstractDataObject
     public function setFilename($filename)
     {
         $this->filename = $filename;
+
+        return $this;
     }
 
     /**
@@ -87,6 +91,8 @@ class FileParameter extends AbstractDataObject
     public function setRecordLength($recordLength)
     {
         $this->recordLength = $recordLength;
+
+        return $this;
     }
 
     /**
@@ -105,6 +111,8 @@ class FileParameter extends AbstractDataObject
     public function setBlocking($blocking)
     {
         $this->blocking = $blocking;
+
+        return $this;
     }
 
     /**
@@ -123,6 +131,8 @@ class FileParameter extends AbstractDataObject
     public function setBlockSize($blockSize)
     {
         $this->blockSize = $blockSize;
+
+        return $this;
     }
 
     /**
@@ -141,6 +151,8 @@ class FileParameter extends AbstractDataObject
     public function setFileParameterSet(FileParameterSet $fileParameterSet)
     {
         $this->fileParameterSet = $fileParameterSet;
+
+        return $this;
     }
 
     /**

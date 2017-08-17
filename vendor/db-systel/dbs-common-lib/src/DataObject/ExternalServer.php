@@ -22,6 +22,8 @@ class ExternalServer extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -39,6 +41,8 @@ class ExternalServer extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**

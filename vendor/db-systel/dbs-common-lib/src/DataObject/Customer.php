@@ -23,6 +23,8 @@ class Customer extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -41,6 +43,8 @@ class Customer extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**

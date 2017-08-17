@@ -41,6 +41,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setFtgwUsername($ftgwUsername)
     {
         $this->ftgwUsername = $ftgwUsername;
+
+        return $this;
     }
 
     /**
@@ -59,6 +61,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setMailbox($mailbox)
     {
         $this->mailbox = $mailbox;
+
+        return $this;
     }
 
     /**
@@ -77,6 +81,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setConnectionType($connectionType)
     {
         $this->connectionType = $connectionType;
+
+        return $this;
     }
 
     /**
@@ -95,6 +101,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setProtocolSet(ProtocolSet $protocolSet)
     {
         $this->protocolSet = $protocolSet;
+
+        return $this;
     }
 
     /**

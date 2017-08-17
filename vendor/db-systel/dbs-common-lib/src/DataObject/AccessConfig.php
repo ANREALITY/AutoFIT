@@ -47,6 +47,8 @@ class AccessConfig extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -65,6 +67,8 @@ class AccessConfig extends AbstractDataObject
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -82,6 +86,8 @@ class AccessConfig extends AbstractDataObject
     public function setPermissionRead($permissionRead)
     {
         $this->permissionRead = $permissionRead;
+
+        return $this;
     }
 
     /**
@@ -98,6 +104,8 @@ class AccessConfig extends AbstractDataObject
     public function setPermissionWrite($permissionWrite)
     {
         $this->permissionWrite = $permissionWrite;
+
+        return $this;
     }
 
     /**
@@ -114,6 +122,8 @@ class AccessConfig extends AbstractDataObject
     public function setPermissionDelete($permissionDelete)
     {
         $this->permissionDelete = $permissionDelete;
+
+        return $this;
     }
 
     /**
@@ -131,6 +141,8 @@ class AccessConfig extends AbstractDataObject
     public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
     {
         $this->accessConfigSet = $accessConfigSet;
+
+        return $this;
     }
 
     /**

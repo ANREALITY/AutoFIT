@@ -54,6 +54,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setNumber($number)
     {
         $this->number = $number;
+
+        return $this;
     }
 
     /**
@@ -72,6 +74,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setOrderQuantity($orderQuantity)
     {
         $this->orderQuantity = $orderQuantity;
+
+        return $this;
     }
 
     /**
@@ -90,6 +94,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -108,6 +114,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -126,6 +134,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setServiceInvoice($serviceInvoice)
     {
         $this->serviceInvoice = $serviceInvoice;
+
+        return $this;
     }
 
     /**
@@ -144,6 +154,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setArticle($article)
     {
         $this->article = $article;
+
+        return $this;
     }
 
     /**

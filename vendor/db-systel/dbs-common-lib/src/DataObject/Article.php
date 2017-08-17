@@ -41,6 +41,8 @@ class Article extends AbstractDataObject
     public function setSku($sku)
     {
         $this->sku = $sku;
+
+        return $this;
     }
 
     /**
@@ -59,6 +61,8 @@ class Article extends AbstractDataObject
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -77,6 +81,8 @@ class Article extends AbstractDataObject
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -95,6 +101,8 @@ class Article extends AbstractDataObject
     public function setProductType(ProductType $productType)
     {
         $this->productType = $productType;
+
+        return $this;
     }
 
     /**

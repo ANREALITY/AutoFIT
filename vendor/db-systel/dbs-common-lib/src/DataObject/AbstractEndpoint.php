@@ -103,6 +103,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -121,6 +123,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setRole($role)
     {
         $this->role = $role;
+
+        return $this;
     }
 
     /**
@@ -139,6 +143,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -157,6 +163,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setServerPlace($serverPlace)
     {
         $this->serverPlace = $serverPlace;
+
+        return $this;
     }
 
     /**
@@ -175,6 +183,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setContactPerson($contactPerson)
     {
         $this->contactPerson = $contactPerson;
+
+        return $this;
     }
 
     /**
@@ -193,6 +203,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
+
+        return $this;
     }
 
     /**
@@ -210,6 +222,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setExternalServer(ExternalServer $externalServer)
     {
         $this->externalServer = $externalServer;
+
+        return $this;
     }
 
     /**
@@ -227,6 +241,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setApplication(Application $application)
     {
         $this->application = $application;
+
+        return $this;
     }
 
     /**
@@ -245,6 +261,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
+
+        return $this;
     }
 
     /**
@@ -263,6 +281,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
     {
         $this->endpointServerConfig = $endpointServerConfig;
+
+        return $this;
     }
 
     /**

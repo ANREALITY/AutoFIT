@@ -29,6 +29,8 @@ class Environment extends AbstractDataObject
     public function setSeverity($severity)
     {
         $this->severity = $severity;
+
+        return $this;
     }
 
     /**
@@ -47,6 +49,8 @@ class Environment extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -65,6 +69,8 @@ class Environment extends AbstractDataObject
     public function setShortName($shortName)
     {
         $this->shortName = $shortName;
+
+        return $this;
     }
 
     /**

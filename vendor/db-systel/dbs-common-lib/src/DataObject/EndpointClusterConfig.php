@@ -29,6 +29,8 @@ class EndpointClusterConfig extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -47,6 +49,8 @@ class EndpointClusterConfig extends AbstractDataObject
     public function setDnsAddress($dnsAddress)
     {
         $this->dnsAddress = $dnsAddress;
+
+        return $this;
     }
 
     /**
@@ -65,6 +69,8 @@ class EndpointClusterConfig extends AbstractDataObject
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
+
+        return $this;
     }
 
     /**

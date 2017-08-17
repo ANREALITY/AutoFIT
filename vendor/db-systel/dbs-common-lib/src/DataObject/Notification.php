@@ -41,6 +41,8 @@ class Notification extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -59,6 +61,8 @@ class Notification extends AbstractDataObject
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -77,6 +81,8 @@ class Notification extends AbstractDataObject
     public function setSuccess($success)
     {
         $this->success = $success;
+
+        return $this;
     }
 
     /**
@@ -95,6 +101,8 @@ class Notification extends AbstractDataObject
     public function setFailure($failure)
     {
         $this->failure = $failure;
+
+        return $this;
     }
 
     /**
@@ -113,6 +121,8 @@ class Notification extends AbstractDataObject
     public function setLogicalConnection($logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
+
+        return $this;
     }
 
     /**

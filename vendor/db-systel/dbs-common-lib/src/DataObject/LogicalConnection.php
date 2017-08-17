@@ -51,6 +51,8 @@ class LogicalConnection extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -69,6 +71,8 @@ class LogicalConnection extends AbstractDataObject
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -87,6 +91,8 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionEndToEnd($physicalConnectionEndToEnd)
     {
         $this->physicalConnectionEndToEnd = $physicalConnectionEndToEnd;
+
+        return $this;
     }
 
     /**
@@ -105,6 +111,8 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionEndToMiddle($physicalConnectionEndToMiddle)
     {
         $this->physicalConnectionEndToMiddle = $physicalConnectionEndToMiddle;
+
+        return $this;
     }
 
     /**
@@ -123,6 +131,8 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
     {
         $this->physicalConnectionMiddleToEnd = $physicalConnectionMiddleToEnd;
+
+        return $this;
     }
 
     /**
@@ -141,6 +151,8 @@ class LogicalConnection extends AbstractDataObject
     public function setNotifications($notifications)
     {
         $this->notifications = $notifications;
+
+        return $this;
     }
 
     /**

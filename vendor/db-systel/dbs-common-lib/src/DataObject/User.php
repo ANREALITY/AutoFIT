@@ -39,6 +39,8 @@ class User extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -57,6 +59,8 @@ class User extends AbstractDataObject
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -75,6 +79,8 @@ class User extends AbstractDataObject
     public function setRole($role)
     {
         $this->role = $role;
+
+        return $this;
     }
 
     /**

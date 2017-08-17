@@ -42,6 +42,8 @@ class Protocol extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -60,6 +62,8 @@ class Protocol extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -78,6 +82,8 @@ class Protocol extends AbstractDataObject
     public function setProtocolSet(ProtocolSet $protocolSet)
     {
         $this->protocolSet = $protocolSet;
+
+        return $this;
     }
 
     /**

@@ -57,6 +57,8 @@ class Server extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -75,6 +77,8 @@ class Server extends AbstractDataObject
     public function setServerType($serverType)
     {
         $this->serverType = $serverType;
+
+        return $this;
     }
 
     /**
@@ -93,6 +97,8 @@ class Server extends AbstractDataObject
     public function setActive($active)
     {
         $this->active = $active;
+
+        return $this;
     }
 
     /**
@@ -111,6 +117,8 @@ class Server extends AbstractDataObject
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
+
+        return $this;
     }
 
     /**
@@ -129,6 +137,8 @@ class Server extends AbstractDataObject
     public function setNodeName($nodeName)
     {
         $this->nodeName = $nodeName;
+
+        return $this;
     }
 
     /**
@@ -147,6 +157,8 @@ class Server extends AbstractDataObject
     public function setVirtualNodeName($virtualNodeName)
     {
         $this->virtualNodeName = $virtualNodeName;
+
+        return $this;
     }
 
     /**
@@ -165,6 +177,8 @@ class Server extends AbstractDataObject
     public function setEndpointServerConfigs(array $endpointServerConfigs)
     {
         $this->endpointServerConfigs = $endpointServerConfigs;
+
+        return $this;
     }
 
     /**

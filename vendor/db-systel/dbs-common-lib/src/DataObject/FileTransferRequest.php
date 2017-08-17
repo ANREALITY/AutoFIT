@@ -85,6 +85,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -103,6 +105,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setChangeNumber($changeNumber)
     {
         $this->changeNumber = $changeNumber;
+
+        return $this;
     }
 
     /**
@@ -121,6 +125,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -139,6 +145,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setComment($comment)
     {
         $this->comment = $comment;
+
+        return $this;
     }
 
     /**
@@ -157,6 +165,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setCreated($created)
     {
         $this->created = $created;
+
+        return $this;
     }
 
     /**
@@ -175,6 +185,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
+        return $this;
     }
 
     /**
@@ -193,6 +205,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setLogicalConnection($logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
+
+        return $this;
     }
 
     /**
@@ -211,6 +225,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
     {
         $this->serviceInvoicePositionBasic = $serviceInvoicePositionBasic;
+
+        return $this;
     }
 
     /**
@@ -229,6 +245,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
     {
         $this->serviceInvoicePositionPersonal = $serviceInvoicePositionPersonal;
+
+        return $this;
     }
 
     /**
@@ -247,6 +265,8 @@ class FileTransferRequest extends AbstractDataObject
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**

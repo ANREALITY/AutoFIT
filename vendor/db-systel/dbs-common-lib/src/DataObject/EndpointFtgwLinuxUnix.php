@@ -51,6 +51,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -69,6 +71,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setFolder($folder)
     {
         $this->folder = $folder;
+
+        return $this;
     }
 
     /**
@@ -87,6 +91,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setTransmissionType($transmissionType)
     {
         $this->transmissionType = $transmissionType;
+
+        return $this;
     }
 
     /**
@@ -105,6 +111,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setTransmissionInterval($transmissionInterval)
     {
         $this->transmissionInterval = $transmissionInterval;
+
+        return $this;
     }
 
     /**
@@ -123,6 +131,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
+
+        return $this;
     }
 
     /**
@@ -141,6 +151,8 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
     {
         $this->endpointClusterConfig = $endpointClusterConfig;
+
+        return $this;
     }
 
     /**

@@ -41,6 +41,8 @@ class Cluster extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -59,6 +61,8 @@ class Cluster extends AbstractDataObject
     public function setVirtualNodeName($virtualNodeName)
     {
         $this->virtualNodeName = $virtualNodeName;
+
+        return $this;
     }
 
     /**
@@ -77,6 +81,8 @@ class Cluster extends AbstractDataObject
     public function setServers(array $servers)
     {
         $this->servers = $servers;
+
+        return $this;
     }
 
     /**
@@ -95,6 +101,8 @@ class Cluster extends AbstractDataObject
     public function setEndpoints(array $endpoints)
     {
         $this->endpoints = $endpoints;
+
+        return $this;
     }
 
     /**
@@ -113,6 +121,8 @@ class Cluster extends AbstractDataObject
     public function setEndpointClusterConfigs(array $endpointClusterConfigs)
     {
         $this->endpointClusterConfigs = $endpointClusterConfigs;
+
+        return $this;
     }
 
     /**

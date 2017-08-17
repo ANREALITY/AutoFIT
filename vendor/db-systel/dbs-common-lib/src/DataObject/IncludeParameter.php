@@ -29,6 +29,8 @@ class IncludeParameter extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -47,6 +49,8 @@ class IncludeParameter extends AbstractDataObject
     public function setExpression($expression)
     {
         $this->expression = $expression;
+
+        return $this;
     }
 
     /**
@@ -65,6 +69,8 @@ class IncludeParameter extends AbstractDataObject
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
+
+        return $this;
     }
 
     /**

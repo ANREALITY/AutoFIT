@@ -59,6 +59,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -77,6 +79,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setRole($role)
     {
         $this->role = $role;
+
+        return $this;
     }
 
     /**
@@ -95,6 +99,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -113,6 +119,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setSecurePlus($securePlus)
     {
         $this->securePlus = $securePlus;
+
+        return $this;
     }
 
     /**
@@ -131,6 +139,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setLogicalConnection(LogicalConnection $logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
+
+        return $this;
     }
 
     /**
@@ -149,6 +159,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointSource($endpointSource)
     {
         $this->endpointSource = $endpointSource;
+
+        return $this;
     }
 
     /**
@@ -167,6 +179,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointTarget($endpointTarget)
     {
         $this->endpointTarget = $endpointTarget;
+
+        return $this;
     }
 
     /**

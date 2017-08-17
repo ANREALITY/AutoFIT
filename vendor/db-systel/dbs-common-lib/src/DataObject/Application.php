@@ -29,6 +29,8 @@ class Application extends AbstractDataObject
     public function setTechnicalShortName($technicalShortName)
     {
         $this->technicalShortName = $technicalShortName;
+
+        return $this;
     }
 
     /**
@@ -47,6 +49,8 @@ class Application extends AbstractDataObject
     public function setTechnicalId($technicalId)
     {
         $this->technicalId = $technicalId;
+
+        return $this;
     }
 
     /**
@@ -65,6 +69,8 @@ class Application extends AbstractDataObject
     public function setActive($active)
     {
         $this->active = $active;
+
+        return $this;
     }
 
     /**

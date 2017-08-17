@@ -23,6 +23,8 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -41,6 +43,8 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     public function setFolder($folder)
     {
         $this->folder = $folder;
+
+        return $this;
     }
 
     /**

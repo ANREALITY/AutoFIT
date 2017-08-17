@@ -95,6 +95,8 @@ class AuditLog extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -113,6 +115,8 @@ class AuditLog extends AbstractDataObject
     public function setResourceType($resourceType)
     {
         $this->resourceType = $resourceType;
+
+        return $this;
     }
 
     /**
@@ -131,6 +135,8 @@ class AuditLog extends AbstractDataObject
     public function setResourceId($resourceId)
     {
         $this->resourceId = $resourceId;
+
+        return $this;
     }
 
     /**
@@ -149,6 +155,8 @@ class AuditLog extends AbstractDataObject
     public function setAction($action)
     {
         $this->action = $action;
+
+        return $this;
     }
 
     /**
@@ -167,6 +175,8 @@ class AuditLog extends AbstractDataObject
     public function setDatetime($datetime)
     {
         $this->datetime = $datetime;
+
+        return $this;
     }
 
     /**
@@ -185,6 +195,8 @@ class AuditLog extends AbstractDataObject
     public function setUser(User $user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -203,6 +215,8 @@ class AuditLog extends AbstractDataObject
     public function setFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
         $this->fileTransferRequest = $fileTransferRequest;
+
+        return $this;
     }
 
     /**
@@ -221,6 +235,8 @@ class AuditLog extends AbstractDataObject
     public function setServer(Server $server)
     {
         $this->server = $server;
+
+        return $this;
     }
 
     /**
@@ -239,6 +255,8 @@ class AuditLog extends AbstractDataObject
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
+
+        return $this;
     }
 
     /**
