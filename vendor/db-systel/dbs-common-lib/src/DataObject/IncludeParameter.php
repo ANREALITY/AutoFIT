@@ -55,7 +55,7 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * @return string $expression
+     * @return string
      */
     public function getExpression()
     {

@@ -55,7 +55,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return string $username
+     * @return string
      */
     public function getUsername()
     {
@@ -74,7 +74,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return string $folder
+     * @return string
      */
     public function getFolder()
     {
@@ -93,7 +93,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return string $transmissionType
+     * @return string
      */
     public function getTransmissionType()
     {
@@ -112,7 +112,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return string $transmissionInterval
+     * @return string
      */
     public function getTransmissionInterval()
     {

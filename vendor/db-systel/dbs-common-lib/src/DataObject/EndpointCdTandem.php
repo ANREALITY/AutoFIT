@@ -31,7 +31,7 @@ class EndpointCdTandem extends AbstractEndpoint
     }
 
     /**
-     * @return string $username
+     * @return string
      */
     public function getUsername()
     {
@@ -50,7 +50,7 @@ class EndpointCdTandem extends AbstractEndpoint
     }
 
     /**
-     * @return string $folder
+     * @return string
      */
     public function getFolder()
     {

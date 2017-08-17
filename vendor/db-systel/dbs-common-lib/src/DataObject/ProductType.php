@@ -35,7 +35,7 @@ class ProductType extends AbstractDataObject
     }
 
     /**
-     * @return string $name
+     * @return string
      */
     public function getName()
     {
@@ -54,7 +54,7 @@ class ProductType extends AbstractDataObject
     }
 
     /**
-     * @return string $longName
+     * @return string
      */
     public function getLongName()
     {

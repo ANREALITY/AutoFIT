@@ -55,7 +55,7 @@ class EndpointClusterConfig extends AbstractDataObject
     }
 
     /**
-     * @return string $dnsAddress
+     * @return string
      */
     public function getDnsAddress()
     {

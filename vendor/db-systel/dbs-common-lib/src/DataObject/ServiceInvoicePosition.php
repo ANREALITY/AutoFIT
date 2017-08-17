@@ -58,7 +58,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return string $number
+     * @return string
      */
     public function getNumber()
     {
@@ -77,7 +77,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return string $orderQuantity
+     * @return string
      */
     public function getOrderQuantity()
     {
@@ -96,7 +96,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return string $description
+     * @return string
      */
     public function getDescription()
     {
@@ -115,7 +115,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return string $status
+     * @return string
      */
     public function getStatus()
     {

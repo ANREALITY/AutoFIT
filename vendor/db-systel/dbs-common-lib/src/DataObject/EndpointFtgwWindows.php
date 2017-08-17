@@ -31,7 +31,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
     }
 
     /**
-     * @return string $folder
+     * @return string
      */
     public function getFolder()
     {

@@ -50,7 +50,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return string $sharename
+     * @return string
      */
     public function getSharename()
     {
@@ -69,7 +69,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return string $folder
+     * @return string
      */
     public function getFolder()
     {
@@ -88,7 +88,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return string $transmissionType
+     * @return string
      */
     public function getTransmissionType()
     {

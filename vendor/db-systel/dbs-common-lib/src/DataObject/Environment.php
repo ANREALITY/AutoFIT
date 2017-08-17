@@ -55,7 +55,7 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * @return string $name
+     * @return string
      */
     public function getName()
     {
@@ -74,7 +74,7 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * @return string $shortName
+     * @return string
      */
     public function getShortName()
     {

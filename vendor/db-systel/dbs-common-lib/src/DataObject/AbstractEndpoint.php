@@ -122,7 +122,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string $role
+     * @return string
      */
     public function getRole()
     {
@@ -141,7 +141,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string $type
+     * @return string
      */
     public function getType()
     {
@@ -160,7 +160,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string $serverPlace
+     * @return string
      */
     public function getServerPlace()
     {
@@ -179,7 +179,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string $contactPerson
+     * @return string
      */
     public function getContactPerson()
     {

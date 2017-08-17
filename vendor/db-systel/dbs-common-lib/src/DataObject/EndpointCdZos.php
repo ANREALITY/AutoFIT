@@ -31,7 +31,7 @@ class EndpointCdZos extends AbstractEndpoint
     }
 
     /**
-     * @return string $username
+     * @return string
      */
     public function getUsername()
     {

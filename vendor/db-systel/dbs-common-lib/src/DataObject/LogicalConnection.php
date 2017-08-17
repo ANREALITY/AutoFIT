@@ -74,7 +74,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string $type
+     * @return string
      */
     public function getType()
     {

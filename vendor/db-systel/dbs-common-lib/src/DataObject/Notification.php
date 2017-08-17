@@ -65,7 +65,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return string $email
+     * @return string
      */
     public function getEmail()
     {

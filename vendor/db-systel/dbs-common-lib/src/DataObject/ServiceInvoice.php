@@ -41,7 +41,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return string $number
+     * @return string
      */
     public function getNumber()
     {
@@ -60,7 +60,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return string $description
+     * @return string
      */
     public function getDescription()
     {

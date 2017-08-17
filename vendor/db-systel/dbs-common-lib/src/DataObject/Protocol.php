@@ -67,7 +67,7 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * @return string $name
+     * @return string
      */
     public function getName()
     {

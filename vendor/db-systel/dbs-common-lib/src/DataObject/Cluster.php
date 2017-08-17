@@ -65,7 +65,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return string $virtualNodeName
+     * @return string
      */
     public function getVirtualNodeName()
     {

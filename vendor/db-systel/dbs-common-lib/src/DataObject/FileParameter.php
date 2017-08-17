@@ -74,7 +74,7 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * @return string $filename
+     * @return string
      */
     public function getFilename()
     {
@@ -112,7 +112,7 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * @return string $blocking
+     * @return string
      */
     public function getBlocking()
     {

@@ -60,7 +60,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return string $name
+     * @return string
      */
     public function getName()
     {
@@ -136,7 +136,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return string $nodeName
+     * @return string
      */
     public function getNodeName()
     {
@@ -155,7 +155,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return string $virtualNodeName
+     * @return string
      */
     public function getVirtualNodeName()
     {

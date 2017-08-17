@@ -104,7 +104,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string $changeNumber
+     * @return string
      */
     public function getChangeNumber()
     {
@@ -123,7 +123,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string $status
+     * @return string
      */
     public function getStatus()
     {
@@ -142,7 +142,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string $comment
+     * @return string
      */
     public function getComment()
     {
@@ -161,7 +161,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string $created
+     * @return string
      */
     public function getCreated()
     {
@@ -180,7 +180,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string $updated
+     * @return string
      */
     public function getUpdated()
     {

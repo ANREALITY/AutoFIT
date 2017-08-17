@@ -115,7 +115,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return string $resourceType
+     * @return string
      */
     public function getResourceType()
     {
@@ -134,7 +134,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return string $resourceId
+     * @return string
      */
     public function getResourceId()
     {
@@ -153,7 +153,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return string $action
+     * @return string
      */
     public function getAction()
     {
@@ -172,7 +172,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return string $datetime
+     * @return string
      */
     public function getDatetime()
     {

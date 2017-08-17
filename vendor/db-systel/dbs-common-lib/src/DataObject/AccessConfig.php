@@ -70,7 +70,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return string $username
+     * @return string
      */
     public function getUsername()
     {

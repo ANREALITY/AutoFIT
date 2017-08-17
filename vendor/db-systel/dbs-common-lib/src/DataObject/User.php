@@ -65,7 +65,7 @@ class User extends AbstractDataObject
     }
 
     /**
-     * @return string $username
+     * @return string
      */
     public function getUsername()
     {
@@ -84,7 +84,7 @@ class User extends AbstractDataObject
     }
 
     /**
-     * @return string $role
+     * @return string
      */
     public function getRole()
     {

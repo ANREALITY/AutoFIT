@@ -47,7 +47,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @return string $sku
+     * @return string
      */
     public function getSku()
     {
@@ -66,7 +66,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @return string $description
+     * @return string
      */
     public function getDescription()
     {
@@ -85,7 +85,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @return string $type
+     * @return string
      */
     public function getType()
     {

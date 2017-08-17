@@ -47,7 +47,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     * @return string $ftgwUsername
+     * @return string
      */
     public function getFtgwUsername()
     {
@@ -66,7 +66,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     * @return string $mailbox
+     * @return string
      */
     public function getMailbox()
     {
@@ -85,7 +85,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     * @return string $connectionType
+     * @return string
      */
     public function getConnectionType()
     {

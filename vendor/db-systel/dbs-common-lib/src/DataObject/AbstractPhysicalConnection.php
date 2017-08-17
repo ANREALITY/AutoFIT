@@ -81,7 +81,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string $role
+     * @return string
      */
     public function getRole()
     {
@@ -100,7 +100,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string $type
+     * @return string
      */
     public function getType()
     {
