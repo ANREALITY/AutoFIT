@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Article
- *
- * @package DbSystel\DataObject
  */
 class Article extends AbstractDataObject
 {

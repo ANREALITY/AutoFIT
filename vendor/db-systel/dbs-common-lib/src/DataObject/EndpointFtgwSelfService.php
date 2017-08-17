@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointFtgwSelfService
- *
- * @package DbSystel\DataObject
  */
 class EndpointFtgwSelfService extends AbstractEndpoint
 {

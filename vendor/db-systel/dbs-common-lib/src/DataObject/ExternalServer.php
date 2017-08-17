@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * ExternalServer
- *
- * @package DbSystel\DataObject
  */
 class ExternalServer extends AbstractDataObject
 {

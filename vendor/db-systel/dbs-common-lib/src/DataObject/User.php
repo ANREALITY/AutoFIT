@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * User
- *
- * @package DbSystel\DataObject
  */
 class User extends AbstractDataObject
 {

@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Synchronization
- *
- * @package DbSystel\DataObject
  */
 class Synchronization extends AbstractDataObject
 {

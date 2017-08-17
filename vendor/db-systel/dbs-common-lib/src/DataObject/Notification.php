@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Notification
- *
- * @package DbSystel\DataObject
  */
 class Notification extends AbstractDataObject
 {

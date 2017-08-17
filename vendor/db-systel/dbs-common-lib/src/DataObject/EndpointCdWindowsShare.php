@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointCdWindowsShare
- *
- * @package DbSystel\DataObject
  */
 class EndpointCdWindowsShare extends AbstractEndpoint
 {

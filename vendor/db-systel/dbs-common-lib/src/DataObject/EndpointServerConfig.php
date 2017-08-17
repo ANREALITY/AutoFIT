@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointServerConfig
- *
- * @package DbSystel\DataObject
  */
 class EndpointServerConfig extends AbstractDataObject
 {

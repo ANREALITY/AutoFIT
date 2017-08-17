@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * ProductType
- *
- * @package DbSystel\DataObject
  */
 class ProductType extends AbstractDataObject
 {

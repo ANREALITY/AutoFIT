@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * FileParameter
- *
- * @package DbSystel\DataObject
  */
 class FileParameter extends AbstractDataObject
 {

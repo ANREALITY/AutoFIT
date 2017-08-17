@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * ProtocolSet
- *
- * @package DbSystel\DataObject
  */
 class ProtocolSet extends AbstractDataObject
 {

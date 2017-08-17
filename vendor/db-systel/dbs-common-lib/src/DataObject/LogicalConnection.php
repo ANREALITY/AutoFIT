@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * LogicalConnection
- *
- * @package DbSystel\DataObject
  */
 class LogicalConnection extends AbstractDataObject
 {

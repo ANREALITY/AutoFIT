@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * AbstractDataObject
- *
- * @package DbSystel\DataObject
  */
 class AbstractDataObject implements \JsonSerializable
 {

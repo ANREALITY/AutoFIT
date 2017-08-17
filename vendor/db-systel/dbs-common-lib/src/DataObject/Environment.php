@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Environment
- *
- * @package DbSystel\DataObject
  */
 class Environment extends AbstractDataObject
 {

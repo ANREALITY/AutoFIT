@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Cluster
- *
- * @package DbSystel\DataObject
  */
 class Cluster extends AbstractDataObject
 {

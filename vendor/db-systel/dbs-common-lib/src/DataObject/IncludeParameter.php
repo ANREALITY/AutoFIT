@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * IncludeParameter
- *
- * @package DbSystel\DataObject
  */
 class IncludeParameter extends AbstractDataObject
 {

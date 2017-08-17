@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * AbstractPhysicalConnection
- *
- * @package DbSystel\DataObject
  */
 abstract class AbstractPhysicalConnection extends AbstractDataObject
 {

@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * AuditLog
- *
- * @package DbSystel\DataObject
  */
 class AuditLog extends AbstractDataObject
 {

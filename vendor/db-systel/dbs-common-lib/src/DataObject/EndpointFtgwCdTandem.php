@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointFtgwCdTandem
- *
- * @package DbSystel\DataObject
  */
 class EndpointFtgwCdTandem extends AbstractEndpoint
 {

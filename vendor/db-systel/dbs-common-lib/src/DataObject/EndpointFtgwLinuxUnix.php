@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointFtgwLinuxUnix
- *
- * @package DbSystel\DataObject
  */
 class EndpointFtgwLinuxUnix extends AbstractEndpoint
 {

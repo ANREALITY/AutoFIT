@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointFtgwProtocolServer
- *
- * @package DbSystel\DataObject
  */
 class EndpointFtgwProtocolServer extends AbstractEndpoint
 {

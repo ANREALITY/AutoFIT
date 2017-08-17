@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * Server
- *
- * @package DbSystel\DataObject
  */
 class Server extends AbstractDataObject
 {

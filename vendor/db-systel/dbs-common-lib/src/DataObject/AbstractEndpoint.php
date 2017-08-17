@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * AbstractEndpoint
- *
- * @package DbSystel\DataObject
  */
 abstract class AbstractEndpoint extends AbstractDataObject
 {

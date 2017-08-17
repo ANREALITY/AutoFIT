@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * ServiceInvoicePosition
- *
- * @package DbSystel\DataObject
  */
 class ServiceInvoicePosition extends AbstractDataObject
 {

@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * FileTransferRequest
- *
- * @package DbSystel\DataObject
  */
 class FileTransferRequest extends AbstractDataObject
 {

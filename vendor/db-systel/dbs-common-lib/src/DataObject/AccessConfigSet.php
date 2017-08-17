@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * AccessConfigSet
- *
- * @package DbSystel\DataObject
  */
 class AccessConfigSet extends AbstractDataObject
 {

@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointCdWindows
- *
- * @package DbSystel\DataObject
  */
 class EndpointCdWindows extends AbstractEndpoint
 {

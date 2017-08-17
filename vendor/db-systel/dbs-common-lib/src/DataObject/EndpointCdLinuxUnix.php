@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointCdLinuxUnix
- *
- * @package DbSystel\DataObject
  */
 class EndpointCdLinuxUnix extends AbstractEndpoint
 {

@@ -3,8 +3,6 @@ namespace DbSystel\DataObject;
 
 /**
  * EndpointFtgwWindows
- *
- * @package DbSystel\DataObject
  */
 class EndpointFtgwWindows extends AbstractEndpoint
 {
