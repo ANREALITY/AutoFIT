@@ -54,7 +54,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param number $id
+     * @param integer $id
      */
     public function setId($id)
     {

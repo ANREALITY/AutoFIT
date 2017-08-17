@@ -36,7 +36,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @param number $id
+     * @param integer $id
      */
     public function setId($id)
     {
@@ -96,7 +96,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @param number $lastSync
+     * @param integer $lastSync
      */
     public function setLastSync($lastSync)
     {

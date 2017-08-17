@@ -24,7 +24,7 @@ class Environment extends AbstractDataObject
 
     /**
      *
-     * @param number $severity
+     * @param integer $severity
      */
     public function setSeverity($severity)
     {

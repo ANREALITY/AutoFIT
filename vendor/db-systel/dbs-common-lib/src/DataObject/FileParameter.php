@@ -46,7 +46,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @param number $id
+     * @param integer $id
      */
     public function setId($id)
     {
@@ -86,7 +86,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @param number $recordLength
+     * @param integer $recordLength
      */
     public function setRecordLength($recordLength)
     {
@@ -126,7 +126,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @param number $blockSize
+     * @param integer $blockSize
      */
     public function setBlockSize($blockSize)
     {

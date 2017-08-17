@@ -17,7 +17,7 @@ class ExternalServer extends AbstractDataObject
     protected $name;
 
     /**
-     * @param number $id
+     * @param integer $id
      */
     public function setId($id)
     {
