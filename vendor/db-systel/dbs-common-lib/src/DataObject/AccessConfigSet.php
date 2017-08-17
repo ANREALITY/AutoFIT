@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class AccessConfigSet
+ *
+ * @package DbSystel\DataObject
+ */
 class AccessConfigSet extends AbstractDataObject
 {
 

@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class Cluster
+ *
+ * @package DbSystel\DataObject
+ */
 class Cluster extends AbstractDataObject
 {
 

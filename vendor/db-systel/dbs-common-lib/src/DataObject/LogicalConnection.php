@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class LogicalConnection
+ *
+ * @package DbSystel\DataObject
+ */
 class LogicalConnection extends AbstractDataObject
 {
 

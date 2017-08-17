@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class ProductType
+ *
+ * @package DbSystel\DataObject
+ */
 class ProductType extends AbstractDataObject
 {
 

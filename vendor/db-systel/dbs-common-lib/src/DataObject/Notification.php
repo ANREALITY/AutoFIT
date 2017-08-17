@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class Notification
+ *
+ * @package DbSystel\DataObject
+ */
 class Notification extends AbstractDataObject
 {
 

@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class AuditLog
+ *
+ * @package DbSystel\DataObject
+ */
 class AuditLog extends AbstractDataObject
 {
 

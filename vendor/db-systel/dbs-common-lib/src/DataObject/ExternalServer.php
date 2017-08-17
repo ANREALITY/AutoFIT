@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class ExternalServer
+ *
+ * @package DbSystel\DataObject
+ */
 class ExternalServer extends AbstractDataObject
 {
 

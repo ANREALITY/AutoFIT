@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class EndpointCdWindowsShare
+ *
+ * @package DbSystel\DataObject
+ */
 class EndpointCdWindowsShare extends AbstractEndpoint
 {
 

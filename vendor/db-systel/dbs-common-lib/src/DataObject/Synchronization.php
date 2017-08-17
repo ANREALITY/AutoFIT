@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class Synchronization
+ *
+ * @package DbSystel\DataObject
+ */
 class Synchronization extends AbstractDataObject
 {
 

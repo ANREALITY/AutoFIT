@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class User
+ *
+ * @package DbSystel\DataObject
+ */
 class User extends AbstractDataObject
 {
 

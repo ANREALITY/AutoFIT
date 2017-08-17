@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class EndpointClusterConfig
+ *
+ * @package DbSystel\DataObject
+ */
 class EndpointClusterConfig extends AbstractDataObject
 {
 

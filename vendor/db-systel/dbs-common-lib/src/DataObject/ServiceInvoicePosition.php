@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class ServiceInvoicePosition
+ *
+ * @package DbSystel\DataObject
+ */
 class ServiceInvoicePosition extends AbstractDataObject
 {
 

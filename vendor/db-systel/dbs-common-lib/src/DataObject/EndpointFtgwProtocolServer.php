@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class EndpointFtgwProtocolServer
+ *
+ * @package DbSystel\DataObject
+ */
 class EndpointFtgwProtocolServer extends AbstractEndpoint
 {
 

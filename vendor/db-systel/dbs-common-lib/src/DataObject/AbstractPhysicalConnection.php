@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class AbstractPhysicalConnection
+ *
+ * @package DbSystel\DataObject
+ */
 abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
 

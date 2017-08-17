@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class AbstractDataObject
+ *
+ * @package DbSystel\DataObject
+ */
 class AbstractDataObject implements \JsonSerializable
 {
 

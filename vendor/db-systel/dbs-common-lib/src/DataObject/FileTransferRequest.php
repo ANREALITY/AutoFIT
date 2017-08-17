@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class FileTransferRequest
+ *
+ * @package DbSystel\DataObject
+ */
 class FileTransferRequest extends AbstractDataObject
 {
 

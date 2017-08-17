@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class EndpointCdTandem
+ *
+ * @package DbSystel\DataObject
+ */
 class EndpointCdTandem extends AbstractEndpoint
 {
 

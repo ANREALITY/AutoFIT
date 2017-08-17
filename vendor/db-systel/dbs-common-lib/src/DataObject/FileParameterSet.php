@@ -1,6 +1,11 @@
 <?php
 namespace DbSystel\DataObject;
 
+/**
+ * Class FileParameterSet
+ *
+ * @package DbSystel\DataObject
+ */
 class FileParameterSet extends AbstractDataObject
 {
 
