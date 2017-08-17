@@ -18,6 +18,8 @@ return [
         'Zend\Form',
         'Zend\Hydrator',
         'Zend\InputFilter',
+        'DoctrineModule',
+        'DoctrineORMModule',
 
         'Application',
         'Logging',
