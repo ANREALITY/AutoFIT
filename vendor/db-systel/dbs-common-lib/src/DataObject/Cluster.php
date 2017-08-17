@@ -42,6 +42,7 @@ class Cluster extends AbstractDataObject
     /**
      *
      * @param int $id
+     * @return Cluster
      */
     public function setId($id)
     {
@@ -62,6 +63,7 @@ class Cluster extends AbstractDataObject
     /**
      *
      * @param string $virtualNodeName
+     * @return Cluster
      */
     public function setVirtualNodeName($virtualNodeName)
     {
@@ -81,7 +83,8 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @param multitype:Server $servers
+     * @param Server[] $servers
+     * @return Cluster
      */
     public function setServers(array $servers)
     {
@@ -101,7 +104,8 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @param multitype:AbstractEndpoint $endpoints
+     * @param AbstractEndpoint[] $endpoints
+     * @return Cluster
      */
     public function setEndpoints(array $endpoints)
     {
@@ -121,7 +125,8 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @param multitype:EndpointClusterConfig $endpointClusterConfigs
+     * @param EndpointClusterConfig[] $endpointClusterConfigs
+     * @return Cluster
      */
     public function setEndpointClusterConfigs(array $endpointClusterConfigs)
     {

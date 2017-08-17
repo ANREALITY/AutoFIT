@@ -23,6 +23,7 @@ class ExternalServer extends AbstractDataObject
 
     /**
      * @param integer $id
+     * @return ExternalServer
      */
     public function setId($id)
     {
@@ -42,6 +43,7 @@ class ExternalServer extends AbstractDataObject
     /**
      *
      * @param string $name
+     * @return ExternalServer
      */
     public function setName($name)
     {

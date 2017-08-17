@@ -42,6 +42,7 @@ class Synchronization extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return Synchronization
      */
     public function setId($id)
     {
@@ -62,6 +63,7 @@ class Synchronization extends AbstractDataObject
     /**
      *
      * @param boolean $inProgress
+     * @return Synchronization
      */
     public function setInProgress($inProgress)
     {
@@ -82,6 +84,7 @@ class Synchronization extends AbstractDataObject
     /**
      *
      * @param string $type
+     * @return Synchronization
      */
     public function setType($type)
     {
@@ -102,6 +105,7 @@ class Synchronization extends AbstractDataObject
     /**
      *
      * @param integer $lastSync
+     * @return Synchronization
      */
     public function setLastSync($lastSync)
     {

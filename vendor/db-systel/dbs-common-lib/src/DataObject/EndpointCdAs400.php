@@ -24,6 +24,7 @@ class EndpointCdAs400 extends AbstractEndpoint
     /**
      *
      * @param string $username
+     * @return EndpointCdAs400
      */
     public function setUsername($username)
     {
@@ -44,6 +45,7 @@ class EndpointCdAs400 extends AbstractEndpoint
     /**
      *
      * @param string $folder
+     * @return EndpointCdAs400
      */
     public function setFolder($folder)
     {

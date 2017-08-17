@@ -64,6 +64,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $username
+     * @return EndpointFtgwProtocolServer
      */
     public function setUsername($username)
     {
@@ -84,6 +85,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $folder
+     * @return EndpointFtgwProtocolServer
      */
     public function setFolder($folder)
     {
@@ -104,6 +106,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $transmissionType
+     * @return EndpointFtgwProtocolServer
      */
     public function setTransmissionType($transmissionType)
     {
@@ -124,6 +127,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $port
+     * @return EndpointFtgwProtocolServer
      */
     public function setPort($port)
     {
@@ -144,6 +148,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $ip
+     * @return EndpointFtgwProtocolServer
      */
     public function setIp($ip)
     {
@@ -164,6 +169,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param string $dnsAddress
+     * @return EndpointFtgwProtocolServer
      */
     public function setDnsAddress($dnsAddress)
     {
@@ -184,6 +190,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param IncludeParameterSet $includeParameterSet
+     * @return EndpointFtgwProtocolServer
      */
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
@@ -204,6 +211,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      *
      * @param ProtocolSet $protocolSet
+     * @return EndpointFtgwProtocolServer
      */
     public function setProtocolSet(ProtocolSet $protocolSet)
     {

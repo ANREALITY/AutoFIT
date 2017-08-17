@@ -86,6 +86,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return FileTransferRequest
      */
     public function setId($id)
     {
@@ -106,6 +107,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param string $changeNumber
+     * @return FileTransferRequest
      */
     public function setChangeNumber($changeNumber)
     {
@@ -126,6 +128,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param string $status
+     * @return FileTransferRequest
      */
     public function setStatus($status)
     {
@@ -146,6 +149,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param string $comment
+     * @return FileTransferRequest
      */
     public function setComment($comment)
     {
@@ -166,6 +170,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param string $created
+     * @return FileTransferRequest
      */
     public function setCreated($created)
     {
@@ -186,6 +191,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param string $updated
+     * @return FileTransferRequest
      */
     public function setUpdated($updated)
     {
@@ -206,6 +212,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param LogicalConnection $logicalConnection
+     * @return FileTransferRequest
      */
     public function setLogicalConnection($logicalConnection)
     {
@@ -226,6 +233,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param ServiceInvoicePosition $serviceInvoicePositionBasic
+     * @return FileTransferRequest
      */
     public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
     {
@@ -246,6 +254,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
+     * @return FileTransferRequest
      */
     public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
     {
@@ -266,6 +275,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      *
      * @param User $user
+     * @return FileTransferRequest
      */
     public function setUser($user)
     {

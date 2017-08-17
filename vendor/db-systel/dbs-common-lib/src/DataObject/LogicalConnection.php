@@ -52,6 +52,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return LogicalConnection
      */
     public function setId($id)
     {
@@ -72,6 +73,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      *
      * @param string $type
+     * @return LogicalConnection
      */
     public function setType($type)
     {
@@ -92,6 +94,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      *
      * @param AbstractPhysicalConnection $physicalConnectionEndToEnd
+     * @return LogicalConnection
      */
     public function setPhysicalConnectionEndToEnd($physicalConnectionEndToEnd)
     {
@@ -112,6 +115,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      *
      * @param AbstractPhysicalConnection $physicalConnectionEndToMiddle
+     * @return LogicalConnection
      */
     public function setPhysicalConnectionEndToMiddle($physicalConnectionEndToMiddle)
     {
@@ -132,6 +136,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      *
      * @param AbstractPhysicalConnection $physicalConnectionMiddleToEnd
+     * @return LogicalConnection
      */
     public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
     {
@@ -151,7 +156,8 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @param multitype:Notification $notifications
+     * @param Notification[] $notifications
+     * @return LogicalConnection
      */
     public function setNotifications($notifications)
     {

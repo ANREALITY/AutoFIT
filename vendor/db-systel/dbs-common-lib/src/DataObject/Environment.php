@@ -30,6 +30,7 @@ class Environment extends AbstractDataObject
     /**
      *
      * @param integer $severity
+     * @return Environment
      */
     public function setSeverity($severity)
     {
@@ -50,6 +51,7 @@ class Environment extends AbstractDataObject
     /**
      *
      * @param string $name
+     * @return Environment
      */
     public function setName($name)
     {
@@ -70,6 +72,7 @@ class Environment extends AbstractDataObject
     /**
      *
      * @param string $shortName
+     * @return Environment
      */
     public function setShortName($shortName)
     {

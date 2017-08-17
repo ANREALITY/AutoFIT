@@ -24,6 +24,7 @@ class Customer extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return Customer
      */
     public function setId($id)
     {
@@ -44,6 +45,7 @@ class Customer extends AbstractDataObject
     /**
      *
      * @param string $name
+     * @return Customer
      */
     public function setName($name)
     {

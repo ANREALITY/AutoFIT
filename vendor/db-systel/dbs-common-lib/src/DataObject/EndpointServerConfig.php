@@ -36,6 +36,7 @@ class EndpointServerConfig extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return EndpointServerConfig
      */
     public function setId($id)
     {
@@ -56,6 +57,7 @@ class EndpointServerConfig extends AbstractDataObject
     /**
      *
      * @param string $dnsAddress
+     * @return EndpointServerConfig
      */
     public function setDnsAddress($dnsAddress)
     {
@@ -76,6 +78,7 @@ class EndpointServerConfig extends AbstractDataObject
     /**
      *
      * @param Server $server
+     * @return EndpointServerConfig
      */
     public function setServer(Server $server)
     {
@@ -96,6 +99,7 @@ class EndpointServerConfig extends AbstractDataObject
     /**
      *
      * @param AbstractEndpoint $endpoint
+     * @return EndpointServerConfig
      */
     public function setEndpoint($endpoint)
     {

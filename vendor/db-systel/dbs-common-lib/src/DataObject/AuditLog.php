@@ -96,6 +96,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return AuditLog
      */
     public function setId($id)
     {
@@ -116,6 +117,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param string $resourceType
+     * @return AuditLog
      */
     public function setResourceType($resourceType)
     {
@@ -136,6 +138,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param string $resourceId
+     * @return AuditLog
      */
     public function setResourceId($resourceId)
     {
@@ -156,6 +159,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param string $action
+     * @return AuditLog
      */
     public function setAction($action)
     {
@@ -176,6 +180,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param string $datetime
+     * @return AuditLog
      */
     public function setDatetime($datetime)
     {
@@ -196,6 +201,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param User $user
+     * @return AuditLog
      */
     public function setUser(User $user)
     {
@@ -216,6 +222,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param FileTransferRequest $fileTransferRequest
+     * @return AuditLog
      */
     public function setFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
@@ -236,6 +243,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param Server $server
+     * @return AuditLog
      */
     public function setServer(Server $server)
     {
@@ -256,6 +264,7 @@ class AuditLog extends AbstractDataObject
     /**
      *
      * @param Cluster $cluster
+     * @return AuditLog
      */
     public function setCluster(Cluster $cluster)
     {

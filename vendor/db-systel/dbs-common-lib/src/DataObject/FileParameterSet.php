@@ -30,6 +30,7 @@ class FileParameterSet extends AbstractDataObject
     /**
      *
      * @param integer $id
+     * @return FileParameterSet
      */
     public function setId($id)
     {
@@ -50,6 +51,7 @@ class FileParameterSet extends AbstractDataObject
     /**
      *
      * @param AbstractEndpoint $endpoint
+     * @return FileParameterSet
      */
     public function setEndpoint(AbstractEndpoint $endpoint)
     {
@@ -69,7 +71,8 @@ class FileParameterSet extends AbstractDataObject
 
     /**
      *
-     * @param multitype:FileParameter $fileParameters
+     * @param FileParameter[] $fileParameters
+     * @return FileParameterSet
      */
     public function setFileParameters(array $fileParameters)
     {
