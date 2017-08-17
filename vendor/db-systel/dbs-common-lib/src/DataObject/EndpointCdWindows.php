@@ -28,15 +28,6 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return string $folder
-     */
-    public function getFolder()
-    {
-        return $this->folder;
-    }
-
-    /**
-     *
      * @param string $folder
      */
     public function setFolder($folder)
@@ -46,11 +37,11 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return string $transmissionType
+     * @return string $folder
      */
-    public function getTransmissionType()
+    public function getFolder()
     {
-        return $this->transmissionType;
+        return $this->folder;
     }
 
     /**
@@ -64,11 +55,11 @@ class EndpointCdWindows extends AbstractEndpoint
 
     /**
      *
-     * @return IncludeParameterSet $includeParameterSet
+     * @return string $transmissionType
      */
-    public function getIncludeParameterSet()
+    public function getTransmissionType()
     {
-        return $this->includeParameterSet;
+        return $this->transmissionType;
     }
 
     /**
@@ -78,6 +69,15 @@ class EndpointCdWindows extends AbstractEndpoint
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
+    }
+
+    /**
+     *
+     * @return IncludeParameterSet $includeParameterSet
+     */
+    public function getIncludeParameterSet()
+    {
+        return $this->includeParameterSet;
     }
 
 }

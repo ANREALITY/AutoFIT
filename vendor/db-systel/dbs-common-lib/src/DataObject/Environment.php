@@ -24,15 +24,6 @@ class Environment extends AbstractDataObject
 
     /**
      *
-     * @return integer $severity
-     */
-    public function getSeverity()
-    {
-        return $this->severity;
-    }
-
-    /**
-     *
      * @param number $severity
      */
     public function setSeverity($severity)
@@ -42,11 +33,11 @@ class Environment extends AbstractDataObject
 
     /**
      *
-     * @return string $name
+     * @return integer $severity
      */
-    public function getName()
+    public function getSeverity()
     {
-        return $this->name;
+        return $this->severity;
     }
 
     /**
@@ -60,11 +51,11 @@ class Environment extends AbstractDataObject
 
     /**
      *
-     * @return string $shortName
+     * @return string $name
      */
-    public function getShortName()
+    public function getName()
     {
-        return $this->shortName;
+        return $this->name;
     }
 
     /**
@@ -74,6 +65,15 @@ class Environment extends AbstractDataObject
     public function setShortName($shortName)
     {
         $this->shortName = $shortName;
+    }
+
+    /**
+     *
+     * @return string $shortName
+     */
+    public function getShortName()
+    {
+        return $this->shortName;
     }
 
 }

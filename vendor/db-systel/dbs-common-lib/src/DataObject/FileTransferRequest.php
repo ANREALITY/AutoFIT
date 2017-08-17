@@ -80,15 +80,6 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -98,11 +89,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return string $changeNumber
+     * @return integer $id
      */
-    public function getChangeNumber()
+    public function getId()
     {
-        return $this->changeNumber;
+        return $this->id;
     }
 
     /**
@@ -116,11 +107,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return string $status
+     * @return string $changeNumber
      */
-    public function getStatus()
+    public function getChangeNumber()
     {
-        return $this->status;
+        return $this->changeNumber;
     }
 
     /**
@@ -134,11 +125,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return string $comment
+     * @return string $status
      */
-    public function getComment()
+    public function getStatus()
     {
-        return $this->comment;
+        return $this->status;
     }
 
     /**
@@ -152,11 +143,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return string $created
+     * @return string $comment
      */
-    public function getCreated()
+    public function getComment()
     {
-        return $this->created;
+        return $this->comment;
     }
 
     /**
@@ -170,11 +161,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return string $updated
+     * @return string $created
      */
-    public function getUpdated()
+    public function getCreated()
     {
-        return $this->updated;
+        return $this->created;
     }
 
     /**
@@ -188,11 +179,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return LogicalConnection $logicalConnection
+     * @return string $updated
      */
-    public function getLogicalConnection()
+    public function getUpdated()
     {
-        return $this->logicalConnection;
+        return $this->updated;
     }
 
     /**
@@ -206,11 +197,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return ServiceInvoicePosition $serviceInvoicePositionBasic
+     * @return LogicalConnection $logicalConnection
      */
-    public function getServiceInvoicePositionBasic()
+    public function getLogicalConnection()
     {
-        return $this->serviceInvoicePositionBasic;
+        return $this->logicalConnection;
     }
 
     /**
@@ -224,11 +215,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return ServiceInvoicePosition $serviceInvoicePositionPersonal
+     * @return ServiceInvoicePosition $serviceInvoicePositionBasic
      */
-    public function getServiceInvoicePositionPersonal()
+    public function getServiceInvoicePositionBasic()
     {
-        return $this->serviceInvoicePositionPersonal;
+        return $this->serviceInvoicePositionBasic;
     }
 
     /**
@@ -242,11 +233,11 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return User $user
+     * @return ServiceInvoicePosition $serviceInvoicePositionPersonal
      */
-    public function getUser()
+    public function getServiceInvoicePositionPersonal()
     {
-        return $this->user;
+        return $this->serviceInvoicePositionPersonal;
     }
 
     /**
@@ -256,6 +247,15 @@ class FileTransferRequest extends AbstractDataObject
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     *
+     * @return User $user
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     public function exchangeArray()

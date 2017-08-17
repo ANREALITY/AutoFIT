@@ -36,15 +36,6 @@ class Notification extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -54,11 +45,11 @@ class Notification extends AbstractDataObject
 
     /**
      *
-     * @return string $email
+     * @return integer $id
      */
-    public function getEmail()
+    public function getId()
     {
-        return $this->email;
+        return $this->id;
     }
 
     /**
@@ -72,11 +63,11 @@ class Notification extends AbstractDataObject
 
     /**
      *
-     * @return boolean $success
+     * @return string $email
      */
-    public function getSuccess()
+    public function getEmail()
     {
-        return $this->success;
+        return $this->email;
     }
 
     /**
@@ -90,11 +81,11 @@ class Notification extends AbstractDataObject
 
     /**
      *
-     * @return boolean $failure
+     * @return boolean $success
      */
-    public function getFailure()
+    public function getSuccess()
     {
-        return $this->failure;
+        return $this->success;
     }
 
     /**
@@ -108,11 +99,11 @@ class Notification extends AbstractDataObject
 
     /**
      *
-     * @return LogicalConnection $logicalConnection
+     * @return boolean $failure
      */
-    public function getLogicalConnection()
+    public function getFailure()
     {
-        return $this->logicalConnection;
+        return $this->failure;
     }
 
     /**
@@ -122,6 +113,15 @@ class Notification extends AbstractDataObject
     public function setLogicalConnection($logicalConnection)
     {
         $this->logicalConnection = $logicalConnection;
+    }
+
+    /**
+     *
+     * @return LogicalConnection $logicalConnection
+     */
+    public function getLogicalConnection()
+    {
+        return $this->logicalConnection;
     }
 
 }

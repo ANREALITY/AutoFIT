@@ -24,15 +24,6 @@ class FileParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -42,11 +33,11 @@ class FileParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpoint
+     * @return integer $id
      */
-    public function getEndpoint()
+    public function getId()
     {
-        return $this->endpoint;
+        return $this->id;
     }
 
     /**
@@ -60,11 +51,11 @@ class FileParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return FileParameter[] $fileParameters
+     * @return AbstractEndpoint $endpoint
      */
-    public function getFileParameters()
+    public function getEndpoint()
     {
-        return $this->fileParameters;
+        return $this->endpoint;
     }
 
     /**
@@ -74,6 +65,15 @@ class FileParameterSet extends AbstractDataObject
     public function setFileParameters(array $fileParameters)
     {
         $this->fileParameters = $fileParameters;
+    }
+
+    /**
+     *
+     * @return FileParameter[] $fileParameters
+     */
+    public function getFileParameters()
+    {
+        return $this->fileParameters;
     }
 
 }

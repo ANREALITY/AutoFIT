@@ -18,15 +18,6 @@ class EndpointFtgwCdZos extends AbstractEndpoint
 
     /**
      *
-     * @return string $username
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     *
      * @param string $username
      */
     public function setUsername($username)
@@ -36,11 +27,11 @@ class EndpointFtgwCdZos extends AbstractEndpoint
 
     /**
      *
-     * @return FileParameterSet $fileParameterSet
+     * @return string $username
      */
-    public function getFileParameterSet()
+    public function getUsername()
     {
-        return $this->fileParameterSet;
+        return $this->username;
     }
 
     /**
@@ -50,6 +41,15 @@ class EndpointFtgwCdZos extends AbstractEndpoint
     public function setFileParameterSet(FileParameterSet $fileParameterSet)
     {
         $this->fileParameterSet = $fileParameterSet;
+    }
+
+    /**
+     *
+     * @return FileParameterSet $fileParameterSet
+     */
+    public function getFileParameterSet()
+    {
+        return $this->fileParameterSet;
     }
 
 }

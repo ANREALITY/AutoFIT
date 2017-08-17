@@ -54,15 +54,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -72,11 +63,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return string $role
+     * @return integer $id
      */
-    public function getRole()
+    public function getId()
     {
-        return $this->role;
+        return $this->id;
     }
 
     /**
@@ -90,11 +81,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return string $type
+     * @return string $role
      */
-    public function getType()
+    public function getRole()
     {
-        return $this->type;
+        return $this->role;
     }
 
     /**
@@ -108,11 +99,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return boolean $securePlus
+     * @return string $type
      */
-    public function getSecurePlus()
+    public function getType()
     {
-        return $this->securePlus;
+        return $this->type;
     }
 
     /**
@@ -126,11 +117,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return LogicalConnection $logicalConnection
+     * @return boolean $securePlus
      */
-    public function getLogicalConnection()
+    public function getSecurePlus()
     {
-        return $this->logicalConnection;
+        return $this->securePlus;
     }
 
     /**
@@ -144,11 +135,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpointSource
+     * @return LogicalConnection $logicalConnection
      */
-    public function getEndpointSource()
+    public function getLogicalConnection()
     {
-        return $this->endpointSource;
+        return $this->logicalConnection;
     }
 
     /**
@@ -162,11 +153,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpointTarget
+     * @return AbstractEndpoint $endpointSource
      */
-    public function getEndpointTarget()
+    public function getEndpointSource()
     {
-        return $this->endpointTarget;
+        return $this->endpointSource;
     }
 
     /**
@@ -176,6 +167,15 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointTarget($endpointTarget)
     {
         $this->endpointTarget = $endpointTarget;
+    }
+
+    /**
+     *
+     * @return AbstractEndpoint $endpointTarget
+     */
+    public function getEndpointTarget()
+    {
+        return $this->endpointTarget;
     }
 
 }

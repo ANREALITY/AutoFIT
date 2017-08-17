@@ -18,15 +18,6 @@ class ServerType extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -36,11 +27,11 @@ class ServerType extends AbstractDataObject
 
     /**
      *
-     * @return string $name
+     * @return integer $id
      */
-    public function getName()
+    public function getId()
     {
-        return $this->name;
+        return $this->id;
     }
 
     /**
@@ -50,6 +41,15 @@ class ServerType extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
 }

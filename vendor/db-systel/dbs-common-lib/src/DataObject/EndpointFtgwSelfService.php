@@ -36,15 +36,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @return string $ftgwUsername
-     */
-    public function getFtgwUsername()
-    {
-        return $this->ftgwUsername;
-    }
-
-    /**
-     *
      * @param string $ftgwUsername
      */
     public function setFtgwUsername($ftgwUsername)
@@ -54,11 +45,11 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @return string $mailbox
+     * @return string $ftgwUsername
      */
-    public function getMailbox()
+    public function getFtgwUsername()
     {
-        return $this->mailbox;
+        return $this->ftgwUsername;
     }
 
     /**
@@ -72,11 +63,11 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @return string $connectionType
+     * @return string $mailbox
      */
-    public function getConnectionType()
+    public function getMailbox()
     {
-        return $this->connectionType;
+        return $this->mailbox;
     }
 
     /**
@@ -90,11 +81,11 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      *
-     * @return ProtocolSet $protocolSet
+     * @return string $connectionType
      */
-    public function getProtocolSet()
+    public function getConnectionType()
     {
-        return $this->protocolSet;
+        return $this->connectionType;
     }
 
     /**
@@ -104,6 +95,15 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function setProtocolSet(ProtocolSet $protocolSet)
     {
         $this->protocolSet = $protocolSet;
+    }
+
+    /**
+     *
+     * @return ProtocolSet $protocolSet
+     */
+    public function getProtocolSet()
+    {
+        return $this->protocolSet;
     }
 
 }

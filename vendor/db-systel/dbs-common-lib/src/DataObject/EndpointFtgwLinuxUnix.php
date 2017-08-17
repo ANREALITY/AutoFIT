@@ -46,15 +46,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return string $username
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     *
      * @param string $username
      */
     public function setUsername($username)
@@ -64,11 +55,11 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return string $folder
+     * @return string $username
      */
-    public function getFolder()
+    public function getUsername()
     {
-        return $this->folder;
+        return $this->username;
     }
 
     /**
@@ -82,11 +73,11 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return string $transmissionType
+     * @return string $folder
      */
-    public function getTransmissionType()
+    public function getFolder()
     {
-        return $this->transmissionType;
+        return $this->folder;
     }
 
     /**
@@ -100,11 +91,11 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return string $transmissionInterval
+     * @return string $transmissionType
      */
-    public function getTransmissionInterval()
+    public function getTransmissionType()
     {
-        return $this->transmissionInterval;
+        return $this->transmissionType;
     }
 
     /**
@@ -118,11 +109,11 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return IncludeParameterSet $includeParameterSet
+     * @return string $transmissionInterval
      */
-    public function getIncludeParameterSet()
+    public function getTransmissionInterval()
     {
-        return $this->includeParameterSet;
+        return $this->transmissionInterval;
     }
 
     /**
@@ -136,11 +127,11 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
 
     /**
      *
-     * @return EndpointClusterConfig $endpointClusterConfig
+     * @return IncludeParameterSet $includeParameterSet
      */
-    public function getEndpointClusterConfig()
+    public function getIncludeParameterSet()
     {
-        return $this->endpointClusterConfig;
+        return $this->includeParameterSet;
     }
 
     /**
@@ -150,6 +141,15 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
     {
         $this->endpointClusterConfig = $endpointClusterConfig;
+    }
+
+    /**
+     *
+     * @return EndpointClusterConfig $endpointClusterConfig
+     */
+    public function getEndpointClusterConfig()
+    {
+        return $this->endpointClusterConfig;
     }
 
 }

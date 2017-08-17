@@ -30,15 +30,6 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -48,11 +39,11 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return string $dnsAddress
+     * @return integer $id
      */
-    public function getDnsAddress()
+    public function getId()
     {
-        return $this->dnsAddress;
+        return $this->id;
     }
 
     /**
@@ -66,11 +57,11 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return Server $server
+     * @return string $dnsAddress
      */
-    public function getServer()
+    public function getDnsAddress()
     {
-        return $this->server;
+        return $this->dnsAddress;
     }
 
     /**
@@ -84,11 +75,11 @@ class EndpointServerConfig extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpoint
+     * @return Server $server
      */
-    public function getEndpoint()
+    public function getServer()
     {
-        return $this->endpoint;
+        return $this->server;
     }
 
     /**
@@ -98,6 +89,15 @@ class EndpointServerConfig extends AbstractDataObject
     public function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
+    }
+
+    /**
+     *
+     * @return AbstractEndpoint $endpoint
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
     }
 
 }

@@ -22,15 +22,6 @@ class ProductType extends AbstractDataObject
 
     /**
      *
-     * @return string $name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     *
      * @param string $name
      */
     public function setName($name)
@@ -40,11 +31,11 @@ class ProductType extends AbstractDataObject
 
     /**
      *
-     * @return string $longName
+     * @return string $name
      */
-    public function getLongName()
+    public function getName()
     {
-        return $this->longName;
+        return $this->name;
     }
 
     /**
@@ -54,6 +45,15 @@ class ProductType extends AbstractDataObject
     public function setLongName($longName)
     {
         $this->longName = $longName;
+    }
+
+    /**
+     *
+     * @return string $longName
+     */
+    public function getLongName()
+    {
+        return $this->longName;
     }
 
 }

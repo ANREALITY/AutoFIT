@@ -24,15 +24,6 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -42,11 +33,11 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpoint
+     * @return integer $id
      */
-    public function getEndpoint()
+    public function getId()
     {
-        return $this->endpoint;
+        return $this->id;
     }
 
     /**
@@ -60,11 +51,11 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      *
-     * @return IncludeParameter[] $includeParameters
+     * @return AbstractEndpoint $endpoint
      */
-    public function getIncludeParameters()
+    public function getEndpoint()
     {
-        return $this->includeParameters;
+        return $this->endpoint;
     }
 
     /**
@@ -74,6 +65,15 @@ class IncludeParameterSet extends AbstractDataObject
     public function setIncludeParameters(array $includeParameters)
     {
         $this->includeParameters = $includeParameters;
+    }
+
+    /**
+     *
+     * @return IncludeParameter[] $includeParameters
+     */
+    public function getIncludeParameters()
+    {
+        return $this->includeParameters;
     }
 
 }

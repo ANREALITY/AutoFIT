@@ -42,15 +42,6 @@ class AccessConfig extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -60,11 +51,11 @@ class AccessConfig extends AbstractDataObject
 
     /**
      *
-     * @return string $username
+     * @return integer $id
      */
-    public function getUsername()
+    public function getId()
     {
-        return $this->username;
+        return $this->id;
     }
 
     /**
@@ -77,13 +68,13 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return bool $permissionRead
+     *
+     * @return string $username
      */
-    public function getPermissionRead()
+    public function getUsername()
     {
-        return $this->permissionRead;
+        return $this->username;
     }
-
 
     /**
      * @param boolean $permissionRead
@@ -93,15 +84,13 @@ class AccessConfig extends AbstractDataObject
         $this->permissionRead = $permissionRead;
     }
 
-
     /**
-     * @return bool $permissionWrite
+     * @return bool $permissionRead
      */
-    public function getPermissionWrite()
+    public function getPermissionRead()
     {
-        return $this->permissionWrite;
+        return $this->permissionRead;
     }
-
 
     /**
      * @param boolean $permissionWrite
@@ -111,15 +100,13 @@ class AccessConfig extends AbstractDataObject
         $this->permissionWrite = $permissionWrite;
     }
 
-
     /**
-     * @return bool $permissionDelete
+     * @return bool $permissionWrite
      */
-    public function getPermissionDelete()
+    public function getPermissionWrite()
     {
-        return $this->permissionDelete;
+        return $this->permissionWrite;
     }
-
 
     /**
      * @param boolean $permissionDelete
@@ -129,14 +116,12 @@ class AccessConfig extends AbstractDataObject
         $this->permissionDelete = $permissionDelete;
     }
 
-
     /**
-     *
-     * @return AccessConfigSet $accessConfigSet
+     * @return bool $permissionDelete
      */
-    public function getAccessConfigSet()
+    public function getPermissionDelete()
     {
-        return $this->accessConfigSet;
+        return $this->permissionDelete;
     }
 
     /**
@@ -146,6 +131,15 @@ class AccessConfig extends AbstractDataObject
     public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
     {
         $this->accessConfigSet = $accessConfigSet;
+    }
+
+    /**
+     *
+     * @return AccessConfigSet $accessConfigSet
+     */
+    public function getAccessConfigSet()
+    {
+        return $this->accessConfigSet;
     }
 
 }

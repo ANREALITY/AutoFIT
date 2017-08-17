@@ -24,15 +24,6 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -42,11 +33,11 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint $endpoint
+     * @return integer $id
      */
-    public function getEndpoint()
+    public function getId()
     {
-        return $this->endpoint;
+        return $this->id;
     }
 
     /**
@@ -60,11 +51,11 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      *
-     * @return AccessConfig[] $accessConfigs
+     * @return AbstractEndpoint $endpoint
      */
-    public function getAccessConfigs()
+    public function getEndpoint()
     {
-        return $this->accessConfigs;
+        return $this->endpoint;
     }
 
     /**
@@ -74,6 +65,15 @@ class AccessConfigSet extends AbstractDataObject
     public function setAccessConfigs(array $accessConfigs)
     {
         $this->accessConfigs = $accessConfigs;
+    }
+
+    /**
+     *
+     * @return AccessConfig[] $accessConfigs
+     */
+    public function getAccessConfigs()
+    {
+        return $this->accessConfigs;
     }
 
 }

@@ -34,15 +34,6 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -52,11 +43,11 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return string $username
+     * @return integer $id
      */
-    public function getUsername()
+    public function getId()
     {
-        return $this->username;
+        return $this->id;
     }
 
     /**
@@ -70,11 +61,11 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return string $role
+     * @return string $username
      */
-    public function getRole()
+    public function getUsername()
     {
-        return $this->role;
+        return $this->username;
     }
 
     /**
@@ -84,6 +75,15 @@ class User extends AbstractDataObject
     public function setRole($role)
     {
         $this->role = $role;
+    }
+
+    /**
+     *
+     * @return string $role
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
 }

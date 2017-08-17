@@ -36,15 +36,6 @@ class Article extends AbstractDataObject
 
     /**
      *
-     * @return string $sku
-     */
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     *
      * @param string $sku
      */
     public function setSku($sku)
@@ -54,11 +45,11 @@ class Article extends AbstractDataObject
 
     /**
      *
-     * @return string $description
+     * @return string $sku
      */
-    public function getDescription()
+    public function getSku()
     {
-        return $this->description;
+        return $this->sku;
     }
 
     /**
@@ -72,11 +63,11 @@ class Article extends AbstractDataObject
 
     /**
      *
-     * @return string $type
+     * @return string $description
      */
-    public function getType()
+    public function getDescription()
     {
-        return $this->type;
+        return $this->description;
     }
 
     /**
@@ -90,11 +81,11 @@ class Article extends AbstractDataObject
 
     /**
      *
-     * @return ProductType $productType
+     * @return string $type
      */
-    public function getProductType()
+    public function getType()
     {
-        return $this->productType;
+        return $this->type;
     }
 
     /**
@@ -104,6 +95,15 @@ class Article extends AbstractDataObject
     public function setProductType(ProductType $productType)
     {
         $this->productType = $productType;
+    }
+
+    /**
+     *
+     * @return ProductType $productType
+     */
+    public function getProductType()
+    {
+        return $this->productType;
     }
 
 }

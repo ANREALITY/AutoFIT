@@ -46,15 +46,6 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -64,11 +55,11 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return string $type
+     * @return integer $id
      */
-    public function getType()
+    public function getId()
     {
-        return $this->type;
+        return $this->id;
     }
 
     /**
@@ -82,11 +73,11 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return AbstractPhysicalConnection $physicalConnectionEndToEnd
+     * @return string $type
      */
-    public function getPhysicalConnectionEndToEnd()
+    public function getType()
     {
-        return $this->physicalConnectionEndToEnd;
+        return $this->type;
     }
 
     /**
@@ -100,11 +91,11 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return AbstractPhysicalConnection $physicalConnectionEndToMiddle
+     * @return AbstractPhysicalConnection $physicalConnectionEndToEnd
      */
-    public function getPhysicalConnectionEndToMiddle()
+    public function getPhysicalConnectionEndToEnd()
     {
-        return $this->physicalConnectionEndToMiddle;
+        return $this->physicalConnectionEndToEnd;
     }
 
     /**
@@ -118,11 +109,11 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return AbstractPhysicalConnection $physicalConnectionMiddleToEnd
+     * @return AbstractPhysicalConnection $physicalConnectionEndToMiddle
      */
-    public function getPhysicalConnectionMiddleToEnd()
+    public function getPhysicalConnectionEndToMiddle()
     {
-        return $this->physicalConnectionMiddleToEnd;
+        return $this->physicalConnectionEndToMiddle;
     }
 
     /**
@@ -136,11 +127,11 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return Notification[] $notifications
+     * @return AbstractPhysicalConnection $physicalConnectionMiddleToEnd
      */
-    public function getNotifications()
+    public function getPhysicalConnectionMiddleToEnd()
     {
-        return $this->notifications;
+        return $this->physicalConnectionMiddleToEnd;
     }
 
     /**
@@ -150,6 +141,15 @@ class LogicalConnection extends AbstractDataObject
     public function setNotifications($notifications)
     {
         $this->notifications = $notifications;
+    }
+
+    /**
+     *
+     * @return Notification[] $notifications
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 
 }

@@ -36,15 +36,6 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param int $id
      */
     public function setId($id)
@@ -54,11 +45,11 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return string $virtualNodeName
+     * @return integer $id
      */
-    public function getVirtualNodeName()
+    public function getId()
     {
-        return $this->virtualNodeName;
+        return $this->id;
     }
 
     /**
@@ -72,11 +63,11 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return Server[] $servers
+     * @return string $virtualNodeName
      */
-    public function getServers()
+    public function getVirtualNodeName()
     {
-        return $this->servers;
+        return $this->virtualNodeName;
     }
 
     /**
@@ -90,11 +81,11 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return AbstractEndpoint[] $endpoints
+     * @return Server[] $servers
      */
-    public function getEndpoints()
+    public function getServers()
     {
-        return $this->endpoints;
+        return $this->servers;
     }
 
     /**
@@ -108,11 +99,11 @@ class Cluster extends AbstractDataObject
 
     /**
      *
-     * @return EndpointClusterConfig[] $endpointClusterConfigs
+     * @return AbstractEndpoint[] $endpoints
      */
-    public function getEndpointClusterConfigs()
+    public function getEndpoints()
     {
-        return $this->endpointClusterConfigs;
+        return $this->endpoints;
     }
 
     /**
@@ -122,6 +113,15 @@ class Cluster extends AbstractDataObject
     public function setEndpointClusterConfigs(array $endpointClusterConfigs)
     {
         $this->endpointClusterConfigs = $endpointClusterConfigs;
+    }
+
+    /**
+     *
+     * @return EndpointClusterConfig[] $endpointClusterConfigs
+     */
+    public function getEndpointClusterConfigs()
+    {
+        return $this->endpointClusterConfigs;
     }
 
 }

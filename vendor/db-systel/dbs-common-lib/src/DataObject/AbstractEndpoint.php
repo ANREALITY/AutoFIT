@@ -98,15 +98,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -116,11 +107,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return string $role
+     * @return integer $id
      */
-    public function getRole()
+    public function getId()
     {
-        return $this->role;
+        return $this->id;
     }
 
     /**
@@ -134,11 +125,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return string $type
+     * @return string $role
      */
-    public function getType()
+    public function getRole()
     {
-        return $this->type;
+        return $this->role;
     }
 
     /**
@@ -152,11 +143,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return string $serverPlace
+     * @return string $type
      */
-    public function getServerPlace()
+    public function getType()
     {
-        return $this->serverPlace;
+        return $this->type;
     }
 
     /**
@@ -170,11 +161,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return string $contactPerson
+     * @return string $serverPlace
      */
-    public function getContactPerson()
+    public function getServerPlace()
     {
-        return $this->contactPerson;
+        return $this->serverPlace;
     }
 
     /**
@@ -188,11 +179,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return AbstractPhysicalConnection $physicalConnection
+     * @return string $contactPerson
      */
-    public function getPhysicalConnection()
+    public function getContactPerson()
     {
-        return $this->physicalConnection;
+        return $this->contactPerson;
     }
 
     /**
@@ -205,11 +196,12 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return ExternalServer $externalServer
+     *
+     * @return AbstractPhysicalConnection $physicalConnection
      */
-    public function getExternalServer()
+    public function getPhysicalConnection()
     {
-        return $this->externalServer;
+        return $this->physicalConnection;
     }
 
     /**
@@ -221,12 +213,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     *
-     * @return Application $application
+     * @return ExternalServer $externalServer
      */
-    public function getApplication()
+    public function getExternalServer()
     {
-        return $this->application;
+        return $this->externalServer;
     }
 
     /**
@@ -240,11 +231,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return Customer $customer
+     * @return Application $application
      */
-    public function getCustomer()
+    public function getApplication()
     {
-        return $this->customer;
+        return $this->application;
     }
 
     /**
@@ -258,11 +249,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return EndpointServerConfig $endpointServerConfig
+     * @return Customer $customer
      */
-    public function getEndpointServerConfig()
+    public function getCustomer()
     {
-        return $this->endpointServerConfig;
+        return $this->customer;
     }
 
     /**
@@ -272,6 +263,15 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
     {
         $this->endpointServerConfig = $endpointServerConfig;
+    }
+
+    /**
+     *
+     * @return EndpointServerConfig $endpointServerConfig
+     */
+    public function getEndpointServerConfig()
+    {
+        return $this->endpointServerConfig;
     }
 
 }

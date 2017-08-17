@@ -37,15 +37,6 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -55,11 +46,11 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return string $name
+     * @return integer $id
      */
-    public function getName()
+    public function getId()
     {
-        return $this->name;
+        return $this->id;
     }
 
     /**
@@ -73,11 +64,11 @@ class Protocol extends AbstractDataObject
 
     /**
      *
-     * @return ProtocolSet $protocolSet
+     * @return string $name
      */
-    public function getProtocolSet()
+    public function getName()
     {
-        return $this->protocolSet;
+        return $this->name;
     }
 
     /**
@@ -87,6 +78,15 @@ class Protocol extends AbstractDataObject
     public function setProtocolSet(ProtocolSet $protocolSet)
     {
         $this->protocolSet = $protocolSet;
+    }
+
+    /**
+     *
+     * @return ProtocolSet $protocolSet
+     */
+    public function getProtocolSet()
+    {
+        return $this->protocolSet;
     }
 
 }

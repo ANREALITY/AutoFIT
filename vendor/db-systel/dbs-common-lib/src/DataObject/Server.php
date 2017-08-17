@@ -52,15 +52,6 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return string $name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     *
      * @param string $name
      */
     public function setName($name)
@@ -70,11 +61,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return ServerType $serverType
+     * @return string $name
      */
-    public function getServerType()
+    public function getName()
     {
-        return $this->serverType;
+        return $this->name;
     }
 
     /**
@@ -88,11 +79,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return boolean $active
+     * @return ServerType $serverType
      */
-    public function getActive()
+    public function getServerType()
     {
-        return $this->active;
+        return $this->serverType;
     }
 
     /**
@@ -106,11 +97,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return Cluster $cluster
+     * @return boolean $active
      */
-    public function getCluster()
+    public function getActive()
     {
-        return $this->cluster;
+        return $this->active;
     }
 
     /**
@@ -124,11 +115,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return string $nodeName
+     * @return Cluster $cluster
      */
-    public function getNodeName()
+    public function getCluster()
     {
-        return $this->nodeName;
+        return $this->cluster;
     }
 
     /**
@@ -142,11 +133,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return string $virtualNodeName
+     * @return string $nodeName
      */
-    public function getVirtualNodeName()
+    public function getNodeName()
     {
-        return $this->virtualNodeName;
+        return $this->nodeName;
     }
 
     /**
@@ -160,11 +151,11 @@ class Server extends AbstractDataObject
 
     /**
      *
-     * @return EndpointServerConfig[] $endpointServerConfigs
+     * @return string $virtualNodeName
      */
-    public function getEndpointServerConfigs()
+    public function getVirtualNodeName()
     {
-        return $this->endpointServerConfigs;
+        return $this->virtualNodeName;
     }
 
     /**
@@ -174,6 +165,15 @@ class Server extends AbstractDataObject
     public function setEndpointServerConfigs(array $endpointServerConfigs)
     {
         $this->endpointServerConfigs = $endpointServerConfigs;
+    }
+
+    /**
+     *
+     * @return EndpointServerConfig[] $endpointServerConfigs
+     */
+    public function getEndpointServerConfigs()
+    {
+        return $this->endpointServerConfigs;
     }
 
 }

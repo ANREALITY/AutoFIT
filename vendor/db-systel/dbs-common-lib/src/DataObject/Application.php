@@ -24,15 +24,6 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return string $technicalShortName
-     */
-    public function getTechnicalShortName()
-    {
-        return $this->technicalShortName;
-    }
-
-    /**
-     *
      * @param string $technicalShortName
      */
     public function setTechnicalShortName($technicalShortName)
@@ -42,11 +33,11 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return string $technicalId
+     * @return string $technicalShortName
      */
-    public function getTechnicalId()
+    public function getTechnicalShortName()
     {
-        return $this->technicalId;
+        return $this->technicalShortName;
     }
 
     /**
@@ -60,11 +51,11 @@ class Application extends AbstractDataObject
 
     /**
      *
-     * @return boolean $active
+     * @return string $technicalId
      */
-    public function getActive()
+    public function getTechnicalId()
     {
-        return $this->active;
+        return $this->technicalId;
     }
 
     /**
@@ -74,6 +65,15 @@ class Application extends AbstractDataObject
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     *
+     * @return boolean $active
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 
 }

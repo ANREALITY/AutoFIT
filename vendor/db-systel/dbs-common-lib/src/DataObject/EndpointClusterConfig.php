@@ -24,15 +24,6 @@ class EndpointClusterConfig extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -42,11 +33,11 @@ class EndpointClusterConfig extends AbstractDataObject
 
     /**
      *
-     * @return string $dnsAddress
+     * @return integer $id
      */
-    public function getDnsAddress()
+    public function getId()
     {
-        return $this->dnsAddress;
+        return $this->id;
     }
 
     /**
@@ -60,11 +51,11 @@ class EndpointClusterConfig extends AbstractDataObject
 
     /**
      *
-     * @return Cluster $cluster
+     * @return string $dnsAddress
      */
-    public function getCluster()
+    public function getDnsAddress()
     {
-        return $this->cluster;
+        return $this->dnsAddress;
     }
 
     /**
@@ -74,6 +65,15 @@ class EndpointClusterConfig extends AbstractDataObject
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
+    }
+
+    /**
+     *
+     * @return Cluster $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
     }
 
 }

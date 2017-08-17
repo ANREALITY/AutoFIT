@@ -17,14 +17,6 @@ class ExternalServer extends AbstractDataObject
     protected $name;
 
     /**
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param number $id
      */
     public function setId($id)
@@ -33,12 +25,11 @@ class ExternalServer extends AbstractDataObject
     }
 
     /**
-     *
-     * @return string $name
+     * @return integer $id
      */
-    public function getName()
+    public function getId()
     {
-        return $this->name;
+        return $this->id;
     }
 
     /**
@@ -48,6 +39,15 @@ class ExternalServer extends AbstractDataObject
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
 }

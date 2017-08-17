@@ -46,15 +46,6 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -64,11 +55,11 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return string $filename
+     * @return integer $id
      */
-    public function getFilename()
+    public function getId()
     {
-        return $this->filename;
+        return $this->id;
     }
 
     /**
@@ -82,11 +73,11 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return integer $recordLength
+     * @return string $filename
      */
-    public function getRecordLength()
+    public function getFilename()
     {
-        return $this->recordLength;
+        return $this->filename;
     }
 
     /**
@@ -100,11 +91,11 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return string $blocking
+     * @return integer $recordLength
      */
-    public function getBlocking()
+    public function getRecordLength()
     {
-        return $this->blocking;
+        return $this->recordLength;
     }
 
     /**
@@ -118,11 +109,11 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return integer $blockSize
+     * @return string $blocking
      */
-    public function getBlockSize()
+    public function getBlocking()
     {
-        return $this->blockSize;
+        return $this->blocking;
     }
 
     /**
@@ -136,11 +127,11 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return FileParameterSet $fileParameterSet
+     * @return integer $blockSize
      */
-    public function getFileParameterSet()
+    public function getBlockSize()
     {
-        return $this->fileParameterSet;
+        return $this->blockSize;
     }
 
     /**
@@ -150,6 +141,15 @@ class FileParameter extends AbstractDataObject
     public function setFileParameterSet(FileParameterSet $fileParameterSet)
     {
         $this->fileParameterSet = $fileParameterSet;
+    }
+
+    /**
+     *
+     * @return FileParameterSet $fileParameterSet
+     */
+    public function getFileParameterSet()
+    {
+        return $this->fileParameterSet;
     }
 
 }

@@ -49,15 +49,6 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return string $number
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
-
-    /**
-     *
      * @param string $number
      */
     public function setNumber($number)
@@ -67,11 +58,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return string $orderQuantity
+     * @return string $number
      */
-    public function getOrderQuantity()
+    public function getNumber()
     {
-        return $this->orderQuantity;
+        return $this->number;
     }
 
     /**
@@ -85,11 +76,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return string $description
+     * @return string $orderQuantity
      */
-    public function getDescription()
+    public function getOrderQuantity()
     {
-        return $this->description;
+        return $this->orderQuantity;
     }
 
     /**
@@ -103,11 +94,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return string $status
+     * @return string $description
      */
-    public function getStatus()
+    public function getDescription()
     {
-        return $this->status;
+        return $this->description;
     }
 
     /**
@@ -121,11 +112,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return ServiceInvoice $serviceInvoice
+     * @return string $status
      */
-    public function getServiceInvoice()
+    public function getStatus()
     {
-        return $this->serviceInvoice;
+        return $this->status;
     }
 
     /**
@@ -139,11 +130,11 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      *
-     * @return Article $article
+     * @return ServiceInvoice $serviceInvoice
      */
-    public function getArticle()
+    public function getServiceInvoice()
     {
-        return $this->article;
+        return $this->serviceInvoice;
     }
 
     /**
@@ -153,6 +144,15 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setArticle($article)
     {
         $this->article = $article;
+    }
+
+    /**
+     *
+     * @return Article $article
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 
 }

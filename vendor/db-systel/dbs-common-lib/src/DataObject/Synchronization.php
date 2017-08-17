@@ -36,15 +36,6 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -54,11 +45,11 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return boolean $inProgress
+     * @return integer $id
      */
-    public function getInProgress()
+    public function getId()
     {
-        return $this->inProgress;
+        return $this->id;
     }
 
     /**
@@ -72,11 +63,11 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return string $type
+     * @return boolean $inProgress
      */
-    public function getType()
+    public function getInProgress()
     {
-        return $this->type;
+        return $this->inProgress;
     }
 
     /**
@@ -90,11 +81,11 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return integer $lastSync
+     * @return string $type
      */
-    public function getLastSync()
+    public function getType()
     {
-        return $this->lastSync;
+        return $this->type;
     }
 
     /**
@@ -104,6 +95,15 @@ class Synchronization extends AbstractDataObject
     public function setLastSync($lastSync)
     {
         $this->lastSync = $lastSync;
+    }
+
+    /**
+     *
+     * @return integer $lastSync
+     */
+    public function getLastSync()
+    {
+        return $this->lastSync;
     }
 
 }

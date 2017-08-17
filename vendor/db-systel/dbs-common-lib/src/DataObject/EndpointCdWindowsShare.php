@@ -40,15 +40,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return string $sharename
-     */
-    public function getSharename()
-    {
-        return $this->sharename;
-    }
-
-    /**
-     *
      * @param string $sharename
      */
     public function setSharename($sharename)
@@ -58,11 +49,11 @@ class EndpointCdWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return string $folder
+     * @return string $sharename
      */
-    public function getFolder()
+    public function getSharename()
     {
-        return $this->folder;
+        return $this->sharename;
     }
 
     /**
@@ -76,11 +67,11 @@ class EndpointCdWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return string $transmissionType
+     * @return string $folder
      */
-    public function getTransmissionType()
+    public function getFolder()
     {
-        return $this->transmissionType;
+        return $this->folder;
     }
 
     /**
@@ -94,11 +85,11 @@ class EndpointCdWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return IncludeParameterSet $includeParameterSet
+     * @return string $transmissionType
      */
-    public function getIncludeParameterSet()
+    public function getTransmissionType()
     {
-        return $this->includeParameterSet;
+        return $this->transmissionType;
     }
 
     /**
@@ -112,11 +103,11 @@ class EndpointCdWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return AccessConfigSet $accessConfigSet
+     * @return IncludeParameterSet $includeParameterSet
      */
-    public function getAccessConfigSet()
+    public function getIncludeParameterSet()
     {
-        return $this->accessConfigSet;
+        return $this->includeParameterSet;
     }
 
     /**
@@ -126,6 +117,15 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
     {
         $this->accessConfigSet = $accessConfigSet;
+    }
+
+    /**
+     *
+     * @return AccessConfigSet $accessConfigSet
+     */
+    public function getAccessConfigSet()
+    {
+        return $this->accessConfigSet;
     }
 
 }

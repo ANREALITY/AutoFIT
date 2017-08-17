@@ -30,15 +30,6 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return string $sharename
-     */
-    public function getSharename()
-    {
-        return $this->sharename;
-    }
-
-    /**
-     *
      * @param string $sharename
      */
     public function setSharename($sharename)
@@ -48,11 +39,11 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return string $folder
+     * @return string $sharename
      */
-    public function getFolder()
+    public function getSharename()
     {
-        return $this->folder;
+        return $this->sharename;
     }
 
     /**
@@ -66,11 +57,11 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return IncludeParameterSet $includeParameterSet
+     * @return string $folder
      */
-    public function getIncludeParameterSet()
+    public function getFolder()
     {
-        return $this->includeParameterSet;
+        return $this->folder;
     }
 
     /**
@@ -84,11 +75,11 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
 
     /**
      *
-     * @return AccessConfigSet $accessConfigSet
+     * @return IncludeParameterSet $includeParameterSet
      */
-    public function getAccessConfigSet()
+    public function getIncludeParameterSet()
     {
-        return $this->accessConfigSet;
+        return $this->includeParameterSet;
     }
 
     /**
@@ -98,6 +89,15 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
     {
         $this->accessConfigSet = $accessConfigSet;
+    }
+
+    /**
+     *
+     * @return AccessConfigSet $accessConfigSet
+     */
+    public function getAccessConfigSet()
+    {
+        return $this->accessConfigSet;
     }
 
 }

@@ -90,15 +90,6 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return integer $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     *
      * @param number $id
      */
     public function setId($id)
@@ -108,11 +99,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return string $resourceType
+     * @return integer $id
      */
-    public function getResourceType()
+    public function getId()
     {
-        return $this->resourceType;
+        return $this->id;
     }
 
     /**
@@ -126,11 +117,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return string $resourceId
+     * @return string $resourceType
      */
-    public function getResourceId()
+    public function getResourceType()
     {
-        return $this->resourceId;
+        return $this->resourceType;
     }
 
     /**
@@ -144,11 +135,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return string $action
+     * @return string $resourceId
      */
-    public function getAction()
+    public function getResourceId()
     {
-        return $this->action;
+        return $this->resourceId;
     }
 
     /**
@@ -162,11 +153,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return string $datetime
+     * @return string $action
      */
-    public function getDatetime()
+    public function getAction()
     {
-        return $this->datetime;
+        return $this->action;
     }
 
     /**
@@ -180,11 +171,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return User $user
+     * @return string $datetime
      */
-    public function getUser()
+    public function getDatetime()
     {
-        return $this->user;
+        return $this->datetime;
     }
 
     /**
@@ -198,11 +189,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return FileTransferRequest $fileTransferRequest
+     * @return User $user
      */
-    public function getFileTransferRequest()
+    public function getUser()
     {
-        return $this->fileTransferRequest;
+        return $this->user;
     }
 
     /**
@@ -216,11 +207,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return Server $server
+     * @return FileTransferRequest $fileTransferRequest
      */
-    public function getServer()
+    public function getFileTransferRequest()
     {
-        return $this->server;
+        return $this->fileTransferRequest;
     }
 
     /**
@@ -234,11 +225,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      *
-     * @return Cluster $cluster
+     * @return Server $server
      */
-    public function getCluster()
+    public function getServer()
     {
-        return $this->cluster;
+        return $this->server;
     }
 
     /**
@@ -248,6 +239,15 @@ class AuditLog extends AbstractDataObject
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
+    }
+
+    /**
+     *
+     * @return Cluster $cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
     }
 
 }

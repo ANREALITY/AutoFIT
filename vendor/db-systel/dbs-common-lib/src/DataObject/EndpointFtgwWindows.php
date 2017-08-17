@@ -18,15 +18,6 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
-     * @return string $folder
-     */
-    public function getFolder()
-    {
-        return $this->folder;
-    }
-
-    /**
-     *
      * @param string $folder
      */
     public function setFolder($folder)
@@ -36,11 +27,11 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      *
-     * @return IncludeParameterSet $includeParameterSet
+     * @return string $folder
      */
-    public function getIncludeParameterSet()
+    public function getFolder()
     {
-        return $this->includeParameterSet;
+        return $this->folder;
     }
 
     /**
@@ -50,6 +41,15 @@ class EndpointFtgwWindows extends AbstractEndpoint
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
     {
         $this->includeParameterSet = $includeParameterSet;
+    }
+
+    /**
+     *
+     * @return IncludeParameterSet $includeParameterSet
+     */
+    public function getIncludeParameterSet()
+    {
+        return $this->includeParameterSet;
     }
 
 }
