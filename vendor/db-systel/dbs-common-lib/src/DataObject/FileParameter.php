@@ -10,7 +10,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -22,7 +22,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $recordLength;
 
@@ -34,7 +34,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $blockSize;
 
@@ -46,7 +46,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {
@@ -82,7 +82,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return int $recordLength
+     * @return integer $recordLength
      */
     public function getRecordLength()
     {
@@ -118,7 +118,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      *
-     * @return int $blockSize
+     * @return integer $blockSize
      */
     public function getBlockSize()
     {

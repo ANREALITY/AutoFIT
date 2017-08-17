@@ -16,7 +16,7 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -34,7 +34,7 @@ class User extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {

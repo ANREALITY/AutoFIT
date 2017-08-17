@@ -38,7 +38,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -98,7 +98,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {

@@ -10,7 +10,7 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -46,7 +46,7 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {

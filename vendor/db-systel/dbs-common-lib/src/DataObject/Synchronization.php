@@ -12,7 +12,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -30,13 +30,13 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $lastSync;
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {
@@ -90,7 +90,7 @@ class Synchronization extends AbstractDataObject
 
     /**
      *
-     * @return int $lastSync
+     * @return integer $lastSync
      */
     public function getLastSync()
     {

@@ -85,6 +85,8 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
         $statement = $sql->prepareStatementForSqlObject($select);
         $result = $statement->execute();
         $data = $result->current();
+        // Decreases the total number of the connections by 1 less.
+        // $this->dbAdapter->getDriver()->getConnection()->disconnect();
         return $data;
     }
 

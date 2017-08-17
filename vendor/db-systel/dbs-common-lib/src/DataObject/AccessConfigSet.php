@@ -6,7 +6,7 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -24,7 +24,7 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {

@@ -12,7 +12,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -54,7 +54,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {

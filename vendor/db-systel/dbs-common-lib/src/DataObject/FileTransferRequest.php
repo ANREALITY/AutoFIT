@@ -20,7 +20,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @var int
+     * @var integer
      */
     protected $id;
 
@@ -80,7 +80,7 @@ class FileTransferRequest extends AbstractDataObject
 
     /**
      *
-     * @return int $id
+     * @return integer $id
      */
     public function getId()
     {
