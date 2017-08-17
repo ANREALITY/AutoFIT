@@ -13,31 +13,31 @@ class Cluster extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $virtualNodeName;
+    private $virtualNodeName;
 
     /**
      *
      * @var Server[]
      */
-    protected $servers;
+    private $servers;
 
     /**
      *
      * @var AbstractEndpoint[]
      */
-    protected $endpoints;
+    private $endpoints;
 
     /**
      *
      * @var EndpointClusterConfig[]
      */
-    protected $endpointClusterConfigs;
+    private $endpointClusterConfigs;
 
     /**
      *

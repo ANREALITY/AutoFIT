@@ -13,31 +13,31 @@ class Notification extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $email;
+    private $email;
 
     /**
      *
      * @var boolean
      */
-    protected $success;
+    private $success;
 
     /**
      *
      * @var boolean
      */
-    protected $failure;
+    private $failure;
 
     /**
      *
      * @var LogicalConnection
      */
-    protected $logicalConnection;
+    private $logicalConnection;
 
     /**
      *

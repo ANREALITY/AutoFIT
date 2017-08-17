@@ -13,19 +13,19 @@ class Environment extends AbstractDataObject
      *
      * @var integer
      */
-    protected $severity;
+    private $severity;
 
     /**
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *
      * @var string
      */
-    protected $shortName;
+    private $shortName;
 
     /**
      *

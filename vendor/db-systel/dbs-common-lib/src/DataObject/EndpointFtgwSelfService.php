@@ -19,25 +19,25 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      *
      * @var string
      */
-    protected $ftgwUsername;
+    private $ftgwUsername;
 
     /**
      *
      * @var string
      */
-    protected $mailbox;
+    private $mailbox;
 
     /**
      *
      * @var string
      */
-    protected $connectionType;
+    private $connectionType;
 
     /**
      *
      * @var ProtocolSet
      */
-    protected $protocolSet;
+    private $protocolSet;
 
     /**
      *

@@ -17,49 +17,49 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var string
      */
-    protected $transmissionType;
+    private $transmissionType;
 
     /**
      *
      * @var string
      */
-    protected $port;
+    private $port;
 
     /**
      *
      * @var string
      */
-    protected $ip;
+    private $ip;
 
     /**
      *
      * @var string
      */
-    protected $dnsAddress;
+    private $dnsAddress;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *
      * @var ProtocolSet
      */
-    protected $protocolSet;
+    private $protocolSet;
 
     /**
      *

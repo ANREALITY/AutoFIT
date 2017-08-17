@@ -17,37 +17,37 @@ class FileParameter extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $filename;
+    private $filename;
 
     /**
      *
      * @var integer
      */
-    protected $recordLength;
+    private $recordLength;
 
     /**
      *
      * @var string
      */
-    protected $blocking;
+    private $blocking;
 
     /**
      *
      * @var integer
      */
-    protected $blockSize;
+    private $blockSize;
 
     /**
      *
      * @var FileParameterSet
      */
-    protected $fileParameterSet;
+    private $fileParameterSet;
 
     /**
      *

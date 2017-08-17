@@ -13,19 +13,19 @@ class AccessConfigSet extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var AbstractEndpoint
      */
-    protected $endpoint;
+    private $endpoint;
 
     /**
      *
      * @var AccessConfig[]
      */
-    protected $accessConfigs;
+    private $accessConfigs;
 
     /**
      *

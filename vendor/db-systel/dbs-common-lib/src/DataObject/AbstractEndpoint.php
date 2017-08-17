@@ -45,61 +45,61 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $role;
+    private $role;
 
     /**
      *
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      *
      * @var string
      */
-    protected $serverPlace;
+    private $serverPlace;
 
     /**
      *
      * @var string
      */
-    protected $contactPerson;
+    private $contactPerson;
 
     /**
      *
      * @var AbstractPhysicalConnection
      */
-    protected $physicalConnection;
+    private $physicalConnection;
 
     /**
      *
      * @var ExternalServer
      */
-    protected $externalServer;
+    private $externalServer;
 
     /**
      *
      * @var Application
      */
-    protected $application;
+    private $application;
 
     /**
      *
      * @var Customer
      */
-    protected $customer;
+    private $customer;
 
     /**
      *
      * @var EndpointServerConfig
      */
-    protected $endpointServerConfig;
+    private $endpointServerConfig;
 
     /**
      *

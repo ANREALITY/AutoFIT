@@ -13,25 +13,25 @@ class EndpointServerConfig extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $dnsAddress;
+    private $dnsAddress;
 
     /**
      *
      * @var Server
      */
-    protected $server;
+    private $server;
 
     /**
      *
      * @var AbstractEndpoint
      */
-    protected $endpoint;
+    private $endpoint;
 
     /**
      *

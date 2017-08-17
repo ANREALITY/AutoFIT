@@ -17,19 +17,19 @@ class EndpointCdWindows extends AbstractEndpoint
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var string
      */
-    protected $transmissionType;
+    private $transmissionType;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *

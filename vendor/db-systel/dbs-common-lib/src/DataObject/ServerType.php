@@ -13,13 +13,13 @@ class ServerType extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *

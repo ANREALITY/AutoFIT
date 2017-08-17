@@ -13,25 +13,25 @@ class ServiceInvoice extends AbstractDataObject
      *
      * @var string
      */
-    protected $number;
+    private $number;
 
     /**
      *
      * @var string
      */
-    protected $description;
+    private $description;
 
     /**
      *
      * @var Application
      */
-    protected $application;
+    private $application;
 
     /**
      *
      * @var Environment
      */
-    protected $environment;
+    private $environment;
 
     /**
      *

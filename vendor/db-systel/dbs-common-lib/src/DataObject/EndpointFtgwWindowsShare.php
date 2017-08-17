@@ -13,25 +13,25 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
      *
      * @var string
      */
-    protected $sharename;
+    private $sharename;
 
     /**
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *
      * @var AccessConfigSet
      */
-    protected $accessConfigSet;
+    private $accessConfigSet;
 
     /**
      *

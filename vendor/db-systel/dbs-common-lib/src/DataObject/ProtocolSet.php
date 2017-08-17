@@ -13,19 +13,19 @@ class ProtocolSet extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var AbstractEndpoint
      */
-    protected $endpoint;
+    private $endpoint;
 
     /**
      *
      * @var Protocol[]
      */
-    protected $protocols;
+    private $protocols;
 
     /**
      *

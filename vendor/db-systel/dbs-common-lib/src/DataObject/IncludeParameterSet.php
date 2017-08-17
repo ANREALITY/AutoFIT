@@ -13,19 +13,19 @@ class IncludeParameterSet extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var AbstractEndpoint
      */
-    protected $endpoint;
+    private $endpoint;
 
     /**
      *
      * @var IncludeParameter[]
      */
-    protected $includeParameters;
+    private $includeParameters;
 
     /**
      *

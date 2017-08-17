@@ -17,37 +17,37 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var string
      */
-    protected $transmissionType;
+    private $transmissionType;
 
     /**
      *
      * @var string
      */
-    protected $transmissionInterval;
+    private $transmissionInterval;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *
      * @var EndpointClusterConfig
      */
-    protected $endpointClusterConfig;
+    private $endpointClusterConfig;
 
     /**
      *

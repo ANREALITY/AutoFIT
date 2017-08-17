@@ -13,13 +13,13 @@ class EndpointFtgwWindows extends AbstractEndpoint
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *

@@ -19,25 +19,25 @@ class Synchronization extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var boolean
      */
-    protected $inProgress;
+    private $inProgress;
 
     /**
      *
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      *
      * @var integer
      */
-    protected $lastSync;
+    private $lastSync;
 
     /**
      *

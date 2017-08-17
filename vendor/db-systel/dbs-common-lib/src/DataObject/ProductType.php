@@ -17,13 +17,13 @@ class ProductType extends AbstractDataObject
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *
      * @var string
      */
-    protected $longName;
+    private $longName;
 
     /**
      *

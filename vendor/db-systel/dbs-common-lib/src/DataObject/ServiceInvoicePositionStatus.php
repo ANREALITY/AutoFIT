@@ -13,7 +13,7 @@ class ServiceInvoicePositionStatus extends AbstractDataObject
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *

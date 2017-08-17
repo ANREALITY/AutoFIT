@@ -19,25 +19,25 @@ class Article extends AbstractDataObject
      *
      * @var string
      */
-    protected $sku;
+    private $sku;
 
     /**
      *
      * @var string
      */
-    protected $description;
+    private $description;
 
     /**
      *
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      *
      * @var ProductType
      */
-    protected $productType;
+    private $productType;
 
     /**
      *

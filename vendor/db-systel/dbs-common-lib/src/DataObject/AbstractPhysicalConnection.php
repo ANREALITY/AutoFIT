@@ -19,43 +19,43 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $role;
+    private $role;
 
     /**
      *
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      *
      * @var boolean
      */
-    protected $securePlus;
+    private $securePlus;
 
     /**
      *
      * @var LogicalConnection
      */
-    protected $logicalConnection;
+    private $logicalConnection;
 
     /**
      *
      * @var AbstractEndpoint @relationshipInversion
      */
-    protected $endpointSource;
+    private $endpointSource;
 
     /**
      *
      * @var AbstractEndpoint @relationshipInversion
      */
-    protected $endpointTarget;
+    private $endpointTarget;
 
     /**
      *

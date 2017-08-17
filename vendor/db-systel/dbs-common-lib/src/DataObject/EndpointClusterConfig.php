@@ -13,19 +13,19 @@ class EndpointClusterConfig extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $dnsAddress;
+    private $dnsAddress;
 
     /**
      *
      * @var Cluster
      */
-    protected $cluster;
+    private $cluster;
 
     /**
      *

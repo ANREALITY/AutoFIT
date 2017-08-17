@@ -17,43 +17,43 @@ class Server extends AbstractDataObject
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *
      * @var ServerType
      */
-    protected $serverType;
+    private $serverType;
 
     /**
      *
      * @var boolean
      */
-    protected $active;
+    private $active;
 
     /**
      *
      * @var string
      */
-    protected $nodeName;
+    private $nodeName;
 
     /**
      *
      * @var string
      */
-    protected $virtualNodeName;
+    private $virtualNodeName;
 
     /**
      *
      * @var Cluster
      */
-    protected $cluster;
+    private $cluster;
 
     /**
      *
      * @var EndpointServerConfig[]
      */
-    protected $endpointServerConfigs;
+    private $endpointServerConfigs;
 
     /**
      *

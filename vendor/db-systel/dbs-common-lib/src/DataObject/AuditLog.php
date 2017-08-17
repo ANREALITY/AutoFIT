@@ -43,55 +43,55 @@ class AuditLog extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $resourceType;
+    private $resourceType;
 
     /**
      *
      * @var string
      */
-    protected $resourceId;
+    private $resourceId;
 
     /**
      *
      * @var string
      */
-    protected $action;
+    private $action;
 
     /**
      *
      * @var string
      */
-    protected $datetime;
+    private $datetime;
 
     /**
      *
      * @var User
      */
-    protected $user;
+    private $user;
 
     /**
      *
      * @var FileTransferRequest
      */
-    protected $fileTransferRequest;
+    private $fileTransferRequest;
 
     /**
      *
      * @var Server
      */
-    protected $server;
+    private $server;
 
     /**
      *
      * @var Cluster
      */
-    protected $cluster;
+    private $cluster;
 
     /**
      *

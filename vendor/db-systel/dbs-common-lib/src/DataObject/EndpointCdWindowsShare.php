@@ -17,31 +17,31 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      *
      * @var string
      */
-    protected $sharename;
+    private $sharename;
 
     /**
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
      * @var string
      */
-    protected $transmissionType;
+    private $transmissionType;
 
     /**
      *
      * @var IncludeParameterSet
      */
-    protected $includeParameterSet;
+    private $includeParameterSet;
 
     /**
      *
      * @var AccessConfigSet
      */
-    protected $accessConfigSet;
+    private $accessConfigSet;
 
     /**
      *

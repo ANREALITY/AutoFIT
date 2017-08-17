@@ -23,19 +23,19 @@ class User extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var string
      */
-    protected $role;
+    private $role;
 
     /**
      *

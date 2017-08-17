@@ -17,37 +17,37 @@ class LogicalConnection extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $type;
+    private $type;
 
     /**
      *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnectionEndToEnd;
+    private $physicalConnectionEndToEnd;
 
     /**
      *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnectionEndToMiddle;
+    private $physicalConnectionEndToMiddle;
 
     /**
      *
      * @var AbstractPhysicalConnection @relationshipInversion
      */
-    protected $physicalConnectionMiddleToEnd;
+    private $physicalConnectionMiddleToEnd;
 
     /**
      *
      * @var Notification[]
      */
-    protected $notifications;
+    private $notifications;
 
     /**
      *

@@ -13,19 +13,19 @@ class Application extends AbstractDataObject
      *
      * @var string
      */
-    protected $technicalShortName;
+    private $technicalShortName;
 
     /**
      *
      * @var string
      */
-    protected $technicalId;
+    private $technicalId;
 
     /**
      *
      * @var boolean
      */
-    protected $active;
+    private $active;
 
     /**
      *

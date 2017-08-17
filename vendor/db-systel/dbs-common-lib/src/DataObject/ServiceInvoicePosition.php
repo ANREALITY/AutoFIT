@@ -20,37 +20,37 @@ class ServiceInvoicePosition extends AbstractDataObject
      *
      * @var string
      */
-    protected $number;
+    private $number;
 
     /**
      *
      * @var string
      */
-    protected $orderQuantity;
+    private $orderQuantity;
 
     /**
      *
      * @var string
      */
-    protected $description;
+    private $description;
 
     /**
      *
      * @var string
      */
-    protected $status;
+    private $status;
 
     /**
      *
      * @var ServiceInvoice
      */
-    protected $serviceInvoice;
+    private $serviceInvoice;
 
     /**
      *
      * @var Article
      */
-    protected $article;
+    private $article;
 
     /**
      *

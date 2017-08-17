@@ -13,13 +13,13 @@ class EndpointCdZos extends AbstractEndpoint
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var FileParameterSet
      */
-    protected $fileParameterSet;
+    private $fileParameterSet;
 
     /**
      *

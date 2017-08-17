@@ -26,19 +26,19 @@ class Protocol extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      *
      * @var ProtocolSet
      */
-    protected $protocolSet;
+    private $protocolSet;
 
     /**
      *

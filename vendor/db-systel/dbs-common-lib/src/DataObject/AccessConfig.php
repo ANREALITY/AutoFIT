@@ -13,37 +13,37 @@ class AccessConfig extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var bool
      */
-    protected $permissionRead;
+    private $permissionRead;
 
     /**
      *
      * @var bool
      */
-    protected $permissionWrite;
+    private $permissionWrite;
 
     /**
      *
      * @var bool
      */
-    protected $permissionDelete;
+    private $permissionDelete;
 
     /**
      *
      * @var AccessConfigSet
      */
-    protected $accessConfigSet;
+    private $accessConfigSet;
 
     /**
      *

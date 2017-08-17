@@ -27,61 +27,61 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
      *
      * @var string
      */
-    protected $changeNumber;
+    private $changeNumber;
 
     /**
      *
      * @var string
      */
-    protected $status;
+    private $status;
 
     /**
      *
      * @var string
      */
-    protected $comment;
+    private $comment;
 
     /**
      *
      * @var string
      */
-    protected $created;
+    private $created;
 
     /**
      *
      * @var string
      */
-    protected $updated;
+    private $updated;
 
     /**
      *
      * @var LogicalConnection
      */
-    protected $logicalConnection;
+    private $logicalConnection;
 
     /**
      *
      * @var ServiceInvoicePosition
      */
-    protected $serviceInvoicePositionBasic;
+    private $serviceInvoicePositionBasic;
 
     /**
      *
      * @var ServiceInvoicePosition
      */
-    protected $serviceInvoicePositionPersonal;
+    private $serviceInvoicePositionPersonal;
 
     /**
      *
      * @var User
      */
-    protected $user;
+    private $user;
 
     /**
      *

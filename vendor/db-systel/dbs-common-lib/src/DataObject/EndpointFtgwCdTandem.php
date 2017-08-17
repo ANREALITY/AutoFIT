@@ -13,13 +13,13 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
      *
      * @var string
      */
-    protected $username;
+    private $username;
 
     /**
      *
      * @var string
      */
-    protected $folder;
+    private $folder;
 
     /**
      *
