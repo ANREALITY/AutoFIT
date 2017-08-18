@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="physical_connection_ftgw_end_to_middle")
  * @ORM\Entity
  */
-class PhysicalConnectionFtgwEndToMiddle extends AbstractDataObject
+class PhysicalConnectionFtgwEndToMiddle extends AbstractPhysicalConnection
 {
 
     /**
