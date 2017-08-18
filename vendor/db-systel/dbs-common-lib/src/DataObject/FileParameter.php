@@ -45,6 +45,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return FileParameter
      */
     public function setId($id)
@@ -64,6 +65,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param string $filename
+     *
      * @return FileParameter
      */
     public function setFilename($filename)
@@ -83,6 +85,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param integer $recordLength
+     *
      * @return FileParameter
      */
     public function setRecordLength($recordLength)
@@ -102,6 +105,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param string $blocking
+     *
      * @return FileParameter
      */
     public function setBlocking($blocking)
@@ -121,6 +125,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param integer $blockSize
+     *
      * @return FileParameter
      */
     public function setBlockSize($blockSize)
@@ -140,6 +145,7 @@ class FileParameter extends AbstractDataObject
 
     /**
      * @param FileParameterSet $fileParameterSet
+     *
      * @return FileParameter
      */
     public function setFileParameterSet(FileParameterSet $fileParameterSet)

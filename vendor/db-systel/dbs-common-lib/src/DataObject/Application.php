@@ -31,6 +31,7 @@ class Application extends AbstractDataObject
 
     /**
      * @param string $technicalShortName
+     *
      * @return Application
      */
     public function setTechnicalShortName($technicalShortName)
@@ -50,6 +51,7 @@ class Application extends AbstractDataObject
 
     /**
      * @param string $technicalId
+     *
      * @return Application
      */
     public function setTechnicalId($technicalId)
@@ -69,6 +71,7 @@ class Application extends AbstractDataObject
 
     /**
      * @param boolean $active
+     *
      * @return Application
      */
     public function setActive($active)
@@ -88,6 +91,7 @@ class Application extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return Application
      */
     public function setUpdated($updated)

@@ -21,6 +21,7 @@ class ServerType extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return ServerType
      */
     public function setId($id)
@@ -40,6 +41,7 @@ class ServerType extends AbstractDataObject
 
     /**
      * @param string $name
+     *
      * @return ServerType
      */
     public function setName($name)

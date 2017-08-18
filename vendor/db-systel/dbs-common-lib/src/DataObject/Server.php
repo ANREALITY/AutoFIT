@@ -55,6 +55,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param string $name
+     *
      * @return Server
      */
     public function setName($name)
@@ -74,6 +75,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param ServerType $serverType
+     *
      * @return Server
      */
     public function setServerType($serverType)
@@ -93,6 +95,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param boolean $active
+     *
      * @return Server
      */
     public function setActive($active)
@@ -112,6 +115,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return Server
      */
     public function setUpdated($updated)
@@ -131,6 +135,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param Cluster $cluster
+     *
      * @return Server
      */
     public function setCluster(Cluster $cluster)
@@ -150,6 +155,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param string $nodeName
+     *
      * @return Server
      */
     public function setNodeName($nodeName)
@@ -169,6 +175,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param string $virtualNodeName
+     *
      * @return Server
      */
     public function setVirtualNodeName($virtualNodeName)
@@ -188,6 +195,7 @@ class Server extends AbstractDataObject
 
     /**
      * @param EndpointServerConfig[] $endpointServerConfigs
+     *
      * @return Server
      */
     public function setEndpointServerConfigs(array $endpointServerConfigs)

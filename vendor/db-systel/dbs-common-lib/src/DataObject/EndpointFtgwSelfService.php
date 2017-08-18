@@ -37,6 +37,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      * @param string $ftgwUsername
+     *
      * @return EndpointFtgwSelfService
      */
     public function setFtgwUsername($ftgwUsername)
@@ -56,6 +57,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      * @param string $mailbox
+     *
      * @return EndpointFtgwSelfService
      */
     public function setMailbox($mailbox)
@@ -75,6 +77,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      * @param string $connectionType
+     *
      * @return EndpointFtgwSelfService
      */
     public function setConnectionType($connectionType)
@@ -94,6 +97,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
 
     /**
      * @param ProtocolSet $protocolSet
+     *
      * @return EndpointFtgwSelfService
      */
     public function setProtocolSet(ProtocolSet $protocolSet)

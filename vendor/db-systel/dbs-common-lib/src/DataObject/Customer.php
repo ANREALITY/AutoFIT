@@ -31,6 +31,7 @@ class Customer extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return Customer
      */
     public function setId($id)
@@ -50,6 +51,7 @@ class Customer extends AbstractDataObject
 
     /**
      * @param string $name
+     *
      * @return Customer
      */
     public function setName($name)
@@ -69,6 +71,7 @@ class Customer extends AbstractDataObject
 
     /**
      * @param string $created
+     *
      * @return Customer
      */
     public function setCreated($created)
@@ -88,6 +91,7 @@ class Customer extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return Customer
      */
     public function setUpdated($updated)

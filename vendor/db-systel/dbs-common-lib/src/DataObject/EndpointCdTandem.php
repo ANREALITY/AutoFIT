@@ -21,6 +21,7 @@ class EndpointCdTandem extends AbstractEndpoint
 
     /**
      * @param string $username
+     *
      * @return EndpointCdTandem
      */
     public function setUsername($username)
@@ -40,6 +41,7 @@ class EndpointCdTandem extends AbstractEndpoint
 
     /**
      * @param string $folder
+     *
      * @return EndpointCdTandem
      */
     public function setFolder($folder)

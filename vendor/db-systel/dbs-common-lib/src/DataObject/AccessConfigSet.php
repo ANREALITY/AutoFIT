@@ -26,6 +26,7 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return AccessConfigSet
      */
     public function setId($id)
@@ -45,6 +46,7 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      * @param AbstractEndpoint $endpoint
+     *
      * @return AccessConfigSet
      */
     public function setEndpoint(AbstractEndpoint $endpoint)
@@ -64,6 +66,7 @@ class AccessConfigSet extends AbstractDataObject
 
     /**
      * @param AccessConfig[] $accessConfigs
+     *
      * @return AccessConfigSet
      */
     public function setAccessConfigs(array $accessConfigs)

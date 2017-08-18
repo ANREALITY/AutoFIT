@@ -26,6 +26,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return IncludeParameterSet
      */
     public function setId($id)
@@ -45,6 +46,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      * @param AbstractEndpoint $endpoint
+     *
      * @return IncludeParameterSet
      */
     public function setEndpoint(AbstractEndpoint $endpoint)
@@ -64,6 +66,7 @@ class IncludeParameterSet extends AbstractDataObject
 
     /**
      * @param IncludeParameter[] $includeParameters
+     *
      * @return IncludeParameterSet
      */
     public function setIncludeParameters(array $includeParameters)

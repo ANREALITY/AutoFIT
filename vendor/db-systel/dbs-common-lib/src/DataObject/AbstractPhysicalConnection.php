@@ -62,6 +62,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return AbstractPhysicalConnection
      */
     public function setId($id)
@@ -81,6 +82,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param string $role
+     *
      * @return AbstractPhysicalConnection
      */
     public function setRole($role)
@@ -100,6 +102,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param string $type
+     *
      * @return AbstractPhysicalConnection
      */
     public function setType($type)
@@ -119,6 +122,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param boolean $securePlus
+     *
      * @return AbstractPhysicalConnection
      */
     public function setSecurePlus($securePlus)
@@ -138,6 +142,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param string $created
+     *
      * @return AbstractPhysicalConnection
      */
     public function setCreated($created)
@@ -157,6 +162,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return AbstractPhysicalConnection
      */
     public function setUpdated($updated)
@@ -176,6 +182,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param LogicalConnection $logicalConnection
+     *
      * @return AbstractPhysicalConnection
      */
     public function setLogicalConnection(LogicalConnection $logicalConnection)
@@ -195,6 +202,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param AbstractEndpoint $endpointSource
+     *
      * @return AbstractPhysicalConnection
      */
     public function setEndpointSource($endpointSource)
@@ -214,6 +222,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @param AbstractEndpoint $endpointTarget
+     *
      * @return AbstractPhysicalConnection
      */
     public function setEndpointTarget($endpointTarget)

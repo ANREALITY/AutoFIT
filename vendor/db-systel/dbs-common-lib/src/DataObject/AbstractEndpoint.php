@@ -103,6 +103,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return AbstractEndpoint
      */
     public function setId($id)
@@ -122,6 +123,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $role
+     *
      * @return AbstractEndpoint
      */
     public function setRole($role)
@@ -141,6 +143,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $type
+     *
      * @return AbstractEndpoint
      */
     public function setType($type)
@@ -160,6 +163,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $serverPlace
+     *
      * @return AbstractEndpoint
      */
     public function setServerPlace($serverPlace)
@@ -179,6 +183,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $contactPerson
+     *
      * @return AbstractEndpoint
      */
     public function setContactPerson($contactPerson)
@@ -198,6 +203,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $created
+     *
      * @return AbstractEndpoint
      */
     public function setCreated($created)
@@ -217,6 +223,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return AbstractEndpoint
      */
     public function setUpdated($updated)
@@ -236,6 +243,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param AbstractPhysicalConnection $physicalConnection
+     *
      * @return AbstractEndpoint
      */
     public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
@@ -255,6 +263,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param ExternalServer $externalServer
+     *
      * @return AbstractEndpoint
      */
     public function setExternalServer(ExternalServer $externalServer)
@@ -274,6 +283,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param Application $application
+     *
      * @return AbstractEndpoint
      */
     public function setApplication(Application $application)
@@ -293,6 +303,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param Customer $customer
+     *
      * @return AbstractEndpoint
      */
     public function setCustomer(Customer $customer)
@@ -312,6 +323,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @param EndpointServerConfig $endpointServerConfig
+     *
      * @return AbstractEndpoint
      */
     public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig)

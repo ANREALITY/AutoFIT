@@ -21,6 +21,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      * @param string $folder
+     *
      * @return EndpointFtgwWindows
      */
     public function setFolder($folder)
@@ -40,6 +41,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
 
     /**
      * @param IncludeParameterSet $includeParameterSet
+     *
      * @return EndpointFtgwWindows
      */
     public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)

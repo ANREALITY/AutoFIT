@@ -46,6 +46,7 @@ class User extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return User
      */
     public function setId($id)
@@ -65,6 +66,7 @@ class User extends AbstractDataObject
 
     /**
      * @param string $username
+     *
      * @return User
      */
     public function setUsername($username)
@@ -84,6 +86,7 @@ class User extends AbstractDataObject
 
     /**
      * @param boolean $role
+     *
      * @return User
      */
     public function setRole($role)
@@ -104,6 +107,7 @@ class User extends AbstractDataObject
 
     /**
      * @param string $created
+     *
      * @return User
      */
     public function setCreated($created)
@@ -123,6 +127,7 @@ class User extends AbstractDataObject
 
     /**
      * @param string $updated
+     *
      * @return User
      */
     public function setUpdated($updated)

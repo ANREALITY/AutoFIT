@@ -26,6 +26,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      * @param integer $id
+     *
      * @return ProtocolSet
      */
     public function setId($id)
@@ -45,6 +46,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      * @param AbstractEndpoint $endpoint
+     *
      * @return ProtocolSet
      */
     public function setEndpoint(AbstractEndpoint $endpoint)
@@ -64,6 +66,7 @@ class ProtocolSet extends AbstractDataObject
 
     /**
      * @param Protocol[] $protocols
+     *
      * @return ProtocolSet
      */
     public function setProtocols(array $protocols)
