@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointFtgwSelfService extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -155,4 +156,5 @@ class EndpointFtgwSelfService extends AbstractDataObject
     {
         return $this->protocolSet;
     }
+
 }

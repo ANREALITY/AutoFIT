@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AuditLog extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -167,4 +168,5 @@ class AuditLog extends AbstractDataObject
     {
         return $this->user;
     }
+
 }

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Synchronization extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -110,4 +111,5 @@ class Synchronization extends AbstractDataObject
     {
         return $this->lastSync;
     }
+
 }

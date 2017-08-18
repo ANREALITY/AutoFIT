@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Environment extends AbstractDataObject
 {
+
     /**
      * @var boolean
      *
@@ -83,4 +84,5 @@ class Environment extends AbstractDataObject
     {
         return $this->shortName;
     }
+
 }

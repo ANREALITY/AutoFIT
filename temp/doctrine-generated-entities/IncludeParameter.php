@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class IncludeParameter extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -86,4 +87,5 @@ class IncludeParameter extends AbstractDataObject
     {
         return $this->includeParameterSet;
     }
+
 }

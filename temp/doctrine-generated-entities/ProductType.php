@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductType extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -56,4 +57,5 @@ class ProductType extends AbstractDataObject
     {
         return $this->longName;
     }
+
 }

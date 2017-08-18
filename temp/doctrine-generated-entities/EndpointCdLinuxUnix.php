@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointCdLinuxUnix extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -212,4 +213,5 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     {
         return $this->includeParameterSet;
     }
+
 }

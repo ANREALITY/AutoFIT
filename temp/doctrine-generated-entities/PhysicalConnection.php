@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PhysicalConnection extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -194,4 +195,5 @@ class PhysicalConnection extends AbstractDataObject
     {
         return $this->logicalConnection;
     }
+
 }

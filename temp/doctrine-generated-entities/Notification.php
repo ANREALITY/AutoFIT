@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Notification extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -140,4 +141,5 @@ class Notification extends AbstractDataObject
     {
         return $this->logicalConnection;
     }
+
 }

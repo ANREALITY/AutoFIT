@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointClusterConfig extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -86,4 +87,5 @@ class EndpointClusterConfig extends AbstractDataObject
     {
         return $this->cluster;
     }
+
 }

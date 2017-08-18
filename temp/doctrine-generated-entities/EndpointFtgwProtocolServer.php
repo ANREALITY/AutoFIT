@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointFtgwProtocolServer extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -266,4 +267,5 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     {
         return $this->protocolSet;
     }
+
 }

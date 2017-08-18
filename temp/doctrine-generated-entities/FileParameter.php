@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FileParameter extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -167,4 +168,5 @@ class FileParameter extends AbstractDataObject
     {
         return $this->fileParameterSet;
     }
+
 }

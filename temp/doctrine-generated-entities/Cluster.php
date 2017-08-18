@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Cluster extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -56,4 +57,5 @@ class Cluster extends AbstractDataObject
     {
         return $this->virtualNodeName;
     }
+
 }

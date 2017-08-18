@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointServerConfig extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -86,4 +87,5 @@ class EndpointServerConfig extends AbstractDataObject
     {
         return $this->serverName;
     }
+
 }

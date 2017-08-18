@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PhysicalConnectionCd extends AbstractDataObject
 {
+
     /**
      * @var boolean
      *
@@ -71,4 +72,5 @@ class PhysicalConnectionCd extends AbstractDataObject
     {
         return $this->physicalConnection;
     }
+
 }

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointCdZos extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -101,4 +102,5 @@ class EndpointCdZos extends AbstractDataObject
     {
         return $this->fileParameterSet;
     }
+
 }

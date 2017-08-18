@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -137,4 +138,5 @@ class User extends AbstractDataObject
     {
         return $this->updated;
     }
+
 }

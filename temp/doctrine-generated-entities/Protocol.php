@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Protocol extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -86,4 +87,5 @@ class Protocol extends AbstractDataObject
     {
         return $this->protocolSet;
     }
+
 }

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointCdWindowsShare extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -185,4 +186,5 @@ class EndpointCdWindowsShare extends AbstractDataObject
     {
         return $this->includeParameterSet;
     }
+
 }

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Application extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -110,4 +111,5 @@ class Application extends AbstractDataObject
     {
         return $this->updated;
     }
+
 }

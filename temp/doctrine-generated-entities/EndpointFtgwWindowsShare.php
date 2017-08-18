@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointFtgwWindowsShare extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -158,4 +159,5 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     {
         return $this->includeParameterSet;
     }
+
 }

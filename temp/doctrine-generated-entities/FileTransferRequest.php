@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FileTransferRequest extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -284,4 +285,5 @@ class FileTransferRequest extends AbstractDataObject
     {
         return $this->user;
     }
+
 }

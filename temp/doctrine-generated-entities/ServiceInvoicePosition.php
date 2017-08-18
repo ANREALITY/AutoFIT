@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ServiceInvoicePosition extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -197,4 +198,5 @@ class ServiceInvoicePosition extends AbstractDataObject
     {
         return $this->serviceInvoiceNumber;
     }
+
 }

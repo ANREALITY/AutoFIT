@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ServerType extends AbstractDataObject
 {
+
     /**
      * @var boolean
      *
@@ -110,4 +111,5 @@ class ServerType extends AbstractDataObject
     {
         return $this->endpointType;
     }
+
 }

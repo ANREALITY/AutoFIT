@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ExternalServer extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -56,4 +57,5 @@ class ExternalServer extends AbstractDataObject
     {
         return $this->name;
     }
+
 }

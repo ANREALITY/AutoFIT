@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ServiceInvoice extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -116,4 +117,5 @@ class ServiceInvoice extends AbstractDataObject
     {
         return $this->environmentSeverity;
     }
+
 }

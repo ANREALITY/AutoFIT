@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EndpointFtgwCdTandem extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -98,4 +99,5 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     {
         return $this->endpoint;
     }
+
 }

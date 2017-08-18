@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Server extends AbstractDataObject
 {
+
     /**
      * @var string
      *
@@ -197,4 +198,5 @@ class Server extends AbstractDataObject
     {
         return $this->serverType;
     }
+
 }

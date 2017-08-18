@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Endpoint extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -341,4 +342,5 @@ class Endpoint extends AbstractDataObject
     {
         return $this->physicalConnection;
     }
+
 }

@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AccessConfigSet extends AbstractDataObject
 {
+
     /**
      * @var integer
      *
@@ -29,4 +30,5 @@ class AccessConfigSet extends AbstractDataObject
     {
         return $this->id;
     }
+
 }
