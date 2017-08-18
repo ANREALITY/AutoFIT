@@ -107,7 +107,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -126,7 +126,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return AccessConfigSet $accessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {

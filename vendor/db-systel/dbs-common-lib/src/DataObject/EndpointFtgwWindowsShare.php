@@ -79,7 +79,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -98,7 +98,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @return AccessConfigSet $accessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {

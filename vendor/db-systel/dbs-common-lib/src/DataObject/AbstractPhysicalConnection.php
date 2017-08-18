@@ -62,7 +62,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -119,7 +119,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return boolean $securePlus
+     * @return boolean
      */
     public function getSecurePlus()
     {
@@ -138,7 +138,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return LogicalConnection $logicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {
@@ -157,7 +157,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return AbstractEndpoint $endpointSource
+     * @return AbstractEndpoint
      */
     public function getEndpointSource()
     {
@@ -176,7 +176,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return AbstractEndpoint $endpointTarget
+     * @return AbstractEndpoint
      */
     public function getEndpointTarget()
     {

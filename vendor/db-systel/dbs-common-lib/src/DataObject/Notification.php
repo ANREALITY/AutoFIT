@@ -46,7 +46,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -84,7 +84,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return boolean $success
+     * @return boolean
      */
     public function getSuccess()
     {
@@ -103,7 +103,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return boolean $failure
+     * @return boolean
      */
     public function getFailure()
     {
@@ -122,7 +122,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return LogicalConnection $logicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {

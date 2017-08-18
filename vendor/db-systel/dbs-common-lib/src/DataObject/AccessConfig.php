@@ -51,7 +51,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -89,7 +89,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return boolean $permissionRead
+     * @return boolean
      */
     public function getPermissionRead()
     {
@@ -108,7 +108,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return boolean $permissionWrite
+     * @return boolean
      */
     public function getPermissionWrite()
     {
@@ -127,7 +127,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return boolean $permissionDelete
+     * @return boolean
      */
     public function getPermissionDelete()
     {
@@ -146,7 +146,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return AccessConfigSet $accessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {

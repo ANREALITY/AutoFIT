@@ -79,7 +79,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return Application $application
+     * @return Application
      */
     public function getApplication()
     {
@@ -98,7 +98,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return Environment $environment
+     * @return Environment
      */
     public function getEnvironment()
     {

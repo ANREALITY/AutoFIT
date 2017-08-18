@@ -50,7 +50,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
     }
 
     /**
-     * @return FileParameterSet $fileParameterSet
+     * @return FileParameterSet
      */
     public function getFileParameterSet()
     {

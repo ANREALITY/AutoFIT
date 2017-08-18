@@ -179,7 +179,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -198,7 +198,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     }
 
     /**
-     * @return ProtocolSet $protocolSet
+     * @return ProtocolSet
      */
     public function getProtocolSet()
     {

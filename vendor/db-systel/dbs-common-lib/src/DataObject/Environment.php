@@ -36,7 +36,7 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * @return integer $severity
+     * @return integer
      */
     public function getSeverity()
     {

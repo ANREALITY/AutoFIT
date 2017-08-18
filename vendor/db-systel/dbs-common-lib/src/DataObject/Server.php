@@ -79,7 +79,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return ServerType $serverType
+     * @return ServerType
      */
     public function getServerType()
     {
@@ -98,7 +98,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return boolean $active
+     * @return boolean
      */
     public function getActive()
     {
@@ -117,7 +117,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return Cluster $cluster
+     * @return Cluster
      */
     public function getCluster()
     {

@@ -104,7 +104,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     }
 
     /**
-     * @return ProtocolSet $protocolSet
+     * @return ProtocolSet
      */
     public function getProtocolSet()
     {

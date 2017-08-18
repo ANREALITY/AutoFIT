@@ -50,7 +50,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

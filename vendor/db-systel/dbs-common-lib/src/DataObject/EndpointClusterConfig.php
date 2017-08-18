@@ -36,7 +36,7 @@ class EndpointClusterConfig extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +74,7 @@ class EndpointClusterConfig extends AbstractDataObject
     }
 
     /**
-     * @return Cluster $cluster
+     * @return Cluster
      */
     public function getCluster()
     {

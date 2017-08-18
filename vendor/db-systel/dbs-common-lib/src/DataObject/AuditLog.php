@@ -96,7 +96,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -191,7 +191,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return User $user
+     * @return User
      */
     public function getUser()
     {
@@ -210,7 +210,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return FileTransferRequest $fileTransferRequest
+     * @return FileTransferRequest
      */
     public function getFileTransferRequest()
     {
@@ -229,7 +229,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return Server $server
+     * @return Server
      */
     public function getServer()
     {
@@ -248,7 +248,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return Cluster $cluster
+     * @return Cluster
      */
     public function getCluster()
     {

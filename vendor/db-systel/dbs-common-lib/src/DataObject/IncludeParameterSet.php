@@ -36,7 +36,7 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +55,7 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     * @return AbstractEndpoint $endpoint
+     * @return AbstractEndpoint
      */
     public function getEndpoint()
     {

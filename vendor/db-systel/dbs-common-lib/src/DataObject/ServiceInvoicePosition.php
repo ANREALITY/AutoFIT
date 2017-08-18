@@ -133,7 +133,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return ServiceInvoice $serviceInvoice
+     * @return ServiceInvoice
      */
     public function getServiceInvoice()
     {
@@ -151,7 +151,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return Article $article
+     * @return Article
      */
     public function getArticle()
     {

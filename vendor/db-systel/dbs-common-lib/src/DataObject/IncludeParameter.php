@@ -36,7 +36,7 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +74,7 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

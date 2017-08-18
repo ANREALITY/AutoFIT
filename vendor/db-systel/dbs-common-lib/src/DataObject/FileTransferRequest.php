@@ -85,7 +85,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -199,7 +199,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return LogicalConnection $logicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {
@@ -218,7 +218,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return ServiceInvoicePosition $serviceInvoicePositionBasic
+     * @return ServiceInvoicePosition
      */
     public function getServiceInvoicePositionBasic()
     {
@@ -237,7 +237,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return ServiceInvoicePosition $serviceInvoicePositionPersonal
+     * @return ServiceInvoicePosition
      */
     public function getServiceInvoicePositionPersonal()
     {
@@ -256,7 +256,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return User $user
+     * @return User
      */
     public function getUser()
     {

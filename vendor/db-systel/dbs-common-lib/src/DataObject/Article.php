@@ -104,7 +104,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @return ProductType $productType
+     * @return ProductType
      */
     public function getProductType()
     {

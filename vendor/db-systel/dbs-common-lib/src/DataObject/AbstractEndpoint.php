@@ -103,7 +103,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -198,7 +198,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return AbstractPhysicalConnection $physicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function getPhysicalConnection()
     {
@@ -217,7 +217,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return ExternalServer $externalServer
+     * @return ExternalServer
      */
     public function getExternalServer()
     {
@@ -236,7 +236,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return Application $application
+     * @return Application
      */
     public function getApplication()
     {
@@ -255,7 +255,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return Customer $customer
+     * @return Customer
      */
     public function getCustomer()
     {
@@ -274,7 +274,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return EndpointServerConfig $endpointServerConfig
+     * @return EndpointServerConfig
      */
     public function getEndpointServerConfig()
     {

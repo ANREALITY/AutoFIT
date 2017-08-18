@@ -46,7 +46,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {

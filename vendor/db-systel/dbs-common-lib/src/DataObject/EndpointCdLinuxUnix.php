@@ -131,7 +131,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return IncludeParameterSet $includeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -150,7 +150,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @return EndpointClusterConfig $endpointClusterConfig
+     * @return EndpointClusterConfig
      */
     public function getEndpointClusterConfig()
     {

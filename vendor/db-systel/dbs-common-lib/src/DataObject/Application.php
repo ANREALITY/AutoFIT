@@ -74,7 +74,7 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * @return boolean $active
+     * @return boolean
      */
     public function getActive()
     {

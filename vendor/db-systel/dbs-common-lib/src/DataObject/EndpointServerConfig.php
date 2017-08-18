@@ -41,7 +41,7 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * @return integer $id
+     * @return integer
      */
     public function getId()
     {
@@ -79,7 +79,7 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * @return Server $server
+     * @return Server
      */
     public function getServer()
     {
@@ -98,7 +98,7 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * @return AbstractEndpoint $endpoint
+     * @return AbstractEndpoint
      */
     public function getEndpoint()
     {
