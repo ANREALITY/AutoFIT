@@ -153,7 +153,7 @@ class AccessConfig extends AbstractDataObject
      *
      * @return AccessConfig
      */
-    public function setAccessConfigSet(\AccessConfigSet $accessConfigSet = null)
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
     {
         $this->accessConfigSet = $accessConfigSet;
 

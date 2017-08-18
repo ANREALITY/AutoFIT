@@ -121,7 +121,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
      *
      * @return EndpointFtgwSelfService
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -141,7 +141,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
      *
      * @return EndpointFtgwSelfService
      */
-    public function setProtocolSet(\ProtocolSet $protocolSet = null)
+    public function setProtocolSet(ProtocolSet $protocolSet = null)
     {
         $this->protocolSet = $protocolSet;
 

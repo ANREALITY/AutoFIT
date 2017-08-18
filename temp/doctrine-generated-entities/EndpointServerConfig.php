@@ -72,7 +72,7 @@ class EndpointServerConfig extends AbstractDataObject
      *
      * @return EndpointServerConfig
      */
-    public function setServerName(\Server $serverName = null)
+    public function setServerName(Server $serverName = null)
     {
         $this->serverName = $serverName;
 

@@ -67,7 +67,7 @@ class EndpointFtgwWindows extends AbstractDataObject
      *
      * @return EndpointFtgwWindows
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -87,7 +87,7 @@ class EndpointFtgwWindows extends AbstractDataObject
      *
      * @return EndpointFtgwWindows
      */
-    public function setIncludeParameterSet(\IncludeParameterSet $includeParameterSet = null)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 

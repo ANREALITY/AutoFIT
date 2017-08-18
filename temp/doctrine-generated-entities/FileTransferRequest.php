@@ -210,7 +210,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setLogicalConnection(\LogicalConnection $logicalConnection = null)
+    public function setLogicalConnection(LogicalConnection $logicalConnection = null)
     {
         $this->logicalConnection = $logicalConnection;
 
@@ -230,7 +230,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionBasicNumber(\ServiceInvoicePosition $serviceInvoicePositionBasicNumber = null)
+    public function setServiceInvoicePositionBasicNumber(ServiceInvoicePosition $serviceInvoicePositionBasicNumber = null)
     {
         $this->serviceInvoicePositionBasicNumber = $serviceInvoicePositionBasicNumber;
 
@@ -250,7 +250,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionPersonalNumber(\ServiceInvoicePosition $serviceInvoicePositionPersonalNumber = null)
+    public function setServiceInvoicePositionPersonalNumber(ServiceInvoicePosition $serviceInvoicePositionPersonalNumber = null)
     {
         $this->serviceInvoicePositionPersonalNumber = $serviceInvoicePositionPersonalNumber;
 
@@ -270,7 +270,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setUser(\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 

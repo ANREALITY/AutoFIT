@@ -57,7 +57,7 @@ class PhysicalConnectionCd extends AbstractDataObject
      *
      * @return PhysicalConnectionCd
      */
-    public function setPhysicalConnection(\PhysicalConnection $physicalConnection)
+    public function setPhysicalConnection(PhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
 

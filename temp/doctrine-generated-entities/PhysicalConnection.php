@@ -180,7 +180,7 @@ class PhysicalConnection extends AbstractDataObject
      *
      * @return PhysicalConnection
      */
-    public function setLogicalConnection(\LogicalConnection $logicalConnection = null)
+    public function setLogicalConnection(LogicalConnection $logicalConnection = null)
     {
         $this->logicalConnection = $logicalConnection;
 

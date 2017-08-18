@@ -82,7 +82,7 @@ class ServiceInvoice extends AbstractDataObject
      *
      * @return ServiceInvoice
      */
-    public function setApplicationTechnicalShortName(\Application $applicationTechnicalShortName = null)
+    public function setApplicationTechnicalShortName(Application $applicationTechnicalShortName = null)
     {
         $this->applicationTechnicalShortName = $applicationTechnicalShortName;
 
@@ -102,7 +102,7 @@ class ServiceInvoice extends AbstractDataObject
      *
      * @return ServiceInvoice
      */
-    public function setEnvironmentSeverity(\Environment $environmentSeverity = null)
+    public function setEnvironmentSeverity(Environment $environmentSeverity = null)
     {
         $this->environmentSeverity = $environmentSeverity;
 

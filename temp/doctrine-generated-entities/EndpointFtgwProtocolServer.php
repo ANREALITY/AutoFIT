@@ -212,7 +212,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
      *
      * @return EndpointFtgwProtocolServer
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -232,7 +232,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
      *
      * @return EndpointFtgwProtocolServer
      */
-    public function setIncludeParameterSet(\IncludeParameterSet $includeParameterSet = null)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 
@@ -252,7 +252,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
      *
      * @return EndpointFtgwProtocolServer
      */
-    public function setProtocolSet(\ProtocolSet $protocolSet = null)
+    public function setProtocolSet(ProtocolSet $protocolSet = null)
     {
         $this->protocolSet = $protocolSet;
 

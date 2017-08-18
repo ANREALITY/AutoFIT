@@ -72,7 +72,7 @@ class EndpointClusterConfig extends AbstractDataObject
      *
      * @return EndpointClusterConfig
      */
-    public function setCluster(\Cluster $cluster = null)
+    public function setCluster(Cluster $cluster = null)
     {
         $this->cluster = $cluster;
 

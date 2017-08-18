@@ -99,7 +99,7 @@ class Article extends AbstractDataObject
      *
      * @return Article
      */
-    public function setProductTypeName(\ProductType $productTypeName = null)
+    public function setProductTypeName(ProductType $productTypeName = null)
     {
         $this->productTypeName = $productTypeName;
 

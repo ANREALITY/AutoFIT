@@ -163,7 +163,7 @@ class ServiceInvoicePosition extends AbstractDataObject
      *
      * @return ServiceInvoicePosition
      */
-    public function setArticleSku(\Article $articleSku = null)
+    public function setArticleSku(Article $articleSku = null)
     {
         $this->articleSku = $articleSku;
 
@@ -183,7 +183,7 @@ class ServiceInvoicePosition extends AbstractDataObject
      *
      * @return ServiceInvoicePosition
      */
-    public function setServiceInvoiceNumber(\ServiceInvoice $serviceInvoiceNumber = null)
+    public function setServiceInvoiceNumber(ServiceInvoice $serviceInvoiceNumber = null)
     {
         $this->serviceInvoiceNumber = $serviceInvoiceNumber;
 

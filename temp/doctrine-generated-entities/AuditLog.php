@@ -153,7 +153,7 @@ class AuditLog extends AbstractDataObject
      *
      * @return AuditLog
      */
-    public function setUser(\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 

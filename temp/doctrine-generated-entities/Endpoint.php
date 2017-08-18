@@ -247,7 +247,7 @@ class Endpoint extends AbstractDataObject
      *
      * @return Endpoint
      */
-    public function setApplicationTechnicalShortName(\Application $applicationTechnicalShortName = null)
+    public function setApplicationTechnicalShortName(Application $applicationTechnicalShortName = null)
     {
         $this->applicationTechnicalShortName = $applicationTechnicalShortName;
 
@@ -267,7 +267,7 @@ class Endpoint extends AbstractDataObject
      *
      * @return Endpoint
      */
-    public function setCustomer(\Customer $customer = null)
+    public function setCustomer(Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -287,7 +287,7 @@ class Endpoint extends AbstractDataObject
      *
      * @return Endpoint
      */
-    public function setEndpointServerConfig(\EndpointServerConfig $endpointServerConfig = null)
+    public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig = null)
     {
         $this->endpointServerConfig = $endpointServerConfig;
 
@@ -307,7 +307,7 @@ class Endpoint extends AbstractDataObject
      *
      * @return Endpoint
      */
-    public function setExternalServer(\ExternalServer $externalServer = null)
+    public function setExternalServer(ExternalServer $externalServer = null)
     {
         $this->externalServer = $externalServer;
 
@@ -327,7 +327,7 @@ class Endpoint extends AbstractDataObject
      *
      * @return Endpoint
      */
-    public function setPhysicalConnection(\PhysicalConnection $physicalConnection = null)
+    public function setPhysicalConnection(PhysicalConnection $physicalConnection = null)
     {
         $this->physicalConnection = $physicalConnection;
 

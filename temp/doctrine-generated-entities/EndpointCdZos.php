@@ -67,7 +67,7 @@ class EndpointCdZos extends AbstractDataObject
      *
      * @return EndpointCdZos
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -87,7 +87,7 @@ class EndpointCdZos extends AbstractDataObject
      *
      * @return EndpointCdZos
      */
-    public function setFileParameterSet(\FileParameterSet $fileParameterSet = null)
+    public function setFileParameterSet(FileParameterSet $fileParameterSet = null)
     {
         $this->fileParameterSet = $fileParameterSet;
 

@@ -131,7 +131,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
      *
      * @return EndpointCdWindowsShare
      */
-    public function setAccessConfigSet(\AccessConfigSet $accessConfigSet = null)
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
     {
         $this->accessConfigSet = $accessConfigSet;
 
@@ -151,7 +151,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
      *
      * @return EndpointCdWindowsShare
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -171,7 +171,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
      *
      * @return EndpointCdWindowsShare
      */
-    public function setIncludeParameterSet(\IncludeParameterSet $includeParameterSet = null)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 

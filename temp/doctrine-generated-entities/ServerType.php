@@ -86,7 +86,7 @@ class ServerType extends AbstractDataObject
      *
      * @return ServerType
      */
-    public function addEndpointType(\EndpointType $endpointType)
+    public function addEndpointType(EndpointType $endpointType)
     {
         $this->endpointType[] = $endpointType;
 
@@ -98,7 +98,7 @@ class ServerType extends AbstractDataObject
      *
      * @param EndpointType $endpointType
      */
-    public function removeEndpointType(\EndpointType $endpointType)
+    public function removeEndpointType(EndpointType $endpointType)
     {
         $this->endpointType->removeElement($endpointType);
     }

@@ -163,7 +163,7 @@ class Server extends AbstractDataObject
      *
      * @return Server
      */
-    public function setCluster(\Cluster $cluster = null)
+    public function setCluster(Cluster $cluster = null)
     {
         $this->cluster = $cluster;
 
@@ -183,7 +183,7 @@ class Server extends AbstractDataObject
      *
      * @return Server
      */
-    public function setServerType(\ServerType $serverType = null)
+    public function setServerType(ServerType $serverType = null)
     {
         $this->serverType = $serverType;
 

@@ -84,7 +84,7 @@ class EndpointFtgwCdTandem extends AbstractDataObject
      *
      * @return EndpointFtgwCdTandem
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 

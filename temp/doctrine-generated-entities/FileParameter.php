@@ -153,7 +153,7 @@ class FileParameter extends AbstractDataObject
      *
      * @return FileParameter
      */
-    public function setFileParameterSet(\FileParameterSet $fileParameterSet = null)
+    public function setFileParameterSet(FileParameterSet $fileParameterSet = null)
     {
         $this->fileParameterSet = $fileParameterSet;
 

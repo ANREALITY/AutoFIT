@@ -84,7 +84,7 @@ class EndpointCdTandem extends AbstractDataObject
      *
      * @return EndpointCdTandem
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 

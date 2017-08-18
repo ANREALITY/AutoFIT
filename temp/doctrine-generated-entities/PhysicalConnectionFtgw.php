@@ -30,7 +30,7 @@ class PhysicalConnectionFtgw extends AbstractDataObject
      *
      * @return PhysicalConnectionFtgw
      */
-    public function setPhysicalConnection(\PhysicalConnection $physicalConnection)
+    public function setPhysicalConnection(PhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
 

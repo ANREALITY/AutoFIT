@@ -84,7 +84,7 @@ class EndpointFtgwCdAs400 extends AbstractDataObject
      *
      * @return EndpointFtgwCdAs400
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 

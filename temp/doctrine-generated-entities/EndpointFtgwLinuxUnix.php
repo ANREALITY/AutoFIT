@@ -158,7 +158,7 @@ class EndpointFtgwLinuxUnix extends AbstractDataObject
      *
      * @return EndpointFtgwLinuxUnix
      */
-    public function setEndpoint(\Endpoint $endpoint)
+    public function setEndpoint(Endpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -178,7 +178,7 @@ class EndpointFtgwLinuxUnix extends AbstractDataObject
      *
      * @return EndpointFtgwLinuxUnix
      */
-    public function setEndpointClusterConfig(\EndpointClusterConfig $endpointClusterConfig = null)
+    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
     {
         $this->endpointClusterConfig = $endpointClusterConfig;
 
@@ -198,7 +198,7 @@ class EndpointFtgwLinuxUnix extends AbstractDataObject
      *
      * @return EndpointFtgwLinuxUnix
      */
-    public function setIncludeParameterSet(\IncludeParameterSet $includeParameterSet = null)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 

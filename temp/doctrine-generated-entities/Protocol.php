@@ -72,7 +72,7 @@ class Protocol extends AbstractDataObject
      *
      * @return Protocol
      */
-    public function setProtocolSet(\ProtocolSet $protocolSet = null)
+    public function setProtocolSet(ProtocolSet $protocolSet = null)
     {
         $this->protocolSet = $protocolSet;
 
