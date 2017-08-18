@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="file_parameter_set")
  * @ORM\Entity
  */
-class FileParameterSet
+class FileParameterSet extends AbstractDataObject
 {
     /**
      * @var integer

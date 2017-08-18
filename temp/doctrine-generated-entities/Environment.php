@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="environment")
  * @ORM\Entity
  */
-class Environment
+class Environment extends AbstractDataObject
 {
     /**
      * @var boolean

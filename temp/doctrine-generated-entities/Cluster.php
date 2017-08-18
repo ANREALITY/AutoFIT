@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cluster", uniqueConstraints={@ORM\UniqueConstraint(name="virtual_node_name_UNIQUE", columns={"virtual_node_name"})})
  * @ORM\Entity
  */
-class Cluster
+class Cluster extends AbstractDataObject
 {
     /**
      * @var integer

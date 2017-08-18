@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="synchronization", uniqueConstraints={@ORM\UniqueConstraint(name="type_UNIQUE", columns={"type"})})
  * @ORM\Entity
  */
-class Synchronization
+class Synchronization extends AbstractDataObject
 {
     /**
      * @var integer

@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cluster_config", indexes={@ORM\Index(name="fk_endpoint_cluster_config_cluster_idx", columns={"cluster_id"})})
  * @ORM\Entity
  */
-class EndpointClusterConfig
+class EndpointClusterConfig extends AbstractDataObject
 {
     /**
      * @var integer

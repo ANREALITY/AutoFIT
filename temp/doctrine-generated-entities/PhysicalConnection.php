@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="physical_connection", indexes={@ORM\Index(name="fk_physical_connection_logical_connection_idx", columns={"logical_connection_id"})})
  * @ORM\Entity
  */
-class PhysicalConnection
+class PhysicalConnection extends AbstractDataObject
 {
     /**
      * @var integer

@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cd_as400")
  * @ORM\Entity
  */
-class EndpointCdAs400
+class EndpointCdAs400 extends AbstractDataObject
 {
     /**
      * @var string

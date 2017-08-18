@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="access_config", indexes={@ORM\Index(name="fk_access_config_access_config_set_idx", columns={"access_config_set_id"})})
  * @ORM\Entity
  */
-class AccessConfig
+class AccessConfig extends AbstractDataObject
 {
     /**
      * @var integer

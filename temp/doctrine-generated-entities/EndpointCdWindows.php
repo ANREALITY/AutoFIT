@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cd_windows", indexes={@ORM\Index(name="fk_endpoint_cd_windows_endpoint_idx", columns={"endpoint_id"}), @ORM\Index(name="fk_endpoint_cd_windows_include_parameter_set_idx", columns={"include_parameter_set_id"})})
  * @ORM\Entity
  */
-class EndpointCdWindows
+class EndpointCdWindows extends AbstractDataObject
 {
     /**
      * @var string

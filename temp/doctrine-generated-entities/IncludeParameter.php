@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="include_parameter", indexes={@ORM\Index(name="fk_include_parameter_include_parameter_set_idx", columns={"include_parameter_set_id"})})
  * @ORM\Entity
  */
-class IncludeParameter
+class IncludeParameter extends AbstractDataObject
 {
     /**
      * @var integer

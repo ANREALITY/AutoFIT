@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="protocol", indexes={@ORM\Index(name="fk_protocol_protocol_set_idx", columns={"protocol_set_id"})})
  * @ORM\Entity
  */
-class Protocol
+class Protocol extends AbstractDataObject
 {
     /**
      * @var integer

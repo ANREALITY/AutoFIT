@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="external_server")
  * @ORM\Entity
  */
-class ExternalServer
+class ExternalServer extends AbstractDataObject
 {
     /**
      * @var integer

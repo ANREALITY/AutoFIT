@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_ftgw_linux_unix", indexes={@ORM\Index(name="fk_endpoint_ftgw_linux_unix_include_parameter_set_idx", columns={"include_parameter_set_id"}), @ORM\Index(name="fk_endpoint_ftgw_linux_unix_endpoint_cluster_config_idx", columns={"endpoint_cluster_config_id"})})
  * @ORM\Entity
  */
-class EndpointFtgwLinuxUnix
+class EndpointFtgwLinuxUnix extends AbstractDataObject
 {
     /**
      * @var string

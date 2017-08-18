@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="file_transfer_request", indexes={@ORM\Index(name="fk_file_transfer_request_logical_connection_idx", columns={"logical_connection_id"}), @ORM\Index(name="fk_file_transfer_request_service_invoice_position_basic_idx", columns={"service_invoice_position_basic_number"}), @ORM\Index(name="fk_file_transfer_request_service_invoice_position_personal_idx", columns={"service_invoice_position_personal_number"}), @ORM\Index(name="fk_file_transfer_request_user_idx", columns={"user_id"})})
  * @ORM\Entity
  */
-class FileTransferRequest
+class FileTransferRequest extends AbstractDataObject
 {
     /**
      * @var integer

@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="service_invoice_position", indexes={@ORM\Index(name="fk_service_invoice_position_service_invoice_idx", columns={"service_invoice_number"}), @ORM\Index(name="fk_service_invoice_position_article1_idx", columns={"article_sku"})})
  * @ORM\Entity
  */
-class ServiceInvoicePosition
+class ServiceInvoicePosition extends AbstractDataObject
 {
     /**
      * @var string

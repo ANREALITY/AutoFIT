@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_ftgw_protocol_server", indexes={@ORM\Index(name="fk_endpoint_ftgw_protocol_server_include_parameter_set_idx", columns={"include_parameter_set_id"}), @ORM\Index(name="fk_endpoint_ftgw_protocol_server_protocol_set_idx", columns={"protocol_set_id"})})
  * @ORM\Entity
  */
-class EndpointFtgwProtocolServer
+class EndpointFtgwProtocolServer extends AbstractDataObject
 {
     /**
      * @var string

@@ -1,6 +1,5 @@
 <?php
-
-
+namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_server_config", indexes={@ORM\Index(name="fk_endpoint_server_config_server_idx", columns={"server_name"})})
  * @ORM\Entity
  */
-class EndpointServerConfig
+class EndpointServerConfig extends AbstractDataObject
 {
     /**
      * @var integer
