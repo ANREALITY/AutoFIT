@@ -4,12 +4,12 @@ namespace DbSystel\DataObject;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PhysicalConnectionFtgw
+ * PhysicalConnectionFtgwEndToMiddle
  *
- * @ORM\Table(name="physical_connection_ftgw")
+ * @ORM\Table(name="physical_connection_ftgw_end_to_middle")
  * @ORM\Entity
  */
-class PhysicalConnectionFtgw extends AbstractDataObject
+class PhysicalConnectionFtgwEndToMiddle extends AbstractDataObject
 {
 
     /**
@@ -29,7 +29,7 @@ class PhysicalConnectionFtgw extends AbstractDataObject
     /**
      * @param PhysicalConnection $physicalConnection
      *
-     * @return PhysicalConnectionFtgw
+     * @return PhysicalConnectionFtgwEndToMiddle
      */
     public function setPhysicalConnection(PhysicalConnection $physicalConnection)
     {

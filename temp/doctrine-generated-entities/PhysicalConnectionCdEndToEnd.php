@@ -4,12 +4,12 @@ namespace DbSystel\DataObject;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PhysicalConnectionCd
+ * PhysicalConnectionCdEndToEnd
  *
- * @ORM\Table(name="physical_connection_cd")
+ * @ORM\Table(name="physical_connection_cd_end_to_end")
  * @ORM\Entity
  */
-class PhysicalConnectionCd extends AbstractDataObject
+class PhysicalConnectionCdEndToEnd extends AbstractDataObject
 {
 
     /**
@@ -36,7 +36,7 @@ class PhysicalConnectionCd extends AbstractDataObject
     /**
      * @param boolean $securePlus
      *
-     * @return PhysicalConnectionCd
+     * @return PhysicalConnectionCdEndToEnd
      */
     public function setSecurePlus($securePlus)
     {
@@ -56,7 +56,7 @@ class PhysicalConnectionCd extends AbstractDataObject
     /**
      * @param PhysicalConnection $physicalConnection
      *
-     * @return PhysicalConnectionCd
+     * @return PhysicalConnectionCdEndToEnd
      */
     public function setPhysicalConnection(PhysicalConnection $physicalConnection)
     {
