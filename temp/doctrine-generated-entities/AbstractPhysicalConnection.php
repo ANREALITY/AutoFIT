@@ -4,12 +4,12 @@ namespace DbSystel\DataObject;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PhysicalConnection
+ * AbstractPhysicalConnection
  *
  * @ORM\Table(name="physical_connection", indexes={@ORM\Index(name="fk_physical_connection_logical_connection_idx", columns={"logical_connection_id"})})
  * @ORM\Entity
  */
-class PhysicalConnection extends AbstractDataObject
+abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
 
     /**
@@ -79,7 +79,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param string $role
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setRole($role)
     {
@@ -99,7 +99,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param string $type
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setType($type)
     {
@@ -119,7 +119,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param boolean $securePlus
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setSecurePlus($securePlus)
     {
@@ -139,7 +139,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param \DateTime $created
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setCreated($created)
     {
@@ -159,7 +159,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param \DateTime $updated
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setUpdated($updated)
     {
@@ -179,7 +179,7 @@ class PhysicalConnection extends AbstractDataObject
     /**
      * @param LogicalConnection $logicalConnection
      *
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function setLogicalConnection(LogicalConnection $logicalConnection = null)
     {

@@ -13,11 +13,11 @@ class PhysicalConnectionFtgwEndToMiddle extends AbstractPhysicalConnection
 {
 
     /**
-     * @var PhysicalConnection
+     * @var AbstractPhysicalConnection
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="PhysicalConnection")
+     * @ORM\OneToOne(targetEntity="AbstractPhysicalConnection")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
      * })
@@ -27,11 +27,11 @@ class PhysicalConnectionFtgwEndToMiddle extends AbstractPhysicalConnection
 
 
     /**
-     * @param PhysicalConnection $physicalConnection
+     * @param AbstractPhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionFtgwEndToMiddle
      */
-    public function setPhysicalConnection(PhysicalConnection $physicalConnection)
+    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
 
@@ -39,7 +39,7 @@ class PhysicalConnectionFtgwEndToMiddle extends AbstractPhysicalConnection
     }
 
     /**
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function getPhysicalConnection()
     {

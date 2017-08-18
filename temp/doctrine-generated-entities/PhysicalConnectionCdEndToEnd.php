@@ -20,11 +20,11 @@ class PhysicalConnectionCdEndToEnd extends AbstractPhysicalConnection
     private $securePlus;
 
     /**
-     * @var PhysicalConnection
+     * @var AbstractPhysicalConnection
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="PhysicalConnection")
+     * @ORM\OneToOne(targetEntity="AbstractPhysicalConnection")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
      * })
@@ -54,11 +54,11 @@ class PhysicalConnectionCdEndToEnd extends AbstractPhysicalConnection
     }
 
     /**
-     * @param PhysicalConnection $physicalConnection
+     * @param AbstractPhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionCdEndToEnd
      */
-    public function setPhysicalConnection(PhysicalConnection $physicalConnection)
+    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
         $this->physicalConnection = $physicalConnection;
 
@@ -66,7 +66,7 @@ class PhysicalConnectionCdEndToEnd extends AbstractPhysicalConnection
     }
 
     /**
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function getPhysicalConnection()
     {

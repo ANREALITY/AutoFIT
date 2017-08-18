@@ -106,7 +106,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var AbstractPhysicalConnection
      *
-     * @ORM\ManyToOne(targetEntity="PhysicalConnection")
+     * @ORM\ManyToOne(targetEntity="AbstractPhysicalConnection")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
      * })
