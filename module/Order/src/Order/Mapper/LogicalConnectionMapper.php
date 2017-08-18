@@ -15,7 +15,7 @@ use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\AbstractDataObject;
 use DbSystel\DataObject\PhysicalConnectionCdEndToEnd;
-use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\PhysicalConnectionFtgwEndToMiddle;
 
 class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectionMapperInterface
 {
@@ -240,12 +240,12 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
                 });
         $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgwEndToMiddle(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
                 });
         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgw(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw__'], null, null, new PhysicalConnectionFtgwEndToMiddle(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
                 });

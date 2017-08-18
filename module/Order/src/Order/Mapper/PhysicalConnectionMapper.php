@@ -2,7 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\AbstractPhysicalConnection;
-use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\PhysicalConnectionFtgwEndToMiddle;
 use DbSystel\DataObject\PhysicalConnectionCdEndToEnd;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
@@ -112,7 +112,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
                 if (strcasecmp($data['type'], LogicalConnection::TYPE_CD) === 0) {
                     $this->prototype = new PhysicalConnectionCdEndToEnd();
                 } elseif (strcasecmp($data['type'], LogicalConnection::TYPE_FTGW) === 0) {
-                    $this->prototype = new PhysicalConnectionFtgw();
+                    $this->prototype = new PhysicalConnectionFtgwEndToMiddle();
                 }
                 $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
 
@@ -245,10 +245,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param PhysicalConnectionFtgw $dataObject
+     * @param PhysicalConnectionFtgwEndToMiddle $dataObject
      * @param boolean $isUpdate
      *
-     * @return PhysicalConnectionFtgw
+     * @return PhysicalConnectionFtgwEndToMiddle
      * @throws \Exception
      */
     public function saveFtgw(AbstractPhysicalConnection $dataObject, bool $isUpdate)

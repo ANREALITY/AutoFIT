@@ -13,7 +13,7 @@ use Zend\Hydrator\HydratorInterface;
 use Zend\Db\Sql\Select;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\PhysicalConnectionCdEndToEnd;
-use DbSystel\DataObject\PhysicalConnectionFtgw;
+use DbSystel\DataObject\PhysicalConnectionFtgwEndToMiddle;
 use DbSystel\DataObject\AbstractEndpoint;
 use Zend\Db\Sql\Expression;
 use DbSystel\DataObject\ServiceInvoicePosition;
