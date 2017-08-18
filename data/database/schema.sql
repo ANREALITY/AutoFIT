@@ -392,13 +392,13 @@ CREATE TABLE IF NOT EXISTS `endpoint_cd_as400` (
 
 
 -- -----------------------------------------------------
--- Table `physical_connection_cd`
+-- Table `physical_connection_cd_end_to_end`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `physical_connection_cd` (
+CREATE TABLE IF NOT EXISTS `physical_connection_cd_end_to_end` (
   `physical_connection_id` INT UNSIGNED NOT NULL,
   `secure_plus` TINYINT(1) NULL,
   PRIMARY KEY (`physical_connection_id`),
-  CONSTRAINT `fk_physical_connection_cd_physical_connection`
+  CONSTRAINT `fk_physical_connection_cd_end_to_end_physical_connection`
   FOREIGN KEY (`physical_connection_id`)
   REFERENCES `physical_connection` (`id`)
     ON DELETE NO ACTION

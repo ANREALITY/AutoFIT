@@ -235,7 +235,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
         $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
 
         $physicalConnectionEndToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_cd__'], null, null, new PhysicalConnectionCdEndToEnd(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_cd_end_to_end__'], null, null, new PhysicalConnectionCdEndToEnd(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
                 });
