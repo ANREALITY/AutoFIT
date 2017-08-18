@@ -23,8 +23,6 @@ class IncludeParameterSet extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()

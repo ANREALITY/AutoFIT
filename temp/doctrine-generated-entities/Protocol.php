@@ -40,8 +40,6 @@ class Protocol extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -50,8 +48,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return Protocol
@@ -64,8 +60,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -74,8 +68,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * Set protocolSet
-     *
      * @param \ProtocolSet $protocolSet
      *
      * @return Protocol
@@ -88,8 +80,6 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * Get protocolSet
-     *
      * @return \ProtocolSet
      */
     public function getProtocolSet()

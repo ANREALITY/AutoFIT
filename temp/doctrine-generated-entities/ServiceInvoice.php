@@ -50,8 +50,6 @@ class ServiceInvoice extends AbstractDataObject
 
 
     /**
-     * Get number
-     *
      * @return string
      */
     public function getNumber()
@@ -60,8 +58,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      *
      * @return ServiceInvoice
@@ -74,8 +70,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -84,8 +78,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Set applicationTechnicalShortName
-     *
      * @param \Application $applicationTechnicalShortName
      *
      * @return ServiceInvoice
@@ -98,8 +90,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Get applicationTechnicalShortName
-     *
      * @return \Application
      */
     public function getApplicationTechnicalShortName()
@@ -108,8 +98,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Set environmentSeverity
-     *
      * @param \Environment $environmentSeverity
      *
      * @return ServiceInvoice
@@ -122,8 +110,6 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * Get environmentSeverity
-     *
      * @return \Environment
      */
     public function getEnvironmentSeverity()

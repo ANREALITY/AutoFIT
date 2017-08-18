@@ -51,8 +51,6 @@ class EndpointType extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -61,8 +59,6 @@ class EndpointType extends AbstractDataObject
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return EndpointType
@@ -75,8 +71,6 @@ class EndpointType extends AbstractDataObject
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -85,8 +79,6 @@ class EndpointType extends AbstractDataObject
     }
 
     /**
-     * Set label
-     *
      * @param string $label
      *
      * @return EndpointType
@@ -99,8 +91,6 @@ class EndpointType extends AbstractDataObject
     }
 
     /**
-     * Get label
-     *
      * @return string
      */
     public function getLabel()
@@ -133,8 +123,6 @@ class EndpointType extends AbstractDataObject
     }
 
     /**
-     * Get serverType
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getServerType()

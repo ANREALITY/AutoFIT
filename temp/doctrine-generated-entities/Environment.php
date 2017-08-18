@@ -37,8 +37,6 @@ class Environment extends AbstractDataObject
 
 
     /**
-     * Get severity
-     *
      * @return boolean
      */
     public function getSeverity()
@@ -47,8 +45,6 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return Environment
@@ -61,8 +57,6 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -71,8 +65,6 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * Set shortName
-     *
      * @param string $shortName
      *
      * @return Environment
@@ -85,8 +77,6 @@ class Environment extends AbstractDataObject
     }
 
     /**
-     * Get shortName
-     *
      * @return string
      */
     public function getShortName()

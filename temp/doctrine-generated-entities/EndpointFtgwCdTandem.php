@@ -40,8 +40,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
 
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return EndpointFtgwCdTandem
@@ -54,8 +52,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -64,8 +60,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointFtgwCdTandem
@@ -78,8 +72,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -88,8 +80,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwCdTandem
@@ -102,8 +92,6 @@ class EndpointFtgwCdTandem extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()

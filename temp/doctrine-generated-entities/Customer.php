@@ -44,8 +44,6 @@ class Customer extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -54,8 +52,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return Customer
@@ -68,8 +64,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -78,8 +72,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return Customer
@@ -92,8 +84,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -102,8 +92,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return Customer
@@ -116,8 +104,6 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()

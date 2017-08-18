@@ -74,8 +74,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
 
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return EndpointCdLinuxUnix
@@ -88,8 +86,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -98,8 +94,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointCdLinuxUnix
@@ -112,8 +106,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -122,8 +114,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set transmissionType
-     *
      * @param string $transmissionType
      *
      * @return EndpointCdLinuxUnix
@@ -136,8 +126,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get transmissionType
-     *
      * @return string
      */
     public function getTransmissionType()
@@ -146,8 +134,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set transmissionInterval
-     *
      * @param string $transmissionInterval
      *
      * @return EndpointCdLinuxUnix
@@ -160,8 +146,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get transmissionInterval
-     *
      * @return string
      */
     public function getTransmissionInterval()
@@ -170,8 +154,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointCdLinuxUnix
@@ -184,8 +166,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -194,8 +174,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set endpointClusterConfig
-     *
      * @param \EndpointClusterConfig $endpointClusterConfig
      *
      * @return EndpointCdLinuxUnix
@@ -208,8 +186,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get endpointClusterConfig
-     *
      * @return \EndpointClusterConfig
      */
     public function getEndpointClusterConfig()
@@ -218,8 +194,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdLinuxUnix
@@ -232,8 +206,6 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

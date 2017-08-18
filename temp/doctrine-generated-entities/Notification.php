@@ -54,8 +54,6 @@ class Notification extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -64,8 +62,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Set email
-     *
      * @param string $email
      *
      * @return Notification
@@ -78,8 +74,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Get email
-     *
      * @return string
      */
     public function getEmail()
@@ -88,8 +82,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Set success
-     *
      * @param boolean $success
      *
      * @return Notification
@@ -102,8 +94,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Get success
-     *
      * @return boolean
      */
     public function getSuccess()
@@ -112,8 +102,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Set failure
-     *
      * @param boolean $failure
      *
      * @return Notification
@@ -126,8 +114,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Get failure
-     *
      * @return boolean
      */
     public function getFailure()
@@ -136,8 +122,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Set logicalConnection
-     *
      * @param \LogicalConnection $logicalConnection
      *
      * @return Notification
@@ -150,8 +134,6 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * Get logicalConnection
-     *
      * @return \LogicalConnection
      */
     public function getLogicalConnection()

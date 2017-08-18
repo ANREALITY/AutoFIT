@@ -68,8 +68,6 @@ class PhysicalConnection extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -78,8 +76,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set role
-     *
      * @param string $role
      *
      * @return PhysicalConnection
@@ -92,8 +88,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get role
-     *
      * @return string
      */
     public function getRole()
@@ -102,8 +96,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      *
      * @return PhysicalConnection
@@ -116,8 +108,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -126,8 +116,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set securePlus
-     *
      * @param boolean $securePlus
      *
      * @return PhysicalConnection
@@ -140,8 +128,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get securePlus
-     *
      * @return boolean
      */
     public function getSecurePlus()
@@ -150,8 +136,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return PhysicalConnection
@@ -164,8 +148,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -174,8 +156,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return PhysicalConnection
@@ -188,8 +168,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -198,8 +176,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set logicalConnection
-     *
      * @param \LogicalConnection $logicalConnection
      *
      * @return PhysicalConnection
@@ -212,8 +188,6 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get logicalConnection
-     *
      * @return \LogicalConnection
      */
     public function getLogicalConnection()

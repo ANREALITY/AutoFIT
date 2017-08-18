@@ -43,8 +43,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
 
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return EndpointFtgwCdZos
@@ -57,8 +55,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -67,8 +63,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwCdZos
@@ -81,8 +75,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -91,8 +83,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * Set fileParameterSet
-     *
      * @param \FileParameterSet $fileParameterSet
      *
      * @return EndpointFtgwCdZos
@@ -105,8 +95,6 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * Get fileParameterSet
-     *
      * @return \FileParameterSet
      */
     public function getFileParameterSet()

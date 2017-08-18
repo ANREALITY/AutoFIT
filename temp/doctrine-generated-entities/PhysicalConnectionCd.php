@@ -33,8 +33,6 @@ class PhysicalConnectionCd extends AbstractDataObject
 
 
     /**
-     * Set securePlus
-     *
      * @param boolean $securePlus
      *
      * @return PhysicalConnectionCd
@@ -47,8 +45,6 @@ class PhysicalConnectionCd extends AbstractDataObject
     }
 
     /**
-     * Get securePlus
-     *
      * @return boolean
      */
     public function getSecurePlus()
@@ -57,8 +53,6 @@ class PhysicalConnectionCd extends AbstractDataObject
     }
 
     /**
-     * Set physicalConnection
-     *
      * @param \PhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionCd
@@ -71,8 +65,6 @@ class PhysicalConnectionCd extends AbstractDataObject
     }
 
     /**
-     * Get physicalConnection
-     *
      * @return \PhysicalConnection
      */
     public function getPhysicalConnection()

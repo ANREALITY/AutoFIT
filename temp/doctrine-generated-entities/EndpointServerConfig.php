@@ -40,8 +40,6 @@ class EndpointServerConfig extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -50,8 +48,6 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * Set dnsAddress
-     *
      * @param string $dnsAddress
      *
      * @return EndpointServerConfig
@@ -64,8 +60,6 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * Get dnsAddress
-     *
      * @return string
      */
     public function getDnsAddress()
@@ -74,8 +68,6 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * Set serverName
-     *
      * @param \Server $serverName
      *
      * @return EndpointServerConfig
@@ -88,8 +80,6 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * Get serverName
-     *
      * @return \Server
      */
     public function getServerName()

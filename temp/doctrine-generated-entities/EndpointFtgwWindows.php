@@ -43,8 +43,6 @@ class EndpointFtgwWindows extends AbstractDataObject
 
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointFtgwWindows
@@ -57,8 +55,6 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -67,8 +63,6 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwWindows
@@ -81,8 +75,6 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -91,8 +83,6 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwWindows
@@ -105,8 +95,6 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

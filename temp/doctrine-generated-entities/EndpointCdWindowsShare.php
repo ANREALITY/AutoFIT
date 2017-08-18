@@ -67,8 +67,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
 
 
     /**
-     * Set sharename
-     *
      * @param string $sharename
      *
      * @return EndpointCdWindowsShare
@@ -81,8 +79,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get sharename
-     *
      * @return string
      */
     public function getSharename()
@@ -91,8 +87,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointCdWindowsShare
@@ -105,8 +99,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -115,8 +107,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set transmissionType
-     *
      * @param string $transmissionType
      *
      * @return EndpointCdWindowsShare
@@ -129,8 +119,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get transmissionType
-     *
      * @return string
      */
     public function getTransmissionType()
@@ -139,8 +127,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set accessConfigSet
-     *
      * @param \AccessConfigSet $accessConfigSet
      *
      * @return EndpointCdWindowsShare
@@ -153,8 +139,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get accessConfigSet
-     *
      * @return \AccessConfigSet
      */
     public function getAccessConfigSet()
@@ -163,8 +147,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointCdWindowsShare
@@ -177,8 +159,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -187,8 +167,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdWindowsShare
@@ -201,8 +179,6 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

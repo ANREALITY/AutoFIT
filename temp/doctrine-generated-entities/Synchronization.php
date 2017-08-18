@@ -44,8 +44,6 @@ class Synchronization extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -54,8 +52,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Set inProgress
-     *
      * @param boolean $inProgress
      *
      * @return Synchronization
@@ -68,8 +64,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Get inProgress
-     *
      * @return boolean
      */
     public function getInProgress()
@@ -78,8 +72,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      *
      * @return Synchronization
@@ -92,8 +84,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -102,8 +92,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Set lastSync
-     *
      * @param \DateTime $lastSync
      *
      * @return Synchronization
@@ -116,8 +104,6 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * Get lastSync
-     *
      * @return \DateTime
      */
     public function getLastSync()

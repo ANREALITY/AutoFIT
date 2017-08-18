@@ -61,8 +61,6 @@ class AccessConfig extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -71,8 +69,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return AccessConfig
@@ -85,8 +81,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -95,8 +89,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Set permissionRead
-     *
      * @param boolean $permissionRead
      *
      * @return AccessConfig
@@ -109,8 +101,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Get permissionRead
-     *
      * @return boolean
      */
     public function getPermissionRead()
@@ -119,8 +109,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Set permissionWrite
-     *
      * @param boolean $permissionWrite
      *
      * @return AccessConfig
@@ -133,8 +121,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Get permissionWrite
-     *
      * @return boolean
      */
     public function getPermissionWrite()
@@ -143,8 +129,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Set permissionDelete
-     *
      * @param boolean $permissionDelete
      *
      * @return AccessConfig
@@ -157,8 +141,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Get permissionDelete
-     *
      * @return boolean
      */
     public function getPermissionDelete()
@@ -167,8 +149,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Set accessConfigSet
-     *
      * @param \AccessConfigSet $accessConfigSet
      *
      * @return AccessConfig
@@ -181,8 +161,6 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * Get accessConfigSet
-     *
      * @return \AccessConfigSet
      */
     public function getAccessConfigSet()

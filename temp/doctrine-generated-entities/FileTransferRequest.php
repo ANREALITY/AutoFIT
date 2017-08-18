@@ -98,8 +98,6 @@ class FileTransferRequest extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -108,8 +106,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set changeNumber
-     *
      * @param string $changeNumber
      *
      * @return FileTransferRequest
@@ -122,8 +118,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get changeNumber
-     *
      * @return string
      */
     public function getChangeNumber()
@@ -132,8 +126,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set status
-     *
      * @param string $status
      *
      * @return FileTransferRequest
@@ -146,8 +138,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get status
-     *
      * @return string
      */
     public function getStatus()
@@ -156,8 +146,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set comment
-     *
      * @param string $comment
      *
      * @return FileTransferRequest
@@ -170,8 +158,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get comment
-     *
      * @return string
      */
     public function getComment()
@@ -180,8 +166,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return FileTransferRequest
@@ -194,8 +178,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -204,8 +186,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return FileTransferRequest
@@ -218,8 +198,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -228,8 +206,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set logicalConnection
-     *
      * @param \LogicalConnection $logicalConnection
      *
      * @return FileTransferRequest
@@ -242,8 +218,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get logicalConnection
-     *
      * @return \LogicalConnection
      */
     public function getLogicalConnection()
@@ -252,8 +226,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set serviceInvoicePositionBasicNumber
-     *
      * @param \ServiceInvoicePosition $serviceInvoicePositionBasicNumber
      *
      * @return FileTransferRequest
@@ -266,8 +238,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get serviceInvoicePositionBasicNumber
-     *
      * @return \ServiceInvoicePosition
      */
     public function getServiceInvoicePositionBasicNumber()
@@ -276,8 +246,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set serviceInvoicePositionPersonalNumber
-     *
      * @param \ServiceInvoicePosition $serviceInvoicePositionPersonalNumber
      *
      * @return FileTransferRequest
@@ -290,8 +258,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get serviceInvoicePositionPersonalNumber
-     *
      * @return \ServiceInvoicePosition
      */
     public function getServiceInvoicePositionPersonalNumber()
@@ -300,8 +266,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Set user
-     *
      * @param \User $user
      *
      * @return FileTransferRequest
@@ -314,8 +278,6 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * Get user
-     *
      * @return \User
      */
     public function getUser()

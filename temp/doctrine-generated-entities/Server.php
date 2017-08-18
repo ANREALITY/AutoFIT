@@ -71,8 +71,6 @@ class Server extends AbstractDataObject
 
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -81,8 +79,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set active
-     *
      * @param boolean $active
      *
      * @return Server
@@ -95,8 +91,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get active
-     *
      * @return boolean
      */
     public function getActive()
@@ -105,8 +99,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return Server
@@ -119,8 +111,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -129,8 +119,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set nodeName
-     *
      * @param string $nodeName
      *
      * @return Server
@@ -143,8 +131,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get nodeName
-     *
      * @return string
      */
     public function getNodeName()
@@ -153,8 +139,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set virtualNodeName
-     *
      * @param string $virtualNodeName
      *
      * @return Server
@@ -167,8 +151,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get virtualNodeName
-     *
      * @return string
      */
     public function getVirtualNodeName()
@@ -177,8 +159,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set cluster
-     *
      * @param \Cluster $cluster
      *
      * @return Server
@@ -191,8 +171,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get cluster
-     *
      * @return \Cluster
      */
     public function getCluster()
@@ -201,8 +179,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Set serverType
-     *
      * @param \ServerType $serverType
      *
      * @return Server
@@ -215,8 +191,6 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * Get serverType
-     *
      * @return \ServerType
      */
     public function getServerType()

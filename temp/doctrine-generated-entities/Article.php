@@ -47,8 +47,6 @@ class Article extends AbstractDataObject
 
 
     /**
-     * Get sku
-     *
      * @return string
      */
     public function getSku()
@@ -57,8 +55,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      *
      * @return Article
@@ -71,8 +67,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -81,8 +75,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      *
      * @return Article
@@ -95,8 +87,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -105,8 +95,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Set productTypeName
-     *
      * @param \ProductType $productTypeName
      *
      * @return Article
@@ -119,8 +107,6 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * Get productTypeName
-     *
      * @return \ProductType
      */
     public function getProductTypeName()

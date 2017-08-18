@@ -61,8 +61,6 @@ class FileParameter extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -71,8 +69,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Set filename
-     *
      * @param string $filename
      *
      * @return FileParameter
@@ -85,8 +81,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Get filename
-     *
      * @return string
      */
     public function getFilename()
@@ -95,8 +89,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Set recordLength
-     *
      * @param integer $recordLength
      *
      * @return FileParameter
@@ -109,8 +101,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Get recordLength
-     *
      * @return integer
      */
     public function getRecordLength()
@@ -119,8 +109,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Set blocking
-     *
      * @param string $blocking
      *
      * @return FileParameter
@@ -133,8 +121,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Get blocking
-     *
      * @return string
      */
     public function getBlocking()
@@ -143,8 +129,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Set blockSize
-     *
      * @param integer $blockSize
      *
      * @return FileParameter
@@ -157,8 +141,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Get blockSize
-     *
      * @return integer
      */
     public function getBlockSize()
@@ -167,8 +149,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Set fileParameterSet
-     *
      * @param \FileParameterSet $fileParameterSet
      *
      * @return FileParameter
@@ -181,8 +161,6 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * Get fileParameterSet
-     *
      * @return \FileParameterSet
      */
     public function getFileParameterSet()

@@ -115,8 +115,6 @@ class Endpoint extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -125,8 +123,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set role
-     *
      * @param string $role
      *
      * @return Endpoint
@@ -139,8 +135,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get role
-     *
      * @return string
      */
     public function getRole()
@@ -149,8 +143,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      *
      * @return Endpoint
@@ -163,8 +155,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -173,8 +163,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set serverPlace
-     *
      * @param string $serverPlace
      *
      * @return Endpoint
@@ -187,8 +175,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get serverPlace
-     *
      * @return string
      */
     public function getServerPlace()
@@ -197,8 +183,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set contactPerson
-     *
      * @param string $contactPerson
      *
      * @return Endpoint
@@ -211,8 +195,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get contactPerson
-     *
      * @return string
      */
     public function getContactPerson()
@@ -221,8 +203,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return Endpoint
@@ -235,8 +215,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -245,8 +223,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return Endpoint
@@ -259,8 +235,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -269,8 +243,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set applicationTechnicalShortName
-     *
      * @param \Application $applicationTechnicalShortName
      *
      * @return Endpoint
@@ -283,8 +255,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get applicationTechnicalShortName
-     *
      * @return \Application
      */
     public function getApplicationTechnicalShortName()
@@ -293,8 +263,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set customer
-     *
      * @param \Customer $customer
      *
      * @return Endpoint
@@ -307,8 +275,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get customer
-     *
      * @return \Customer
      */
     public function getCustomer()
@@ -317,8 +283,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set endpointServerConfig
-     *
      * @param \EndpointServerConfig $endpointServerConfig
      *
      * @return Endpoint
@@ -331,8 +295,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get endpointServerConfig
-     *
      * @return \EndpointServerConfig
      */
     public function getEndpointServerConfig()
@@ -341,8 +303,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set externalServer
-     *
      * @param \ExternalServer $externalServer
      *
      * @return Endpoint
@@ -355,8 +315,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get externalServer
-     *
      * @return \ExternalServer
      */
     public function getExternalServer()
@@ -365,8 +323,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Set physicalConnection
-     *
      * @param \PhysicalConnection $physicalConnection
      *
      * @return Endpoint
@@ -379,8 +335,6 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * Get physicalConnection
-     *
      * @return \PhysicalConnection
      */
     public function getPhysicalConnection()

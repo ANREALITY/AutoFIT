@@ -40,8 +40,6 @@ class EndpointCdAs400 extends AbstractDataObject
 
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return EndpointCdAs400
@@ -54,8 +52,6 @@ class EndpointCdAs400 extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -64,8 +60,6 @@ class EndpointCdAs400 extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointCdAs400
@@ -78,8 +72,6 @@ class EndpointCdAs400 extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -88,8 +80,6 @@ class EndpointCdAs400 extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointCdAs400
@@ -102,8 +92,6 @@ class EndpointCdAs400 extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()

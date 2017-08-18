@@ -44,8 +44,6 @@ class Application extends AbstractDataObject
 
 
     /**
-     * Get technicalShortName
-     *
      * @return string
      */
     public function getTechnicalShortName()
@@ -54,8 +52,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Set technicalId
-     *
      * @param string $technicalId
      *
      * @return Application
@@ -68,8 +64,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Get technicalId
-     *
      * @return string
      */
     public function getTechnicalId()
@@ -78,8 +72,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Set active
-     *
      * @param boolean $active
      *
      * @return Application
@@ -92,8 +84,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Get active
-     *
      * @return boolean
      */
     public function getActive()
@@ -102,8 +92,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return Application
@@ -116,8 +104,6 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()

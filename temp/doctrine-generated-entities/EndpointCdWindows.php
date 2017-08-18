@@ -50,8 +50,6 @@ class EndpointCdWindows extends AbstractDataObject
 
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointCdWindows
@@ -64,8 +62,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -74,8 +70,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Set transmissionType
-     *
      * @param string $transmissionType
      *
      * @return EndpointCdWindows
@@ -88,8 +82,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Get transmissionType
-     *
      * @return string
      */
     public function getTransmissionType()
@@ -98,8 +90,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointCdWindows
@@ -112,8 +102,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -122,8 +110,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdWindows
@@ -136,8 +122,6 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

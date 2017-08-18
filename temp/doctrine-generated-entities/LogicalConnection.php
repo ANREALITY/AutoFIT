@@ -44,8 +44,6 @@ class LogicalConnection extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -54,8 +52,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set type
-     *
      * @param string $type
      *
      * @return LogicalConnection
@@ -68,8 +64,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get type
-     *
      * @return string
      */
     public function getType()
@@ -78,8 +72,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return LogicalConnection
@@ -92,8 +84,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -102,8 +92,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return LogicalConnection
@@ -116,8 +104,6 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()

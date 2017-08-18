@@ -26,8 +26,6 @@ class PhysicalConnectionFtgw extends AbstractDataObject
 
 
     /**
-     * Set physicalConnection
-     *
      * @param \PhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionFtgw
@@ -40,8 +38,6 @@ class PhysicalConnectionFtgw extends AbstractDataObject
     }
 
     /**
-     * Get physicalConnection
-     *
      * @return \PhysicalConnection
      */
     public function getPhysicalConnection()

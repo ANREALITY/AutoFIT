@@ -88,8 +88,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
 
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return EndpointFtgwProtocolServer
@@ -102,8 +100,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -112,8 +108,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointFtgwProtocolServer
@@ -126,8 +120,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -136,8 +128,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set transmissionType
-     *
      * @param string $transmissionType
      *
      * @return EndpointFtgwProtocolServer
@@ -150,8 +140,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get transmissionType
-     *
      * @return string
      */
     public function getTransmissionType()
@@ -160,8 +148,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set port
-     *
      * @param string $port
      *
      * @return EndpointFtgwProtocolServer
@@ -174,8 +160,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get port
-     *
      * @return string
      */
     public function getPort()
@@ -184,8 +168,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set ip
-     *
      * @param string $ip
      *
      * @return EndpointFtgwProtocolServer
@@ -198,8 +180,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get ip
-     *
      * @return string
      */
     public function getIp()
@@ -208,8 +188,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set dnsAddress
-     *
      * @param string $dnsAddress
      *
      * @return EndpointFtgwProtocolServer
@@ -222,8 +200,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get dnsAddress
-     *
      * @return string
      */
     public function getDnsAddress()
@@ -232,8 +208,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwProtocolServer
@@ -246,8 +220,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -256,8 +228,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwProtocolServer
@@ -270,8 +240,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()
@@ -280,8 +248,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Set protocolSet
-     *
      * @param \ProtocolSet $protocolSet
      *
      * @return EndpointFtgwProtocolServer
@@ -294,8 +260,6 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * Get protocolSet
-     *
      * @return \ProtocolSet
      */
     public function getProtocolSet()

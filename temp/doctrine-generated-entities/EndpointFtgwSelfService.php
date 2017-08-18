@@ -57,8 +57,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
 
 
     /**
-     * Set ftgwUsername
-     *
      * @param string $ftgwUsername
      *
      * @return EndpointFtgwSelfService
@@ -71,8 +69,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Get ftgwUsername
-     *
      * @return string
      */
     public function getFtgwUsername()
@@ -81,8 +77,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Set mailbox
-     *
      * @param string $mailbox
      *
      * @return EndpointFtgwSelfService
@@ -95,8 +89,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Get mailbox
-     *
      * @return string
      */
     public function getMailbox()
@@ -105,8 +97,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Set connectionType
-     *
      * @param string $connectionType
      *
      * @return EndpointFtgwSelfService
@@ -119,8 +109,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Get connectionType
-     *
      * @return string
      */
     public function getConnectionType()
@@ -129,8 +117,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwSelfService
@@ -143,8 +129,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -153,8 +137,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Set protocolSet
-     *
      * @param \ProtocolSet $protocolSet
      *
      * @return EndpointFtgwSelfService
@@ -167,8 +149,6 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * Get protocolSet
-     *
      * @return \ProtocolSet
      */
     public function getProtocolSet()

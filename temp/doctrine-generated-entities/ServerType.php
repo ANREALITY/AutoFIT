@@ -52,8 +52,6 @@ class ServerType extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return boolean
      */
     public function getId()
@@ -62,8 +60,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     * Set name
-     *
      * @param string $name
      *
      * @return ServerType
@@ -76,8 +72,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -110,8 +104,6 @@ class ServerType extends AbstractDataObject
     }
 
     /**
-     * Get endpointType
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getEndpointType()

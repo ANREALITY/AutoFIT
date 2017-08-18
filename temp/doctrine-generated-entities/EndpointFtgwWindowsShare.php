@@ -60,8 +60,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
 
 
     /**
-     * Set sharename
-     *
      * @param string $sharename
      *
      * @return EndpointFtgwWindowsShare
@@ -74,8 +72,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get sharename
-     *
      * @return string
      */
     public function getSharename()
@@ -84,8 +80,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set folder
-     *
      * @param string $folder
      *
      * @return EndpointFtgwWindowsShare
@@ -98,8 +92,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get folder
-     *
      * @return string
      */
     public function getFolder()
@@ -108,8 +100,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set accessConfigSet
-     *
      * @param \AccessConfigSet $accessConfigSet
      *
      * @return EndpointFtgwWindowsShare
@@ -122,8 +112,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get accessConfigSet
-     *
      * @return \AccessConfigSet
      */
     public function getAccessConfigSet()
@@ -132,8 +120,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set endpoint
-     *
      * @param \Endpoint $endpoint
      *
      * @return EndpointFtgwWindowsShare
@@ -146,8 +132,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get endpoint
-     *
      * @return \Endpoint
      */
     public function getEndpoint()
@@ -156,8 +140,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwWindowsShare
@@ -170,8 +152,6 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

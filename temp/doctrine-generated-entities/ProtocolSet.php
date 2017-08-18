@@ -23,8 +23,6 @@ class ProtocolSet extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()

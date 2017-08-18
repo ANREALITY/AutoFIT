@@ -40,8 +40,6 @@ class IncludeParameter extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -50,8 +48,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * Set expression
-     *
      * @param string $expression
      *
      * @return IncludeParameter
@@ -64,8 +60,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * Get expression
-     *
      * @return string
      */
     public function getExpression()
@@ -74,8 +68,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * Set includeParameterSet
-     *
      * @param \IncludeParameterSet $includeParameterSet
      *
      * @return IncludeParameter
@@ -88,8 +80,6 @@ class IncludeParameter extends AbstractDataObject
     }
 
     /**
-     * Get includeParameterSet
-     *
      * @return \IncludeParameterSet
      */
     public function getIncludeParameterSet()

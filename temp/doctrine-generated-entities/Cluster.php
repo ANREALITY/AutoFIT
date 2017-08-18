@@ -30,8 +30,6 @@ class Cluster extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -40,8 +38,6 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * Set virtualNodeName
-     *
      * @param string $virtualNodeName
      *
      * @return Cluster
@@ -54,8 +50,6 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * Get virtualNodeName
-     *
      * @return string
      */
     public function getVirtualNodeName()

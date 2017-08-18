@@ -61,8 +61,6 @@ class AuditLog extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -71,8 +69,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Set resourceType
-     *
      * @param string $resourceType
      *
      * @return AuditLog
@@ -85,8 +81,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Get resourceType
-     *
      * @return string
      */
     public function getResourceType()
@@ -95,8 +89,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Set resourceId
-     *
      * @param string $resourceId
      *
      * @return AuditLog
@@ -109,8 +101,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Get resourceId
-     *
      * @return string
      */
     public function getResourceId()
@@ -119,8 +109,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Set action
-     *
      * @param string $action
      *
      * @return AuditLog
@@ -133,8 +121,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Get action
-     *
      * @return string
      */
     public function getAction()
@@ -143,8 +129,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Set datetime
-     *
      * @param \DateTime $datetime
      *
      * @return AuditLog
@@ -157,8 +141,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Get datetime
-     *
      * @return \DateTime
      */
     public function getDatetime()
@@ -167,8 +149,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Set user
-     *
      * @param \User $user
      *
      * @return AuditLog
@@ -181,8 +161,6 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * Get user
-     *
      * @return \User
      */
     public function getUser()

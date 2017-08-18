@@ -51,8 +51,6 @@ class User extends AbstractDataObject
 
 
     /**
-     * Get id
-     *
      * @return integer
      */
     public function getId()
@@ -61,8 +59,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Set username
-     *
      * @param string $username
      *
      * @return User
@@ -75,8 +71,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -85,8 +79,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Set role
-     *
      * @param string $role
      *
      * @return User
@@ -99,8 +91,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Get role
-     *
      * @return string
      */
     public function getRole()
@@ -109,8 +99,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Set created
-     *
      * @param \DateTime $created
      *
      * @return User
@@ -123,8 +111,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Get created
-     *
      * @return \DateTime
      */
     public function getCreated()
@@ -133,8 +119,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return User
@@ -147,8 +131,6 @@ class User extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()

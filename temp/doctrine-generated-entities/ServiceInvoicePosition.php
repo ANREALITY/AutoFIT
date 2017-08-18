@@ -71,8 +71,6 @@ class ServiceInvoicePosition extends AbstractDataObject
 
 
     /**
-     * Get number
-     *
      * @return string
      */
     public function getNumber()
@@ -81,8 +79,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set orderQuantity
-     *
      * @param string $orderQuantity
      *
      * @return ServiceInvoicePosition
@@ -95,8 +91,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get orderQuantity
-     *
      * @return string
      */
     public function getOrderQuantity()
@@ -105,8 +99,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set description
-     *
      * @param string $description
      *
      * @return ServiceInvoicePosition
@@ -119,8 +111,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -129,8 +119,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set status
-     *
      * @param string $status
      *
      * @return ServiceInvoicePosition
@@ -143,8 +131,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get status
-     *
      * @return string
      */
     public function getStatus()
@@ -153,8 +139,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set updated
-     *
      * @param \DateTime $updated
      *
      * @return ServiceInvoicePosition
@@ -167,8 +151,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get updated
-     *
      * @return \DateTime
      */
     public function getUpdated()
@@ -177,8 +159,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set articleSku
-     *
      * @param \Article $articleSku
      *
      * @return ServiceInvoicePosition
@@ -191,8 +171,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get articleSku
-     *
      * @return \Article
      */
     public function getArticleSku()
@@ -201,8 +179,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Set serviceInvoiceNumber
-     *
      * @param \ServiceInvoice $serviceInvoiceNumber
      *
      * @return ServiceInvoicePosition
@@ -215,8 +191,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * Get serviceInvoiceNumber
-     *
      * @return \ServiceInvoice
      */
     public function getServiceInvoiceNumber()
