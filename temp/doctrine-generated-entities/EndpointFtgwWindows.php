@@ -20,11 +20,11 @@ class EndpointFtgwWindows extends AbstractEndpoint
     private $folder;
 
     /**
-     * @var Endpoint
+     * @var AbstractEndpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Endpoint")
+     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
      * })
@@ -64,11 +64,11 @@ class EndpointFtgwWindows extends AbstractEndpoint
     }
 
     /**
-     * @param Endpoint $endpoint
+     * @param AbstractEndpoint $endpoint
      *
      * @return EndpointFtgwWindows
      */
-    public function setEndpoint(Endpoint $endpoint)
+    public function setEndpoint(AbstractEndpoint $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -76,7 +76,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
     }
 
     /**
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function getEndpoint()
     {

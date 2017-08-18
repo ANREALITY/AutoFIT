@@ -4,12 +4,12 @@ namespace DbSystel\DataObject;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Endpoint
+ * AbstractEndpoint
  *
  * @ORM\Table(name="endpoint", indexes={@ORM\Index(name="fk_endpoint_physical_connection_idx", columns={"physical_connection_id"}), @ORM\Index(name="fk_endpoint_application_idx", columns={"application_technical_short_name"}), @ORM\Index(name="fk_endpoint_customer_idx", columns={"customer_id"}), @ORM\Index(name="fk_endpoint_endpoint_server_config_idx", columns={"endpoint_server_config_id"}), @ORM\Index(name="fk_endpoint_external_server_idx", columns={"external_server_id"})})
  * @ORM\Entity
  */
-class Endpoint extends AbstractDataObject
+abstract class AbstractEndpoint extends AbstractDataObject
 {
 
     /**
@@ -104,7 +104,7 @@ class Endpoint extends AbstractDataObject
     private $externalServer;
 
     /**
-     * @var PhysicalConnection
+     * @var AbstractPhysicalConnection
      *
      * @ORM\ManyToOne(targetEntity="PhysicalConnection")
      * @ORM\JoinColumns({
@@ -126,7 +126,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param string $role
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setRole($role)
     {
@@ -146,7 +146,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param string $type
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setType($type)
     {
@@ -166,7 +166,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param string $serverPlace
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setServerPlace($serverPlace)
     {
@@ -186,7 +186,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param string $contactPerson
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setContactPerson($contactPerson)
     {
@@ -206,7 +206,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param \DateTime $created
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setCreated($created)
     {
@@ -226,7 +226,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param \DateTime $updated
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setUpdated($updated)
     {
@@ -246,7 +246,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param Application $applicationTechnicalShortName
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setApplicationTechnicalShortName(Application $applicationTechnicalShortName = null)
     {
@@ -266,7 +266,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param Customer $customer
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setCustomer(Customer $customer = null)
     {
@@ -286,7 +286,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param EndpointServerConfig $endpointServerConfig
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig = null)
     {
@@ -306,7 +306,7 @@ class Endpoint extends AbstractDataObject
     /**
      * @param ExternalServer $externalServer
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
     public function setExternalServer(ExternalServer $externalServer = null)
     {
@@ -324,11 +324,11 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param PhysicalConnection $physicalConnection
+     * @param AbstractPhysicalConnection $physicalConnection
      *
-     * @return Endpoint
+     * @return AbstractEndpoint
      */
-    public function setPhysicalConnection(PhysicalConnection $physicalConnection = null)
+    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection = null)
     {
         $this->physicalConnection = $physicalConnection;
 
@@ -336,7 +336,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return PhysicalConnection
+     * @return AbstractPhysicalConnection
      */
     public function getPhysicalConnection()
     {
