@@ -3,7 +3,7 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\AbstractPhysicalConnection;
 use DbSystel\DataObject\PhysicalConnectionFtgw;
-use DbSystel\DataObject\PhysicalConnectionCd;
+use DbSystel\DataObject\PhysicalConnectionCdEndToEnd;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -110,7 +110,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $data = $result->current();
             if (! empty($data['type'])) {
                 if (strcasecmp($data['type'], LogicalConnection::TYPE_CD) === 0) {
-                    $this->prototype = new PhysicalConnectionCd();
+                    $this->prototype = new PhysicalConnectionCdEndToEnd();
                 } elseif (strcasecmp($data['type'], LogicalConnection::TYPE_FTGW) === 0) {
                     $this->prototype = new PhysicalConnectionFtgw();
                 }
@@ -202,10 +202,10 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * @param PhysicalConnectionCd $dataObject
+     * @param PhysicalConnectionCdEndToEnd $dataObject
      * @param boolean $isUpdate
      *
-     * @return PhysicalConnectionCd
+     * @return PhysicalConnectionCdEndToEnd
      * @throws \Exception
      */
     public function saveCd(AbstractPhysicalConnection $dataObject, bool $isUpdate)
