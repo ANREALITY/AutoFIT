@@ -80,7 +80,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldsetName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
-        $prototypeClassName = preg_replace('/(EndToEnd|EndToMiddle|MiddleToEnd)$/i', '', $fieldsetName);
+        $prototypeClassName = preg_replace('/(EndToMiddle|MiddleToEnd)$/i', '', $fieldsetName);
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
