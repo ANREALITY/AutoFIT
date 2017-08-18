@@ -407,12 +407,26 @@ CREATE TABLE IF NOT EXISTS `physical_connection_cd_end_to_end` (
 
 
 -- -----------------------------------------------------
--- Table `physical_connection_ftgw`
+-- Table `physical_connection_ftgw_end_to_middle`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `physical_connection_ftgw` (
+CREATE TABLE IF NOT EXISTS `physical_connection_ftgw_end_to_middle` (
   `physical_connection_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`physical_connection_id`),
-  CONSTRAINT `fk_physical_connection_ftgw_physical_connection`
+  CONSTRAINT `fk_physical_connection_ftgw_end_to_middle_physical_connection`
+  FOREIGN KEY (`physical_connection_id`)
+  REFERENCES `physical_connection` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `physical_connection_ftgw_middle_to_end`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `physical_connection_ftgw_middle_to_end` (
+  `physical_connection_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`physical_connection_id`),
+  CONSTRAINT `fk_physical_connection_ftgw_middle_to_end_physical_connection`
   FOREIGN KEY (`physical_connection_id`)
   REFERENCES `physical_connection` (`id`)
     ON DELETE NO ACTION

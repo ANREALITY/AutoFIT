@@ -218,11 +218,13 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
 
+        $table = 'physical_connection_cd_end_to_end';
+
         if (! $isUpdate) {
-            $action = new Insert('physical_connection_cd_end_to_end');
+            $action = new Insert($table);
             $action->values($data);
         } else {
-            $action = new Update('physical_connection_cd_end_to_end');
+            $action = new Update($table);
             $action->where(['physical_connection_id' => $data['physical_connection_id']]);
             // Don't unset the $data['physical_connection_id'], since its the only field to UPDATE!
             // unset($data['physical_connection_id']);
@@ -261,11 +263,17 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // data from the recently persisted objects
         $data['physical_connection_id'] = $dataObject->getId();
 
+        if ($dataObject->getRole() == AbstractPhysicalConnection::ROLE_END_TO_MIDDLE) {
+            $table = 'physical_connection_ftgw_end_to_middle';
+        } elseif ($dataObject->getRole() == AbstractPhysicalConnection::ROLE_MIDDLE_TO_END) {
+            $table = 'physical_connection_ftgw_middle_to_end';
+        }
+
         if (! $isUpdate) {
-            $action = new Insert('physical_connection_ftgw');
+            $action = new Insert($table);
             $action->values($data);
         } else {
-            $action = new Update('physical_connection_ftgw');
+            $action = new Update($table);
             $action->where(['physical_connection_id' => $data['physical_connection_id']]);
             // Don't unset the $data['physical_connection_id'], since its the only field to UPDATE!
             // unset($data['physical_connection_id']);
