@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cd_windows_share", indexes={@ORM\Index(name="fk_endpoint_cd_windows_share_include_parameter_set_idx", columns={"include_parameter_set_id"}), @ORM\Index(name="fk_endpoint_cd_windows_share_access_config_set_idx", columns={"access_config_set_id"})})
  * @ORM\Entity
  */
-class EndpointCdWindowsShare extends AbstractDataObject
+class EndpointCdWindowsShare extends AbstractEndpoint
 {
 
     /**

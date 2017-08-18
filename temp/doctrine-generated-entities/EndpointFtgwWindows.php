@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_ftgw_windows", indexes={@ORM\Index(name="fk_endpoint_ftgw_windows_endpoint_idx", columns={"endpoint_id"}), @ORM\Index(name="fk_endpoint_ftgw_windows_include_parameter_set_idx", columns={"include_parameter_set_id"})})
  * @ORM\Entity
  */
-class EndpointFtgwWindows extends AbstractDataObject
+class EndpointFtgwWindows extends AbstractEndpoint
 {
 
     /**

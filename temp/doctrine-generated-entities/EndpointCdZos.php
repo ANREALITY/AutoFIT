@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cd_zos", indexes={@ORM\Index(name="fk_endpoint_cd_zos_file_parameter_set_idx", columns={"file_parameter_set_id"})})
  * @ORM\Entity
  */
-class EndpointCdZos extends AbstractDataObject
+class EndpointCdZos extends AbstractEndpoint
 {
 
     /**

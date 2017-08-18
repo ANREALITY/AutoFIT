@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="endpoint_cd_tandem")
  * @ORM\Entity
  */
-class EndpointCdTandem extends AbstractDataObject
+class EndpointCdTandem extends AbstractEndpoint
 {
 
     /**
