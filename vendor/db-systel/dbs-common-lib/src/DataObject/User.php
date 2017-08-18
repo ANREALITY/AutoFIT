@@ -35,6 +35,16 @@ class User extends AbstractDataObject
     private $role;
 
     /**
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @param integer $id
      * @return User
      */
@@ -89,6 +99,45 @@ class User extends AbstractDataObject
     public function getRole()
     {
         return $this->role;
+    }
+
+
+    /**
+     * @param string $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param string $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
 }

@@ -25,6 +25,11 @@ class Application extends AbstractDataObject
     private $active;
 
     /**
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @param string $technicalShortName
      * @return Application
      */
@@ -79,6 +84,25 @@ class Application extends AbstractDataObject
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param string $updated
+     * @return Application
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
 }

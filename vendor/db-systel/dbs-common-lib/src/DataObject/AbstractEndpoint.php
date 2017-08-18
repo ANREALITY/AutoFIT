@@ -67,6 +67,16 @@ abstract class AbstractEndpoint extends AbstractDataObject
     private $contactPerson;
 
     /**
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @var AbstractPhysicalConnection
      */
     private $physicalConnection;
@@ -184,6 +194,44 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function getContactPerson()
     {
         return $this->contactPerson;
+    }
+
+    /**
+     * @param string $created
+     * @return AbstractEndpoint
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param string $updated
+     * @return AbstractEndpoint
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**

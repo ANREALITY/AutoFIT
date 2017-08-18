@@ -31,6 +31,11 @@ class Server extends AbstractDataObject
     /**
      * @var string
      */
+    private $updated;
+
+    /**
+     * @var string
+     */
     private $nodeName;
 
     /**
@@ -103,6 +108,25 @@ class Server extends AbstractDataObject
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param string $updated
+     * @return Server
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**

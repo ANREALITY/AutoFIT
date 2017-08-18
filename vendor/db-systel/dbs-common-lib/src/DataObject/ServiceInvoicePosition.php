@@ -47,6 +47,11 @@ class ServiceInvoicePosition extends AbstractDataObject
     private $article;
 
     /**
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @param string $number
      * @return ServiceInvoicePosition
      */
@@ -156,6 +161,25 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * @param string $updated
+     * @return ServiceInvoicePosition
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
 }

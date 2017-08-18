@@ -24,6 +24,16 @@ class LogicalConnection extends AbstractDataObject
     private $type;
 
     /**
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @var AbstractPhysicalConnection @relationshipInversion
      */
     private $physicalConnectionEndToEnd;
@@ -79,6 +89,44 @@ class LogicalConnection extends AbstractDataObject
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @param string $created
+     * @return LogicalConnection
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param string $updated
+     * @return LogicalConnection
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**
