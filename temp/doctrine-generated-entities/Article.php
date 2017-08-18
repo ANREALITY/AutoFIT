@@ -35,7 +35,7 @@ class Article extends AbstractDataObject
     private $type;
 
     /**
-     * @var \ProductType
+     * @var ProductType
      *
      * @ORM\ManyToOne(targetEntity="ProductType")
      * @ORM\JoinColumns({
@@ -95,7 +95,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @param \ProductType $productTypeName
+     * @param ProductType $productTypeName
      *
      * @return Article
      */
@@ -107,7 +107,7 @@ class Article extends AbstractDataObject
     }
 
     /**
-     * @return \ProductType
+     * @return ProductType
      */
     public function getProductTypeName()
     {

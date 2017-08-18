@@ -28,7 +28,7 @@ class Protocol extends AbstractDataObject
     private $name;
 
     /**
-     * @var \ProtocolSet
+     * @var ProtocolSet
      *
      * @ORM\ManyToOne(targetEntity="ProtocolSet")
      * @ORM\JoinColumns({
@@ -68,7 +68,7 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * @param \ProtocolSet $protocolSet
+     * @param ProtocolSet $protocolSet
      *
      * @return Protocol
      */
@@ -80,7 +80,7 @@ class Protocol extends AbstractDataObject
     }
 
     /**
-     * @return \ProtocolSet
+     * @return ProtocolSet
      */
     public function getProtocolSet()
     {

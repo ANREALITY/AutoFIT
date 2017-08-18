@@ -49,7 +49,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     private $updated;
 
     /**
-     * @var \Article
+     * @var Article
      *
      * @ORM\ManyToOne(targetEntity="Article")
      * @ORM\JoinColumns({
@@ -59,7 +59,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     private $articleSku;
 
     /**
-     * @var \ServiceInvoice
+     * @var ServiceInvoice
      *
      * @ORM\ManyToOne(targetEntity="ServiceInvoice")
      * @ORM\JoinColumns({
@@ -159,7 +159,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @param \Article $articleSku
+     * @param Article $articleSku
      *
      * @return ServiceInvoicePosition
      */
@@ -171,7 +171,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return \Article
+     * @return Article
      */
     public function getArticleSku()
     {
@@ -179,7 +179,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @param \ServiceInvoice $serviceInvoiceNumber
+     * @param ServiceInvoice $serviceInvoiceNumber
      *
      * @return ServiceInvoicePosition
      */
@@ -191,7 +191,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @return \ServiceInvoice
+     * @return ServiceInvoice
      */
     public function getServiceInvoiceNumber()
     {

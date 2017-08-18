@@ -26,7 +26,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     private $folder;
 
     /**
-     * @var \AccessConfigSet
+     * @var AccessConfigSet
      *
      * @ORM\ManyToOne(targetEntity="AccessConfigSet")
      * @ORM\JoinColumns({
@@ -36,7 +36,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     private $accessConfigSet;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -48,7 +48,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -100,7 +100,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \AccessConfigSet $accessConfigSet
+     * @param AccessConfigSet $accessConfigSet
      *
      * @return EndpointFtgwWindowsShare
      */
@@ -112,7 +112,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \AccessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {
@@ -120,7 +120,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwWindowsShare
      */
@@ -132,7 +132,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -140,7 +140,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwWindowsShare
      */
@@ -152,7 +152,7 @@ class EndpointFtgwWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

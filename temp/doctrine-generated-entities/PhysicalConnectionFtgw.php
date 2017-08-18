@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class PhysicalConnectionFtgw extends AbstractDataObject
 {
     /**
-     * @var \PhysicalConnection
+     * @var PhysicalConnection
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -26,7 +26,7 @@ class PhysicalConnectionFtgw extends AbstractDataObject
 
 
     /**
-     * @param \PhysicalConnection $physicalConnection
+     * @param PhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionFtgw
      */
@@ -38,7 +38,7 @@ class PhysicalConnectionFtgw extends AbstractDataObject
     }
 
     /**
-     * @return \PhysicalConnection
+     * @return PhysicalConnection
      */
     public function getPhysicalConnection()
     {

@@ -33,7 +33,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     private $transmissionType;
 
     /**
-     * @var \AccessConfigSet
+     * @var AccessConfigSet
      *
      * @ORM\ManyToOne(targetEntity="AccessConfigSet")
      * @ORM\JoinColumns({
@@ -43,7 +43,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     private $accessConfigSet;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -55,7 +55,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -127,7 +127,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \AccessConfigSet $accessConfigSet
+     * @param AccessConfigSet $accessConfigSet
      *
      * @return EndpointCdWindowsShare
      */
@@ -139,7 +139,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \AccessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {
@@ -147,7 +147,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointCdWindowsShare
      */
@@ -159,7 +159,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -167,7 +167,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdWindowsShare
      */
@@ -179,7 +179,7 @@ class EndpointCdWindowsShare extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

@@ -101,7 +101,7 @@ class EndpointType extends AbstractDataObject
     /**
      * Add serverType
      *
-     * @param \ServerType $serverType
+     * @param ServerType $serverType
      *
      * @return EndpointType
      */
@@ -115,7 +115,7 @@ class EndpointType extends AbstractDataObject
     /**
      * Remove serverType
      *
-     * @param \ServerType $serverType
+     * @param ServerType $serverType
      */
     public function removeServerType(\ServerType $serverType)
     {

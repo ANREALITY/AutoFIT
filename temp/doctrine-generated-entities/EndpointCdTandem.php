@@ -26,7 +26,7 @@ class EndpointCdTandem extends AbstractDataObject
     private $folder;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -80,7 +80,7 @@ class EndpointCdTandem extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointCdTandem
      */
@@ -92,7 +92,7 @@ class EndpointCdTandem extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {

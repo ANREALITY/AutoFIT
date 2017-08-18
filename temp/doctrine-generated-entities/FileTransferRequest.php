@@ -56,7 +56,7 @@ class FileTransferRequest extends AbstractDataObject
     private $updated;
 
     /**
-     * @var \LogicalConnection
+     * @var LogicalConnection
      *
      * @ORM\ManyToOne(targetEntity="LogicalConnection")
      * @ORM\JoinColumns({
@@ -66,7 +66,7 @@ class FileTransferRequest extends AbstractDataObject
     private $logicalConnection;
 
     /**
-     * @var \ServiceInvoicePosition
+     * @var ServiceInvoicePosition
      *
      * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
      * @ORM\JoinColumns({
@@ -76,7 +76,7 @@ class FileTransferRequest extends AbstractDataObject
     private $serviceInvoicePositionBasicNumber;
 
     /**
-     * @var \ServiceInvoicePosition
+     * @var ServiceInvoicePosition
      *
      * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
      * @ORM\JoinColumns({
@@ -86,7 +86,7 @@ class FileTransferRequest extends AbstractDataObject
     private $serviceInvoicePositionPersonalNumber;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -206,7 +206,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param \LogicalConnection $logicalConnection
+     * @param LogicalConnection $logicalConnection
      *
      * @return FileTransferRequest
      */
@@ -218,7 +218,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return \LogicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {
@@ -226,7 +226,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param \ServiceInvoicePosition $serviceInvoicePositionBasicNumber
+     * @param ServiceInvoicePosition $serviceInvoicePositionBasicNumber
      *
      * @return FileTransferRequest
      */
@@ -238,7 +238,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return \ServiceInvoicePosition
+     * @return ServiceInvoicePosition
      */
     public function getServiceInvoicePositionBasicNumber()
     {
@@ -246,7 +246,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param \ServiceInvoicePosition $serviceInvoicePositionPersonalNumber
+     * @param ServiceInvoicePosition $serviceInvoicePositionPersonalNumber
      *
      * @return FileTransferRequest
      */
@@ -258,7 +258,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return \ServiceInvoicePosition
+     * @return ServiceInvoicePosition
      */
     public function getServiceInvoicePositionPersonalNumber()
     {
@@ -266,7 +266,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param \User $user
+     * @param User $user
      *
      * @return FileTransferRequest
      */
@@ -278,7 +278,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return \User
+     * @return User
      */
     public function getUser()
     {

@@ -56,7 +56,7 @@ class PhysicalConnection extends AbstractDataObject
     private $updated;
 
     /**
-     * @var \LogicalConnection
+     * @var LogicalConnection
      *
      * @ORM\ManyToOne(targetEntity="LogicalConnection")
      * @ORM\JoinColumns({
@@ -176,7 +176,7 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @param \LogicalConnection $logicalConnection
+     * @param LogicalConnection $logicalConnection
      *
      * @return PhysicalConnection
      */
@@ -188,7 +188,7 @@ class PhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return \LogicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {

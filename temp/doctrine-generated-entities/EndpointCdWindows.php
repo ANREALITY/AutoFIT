@@ -26,7 +26,7 @@ class EndpointCdWindows extends AbstractDataObject
     private $transmissionType;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -38,7 +38,7 @@ class EndpointCdWindows extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -90,7 +90,7 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointCdWindows
      */
@@ -102,7 +102,7 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -110,7 +110,7 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdWindows
      */
@@ -122,7 +122,7 @@ class EndpointCdWindows extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

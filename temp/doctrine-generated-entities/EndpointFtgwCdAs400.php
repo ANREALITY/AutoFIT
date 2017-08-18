@@ -26,7 +26,7 @@ class EndpointFtgwCdAs400 extends AbstractDataObject
     private $folder;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -80,7 +80,7 @@ class EndpointFtgwCdAs400 extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwCdAs400
      */
@@ -92,7 +92,7 @@ class EndpointFtgwCdAs400 extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {

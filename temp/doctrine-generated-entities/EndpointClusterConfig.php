@@ -28,7 +28,7 @@ class EndpointClusterConfig extends AbstractDataObject
     private $dnsAddress;
 
     /**
-     * @var \Cluster
+     * @var Cluster
      *
      * @ORM\ManyToOne(targetEntity="Cluster")
      * @ORM\JoinColumns({
@@ -68,7 +68,7 @@ class EndpointClusterConfig extends AbstractDataObject
     }
 
     /**
-     * @param \Cluster $cluster
+     * @param Cluster $cluster
      *
      * @return EndpointClusterConfig
      */
@@ -80,7 +80,7 @@ class EndpointClusterConfig extends AbstractDataObject
     }
 
     /**
-     * @return \Cluster
+     * @return Cluster
      */
     public function getCluster()
     {

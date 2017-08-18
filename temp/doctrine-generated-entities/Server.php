@@ -49,7 +49,7 @@ class Server extends AbstractDataObject
     private $virtualNodeName;
 
     /**
-     * @var \Cluster
+     * @var Cluster
      *
      * @ORM\ManyToOne(targetEntity="Cluster")
      * @ORM\JoinColumns({
@@ -59,7 +59,7 @@ class Server extends AbstractDataObject
     private $cluster;
 
     /**
-     * @var \ServerType
+     * @var ServerType
      *
      * @ORM\ManyToOne(targetEntity="ServerType")
      * @ORM\JoinColumns({
@@ -159,7 +159,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @param \Cluster $cluster
+     * @param Cluster $cluster
      *
      * @return Server
      */
@@ -171,7 +171,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return \Cluster
+     * @return Cluster
      */
     public function getCluster()
     {
@@ -179,7 +179,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @param \ServerType $serverType
+     * @param ServerType $serverType
      *
      * @return Server
      */
@@ -191,7 +191,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return \ServerType
+     * @return ServerType
      */
     public function getServerType()
     {

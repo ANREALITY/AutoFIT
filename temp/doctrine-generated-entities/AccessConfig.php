@@ -49,7 +49,7 @@ class AccessConfig extends AbstractDataObject
     private $permissionDelete;
 
     /**
-     * @var \AccessConfigSet
+     * @var AccessConfigSet
      *
      * @ORM\ManyToOne(targetEntity="AccessConfigSet")
      * @ORM\JoinColumns({
@@ -149,7 +149,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @param \AccessConfigSet $accessConfigSet
+     * @param AccessConfigSet $accessConfigSet
      *
      * @return AccessConfig
      */
@@ -161,7 +161,7 @@ class AccessConfig extends AbstractDataObject
     }
 
     /**
-     * @return \AccessConfigSet
+     * @return AccessConfigSet
      */
     public function getAccessConfigSet()
     {

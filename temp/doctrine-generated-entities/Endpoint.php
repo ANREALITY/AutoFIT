@@ -63,7 +63,7 @@ class Endpoint extends AbstractDataObject
     private $updated;
 
     /**
-     * @var \Application
+     * @var Application
      *
      * @ORM\ManyToOne(targetEntity="Application")
      * @ORM\JoinColumns({
@@ -73,7 +73,7 @@ class Endpoint extends AbstractDataObject
     private $applicationTechnicalShortName;
 
     /**
-     * @var \Customer
+     * @var Customer
      *
      * @ORM\ManyToOne(targetEntity="Customer")
      * @ORM\JoinColumns({
@@ -83,7 +83,7 @@ class Endpoint extends AbstractDataObject
     private $customer;
 
     /**
-     * @var \EndpointServerConfig
+     * @var EndpointServerConfig
      *
      * @ORM\ManyToOne(targetEntity="EndpointServerConfig")
      * @ORM\JoinColumns({
@@ -93,7 +93,7 @@ class Endpoint extends AbstractDataObject
     private $endpointServerConfig;
 
     /**
-     * @var \ExternalServer
+     * @var ExternalServer
      *
      * @ORM\ManyToOne(targetEntity="ExternalServer")
      * @ORM\JoinColumns({
@@ -103,7 +103,7 @@ class Endpoint extends AbstractDataObject
     private $externalServer;
 
     /**
-     * @var \PhysicalConnection
+     * @var PhysicalConnection
      *
      * @ORM\ManyToOne(targetEntity="PhysicalConnection")
      * @ORM\JoinColumns({
@@ -243,7 +243,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param \Application $applicationTechnicalShortName
+     * @param Application $applicationTechnicalShortName
      *
      * @return Endpoint
      */
@@ -255,7 +255,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return \Application
+     * @return Application
      */
     public function getApplicationTechnicalShortName()
     {
@@ -263,7 +263,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param \Customer $customer
+     * @param Customer $customer
      *
      * @return Endpoint
      */
@@ -275,7 +275,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return \Customer
+     * @return Customer
      */
     public function getCustomer()
     {
@@ -283,7 +283,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param \EndpointServerConfig $endpointServerConfig
+     * @param EndpointServerConfig $endpointServerConfig
      *
      * @return Endpoint
      */
@@ -295,7 +295,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return \EndpointServerConfig
+     * @return EndpointServerConfig
      */
     public function getEndpointServerConfig()
     {
@@ -303,7 +303,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param \ExternalServer $externalServer
+     * @param ExternalServer $externalServer
      *
      * @return Endpoint
      */
@@ -315,7 +315,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return \ExternalServer
+     * @return ExternalServer
      */
     public function getExternalServer()
     {
@@ -323,7 +323,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @param \PhysicalConnection $physicalConnection
+     * @param PhysicalConnection $physicalConnection
      *
      * @return Endpoint
      */
@@ -335,7 +335,7 @@ class Endpoint extends AbstractDataObject
     }
 
     /**
-     * @return \PhysicalConnection
+     * @return PhysicalConnection
      */
     public function getPhysicalConnection()
     {

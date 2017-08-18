@@ -49,7 +49,7 @@ class FileParameter extends AbstractDataObject
     private $blockSize;
 
     /**
-     * @var \FileParameterSet
+     * @var FileParameterSet
      *
      * @ORM\ManyToOne(targetEntity="FileParameterSet")
      * @ORM\JoinColumns({
@@ -149,7 +149,7 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * @param \FileParameterSet $fileParameterSet
+     * @param FileParameterSet $fileParameterSet
      *
      * @return FileParameter
      */
@@ -161,7 +161,7 @@ class FileParameter extends AbstractDataObject
     }
 
     /**
-     * @return \FileParameterSet
+     * @return FileParameterSet
      */
     public function getFileParameterSet()
     {

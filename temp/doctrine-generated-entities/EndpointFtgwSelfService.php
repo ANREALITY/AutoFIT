@@ -33,7 +33,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     private $connectionType;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -45,7 +45,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \ProtocolSet
+     * @var ProtocolSet
      *
      * @ORM\ManyToOne(targetEntity="ProtocolSet")
      * @ORM\JoinColumns({
@@ -117,7 +117,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwSelfService
      */
@@ -129,7 +129,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -137,7 +137,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * @param \ProtocolSet $protocolSet
+     * @param ProtocolSet $protocolSet
      *
      * @return EndpointFtgwSelfService
      */
@@ -149,7 +149,7 @@ class EndpointFtgwSelfService extends AbstractDataObject
     }
 
     /**
-     * @return \ProtocolSet
+     * @return ProtocolSet
      */
     public function getProtocolSet()
     {

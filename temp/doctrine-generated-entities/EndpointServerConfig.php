@@ -28,7 +28,7 @@ class EndpointServerConfig extends AbstractDataObject
     private $dnsAddress;
 
     /**
-     * @var \Server
+     * @var Server
      *
      * @ORM\ManyToOne(targetEntity="Server")
      * @ORM\JoinColumns({
@@ -68,7 +68,7 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * @param \Server $serverName
+     * @param Server $serverName
      *
      * @return EndpointServerConfig
      */
@@ -80,7 +80,7 @@ class EndpointServerConfig extends AbstractDataObject
     }
 
     /**
-     * @return \Server
+     * @return Server
      */
     public function getServerName()
     {

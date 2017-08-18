@@ -19,7 +19,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     private $folder;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -31,7 +31,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwWindows
      */
@@ -75,7 +75,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -83,7 +83,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwWindows
      */
@@ -95,7 +95,7 @@ class EndpointFtgwWindows extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

@@ -19,7 +19,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     private $username;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -31,7 +31,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \FileParameterSet
+     * @var FileParameterSet
      *
      * @ORM\ManyToOne(targetEntity="FileParameterSet")
      * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwCdZos
      */
@@ -75,7 +75,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -83,7 +83,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * @param \FileParameterSet $fileParameterSet
+     * @param FileParameterSet $fileParameterSet
      *
      * @return EndpointFtgwCdZos
      */
@@ -95,7 +95,7 @@ class EndpointFtgwCdZos extends AbstractDataObject
     }
 
     /**
-     * @return \FileParameterSet
+     * @return FileParameterSet
      */
     public function getFileParameterSet()
     {

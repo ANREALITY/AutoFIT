@@ -54,7 +54,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     private $dnsAddress;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -66,7 +66,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -76,7 +76,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     private $includeParameterSet;
 
     /**
-     * @var \ProtocolSet
+     * @var ProtocolSet
      *
      * @ORM\ManyToOne(targetEntity="ProtocolSet")
      * @ORM\JoinColumns({
@@ -208,7 +208,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointFtgwProtocolServer
      */
@@ -220,7 +220,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -228,7 +228,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwProtocolServer
      */
@@ -240,7 +240,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {
@@ -248,7 +248,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @param \ProtocolSet $protocolSet
+     * @param ProtocolSet $protocolSet
      *
      * @return EndpointFtgwProtocolServer
      */
@@ -260,7 +260,7 @@ class EndpointFtgwProtocolServer extends AbstractDataObject
     }
 
     /**
-     * @return \ProtocolSet
+     * @return ProtocolSet
      */
     public function getProtocolSet()
     {

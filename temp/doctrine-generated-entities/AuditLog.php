@@ -49,7 +49,7 @@ class AuditLog extends AbstractDataObject
     private $datetime = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -149,7 +149,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @param \User $user
+     * @param User $user
      *
      * @return AuditLog
      */
@@ -161,7 +161,7 @@ class AuditLog extends AbstractDataObject
     }
 
     /**
-     * @return \User
+     * @return User
      */
     public function getUser()
     {

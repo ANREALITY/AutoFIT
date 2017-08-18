@@ -40,7 +40,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     private $transmissionInterval;
 
     /**
-     * @var \Endpoint
+     * @var Endpoint
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -52,7 +52,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var \EndpointClusterConfig
+     * @var EndpointClusterConfig
      *
      * @ORM\ManyToOne(targetEntity="EndpointClusterConfig")
      * @ORM\JoinColumns({
@@ -62,7 +62,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     private $endpointClusterConfig;
 
     /**
-     * @var \IncludeParameterSet
+     * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
      * @ORM\JoinColumns({
@@ -154,7 +154,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @param \Endpoint $endpoint
+     * @param Endpoint $endpoint
      *
      * @return EndpointCdLinuxUnix
      */
@@ -166,7 +166,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @return \Endpoint
+     * @return Endpoint
      */
     public function getEndpoint()
     {
@@ -174,7 +174,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @param \EndpointClusterConfig $endpointClusterConfig
+     * @param EndpointClusterConfig $endpointClusterConfig
      *
      * @return EndpointCdLinuxUnix
      */
@@ -186,7 +186,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @return \EndpointClusterConfig
+     * @return EndpointClusterConfig
      */
     public function getEndpointClusterConfig()
     {
@@ -194,7 +194,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @param \IncludeParameterSet $includeParameterSet
+     * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdLinuxUnix
      */
@@ -206,7 +206,7 @@ class EndpointCdLinuxUnix extends AbstractDataObject
     }
 
     /**
-     * @return \IncludeParameterSet
+     * @return IncludeParameterSet
      */
     public function getIncludeParameterSet()
     {

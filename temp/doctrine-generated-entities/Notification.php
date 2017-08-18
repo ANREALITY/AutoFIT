@@ -42,7 +42,7 @@ class Notification extends AbstractDataObject
     private $failure;
 
     /**
-     * @var \LogicalConnection
+     * @var LogicalConnection
      *
      * @ORM\ManyToOne(targetEntity="LogicalConnection")
      * @ORM\JoinColumns({
@@ -122,7 +122,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @param \LogicalConnection $logicalConnection
+     * @param LogicalConnection $logicalConnection
      *
      * @return Notification
      */
@@ -134,7 +134,7 @@ class Notification extends AbstractDataObject
     }
 
     /**
-     * @return \LogicalConnection
+     * @return LogicalConnection
      */
     public function getLogicalConnection()
     {

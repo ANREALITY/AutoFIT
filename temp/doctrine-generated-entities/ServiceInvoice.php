@@ -28,7 +28,7 @@ class ServiceInvoice extends AbstractDataObject
     private $description;
 
     /**
-     * @var \Application
+     * @var Application
      *
      * @ORM\ManyToOne(targetEntity="Application")
      * @ORM\JoinColumns({
@@ -38,7 +38,7 @@ class ServiceInvoice extends AbstractDataObject
     private $applicationTechnicalShortName;
 
     /**
-     * @var \Environment
+     * @var Environment
      *
      * @ORM\ManyToOne(targetEntity="Environment")
      * @ORM\JoinColumns({
@@ -78,7 +78,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @param \Application $applicationTechnicalShortName
+     * @param Application $applicationTechnicalShortName
      *
      * @return ServiceInvoice
      */
@@ -90,7 +90,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return \Application
+     * @return Application
      */
     public function getApplicationTechnicalShortName()
     {
@@ -98,7 +98,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @param \Environment $environmentSeverity
+     * @param Environment $environmentSeverity
      *
      * @return ServiceInvoice
      */
@@ -110,7 +110,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return \Environment
+     * @return Environment
      */
     public function getEnvironmentSeverity()
     {

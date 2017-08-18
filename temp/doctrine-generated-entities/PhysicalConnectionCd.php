@@ -19,7 +19,7 @@ class PhysicalConnectionCd extends AbstractDataObject
     private $securePlus;
 
     /**
-     * @var \PhysicalConnection
+     * @var PhysicalConnection
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
@@ -53,7 +53,7 @@ class PhysicalConnectionCd extends AbstractDataObject
     }
 
     /**
-     * @param \PhysicalConnection $physicalConnection
+     * @param PhysicalConnection $physicalConnection
      *
      * @return PhysicalConnectionCd
      */
@@ -65,7 +65,7 @@ class PhysicalConnectionCd extends AbstractDataObject
     }
 
     /**
-     * @return \PhysicalConnection
+     * @return PhysicalConnection
      */
     public function getPhysicalConnection()
     {
