@@ -1,10 +1,10 @@
 <?php
 namespace Test;
 
-use DbSystel\Test\AbstractControllerDbTest;
 use DbSystel\Test\AbstractControllerTest;
 use DbSystel\Test\AbstractDbTest;
 use DbSystel\Test\DatabaseInitializer;
+use Doctrine\ORM\EntityManager;
 use RuntimeException;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
@@ -24,6 +24,9 @@ class Bootstrap
     protected $serviceManager;
 
     protected $applicationConfigPath;
+
+    /** @var EntityManager */
+    protected $entityManager;
 
     public function __construct()
     {
@@ -46,6 +49,7 @@ class Bootstrap
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
+        $this->entityManager = $this->serviceManager->get('doctrine.entitymanager.orm_default');
     }
 
     public function chroot()
