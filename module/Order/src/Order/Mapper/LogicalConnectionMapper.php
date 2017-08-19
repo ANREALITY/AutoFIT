@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\PhysicalConnectionFtgwMiddleToEnd;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -245,7 +246,7 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
                 });
         $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw_middle_to_end__'], null, null, new PhysicalConnectionFtgwEndToMiddle(),
+            $identifier, $prefix, ['id', 'physical_connection_id'], ['physical_connection__', 'physical_connection_ftgw_middle_to_end__'], null, null, new PhysicalConnectionFtgwMiddleToEnd(),
                 function (array $row) {
                     return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
                 });
