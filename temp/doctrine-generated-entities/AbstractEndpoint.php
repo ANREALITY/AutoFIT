@@ -71,7 +71,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
      */
-    private $applicationTechnicalShortName;
+    private $application;
 
     /**
      * @var Customer
@@ -244,13 +244,13 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @param Application $applicationTechnicalShortName
+     * @param Application $application
      *
      * @return AbstractEndpoint
      */
-    public function setApplicationTechnicalShortName(Application $applicationTechnicalShortName = null)
+    public function setApplication(Application $application = null)
     {
-        $this->applicationTechnicalShortName = $applicationTechnicalShortName;
+        $this->application = $application;
 
         return $this;
     }
@@ -258,9 +258,9 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @return Application
      */
-    public function getApplicationTechnicalShortName()
+    public function getApplication()
     {
-        return $this->applicationTechnicalShortName;
+        return $this->application;
     }
 
     /**
