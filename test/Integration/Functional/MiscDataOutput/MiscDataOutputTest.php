@@ -141,12 +141,13 @@ class MiscDataOutputTest extends AbstractControllerTest
             [
                 'id' => 1,
                 'virtual_node_name' => 'foo',
-                'servers' => null,
-                'endpoints' => null,
-                'endpoint_cluster_configs' => null,
+//                'servers' => null, // empty ArrayCollection
+//                'endpoints' => null, // empty ArrayCollection
+//                'endpoint_cluster_configs' => null, // empty ArrayCollection
             ]
         ];
-        $this->assertEquals($expectedResultsList, $actualResultsList);
+        $this->assertEquals($expectedResultsList[0]['id'], $actualResultsList[0]['id']);
+        $this->assertEquals($expectedResultsList[0]['virtual_node_name'], $actualResultsList[0]['virtual_node_name']);
     }
 
     public function testProvideServersNotInCdUse()
