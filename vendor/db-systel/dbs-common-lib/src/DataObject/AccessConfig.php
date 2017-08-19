@@ -5,37 +5,57 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AccessConfig
+ *
+ * @ORM\Table(name="access_config", indexes={@ORM\Index(name="fk_access_config_access_config_set_idx", columns={"access_config_set_id"})})
+ * @ORM\Entity
  */
 class AccessConfig extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="permission_read", type="boolean", nullable=true)
      */
     private $permissionRead;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="permission_write", type="boolean", nullable=true)
      */
     private $permissionWrite;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="permission_delete", type="boolean", nullable=true)
      */
     private $permissionDelete;
 
     /**
      * @var AccessConfigSet
+     *
+     * @ORM\ManyToOne(targetEntity="AccessConfigSet", cascade={"all"}, fetch="LAZY")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
+     * })
      */
     private $accessConfigSet;
 
@@ -144,7 +164,7 @@ class AccessConfig extends AbstractDataObject
      *
      * @return AccessConfig
      */
-    public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
     {
         $this->accessConfigSet = $accessConfigSet;
 
