@@ -23,6 +23,7 @@ phpunit.xml
 codeception.yml
 codeception/tests/_output
 data/cache/*
+data/DoctrineORMModule/Proxy/*
 data/export/*
 data/logs/error-*.log
 data/test/export/*
