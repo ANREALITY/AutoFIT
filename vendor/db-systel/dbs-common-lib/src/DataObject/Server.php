@@ -204,7 +204,7 @@ class Server extends AbstractDataObject
      *
      * @return Server
      */
-    public function setEndpointServerConfigs(array $endpointServerConfigs)
+    public function setEndpointServerConfigs($endpointServerConfigs)
     {
         $this->endpointServerConfigs = $endpointServerConfigs;
 

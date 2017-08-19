@@ -87,7 +87,7 @@ class Cluster extends AbstractDataObject
      *
      * @return Cluster
      */
-    public function setServers(array $servers)
+    public function setServers($servers)
     {
         $this->servers = $servers;
 
@@ -127,7 +127,7 @@ class Cluster extends AbstractDataObject
      *
      * @return Cluster
      */
-    public function setEndpoints(array $endpoints)
+    public function setEndpoints($endpoints)
     {
         $this->endpoints = $endpoints;
 
@@ -167,7 +167,7 @@ class Cluster extends AbstractDataObject
      *
      * @return Cluster
      */
-    public function setEndpointClusterConfigs(array $endpointClusterConfigs)
+    public function setEndpointClusterConfigs($endpointClusterConfigs)
     {
         $this->endpointClusterConfigs = $endpointClusterConfigs;
 

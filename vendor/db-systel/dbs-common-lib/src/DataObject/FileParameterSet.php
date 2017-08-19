@@ -75,7 +75,7 @@ class FileParameterSet extends AbstractDataObject
      *
      * @return FileParameterSet
      */
-    public function setFileParameters(array $fileParameters)
+    public function setFileParameters($fileParameters)
     {
         $this->fileParameters = $fileParameters;
 

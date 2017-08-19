@@ -75,7 +75,7 @@ class ProtocolSet extends AbstractDataObject
      *
      * @return ProtocolSet
      */
-    public function setProtocols(array $protocols)
+    public function setProtocols($protocols)
     {
         $this->protocols = $protocols;
 

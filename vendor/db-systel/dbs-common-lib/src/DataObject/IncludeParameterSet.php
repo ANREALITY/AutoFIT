@@ -75,7 +75,7 @@ class IncludeParameterSet extends AbstractDataObject
      *
      * @return IncludeParameterSet
      */
-    public function setIncludeParameters(array $includeParameters)
+    public function setIncludeParameters($includeParameters)
     {
         $this->includeParameters = $includeParameters;
 
