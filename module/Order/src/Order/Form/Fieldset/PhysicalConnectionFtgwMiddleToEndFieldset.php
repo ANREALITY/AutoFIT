@@ -10,8 +10,12 @@ class PhysicalConnectionFtgwMiddleToEndFieldset extends AbstractPhysicalConnecti
 
     public function __construct($name = null, $options = [], string $endpointTargetFieldsetServiceName)
     {
-        parent::__construct('physical_connection_ftgw_middle_to_end', $options, null,
-            $endpointTargetFieldsetServiceName);
+        parent::__construct(
+            'physical_connection_ftgw_middle_to_end',
+            $options,
+            null,
+            $endpointTargetFieldsetServiceName
+        );
     }
 
     protected function getConcreteRole()
