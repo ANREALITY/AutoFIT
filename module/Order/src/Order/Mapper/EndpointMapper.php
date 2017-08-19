@@ -385,15 +385,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
 
         if (! $isUpdate) {
             $action = new Insert('endpoint_cd_as400');
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_as400');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -425,15 +425,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
 
         if (! $isUpdate) {
             $action = new Insert('endpoint_cd_tandem');
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_tandem');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -473,7 +473,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -484,8 +484,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_linux_unix');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -526,7 +526,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -536,8 +536,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_windows');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -579,7 +579,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $newAccessConfigSet = $this->accessConfigSetMapper->save($dataObject->getAccessConfigSet());
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -590,8 +590,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_windows_share');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -630,7 +630,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
             $data['file_parameter_set_id'] = $newFileParameterSet->getId();
         }
@@ -640,8 +640,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_cd_zos');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -679,7 +679,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $newProtocolSet = $this->protocolSetMapper->save($dataObject->getProtocolSet());
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         $data['protocol_set_id'] = $newProtocolSet->getId();
 
         if (! $isUpdate) {
@@ -687,8 +687,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_self_service');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -734,7 +734,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $newProtocolSet = $this->protocolSetMapper->save($dataObject->getProtocolSet());
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -745,8 +745,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_protocol_server');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -786,7 +786,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -796,9 +796,9 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_windows');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            // Don't unset the $data['endpoint_id'], since its the only field to UPDATE!
-            // unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            // Don't unset the $data['id'], since its the only field to UPDATE!
+            // unset($data['id']);
             $action->set($data);
         }
 
@@ -835,7 +835,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         $newAccessConfigSet = $this->accessConfigSetMapper->save($dataObject->getAccessConfigSet());
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -846,8 +846,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_windows_share');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -891,7 +891,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_SOURCE) {
             $data['include_parameter_set_id'] = $newIncludeParameterSet->getId();
         }
@@ -902,8 +902,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_linux_unix');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -943,7 +943,7 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         }
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
         if ($dataObject->getRole() === AbstractEndpoint::ROLE_TARGET) {
             $data['file_parameter_set_id'] = $newFileParameterSet->getId();
         }
@@ -953,8 +953,8 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_cd_zos');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
 
@@ -991,15 +991,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
     
         if (! $isUpdate) {
             $action = new Insert('endpoint_ftgw_cd_tandem');
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_cd_tandem');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
     
@@ -1036,15 +1036,15 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['endpoint_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
     
         if (! $isUpdate) {
             $action = new Insert('endpoint_ftgw_cd_as400');
             $action->values($data);
         } else {
             $action = new Update('endpoint_ftgw_cd_as400');
-            $action->where(['endpoint_id' => $data['endpoint_id']]);
-            unset($data['endpoint_id']);
+            $action->where(['id' => $data['id']]);
+            unset($data['id']);
             $action->set($data);
         }
     

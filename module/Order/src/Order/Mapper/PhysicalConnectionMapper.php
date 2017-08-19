@@ -301,196 +301,196 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, null, null, $prototype, $dataObjectCondition, $isCollection);
 
         $endpointCdAs400SourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_AS400;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdAs400TargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_as400__'], null, null, new EndpointCdAs400(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_AS400;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdTandemSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_TANDEM;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdTandemTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_tandem__'], null, null, new EndpointCdTandem(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_TANDEM;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdLinuxUnixSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_linux_unix__'], null, null, new EndpointCdLinuxUnix(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_linux_unix__'], null, null, new EndpointCdLinuxUnix(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdLinuxUnixTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_linux_unix__'], null, null, new EndpointCdLinuxUnix(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_linux_unix__'], null, null, new EndpointCdLinuxUnix(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdWindowsSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_windows__'], null, null, new EndpointCdWindows(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_windows__'], null, null, new EndpointCdWindows(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdWindowsTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_windows__'], null, null, new EndpointCdWindows(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_windows__'], null, null, new EndpointCdWindows(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdZosSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointCdZosTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_zos__'], null, null, new EndpointCdZos(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointCdWindowsShareSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_windows_share__'], null, null, new EndpointCdWindowsShare(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_windows_share__'], null, null, new EndpointCdWindowsShare(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointCdWindowsShareTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_cd_windows_share__'], null, null, new EndpointCdWindowsShare(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_cd_windows_share__'], null, null, new EndpointCdWindowsShare(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwWindowsSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwWindowsTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_windows__'], null, null, new EndpointFtgwWindows(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwSelfServiceSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_self_service__'], null, null, new EndpointFtgwSelfService(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_self_service__'], null, null, new EndpointFtgwSelfService(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwSelfServiceTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_self_service__'], null, null, new EndpointFtgwSelfService(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_self_service__'], null, null, new EndpointFtgwSelfService(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwProtocolServerSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_protocol_server__'], null, null, new EndpointFtgwProtocolServer(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_protocol_server__'], null, null, new EndpointFtgwProtocolServer(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwProtocolServerTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_protocol_server__'], null, null, new EndpointFtgwProtocolServer(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_protocol_server__'], null, null, new EndpointFtgwProtocolServer(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwWindowsShareSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwWindowsShareTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_windows_share__'], null, null, new EndpointFtgwWindowsShare(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwLinuxUnixSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_linux_unix__'], null, null, new EndpointFtgwLinuxUnix(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_linux_unix__'], null, null, new EndpointFtgwLinuxUnix(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwLinuxUnixTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_linux_unix__'], null, null, new EndpointFtgwLinuxUnix(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_linux_unix__'], null, null, new EndpointFtgwLinuxUnix(),
                 function (array $row) {
                     $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
                     $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                     return $typeIsOk && $roleIsOk;
                 });
         $endpointFtgwCdZosSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_zos__'], null, null, new EndpointFtgwCdZos(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_zos__'], null, null, new EndpointFtgwCdZos(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_ZOS;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwCdZosTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_zos__'], null, null, new EndpointFtgwCdZos(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_zos__'], null, null, new EndpointFtgwCdZos(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_ZOS;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwCdTandemSourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_tandem__'], null, null, new EndpointFtgwCdTandem(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_tandem__'], null, null, new EndpointFtgwCdTandem(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_TANDEM;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwCdTandemTargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_tandem__'], null, null, new EndpointFtgwCdTandem(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_tandem__'], null, null, new EndpointFtgwCdTandem(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_TANDEM;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwCdAs400SourceDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_AS400;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_SOURCE;
                 return $typeIsOk && $roleIsOk;
             });
         $endpointFtgwCdAs400TargetDataObjects = $this->endpointMapper->createDataObjects($resultSetArray,
-            'id', 'physical_connection__', ['id', 'endpoint_id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
+            'id', 'physical_connection__', ['id', 'id'], ['endpoint__', 'endpoint_ftgw_cd_as400__'], null, null, new EndpointFtgwCdAs400(),
             function (array $row) {
                 $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_AS400;
                 $roleIsOk = array_key_exists('endpoint' . '__' . 'role', $row) && $row['endpoint' . '__' . 'role'] === AbstractEndpoint::ROLE_TARGET;

@@ -209,7 +209,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdAs400Source(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -219,7 +219,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdAs400Target(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_as400', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -233,7 +233,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdLinuxUnixSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -255,7 +255,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdLinuxUnixTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_linux_unix', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -269,7 +269,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdTandemSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -279,7 +279,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdTandemTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_tandem', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -293,7 +293,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdWindowsSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['folder'],
@@ -307,7 +307,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdWindowsTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_windows', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['folder'],
@@ -317,7 +317,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdWindowsShareSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['sharename'],
@@ -335,7 +335,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdWindowsShareTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_windows_share', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['sharename'],
@@ -349,7 +349,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdZosSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_source']['username'],
@@ -359,7 +359,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointCdZosTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_cd_zos', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_end']['endpoint_target']['username'],
@@ -369,7 +369,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdAs400Source(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -379,7 +379,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdAs400Target(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -393,7 +393,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdTandemSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -403,7 +403,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdTandemTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_tandem', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -417,7 +417,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdZosSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -427,7 +427,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwCdZosTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_cd_zos', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -437,7 +437,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwLinuxUnixSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -459,7 +459,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwLinuxUnixTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_linux_unix', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -473,7 +473,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwProtocolServerSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_protocol_server', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_protocol_server', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['username'],
@@ -503,7 +503,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwProtocolServerTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_protocol_server', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_protocol_server', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['username'],
@@ -529,7 +529,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwSelfServiceSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['connection_type'],
@@ -547,7 +547,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwSelfServiceTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_self_service', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['connection_type'],
@@ -565,7 +565,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwWindowsSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['folder'],
@@ -575,7 +575,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwWindowsTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
@@ -585,7 +585,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwWindowsShareSource(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_windows_share', 'endpoint_id', 1);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows_share', 'id', 1);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['sharename'],
@@ -599,7 +599,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
 
     protected function assertEndpointFtgwWindowsShareTarget(array $createParams)
     {
-        $actualData = $this->retrieveActualData('endpoint_ftgw_windows_share', 'endpoint_id', 2);
+        $actualData = $this->retrieveActualData('endpoint_ftgw_windows_share', 'id', 2);
 
         $this->assertEquals(
             $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['sharename'],

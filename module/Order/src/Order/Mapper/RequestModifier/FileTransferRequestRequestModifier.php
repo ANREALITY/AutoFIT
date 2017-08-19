@@ -62,9 +62,9 @@ class FileTransferRequestRequestModifier
 
     public function addCdAs400(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_as400', 'endpoint_cd_as400.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_as400', 'endpoint_cd_as400.id = endpoint.id',
             [
-                'endpoint_cd_as400' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_as400' . '__' . 'id' => 'id',
                 'endpoint_cd_as400' . '__' . 'username' => 'username',
                 'endpoint_cd_as400' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
@@ -72,9 +72,9 @@ class FileTransferRequestRequestModifier
     
     public function addCdTandem(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_tandem', 'endpoint_cd_tandem.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_tandem', 'endpoint_cd_tandem.id = endpoint.id',
             [
-                'endpoint_cd_tandem' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_tandem' . '__' . 'id' => 'id',
                 'endpoint_cd_tandem' . '__' . 'username' => 'username',
                 'endpoint_cd_tandem' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
@@ -82,9 +82,9 @@ class FileTransferRequestRequestModifier
     
     public function addCdLinuxUnix(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_linux_unix', 'endpoint_cd_linux_unix.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_linux_unix', 'endpoint_cd_linux_unix.id = endpoint.id',
             [
-                'endpoint_cd_linux_unix' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_linux_unix' . '__' . 'id' => 'id',
                 'endpoint_cd_linux_unix' . '__' . 'username' => 'username',
                 'endpoint_cd_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_cd_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
@@ -127,9 +127,9 @@ class FileTransferRequestRequestModifier
     
     public function addCdWindows(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_windows', 'endpoint_cd_windows.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_windows', 'endpoint_cd_windows.id = endpoint.id',
             [
-                'endpoint_cd_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_windows' . '__' . 'id' => 'id',
                 'endpoint_cd_windows' . '__' . 'folder' => 'folder',
                 'endpoint_cd_windows' . '__' . 'transmission_type' => 'transmission_type',
                 'endpoint_cd_windows' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id'
@@ -150,9 +150,9 @@ class FileTransferRequestRequestModifier
     
     public function addCdWindowsShare(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_windows_share', 'endpoint_cd_windows_share.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_windows_share', 'endpoint_cd_windows_share.id = endpoint.id',
             [
-                'endpoint_cd_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_windows_share' . '__' . 'id' => 'id',
                 'endpoint_cd_windows_share' . '__' . 'sharename' => 'sharename',
                 'endpoint_cd_windows_share' . '__' . 'folder' => 'folder',
                 'endpoint_cd_windows_share' . '__' . 'transmission_type' => 'transmission_type',
@@ -188,9 +188,9 @@ class FileTransferRequestRequestModifier
     
     public function addCdZos(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_cd_zos', 'endpoint_cd_zos.endpoint_id = endpoint.id',
+        $select->join('endpoint_cd_zos', 'endpoint_cd_zos.id = endpoint.id',
             [
-                'endpoint_cd_zos' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_cd_zos' . '__' . 'id' => 'id',
                 'endpoint_cd_zos' . '__' . 'username' => 'username',
                 'endpoint_cd_zos' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id',
             ], Select::JOIN_LEFT);
@@ -213,9 +213,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwWindows(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_windows', 'endpoint_ftgw_windows.id = endpoint.id',
             [
-                'endpoint_ftgw_windows' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_windows' . '__' . 'id' => 'id',
                 'endpoint_ftgw_windows' . '__' . 'folder' => 'folder',
             ], Select::JOIN_LEFT);
         if ($requstMode == self::REQUEST_MODE_FULL) {
@@ -234,9 +234,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwSelfService(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_self_service', 'endpoint_ftgw_self_service.id = endpoint.id',
             [
-                'endpoint_ftgw_self_service' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_self_service' . '__' . 'id' => 'id',
                 'endpoint_ftgw_self_service' . '__' . 'ftgw_username' => 'ftgw_username',
                 'endpoint_ftgw_self_service' . '__' . 'mailbox' => 'mailbox',
                 'endpoint_ftgw_self_service' . '__' . 'connection_type' => 'connection_type',
@@ -258,9 +258,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwProtocolServer(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_protocol_server', 'endpoint_ftgw_protocol_server.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_protocol_server', 'endpoint_ftgw_protocol_server.id = endpoint.id',
             [
-                'endpoint_ftgw_protocol_server' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_protocol_server' . '__' . 'id' => 'id',
                 'endpoint_ftgw_protocol_server' . '__' . 'username' => 'username',
                 'endpoint_ftgw_protocol_server' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_protocol_server' . '__' . 'dns_address' => 'dns_address',
@@ -296,9 +296,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwWindowsShare(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_windows_share', 'endpoint_ftgw_windows_share.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_windows_share', 'endpoint_ftgw_windows_share.id = endpoint.id',
             [
-                'endpoint_ftgw_windows_share' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_windows_share' . '__' . 'id' => 'id',
                 'endpoint_ftgw_windows_share' . '__' . 'sharename' => 'sharename',
                 'endpoint_ftgw_windows_share' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_windows_share' . '__' . 'include_parameter_set_id' => 'include_parameter_set_id',
@@ -333,9 +333,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwLinuxUnix(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_linux_unix', 'endpoint_ftgw_linux_unix.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_linux_unix', 'endpoint_ftgw_linux_unix.id = endpoint.id',
             [
-                'endpoint_ftgw_linux_unix' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_linux_unix' . '__' . 'id' => 'id',
                 'endpoint_ftgw_linux_unix' . '__' . 'username' => 'username',
                 'endpoint_ftgw_linux_unix' . '__' . 'folder' => 'folder',
                 'endpoint_ftgw_linux_unix' . '__' . 'transmission_type' => 'transmission_type',
@@ -378,9 +378,9 @@ class FileTransferRequestRequestModifier
     
     public function addFtgwCdZos(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_cd_zos', 'endpoint_ftgw_cd_zos.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_cd_zos', 'endpoint_ftgw_cd_zos.id = endpoint.id',
             [
-                'endpoint_ftgw_cd_zos' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_zos' . '__' . 'id' => 'id',
                 'endpoint_ftgw_cd_zos' . '__' . 'username' => 'username',
                 'endpoint_ftgw_cd_zos' . '__' . 'file_parameter_set_id' => 'file_parameter_set_id',
             ], Select::JOIN_LEFT);
@@ -403,9 +403,9 @@ class FileTransferRequestRequestModifier
 
     public function addFtgwCdTandem(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_cd_tandem', 'endpoint_ftgw_cd_tandem.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_cd_tandem', 'endpoint_ftgw_cd_tandem.id = endpoint.id',
             [
-                'endpoint_ftgw_cd_tandem' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_tandem' . '__' . 'id' => 'id',
                 'endpoint_ftgw_cd_tandem' . '__' . 'username' => 'username',
                 'endpoint_ftgw_cd_tandem' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);
@@ -413,9 +413,9 @@ class FileTransferRequestRequestModifier
 
     public function addFtgwCdAs400(Select &$select, $requstMode = self::REQUEST_MODE_BASIC)
     {
-        $select->join('endpoint_ftgw_cd_as400', 'endpoint_ftgw_cd_as400.endpoint_id = endpoint.id',
+        $select->join('endpoint_ftgw_cd_as400', 'endpoint_ftgw_cd_as400.id = endpoint.id',
             [
-                'endpoint_ftgw_cd_as400' . '__' . 'endpoint_id' => 'endpoint_id',
+                'endpoint_ftgw_cd_as400' . '__' . 'id' => 'id',
                 'endpoint_ftgw_cd_as400' . '__' . 'username' => 'username',
                 'endpoint_ftgw_cd_as400' . '__' . 'folder' => 'folder'
             ], Select::JOIN_LEFT);

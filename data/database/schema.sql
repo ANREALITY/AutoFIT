@@ -363,12 +363,12 @@ CREATE INDEX `fk_file_transfer_request_user_idx` ON `file_transfer_request` (`us
 -- Table `endpoint_cd_tandem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_tandem` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL COMMENT 'Verfahrensuser ??? ID ???',
   `folder` VARCHAR(200) NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_tandem_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -379,12 +379,12 @@ CREATE TABLE IF NOT EXISTS `endpoint_cd_tandem` (
 -- Table `endpoint_cd_as400`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_as400` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL COMMENT 'Verfahrensuser ??? ID ???',
   `folder` VARCHAR(200) NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_as400_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -447,12 +447,12 @@ CREATE TABLE IF NOT EXISTS `include_parameter_set` (
 -- Table `endpoint_ftgw_windows`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_windows` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `folder` VARCHAR(200) NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_windows_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -463,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `endpoint_ftgw_windows` (
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
 
-CREATE INDEX `fk_endpoint_ftgw_windows_endpoint_idx` ON `endpoint_ftgw_windows` (`endpoint_id` ASC);
+CREATE INDEX `fk_endpoint_ftgw_windows_idx` ON `endpoint_ftgw_windows` (`id` ASC);
 
 CREATE INDEX `fk_endpoint_ftgw_windows_include_parameter_set_idx` ON `endpoint_ftgw_windows` (`include_parameter_set_id` ASC);
 
@@ -481,14 +481,14 @@ CREATE TABLE IF NOT EXISTS `protocol_set` (
 -- Table `endpoint_ftgw_self_service`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_self_service` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `ftgw_username` VARCHAR(50) NULL,
   `mailbox` VARCHAR(50) NULL,
   `connection_type` ENUM('internal', 'external', 'both') NULL,
   `protocol_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_self_service_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -562,14 +562,14 @@ CREATE INDEX `fk_endpoint_cluster_config_cluster_idx` ON `endpoint_cluster_confi
 -- Table `endpoint_cd_linux_unix`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_linux_unix` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
   `transmission_type` ENUM('txt', 'bin') NULL,
   `transmission_interval` VARCHAR(50) NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
   `endpoint_cluster_config_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_linux_unix_include_parameter_set`
   FOREIGN KEY (`include_parameter_set_id`)
   REFERENCES `include_parameter_set` (`id`)
@@ -581,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `endpoint_cd_linux_unix` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_endpoint_cd_linux_unix_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -619,15 +619,15 @@ CREATE TABLE IF NOT EXISTS `access_config_set` (
 -- Table `endpoint_cd_windows_share`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_windows_share` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `sharename` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
   `transmission_type` ENUM('txt', 'bin') NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
   `access_config_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_windows_share_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -708,13 +708,13 @@ CREATE INDEX `fk_endpoint_type_server_type_endpoint_type_idx` ON `endpoint_type_
 -- Table `endpoint_cd_windows`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_windows` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `folder` VARCHAR(200) NULL,
   `transmission_type` ENUM('txt', 'bin') NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_windows_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -725,7 +725,7 @@ CREATE TABLE IF NOT EXISTS `endpoint_cd_windows` (
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
 
-CREATE INDEX `fk_endpoint_cd_windows_endpoint_idx` ON `endpoint_cd_windows` (`endpoint_id` ASC);
+CREATE INDEX `fk_endpoint_cd_windows_idx` ON `endpoint_cd_windows` (`id` ASC);
 
 CREATE INDEX `fk_endpoint_cd_windows_include_parameter_set_idx` ON `endpoint_cd_windows` (`include_parameter_set_id` ASC);
 
@@ -743,12 +743,12 @@ CREATE TABLE IF NOT EXISTS `file_parameter_set` (
 -- Table `endpoint_cd_zos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_cd_zos` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `file_parameter_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_cd_zos_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -787,7 +787,7 @@ CREATE INDEX `fk_file_parameter_file_parameter_set_idx` ON `file_parameter` (`fi
 -- Table `endpoint_ftgw_protocol_server`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_protocol_server` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
   `transmission_type` ENUM('txt', 'bin') NULL,
@@ -796,9 +796,9 @@ CREATE TABLE IF NOT EXISTS `endpoint_ftgw_protocol_server` (
   `dns_address` VARCHAR(253) NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
   `protocol_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_protocol_server_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -841,14 +841,14 @@ CREATE INDEX `fk_protocol_protocol_set_idx` ON `protocol` (`protocol_set_id` ASC
 -- Table `endpoint_ftgw_windows_share`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_windows_share` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `sharename` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
   `access_config_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_windows_share_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -873,16 +873,16 @@ CREATE INDEX `fk_endpoint_ftgw_windows_share_access_config_set_idx` ON `endpoint
 -- Table `endpoint_ftgw_linux_unix`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_linux_unix` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
   `transmission_type` ENUM('txt', 'bin') NULL,
   `transmission_interval` VARCHAR(50) NULL,
   `include_parameter_set_id` INT UNSIGNED NULL,
   `endpoint_cluster_config_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_linux_unix_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -907,12 +907,12 @@ CREATE INDEX `fk_endpoint_ftgw_linux_unix_endpoint_cluster_config_idx` ON `endpo
 -- Table `endpoint_ftgw_cd_zos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_cd_zos` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `file_parameter_set_id` INT UNSIGNED NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_cd_zos_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -930,12 +930,12 @@ CREATE INDEX `fk_endpoint_ftgw_cd_zos_file_parameter_set_idx` ON `endpoint_ftgw_
 -- Table `endpoint_ftgw_cd_tandem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_cd_tandem` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_cd_tandem_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -946,12 +946,12 @@ CREATE TABLE IF NOT EXISTS `endpoint_ftgw_cd_tandem` (
 -- Table `endpoint_ftgw_cd_as400`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endpoint_ftgw_cd_as400` (
-  `endpoint_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `username` VARCHAR(50) NULL,
   `folder` VARCHAR(200) NULL,
-  PRIMARY KEY (`endpoint_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_endpoint_ftgw_cd_as400_endpoint`
-  FOREIGN KEY (`endpoint_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `endpoint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
