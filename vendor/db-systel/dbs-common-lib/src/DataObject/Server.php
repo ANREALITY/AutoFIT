@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,9 +50,14 @@ class Server extends AbstractDataObject
     private $cluster;
 
     /**
-     * @var EndpointServerConfig[]
+     * @var ArrayCollection
      */
     private $endpointServerConfigs;
+
+    public function __construct()
+    {
+        $this->endpointServerConfigs = new ArrayCollection();
+    }
 
     /**
      * @param string $name
@@ -194,7 +200,7 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @param EndpointServerConfig[] $endpointServerConfigs
+     * @param ArrayCollection $endpointServerConfigs
      *
      * @return Server
      */
@@ -206,11 +212,31 @@ class Server extends AbstractDataObject
     }
 
     /**
-     * @return EndpointServerConfig[] $endpointServerConfigs
+     * @return ArrayCollection $endpointServerConfigs
      */
     public function getEndpointServerConfigs()
     {
         return $this->endpointServerConfigs;
+    }
+
+    /**
+     * @param EndpointServerConfig $endpointServerConfig
+     * @return Server
+     */
+    public function addEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
+    {
+        $this->endpointServerConfigs->add($endpointServerConfig);
+        return $this;
+    }
+
+    /**
+     * @param EndpointServerConfig $endpointServerConfig
+     * @return Server
+     */
+    public function removeEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
+    {
+        $this->endpointServerConfigs->removeElement($endpointServerConfig);
+        return $this;
     }
 
 }

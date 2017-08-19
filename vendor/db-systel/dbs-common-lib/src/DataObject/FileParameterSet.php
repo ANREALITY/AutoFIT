@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,9 +21,14 @@ class FileParameterSet extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var FileParameter[]
+     * @var ArrayCollection
      */
     private $fileParameters;
+
+    public function __construct()
+    {
+        $this->fileParameters = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -65,7 +71,7 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     * @param FileParameter[] $fileParameters
+     * @param ArrayCollection $fileParameters
      *
      * @return FileParameterSet
      */
@@ -77,11 +83,31 @@ class FileParameterSet extends AbstractDataObject
     }
 
     /**
-     * @return FileParameter[] $fileParameters
+     * @return ArrayCollection $fileParameters
      */
     public function getFileParameters()
     {
         return $this->fileParameters;
+    }
+
+    /**
+     * @param FileParameter $fileParameter
+     * @return FileParameterSet
+     */
+    public function addFileParameter(FileParameter $fileParameter)
+    {
+        $this->fileParameters->add($fileParameter);
+        return $this;
+    }
+
+    /**
+     * @param FileParameter $fileParameter
+     * @return FileParameterSet
+     */
+    public function removeFileParameter(FileParameter $fileParameter)
+    {
+        $this->fileParameters->removeElement($fileParameter);
+        return $this;
     }
 
 }

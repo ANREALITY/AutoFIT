@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,9 +21,14 @@ class IncludeParameterSet extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var IncludeParameter[]
+     * @var ArrayCollection
      */
     private $includeParameters;
+
+    public function __construct()
+    {
+        $this->includeParameters = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -65,7 +71,7 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     * @param IncludeParameter[] $includeParameters
+     * @param ArrayCollection $includeParameters
      *
      * @return IncludeParameterSet
      */
@@ -77,11 +83,31 @@ class IncludeParameterSet extends AbstractDataObject
     }
 
     /**
-     * @return IncludeParameter[] $includeParameters
+     * @return ArrayCollection $includeParameters
      */
     public function getIncludeParameters()
     {
         return $this->includeParameters;
+    }
+
+    /**
+     * @param IncludeParameter $includeParameter
+     * @return IncludeParameterSet
+     */
+    public function addIncludeParameter(IncludeParameter $includeParameter)
+    {
+        $this->includeParameters->add($includeParameter);
+        return $this;
+    }
+
+    /**
+     * @param IncludeParameter $includeParameter
+     * @return IncludeParameterSet
+     */
+    public function removeIncludeParameter(IncludeParameter $includeParameter)
+    {
+        $this->includeParameters->removeElement($includeParameter);
+        return $this;
     }
 
 }

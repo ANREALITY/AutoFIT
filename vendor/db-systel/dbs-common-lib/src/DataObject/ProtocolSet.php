@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,9 +21,14 @@ class ProtocolSet extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var Protocol[]
+     * @var ArrayCollection
      */
     private $protocols;
+
+    public function __construct()
+    {
+        $this->protocols = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -65,7 +71,7 @@ class ProtocolSet extends AbstractDataObject
     }
 
     /**
-     * @param Protocol[] $protocols
+     * @param ArrayCollection $protocols
      *
      * @return ProtocolSet
      */
@@ -77,11 +83,31 @@ class ProtocolSet extends AbstractDataObject
     }
 
     /**
-     * @return Protocol[] $protocols
+     * @return ArrayCollection $protocols
      */
     public function getProtocols()
     {
         return $this->protocols;
+    }
+
+    /**
+     * @param Protocol $protocol
+     * @return ProtocolSet
+     */
+    public function addProtocol(Protocol $protocol)
+    {
+        $this->protocols->add($protocol);
+        return $this;
+    }
+
+    /**
+     * @param Protocol $protocol
+     * @return ProtocolSet
+     */
+    public function removeProtocol(Protocol $protocol)
+    {
+        $this->protocols->removeElement($protocol);
+        return $this;
     }
 
 }

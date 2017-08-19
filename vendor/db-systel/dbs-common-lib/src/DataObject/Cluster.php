@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,19 +21,26 @@ class Cluster extends AbstractDataObject
     private $virtualNodeName;
 
     /**
-     * @var Server[]
+     * @var ArrayCollection
      */
     private $servers;
 
     /**
-     * @var AbstractEndpoint[]
+     * @var ArrayCollection
      */
     private $endpoints;
 
     /**
-     * @var EndpointClusterConfig[]
+     * @var ArrayCollection
      */
     private $endpointClusterConfigs;
+
+    public function __construct()
+    {
+        $this->servers = new ArrayCollection();
+        $this->endpoints = new ArrayCollection();
+        $this->endpointClusterConfigs = new ArrayCollection();
+    }
 
     /**
      * @param int $id
@@ -75,7 +83,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param Server[] $servers
+     * @param ArrayCollection $servers
      *
      * @return Cluster
      */
@@ -87,7 +95,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return Server[] $servers
+     * @return ArrayCollection $servers
      */
     public function getServers()
     {
@@ -95,7 +103,27 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param AbstractEndpoint[] $endpoints
+     * @param Server $server
+     * @return Cluster
+     */
+    public function addServer(Server $server)
+    {
+        $this->servers->add($server);
+        return $this;
+    }
+
+    /**
+     * @param Server $server
+     * @return Cluster
+     */
+    public function removeServer(Server $server)
+    {
+        $this->servers->removeElement($server);
+        return $this;
+    }
+
+    /**
+     * @param ArrayCollection $endpoints
      *
      * @return Cluster
      */
@@ -107,7 +135,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return AbstractEndpoint[] $endpoints
+     * @return ArrayCollection $endpoints
      */
     public function getEndpoints()
     {
@@ -115,7 +143,27 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param EndpointClusterConfig[] $endpointClusterConfigs
+     * @param AbstractEndpoint $endpoint
+     * @return Cluster
+     */
+    public function addEndpoint(AbstractEndpoint $endpoint)
+    {
+        $this->endpoints->add($endpoint);
+        return $this;
+    }
+
+    /**
+     * @param AbstractEndpoint $endpoint
+     * @return Cluster
+     */
+    public function removeEndpoint(AbstractEndpoint $endpoint)
+    {
+        $this->endpoints->removeElement($endpoint);
+        return $this;
+    }
+
+    /**
+     * @param ArrayCollection $endpointClusterConfigs
      *
      * @return Cluster
      */
@@ -127,11 +175,31 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return EndpointClusterConfig[] $endpointClusterConfigs
+     * @return ArrayCollection $endpointClusterConfigs
      */
     public function getEndpointClusterConfigs()
     {
         return $this->endpointClusterConfigs;
+    }
+
+    /**
+     * @param EndpointClusterConfig $endpointClusterConfig
+     * @return Cluster
+     */
+    public function addEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
+    {
+        $this->endpointClusterConfigs->add($endpointClusterConfig);
+        return $this;
+    }
+
+    /**
+     * @param EndpointClusterConfig $endpointClusterConfig
+     * @return Cluster
+     */
+    public function removeEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
+    {
+        $this->endpointClusterConfigs->removeElement($endpointClusterConfig);
+        return $this;
     }
 
 }

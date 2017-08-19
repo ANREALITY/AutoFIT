@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,9 +50,14 @@ class LogicalConnection extends AbstractDataObject
     private $physicalConnectionMiddleToEnd;
 
     /**
-     * @var Notification[]
+     * @var ArrayCollection
      */
     private $notifications;
+
+    public function __construct()
+    {
+        $this->notifications = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -194,7 +200,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @param Notification[] $notifications
+     * @param ArrayCollection $notifications
      *
      * @return LogicalConnection
      */
@@ -206,11 +212,31 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return Notification[] $notifications
+     * @return ArrayCollection $notifications
      */
     public function getNotifications()
     {
         return $this->notifications;
+    }
+
+    /**
+     * @param Notification $notification
+     * @return LogicalConnection
+     */
+    public function addNotification(Notification $notification)
+    {
+        $this->notifications->add($notification);
+        return $this;
+    }
+
+    /**
+     * @param Notification $notification
+     * @return LogicalConnection
+     */
+    public function removeNotification(Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+        return $this;
     }
 
 }

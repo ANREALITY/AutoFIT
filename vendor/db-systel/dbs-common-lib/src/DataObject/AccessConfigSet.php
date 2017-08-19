@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,9 +21,14 @@ class AccessConfigSet extends AbstractDataObject
     private $endpoint;
 
     /**
-     * @var AccessConfig[]
+     * @var ArrayCollection
      */
     private $accessConfigs;
+
+    public function __construct()
+    {
+        $this->accessConfigs = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -65,7 +71,7 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     * @param AccessConfig[] $accessConfigs
+     * @param ArrayCollection $accessConfigs
      *
      * @return AccessConfigSet
      */
@@ -77,11 +83,31 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     * @return AccessConfig[] $accessConfigs
+     * @return ArrayCollection $accessConfigs
      */
     public function getAccessConfigs()
     {
         return $this->accessConfigs;
+    }
+
+    /**
+     * @param AccessConfig $accessConfig
+     * @return AccessConfigSet
+     */
+    public function addAccessConfig(AccessConfig $accessConfig)
+    {
+        $this->accessConfigs->add($accessConfig);
+        return $this;
+    }
+
+    /**
+     * @param AccessConfig $property
+     * @return AccessConfigSet
+     */
+    public function removeAccessConfig(AccessConfig $property)
+    {
+        $this->accessConfigs->removeElement($property);
+        return $this;
     }
 
 }
