@@ -395,11 +395,11 @@ CREATE TABLE IF NOT EXISTS `endpoint_cd_as400` (
 -- Table `physical_connection_cd_end_to_end`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `physical_connection_cd_end_to_end` (
-  `physical_connection_id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL,
   `secure_plus` TINYINT(1) NULL,
-  PRIMARY KEY (`physical_connection_id`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_physical_connection_cd_end_to_end_physical_connection`
-  FOREIGN KEY (`physical_connection_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `physical_connection` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -410,10 +410,10 @@ CREATE TABLE IF NOT EXISTS `physical_connection_cd_end_to_end` (
 -- Table `physical_connection_ftgw_end_to_middle`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `physical_connection_ftgw_end_to_middle` (
-  `physical_connection_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`physical_connection_id`),
+  `id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_physical_connection_ftgw_end_to_middle_physical_connection`
-  FOREIGN KEY (`physical_connection_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `physical_connection` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -424,10 +424,10 @@ CREATE TABLE IF NOT EXISTS `physical_connection_ftgw_end_to_middle` (
 -- Table `physical_connection_ftgw_middle_to_end`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `physical_connection_ftgw_middle_to_end` (
-  `physical_connection_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`physical_connection_id`),
+  `id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_physical_connection_ftgw_middle_to_end_physical_connection`
-  FOREIGN KEY (`physical_connection_id`)
+  FOREIGN KEY (`id`)
   REFERENCES `physical_connection` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

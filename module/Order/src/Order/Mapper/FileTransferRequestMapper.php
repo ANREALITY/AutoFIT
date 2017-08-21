@@ -293,17 +293,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 'physical_connection' . '__' . 'type' => 'type',
                 'physical_connection' . '__' . 'secure_plus' => 'secure_plus'
             ], Select::JOIN_LEFT);
-        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.id = physical_connection.id',
             [
-                'physical_connection_cd_end_to_end' . '__' . 'physical_connection_id' => 'physical_connection_id'
+                'physical_connection_cd_end_to_end' . '__' . 'id' => 'id'
             ], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.id = physical_connection.id',
             [
-                'physical_connection_ftgw_end_to_middle' . '__' . 'physical_connection_id' => 'physical_connection_id',
+                'physical_connection_ftgw_end_to_middle' . '__' . 'id' => 'id',
             ], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.id = physical_connection.id',
             [
-                'physical_connection_ftgw_middle_to_end' . '__' . 'physical_connection_id' => 'physical_connection_id',
+                'physical_connection_ftgw_middle_to_end' . '__' . 'id' => 'id',
             ], Select::JOIN_LEFT);
         $select->join('notification', 'notification.logical_connection_id = logical_connection.id',
             [
@@ -551,11 +551,11 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             [], Select::JOIN_LEFT);
         $select->join('physical_connection', 'physical_connection.logical_connection_id = logical_connection.id',
             [], Select::JOIN_LEFT);
-        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.id = physical_connection.id',
             [], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.id = physical_connection.id',
             [], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.physical_connection_id = physical_connection.id',
+        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.id = physical_connection.id',
             [], Select::JOIN_LEFT);
         $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
             [

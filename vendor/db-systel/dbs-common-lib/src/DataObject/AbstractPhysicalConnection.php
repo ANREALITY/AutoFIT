@@ -5,6 +5,21 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AbstractPhysicalConnection
+ *
+ * @ORM\Table(
+ *     name="physical_connection",
+ *     indexes={
+ *         @ORM\Index(name="fk_physical_connection_logical_connection_idx", columns={"logical_connection_id"})
+ *     }
+ * )
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="role", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "end_to_end" = "PhysicalConnectionCdEndToEnd",
+ *     "end_to_middle" = "PhysicalConnectionFtgwEndToMiddle",
+ *     "middle_to_end" = "PhysicalConnectionFtgwMiddleToEnd"
+ * })
  */
 abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
@@ -17,6 +32,10 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -27,21 +46,29 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable=true)
      */
     private $type;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="secure_plus", type="boolean", nullable=true)
      */
     private $securePlus;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -51,12 +78,12 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     private $logicalConnection;
 
     /**
-     * @var AbstractEndpoint @relationshipInversion
+     * @var AbstractEndpoint #relationshipInversion
      */
     private $endpointSource;
 
     /**
-     * @var AbstractEndpoint @relationshipInversion
+     * @var AbstractEndpoint #relationshipInversion
      */
     private $endpointTarget;
 

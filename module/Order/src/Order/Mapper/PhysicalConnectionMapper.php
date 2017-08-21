@@ -216,7 +216,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['physical_connection_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
 
         $table = 'physical_connection_cd_end_to_end';
 
@@ -225,9 +225,9 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $action->values($data);
         } else {
             $action = new Update($table);
-            $action->where(['physical_connection_id' => $data['physical_connection_id']]);
-            // Don't unset the $data['physical_connection_id'], since its the only field to UPDATE!
-            // unset($data['physical_connection_id']);
+            $action->where(['id' => $data['id']]);
+            // Don't unset the $data['id'], since its the only field to UPDATE!
+            // unset($data['id']);
             $action->set($data);
         }
 
@@ -261,7 +261,7 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
         // creating sub-objects
         // $newBar = $this->barMapper->save($dataObject->getBar());
         // data from the recently persisted objects
-        $data['physical_connection_id'] = $dataObject->getId();
+        $data['id'] = $dataObject->getId();
 
         if ($dataObject->getRole() == AbstractPhysicalConnection::ROLE_END_TO_MIDDLE) {
             $table = 'physical_connection_ftgw_end_to_middle';
@@ -274,9 +274,9 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
             $action->values($data);
         } else {
             $action = new Update($table);
-            $action->where(['physical_connection_id' => $data['physical_connection_id']]);
-            // Don't unset the $data['physical_connection_id'], since its the only field to UPDATE!
-            // unset($data['physical_connection_id']);
+            $action->where(['id' => $data['id']]);
+            // Don't unset the $data['id'], since its the only field to UPDATE!
+            // unset($data['id']);
             $action->set($data);
         }
 
