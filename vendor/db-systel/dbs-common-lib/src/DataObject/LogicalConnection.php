@@ -35,17 +35,17 @@ class LogicalConnection extends AbstractDataObject
     private $updated;
 
     /**
-     * @var AbstractPhysicalConnection @relationshipInversion
+     * @var AbstractPhysicalConnection #relationshipInversion
      */
     private $physicalConnectionEndToEnd;
 
     /**
-     * @var AbstractPhysicalConnection @relationshipInversion
+     * @var AbstractPhysicalConnection #relationshipInversion
      */
     private $physicalConnectionEndToMiddle;
 
     /**
-     * @var AbstractPhysicalConnection @relationshipInversion
+     * @var AbstractPhysicalConnection #relationshipInversion
      */
     private $physicalConnectionMiddleToEnd;
 
