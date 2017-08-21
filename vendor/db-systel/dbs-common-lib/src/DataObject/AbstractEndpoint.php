@@ -5,6 +5,21 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AbstractEndpoint
+ *
+ * @ORM\Table(
+ *     name="endpoint",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_physical_connection_idx", columns={"physical_connection_id"}),
+ *         @ORM\Index(name="fk_endpoint_application_idx", columns={"application_technical_short_name"}),
+ *         @ORM\Index(name="fk_endpoint_customer_idx", columns={"customer_id"}),
+ *         @ORM\Index(name="fk_endpoint_endpoint_server_config_idx", columns={"endpoint_server_config_id"}),
+ *         @ORM\Index(name="fk_endpoint_external_server_idx", columns={"external_server_id"})
+ *     },
+ * )
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"CdAs400" = "EndpointCdAs400"})
  */
 abstract class AbstractEndpoint extends AbstractDataObject
 {
@@ -43,11 +58,17 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="role", type="string", nullable=true)
      */
     private $role;
 
@@ -58,48 +79,81 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="server_place", type="string", nullable=true)
      */
     private $serverPlace;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="contact_person", type="string", length=500, nullable=true)
      */
     private $contactPerson;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
     /**
-     * @var AbstractPhysicalConnection
-     */
-    private $physicalConnection;
-
-    /**
-     * @var ExternalServer
-     */
-    private $externalServer;
-
-    /**
      * @var Application
+     *
+     * @ORM\ManyToOne(targetEntity="Application")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
+     * })
      */
     private $application;
 
     /**
      * @var Customer
+     *
+     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * })
      */
     private $customer;
 
     /**
      * @var EndpointServerConfig
+     *
+     * @ORM\OneToOne(targetEntity="EndpointServerConfig", mappedBy="endpoint")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endpoint_server_config_id", referencedColumnName="id")
+     * })
      */
     private $endpointServerConfig;
+
+    /**
+     * @var ExternalServer
+     *
+     * @ORM\ManyToOne(targetEntity="ExternalServer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="external_server_id", referencedColumnName="id")
+     * })
+     */
+    private $externalServer;
+
+    /**
+     * @var AbstractPhysicalConnection
+     *
+     * @ORM\ManyToOne(targetEntity="AbstractPhysicalConnection")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
+     * })
+     */
+    private $physicalConnection;
 
     /**
      * @param integer $id
@@ -202,7 +256,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @param string $created
+     * @param \DateTime $created
      *
      * @return AbstractEndpoint
      */
@@ -214,7 +268,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -222,7 +276,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return AbstractEndpoint
      */
@@ -234,7 +288,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -286,7 +340,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *
      * @return AbstractEndpoint
      */
-    public function setApplication(Application $application)
+    public function setApplication(Application $application = null)
     {
         $this->application = $application;
 
@@ -306,7 +360,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *
      * @return AbstractEndpoint
      */
-    public function setCustomer(Customer $customer)
+    public function setCustomer(Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -326,7 +380,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *
      * @return AbstractEndpoint
      */
-    public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig)
+    public function setEndpointServerConfig(EndpointServerConfig $endpointServerConfig = null)
     {
         $this->endpointServerConfig = $endpointServerConfig;
 

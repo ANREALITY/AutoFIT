@@ -5,17 +5,24 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointCdAs400
+ *
+ * @ORM\Table(name="endpoint_cd_as400")
+ * @ORM\Entity
  */
 class EndpointCdAs400 extends AbstractEndpoint
 {
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
