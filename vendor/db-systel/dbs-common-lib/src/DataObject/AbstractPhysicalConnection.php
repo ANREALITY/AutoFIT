@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,10 +25,11 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractPhysicalConnection extends AbstractDataObject
 {
 
+    /** @var string */
     const ROLE_END_TO_END = 'end_to_end';
-
+    /** @var string */
     const ROLE_END_TO_MIDDLE = 'end_to_middle';
-
+    /** @var string */
     const ROLE_MIDDLE_TO_END = 'middle_to_end';
 
     /**
@@ -74,6 +76,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @var LogicalConnection
+     *
+     * @ORM\ManyToOne(targetEntity="LogicalConnection", inversedBy="physicalConnections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
+     * })
      */
     private $logicalConnection;
 
@@ -86,6 +93,18 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @var AbstractEndpoint #relationshipInversion
      */
     private $endpointTarget;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AbstractEndpoint", mappedBy="physicalConnection")
+     */
+    private $endpoints;
+
+    public function __construct()
+    {
+        $this->endpoints = new ArrayCollection();
+    }
 
     /**
      * @param integer $id
@@ -265,6 +284,26 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function getEndpointTarget()
     {
         return $this->endpointTarget;
+    }
+
+    /**
+     * @param AbstractEndpoint $endpoint
+     * @return AbstractPhysicalConnection
+     */
+    public function addEndpoint(AbstractEndpoint $endpoint)
+    {
+        $this->endpoints->add($endpoint);
+        return $this;
+    }
+
+    /**
+     * @param AbstractEndpoint $endpoint
+     * @return AbstractPhysicalConnection
+     */
+    public function removeEndpoint(AbstractEndpoint $endpoint)
+    {
+        $this->endpoints->removeElement($endpoint);
+        return $this;
     }
 
 }
