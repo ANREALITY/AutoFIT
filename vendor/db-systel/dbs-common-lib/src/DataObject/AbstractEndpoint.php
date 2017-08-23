@@ -14,12 +14,27 @@ use Doctrine\ORM\Mapping as ORM;
  *         @ORM\Index(name="fk_endpoint_customer_idx", columns={"customer_id"}),
  *         @ORM\Index(name="fk_endpoint_endpoint_server_config_idx", columns={"endpoint_server_config_id"}),
  *         @ORM\Index(name="fk_endpoint_external_server_idx", columns={"external_server_id"})
- *     },
+ *     }
  * )
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"CdAs400" = "EndpointCdAs400"})
+ * @ORM\DiscriminatorMap({
+ *     "CdAs400" = "EndpointCdAs400",
+ *     "CdTandem" = "EndpointCdTandem",
+ *     "CdLinuxUnix" = "EndpointCdLinuxUnix",
+ *     "CdWindows" = "EndpointCdWindows",
+ *     "CdWindowsShare" = "EndpointCdWindowsShare",
+ *     "CdZos" = "EndpointCdZos",
+ *     "FtgwWindows" = "EndpointFtgwWindows",
+ *     "FtgwSelfService" = "EndpointFtgwSelfService",
+ *     "FtgwProtocolServer" = "EndpointFtgwProtocolServer",
+ *     "FtgwWindowsShare" = "EndpointFtgwWindowsShare",
+ *     "FtgwLinuxUnix" = "EndpointFtgwLinuxUnix",
+ *     "FtgwCdZos" = "EndpointFtgwCdZos",
+ *     "FtgwCdTandem" = "EndpointFtgwCdTandem",
+ *     "FtgwCdAs400" = "EndpointFtgwCdAs400"
+ * })
  */
 abstract class AbstractEndpoint extends AbstractDataObject
 {
@@ -128,7 +143,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var EndpointServerConfig
      *
-     * @ORM\OneToOne(targetEntity="EndpointServerConfig", mappedBy="endpoint")
+     * @ORM\OneToOne(targetEntity="EndpointServerConfig", inversedBy="endpoint")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endpoint_server_config_id", referencedColumnName="id")
      * })
@@ -148,7 +163,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var AbstractPhysicalConnection
      *
-     * @ORM\ManyToOne(targetEntity="AbstractPhysicalConnection")
+     * @ORM\ManyToOne(targetEntity="AbstractPhysicalConnection", inversedBy="endpoints")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
      * })
@@ -296,46 +311,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
     }
 
     /**
-     * @param AbstractPhysicalConnection $physicalConnection
-     *
-     * @return AbstractEndpoint
-     */
-    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
-    {
-        $this->physicalConnection = $physicalConnection;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractPhysicalConnection
-     */
-    public function getPhysicalConnection()
-    {
-        return $this->physicalConnection;
-    }
-
-    /**
-     * @param ExternalServer $externalServer
-     *
-     * @return AbstractEndpoint
-     */
-    public function setExternalServer(ExternalServer $externalServer)
-    {
-        $this->externalServer = $externalServer;
-
-        return $this;
-    }
-
-    /**
-     * @return ExternalServer
-     */
-    public function getExternalServer()
-    {
-        return $this->externalServer;
-    }
-
-    /**
      * @param Application $application
      *
      * @return AbstractEndpoint
@@ -393,6 +368,46 @@ abstract class AbstractEndpoint extends AbstractDataObject
     public function getEndpointServerConfig()
     {
         return $this->endpointServerConfig;
+    }
+
+    /**
+     * @param ExternalServer $externalServer
+     *
+     * @return AbstractEndpoint
+     */
+    public function setExternalServer(ExternalServer $externalServer)
+    {
+        $this->externalServer = $externalServer;
+
+        return $this;
+    }
+
+    /**
+     * @return ExternalServer
+     */
+    public function getExternalServer()
+    {
+        return $this->externalServer;
+    }
+
+    /**
+     * @param AbstractPhysicalConnection $physicalConnection
+     *
+     * @return AbstractEndpoint
+     */
+    public function setPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
+    {
+        $this->physicalConnection = $physicalConnection;
+
+        return $this;
+    }
+
+    /**
+     * @return AbstractPhysicalConnection
+     */
+    public function getPhysicalConnection()
+    {
+        return $this->physicalConnection;
     }
 
 }
