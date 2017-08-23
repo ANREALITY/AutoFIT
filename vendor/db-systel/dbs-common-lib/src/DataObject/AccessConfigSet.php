@@ -30,7 +30,7 @@ class AccessConfigSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet")
      */
     private $accessConfigs;
 
@@ -110,12 +110,12 @@ class AccessConfigSet extends AbstractDataObject
     }
 
     /**
-     * @param AccessConfig $property
+     * @param AccessConfig $accessConfig
      * @return AccessConfigSet
      */
-    public function removeAccessConfig(AccessConfig $property)
+    public function removeAccessConfig(AccessConfig $accessConfig)
     {
-        $this->accessConfigs->removeElement($property);
+        $this->accessConfigs->removeElement($accessConfig);
         return $this;
     }
 
