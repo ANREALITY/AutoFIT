@@ -39,36 +39,38 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractEndpoint extends AbstractDataObject
 {
 
+    /** @var string */
     const TYPE_CD_AS400 = 'CdAs400';
-
+    /** @var string */
     const TYPE_CD_TANDEM = 'CdTandem';
-
+    /** @var string */
     const TYPE_CD_LINUX_UNIX = 'CdLinuxUnix';
-
+    /** @var string */
     const TYPE_CD_WINDOWS = 'CdWindows';
-
+    /** @var string */
     const TYPE_CD_WINDOWS_SHARE = 'CdWindowsShare';
-
+    /** @var string */
     const TYPE_CD_ZOS = 'CdZos';
-
+    /** @var string */
     const TYPE_FTGW_WINDOWS = 'FtgwWindows';
-
+    /** @var string */
     const TYPE_FTGW_SELF_SERVICE = 'FtgwSelfService';
-
+    /** @var string */
     const TYPE_FTGW_PROTOCOL_SERVER = 'FtgwProtocolServer';
-
+    /** @var string */
     const TYPE_FTGW_WINDOWS_SHARE = 'FtgwWindowsShare';
-
+    /** @var string */
     const TYPE_FTGW_LINUX_UNIX = 'FtgwLinuxUnix';
-
+    /** @var string */
     const TYPE_FTGW_CD_ZOS = 'FtgwCdZos';
-
+    /** @var string */
     const TYPE_FTGW_CD_TANDEM = 'FtgwCdTandem';
-
+    /** @var string */
     const TYPE_FTGW_CD_AS400 = 'FtgwCdAs400';
 
+    /** @var string */
     const ROLE_SOURCE = 'source';
-
+    /** @var string */
     const ROLE_TARGET = 'target';
 
     /**
