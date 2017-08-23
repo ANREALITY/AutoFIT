@@ -6,7 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AccessConfig
  *
- * @ORM\Table(name="access_config", indexes={@ORM\Index(name="fk_access_config_access_config_set_idx", columns={"access_config_set_id"})})
+ * @ORM\Table(
+ *     name="access_config",
+ *     indexes={
+ *         @ORM\Index(name="fk_access_config_access_config_set_idx", columns={"access_config_set_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class AccessConfig extends AbstractDataObject
@@ -52,7 +57,7 @@ class AccessConfig extends AbstractDataObject
     /**
      * @var AccessConfigSet
      *
-     * @ORM\ManyToOne(targetEntity="AccessConfigSet", cascade={"all"}, fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="AccessConfigSet", inversedBy="accessConfigs")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
      * })
