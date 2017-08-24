@@ -22,7 +22,7 @@ class ParametrizedResource extends GenericResource
 
     /**
      *
-     * @return the $params
+     * @return array $params
      */
     public function getParams()
     {

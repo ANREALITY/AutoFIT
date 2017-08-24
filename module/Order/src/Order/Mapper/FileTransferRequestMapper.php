@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\User;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -81,7 +82,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @return the $userPrototype
+     * @return User $userPrototype
      */
     public function getUserPrototype()
     {
@@ -99,7 +100,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @return the $logicalConnectionPrototype
+     * @return LogicalConnection $logicalConnectionPrototype
      */
     public function getLogicalConnectionPrototype()
     {
@@ -117,7 +118,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @return the $notificationPrototype
+     * @return Notification $notificationPrototype
      */
     public function getNotificationPrototype()
     {

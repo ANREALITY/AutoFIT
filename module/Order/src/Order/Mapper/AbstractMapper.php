@@ -64,7 +64,7 @@ class AbstractMapper
 
     /**
      *
-     * @return the $dbAdapter
+     * @return AdapterInterface $dbAdapter
      */
     public function getDbAdapter()
     {
@@ -82,7 +82,7 @@ class AbstractMapper
 
     /**
      *
-     * @return the $hydrator
+     * @return HydratorInterface $hydrator
      */
     public function getHydrator()
     {
@@ -100,7 +100,7 @@ class AbstractMapper
 
     /**
      *
-     * @return the clone of the $prototype
+     * @return AbstractDataObject clone of the $prototype
      */
     public function getPrototype()
     {
@@ -117,7 +117,7 @@ class AbstractMapper
     }
 
     /**
-     * @return the $tableDataProcessor
+     * @return TableDataProcessor $tableDataProcessor
      */
     public function getTableDataProcessor()
     {
