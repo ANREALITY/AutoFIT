@@ -5,27 +5,40 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Customer
+ *
+ * @ORM\Table(name="customer")
+ * @ORM\Entity
  */
 class Customer extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
     private $name;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -70,7 +83,7 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * @param string $created
+     * @param \DateTime $created
      *
      * @return Customer
      */
@@ -82,7 +95,7 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -90,7 +103,7 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return Customer
      */
@@ -102,7 +115,7 @@ class Customer extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
