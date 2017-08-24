@@ -27,16 +27,6 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     private $folder;
 
     /**
-     * @var AccessConfigSet
-     *
-     * @ORM\ManyToOne(targetEntity="AccessConfigSet")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
-     * })
-     */
-    private $accessConfigSet;
-
-    /**
      * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
@@ -46,7 +36,15 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
      */
     private $includeParameterSet;
 
-
+    /**
+     * @var AccessConfigSet
+     *
+     * @ORM\ManyToOne(targetEntity="AccessConfigSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
+     * })
+     */
+    private $accessConfigSet;
 
     /**
      * @param string $sharename
@@ -89,26 +87,6 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @param AccessConfigSet $accessConfigSet
-     *
-     * @return EndpointFtgwWindowsShare
-     */
-    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
-    {
-        $this->accessConfigSet = $accessConfigSet;
-
-        return $this;
-    }
-
-    /**
-     * @return AccessConfigSet
-     */
-    public function getAccessConfigSet()
-    {
-        return $this->accessConfigSet;
-    }
-
-    /**
      * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwWindowsShare
@@ -126,6 +104,26 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     public function getIncludeParameterSet()
     {
         return $this->includeParameterSet;
+    }
+
+    /**
+     * @param AccessConfigSet $accessConfigSet
+     *
+     * @return EndpointFtgwWindowsShare
+     */
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
+    {
+        $this->accessConfigSet = $accessConfigSet;
+
+        return $this;
+    }
+
+    /**
+     * @return AccessConfigSet
+     */
+    public function getAccessConfigSet()
+    {
+        return $this->accessConfigSet;
     }
 
 }

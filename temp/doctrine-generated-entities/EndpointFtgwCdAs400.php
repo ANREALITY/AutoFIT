@@ -26,8 +26,6 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
      */
     private $folder;
 
-
-
     /**
      * @param string $username
      *
@@ -67,11 +65,5 @@ class EndpointFtgwCdAs400 extends AbstractEndpoint
     {
         return $this->folder;
     }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointFtgwCdAs400
-     */
 
 }

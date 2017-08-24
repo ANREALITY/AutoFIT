@@ -34,16 +34,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     private $transmissionType;
 
     /**
-     * @var AccessConfigSet
-     *
-     * @ORM\ManyToOne(targetEntity="AccessConfigSet")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
-     * })
-     */
-    private $accessConfigSet;
-
-    /**
      * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
@@ -52,6 +42,16 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * })
      */
     private $includeParameterSet;
+
+    /**
+     * @var AccessConfigSet
+     *
+     * @ORM\ManyToOne(targetEntity="AccessConfigSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
+     * })
+     */
+    private $accessConfigSet;
 
 
 
@@ -116,26 +116,6 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     }
 
     /**
-     * @param AccessConfigSet $accessConfigSet
-     *
-     * @return EndpointCdWindowsShare
-     */
-    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
-    {
-        $this->accessConfigSet = $accessConfigSet;
-
-        return $this;
-    }
-
-    /**
-     * @return AccessConfigSet
-     */
-    public function getAccessConfigSet()
-    {
-        return $this->accessConfigSet;
-    }
-
-    /**
      * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdWindowsShare
@@ -153,6 +133,26 @@ class EndpointCdWindowsShare extends AbstractEndpoint
     public function getIncludeParameterSet()
     {
         return $this->includeParameterSet;
+    }
+
+    /**
+     * @param AccessConfigSet $accessConfigSet
+     *
+     * @return EndpointCdWindowsShare
+     */
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
+    {
+        $this->accessConfigSet = $accessConfigSet;
+
+        return $this;
+    }
+
+    /**
+     * @return AccessConfigSet
+     */
+    public function getAccessConfigSet()
+    {
+        return $this->accessConfigSet;
     }
 
 }

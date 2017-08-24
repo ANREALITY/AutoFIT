@@ -60,8 +60,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
      */
     private $includeParameterSet;
 
-
-
     /**
      * @param string $username
      *
@@ -143,26 +141,6 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @param EndpointClusterConfig $endpointClusterConfig
-     *
-     * @return EndpointCdLinuxUnix
-     */
-    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
-    {
-        $this->endpointClusterConfig = $endpointClusterConfig;
-
-        return $this;
-    }
-
-    /**
-     * @return EndpointClusterConfig
-     */
-    public function getEndpointClusterConfig()
-    {
-        return $this->endpointClusterConfig;
-    }
-
-    /**
      * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointCdLinuxUnix
@@ -180,6 +158,26 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     public function getIncludeParameterSet()
     {
         return $this->includeParameterSet;
+    }
+
+    /**
+     * @param EndpointClusterConfig $endpointClusterConfig
+     *
+     * @return EndpointCdLinuxUnix
+     */
+    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
+    {
+        $this->endpointClusterConfig = $endpointClusterConfig;
+
+        return $this;
+    }
+
+    /**
+     * @return EndpointClusterConfig
+     */
+    public function getEndpointClusterConfig()
+    {
+        return $this->endpointClusterConfig;
     }
 
 }

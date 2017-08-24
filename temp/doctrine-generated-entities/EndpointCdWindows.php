@@ -36,8 +36,6 @@ class EndpointCdWindows extends AbstractEndpoint
      */
     private $includeParameterSet;
 
-
-
     /**
      * @param string $folder
      *

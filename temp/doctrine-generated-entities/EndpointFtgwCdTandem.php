@@ -26,8 +26,6 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
      */
     private $folder;
 
-
-
     /**
      * @param string $username
      *
@@ -67,11 +65,5 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
     {
         return $this->folder;
     }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointFtgwCdTandem
-     */
 
 }

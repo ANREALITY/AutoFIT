@@ -74,8 +74,6 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      */
     private $protocolSet;
 
-
-
     /**
      * @param string $username
      *

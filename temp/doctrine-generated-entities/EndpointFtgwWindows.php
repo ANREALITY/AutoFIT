@@ -29,8 +29,6 @@ class EndpointFtgwWindows extends AbstractEndpoint
      */
     private $includeParameterSet;
 
-
-
     /**
      * @param string $folder
      *

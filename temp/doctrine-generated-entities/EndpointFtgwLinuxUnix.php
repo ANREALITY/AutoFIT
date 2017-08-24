@@ -41,16 +41,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     private $transmissionInterval;
 
     /**
-     * @var EndpointClusterConfig
-     *
-     * @ORM\ManyToOne(targetEntity="EndpointClusterConfig")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_cluster_config_id", referencedColumnName="id")
-     * })
-     */
-    private $endpointClusterConfig;
-
-    /**
      * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
@@ -60,7 +50,15 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      */
     private $includeParameterSet;
 
-
+    /**
+     * @var EndpointClusterConfig
+     *
+     * @ORM\ManyToOne(targetEntity="EndpointClusterConfig")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endpoint_cluster_config_id", referencedColumnName="id")
+     * })
+     */
+    private $endpointClusterConfig;
 
     /**
      * @param string $username
@@ -143,26 +141,6 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     }
 
     /**
-     * @param EndpointClusterConfig $endpointClusterConfig
-     *
-     * @return EndpointFtgwLinuxUnix
-     */
-    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
-    {
-        $this->endpointClusterConfig = $endpointClusterConfig;
-
-        return $this;
-    }
-
-    /**
-     * @return EndpointClusterConfig
-     */
-    public function getEndpointClusterConfig()
-    {
-        return $this->endpointClusterConfig;
-    }
-
-    /**
      * @param IncludeParameterSet $includeParameterSet
      *
      * @return EndpointFtgwLinuxUnix
@@ -180,6 +158,26 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     public function getIncludeParameterSet()
     {
         return $this->includeParameterSet;
+    }
+
+    /**
+     * @param EndpointClusterConfig $endpointClusterConfig
+     *
+     * @return EndpointFtgwLinuxUnix
+     */
+    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
+    {
+        $this->endpointClusterConfig = $endpointClusterConfig;
+
+        return $this;
+    }
+
+    /**
+     * @return EndpointClusterConfig
+     */
+    public function getEndpointClusterConfig()
+    {
+        return $this->endpointClusterConfig;
     }
 
 }

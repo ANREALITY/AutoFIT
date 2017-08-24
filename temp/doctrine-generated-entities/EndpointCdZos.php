@@ -29,8 +29,6 @@ class EndpointCdZos extends AbstractEndpoint
      */
     private $fileParameterSet;
 
-
-
     /**
      * @param string $username
      *

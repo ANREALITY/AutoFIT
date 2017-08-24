@@ -43,8 +43,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      */
     private $protocolSet;
 
-
-
     /**
      * @param string $ftgwUsername
      *
