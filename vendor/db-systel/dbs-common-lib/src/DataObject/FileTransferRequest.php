@@ -5,71 +5,114 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * FileTransferRequest
+ *
+ * @ORM\Table(
+ *     name="file_transfer_request",
+ *     indexes={
+ *         @ORM\Index(name="fk_file_transfer_request_logical_connection_idx", columns={"logical_connection_id"}),
+ *         @ORM\Index(name="fk_file_transfer_request_service_invoice_position_basic_idx", columns={"service_invoice_position_basic_number"}),
+ *         @ORM\Index(name="fk_file_transfer_request_service_invoice_position_personal_idx", columns={"service_invoice_position_personal_number"}),
+ *         @ORM\Index(name="fk_file_transfer_request_user_idx", columns={"user_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class FileTransferRequest extends AbstractDataObject
 {
 
+    /** @var string */
     const STATUS_EDIT = 'edit';
-
+    /** @var string */
     const STATUS_PENDING = 'pending';
-
+    /** @var string */
     const STATUS_CANCELED = 'canceled';
-
+    /** @var string */
     const STATUS_CHECK = 'check';
-
+    /** @var string */
     const STATUS_ACCEPTED = 'accepted';
-
+    /** @var string */
     const STATUS_DECLINED = 'declined';
-
+    /** @var string */
     const STATUS_COMPLETED = 'completed';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="change_number", type="string", length=50, nullable=false)
      */
     private $changeNumber;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
      */
     private $status;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=500, nullable=true)
      */
     private $comment;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
     /**
      * @var LogicalConnection
+     *
+     * @ORM\ManyToOne(targetEntity="LogicalConnection")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
+     * })
      */
     private $logicalConnection;
 
     /**
      * @var ServiceInvoicePosition
+     *
+     * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="service_invoice_position_basic_number", referencedColumnName="number")
+     * })
      */
     private $serviceInvoicePositionBasic;
 
     /**
      * @var ServiceInvoicePosition
+     *
+     * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="service_invoice_position_personal_number", referencedColumnName="number")
+     * })
      */
     private $serviceInvoicePositionPersonal;
 
     /**
      * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
 
@@ -154,7 +197,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param string $created
+     * @param \DateTime $created
      *
      * @return FileTransferRequest
      */
@@ -166,7 +209,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -174,7 +217,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return FileTransferRequest
      */
@@ -186,7 +229,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -198,7 +241,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setLogicalConnection($logicalConnection)
+    public function setLogicalConnection(LogicalConnection $logicalConnection = null)
     {
         $this->logicalConnection = $logicalConnection;
 
@@ -218,7 +261,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionBasic($serviceInvoicePositionBasic)
+    public function setServiceInvoicePositionBasic(ServiceInvoicePosition $serviceInvoicePositionBasic = null)
     {
         $this->serviceInvoicePositionBasic = $serviceInvoicePositionBasic;
 
@@ -238,7 +281,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal)
+    public function setServiceInvoicePositionPersonal(ServiceInvoicePosition $serviceInvoicePositionPersonal = null)
     {
         $this->serviceInvoicePositionPersonal = $serviceInvoicePositionPersonal;
 
@@ -258,7 +301,7 @@ class FileTransferRequest extends AbstractDataObject
      *
      * @return FileTransferRequest
      */
-    public function setUser($user)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
