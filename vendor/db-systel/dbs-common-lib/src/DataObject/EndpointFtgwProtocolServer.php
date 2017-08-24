@@ -5,51 +5,83 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointFtgwProtocolServer
+ *
+ * @ORM\Table(
+ *     name="endpoint_ftgw_protocol_server",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_ftgw_protocol_server_include_parameter_set_idx", columns={"include_parameter_set_id"}),
+ *         @ORM\Index(name="fk_endpoint_ftgw_protocol_server_protocol_set_idx", columns={"protocol_set_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class EndpointFtgwProtocolServer extends AbstractEndpoint
 {
 
+    /** @var string */
     const TRANSMISSION_TYPE_TXT = 'txt';
-
+    /** @var string */
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
     private $transmissionType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="port", type="string", length=5, nullable=true)
      */
     private $port;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ip", type="string", length=15, nullable=true)
      */
     private $ip;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
      */
     private $dnsAddress;
 
     /**
      * @var IncludeParameterSet
+     *
+     * @ORM\OneToOne(targetEntity="IncludeParameterSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $includeParameterSet;
 
     /**
      * @var ProtocolSet
+     *
+     * @ORM\OneToOne(targetEntity="ProtocolSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
+     * })
      */
     private $protocolSet;
 
