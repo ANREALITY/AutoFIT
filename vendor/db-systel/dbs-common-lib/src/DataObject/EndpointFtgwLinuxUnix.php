@@ -5,41 +5,69 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointFtgwLinuxUnix
+ *
+ * @ORM\Table(
+ *     name="endpoint_ftgw_linux_unix",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_ftgw_linux_unix_include_parameter_set_idx", columns={"include_parameter_set_id"}),
+ *         @ORM\Index(name="fk_endpoint_ftgw_linux_unix_endpoint_cluster_config_idx", columns={"endpoint_cluster_config_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class EndpointFtgwLinuxUnix extends AbstractEndpoint
 {
 
+    /** @var string */
     const TRANSMISSION_TYPE_TXT = 'txt';
-
+    /** @var string */
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
     private $transmissionType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transmission_interval", type="string", length=50, nullable=true)
      */
     private $transmissionInterval;
 
     /**
      * @var IncludeParameterSet
+     *
+     * @ORM\OneToOne(targetEntity="IncludeParameterSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $includeParameterSet;
 
     /**
      * @var EndpointClusterConfig
+     *
+     * @ORM\OneToOne(targetEntity="EndpointClusterConfig")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="endpoint_cluster_config_id", referencedColumnName="id")
+     * })
      */
     private $endpointClusterConfig;
 
@@ -128,7 +156,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *
      * @return EndpointFtgwLinuxUnix
      */
-    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 
@@ -148,7 +176,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *
      * @return EndpointFtgwLinuxUnix
      */
-    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig)
+    public function setEndpointClusterConfig(EndpointClusterConfig $endpointClusterConfig = null)
     {
         $this->endpointClusterConfig = $endpointClusterConfig;
 
