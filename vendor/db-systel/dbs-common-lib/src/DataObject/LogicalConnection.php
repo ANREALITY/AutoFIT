@@ -6,31 +6,45 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LogicalConnection
+ *
+ * @ORM\Table(name="logical_connection")
+ * @ORM\Entity
  */
 class LogicalConnection extends AbstractDataObject
 {
 
+    /** @var string */
     const TYPE_CD = 'CD';
-
+    /** @var string */
     const TYPE_FTGW = 'FTGW';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable=false)
      */
     private $type;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -51,11 +65,21 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AbstractPhysicalConnection", mappedBy="logicalConnection")
+     */
+    private $physicalConnections;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection")
      */
     private $notifications;
 
     public function __construct()
     {
+        $this->physicalConnections = new ArrayCollection();
         $this->notifications = new ArrayCollection();
     }
 
@@ -100,7 +124,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @param string $created
+     * @param \DateTime $created
      *
      * @return LogicalConnection
      */
@@ -112,7 +136,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -120,7 +144,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return LogicalConnection
      */
@@ -132,7 +156,7 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -200,6 +224,26 @@ class LogicalConnection extends AbstractDataObject
     }
 
     /**
+     * @param AbstractPhysicalConnection $physicalConnection
+     * @return LogicalConnection
+     */
+    public function addPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
+    {
+        $this->physicalConnections->add($physicalConnection);
+        return $this;
+    }
+
+    /**
+     * @param AbstractPhysicalConnection $physicalConnection
+     * @return LogicalConnection
+     */
+    public function removePhysicalConnection(AbstractPhysicalConnection $physicalConnection)
+    {
+        $this->physicalConnections->removeElement($physicalConnection);
+        return $this;
+    }
+
+    /**
      * @param ArrayCollection $notifications
      *
      * @return LogicalConnection
@@ -207,7 +251,6 @@ class LogicalConnection extends AbstractDataObject
     public function setNotifications($notifications)
     {
         $this->notifications = $notifications;
-
         return $this;
     }
 
