@@ -5,21 +5,31 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ProductType
+ *
+ * @ORM\Table(name="product_type")
+ * @ORM\Entity
  */
 class ProductType extends AbstractDataObject
 {
 
+    /** @var string */
     const NAME_CD = 'cd';
-
+    /** @var string */
     const NAME_FTGW = 'fgw';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=12, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $name;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="long_name", type="string", length=64, nullable=true)
      */
     private $longName;
 
