@@ -5,27 +5,40 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Application
+ *
+ * @ORM\Table(name="application")
+ * @ORM\Entity{readOnly=true}
  */
 class Application extends AbstractDataObject
 {
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="technical_short_name", type="string", length=100, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $technicalShortName;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="technical_id", type="string", length=10, nullable=true)
      */
     private $technicalId;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
      */
     private $active;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -90,7 +103,7 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return Application
      */
@@ -102,7 +115,7 @@ class Application extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
