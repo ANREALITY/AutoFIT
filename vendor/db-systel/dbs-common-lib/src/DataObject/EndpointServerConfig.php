@@ -7,9 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EndpointServerConfig
  *
  * @ORM\Table(name="endpoint_server_config", indexes={
- *     @ORM\Index(
- *         name="fk_endpoint_server_config_server_idx", columns={"server_name"})
- *     }
+ *     @ORM\Index(name="fk_endpoint_server_config_server_idx", columns={"server_name"})}
  * )
  * @ORM\Entity
  */
