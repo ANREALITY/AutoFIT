@@ -28,8 +28,6 @@ class ExternalServer extends AbstractDataObject
      */
     private $name;
 
-
-
     /**
      * @return integer
      */

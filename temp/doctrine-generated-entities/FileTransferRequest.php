@@ -74,7 +74,7 @@ class FileTransferRequest extends AbstractDataObject
      *   @ORM\JoinColumn(name="service_invoice_position_basic_number", referencedColumnName="number")
      * })
      */
-    private $serviceInvoicePositionBasicNumber;
+    private $serviceInvoicePositionBasic;
 
     /**
      * @var ServiceInvoicePosition
@@ -84,7 +84,7 @@ class FileTransferRequest extends AbstractDataObject
      *   @ORM\JoinColumn(name="service_invoice_position_personal_number", referencedColumnName="number")
      * })
      */
-    private $serviceInvoicePositionPersonalNumber;
+    private $serviceInvoicePositionPersonal;
 
     /**
      * @var User
@@ -227,13 +227,13 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePositionBasicNumber
+     * @param ServiceInvoicePosition $serviceInvoicePositionBasic
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionBasicNumber(ServiceInvoicePosition $serviceInvoicePositionBasicNumber = null)
+    public function setServiceInvoicePositionBasic(ServiceInvoicePosition $serviceInvoicePositionBasic = null)
     {
-        $this->serviceInvoicePositionBasicNumber = $serviceInvoicePositionBasicNumber;
+        $this->serviceInvoicePositionBasic = $serviceInvoicePositionBasic;
 
         return $this;
     }
@@ -241,19 +241,19 @@ class FileTransferRequest extends AbstractDataObject
     /**
      * @return ServiceInvoicePosition
      */
-    public function getServiceInvoicePositionBasicNumber()
+    public function getServiceInvoicePositionBasic()
     {
-        return $this->serviceInvoicePositionBasicNumber;
+        return $this->serviceInvoicePositionBasic;
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePositionPersonalNumber
+     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionPersonalNumber(ServiceInvoicePosition $serviceInvoicePositionPersonalNumber = null)
+    public function setServiceInvoicePositionPersonal(ServiceInvoicePosition $serviceInvoicePositionPersonal = null)
     {
-        $this->serviceInvoicePositionPersonalNumber = $serviceInvoicePositionPersonalNumber;
+        $this->serviceInvoicePositionPersonal = $serviceInvoicePositionPersonal;
 
         return $this;
     }
@@ -261,9 +261,9 @@ class FileTransferRequest extends AbstractDataObject
     /**
      * @return ServiceInvoicePosition
      */
-    public function getServiceInvoicePositionPersonalNumber()
+    public function getServiceInvoicePositionPersonal()
     {
-        return $this->serviceInvoicePositionPersonalNumber;
+        return $this->serviceInvoicePositionPersonal;
     }
 
     /**

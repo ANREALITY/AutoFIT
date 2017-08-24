@@ -38,9 +38,9 @@ class EndpointType extends AbstractDataObject
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="ServerType", mappedBy="endpointType")
+     * @ORM\ManyToMany(targetEntity="ServerType", mappedBy="endpointTypes")
      */
-    private $serverType;
+    private $serverTypes;
 
     /**
      * Constructor
@@ -49,7 +49,6 @@ class EndpointType extends AbstractDataObject
     {
         $this->serverType = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * @return integer
@@ -108,7 +107,7 @@ class EndpointType extends AbstractDataObject
      */
     public function addServerType(ServerType $serverType)
     {
-        $this->serverType[] = $serverType;
+        $this->serverTypes[] = $serverType;
 
         return $this;
     }
@@ -120,15 +119,15 @@ class EndpointType extends AbstractDataObject
      */
     public function removeServerType(ServerType $serverType)
     {
-        $this->serverType->removeElement($serverType);
+        $this->serverTypes->removeElement($serverType);
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getServerType()
+    public function getServerTypes()
     {
-        return $this->serverType;
+        return $this->serverTypes;
     }
 
 }

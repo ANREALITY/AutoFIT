@@ -38,8 +38,6 @@ class IncludeParameter extends AbstractDataObject
      */
     private $includeParameterSet;
 
-
-
     /**
      * @return integer
      */
