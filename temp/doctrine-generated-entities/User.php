@@ -67,7 +67,6 @@ class User extends AbstractDataObject
     public function setUsername($username)
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -87,7 +86,6 @@ class User extends AbstractDataObject
     public function setRole($role)
     {
         $this->role = $role;
-
         return $this;
     }
 
@@ -107,7 +105,6 @@ class User extends AbstractDataObject
     public function setCreated($created)
     {
         $this->created = $created;
-
         return $this;
     }
 

@@ -43,11 +43,14 @@ class ServiceInvoicePosition extends AbstractDataObject
     private $status;
 
     /**
-     * @var \DateTime
+     * @var ServiceInvoice
      *
-     * @ORM\Column(name="updated", type="datetime", nullable=true)
+     * @ORM\ManyToOne(targetEntity="ServiceInvoice")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="service_invoice_number", referencedColumnName="number")
+     * })
      */
-    private $updated;
+    private $serviceInvoice;
 
     /**
      * @var Article
@@ -57,17 +60,14 @@ class ServiceInvoicePosition extends AbstractDataObject
      *   @ORM\JoinColumn(name="article_sku", referencedColumnName="sku")
      * })
      */
-    private $articleSku;
+    private $article;
 
     /**
-     * @var ServiceInvoice
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="ServiceInvoice")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="service_invoice_number", referencedColumnName="number")
-     * })
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $serviceInvoiceNumber;
+    private $updated;
 
 
 
@@ -87,7 +87,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setOrderQuantity($orderQuantity)
     {
         $this->orderQuantity = $orderQuantity;
-
         return $this;
     }
 
@@ -107,7 +106,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -127,7 +125,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setStatus($status)
     {
         $this->status = $status;
-
         return $this;
     }
 
@@ -140,6 +137,44 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
+     * @param ServiceInvoice $serviceInvoice
+     *
+     * @return ServiceInvoicePosition
+     */
+    public function setServiceInvoice(ServiceInvoice $serviceInvoice = null)
+    {
+        $this->serviceInvoice = $serviceInvoice;
+        return $this;
+    }
+
+    /**
+     * @return ServiceInvoice
+     */
+    public function getServiceInvoice()
+    {
+        return $this->serviceInvoice;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return ServiceInvoicePosition
+     */
+    public function setArticle(Article $article = null)
+    {
+        $this->article = $article;
+        return $this;
+    }
+
+    /**
+     * @return Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
      * @param \DateTime $updated
      *
      * @return ServiceInvoicePosition
@@ -147,7 +182,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-
         return $this;
     }
 
@@ -157,46 +191,6 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function getUpdated()
     {
         return $this->updated;
-    }
-
-    /**
-     * @param Article $articleSku
-     *
-     * @return ServiceInvoicePosition
-     */
-    public function setArticleSku(Article $articleSku = null)
-    {
-        $this->articleSku = $articleSku;
-
-        return $this;
-    }
-
-    /**
-     * @return Article
-     */
-    public function getArticleSku()
-    {
-        return $this->articleSku;
-    }
-
-    /**
-     * @param ServiceInvoice $serviceInvoiceNumber
-     *
-     * @return ServiceInvoicePosition
-     */
-    public function setServiceInvoiceNumber(ServiceInvoice $serviceInvoiceNumber = null)
-    {
-        $this->serviceInvoiceNumber = $serviceInvoiceNumber;
-
-        return $this;
-    }
-
-    /**
-     * @return ServiceInvoice
-     */
-    public function getServiceInvoiceNumber()
-    {
-        return $this->serviceInvoiceNumber;
     }
 
 }

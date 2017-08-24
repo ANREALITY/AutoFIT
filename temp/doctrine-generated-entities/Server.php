@@ -22,6 +22,16 @@ class Server extends AbstractDataObject
     private $name;
 
     /**
+     * @var ServerType
+     *
+     * @ORM\ManyToOne(targetEntity="ServerType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="server_type_id", referencedColumnName="id")
+     * })
+     */
+    private $serverType;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
@@ -59,16 +69,6 @@ class Server extends AbstractDataObject
      */
     private $cluster;
 
-    /**
-     * @var ServerType
-     *
-     * @ORM\ManyToOne(targetEntity="ServerType")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="server_type_id", referencedColumnName="id")
-     * })
-     */
-    private $serverType;
-
 
 
     /**
@@ -80,6 +80,25 @@ class Server extends AbstractDataObject
     }
 
     /**
+     * @param ServerType $serverType
+     *
+     * @return Server
+     */
+    public function setServerType(ServerType $serverType = null)
+    {
+        $this->serverType = $serverType;
+        return $this;
+    }
+
+    /**
+     * @return ServerType
+     */
+    public function getServerType()
+    {
+        return $this->serverType;
+    }
+
+    /**
      * @param boolean $active
      *
      * @return Server
@@ -87,7 +106,6 @@ class Server extends AbstractDataObject
     public function setActive($active)
     {
         $this->active = $active;
-
         return $this;
     }
 
@@ -107,7 +125,6 @@ class Server extends AbstractDataObject
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-
         return $this;
     }
 
@@ -117,6 +134,25 @@ class Server extends AbstractDataObject
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * @param Cluster $cluster
+     *
+     * @return Server
+     */
+    public function setCluster(Cluster $cluster = null)
+    {
+        $this->cluster = $cluster;
+        return $this;
+    }
+
+    /**
+     * @return Cluster
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
     }
 
     /**
@@ -157,46 +193,6 @@ class Server extends AbstractDataObject
     public function getVirtualNodeName()
     {
         return $this->virtualNodeName;
-    }
-
-    /**
-     * @param Cluster $cluster
-     *
-     * @return Server
-     */
-    public function setCluster(Cluster $cluster = null)
-    {
-        $this->cluster = $cluster;
-
-        return $this;
-    }
-
-    /**
-     * @return Cluster
-     */
-    public function getCluster()
-    {
-        return $this->cluster;
-    }
-
-    /**
-     * @param ServerType $serverType
-     *
-     * @return Server
-     */
-    public function setServerType(ServerType $serverType = null)
-    {
-        $this->serverType = $serverType;
-
-        return $this;
-    }
-
-    /**
-     * @return ServerType
-     */
-    public function getServerType()
-    {
-        return $this->serverType;
     }
 
 }

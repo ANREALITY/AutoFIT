@@ -36,7 +36,7 @@ class ServiceInvoice extends AbstractDataObject
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
      */
-    private $applicationTechnicalShortName;
+    private $application;
 
     /**
      * @var Environment
@@ -46,7 +46,7 @@ class ServiceInvoice extends AbstractDataObject
      *   @ORM\JoinColumn(name="environment_severity", referencedColumnName="severity")
      * })
      */
-    private $environmentSeverity;
+    private $environment;
 
 
 
@@ -79,13 +79,13 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @param Application $applicationTechnicalShortName
+     * @param Application $application
      *
      * @return ServiceInvoice
      */
-    public function setApplicationTechnicalShortName(Application $applicationTechnicalShortName = null)
+    public function setApplication(Application $application = null)
     {
-        $this->applicationTechnicalShortName = $applicationTechnicalShortName;
+        $this->application = $application;
 
         return $this;
     }
@@ -93,19 +93,19 @@ class ServiceInvoice extends AbstractDataObject
     /**
      * @return Application
      */
-    public function getApplicationTechnicalShortName()
+    public function getApplication()
     {
-        return $this->applicationTechnicalShortName;
+        return $this->application;
     }
 
     /**
-     * @param Environment $environmentSeverity
+     * @param Environment $environment
      *
      * @return ServiceInvoice
      */
-    public function setEnvironmentSeverity(Environment $environmentSeverity = null)
+    public function setEnvironment(Environment $environment = null)
     {
-        $this->environmentSeverity = $environmentSeverity;
+        $this->environment = $environment;
 
         return $this;
     }
@@ -113,9 +113,9 @@ class ServiceInvoice extends AbstractDataObject
     /**
      * @return Environment
      */
-    public function getEnvironmentSeverity()
+    public function getEnvironment()
     {
-        return $this->environmentSeverity;
+        return $this->environment;
     }
 
 }
