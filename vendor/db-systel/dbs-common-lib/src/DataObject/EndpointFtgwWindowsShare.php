@@ -5,27 +5,50 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointFtgwWindowsShare
+ *
+ * @ORM\Table(
+ *     name="endpoint_ftgw_windows_share",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_ftgw_windows_share_include_parameter_set_idx", columns={"include_parameter_set_id"}),
+ *         @ORM\Index(name="fk_endpoint_ftgw_windows_share_access_config_set_idx", columns={"access_config_set_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class EndpointFtgwWindowsShare extends AbstractEndpoint
 {
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sharename", type="string", length=50, nullable=true)
      */
     private $sharename;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
     /**
      * @var IncludeParameterSet
+     *
+     * @ORM\OneToOne(targetEntity="IncludeParameterSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $includeParameterSet;
 
     /**
      * @var AccessConfigSet
+     *
+     * @ORM\OneToOne(targetEntity="AccessConfigSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
+     * })
      */
     private $accessConfigSet;
 
