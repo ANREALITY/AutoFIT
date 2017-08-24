@@ -5,22 +5,33 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Environment
+ *
+ * @ORM\Table(name="environment")
+ * @ORM\Entity
  */
 class Environment extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="severity", type="boolean", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $severity;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=32, nullable=false)
      */
     private $name;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="short_name", type="string", length=1, nullable=false)
      */
     private $shortName;
 
