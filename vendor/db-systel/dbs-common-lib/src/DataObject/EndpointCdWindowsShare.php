@@ -5,36 +5,62 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointCdWindowsShare
+ *
+ * @ORM\Table(
+ *     name="endpoint_cd_windows_share",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_cd_windows_share_include_parameter_set_idx", columns={"include_parameter_set_id"}),
+ *         @ORM\Index(name="fk_endpoint_cd_windows_share_access_config_set_idx", columns={"access_config_set_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class EndpointCdWindowsShare extends AbstractEndpoint
 {
 
+    /** @var string */
     const TRANSMISSION_TYPE_TXT = 'txt';
-
+    /** @var string */
     const TRANSMISSION_TYPE_BIN = 'bin';
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sharename", type="string", length=50, nullable=true)
      */
     private $sharename;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
     private $transmissionType;
 
     /**
      * @var IncludeParameterSet
+     *
+     * @ORM\OneToOne(targetEntity="IncludeParameterSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $includeParameterSet;
 
     /**
      * @var AccessConfigSet
+     *
+     * @ORM\OneToOne(targetEntity="AccessConfigSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
+     * })
      */
     private $accessConfigSet;
 
@@ -103,7 +129,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      *
      * @return EndpointCdWindowsShare
      */
-    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet)
+    public function setIncludeParameterSet(IncludeParameterSet $includeParameterSet = null)
     {
         $this->includeParameterSet = $includeParameterSet;
 
@@ -123,7 +149,7 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      *
      * @return EndpointCdWindowsShare
      */
-    public function setAccessConfigSet(AccessConfigSet $accessConfigSet)
+    public function setAccessConfigSet(AccessConfigSet $accessConfigSet = null)
     {
         $this->accessConfigSet = $accessConfigSet;
 
