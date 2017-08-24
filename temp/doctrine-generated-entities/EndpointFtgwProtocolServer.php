@@ -55,18 +55,6 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     private $dnsAddress;
 
     /**
-     * @var AbstractEndpoint
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
-     * })
-     */
-    private $endpoint;
-
-    /**
      * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
@@ -206,26 +194,6 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     public function getDnsAddress()
     {
         return $this->dnsAddress;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointFtgwProtocolServer
-     */
-    public function setEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractEndpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 
     /**

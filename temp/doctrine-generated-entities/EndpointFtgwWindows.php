@@ -20,18 +20,6 @@ class EndpointFtgwWindows extends AbstractEndpoint
     private $folder;
 
     /**
-     * @var AbstractEndpoint
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
-     * })
-     */
-    private $endpoint;
-
-    /**
      * @var IncludeParameterSet
      *
      * @ORM\ManyToOne(targetEntity="IncludeParameterSet")
@@ -61,26 +49,6 @@ class EndpointFtgwWindows extends AbstractEndpoint
     public function getFolder()
     {
         return $this->folder;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointFtgwWindows
-     */
-    public function setEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractEndpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 
     /**

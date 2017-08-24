@@ -20,18 +20,6 @@ class EndpointCdZos extends AbstractEndpoint
     private $username;
 
     /**
-     * @var AbstractEndpoint
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
-     * })
-     */
-    private $endpoint;
-
-    /**
      * @var FileParameterSet
      *
      * @ORM\ManyToOne(targetEntity="FileParameterSet")
@@ -61,26 +49,6 @@ class EndpointCdZos extends AbstractEndpoint
     public function getUsername()
     {
         return $this->username;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointCdZos
-     */
-    public function setEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractEndpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 
     /**

@@ -34,18 +34,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     private $connectionType;
 
     /**
-     * @var AbstractEndpoint
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
-     * })
-     */
-    private $endpoint;
-
-    /**
      * @var ProtocolSet
      *
      * @ORM\ManyToOne(targetEntity="ProtocolSet")
@@ -115,26 +103,6 @@ class EndpointFtgwSelfService extends AbstractEndpoint
     public function getConnectionType()
     {
         return $this->connectionType;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointFtgwSelfService
-     */
-    public function setEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractEndpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 
     /**

@@ -27,20 +27,6 @@ class EndpointCdTandem extends AbstractEndpoint
     private $folder;
 
     /**
-     * @var AbstractEndpoint
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="AbstractEndpoint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="endpoint_id", referencedColumnName="id")
-     * })
-     */
-    private $endpoint;
-
-
-
-    /**
      * @param string $username
      *
      * @return EndpointCdTandem
@@ -78,26 +64,6 @@ class EndpointCdTandem extends AbstractEndpoint
     public function getFolder()
     {
         return $this->folder;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     *
-     * @return EndpointCdTandem
-     */
-    public function setEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoint = $endpoint;
-
-        return $this;
-    }
-
-    /**
-     * @return AbstractEndpoint
-     */
-    public function getEndpoint()
-    {
-        return $this->endpoint;
     }
 
 }
