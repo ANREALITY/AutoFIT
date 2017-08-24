@@ -5,17 +5,24 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointFtgwCdTandem
+ *
+ * @ORM\Table(name="endpoint_ftgw_cd_tandem")
+ * @ORM\Entity
  */
 class EndpointFtgwCdTandem extends AbstractEndpoint
 {
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
     private $folder;
 
