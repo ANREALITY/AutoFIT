@@ -5,67 +5,91 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AuditLog
+ *
+ * @ORM\Table(
+ *     name="audit_log",
+ *     indexes={@ORM\Index(name="fk_audit_log_user_idx", columns={"user_id"})
+ * })
+ * @ORM\Entity
  */
 class AuditLog extends AbstractDataObject
 {
 
+    /** @var string */
     const RESSOURCE_TYPE_ORDER = 'order';
-
+    /** @var string */
     const RESSOURCE_TYPE_SERVER = 'server';
-
+    /** @var string */
     const RESSOURCE_TYPE_CLUSTER = 'cluster';
-
+    /** @var string */
     const ACTION_ORDER_CREATED = 'order.created';
-
+    /** @var string */
     const ACTION_ORDER_SUBMITTED = 'order.submitted';
-
+    /** @var string */
     const ACTION_ORDER_EDITING_STARTED = 'order.editing_started';
-
+    /** @var string */
     const ACTION_ORDER_UPDATED = 'order.updated';
-
+    /** @var string */
     const ACTION_ORDER_CANCELED = 'order.canceled';
-
+    /** @var string */
     const ACTION_ORDER_CHECKING_STARTED = 'order.checking_started';
-
+    /** @var string */
     const ACTION_ORDER_ACCEPTED = 'order.accepted';
-
+    /** @var string */
     const ACTION_ORDER_DECLINED = 'order.declined';
-
+    /** @var string */
     const ACTION_ORDER_COMPLETED = 'order.completed';
-
+    /** @var string */
     const ACTION_ORDER_EXPORTED = 'order.exported';
-
+    /** @var string */
     const ACTION_SERVER_VIRTUAL_NODE_NAME_ADDED = 'server.virtual_node_name_added';
-
+    /** @var string */
     const ACTION_CLUSTER_CREATED = 'cluster.created';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="resource_type", type="string", nullable=true)
      */
     private $resourceType;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="resource_id", type="string", length=50, nullable=true)
      */
     private $resourceId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="action", type="string", nullable=true)
      */
     private $action;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datetime", type="datetime", nullable=false)
      */
     private $datetime;
 
     /**
      * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
 
