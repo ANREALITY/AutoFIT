@@ -5,41 +5,67 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * FileParameter
+ *
+ * @ORM\Table(
+ *     name="file_parameter",
+ *     indexes={
+ *         @ORM\Index(name="fk_file_parameter_file_parameter_set_idx", columns={"file_parameter_set_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class FileParameter extends AbstractDataObject
 {
 
+    /** @var string */
     const BLOCKING_VARIABLE = 'vb';
-
+    /** @var string */
     const BLOCKING_FIXED = 'fb';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=50, nullable=true)
      */
     private $filename;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="record_length", type="integer", nullable=true)
      */
     private $recordLength;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="blocking", type="string", nullable=true)
      */
     private $blocking;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="block_size", type="integer", nullable=true)
      */
     private $blockSize;
 
     /**
      * @var FileParameterSet
+     *
+     * @ORM\ManyToOne(targetEntity="FileParameterSet", inversedBy="fileParameters")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $fileParameterSet;
 
@@ -148,7 +174,7 @@ class FileParameter extends AbstractDataObject
      *
      * @return FileParameter
      */
-    public function setFileParameterSet(FileParameterSet $fileParameterSet)
+    public function setFileParameterSet(FileParameterSet $fileParameterSet = null)
     {
         $this->fileParameterSet = $fileParameterSet;
 
