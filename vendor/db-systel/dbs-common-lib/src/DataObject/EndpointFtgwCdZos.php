@@ -5,17 +5,32 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointFtgwCdZos
+ *
+ * @ORM\Table(
+ *     name="endpoint_ftgw_cd_zos",
+ *     indexes={
+ *         @ORM\Index(name="fk_endpoint_ftgw_cd_zos_file_parameter_set_idx", columns={"file_parameter_set_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class EndpointFtgwCdZos extends AbstractEndpoint
 {
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var FileParameterSet
+     *
+     * @ORM\OneToOne(targetEntity="FileParameterSet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
+     * })
      */
     private $fileParameterSet;
 
@@ -44,7 +59,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
      *
      * @return EndpointFtgwCdZos
      */
-    public function setFileParameterSet(FileParameterSet $fileParameterSet)
+    public function setFileParameterSet(FileParameterSet $fileParameterSet = null)
     {
         $this->fileParameterSet = $fileParameterSet;
 
