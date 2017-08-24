@@ -8,8 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(
  *     name="article",
- *     indexes={@ORM\Index(name="fk_article_product_type_idx", columns={"product_type_name"})
- * })
+ *     indexes={
+ *         @ORM\Index(name="fk_article_product_type_idx", columns={"product_type_name"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class Article extends AbstractDataObject

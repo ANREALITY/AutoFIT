@@ -8,8 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(
  *     name="audit_log",
- *     indexes={@ORM\Index(name="fk_audit_log_user_idx", columns={"user_id"})
- * })
+ *     indexes={
+ *         @ORM\Index(name="fk_audit_log_user_idx", columns={"user_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class AuditLog extends AbstractDataObject

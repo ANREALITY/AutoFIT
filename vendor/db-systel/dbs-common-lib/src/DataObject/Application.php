@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Application
  *
  * @ORM\Table(name="application")
- * @ORM\Entity{readOnly=true}
+ * @ORM\Entity(readOnly=true)
  */
 class Application extends AbstractDataObject
 {
