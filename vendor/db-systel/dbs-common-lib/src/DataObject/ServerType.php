@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *         @ORM\UniqueConstraint(name="name_UNIQUE", columns={"name"})
  *     }
  * )
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class ServerType extends AbstractDataObject
 {

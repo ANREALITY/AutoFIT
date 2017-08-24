@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *         @ORM\Index(name="fk_service_invoice_position_article1_idx", columns={"article_sku"})
  *     }
  * )
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class ServiceInvoicePosition extends AbstractDataObject
 {

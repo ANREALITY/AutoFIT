@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Environment
  *
  * @ORM\Table(name="environment")
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class Environment extends AbstractDataObject
 {

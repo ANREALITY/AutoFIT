@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductType
  *
  * @ORM\Table(name="product_type")
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class ProductType extends AbstractDataObject
 {

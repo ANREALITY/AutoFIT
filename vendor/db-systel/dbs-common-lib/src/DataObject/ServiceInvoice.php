@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *         @ORM\Index(name="fk_service_invoice_environment_idx", columns={"environment_severity"})
  *     }
  * )
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class ServiceInvoice extends AbstractDataObject
 {

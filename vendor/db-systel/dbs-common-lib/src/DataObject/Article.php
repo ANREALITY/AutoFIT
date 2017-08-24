@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *         @ORM\Index(name="fk_article_product_type_idx", columns={"product_type_name"})
  *     }
  * )
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class Article extends AbstractDataObject
 {

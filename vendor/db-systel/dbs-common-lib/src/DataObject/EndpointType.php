@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EndpointType
  *
  * @ORM\Table(name="endpoint_type")
- * @ORM\Entity
+ * @ORM\Entity(readOnly=true)
  */
 class EndpointType extends AbstractDataObject
 {
