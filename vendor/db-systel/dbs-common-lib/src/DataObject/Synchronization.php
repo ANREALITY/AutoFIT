@@ -5,33 +5,52 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Synchronization
+ *
+ * @ORM\Table(
+ *     name="synchronization",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="type_UNIQUE", columns={"type"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class Synchronization extends AbstractDataObject
 {
 
+    /** @var string */
     const TYPE_APPLICATION = 'application';
-
+    /** @var string */
     const TYPE_BILLING = 'billing';
-
+    /** @var string */
     const TYPE_SERVER = 'server';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="in_progress", type="boolean", nullable=false)
      */
     private $inProgress;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable=false)
      */
     private $type;
 
     /**
-     * @var integer
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_sync", type="datetime", nullable=true)
      */
     private $lastSync;
 
@@ -43,7 +62,6 @@ class Synchronization extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -96,7 +114,7 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * @param integer $lastSync
+     * @param \DateTime $lastSync
      *
      * @return Synchronization
      */
@@ -108,7 +126,7 @@ class Synchronization extends AbstractDataObject
     }
 
     /**
-     * @return integer
+     * @return \DateTime
      */
     public function getLastSync()
     {
