@@ -18,8 +18,15 @@ class IncludeParameterSetMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new IncludeParameterSetMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new IncludeParameterSet());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new IncludeParameterSetMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new IncludeParameterSet(),
+            null,
+            $entityManager
+        );
 
         $service->setIncludeParameterMapper($container->get('Order\Mapper\IncludeParameterMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

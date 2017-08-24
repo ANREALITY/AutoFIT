@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Synchronization;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -19,11 +20,6 @@ class SynchronizationMapper extends AbstractMapper implements SynchronizationMap
      * @var Synchronization
      */
     protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Synchronization $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

@@ -25,12 +25,14 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $itemCountPerPage = isset($config['module']['order']['pagination']['items_per_page'])
             ? $config['module']['order']['pagination']['items_per_page'] : null
         ;
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new FileTransferRequestMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new FileTransferRequest(),
-            $itemCountPerPage
+            $itemCountPerPage,
+            $entityManager
         );
 
         $service->setUserPrototype(new User());

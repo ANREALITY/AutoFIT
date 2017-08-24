@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\ServiceInvoicePosition;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -26,12 +27,6 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
      * @var ServiceInvoiceMapperInterface
      */
     protected $serviceInvoiceMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        ServiceInvoicePosition $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      * @param \Order\Mapper\ServiceInvoiceMapperInterface $serviceInvoiceMapper

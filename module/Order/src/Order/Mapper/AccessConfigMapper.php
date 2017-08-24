@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\AccessConfig;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -20,11 +21,6 @@ class AccessConfigMapper extends AbstractMapper implements AccessConfigMapperInt
      * @var AccessConfig
      */
     protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, AccessConfig $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

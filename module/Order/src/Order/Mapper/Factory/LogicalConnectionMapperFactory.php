@@ -18,8 +18,15 @@ class LogicalConnectionMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new LogicalConnectionMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new LogicalConnection());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new LogicalConnectionMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new LogicalConnection(),
+            null,
+            $entityManager
+        );
 
         $service->setPhysicalConnectionMapper($container->get('Order\Mapper\PhysicalConnectionMapper'));
         $service->setNotificationMapper($container->get('Order\Mapper\NotificationMapper'));

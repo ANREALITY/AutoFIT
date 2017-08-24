@@ -66,15 +66,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
      */
     protected $requestModifier;
 
-    public function __construct(
-        AdapterInterface $dbAdapter,
-        HydratorInterface $hydrator,
-        AuditLog $prototype,
-        int $itemCountPerPage = null
-    ) {
-        parent::__construct($dbAdapter, $hydrator, $prototype, $itemCountPerPage);
-    }
-
     /**
      *
      * @param UserMapperInterface $fileTransferRequestMapper

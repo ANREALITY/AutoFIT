@@ -22,12 +22,14 @@ class AuditLogMapperFactory implements FactoryInterface
         $itemCountPerPage = isset($config['module']['order']['pagination']['items_per_page'])
             ? $config['module']['audit-logging']['pagination']['items_per_page'] : null
         ;
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new AuditLogMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             new AuditLog(),
-            $itemCountPerPage
+            $itemCountPerPage,
+            $entityManager
         );
 
         $service->setRequestModifier($container->get('AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier'));

@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\ServiceInvoice;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -31,12 +32,6 @@ class ServiceInvoiceMapper extends AbstractMapper implements ServiceInvoiceMappe
      * @var EnvironmentMapperInterface
      */
     protected $environmentMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-        ServiceInvoice $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      * @param \Order\Mapper\ApplicationMapperInterface $applicationMapper

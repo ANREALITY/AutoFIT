@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Server;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -21,11 +22,6 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
      * @var Server
      */
     protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Server $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

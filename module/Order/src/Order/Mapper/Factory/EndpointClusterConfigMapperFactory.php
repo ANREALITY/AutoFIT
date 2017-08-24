@@ -18,8 +18,15 @@ class EndpointClusterConfigMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new EndpointClusterConfigMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new EndpointClusterConfig());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new EndpointClusterConfigMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new EndpointClusterConfig(),
+            null,
+            $entityManager
+        );
 
         $service->setClusterMapper($container->get('Order\Mapper\ClusterMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

@@ -18,8 +18,15 @@ class ServiceInvoiceMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new ServiceInvoiceMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ServiceInvoice());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new ServiceInvoiceMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new ServiceInvoice(),
+            null,
+            $entityManager
+        );
 
         $service->setApplicationMapper($container->get('Order\Mapper\ApplicationMapper'));
         $service->setEnvironmentMapper($container->get('Order\Mapper\EnvironmentMapper'));

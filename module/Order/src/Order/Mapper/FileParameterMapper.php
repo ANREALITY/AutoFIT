@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\FileParameter;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -21,11 +22,6 @@ class FileParameterMapper extends AbstractMapper implements FileParameterMapperI
      * @var FileParameter
      */
     protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, FileParameter $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

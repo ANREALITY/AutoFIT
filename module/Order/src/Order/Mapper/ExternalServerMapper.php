@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\ExternalServer;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -20,11 +21,6 @@ class ExternalServerMapper extends AbstractMapper implements ExternalServerMappe
      * @var ExternalServer
      */
     protected $prototype;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, ExternalServer $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

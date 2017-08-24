@@ -3,6 +3,7 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\PhysicalConnectionFtgwMiddleToEnd;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -41,14 +42,9 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @var type
+     * @var string
      */
     protected $type;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, LogicalConnection $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

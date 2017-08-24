@@ -18,9 +18,15 @@ class ClusterMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new ClusterMapper($container->get('Zend\Db\Adapter\Adapter'),
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new ClusterMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new Cluster());
+            new Cluster(),
+            null,
+            $entityManager
+        );
 
         $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

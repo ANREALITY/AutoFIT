@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\EndpointClusterConfig;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -27,11 +28,6 @@ class EndpointClusterConfigMapper extends AbstractMapper implements EndpointClus
      * @var ClusterMapperInterface
      */
     protected $clusterMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, EndpointClusterConfig $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

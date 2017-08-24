@@ -18,8 +18,15 @@ class ProtocolSetMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new ProtocolSetMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new ProtocolSet());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new ProtocolSetMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new ProtocolSet(),
+            null,
+            $entityManager
+        );
 
         $service->setProtocolMapper($container->get('Order\Mapper\ProtocolMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

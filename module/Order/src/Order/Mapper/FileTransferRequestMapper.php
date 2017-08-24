@@ -3,6 +3,7 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\User;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -70,15 +71,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      * @var FileTransferRequestRequestModifier
      */
     protected $requestModifier;
-
-    public function __construct(
-        AdapterInterface $dbAdapter,
-        HydratorInterface $hydrator,
-        FileTransferRequest $prototype,
-        int $itemCountPerPage = null
-    ) {
-        parent::__construct($dbAdapter, $hydrator, $prototype, $itemCountPerPage);
-    }
 
     /**
      *

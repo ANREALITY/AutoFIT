@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\EndpointServerConfig;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -27,11 +28,6 @@ class EndpointServerConfigMapper extends AbstractMapper implements EndpointServe
      * @var ServerMapperInterface
      */
     protected $serverMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, EndpointServerConfig $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

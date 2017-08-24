@@ -17,8 +17,15 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new PhysicalConnectionMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new PhysicalConnectionMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            null,
+            null,
+            $entityManager
+        );
 
         $service->setEndpointMapper($container->get('Order\Mapper\EndpointMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

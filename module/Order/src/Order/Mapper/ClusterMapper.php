@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Cluster;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -28,11 +29,6 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
      * @var ServerMapperInterface
      */
     protected $serverMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, Cluster $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

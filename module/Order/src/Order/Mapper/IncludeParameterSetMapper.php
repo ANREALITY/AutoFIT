@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\IncludeParameterSet;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -31,14 +32,9 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
 
     /**
      *
-     * @var type
+     * @var string
      */
     protected $type;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, IncludeParameterSet $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

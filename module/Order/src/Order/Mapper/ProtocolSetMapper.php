@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\ProtocolSet;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -32,14 +33,9 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
 
     /**
      *
-     * @var type
+     * @var string
      */
     protected $type;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator, ProtocolSet $prototype)
-    {
-        parent::__construct($dbAdapter, $hydrator, $prototype);
-    }
 
     /**
      *

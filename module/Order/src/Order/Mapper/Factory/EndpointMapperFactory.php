@@ -17,8 +17,15 @@ class EndpointMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new EndpointMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'));
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new EndpointMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            null,
+            null,
+            $entityManager
+        );
 
         $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
         $service->setEndpointServerConfigMapper($container->get('Order\Mapper\EndpointServerConfigMapper'));

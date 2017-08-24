@@ -18,8 +18,15 @@ class AccessConfigSetMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new AccessConfigSetMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new AccessConfigSet());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new AccessConfigSetMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new AccessConfigSet(),
+            null,
+            $entityManager
+        );
 
         $service->setAccessConfigMapper($container->get('Order\Mapper\AccessConfigMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

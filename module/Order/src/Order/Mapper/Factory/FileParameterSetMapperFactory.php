@@ -18,8 +18,15 @@ class FileParameterSetMapperFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $service = new FileParameterSetMapper($container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'), new FileParameterSet());
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+
+        $service = new FileParameterSetMapper(
+            $container->get('Zend\Db\Adapter\Adapter'),
+            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
+            new FileParameterSet(),
+            null,
+            $entityManager
+        );
 
         $service->setFileParameterMapper($container->get('Order\Mapper\FileParameterMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));

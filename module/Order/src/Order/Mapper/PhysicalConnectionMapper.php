@@ -4,6 +4,7 @@ namespace Order\Mapper;
 use DbSystel\DataObject\AbstractPhysicalConnection;
 use DbSystel\DataObject\PhysicalConnectionFtgwEndToMiddle;
 use DbSystel\DataObject\PhysicalConnectionCdEndToEnd;
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -39,17 +40,6 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
      * @var AbstractPhysicalConnection
      */
     protected $prototype;
-
-    /**
-     *
-     * @var AbstractEndpointMapper
-     */
-    protected $endpointMapper;
-
-    public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator)
-    {
-        parent::__construct($dbAdapter, $hydrator);
-    }
 
     /**
      *

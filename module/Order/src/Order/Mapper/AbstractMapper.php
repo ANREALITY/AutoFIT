@@ -1,6 +1,7 @@
 <?php
 namespace Order\Mapper;
 
+use Doctrine\ORM\EntityManager;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
@@ -48,11 +49,17 @@ class AbstractMapper
      */
     protected $stringUtility;
 
+    /**
+     * @var EntityManager
+     */
+    protected $entityManager;
+
     public function __construct(
         AdapterInterface $dbAdapter,
         HydratorInterface $hydrator,
         AbstractDataObject $prototype = null,
-        int $itemCountPerPage = null
+        int $itemCountPerPage = null,
+        EntityManager $entityManager
     ) {
         $this->setDbAdapter($dbAdapter);
         $this->setHydrator($hydrator);
@@ -60,6 +67,7 @@ class AbstractMapper
             $this->setPrototype($prototype);
         }
         $this->itemCountPerPage = $itemCountPerPage ?: self::DEFAULT_ITEM_COUNT_PER_PAGE;
+        $this->entityManager = $entityManager;
     }
 
     /**
