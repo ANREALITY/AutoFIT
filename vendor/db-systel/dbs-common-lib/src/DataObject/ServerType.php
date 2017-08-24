@@ -56,7 +56,7 @@ class ServerType extends AbstractDataObject
      */
     public function __construct()
     {
-        $this->endpointType = new ArrayCollection();
+        $this->endpointTypes = new ArrayCollection();
     }
 
     /**
