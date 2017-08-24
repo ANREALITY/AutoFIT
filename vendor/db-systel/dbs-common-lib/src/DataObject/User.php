@@ -5,42 +5,52 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
  */
 class User extends AbstractDataObject
 {
 
-    /**
-     * Role "member"
-     */
+    /** @var string */
     const ROLE_MEMBER = 'member';
-
-    /**
-     * Role "admin"
-     */
+    /** @var string */
     const ROLE_ADMIN = 'admin';
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="role", type="string", nullable=false)
      */
     private $role;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @var string
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -52,7 +62,6 @@ class User extends AbstractDataObject
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -72,7 +81,6 @@ class User extends AbstractDataObject
     public function setUsername($username)
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -85,14 +93,13 @@ class User extends AbstractDataObject
     }
 
     /**
-     * @param boolean $role
+     * @param string $role
      *
      * @return User
      */
     public function setRole($role)
     {
         $this->role = $role;
-
         return $this;
     }
 
@@ -104,21 +111,19 @@ class User extends AbstractDataObject
         return $this->role;
     }
 
-
     /**
-     * @param string $created
+     * @param \DateTime $created
      *
      * @return User
      */
     public function setCreated($created)
     {
         $this->created = $created;
-
         return $this;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -126,7 +131,7 @@ class User extends AbstractDataObject
     }
 
     /**
-     * @param string $updated
+     * @param \DateTime $updated
      *
      * @return User
      */
@@ -138,7 +143,7 @@ class User extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
