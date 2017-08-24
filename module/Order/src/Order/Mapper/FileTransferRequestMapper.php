@@ -39,6 +39,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
+     * @var User
+     */
+    protected $userPrototype;
+
+    /**
+     *
      * @var LogicalConnection
      */
     protected $logicalConnectionPrototype;
