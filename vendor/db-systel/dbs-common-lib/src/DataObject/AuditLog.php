@@ -89,9 +89,6 @@ class AuditLog extends AbstractDataObject
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
      */
     private $user;
 
