@@ -6,39 +6,56 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Cluster
+ *
+ * @ORM\Table(
+ *     name="cluster",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="virtual_node_name_UNIQUE", columns={"virtual_node_name"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class Cluster extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="virtual_node_name", type="string", length=50, nullable=true)
      */
     private $virtualNodeName;
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Server", mappedBy="cluster")
      */
     private $servers;
 
     /**
-     * @var ArrayCollection
+     * @var AbstractEndpoint[]
      */
     private $endpoints;
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="EndpointClusterConfig", mappedBy="cluster")
      */
     private $endpointClusterConfigs;
 
     public function __construct()
     {
         $this->servers = new ArrayCollection();
-        $this->endpoints = new ArrayCollection();
         $this->endpointClusterConfigs = new ArrayCollection();
     }
 
@@ -83,11 +100,11 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param ArrayCollection $servers
+     * @param AbstractEndpoint[] $servers
      *
      * @return Cluster
      */
-    public function setServers($servers)
+    public function setServers(array $servers)
     {
         $this->servers = $servers;
 
@@ -95,11 +112,11 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return ArrayCollection $servers
+     * @return Server[] $servers
      */
     public function getServers()
     {
-        return $this->servers;
+        return $this->servers; // ->toArray()
     }
 
     /**
@@ -123,11 +140,11 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param ArrayCollection $endpoints
+     * @param AbstractEndpoint[] $endpoints
      *
      * @return Cluster
      */
-    public function setEndpoints($endpoints)
+    public function setEndpoints(array $endpoints)
     {
         $this->endpoints = $endpoints;
 
@@ -135,7 +152,7 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return ArrayCollection $endpoints
+     * @return AbstractEndpoint[] $endpoints
      */
     public function getEndpoints()
     {
@@ -143,31 +160,11 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param AbstractEndpoint $endpoint
-     * @return Cluster
-     */
-    public function addEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoints->add($endpoint);
-        return $this;
-    }
-
-    /**
-     * @param AbstractEndpoint $endpoint
-     * @return Cluster
-     */
-    public function removeEndpoint(AbstractEndpoint $endpoint)
-    {
-        $this->endpoints->removeElement($endpoint);
-        return $this;
-    }
-
-    /**
-     * @param ArrayCollection $endpointClusterConfigs
+     * @param EndpointClusterConfig[] $endpointClusterConfigs
      *
      * @return Cluster
      */
-    public function setEndpointClusterConfigs($endpointClusterConfigs)
+    public function setEndpointClusterConfigs(array $endpointClusterConfigs)
     {
         $this->endpointClusterConfigs = $endpointClusterConfigs;
 
@@ -175,11 +172,11 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @return ArrayCollection $endpointClusterConfigs
+     * @return EndpointClusterConfig[] $endpointClusterConfigs
      */
     public function getEndpointClusterConfigs()
     {
-        return $this->endpointClusterConfigs;
+        return $this->endpointClusterConfigs; // ->toArray()
     }
 
     /**
