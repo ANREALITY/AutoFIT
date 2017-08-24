@@ -5,32 +5,55 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Notification
+ *
+ * @ORM\Table(
+ *     name="notification",
+ *     indexes={
+ *         @ORM\Index(name="fk_notification_logical_connection_idx", columns={"logical_connection_id"})
+ *     }
+ * )
+ * @ORM\Entity
  */
 class Notification extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50, nullable=false)
      */
     private $email;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="success", type="boolean", nullable=true)
      */
     private $success;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="failure", type="boolean", nullable=true)
      */
     private $failure;
 
     /**
      * @var LogicalConnection
+     *
+     * @ORM\ManyToOne(targetEntity="LogicalConnection", inversedBy="notifications")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
+     * })
      */
     private $logicalConnection;
 
@@ -119,7 +142,7 @@ class Notification extends AbstractDataObject
      *
      * @return Notification
      */
-    public function setLogicalConnection($logicalConnection)
+    public function setLogicalConnection(LogicalConnection $logicalConnection = null)
     {
         $this->logicalConnection = $logicalConnection;
 
