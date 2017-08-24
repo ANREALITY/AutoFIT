@@ -5,12 +5,22 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EndpointClusterConfig
+ *
+ * @ORM\Table(
+ *     name="endpoint_cluster_config",
+ *     indexes={@ORM\Index(name="fk_endpoint_cluster_config_cluster_idx", columns={"cluster_id"})
+ * })
+ * @ORM\Entity
  */
 class EndpointClusterConfig extends AbstractDataObject
 {
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -21,6 +31,8 @@ class EndpointClusterConfig extends AbstractDataObject
 
     /**
      * @var Cluster
+     *
+     * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="endpointClusterConfigs")
      */
     private $cluster;
 
@@ -69,7 +81,7 @@ class EndpointClusterConfig extends AbstractDataObject
      *
      * @return EndpointClusterConfig
      */
-    public function setCluster(Cluster $cluster)
+    public function setCluster(Cluster $cluster = null)
     {
         $this->cluster = $cluster;
 
