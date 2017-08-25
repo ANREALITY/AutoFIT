@@ -4,6 +4,7 @@ namespace Order\Mapper;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\User;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -247,8 +248,25 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $fileTransferRequestEntity = $fileTransferRequestRepository->find($id);
             $return = [$fileTransferRequestEntity];
         } else {
-            $return = $fileTransferRequestRepository->findAll();
+
+            $queryBuilder = $this->entityManager->createQueryBuilder();
+            $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
+
+            foreach ($criteria as $condition) {
+                if (is_array($condition)) {
+                    if (array_key_exists('user_id', $condition)) {
+                        $queryBuilder
+                            ->where('ftr.user = :userId')
+                            ->setParameter('userId', $condition['user_id'])
+                        ;
+                    }
+                }
+            }
+
+            $query = $queryBuilder->getQuery();
+            $return = $query->getResult(Query::HYDRATE_OBJECT);
         }
+
         return $return;
 
         /*
