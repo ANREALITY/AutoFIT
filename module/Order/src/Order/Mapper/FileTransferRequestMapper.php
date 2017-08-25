@@ -28,6 +28,8 @@ use DbSystel\DataObject\Notification;
 use DbSystel\Paginator\Paginator;
 use Order\Paginator\Adapter\FileTransferRequestPaginatorAdapter;
 use Order\Mapper\RequestModifier\FileTransferRequestRequestModifier;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -264,7 +266,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
 
             $query = $queryBuilder->getQuery();
-            $return = $query->getResult(Query::HYDRATE_OBJECT);
+
+            $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
+            $paginator->setCurrentPageNumber($page);
+            if ($paginationNeeded) {
+                $paginator->setItemCountPerPage($this->itemCountPerPage);
+            }
+
+            $return = $paginator;
         }
 
         return $return;
