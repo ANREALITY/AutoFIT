@@ -180,6 +180,11 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionEndToEnd()
     {
+        if (! $this->physicalConnectionEndToEnd) {
+            $this->physicalConnectionEndToEnd = $this->getFirstInstanceOf(
+                $this->getPhysicalConnections(), PhysicalConnectionCdEndToEnd::class
+            );
+        }
         return $this->physicalConnectionEndToEnd;
     }
 
@@ -200,6 +205,11 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionEndToMiddle()
     {
+        if (! $this->physicalConnectionEndToMiddle) {
+            $this->physicalConnectionEndToMiddle = $this->getFirstInstanceOf(
+                $this->getPhysicalConnections(), PhysicalConnectionFtgwEndToMiddle::class
+            );
+        }
         return $this->physicalConnectionEndToMiddle;
     }
 
@@ -211,7 +221,6 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
     {
         $this->physicalConnectionMiddleToEnd = $physicalConnectionMiddleToEnd;
-
         return $this;
     }
 
@@ -220,7 +229,30 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionMiddleToEnd()
     {
+        if (! $this->physicalConnectionMiddleToEnd) {
+            $this->physicalConnectionMiddleToEnd = $this->getFirstInstanceOf(
+                $this->getPhysicalConnections(), PhysicalConnectionFtgwMiddleToEnd::class
+            );
+        }
         return $this->physicalConnectionMiddleToEnd;
+    }
+
+    /**
+     * @param AbstractPhysicalConnection[] $physicalConnections
+     * @return LogicalConnection
+     */
+    public function setPhysicalConnections(array $physicalConnections)
+    {
+        $this->physicalConnections = $physicalConnections;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPhysicalConnections()
+    {
+        return $this->physicalConnections;
     }
 
     /**
@@ -280,6 +312,26 @@ class LogicalConnection extends AbstractDataObject
     {
         $this->notifications->removeElement($notification);
         return $this;
+    }
+
+    /**
+     * Iterates over the given array and
+     * returns the first instance of the given type found.
+     *
+     * @param $list
+     * @param string $className
+     * @return AbstractDataObject|null
+     */
+    protected function getFirstInstanceOf($list, string $className)
+    {
+        $return = null;
+        foreach ($list as $element) {
+            if ($element instanceof $className) {
+                $return = $element;
+                break;
+            }
+        }
+        return $return;
     }
 
 }

@@ -254,7 +254,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointSource($endpointSource)
     {
         $this->endpointSource = $endpointSource;
-
         return $this;
     }
 
@@ -263,6 +262,11 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function getEndpointSource()
     {
+        if (! $this->endpointSource) {
+            $this->endpointSource = $this->getFirstInstanceByDiscriminator(
+                $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_SOURCE
+            );
+        }
         return $this->endpointSource;
     }
 
@@ -274,7 +278,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointTarget($endpointTarget)
     {
         $this->endpointTarget = $endpointTarget;
-
         return $this;
     }
 
@@ -283,7 +286,30 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function getEndpointTarget()
     {
+        if (! $this->endpointTarget) {
+            $this->endpointTarget = $this->getFirstInstanceByDiscriminator(
+                $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_TARGET
+            );
+        }
         return $this->endpointTarget;
+    }
+
+    /**
+     * @param AbstractEndpoint[] $endpoints
+     * @return AbstractPhysicalConnection
+     */
+    public function setEndpoints(array $endpoints)
+    {
+        $this->endpoints = $endpoints;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEndpoints()
+    {
+        return $this->endpoints;
     }
 
     /**
@@ -304,6 +330,27 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     {
         $this->endpoints->removeElement($endpoint);
         return $this;
+    }
+
+    /**
+     * Iterates over the given array and
+     * returns the first instance of the given type found.
+     *
+     * @param $list
+     * @param string $discriminatorGetter
+     * @param $discriminatorValue
+     * @return null
+     */
+    protected function getFirstInstanceByDiscriminator($list, string $discriminatorGetter, $discriminatorValue)
+    {
+        $return = null;
+        foreach ($list as $element) {
+            if ($element->$discriminatorGetter() === $discriminatorValue) {
+                $return = $element;
+                break;
+            }
+        }
+        return $return;
     }
 
 }
