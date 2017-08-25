@@ -92,11 +92,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @var string
-     */
-    private $type;
-
-    /**
-     * @var string
      *
      * @ORM\Column(name="server_place", type="string", nullable=true)
      */
@@ -230,9 +225,11 @@ abstract class AbstractEndpoint extends AbstractDataObject
      */
     public function getType()
     {
-        return $this->type ?:
-            str_replace('Endpoint', '', (new ReflectionClass($this))->getShortName())
-        ;
+        return str_replace(
+            'Endpoint',
+            '',
+            (new ReflectionClass($this))->getShortName()
+        );
     }
 
     /**

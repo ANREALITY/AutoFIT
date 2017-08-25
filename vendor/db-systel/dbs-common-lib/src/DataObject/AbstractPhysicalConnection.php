@@ -43,11 +43,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @var string
-     */
-    private $role;
-
-    /**
-     * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=true)
      */
@@ -143,7 +138,19 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function getRole()
     {
-        return $this->role;
+        $role = null;
+        switch (get_class($this)) {
+            case PhysicalConnectionCdEndToEnd::class:
+                $role = self::ROLE_END_TO_END;
+                break;
+            case PhysicalConnectionFtgwEndToMiddle::class:
+                $role = self::ROLE_END_TO_MIDDLE;
+                break;
+            case PhysicalConnectionFtgwMiddleToEnd::class:
+                $role = self::ROLE_MIDDLE_TO_END;
+                break;
+        }
+        return $role;
     }
 
     /**
