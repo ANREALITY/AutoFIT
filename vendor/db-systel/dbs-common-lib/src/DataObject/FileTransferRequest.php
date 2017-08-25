@@ -213,7 +213,10 @@ class FileTransferRequest extends AbstractDataObject
      */
     public function getCreated()
     {
-        return $this->created;
+        // @todo Change later back to DateTime!
+        return is_string($this->created) || empty($this->created)
+            ? $this->created : $this->created->format('Y-m-d H:i:s')
+        ;
     }
 
     /**
