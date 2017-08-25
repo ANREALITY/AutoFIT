@@ -15,7 +15,7 @@ class Environment extends AbstractDataObject
     /**
      * @var integer
      *
-     * @ORM\Column(name="severity", type="boolean", nullable=false)
+     * @ORM\Column(name="severity", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
