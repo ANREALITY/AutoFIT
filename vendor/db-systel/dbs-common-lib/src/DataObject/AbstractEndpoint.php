@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use ReflectionClass;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -229,7 +230,9 @@ abstract class AbstractEndpoint extends AbstractDataObject
      */
     public function getType()
     {
-        return $this->type;
+        return $this->type ?:
+            str_replace('Endpoint', '', (new ReflectionClass($this))->getShortName())
+        ;
     }
 
     /**
