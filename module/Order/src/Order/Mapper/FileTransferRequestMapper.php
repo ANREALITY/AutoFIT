@@ -248,7 +248,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         /** @var FileTransferRequest $fileTransferRequestEntity */
         if ($id) {
             $fileTransferRequestEntity = $fileTransferRequestRepository->find($id);
-            $return = [$fileTransferRequestEntity];
+            $return = $fileTransferRequestEntity ? [$fileTransferRequestEntity] : [];
         } else {
 
             $queryBuilder = $this->entityManager->createQueryBuilder();
