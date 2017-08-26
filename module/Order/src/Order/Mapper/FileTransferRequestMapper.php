@@ -204,6 +204,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         }
     }
 
+    // @todo Remove the obsolete code!
 //    /**
 //     *
 //     * @return array|FileTransferRequest[]
@@ -284,6 +285,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         return $return;
 
+        // @todo Remove the obsolete code!
         /*
         $sql = new Sql($this->dbAdapter);
         $select = $sql->select('file_transfer_request');
@@ -577,47 +579,48 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         return $dataObjects;
     }
 
-    protected function getEndpointTypesByOrder($orderId)
-    {
-        $return = [];
-
-        $sql = new Sql($this->dbAdapter);
-
-        $select = $sql->select('file_transfer_request');
-        if ($orderId) {
-            $select->where([
-                'file_transfer_request.id = ?' => $orderId
-            ]);
-        }
-
-        $select->columns([]);
-        $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
-            [], Select::JOIN_LEFT);
-        $select->join('physical_connection', 'physical_connection.logical_connection_id = logical_connection.id',
-            [], Select::JOIN_LEFT);
-        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.id = physical_connection.id',
-            [], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.id = physical_connection.id',
-            [], Select::JOIN_LEFT);
-        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.id = physical_connection.id',
-            [], Select::JOIN_LEFT);
-        $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
-            [
-                'endpoint' . '__' . 'type' => 'type',
-            ], Select::JOIN_LEFT);
-        
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-        
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new ResultSet();
-            $resultSetInitialized = $resultSet->initialize($result);
-            $resultArray = $resultSetInitialized->toArray();
-            $endpointTypes = array_column($resultArray, 'endpoint__type');
-            $return = array_unique($endpointTypes);
-        }
-        
-        return $return;
-    }
+    // @todo Remove the obsolete code!
+//    protected function getEndpointTypesByOrder($orderId)
+//    {
+//        $return = [];
+//
+//        $sql = new Sql($this->dbAdapter);
+//
+//        $select = $sql->select('file_transfer_request');
+//        if ($orderId) {
+//            $select->where([
+//                'file_transfer_request.id = ?' => $orderId
+//            ]);
+//        }
+//
+//        $select->columns([]);
+//        $select->join('logical_connection', 'logical_connection.id = file_transfer_request.logical_connection_id',
+//            [], Select::JOIN_LEFT);
+//        $select->join('physical_connection', 'physical_connection.logical_connection_id = logical_connection.id',
+//            [], Select::JOIN_LEFT);
+//        $select->join('physical_connection_cd_end_to_end', 'physical_connection_cd_end_to_end.id = physical_connection.id',
+//            [], Select::JOIN_LEFT);
+//        $select->join('physical_connection_ftgw_end_to_middle', 'physical_connection_ftgw_end_to_middle.id = physical_connection.id',
+//            [], Select::JOIN_LEFT);
+//        $select->join('physical_connection_ftgw_middle_to_end', 'physical_connection_ftgw_middle_to_end.id = physical_connection.id',
+//            [], Select::JOIN_LEFT);
+//        $select->join('endpoint', 'endpoint.physical_connection_id = physical_connection.id',
+//            [
+//                'endpoint' . '__' . 'type' => 'type',
+//            ], Select::JOIN_LEFT);
+//
+//        $statement = $sql->prepareStatementForSqlObject($select);
+//        $result = $statement->execute();
+//
+//        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+//            $resultSet = new ResultSet();
+//            $resultSetInitialized = $resultSet->initialize($result);
+//            $resultArray = $resultSetInitialized->toArray();
+//            $endpointTypes = array_column($resultArray, 'endpoint__type');
+//            $return = array_unique($endpointTypes);
+//        }
+//
+//        return $return;
+//    }
 
 }
