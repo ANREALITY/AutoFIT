@@ -189,21 +189,22 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         throw new InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
     }
 
-    protected function processResultRow(array &$resultData, array $resultRowArray, string $tablePrefix,
-        string $resultDataKey, string $arrayKey, string $indexColumn, string $parentColumn = null)
-    {
-        if (strpos($arrayKey, $tablePrefix) === 0) {
-            $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
-            if (! $parentColumn) {
-                $indexValue = $resultRowArray[$indexColumn];
-                $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
-            } else {
-                $parentValue = $resultRowArray[$parentColumn];
-                $indexValue = $resultRowArray[$indexColumn];
-                $resultData[$resultDataKey][$parentValue][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
-            }
-        }
-    }
+    // @todo Remove the obsolete code!
+//    protected function processResultRow(array &$resultData, array $resultRowArray, string $tablePrefix,
+//        string $resultDataKey, string $arrayKey, string $indexColumn, string $parentColumn = null)
+//    {
+//        if (strpos($arrayKey, $tablePrefix) === 0) {
+//            $keyForHydration = substr($arrayKey, strlen($tablePrefix), strlen($arrayKey) - 1);
+//            if (! $parentColumn) {
+//                $indexValue = $resultRowArray[$indexColumn];
+//                $resultData[$resultDataKey][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+//            } else {
+//                $parentValue = $resultRowArray[$parentColumn];
+//                $indexValue = $resultRowArray[$indexColumn];
+//                $resultData[$resultDataKey][$parentValue][$indexValue][$keyForHydration] = $resultRowArray[$arrayKey];
+//            }
+//        }
+//    }
 
     // @todo Remove the obsolete code!
 //    /**
