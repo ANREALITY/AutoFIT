@@ -236,6 +236,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
 
     public function testOrders()
     {
+        $this->setUpDatabase();
         $this->createOrder('cd', 'cdas400');
         $this->reset();
         $this->createOrder('cd', 'cdtandem');
