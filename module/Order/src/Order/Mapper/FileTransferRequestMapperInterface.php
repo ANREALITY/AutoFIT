@@ -24,7 +24,7 @@ interface FileTransferRequestMapperInterface
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginationNeeded = true);
+    public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true);
 
     /**
      *

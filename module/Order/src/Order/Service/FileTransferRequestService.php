@@ -29,7 +29,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      */
     public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginationNeeded = true)
     {
-        return $this->mapper->findAllWithBuldledData($criteria, $id, $page, $paginationNeeded);
+        return $this->mapper->findAll($criteria, $id, $page, $paginationNeeded);
     }
 
     /**
@@ -49,7 +49,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      */
     public function findAllForAutocomplete(string $changeNumber = null)
     {
-        return $this->mapper->findAllWithBuldledData(
+        return $this->mapper->findAll(
             [
                 [
                     'change_number' => $changeNumber

@@ -181,7 +181,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findOne($id)
     {
-        $fileTransferRequests = $this->findAllWithBuldledData([], $id, null, false);
+        $fileTransferRequests = $this->findAll([], $id, null, false);
         if ($fileTransferRequests) {
             return $fileTransferRequests[0];
         }
@@ -244,7 +244,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      *
      * @return array|FileTransferRequest[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED)
+    public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED)
     {
         $fileTransferRequestRepository = $this->entityManager->getRepository(FileTransferRequest::class);
         /** @var FileTransferRequest $fileTransferRequestEntity */
