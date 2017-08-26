@@ -3,11 +3,11 @@ namespace Test\Integration\Functional\MiscDataOutput;
 
 use DbSystel\DataObject\Article;
 use DbSystel\DataObject\LogicalConnection;
-use DbSystel\Test\AbstractControllerTest;
+use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\View\Model\JsonModel;
 
-class MiscDataOutputTest extends AbstractControllerTest
+class MiscDataOutputTest extends AbstractOrderRelatedTest
 {
 
     public function testProvideApplications()
@@ -224,6 +224,51 @@ class MiscDataOutputTest extends AbstractControllerTest
             1 => 'undefined2',
             2 => 'foo',
             3 => 'foo2',
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+
+        if ($oldUsername) {
+            $_SERVER['AUTH_USER'] = $oldUsername;
+        } else {
+            unset($_SERVER['AUTH_USER']);
+        }
+    }
+
+    public function testOrders()
+    {
+        $this->createOrder('cd', 'cdas400');
+        $this->reset();
+        $this->createOrder('cd', 'cdtandem');
+        $this->reset();
+        $this->createOrder('ftgw', 'ftgwcdtandem');
+        $this->reset();
+
+        $changeNumber = 'undefined2';
+        $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
+        if ($changeNumber) {
+            $_SERVER['AUTH_USER'] = $changeNumber;
+        }
+
+        // change_number's are C00000011, C00000013 and C00000022, s. the fixture JSONs
+        $changeNumber = '1';
+        $getFileTransferRequestsUrl = '/audit-logging/ajax/provide-file-transfer-requests?'
+            . 'data[change_number]=' . $changeNumber
+        ;
+        $this->dispatch($getFileTransferRequestsUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('AuditLogging');
+        $this->assertControllerName('AuditLogging\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-file-transfer-requests');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+
+        $expectedResultsList = [
+            'C00000011',
+            'C00000013'
         ];
         $this->assertEquals($expectedResultsList, $actualResultsList);
 
