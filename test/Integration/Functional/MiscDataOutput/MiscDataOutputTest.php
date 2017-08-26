@@ -196,6 +196,44 @@ class MiscDataOutputTest extends AbstractControllerTest
         $this->assertEquals($expectedResultsList, $actualResultsList);
     }
 
+    public function testProvideUsers()
+    {
+        $username = 'undefined2';
+        $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
+        if ($username) {
+            $_SERVER['AUTH_USER'] = $username;
+        }
+
+        $username = 'f';
+        $getUsersUrl = '/audit-logging/ajax/provide-users?'
+            . 'data[username]=' . $username
+        ;
+        $this->dispatch($getUsersUrl, null, [], true);
+
+        $this->assertResponseStatusCode(Response::STATUS_CODE_200);
+        $this->assertModuleName('AuditLogging');
+        $this->assertControllerName('AuditLogging\Controller\Ajax');
+        $this->assertControllerClass('AjaxController');
+        $this->assertMatchedRouteName('provide-users');
+
+        /** @var JsonModel $jsonModel */
+        $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
+        $actualResultsList = $jsonModel->getVariables();
+        $expectedResultsList = [
+            0 => 'undefined',
+            1 => 'undefined2',
+            2 => 'foo',
+            3 => 'foo2',
+        ];
+        $this->assertEquals($expectedResultsList, $actualResultsList);
+
+        if ($oldUsername) {
+            $_SERVER['AUTH_USER'] = $oldUsername;
+        } else {
+            unset($_SERVER['AUTH_USER']);
+        }
+    }
+
     public function provideDataForServiceInvoicePositions()
     {
         return [
