@@ -230,7 +230,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
             $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
 
-            $return = $resultSet->initialize($result);
+            $return = $resultSet->initialize($result)->toArray();
 
             return $return;
         }
