@@ -14,11 +14,11 @@ interface FileTransferRequestMapperInterface
      */
     public function findOne($id);
 
-    /**
-     *
-     * @return array|FileTransferRequest[]
-     */
-    public function findAll(array $criteria = []);
+//    /**
+//     *
+//     * @return array|FileTransferRequest[]
+//     */
+//    public function findAll(array $criteria = []);
 
     /**
      *

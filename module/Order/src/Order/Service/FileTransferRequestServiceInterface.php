@@ -2,6 +2,7 @@
 namespace Order\Service;
 
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\Paginator\Paginator;
 
 interface FileTransferRequestServiceInterface
 {
@@ -28,8 +29,8 @@ interface FileTransferRequestServiceInterface
     public function saveOne(FileTransferRequest $fileTransferRequestRequest);
 
     /**
-     *
-     * @param string $changeNumber
+     * @param string|null $changeNumber
+     * @return Paginator
      */
     public function findAllForAutocomplete(string $changeNumber = null);
 

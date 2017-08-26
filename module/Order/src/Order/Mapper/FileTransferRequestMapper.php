@@ -204,39 +204,39 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         }
     }
 
-    /**
-     *
-     * @return array|FileTransferRequest[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_transfer_request');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (! empty($condition['change_number'])) {
-                    $select->where(
-                        [
-                            'change_number LIKE ?' => '%' . $condition['change_number'] . '%'
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-
-            $return = $resultSet->initialize($result)->toArray();
-
-            return $return;
-        }
-
-        return [];
-    }
+//    /**
+//     *
+//     * @return array|FileTransferRequest[]
+//     */
+//    public function findAll(array $criteria = [])
+//    {
+//        $sql = new Sql($this->dbAdapter);
+//        $select = $sql->select('file_transfer_request');
+//
+//        foreach ($criteria as $condition) {
+//            if (is_array($condition)) {
+//                if (! empty($condition['change_number'])) {
+//                    $select->where(
+//                        [
+//                            'change_number LIKE ?' => '%' . $condition['change_number'] . '%'
+//                        ]);
+//                }
+//            }
+//        }
+//
+//        $statement = $sql->prepareStatementForSqlObject($select);
+//        $result = $statement->execute();
+//
+//        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+//            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
+//
+//            $return = $resultSet->initialize($result)->toArray();
+//
+//            return $return;
+//        }
+//
+//        return [];
+//    }
 
     /**
      *
@@ -260,6 +260,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                         $queryBuilder
                             ->where('ftr.user = :userId')
                             ->setParameter('userId', $condition['user_id'])
+                        ;
+                    }
+                    if (array_key_exists('change_number', $condition)) {
+                        $queryBuilder
+                            ->where('ftr.changeNumber LIKE :changeNumber')
+                            ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
                         ;
                     }
                 }

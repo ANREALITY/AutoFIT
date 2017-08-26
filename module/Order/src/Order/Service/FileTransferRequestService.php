@@ -49,7 +49,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      */
     public function findAllForAutocomplete(string $changeNumber = null)
     {
-        return $this->mapper->findAll(
+        return $this->mapper->findAllWithBuldledData(
             [
                 [
                     'change_number' => $changeNumber
