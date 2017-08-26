@@ -4,6 +4,7 @@ namespace Order\Mapper;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\User;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\Query;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
@@ -30,6 +31,7 @@ use Order\Paginator\Adapter\FileTransferRequestPaginatorAdapter;
 use Order\Mapper\RequestModifier\FileTransferRequestRequestModifier;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use InvalidArgumentException;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -172,20 +174,20 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     }
 
     /**
-     *
      * @param int|string $id
-     *
-     * @return FileTransferRequest
-     * @throws \InvalidArgumentException
+     * @return FileTransferRequest|null
+     * @throws InvalidArgumentException
      */
     public function findOne($id)
     {
-        $fileTransferRequests = $this->findAllWithBuldledData([], $id, null, false);
-        if ($fileTransferRequests) {
-            return $fileTransferRequests[0];
+        $fileTransferRequestRepository = $this->entityManager->getRepository(FileTransferRequest::class);
+        try {
+            $fileTransferRequest = $fileTransferRequestRepository->find($id);
+        } catch (EntityNotFoundException $exception) {
+            throw new InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
         }
-
-        throw new \InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
+        /** @var FileTransferRequest $fileTransferRequest */
+        return $fileTransferRequest;
     }
 
     protected function processResultRow(array &$resultData, array $resultRowArray, string $tablePrefix,
