@@ -247,11 +247,11 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      */
     public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED)
     {
-        $fileTransferRequestRepository = $this->entityManager->getRepository(FileTransferRequest::class);
-        /** @var FileTransferRequest $fileTransferRequestEntity */
+        $repository = $this->entityManager->getRepository(FileTransferRequest::class);
+        /** @var FileTransferRequest $entity */
         if ($id) {
-            $fileTransferRequestEntity = $fileTransferRequestRepository->find($id);
-            $return = $fileTransferRequestEntity ? [$fileTransferRequestEntity] : [];
+            $entity = $repository->find($id);
+            $return = $entity ? [$entity] : [];
         } else {
 
             $queryBuilder = $this->entityManager->createQueryBuilder();
