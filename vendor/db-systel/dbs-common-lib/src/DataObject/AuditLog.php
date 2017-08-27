@@ -204,7 +204,10 @@ class AuditLog extends AbstractDataObject
      */
     public function getDatetime()
     {
-        return $this->datetime;
+        // @todo Change later back to DateTime!
+        return is_string($this->datetime) || empty($this->datetime)
+            ? $this->datetime : $this->datetime->format('Y-m-d H:i:s')
+        ;
     }
 
     /**
