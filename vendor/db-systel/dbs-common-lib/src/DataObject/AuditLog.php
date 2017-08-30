@@ -16,7 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="resource_type", type="string")
  * @ORM\DiscriminatorMap({
- *     "order" = "AuditLogFileTransferRequestQWER"
+ *     "" = "AuditLog",
+ *     "order" = "AuditLogFileTransferRequest",
+ *     "server" = "AuditLogServer",
+ *     "cluster" = "AuditLogCluster"
  * })
  */
 class AuditLog extends AbstractDataObject
@@ -64,8 +67,6 @@ class AuditLog extends AbstractDataObject
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="resource_type", type="string", nullable=true)
      */
     private $resourceType;
 
@@ -209,7 +210,10 @@ class AuditLog extends AbstractDataObject
      */
     public function getDatetime()
     {
-        return $this->datetime;
+        // @todo Change later back to DateTime!
+        return is_string($this->datetime) || empty($this->datetime)
+            ? $this->datetime : $this->datetime->format('Y-m-d H:i:s')
+        ;
     }
 
     /**
@@ -253,13 +257,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      * @param Server $server
-     *
      * @return AuditLog
      */
     public function setServer(Server $server)
     {
         $this->server = $server;
-
         return $this;
     }
 
@@ -273,13 +275,11 @@ class AuditLog extends AbstractDataObject
 
     /**
      * @param Cluster $cluster
-     *
      * @return AuditLog
      */
     public function setCluster(Cluster $cluster)
     {
         $this->cluster = $cluster;
-
         return $this;
     }
 
