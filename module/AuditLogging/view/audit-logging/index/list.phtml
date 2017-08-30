@@ -37,6 +37,7 @@ echo $this->paginationControl(
         <th><?php echo $this->translate('resource ID'); ?></th>
         <th><?php echo $this->translate('action') . '/' . $this->translate('event'); ?></th>
     </tr>
+    <?php /** @var AuditLog $auditLog */ ?>
     <?php foreach ($paginator->getCurrentItems() as $auditLog) : ?>
     <tr>
         <td>#<?php echo $auditLog->getId(); ?></td>
