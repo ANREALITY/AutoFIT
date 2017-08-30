@@ -6,9 +6,9 @@ use DbSystel\DataObject\AuditLog;
 ?>
 
 <?php
-$cluster = $auditLog->getFileTransferRequest();
+$fileTransferRequest = $auditLog->getFileTransferRequest();
 ?>
 
-#<?php echo $cluster->getId(); ?>
+#<?php echo $fileTransferRequest->getId(); ?>
 
-(<a href='<?php echo $this->url('show-order', ['id' => $cluster->getId()]); ?>'><?php echo $cluster->getChangeNumber(); ?></a>)
+(<a href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>)

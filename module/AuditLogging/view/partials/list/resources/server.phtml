@@ -6,9 +6,9 @@ use DbSystel\DataObject\AuditLog;
 ?>
 
 <?php
-$cluster = $auditLog->getServer();
+$server = $auditLog->getServer();
 ?>
 
-<?php echo $cluster->getName(); ?>
+<?php echo $server->getName(); ?>
 
-(<?php echo $cluster->getNodeName() ?: '-'; ?>/<?php echo $cluster->getVirtualNodeName() ?: '-'; ?>)
+(<?php echo $server->getNodeName() ?: '-'; ?>/<?php echo $server->getVirtualNodeName() ?: '-'; ?>)
