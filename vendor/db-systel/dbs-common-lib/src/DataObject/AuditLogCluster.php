@@ -12,32 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 class AuditLogCluster extends AuditLog
 {
 
-//    /**
-//     * @var TestX
-//     *
-//     * @ORM\ManyToOne(targetEntity="TestX")
-//     * @ORM\JoinColumn(name="resource_id", referencedColumnName="id")
-//     */
-//    private $testX;
-//
-//    /**
-//     * @param TestX $testX
-//     * @return AuditLogCluster
-//     */
-//    public function setTestX(TestX $testX)
-//    {
-//        $this->testX = $testX;
-//        return $this;
-//    }
-//
-//    /**
-//     * @return TestX
-//     */
-//    public function getTestX()
-//    {
-//        return $this->testX;
-//    }
-
     /**
      * @var Cluster
      *

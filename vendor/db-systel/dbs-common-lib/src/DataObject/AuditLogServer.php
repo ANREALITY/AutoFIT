@@ -12,32 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 class AuditLogServer extends AuditLog
 {
 
-//    /**
-//     * @var TestY
-//     *
-//     * @ORM\ManyToOne(targetEntity="TestY")
-//     * @ORM\JoinColumn(name="resource_id", referencedColumnName="name")
-//     */
-//    private $testY;
-//
-//    /**
-//     * @param TestY $testY
-//     * @return AuditLogServer
-//     */
-//    public function setTestY(TestY $testY)
-//    {
-//        $this->testY = $testY;
-//        return $this;
-//    }
-//
-//    /**
-//     * @return TestY
-//     */
-//    public function getTestY()
-//    {
-//        return $this->testY;
-//    }
-
     /**
      * @var Server
      *
