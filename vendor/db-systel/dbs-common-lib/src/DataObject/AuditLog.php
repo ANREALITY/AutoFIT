@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="resource_type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "order" = "AuditLogFileTransferRequestQWER"
+ * })
  */
 class AuditLog extends AbstractDataObject
 {
@@ -235,7 +240,6 @@ class AuditLog extends AbstractDataObject
     public function setFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
         $this->fileTransferRequest = $fileTransferRequest;
-
         return $this;
     }
 
