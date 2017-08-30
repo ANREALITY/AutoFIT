@@ -2,6 +2,8 @@
 namespace AuditLogging\Mapper;
 
 use DbSystel\DataObject\AuditLog;
+use DbSystel\DataObject\FileTransferRequest;
+use Doctrine\ORM\QueryBuilder;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
 use Zend\Db\ResultSet\ResultSet;
@@ -25,6 +27,8 @@ use Order\Mapper\FileTransferRequestMapperInterface;
 use Order\Mapper\ServerMapperInterface;
 use Order\Mapper\ClusterMapperInterface;
 use Zend\Paginator\Adapter\DbSelect;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -108,6 +112,78 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     {
         $this->clusterMapper = $clusterMapper;
     }
+
+//    /**
+//     *
+//     * @return array|AuditLog[]
+//     */
+//    public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED)
+//    {
+//        $repository = $this->entityManager->getRepository(AuditLog::class);
+//        /** @var AuditLog $entity */
+//        if ($id) {
+//            $entity = $repository->find($id);
+//            $return = $entity ? [$entity] : [];
+//        } else {
+//            /** @var QueryBuilder $queryBuilder */
+//            $queryBuilder = $this->entityManager->createQueryBuilder();
+//            $queryBuilder->select('al')->from(AuditLog::class, 'al');
+//            $queryBuilder->join('al.user', 'u');
+////            $queryBuilder->join(
+////                FileTransferRequest::class,
+////                'ftr',
+////                \Doctrine\ORM\Query\Expr\Join::WITH,
+////                'ftr.id = al.resourceId'
+////            );
+//            $queryBuilder->addSelect('ftr')
+//                ->leftJoin('al.resourceId', 'ftr')
+//                ->where('ftr.id = al.resourceId')
+//            ;
+//            foreach ($criteria as $key => $condition) {
+//                if (is_string($condition) && ! empty($condition)) {
+//                    if ($key === 'username') {
+//                        $queryBuilder
+//                            ->where('u.username = :username')
+//                            ->setParameter('username', $condition);
+//                    } elseif ($key === 'resource_type') {
+//                        $queryBuilder
+//                            ->where('al.resourceType = :resourceType')
+//                            ->setParameter('resourceType', $condition)
+//                        ;
+//                    } elseif ($key === 'change_number') {
+//                        $queryBuilder
+//                            ->where('ftr.changeNumber = :changeNumber')
+//                            ->setParameter('changeNumber', $condition)
+//                        ;
+//                        $queryBuilder
+//                            ->andWhere('al.resourceType = :resourceType')
+//                            ->setParameter('resourceType', AuditLog::RESSOURCE_TYPE_ORDER)
+//                        ;
+//                    }
+//                }
+////
+////
+////                if (array_key_exists('user_id', $condition)) {
+////                    $queryBuilder
+////                        ->where('ftr.user = :userId')
+////                        ->setParameter('userId', $condition['user_id']);
+////                }
+////                if (array_key_exists('change_number', $condition)) {
+////                    $queryBuilder
+////                        ->where('ftr.changeNumber LIKE :changeNumber')
+////                        ->setParameter('changeNumber', '%' . $condition['change_number'] . '%');
+////                }
+//            }
+//            $query = $queryBuilder->getQuery();
+//            $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
+//            $paginator->setCurrentPageNumber($page);
+//            if ($paginationNeeded) {
+//                $paginator->setItemCountPerPage($this->itemCountPerPage);
+//            }
+//            $return = $paginator;
+//        }
+//        return $return;
+//    }
 
     /**
      *
