@@ -43,7 +43,7 @@ class Bootstrap
         // application configuration
         $applicationConfig = require_once $this->applicationConfigPath;
         // service manager setup
-        $this->setUpServiceManager($applicationConfig);
+        $this->prepareApplication($applicationConfig);
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
@@ -59,13 +59,12 @@ class Bootstrap
         chdir($rootPath);
     }
 
-    protected function setUpServiceManager($config)
+    protected function prepareApplication($config)
     {
         $serviceManagerConfig = isset($config['service_manager']) ? $config['service_manager'] : [];
         $serviceManagerConfigObject = new ServiceManagerConfig($serviceManagerConfig);
         $this->serviceManager = new ServiceManager();
         $serviceManagerConfigObject->configureServiceManager($this->serviceManager);
-        // modules and configs for the application's ServiceManager
         $this->serviceManager->setService('ApplicationConfig', $config);
         $this->serviceManager->get('ModuleManager')->loadModules();
     }
