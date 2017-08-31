@@ -42,14 +42,15 @@ class Bootstrap
         static::initAutoloader();
         // application configuration
         $applicationConfig = require_once $this->applicationConfigPath;
-        // service manager setup
+        // application setup
         $this->prepareApplication($applicationConfig);
-        // database setup
+        // database configuration
         $dbConfigs = $this->serviceManager->get('Config')['db'];
+        // database setup
         $this->setUpDatabase($dbConfigs);
         // listeners
         $listeners = $this->prepareListeners();
-        // application setup
+        // application bootstrap
         $this->bootstrapApplication($listeners);
     }
 
