@@ -28,12 +28,9 @@ class Bootstrap
     /** @var EntityManager */
     protected $entityManager;
 
-    protected $applicationPrepared;
-
     public function __construct()
     {
         $this->applicationConfigPath = __DIR__ . '/../config/application.config.php';
-        $this->applicationPrepared = false;
     }
 
     /**
@@ -47,8 +44,6 @@ class Bootstrap
         $applicationConfig = require_once $this->applicationConfigPath;
         // service manager setup
         $this->setUpServiceManager($applicationConfig);
-        // modules and configs for the application's ServiceManager
-        $this->prepareApplication($applicationConfig);
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
@@ -70,20 +65,18 @@ class Bootstrap
         $serviceManagerConfigObject = new ServiceManagerConfig($serviceManagerConfig);
         $this->serviceManager = new ServiceManager();
         $serviceManagerConfigObject->configureServiceManager($this->serviceManager);
+        // modules and configs for the application's ServiceManager
+        $this->prepareApplication($config);
     }
 
     protected function prepareApplication($config)
     {
         $this->serviceManager->setService('ApplicationConfig', $config);
         $this->serviceManager->get('ModuleManager')->loadModules();
-        $this->applicationPrepared = true;
     }
 
     protected function bootstrapApplication($config)
     {
-        if (! $this->applicationPrepared) {
-            $this->prepareApplication($config);
-        }
         $listeners = $this->prepareListeners();
         $application = $this->serviceManager->get('Application');
         $application->bootstrap($listeners);
