@@ -66,11 +66,6 @@ class Bootstrap
         $this->serviceManager = new ServiceManager();
         $serviceManagerConfigObject->configureServiceManager($this->serviceManager);
         // modules and configs for the application's ServiceManager
-        $this->prepareApplication($config);
-    }
-
-    protected function prepareApplication($config)
-    {
         $this->serviceManager->setService('ApplicationConfig', $config);
         $this->serviceManager->get('ModuleManager')->loadModules();
     }
