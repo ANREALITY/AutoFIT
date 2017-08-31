@@ -51,8 +51,6 @@ class Bootstrap
         $listeners = $this->prepareListeners();
         // application setup
         $this->bootstrapApplication($listeners);
-        // Doctrine entity manager
-        $this->entityManager = $this->serviceManager->get('doctrine.entitymanager.orm_default');
     }
 
     public function chroot()
