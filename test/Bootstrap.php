@@ -46,7 +46,7 @@ class Bootstrap
         $this->prepareApplication($applicationConfig);
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
-        self::setUpDatabase($dbConfigs);
+        $this->setUpDatabase($dbConfigs);
         // listeners
         $listeners = $this->prepareListeners();
         // application setup
