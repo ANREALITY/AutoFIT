@@ -47,8 +47,10 @@ class Bootstrap
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
+        // listeners
+        $listeners = $this->prepareListeners();
         // application setup
-        $this->bootstrapApplication($applicationConfig);
+        $this->bootstrapApplication($listeners);
         // Doctrine entity manager
         $this->entityManager = $this->serviceManager->get('doctrine.entitymanager.orm_default');
     }
@@ -69,9 +71,8 @@ class Bootstrap
         $this->serviceManager->get('ModuleManager')->loadModules();
     }
 
-    protected function bootstrapApplication($config)
+    protected function bootstrapApplication($listeners)
     {
-        $listeners = $this->prepareListeners();
         $application = $this->serviceManager->get('Application');
         $application->bootstrap($listeners);
     }
