@@ -28,9 +28,12 @@ class Bootstrap
     /** @var EntityManager */
     protected $entityManager;
 
+    protected $applicationPrepared;
+
     public function __construct()
     {
         $this->applicationConfigPath = __DIR__ . '/../config/application.config.php';
+        $this->applicationPrepared = false;
     }
 
     /**
@@ -44,11 +47,14 @@ class Bootstrap
         $applicationConfig = require_once $this->applicationConfigPath;
         // service manager setup
         $this->setUpServiceManager($applicationConfig);
-        // application setup
-        $this->bootstrapApplication($applicationConfig);
+        // modules and configs for the application's ServiceManager
+        $this->prepareApplication($applicationConfig);
         // database setup
         $dbConfigs = $this->serviceManager->get('Config')['db'];
         self::setUpDatabase($dbConfigs);
+        // application setup
+        $this->bootstrapApplication($applicationConfig);
+        // Doctrine entity manager
         $this->entityManager = $this->serviceManager->get('doctrine.entitymanager.orm_default');
     }
 
@@ -66,16 +72,30 @@ class Bootstrap
         $serviceManagerConfigObject->configureServiceManager($this->serviceManager);
     }
 
-    protected function bootstrapApplication($config)
+    protected function prepareApplication($config)
     {
         $this->serviceManager->setService('ApplicationConfig', $config);
         $this->serviceManager->get('ModuleManager')->loadModules();
+        $this->applicationPrepared = true;
+    }
+
+    protected function bootstrapApplication($config)
+    {
+        if (! $this->applicationPrepared) {
+            $this->prepareApplication($config);
+        }
+        $listeners = $this->prepareListeners();
+        $application = $this->serviceManager->get('Application');
+        $application->bootstrap($listeners);
+    }
+
+    protected function prepareListeners()
+    {
         $listenersFromAppConfig     = isset($configuration['listeners']) ? $configuration['listeners'] : [];
         $config                     = $this->serviceManager->get('config');
         $listenersFromConfigService = isset($config['listeners']) ? $config['listeners'] : [];
         $listeners = array_unique(array_merge($listenersFromConfigService, $listenersFromAppConfig));
-        $application = $this->serviceManager->get('Application');
-        $application->bootstrap($listeners);
+        return $listeners;
     }
 
     protected function setUpDatabase(array $dbConfigs)
