@@ -1,4 +1,4 @@
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`autofit_temp` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`autofit_test` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 -- MySQL Workbench Forward Engineering
 
