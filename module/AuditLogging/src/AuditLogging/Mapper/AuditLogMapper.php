@@ -151,6 +151,15 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                     }
                 }
             }
+            foreach ($sorting as $key => $condition) {
+                if (is_string($condition) && ! empty($condition)) {
+                    if ($key === 'datetime') {
+                        $direction = strtoupper($condition) === 'ASC'
+                            ? 'ASC' : 'DESC';
+                        $queryBuilder->addOrderBy('al.datetime', $direction);
+                    }
+                }
+            }
 
             $queryBuilder->join('al.user', 'u');
             $query = $queryBuilder->getQuery();
