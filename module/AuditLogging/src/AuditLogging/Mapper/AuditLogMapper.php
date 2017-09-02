@@ -132,7 +132,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             $queryBuilder = $this->entityManager->createQueryBuilder();
             if (array_key_exists('change_number', $criteria)) {
                 $queryBuilder->select('al')->from(AuditLogFileTransferRequest::class, 'al');
-                $queryBuilder->join('al.fileTransferRequest', 'ftr');
             } else {
                 $queryBuilder->select('al')->from(AuditLog::class, 'al');
             }
@@ -164,7 +163,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 //                            ->setParameter('resourceType', $condition)
                     } elseif ($key === 'resource_type') {
                         $queryBuilder
-                            ->andWhere('ftr.changeNumber = :changeNumber')
+                            ->andWhere('al.fileTransferRequest.changeNumber = :changeNumber')
                             ->setParameter('changeNumber', $criteria['change_number'])
                         ;
                     }
