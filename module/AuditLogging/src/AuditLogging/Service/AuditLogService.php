@@ -29,7 +29,7 @@ class AuditLogService extends AbstractService implements AuditLogServiceInterfac
      * {@inheritDoc}
      *
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])
+    public function findAll(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])
     {
         return $this->mapper->findAll($criteria, $id, $page, $requstMode, $sorting);
     }

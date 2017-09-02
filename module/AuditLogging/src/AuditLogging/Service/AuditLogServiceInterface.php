@@ -19,7 +19,7 @@ interface AuditLogServiceInterface
      *
      * @return AuditLog[]
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = []);
+    public function findAll(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = []);
 
     /**
      *
