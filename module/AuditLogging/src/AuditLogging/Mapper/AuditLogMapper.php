@@ -1,37 +1,27 @@
 <?php
 namespace AuditLogging\Mapper;
 
+use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use DbSystel\DataObject\AuditLog;
 use DbSystel\DataObject\AuditLogCluster;
 use DbSystel\DataObject\AuditLogFileTransferRequest;
 use DbSystel\DataObject\AuditLogServer;
-use DbSystel\DataObject\FileTransferRequest;
-use Doctrine\ORM\QueryBuilder;
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Db\Sql\Sql;
-use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\Sql\Insert;
-use Zend\Db\Sql\Update;
-use Zend\Hydrator\HydratorInterface;
-use Zend\Db\Sql\Select;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\Application;
-use DbSystel\DataObject\Environment;
-use Zend\Db\Sql\Join;
-use DbSystel\DataObject\Notification;
 use DbSystel\Paginator\Paginator;
-use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Order\Mapper\AbstractMapper;
-use Order\Mapper\UserMapperInterface;
-use Zend\Db\Sql\Expression;
+use Order\Mapper\ClusterMapperInterface;
 use Order\Mapper\FileTransferRequestMapperInterface;
 use Order\Mapper\ServerMapperInterface;
-use Order\Mapper\ClusterMapperInterface;
+use Order\Mapper\UserMapperInterface;
+use Zend\Db\Adapter\Driver\ResultInterface;
+use Zend\Db\Sql\Expression;
+use Zend\Db\Sql\Insert;
+use Zend\Db\Sql\Join;
+use Zend\Db\Sql\Select;
+use Zend\Db\Sql\Sql;
 use Zend\Paginator\Adapter\DbSelect;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
@@ -75,7 +65,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
     /**
      *
-     * @param UserMapperInterface $fileTransferRequestMapper
+     * @param UserMapperInterface $userMapper
      */
     public function setUserMapper(UserMapperInterface $userMapper)
     {
@@ -84,7 +74,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 
     /**
      *
-     * @param FileTransferRequestMapperInterface $userMapper
+     * @param FileTransferRequestMapperInterface $fileTransferRequestMapper
      */
     public function setFileTransferRequestMapper(FileTransferRequestMapperInterface $fileTransferRequestMapper)
     {
@@ -117,8 +107,12 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     }
 
     /**
-     *
-     * @return array|AuditLog[]
+     * @param array $criteria
+     * @param null $id
+     * @param null $page
+     * @param bool $paginationNeeded
+     * @param string $requstMode
+     * @return AuditLog[]|Paginator
      */
     public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED)
     {
@@ -135,12 +129,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
             } else {
                 $queryBuilder->select('al')->from(AuditLog::class, 'al');
             }
-//                $queryBuilder
-//                    ->andWhere($queryBuilder->expr()->isInstanceOf(
-//                        'al',
-//                        AuditLogFileTransferRequest::class
-//                    ))
-//                ;
             foreach ($criteria as $key => $condition) {
                 if (is_string($condition) && ! empty($condition)) {
                     if ($key === 'username') {
@@ -159,8 +147,6 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
                                 $resourceTypeToClassMap[$condition]
                             ))
                         ;
-//                            ->where('al.resourceType = :resourceType')
-//                            ->setParameter('resourceType', $condition)
                     } elseif ($key === 'resource_type') {
                         $queryBuilder
                             ->andWhere('al.fileTransferRequest.changeNumber = :changeNumber')

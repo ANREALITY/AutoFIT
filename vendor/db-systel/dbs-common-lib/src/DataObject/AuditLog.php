@@ -2,7 +2,6 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use ReflectionClass;
 
 /**
  * AuditLog
@@ -151,7 +150,7 @@ class AuditLog extends AbstractDataObject
      */
     public function getResourceType()
     {
-        $resourceType = $this->resourceType ?: null; // null;
+        $resourceType = $this->resourceType ?: null;
         switch(get_class($this)) {
             case AuditLogFileTransferRequest::class:
                 $resourceType = self::RESSOURCE_TYPE_ORDER;

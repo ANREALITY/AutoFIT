@@ -5,7 +5,6 @@ use DbSystel\DataObject\AuditLog;
 use DbSystel\Paginator\Paginator;
 use Order\Service\UserService;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
-use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Sql;
 use Zend\Http\PhpEnvironment\Response;
