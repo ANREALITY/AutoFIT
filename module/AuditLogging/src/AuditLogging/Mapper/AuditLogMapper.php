@@ -1,7 +1,6 @@
 <?php
 namespace AuditLogging\Mapper;
 
-use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use DbSystel\DataObject\AuditLog;
 use DbSystel\DataObject\AuditLogCluster;
 use DbSystel\DataObject\AuditLogFileTransferRequest;
@@ -11,17 +10,10 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Order\Mapper\AbstractMapper;
-use Order\Mapper\ClusterMapperInterface;
-use Order\Mapper\FileTransferRequestMapperInterface;
-use Order\Mapper\ServerMapperInterface;
-use Order\Mapper\UserMapperInterface;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Insert;
-use Zend\Db\Sql\Join;
-use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Sql;
-use Zend\Paginator\Adapter\DbSelect;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
