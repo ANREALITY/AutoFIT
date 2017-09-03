@@ -56,13 +56,15 @@ class AbstractMapper
 
     public function __construct(
         AdapterInterface $dbAdapter,
-        HydratorInterface $hydrator,
+        HydratorInterface $hydrator = null,
         AbstractDataObject $prototype = null,
         int $itemCountPerPage = null,
         EntityManager $entityManager
     ) {
         $this->setDbAdapter($dbAdapter);
-        $this->setHydrator($hydrator);
+        if ($hydrator && $hydrator instanceof HydratorInterface) {
+            $this->setHydrator($hydrator);
+        }
         if ($prototype) {
             $this->setPrototype($prototype);
         }
