@@ -107,67 +107,72 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     }
 
     /**
-     * @inheritdoc
+     * @param $id
+     * @return AuditLog
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, array $sorting = [])
+    public function findOne($id)
     {
         $repository = $this->entityManager->getRepository(AuditLog::class);
+        $entity = $repository->find($id);
         /** @var AuditLog $entity */
-        if ($id) {
-            $entity = $repository->find($id);
-            $return = $entity ? [$entity] : [];
-        } else {
-            /** @var QueryBuilder $queryBuilder */
-            $queryBuilder = $this->entityManager->createQueryBuilder();
-            if (array_key_exists('change_number', $criteria)) {
-                $queryBuilder->select('al')->from(AuditLogFileTransferRequest::class, 'al');
-                $queryBuilder->join('al.fileTransferRequest', 'ftr');
-            } else {
-                $queryBuilder->select('al')->from(AuditLog::class, 'al');
-            }
-            foreach ($criteria as $key => $condition) {
-                if (is_string($condition) && ! empty($condition)) {
-                    if ($key === 'username') {
-                        $queryBuilder
-                            ->andWhere('u.username = :username')
-                            ->setParameter('username', $condition);
-                    } elseif ($key === 'resource_type') {
-                        $resourceTypeToClassMap = [
-                            AuditLog::RESSOURCE_TYPE_ORDER => AuditLogFileTransferRequest::class,
-                            AuditLog::RESSOURCE_TYPE_SERVER => AuditLogServer::class,
-                            AuditLog::RESSOURCE_TYPE_CLUSTER => AuditLogCluster::class,
-                        ];
-                        $queryBuilder
-                            ->andWhere($queryBuilder->expr()->isInstanceOf(
-                                'al',
-                                $resourceTypeToClassMap[$condition]
-                            ))
-                        ;
-                    } elseif ($key === 'change_number') {
-                        $queryBuilder
-                            ->andWhere('ftr.changeNumber = :changeNumber')
-                            ->setParameter('changeNumber', $criteria['change_number'])
-                        ;
-                    }
-                }
-            }
-            foreach ($sorting as $key => $condition) {
-                if (is_string($condition) && ! empty($condition)) {
-                    if ($key === 'datetime') {
-                        $direction = strtoupper($condition) === 'ASC'
-                            ? 'ASC' : 'DESC';
-                        $queryBuilder->addOrderBy('al.datetime', $direction);
-                    }
-                }
-            }
+        return $entity;
+    }
 
-            $queryBuilder->join('al.user', 'u');
-            $query = $queryBuilder->getQuery();
-            $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
-            $paginator->setCurrentPageNumber($page);
-            $paginator->setItemCountPerPage($this->itemCountPerPage);
-            $return = $paginator;
+    /**
+     * @inheritdoc
+     */
+    public function findAll(array $criteria = [], $page = null, array $sorting = [])
+    {
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        if (array_key_exists('change_number', $criteria)) {
+            $queryBuilder->select('al')->from(AuditLogFileTransferRequest::class, 'al');
+            $queryBuilder->join('al.fileTransferRequest', 'ftr');
+        } else {
+            $queryBuilder->select('al')->from(AuditLog::class, 'al');
         }
+        foreach ($criteria as $key => $condition) {
+            if (is_string($condition) && ! empty($condition)) {
+                if ($key === 'username') {
+                    $queryBuilder
+                        ->andWhere('u.username = :username')
+                        ->setParameter('username', $condition);
+                } elseif ($key === 'resource_type') {
+                    $resourceTypeToClassMap = [
+                        AuditLog::RESSOURCE_TYPE_ORDER => AuditLogFileTransferRequest::class,
+                        AuditLog::RESSOURCE_TYPE_SERVER => AuditLogServer::class,
+                        AuditLog::RESSOURCE_TYPE_CLUSTER => AuditLogCluster::class,
+                    ];
+                    $queryBuilder
+                        ->andWhere($queryBuilder->expr()->isInstanceOf(
+                            'al',
+                            $resourceTypeToClassMap[$condition]
+                        ))
+                    ;
+                } elseif ($key === 'change_number') {
+                    $queryBuilder
+                        ->andWhere('ftr.changeNumber = :changeNumber')
+                        ->setParameter('changeNumber', $criteria['change_number'])
+                    ;
+                }
+            }
+        }
+        foreach ($sorting as $key => $condition) {
+            if (is_string($condition) && ! empty($condition)) {
+                if ($key === 'datetime') {
+                    $direction = strtoupper($condition) === 'ASC'
+                        ? 'ASC' : 'DESC';
+                    $queryBuilder->addOrderBy('al.datetime', $direction);
+                }
+            }
+        }
+
+        $queryBuilder->join('al.user', 'u');
+        $query = $queryBuilder->getQuery();
+        $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($this->itemCountPerPage);
+        $return = $paginator;
         return $return;
     }
 

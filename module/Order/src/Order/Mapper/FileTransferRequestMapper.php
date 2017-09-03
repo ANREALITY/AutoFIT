@@ -553,33 +553,34 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         throw new \Exception('Database error in ' . __METHOD__);
     }
 
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, null, null,
-            'id', 'logical_connection__', $identifier, $prefix);
-        $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, null, null, 'number', 'service_invoice_position_basic__', $identifier, $prefix);
-        $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
-            $resultSetArray, null, null, 'number', 'service_invoice_position_personal__', $identifier, $prefix);
-        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user__', $identifier,
-            $prefix);
-
-        foreach ($dataObjects as $key => $dataObject) {
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
-                'setLogicalConnection', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionBasicDataObjects,
-                'setServiceInvoicePositionBasic', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionPersonalDataObjects,
-                'setServiceInvoicePositionPersonal', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
-        }
-
-        return $dataObjects;
-    }
+    // @todo Remove the obsolete code!
+//    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
+//        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
+//        callable $dataObjectCondition = null, bool $isCollection = false)
+//    {
+//        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
+//
+//        $logicalConnectionDataObjects = $this->logicalConnectionMapper->createDataObjects($resultSetArray, null, null,
+//            'id', 'logical_connection__', $identifier, $prefix);
+//        $serviceInvoicePositionBasicDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
+//            $resultSetArray, null, null, 'number', 'service_invoice_position_basic__', $identifier, $prefix);
+//        $serviceInvoicePositionPersonalDataObjects = $this->serviceInvoicePositionMapper->createDataObjects(
+//            $resultSetArray, null, null, 'number', 'service_invoice_position_personal__', $identifier, $prefix);
+//        $userDataObjects = $this->userMapper->createDataObjects($resultSetArray, null, null, 'id', 'user__', $identifier,
+//            $prefix);
+//
+//        foreach ($dataObjects as $key => $dataObject) {
+//            $this->appendSubDataObject($dataObject, $dataObject->getId(), $logicalConnectionDataObjects,
+//                'setLogicalConnection', 'getId');
+//            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionBasicDataObjects,
+//                'setServiceInvoicePositionBasic', 'getId');
+//            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serviceInvoicePositionPersonalDataObjects,
+//                'setServiceInvoicePositionPersonal', 'getId');
+//            $this->appendSubDataObject($dataObject, $dataObject->getId(), $userDataObjects, 'setUser', 'getId');
+//        }
+//
+//        return $dataObjects;
+//    }
 
     // @todo Remove the obsolete code!
 //    protected function getEndpointTypesByOrder($orderId)

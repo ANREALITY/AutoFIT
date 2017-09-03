@@ -29,9 +29,9 @@ class AuditLogService extends AbstractService implements AuditLogServiceInterfac
      * {@inheritDoc}
      *
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = [])
+    public function findAll(array $criteria = [], $page = null, array $sorting = [])
     {
-        return $this->mapper->findAll($criteria, $id, $page, $sorting);
+        return $this->mapper->findAll($criteria, $page, $sorting);
     }
 
     /**

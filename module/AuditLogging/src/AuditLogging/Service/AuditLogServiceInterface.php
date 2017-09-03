@@ -3,26 +3,26 @@ namespace AuditLogging\Service;
 
 use DbSystel\DataObject\AuditLog;
 use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
+use DbSystel\Paginator\Paginator;
 
 interface AuditLogServiceInterface
 {
 
     /**
-     *
-     * @param int $id
-     *            Identifier of the AuditLog that should be returned
+     * @param int $id Identifier of the AuditLog entry, that should be returned
      * @return AuditLog
      */
     public function findOne($id);
 
     /**
-     *
-     * @return AuditLog[]
+     * @param array $criteria
+     * @param int $page
+     * @param array $sorting
+     * @return Paginator
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, $requstMode = AuditLogRequestModifier::REQUEST_MODE_REDUCED, array $sorting = []);
+    public function findAll(array $criteria = [], $page = null, array $sorting = []);
 
     /**
-     *
      * @param AuditLog $auditLog
      * @return AuditLog
      */

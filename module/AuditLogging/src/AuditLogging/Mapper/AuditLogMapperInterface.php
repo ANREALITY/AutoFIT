@@ -2,15 +2,24 @@
 namespace AuditLogging\Mapper;
 
 use DbSystel\DataObject\AuditLog;
+use DbSystel\Paginator\Paginator;
 
 interface AuditLogMapperInterface
 {
 
     /**
-     *
-     * @return array|AuditLog[]
+     * @param $id
+     * @return AuditLog
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, array $sorting = []);
+    public function findOne($id);
+
+    /**
+     * @param array $criteria
+     * @param null $page
+     * @param array $sorting
+     * @return Paginator
+     */
+    public function findAll(array $criteria = [], $page = null, array $sorting = []);
 
     /**
      *
