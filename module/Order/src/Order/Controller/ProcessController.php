@@ -222,8 +222,7 @@ class ProcessController extends AbstractActionController
         }
 
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id);
-        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+        $fileTransferRequest = $this->fileTransferRequestService->findOne($id);
 
         return [
             'form' => $this->orderForm,
@@ -387,10 +386,9 @@ class ProcessController extends AbstractActionController
     public function showOrderAction()
     {
         $id = $this->params()->fromRoute('id', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
-        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
-
-        if (! $fileTransferRequest) {
+        try {
+            $fileTransferRequest = $this->fileTransferRequestService->findOne($id);
+        } catch (\InvalidArgumentException $exception) {
             $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
             return;
         }
@@ -452,8 +450,7 @@ class ProcessController extends AbstractActionController
     {
         $id = $this->params()->fromRoute('id', null);
         $format = $this->params()->fromQuery('format', null);
-        $fileTransferRequests = $this->fileTransferRequestService->findAllWithBuldledData([], $id, null, false);
-        $fileTransferRequest = $fileTransferRequests ? $fileTransferRequests[0] : null;
+        $fileTransferRequest = $this->fileTransferRequestService->findOne($id);
 
         $folder = $this->exportFolder;
         $response = $this->performExport($fileTransferRequest, $id, $format, $folder);

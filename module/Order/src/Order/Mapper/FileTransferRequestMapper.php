@@ -174,19 +174,19 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     }
 
     /**
-     * @param int|string $id
-     *
+     * @param $id
      * @return FileTransferRequest
      * @throws InvalidArgumentException
      */
     public function findOne($id)
     {
-        $fileTransferRequests = $this->findAll([], $id, null, false);
-        if ($fileTransferRequests) {
-            return $fileTransferRequests[0];
+        $repository = $this->entityManager->getRepository(FileTransferRequest::class);
+        $entity = $repository->find($id);
+        if (! $entity) {
+            throw new InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
         }
-
-        throw new InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
+        /** @var FileTransferRequest $entity */
+        return $entity;
     }
 
     // @todo Remove the obsolete code!
@@ -253,7 +253,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $entity = $repository->find($id);
             $return = $entity ? [$entity] : [];
         } else {
-
             $queryBuilder = $this->entityManager->createQueryBuilder();
             $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
 
