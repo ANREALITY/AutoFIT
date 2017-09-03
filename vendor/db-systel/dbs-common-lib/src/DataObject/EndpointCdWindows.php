@@ -28,14 +28,14 @@ class EndpointCdWindows extends AbstractEndpoint
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
-    private $transmissionType;
+    protected $transmissionType;
 
     /**
      * @var IncludeParameterSet
@@ -45,7 +45,7 @@ class EndpointCdWindows extends AbstractEndpoint
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @param string $folder

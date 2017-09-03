@@ -29,35 +29,35 @@ class FileParameter extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=50, nullable=true)
      */
-    private $filename;
+    protected $filename;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="record_length", type="integer", nullable=true)
      */
-    private $recordLength;
+    protected $recordLength;
 
     /**
      * @var string
      *
      * @ORM\Column(name="blocking", type="string", nullable=true)
      */
-    private $blocking;
+    protected $blocking;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="block_size", type="integer", nullable=true)
      */
-    private $blockSize;
+    protected $blockSize;
 
     /**
      * @var FileParameterSet
@@ -67,7 +67,7 @@ class FileParameter extends AbstractDataObject
      *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $fileParameterSet;
+    protected $fileParameterSet;
 
     /**
      * @param integer $id

@@ -18,7 +18,7 @@ class AuditLogCluster extends AuditLog
      * @ORM\ManyToOne(targetEntity="Cluster")
      * @ORM\JoinColumn(name="resource_id", referencedColumnName="id")
      */
-    private $cluster;
+    protected $cluster;
 
     /**
      * @param Cluster $cluster

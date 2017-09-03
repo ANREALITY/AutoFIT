@@ -20,19 +20,19 @@ class AccessConfigSet extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var AbstractEndpoint
      */
-    private $endpoint;
+    protected $endpoint;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet")
      */
-    private $accessConfigs;
+    protected $accessConfigs;
 
     public function __construct()
     {

@@ -25,33 +25,33 @@ class Cluster extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="virtual_node_name", type="string", length=50, nullable=true)
      */
-    private $virtualNodeName;
+    protected $virtualNodeName;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Server", mappedBy="cluster")
      */
-    private $servers;
+    protected $servers;
 
     /**
      * @var AbstractEndpoint[]
      */
-    private $endpoints;
+    protected $endpoints;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="EndpointClusterConfig", mappedBy="cluster")
      */
-    private $endpointClusterConfigs;
+    protected $endpointClusterConfigs;
 
     public function __construct()
     {

@@ -28,28 +28,28 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
-    private $transmissionType;
+    protected $transmissionType;
 
     /**
      * @var string
      *
      * @ORM\Column(name="transmission_interval", type="string", length=50, nullable=true)
      */
-    private $transmissionInterval;
+    protected $transmissionInterval;
 
     /**
      * @var IncludeParameterSet
@@ -59,7 +59,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @var EndpointClusterConfig
@@ -69,7 +69,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
      *   @ORM\JoinColumn(name="endpoint_cluster_config_id", referencedColumnName="id")
      * })
      */
-    private $endpointClusterConfig;
+    protected $endpointClusterConfig;
 
     /**
      * @param string $username

@@ -2,6 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
+use DbSystel\Annotation\Export;
 
 /**
  * FileTransferRequest
@@ -42,42 +43,42 @@ class FileTransferRequest extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="change_number", type="string", length=50, nullable=false)
      */
-    private $changeNumber;
+    protected $changeNumber;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", nullable=false)
      */
-    private $status;
+    protected $status;
 
     /**
      * @var string
      *
      * @ORM\Column(name="comment", type="string", length=500, nullable=true)
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var LogicalConnection
@@ -87,7 +88,7 @@ class FileTransferRequest extends AbstractDataObject
      *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
      * })
      */
-    private $logicalConnection;
+    protected $logicalConnection;
 
     /**
      * @var ServiceInvoicePosition
@@ -97,7 +98,7 @@ class FileTransferRequest extends AbstractDataObject
      *   @ORM\JoinColumn(name="service_invoice_position_basic_number", referencedColumnName="number")
      * })
      */
-    private $serviceInvoicePositionBasic;
+    protected $serviceInvoicePositionBasic;
 
     /**
      * @var ServiceInvoicePosition
@@ -107,14 +108,15 @@ class FileTransferRequest extends AbstractDataObject
      *   @ORM\JoinColumn(name="service_invoice_position_personal_number", referencedColumnName="number")
      * })
      */
-    private $serviceInvoicePositionPersonal;
+    protected $serviceInvoicePositionPersonal;
 
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
+     * @Export(allowed=true)
      */
-    private $user;
+    protected $user;
 
     /**
      * @param integer $id

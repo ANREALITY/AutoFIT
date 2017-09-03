@@ -17,14 +17,14 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @param string $username

@@ -18,7 +18,7 @@ class AuditLogServer extends AuditLog
      * @ORM\ManyToOne(targetEntity="Server")
      * @ORM\JoinColumn(name="resource_id", referencedColumnName="name")
      */
-    private $server;
+    protected $server;
 
     /**
      * @param Server $server

@@ -25,57 +25,57 @@ class LogicalConnection extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=false)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      */
-    private $physicalConnectionEndToEnd;
+    protected $physicalConnectionEndToEnd;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      */
-    private $physicalConnectionEndToMiddle;
+    protected $physicalConnectionEndToMiddle;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      */
-    private $physicalConnectionMiddleToEnd;
+    protected $physicalConnectionMiddleToEnd;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AbstractPhysicalConnection", mappedBy="logicalConnection")
      */
-    private $physicalConnections;
+    protected $physicalConnections;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection")
      */
-    private $notifications;
+    protected $notifications;
 
     public function __construct()
     {

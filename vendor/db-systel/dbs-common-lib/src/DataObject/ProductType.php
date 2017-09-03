@@ -24,14 +24,14 @@ class ProductType extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="long_name", type="string", length=64, nullable=true)
      */
-    private $longName;
+    protected $longName;
 
     /**
      * @param string $name

@@ -24,35 +24,35 @@ class User extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=false)
      */
-    private $role;
+    protected $role;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @param integer $id

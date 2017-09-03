@@ -23,7 +23,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @var IncludeParameterSet
@@ -33,7 +33,7 @@ class EndpointFtgwWindows extends AbstractEndpoint
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @param string $folder

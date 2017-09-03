@@ -81,42 +81,42 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=true)
      */
-    private $role;
+    protected $role;
 
     /**
      * @var string
      *
      * @ORM\Column(name="server_place", type="string", nullable=true)
      */
-    private $serverPlace;
+    protected $serverPlace;
 
     /**
      * @var string
      *
      * @ORM\Column(name="contact_person", type="string", length=500, nullable=true)
      */
-    private $contactPerson;
+    protected $contactPerson;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var Application
@@ -126,7 +126,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
      */
-    private $application;
+    protected $application;
 
     /**
      * @var Customer
@@ -136,7 +136,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      * })
      */
-    private $customer;
+    protected $customer;
 
     /**
      * @var EndpointServerConfig
@@ -146,7 +146,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="endpoint_server_config_id", referencedColumnName="id")
      * })
      */
-    private $endpointServerConfig;
+    protected $endpointServerConfig;
 
     /**
      * @var ExternalServer
@@ -156,7 +156,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="external_server_id", referencedColumnName="id")
      * })
      */
-    private $externalServer;
+    protected $externalServer;
 
     /**
      * @var AbstractPhysicalConnection
@@ -166,7 +166,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *   @ORM\JoinColumn(name="physical_connection_id", referencedColumnName="id")
      * })
      */
-    private $physicalConnection;
+    protected $physicalConnection;
 
     /**
      * @param integer $id

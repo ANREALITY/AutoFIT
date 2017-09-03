@@ -26,14 +26,14 @@ class ServiceInvoice extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $number;
+    protected $number;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=128, nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var Application
@@ -43,7 +43,7 @@ class ServiceInvoice extends AbstractDataObject
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
      */
-    private $application;
+    protected $application;
 
     /**
      * @var Environment
@@ -53,14 +53,14 @@ class ServiceInvoice extends AbstractDataObject
      *   @ORM\JoinColumn(name="environment_severity", referencedColumnName="severity")
      * })
      */
-    private $environment;
+    protected $environment;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="ServiceInvoicePosition", mappedBy="serviceInvoice")
      */
-    private $serviceInvoicePositions;
+    protected $serviceInvoicePositions;
 
     public function __construct()
     {

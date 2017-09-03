@@ -19,21 +19,21 @@ class Environment extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $severity;
+    protected $severity;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=32, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="short_name", type="string", length=1, nullable=false)
      */
-    private $shortName;
+    protected $shortName;
 
     /**
      * @param integer $severity

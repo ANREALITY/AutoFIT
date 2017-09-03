@@ -22,7 +22,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var FileParameterSet
@@ -32,7 +32,7 @@ class EndpointFtgwCdZos extends AbstractEndpoint
      *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $fileParameterSet;
+    protected $fileParameterSet;
 
     /**
      * @param string $username

@@ -28,42 +28,42 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
      */
-    private $transmissionType;
+    protected $transmissionType;
 
     /**
      * @var string
      *
      * @ORM\Column(name="port", type="string", length=5, nullable=true)
      */
-    private $port;
+    protected $port;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=15, nullable=true)
      */
-    private $ip;
+    protected $ip;
 
     /**
      * @var string
      *
      * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
      */
-    private $dnsAddress;
+    protected $dnsAddress;
 
     /**
      * @var IncludeParameterSet
@@ -73,7 +73,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @var ProtocolSet
@@ -83,7 +83,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
      */
-    private $protocolSet;
+    protected $protocolSet;
 
     /**
      * @param string $username

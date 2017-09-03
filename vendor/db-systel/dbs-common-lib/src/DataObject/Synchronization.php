@@ -31,28 +31,28 @@ class Synchronization extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="in_progress", type="boolean", nullable=false)
      */
-    private $inProgress;
+    protected $inProgress;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=false)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="last_sync", type="datetime", nullable=true)
      */
-    private $lastSync;
+    protected $lastSync;
 
     /**
      * @param integer $id

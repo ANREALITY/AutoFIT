@@ -19,28 +19,28 @@ class Application extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $technicalShortName;
+    protected $technicalShortName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="technical_id", type="string", length=10, nullable=true)
      */
-    private $technicalId;
+    protected $technicalId;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
      */
-    private $active;
+    protected $active;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @param string $technicalShortName

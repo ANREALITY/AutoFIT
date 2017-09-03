@@ -24,14 +24,14 @@ class IncludeParameter extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="expression", type="string", length=50, nullable=true)
      */
-    private $expression;
+    protected $expression;
 
     /**
      * @var IncludeParameterSet
@@ -41,7 +41,7 @@ class IncludeParameter extends AbstractDataObject
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @param integer $id

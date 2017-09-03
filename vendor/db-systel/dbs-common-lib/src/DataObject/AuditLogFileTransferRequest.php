@@ -18,7 +18,7 @@ class AuditLogFileTransferRequest extends AuditLog
      * @ORM\ManyToOne(targetEntity="FileTransferRequest")
      * @ORM\JoinColumn(name="resource_id", referencedColumnName="id")
      */
-    private $fileTransferRequest;
+    protected $fileTransferRequest;
 
     /**
      * @param FileTransferRequest $fileTransferRequest

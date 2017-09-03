@@ -24,19 +24,19 @@ class EndpointClusterConfig extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $dnsAddress;
+    protected $dnsAddress;
 
     /**
      * @var Cluster
      *
      * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="endpointClusterConfigs")
      */
-    private $cluster;
+    protected $cluster;
 
     /**
      * @param integer $id

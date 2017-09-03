@@ -31,7 +31,7 @@ class Server extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $name;
+    protected $name;
 
     /**
      * @var ServerType
@@ -41,47 +41,47 @@ class Server extends AbstractDataObject
      *   @ORM\JoinColumn(name="server_type_id", referencedColumnName="id")
      * })
      */
-    private $serverType;
+    protected $serverType;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
      */
-    private $active;
+    protected $active;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var string
      *
      * @ORM\Column(name="node_name", type="string", length=50, nullable=true)
      */
-    private $nodeName;
+    protected $nodeName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="virtual_node_name", type="string", length=50, nullable=true)
      */
-    private $virtualNodeName;
+    protected $virtualNodeName;
 
     /**
      * @var Cluster
      *
      * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="servers")
      */
-    private $cluster;
+    protected $cluster;
 
     /**
      * @var EndpointServerConfig[]
      */
-    private $endpointServerConfigs;
+    protected $endpointServerConfigs;
 
     /**
      * @param string $name

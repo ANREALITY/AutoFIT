@@ -38,28 +38,28 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $number;
+    protected $number;
 
     /**
      * @var string
      *
      * @ORM\Column(name="order_quantity", type="string", length=12, nullable=true)
      */
-    private $orderQuantity;
+    protected $orderQuantity;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=128, nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=32, nullable=false)
      */
-    private $status;
+    protected $status;
 
     /**
      * @var ServiceInvoice
@@ -69,7 +69,7 @@ class ServiceInvoicePosition extends AbstractDataObject
      *   @ORM\JoinColumn(name="service_invoice_number", referencedColumnName="number")
      * })
      */
-    private $serviceInvoice;
+    protected $serviceInvoice;
 
     /**
      * @var Article
@@ -79,14 +79,14 @@ class ServiceInvoicePosition extends AbstractDataObject
      *   @ORM\JoinColumn(name="article_sku", referencedColumnName="sku")
      * })
      */
-    private $article;
+    protected $article;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @param string $number

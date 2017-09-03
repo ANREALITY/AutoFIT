@@ -31,21 +31,21 @@ class Article extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $sku;
+    protected $sku;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=100, nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var ProductType
@@ -55,7 +55,7 @@ class Article extends AbstractDataObject
      *   @ORM\JoinColumn(name="product_type_name", referencedColumnName="name")
      * })
      */
-    private $productType;
+    protected $productType;
 
     /**
      * @param string $sku

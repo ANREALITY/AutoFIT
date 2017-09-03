@@ -21,14 +21,14 @@ class EndpointServerConfig extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
      */
-    private $dnsAddress;
+    protected $dnsAddress;
 
     /**
      * @var Server
@@ -38,14 +38,14 @@ class EndpointServerConfig extends AbstractDataObject
      *   @ORM\JoinColumn(name="server_name", referencedColumnName="name")
      * })
      */
-    private $server;
+    protected $server;
 
     /**
      * @var AbstractEndpoint
      *
      * @ORM\OneToOne(targetEntity="AbstractEndpoint", mappedBy="endpointServerConfig")
      */
-    private $endpoint;
+    protected $endpoint;
 
     /**
      * @param integer $id

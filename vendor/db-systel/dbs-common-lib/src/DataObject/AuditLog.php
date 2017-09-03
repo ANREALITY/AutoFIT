@@ -63,55 +63,55 @@ class AuditLog extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $resourceType;
+    protected $resourceType;
 
     /**
      * @var string
      *
      * @ORM\Column(name="resource_id", type="string", length=50, nullable=true)
      */
-    private $resourceId;
+    protected $resourceId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="action", type="string", nullable=true)
      */
-    private $action;
+    protected $action;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="datetime", type="datetime", nullable=false)
      */
-    private $datetime;
+    protected $datetime;
 
     /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      */
-    private $user;
+    protected $user;
 
     /**
      * @var FileTransferRequest
      */
-    private $fileTransferRequest;
+    protected $fileTransferRequest;
 
     /**
      * @var Server
      */
-    private $server;
+    protected $server;
 
     /**
      * @var Cluster
      */
-    private $cluster;
+    protected $cluster;
 
     /**
      * @param integer $id

@@ -36,14 +36,14 @@ class Protocol extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var ProtocolSet
@@ -53,7 +53,7 @@ class Protocol extends AbstractDataObject
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
      */
-    private $protocolSet;
+    protected $protocolSet;
 
     /**
      * @param integer $id

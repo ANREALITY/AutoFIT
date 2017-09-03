@@ -23,14 +23,14 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
      *
      * @ORM\Column(name="sharename", type="string", length=50, nullable=true)
      */
-    private $sharename;
+    protected $sharename;
 
     /**
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
      */
-    private $folder;
+    protected $folder;
 
     /**
      * @var IncludeParameterSet
@@ -40,7 +40,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
      */
-    private $includeParameterSet;
+    protected $includeParameterSet;
 
     /**
      * @var AccessConfigSet
@@ -50,7 +50,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
      *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
      * })
      */
-    private $accessConfigSet;
+    protected $accessConfigSet;
 
     /**
      * @param string $sharename

@@ -29,21 +29,21 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      *
      * @ORM\Column(name="ftgw_username", type="string", length=50, nullable=true)
      */
-    private $ftgwUsername;
+    protected $ftgwUsername;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mailbox", type="string", length=50, nullable=true)
      */
-    private $mailbox;
+    protected $mailbox;
 
     /**
      * @var string
      *
      * @ORM\Column(name="connection_type", type="string", nullable=true)
      */
-    private $connectionType;
+    protected $connectionType;
 
     /**
      * @var ProtocolSet
@@ -53,7 +53,7 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
      */
-    private $protocolSet;
+    protected $protocolSet;
 
     /**
      * @param string $ftgwUsername

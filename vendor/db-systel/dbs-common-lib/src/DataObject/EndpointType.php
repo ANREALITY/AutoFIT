@@ -21,28 +21,28 @@ class EndpointType extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="label", type="string", length=50, nullable=true)
      */
-    private $label;
+    protected $label;
 
     /**
      * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="ServerType", mappedBy="endpointTypes")
      */
-    private $serverTypes;
+    protected $serverTypes;
 
     /**
      * Constructor

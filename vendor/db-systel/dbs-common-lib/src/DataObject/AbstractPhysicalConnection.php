@@ -39,35 +39,35 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=true)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="secure_plus", type="boolean", nullable=true)
      */
-    private $securePlus;
+    protected $securePlus;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    private $created;
+    protected $created;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var LogicalConnection
@@ -77,24 +77,24 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
      * })
      */
-    private $logicalConnection;
+    protected $logicalConnection;
 
     /**
      * @var AbstractEndpoint #relationshipInversion
      */
-    private $endpointSource;
+    protected $endpointSource;
 
     /**
      * @var AbstractEndpoint #relationshipInversion
      */
-    private $endpointTarget;
+    protected $endpointTarget;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AbstractEndpoint", mappedBy="physicalConnection")
      */
-    private $endpoints;
+    protected $endpoints;
 
     public function __construct()
     {

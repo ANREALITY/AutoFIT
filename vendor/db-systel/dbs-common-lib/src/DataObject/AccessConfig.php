@@ -24,35 +24,35 @@ class AccessConfig extends AbstractDataObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="permission_read", type="boolean", nullable=true)
      */
-    private $permissionRead;
+    protected $permissionRead;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="permission_write", type="boolean", nullable=true)
      */
-    private $permissionWrite;
+    protected $permissionWrite;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="permission_delete", type="boolean", nullable=true)
      */
-    private $permissionDelete;
+    protected $permissionDelete;
 
     /**
      * @var AccessConfigSet
@@ -62,7 +62,7 @@ class AccessConfig extends AbstractDataObject
      *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
      * })
      */
-    private $accessConfigSet;
+    protected $accessConfigSet;
 
     /**
      * @param integer $id
