@@ -125,14 +125,14 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     {
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        if (array_key_exists('change_number', $criteria)) {
+        if (! empty($criteria['change_number'])) {
             $queryBuilder->select('al')->from(AuditLogFileTransferRequest::class, 'al');
             $queryBuilder->join('al.fileTransferRequest', 'ftr');
         } else {
             $queryBuilder->select('al')->from(AuditLog::class, 'al');
         }
         foreach ($criteria as $key => $condition) {
-            if (is_string($condition) && ! empty($condition)) {
+            if (! empty($condition) && is_string($condition)) {
                 if ($key === 'username') {
                     $queryBuilder
                         ->andWhere('u.username = :username')
