@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\Paginator\Paginator;
 
 interface FileTransferRequestMapperInterface
 {
@@ -14,17 +15,12 @@ interface FileTransferRequestMapperInterface
      */
     public function findOne($id);
 
-//    /**
-//     *
-//     * @return array|FileTransferRequest[]
-//     */
-//    public function findAll(array $criteria = []);
-
     /**
-     *
-     * @return array|FileTransferRequest[]
+     * @param array $criteria
+     * @param int $page
+     * @return Paginator
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true);
+    public function findAll(array $criteria = [], $page = null);
 
     /**
      *

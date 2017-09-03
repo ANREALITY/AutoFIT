@@ -16,10 +16,11 @@ interface FileTransferRequestServiceInterface
     public function findOne($id);
 
     /**
-     *
-     * @return array|FileTransferRequest[]
+     * @param array $criteria
+     * @param int $page
+     * @return Paginator
      */
-    public function findAllWithBuldledData(array $criteria = [], $id = null, $page = null, $paginationNeeded);
+    public function findAllWithBuldledData(array $criteria = [], $page = null);
 
     /**
      *

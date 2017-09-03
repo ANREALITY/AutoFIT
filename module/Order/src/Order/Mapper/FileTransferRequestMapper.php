@@ -242,49 +242,37 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 //    }
 
     /**
-     *
-     * @return array|FileTransferRequest[]
+     * @inheritdoc
      */
-    public function findAll(array $criteria = [], $id = null, $page = null, $paginationNeeded = true, $requstMode = FileTransferRequestRequestModifier::REQUEST_MODE_REDUCED)
+    public function findAll(array $criteria = [], $page = null)
     {
-        $repository = $this->entityManager->getRepository(FileTransferRequest::class);
-        /** @var FileTransferRequest $entity */
-        if ($id) {
-            $entity = $repository->find($id);
-            $return = $entity ? [$entity] : [];
-        } else {
-            $queryBuilder = $this->entityManager->createQueryBuilder();
-            $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
 
-            foreach ($criteria as $condition) {
-                if (is_array($condition)) {
-                    if (array_key_exists('user_id', $condition)) {
-                        $queryBuilder
-                            ->where('ftr.user = :userId')
-                            ->setParameter('userId', $condition['user_id'])
-                        ;
-                    }
-                    if (array_key_exists('change_number', $condition)) {
-                        $queryBuilder
-                            ->where('ftr.changeNumber LIKE :changeNumber')
-                            ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
-                        ;
-                    }
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('user_id', $condition)) {
+                    $queryBuilder
+                        ->where('ftr.user = :userId')
+                        ->setParameter('userId', $condition['user_id'])
+                    ;
+                }
+                if (array_key_exists('change_number', $condition)) {
+                    $queryBuilder
+                        ->where('ftr.changeNumber LIKE :changeNumber')
+                        ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
+                    ;
                 }
             }
-
-            $query = $queryBuilder->getQuery();
-
-            $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
-            $paginator->setCurrentPageNumber($page);
-            if ($paginationNeeded) {
-                $paginator->setItemCountPerPage($this->itemCountPerPage);
-            }
-
-            $return = $paginator;
         }
 
-        return $return;
+        $query = $queryBuilder->getQuery();
+
+        $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($this->itemCountPerPage);
+
+        return $paginator;
 
         // @todo Remove the obsolete code!
         /*
