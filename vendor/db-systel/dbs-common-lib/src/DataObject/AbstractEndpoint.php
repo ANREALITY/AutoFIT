@@ -3,6 +3,7 @@ namespace DbSystel\DataObject;
 
 use ReflectionClass;
 use Doctrine\ORM\Mapping as ORM;
+use DbSystel\Annotation\Export;
 
 /**
  * AbstractEndpoint

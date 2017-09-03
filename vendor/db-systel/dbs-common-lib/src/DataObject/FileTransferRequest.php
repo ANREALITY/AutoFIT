@@ -114,7 +114,6 @@ class FileTransferRequest extends AbstractDataObject
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
-     * @Export(allowed=true)
      */
     protected $user;
 
