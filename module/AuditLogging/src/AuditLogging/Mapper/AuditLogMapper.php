@@ -172,8 +172,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
         $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($this->itemCountPerPage);
-        $return = $paginator;
-        return $return;
+        return $paginator;
     }
 
     // @todo Remove the obsolete code!
