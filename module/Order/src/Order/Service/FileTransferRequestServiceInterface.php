@@ -20,7 +20,7 @@ interface FileTransferRequestServiceInterface
      * @param int $page
      * @return Paginator
      */
-    public function findAllWithBuldledData(array $criteria = [], $page = null);
+    public function findAll(array $criteria = [], $page = null);
 
     /**
      *

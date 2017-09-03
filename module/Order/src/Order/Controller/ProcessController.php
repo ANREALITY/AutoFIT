@@ -404,7 +404,7 @@ class ProcessController extends AbstractActionController
     {
         $userId = $this->IdentityParam('id');
         $page = $this->params()->fromRoute('page');
-        $paginator = $this->fileTransferRequestService->findAllWithBuldledData(
+        $paginator = $this->fileTransferRequestService->findAll(
             [
                 [
                     'user_id' => $userId
@@ -423,7 +423,7 @@ class ProcessController extends AbstractActionController
     public function listOrdersAction()
     {
         $page = $this->params()->fromRoute('page');
-        $paginator = $this->fileTransferRequestService->findAllWithBuldledData([], $page);
+        $paginator = $this->fileTransferRequestService->findAll([], $page);
 
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),
