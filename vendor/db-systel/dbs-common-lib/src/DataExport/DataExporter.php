@@ -2,6 +2,7 @@
 namespace DbSystel\DataExport;
 
 use DbSystel\DataObject\AbstractDataObject;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -22,7 +23,7 @@ class DataExporter
 
     public function __construct()
     {
-        $normalizer = new ObjectNormalizer();
+        $normalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
         $normalizer->setCircularReferenceLimit(1);
         $normalizer->setIgnoredAttributes(['__initializer__', '__cloner__', '__isInitialized__']);
         $normalizer->setCircularReferenceHandler(function ($object) {
