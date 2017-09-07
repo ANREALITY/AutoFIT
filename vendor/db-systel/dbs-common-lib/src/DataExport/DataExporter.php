@@ -34,6 +34,12 @@ class DataExporter
             $return = null;
             return $return;
         });
+        $callbackDateTime = function ($dateTime) {
+            return $dateTime instanceof \DateTime
+                ? $dateTime->format('Y-m-d H:i:s')
+                : null;
+        };
+        $normalizer->setCallbacks(['created' => $callbackDateTime, 'updated' => $callbackDateTime]);
         $normalizers = [$normalizer];
         $this->serializer = new Serializer($normalizers);
     }
