@@ -40,9 +40,13 @@ class DataExporter
             return $return;
         });
         $callbackDateTime = function ($dateTime) {
-            return $dateTime instanceof \DateTime
-                ? $dateTime->format('Y-m-d H:i:s')
-                : null;
+            $return = null;
+            if ($dateTime instanceof \DateTime) {
+                $return = $dateTime->format('Y-m-d H:i:s');
+            } elseif (is_string($dateTime)) {
+                $return = $dateTime;
+            }
+            return $return;
         };
         $normalizer->setCallbacks(['created' => $callbackDateTime, 'updated' => $callbackDateTime]);
         $normalizers = [$normalizer];
