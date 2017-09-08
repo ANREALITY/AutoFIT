@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * IncludeParameter
@@ -31,6 +31,8 @@ class IncludeParameter extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="expression", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $expression;
 

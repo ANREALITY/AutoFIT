@@ -29,6 +29,8 @@ class EndpointClusterConfig extends AbstractDataObject
 
     /**
      * @var string
+     *
+     * @Groups({"export"})
      */
     protected $dnsAddress;
 
@@ -36,6 +38,8 @@ class EndpointClusterConfig extends AbstractDataObject
      * @var Cluster
      *
      * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="endpointClusterConfigs")
+     *
+     * @Groups({"export"})
      */
     protected $cluster;
 

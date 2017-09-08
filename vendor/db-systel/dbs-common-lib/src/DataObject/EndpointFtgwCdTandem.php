@@ -17,6 +17,8 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $username;
 
@@ -24,6 +26,8 @@ class EndpointFtgwCdTandem extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $folder;
 

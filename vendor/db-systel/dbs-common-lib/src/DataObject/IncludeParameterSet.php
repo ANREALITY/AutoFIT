@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * IncludeParameterSet
@@ -32,6 +32,8 @@ class IncludeParameterSet extends AbstractDataObject
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="IncludeParameter", mappedBy="includeParameterSet")
+     *
+     * @Groups({"export"})
      */
     protected $includeParameters;
 

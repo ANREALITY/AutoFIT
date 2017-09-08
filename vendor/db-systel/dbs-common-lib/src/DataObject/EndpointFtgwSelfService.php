@@ -29,6 +29,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="ftgw_username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $ftgwUsername;
 
@@ -36,6 +38,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="mailbox", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $mailbox;
 
@@ -43,6 +47,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="connection_type", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $connectionType;
 
@@ -53,6 +59,8 @@ class EndpointFtgwSelfService extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $protocolSet;
 

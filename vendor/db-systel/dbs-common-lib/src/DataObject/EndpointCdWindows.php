@@ -28,6 +28,8 @@ class EndpointCdWindows extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $folder;
 
@@ -35,6 +37,8 @@ class EndpointCdWindows extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $transmissionType;
 
@@ -45,6 +49,8 @@ class EndpointCdWindows extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $includeParameterSet;
 

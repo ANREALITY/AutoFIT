@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * AccessConfig
@@ -31,6 +31,8 @@ class AccessConfig extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $username;
 
@@ -38,6 +40,8 @@ class AccessConfig extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="permission_read", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $permissionRead;
 
@@ -45,6 +49,8 @@ class AccessConfig extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="permission_write", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $permissionWrite;
 
@@ -52,6 +58,8 @@ class AccessConfig extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="permission_delete", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $permissionDelete;
 

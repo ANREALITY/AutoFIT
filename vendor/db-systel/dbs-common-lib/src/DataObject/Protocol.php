@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Protocol
@@ -43,6 +43,8 @@ class Protocol extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="name", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $name;
 

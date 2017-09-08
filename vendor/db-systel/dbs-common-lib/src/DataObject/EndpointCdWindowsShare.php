@@ -28,6 +28,8 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="sharename", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $sharename;
 
@@ -35,6 +37,8 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $folder;
 
@@ -42,6 +46,8 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $transmissionType;
 
@@ -52,6 +58,8 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $includeParameterSet;
 
@@ -62,6 +70,8 @@ class EndpointCdWindowsShare extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $accessConfigSet;
 

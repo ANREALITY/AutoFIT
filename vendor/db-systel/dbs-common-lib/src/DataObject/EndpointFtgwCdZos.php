@@ -22,6 +22,8 @@ class EndpointFtgwCdZos extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $username;
 
@@ -32,6 +34,8 @@ class EndpointFtgwCdZos extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $fileParameterSet;
 

@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * EndpointServerConfig
@@ -28,6 +28,8 @@ class EndpointServerConfig extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $dnsAddress;
 
@@ -38,6 +40,8 @@ class EndpointServerConfig extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="server_name", referencedColumnName="name")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $server;
 

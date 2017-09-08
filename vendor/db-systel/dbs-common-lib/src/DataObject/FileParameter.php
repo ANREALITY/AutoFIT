@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * FileParameter
@@ -36,6 +36,8 @@ class FileParameter extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $filename;
 
@@ -43,6 +45,8 @@ class FileParameter extends AbstractDataObject
      * @var integer
      *
      * @ORM\Column(name="record_length", type="integer", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $recordLength;
 
@@ -50,6 +54,8 @@ class FileParameter extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="blocking", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $blocking;
 
@@ -57,6 +63,8 @@ class FileParameter extends AbstractDataObject
      * @var integer
      *
      * @ORM\Column(name="block_size", type="integer", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $blockSize;
 

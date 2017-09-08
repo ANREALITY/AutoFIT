@@ -28,6 +28,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $username;
 
@@ -35,6 +37,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="folder", type="string", length=200, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $folder;
 
@@ -42,6 +46,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="transmission_type", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $transmissionType;
 
@@ -49,6 +55,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="port", type="string", length=5, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $port;
 
@@ -56,6 +64,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=15, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $ip;
 
@@ -63,6 +73,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @var string
      *
      * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $dnsAddress;
 
@@ -73,6 +85,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $includeParameterSet;
 
@@ -83,6 +97,8 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $protocolSet;
 

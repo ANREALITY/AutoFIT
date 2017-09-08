@@ -134,6 +134,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $application;
 
@@ -144,6 +146,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $customer;
 

@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Cluster
@@ -32,6 +32,8 @@ class Cluster extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="virtual_node_name", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $virtualNodeName;
 
@@ -39,6 +41,8 @@ class Cluster extends AbstractDataObject
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Server", mappedBy="cluster")
+     *
+     * @Groups({"export"})
      */
     protected $servers;
 
