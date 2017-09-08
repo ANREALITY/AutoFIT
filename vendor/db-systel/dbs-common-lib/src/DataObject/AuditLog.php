@@ -225,7 +225,7 @@ class AuditLog extends AbstractDataObject
     {
         // @todo Change later back to DateTime!
         return is_string($this->datetime) || empty($this->datetime)
-            ? $this->datetime : $this->datetime->format('Y-m-d H:i:s')
+            ? $this->datetime : $this->datetime->format(self::DATETIME_FORMAT)
         ;
     }
 

@@ -9,4 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 class AbstractDataObject
 {
 
+    const DATETIME_FORMAT = 'Y-m-d H:i:s';
+
 }

@@ -216,7 +216,7 @@ class FileTransferRequest extends AbstractDataObject
     {
         // @todo Change later back to DateTime!
         return is_string($this->created) || empty($this->created)
-            ? $this->created : $this->created->format('Y-m-d H:i:s')
+            ? $this->created : $this->created->format(self::DATETIME_FORMAT)
         ;
     }
 
