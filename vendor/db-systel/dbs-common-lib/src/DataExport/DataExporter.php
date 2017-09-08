@@ -2,6 +2,8 @@
 namespace DbSystel\DataExport;
 
 use DbSystel\DataObject\AbstractDataObject;
+use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\LogicalConnection;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -55,14 +57,18 @@ class DataExporter
 
     public function exportToJson(AbstractDataObject $dataObject)
     {
-        $data = $this->serializer->normalize($dataObject, null, ['groups' => ['export']]);
+        $groups = ['export'];
+        $this->complementGroupsWithConnectionType($dataObject, $groups);
+        $data = $this->serializer->normalize($dataObject, null, ['groups' => $groups]);
         $data = $this->utf8ize($data);
         return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
     public function exportToXml(AbstractDataObject $dataObject)
     {
-        $data = $this->serializer->normalize($dataObject, null, ['groups' => ['export']]);
+        $groups = ['export'];
+        $this->complementGroupsWithConnectionType($dataObject, $groups);
+        $data = $this->serializer->normalize($dataObject, null, ['groups' => $groups]);
         $data = $this->utf8ize($data);
         $xml = new \SimpleXMLElement('<' . self::XML_DEFAULT_ROOT_ELEMENT . ' />');
         $this->arrayToXml($data, $xml);
@@ -102,6 +108,23 @@ class DataExporter
             }
             else {
                 $xml->addChild($key, $value);
+            }
+        }
+    }
+
+    protected function complementGroupsWithConnectionType($dataObject, array &$groups)
+    {
+        $groupForConnectionType = null;
+        if (
+            $dataObject instanceof FileTransferRequest
+            && $dataObject->getLogicalConnection() instanceof LogicalConnection
+        ) {
+            $connectionType = strtolower($dataObject->getLogicalConnection()->getType());
+            if (
+                $connectionType == strtolower(LogicalConnection::TYPE_CD)
+                || $connectionType == strtolower(LogicalConnection::TYPE_FTGW)
+            ) {
+                $groups[] = 'export' . '_' . $connectionType;
             }
         }
     }

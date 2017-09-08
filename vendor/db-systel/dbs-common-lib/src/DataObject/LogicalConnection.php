@@ -54,21 +54,21 @@ class LogicalConnection extends AbstractDataObject
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      *
-     * @Groups({"export"})
+     * @Groups({"export_cd"})
      */
     protected $physicalConnectionEndToEnd;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      *
-     * @Groups({"export"})
+     * @Groups({"export_ftgw"})
      */
     protected $physicalConnectionEndToMiddle;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
      *
-     * @Groups({"export"})
+     * @Groups({"export_ftgw"})
      */
     protected $physicalConnectionMiddleToEnd;
 
