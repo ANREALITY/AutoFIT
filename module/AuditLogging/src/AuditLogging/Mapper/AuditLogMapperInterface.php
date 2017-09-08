@@ -19,7 +19,7 @@ interface AuditLogMapperInterface
      * @param array $sorting
      * @return Paginator
      */
-    public function findAll(array $criteria = [], $page = null, array $sorting = []);
+    public function findAllPaginated(array $criteria = [], $page = null, array $sorting = []);
 
     /**
      *

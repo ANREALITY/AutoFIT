@@ -33,7 +33,7 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
     /**
      * @inheritdoc
      */
-    public function findAll(array $criteria = [], $page = null, array $sorting = [])
+    public function findAllPaginated(array $criteria = [], $page = null, array $sorting = [])
     {
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->entityManager->createQueryBuilder();

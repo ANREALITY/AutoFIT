@@ -31,7 +31,7 @@ class AuditLogService extends AbstractService implements AuditLogServiceInterfac
      */
     public function findAll(array $criteria = [], $page = null, array $sorting = [])
     {
-        return $this->mapper->findAll($criteria, $page, $sorting);
+        return $this->mapper->findAllPaginated($criteria, $page, $sorting);
     }
 
     /**

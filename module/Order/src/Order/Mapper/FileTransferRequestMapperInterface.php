@@ -20,7 +20,7 @@ interface FileTransferRequestMapperInterface
      * @param int $page
      * @return Paginator
      */
-    public function findAll(array $criteria = [], $page = null);
+    public function findAllPaginated(array $criteria = [], $page = null);
 
     /**
      *

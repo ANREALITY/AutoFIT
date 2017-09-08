@@ -49,7 +49,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     /**
      * @inheritdoc
      */
-    public function findAll(array $criteria = [], $page = null)
+    public function findAllPaginated(array $criteria = [], $page = null)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
