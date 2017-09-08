@@ -15,11 +15,10 @@ class AbstractMapper
 
     /** @var string for the findOne(...) */
     const ENTITY_TYPE = AbstractDataObject::class;
-
-    /**
-     * @var integer
-     */
+    /** @var integer */
     const DEFAULT_ITEM_COUNT_PER_PAGE = 10;
+    /** @var integer */
+    const DEFAULT_QUERY_LIMIT = 25;
 
     /**
      *
