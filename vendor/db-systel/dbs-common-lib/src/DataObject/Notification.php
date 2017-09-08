@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Notification
@@ -31,6 +31,8 @@ class Notification extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=50, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $email;
 
@@ -38,6 +40,8 @@ class Notification extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="success", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $success;
 
@@ -45,6 +49,8 @@ class Notification extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="failure", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $failure;
 

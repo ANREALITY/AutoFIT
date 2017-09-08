@@ -85,6 +85,8 @@ class LogicalConnection extends AbstractDataObject
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection")
+     *
+     * @Groups({"export"})
      */
     protected $notifications;
 
