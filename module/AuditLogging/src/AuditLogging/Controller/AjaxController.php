@@ -51,11 +51,9 @@ class AjaxController extends AbstractActionController
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $changeNumber = isset($data['change_number']) ? $data['change_number'] : null;
-            $dataList = json_decode(
-                $this->fileTransferRequestService->findAllForAutocomplete($data['change_number'])->toJson(),
-                true
-            );
-            $dataList = array_column($dataList, 'change_number');
+
+            $result = $this->fileTransferRequestService->findAllForAutocomplete($changeNumber);
+            $dataList = array_column($result, 'changeNumber');
         }
 
 

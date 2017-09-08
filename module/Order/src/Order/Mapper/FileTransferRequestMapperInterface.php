@@ -17,6 +17,14 @@ interface FileTransferRequestMapperInterface
 
     /**
      * @param array $criteria
+     * @param int|null $limit
+     * @param int|null $hydrationMode
+     * @return array
+     */
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
+
+    /**
+     * @param array $criteria
      * @param int $page
      * @return Paginator
      */

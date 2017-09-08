@@ -3,6 +3,7 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Paginator\Paginator;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Zend\Db\Adapter\Driver\ResultInterface;
@@ -78,6 +79,33 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $paginator->setItemCountPerPage($this->itemCountPerPage);
 
         return $paginator;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
+
+        foreach ($criteria as $condition) {
+            if (is_array($condition)) {
+                if (array_key_exists('change_number', $condition)) {
+                    $queryBuilder
+                        ->where('ftr.changeNumber LIKE :changeNumber')
+                        ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
+                    ;
+                }
+            }
+        }
+
+        $queryBuilder->setMaxResults($limit ?: null);
+
+        $query = $queryBuilder->getQuery();
+        $result = $query->execute(null, $hydrationMode);
+
+        return $result;
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
+use Order\Mapper\AbstractMapper;
 use Order\Mapper\FileTransferRequestMapperInterface;
 use DbSystel\DataObject\FileTransferRequest;
 
@@ -49,12 +51,15 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
      */
     public function findAllForAutocomplete(string $changeNumber = null)
     {
-        return $this->mapper->findAllPaginated(
+        return $this->mapper->findAll(
             [
                 [
                     'change_number' => $changeNumber
                 ]
-            ]);
+            ],
+            AbstractMapper::DEFAULT_QUERY_LIMIT,
+            Query::HYDRATE_ARRAY
+        );
     }
 
 }
