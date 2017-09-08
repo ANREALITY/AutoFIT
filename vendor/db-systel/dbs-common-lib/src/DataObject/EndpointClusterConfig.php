@@ -30,6 +30,8 @@ class EndpointClusterConfig extends AbstractDataObject
     /**
      * @var string
      *
+     * @ORM\Column(name="dns_address", type="string", length=253, nullable=true)
+     *
      * @Groups({"export"})
      */
     protected $dnsAddress;
