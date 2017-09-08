@@ -81,8 +81,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     *
-     * @Groups({"export"})
      */
     protected $id;
 
@@ -90,8 +88,6 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=true)
-     *
-     * @Groups({"export"})
      */
     protected $role;
 

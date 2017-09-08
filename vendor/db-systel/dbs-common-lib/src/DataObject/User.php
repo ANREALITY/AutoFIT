@@ -24,8 +24,6 @@ class User extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     *
-     * @Groups({"export"})
      */
     protected $id;
 
@@ -42,8 +40,6 @@ class User extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=false)
-     *
-     * @Groups({"export"})
      */
     protected $role;
 

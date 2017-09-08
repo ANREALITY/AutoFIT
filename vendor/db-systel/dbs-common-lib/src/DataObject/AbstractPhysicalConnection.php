@@ -39,8 +39,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     *
-     * @Groups({"export"})
      */
     protected $id;
 
@@ -145,8 +143,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @Groups({"export"})
-     *
      * @return string
      */
     public function getRole()

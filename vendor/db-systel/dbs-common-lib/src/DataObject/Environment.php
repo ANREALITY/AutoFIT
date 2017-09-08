@@ -19,8 +19,6 @@ class Environment extends AbstractDataObject
      * @ORM\Column(name="severity", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     *
-     * @Groups({"export"})
      */
     protected $severity;
 
@@ -37,8 +35,6 @@ class Environment extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="short_name", type="string", length=1, nullable=false)
-     *
-     * @Groups({"export"})
      */
     protected $shortName;
 
