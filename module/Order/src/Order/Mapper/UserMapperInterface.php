@@ -23,10 +23,12 @@ interface UserMapperInterface
     public function findOneByUsername(string $username);
 
     /**
-     *
-     * @return array|User[]
+     * @param array $criteria
+     * @param int|null $limit
+     * @param int|null $hydrationMode
+     * @return array
      */
-    public function findAll(array $criteria = []);
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
     /**
      *

@@ -37,36 +37,30 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
-     *
-     * @return array|User[]
+     * @inheritdoc
      */
-    public function findAll(array $criteria = [])
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('user');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('u')->from(User::class, 'u');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (! empty($condition['username'])) {
-                    $select->where(
-                        [
-                            'username LIKE ?' => '%' . $condition['username'] . '%'
-                        ]);
+                if (array_key_exists('username', $condition)) {
+                    $queryBuilder
+                        ->where('u.username LIKE :username')
+                        ->setParameter('username', '%' . $condition['username'] . '%')
+                    ;
                 }
             }
         }
 
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
+        $queryBuilder->setMaxResults($limit ?: null);
 
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            return $resultSet->initialize($result);
-        }
+        $query = $queryBuilder->getQuery();
+        $result = $query->execute(null, $hydrationMode);
 
-        return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
+        return $result;
     }
 
     /**
