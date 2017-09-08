@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ExternalServer
@@ -26,6 +26,8 @@ class ExternalServer extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $name;
 

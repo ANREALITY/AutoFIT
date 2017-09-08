@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * FileTransferRequest
@@ -42,6 +42,8 @@ class FileTransferRequest extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $id;
 
@@ -49,6 +51,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="change_number", type="string", length=50, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $changeNumber;
 
@@ -56,6 +60,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="status", type="string", nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $status;
 
@@ -63,6 +69,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="comment", type="string", length=500, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $comment;
 
@@ -70,6 +78,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $created;
 
@@ -77,6 +87,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $updated;
 
@@ -87,6 +99,8 @@ class FileTransferRequest extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $logicalConnection;
 
@@ -97,6 +111,8 @@ class FileTransferRequest extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="service_invoice_position_basic_number", referencedColumnName="number")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $serviceInvoicePositionBasic;
 
@@ -107,6 +123,8 @@ class FileTransferRequest extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="service_invoice_position_personal_number", referencedColumnName="number")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $serviceInvoicePositionPersonal;
 
@@ -114,6 +132,8 @@ class FileTransferRequest extends AbstractDataObject
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
+     *
+     * @Groups({"export"})
      */
     protected $user;
 

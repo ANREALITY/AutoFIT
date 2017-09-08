@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User
@@ -24,6 +24,8 @@ class User extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $id;
 
@@ -31,6 +33,8 @@ class User extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $username;
 
@@ -38,6 +42,8 @@ class User extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $role;
 

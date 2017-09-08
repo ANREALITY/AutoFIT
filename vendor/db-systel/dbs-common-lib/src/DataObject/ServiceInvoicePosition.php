@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ServiceInvoicePosition
@@ -38,6 +38,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @ORM\Column(name="number", type="string", length=12, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $number;
 
@@ -45,6 +47,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="order_quantity", type="string", length=12, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $orderQuantity;
 
@@ -52,6 +56,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=128, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $description;
 
@@ -59,6 +65,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=32, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $status;
 
@@ -69,6 +77,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="service_invoice_number", referencedColumnName="number")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $serviceInvoice;
 
@@ -79,6 +89,8 @@ class ServiceInvoicePosition extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="article_sku", referencedColumnName="sku")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $article;
 

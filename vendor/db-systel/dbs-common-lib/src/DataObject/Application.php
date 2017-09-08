@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Application
@@ -19,6 +19,8 @@ class Application extends AbstractDataObject
      * @ORM\Column(name="technical_short_name", type="string", length=100, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     *
+     * @Groups({"export"})
      */
     protected $technicalShortName;
 
@@ -26,6 +28,8 @@ class Application extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="technical_id", type="string", length=10, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $technicalId;
 
@@ -33,6 +37,8 @@ class Application extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $active;
 

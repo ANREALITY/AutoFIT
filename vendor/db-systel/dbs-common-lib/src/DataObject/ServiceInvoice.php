@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ServiceInvoice
@@ -26,6 +26,8 @@ class ServiceInvoice extends AbstractDataObject
      * @ORM\Column(name="number", type="string", length=16, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $number;
 
@@ -33,6 +35,8 @@ class ServiceInvoice extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=128, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $description;
 
@@ -43,6 +47,8 @@ class ServiceInvoice extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="application_technical_short_name", referencedColumnName="technical_short_name")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $application;
 
@@ -53,6 +59,8 @@ class ServiceInvoice extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="environment_severity", referencedColumnName="severity")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $environment;
 

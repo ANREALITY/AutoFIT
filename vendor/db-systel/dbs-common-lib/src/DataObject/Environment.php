@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Environment
@@ -19,6 +19,8 @@ class Environment extends AbstractDataObject
      * @ORM\Column(name="severity", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $severity;
 
@@ -26,6 +28,8 @@ class Environment extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=32, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $name;
 
@@ -33,6 +37,8 @@ class Environment extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="short_name", type="string", length=1, nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $shortName;
 

@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * AbstractPhysicalConnection
@@ -39,6 +39,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $id;
 
@@ -46,6 +48,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $type;
 
@@ -53,6 +57,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="secure_plus", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $securePlus;
 
@@ -82,11 +88,15 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
 
     /**
      * @var AbstractEndpoint #relationshipInversion
+     *
+     * @Groups({"export"})
      */
     protected $endpointSource;
 
     /**
      * @var AbstractEndpoint #relationshipInversion
+     *
+     * @Groups({"export"})
      */
     protected $endpointTarget;
 
@@ -135,6 +145,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
+     * @Groups({"export"})
+     *
      * @return string
      */
     public function getRole()

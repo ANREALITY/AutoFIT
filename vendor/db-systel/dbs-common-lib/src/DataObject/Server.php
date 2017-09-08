@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Server
@@ -31,6 +31,8 @@ class Server extends AbstractDataObject
      * @ORM\Column(name="name", type="string", length=32, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     *
+     * @Groups({"export"})
      */
     protected $name;
 
@@ -48,6 +50,8 @@ class Server extends AbstractDataObject
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $active;
 
@@ -62,6 +66,8 @@ class Server extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="node_name", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $nodeName;
 
@@ -69,6 +75,8 @@ class Server extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="virtual_node_name", type="string", length=50, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $virtualNodeName;
 

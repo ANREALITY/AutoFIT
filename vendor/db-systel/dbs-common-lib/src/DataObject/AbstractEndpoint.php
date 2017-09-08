@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use ReflectionClass;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * AbstractEndpoint
@@ -81,6 +81,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $id;
 
@@ -88,6 +90,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="role", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $role;
 
@@ -95,6 +99,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="server_place", type="string", nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $serverPlace;
 
@@ -102,6 +108,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="contact_person", type="string", length=500, nullable=true)
+     *
+     * @Groups({"export"})
      */
     protected $contactPerson;
 
@@ -146,6 +154,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endpoint_server_config_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $endpointServerConfig;
 
@@ -156,6 +166,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="external_server_id", referencedColumnName="id")
      * })
+     *
+     * @Groups({"export"})
      */
     protected $externalServer;
 
@@ -223,6 +235,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
 
     /**
      * @return string
+     *
+     * @Groups({"export"})
      */
     public function getType()
     {

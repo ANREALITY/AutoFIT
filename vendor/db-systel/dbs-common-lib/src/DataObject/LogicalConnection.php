@@ -3,7 +3,7 @@ namespace DbSystel\DataObject;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * LogicalConnection
@@ -25,6 +25,8 @@ class LogicalConnection extends AbstractDataObject
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @Groups({"export"})
      */
     protected $id;
 
@@ -32,6 +34,8 @@ class LogicalConnection extends AbstractDataObject
      * @var string
      *
      * @ORM\Column(name="type", type="string", nullable=false)
+     *
+     * @Groups({"export"})
      */
     protected $type;
 
@@ -51,16 +55,22 @@ class LogicalConnection extends AbstractDataObject
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
+     *
+     * @Groups({"export"})
      */
     protected $physicalConnectionEndToEnd;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
+     *
+     * @Groups({"export"})
      */
     protected $physicalConnectionEndToMiddle;
 
     /**
      * @var AbstractPhysicalConnection #relationshipInversion
+     *
+     * @Groups({"export"})
      */
     protected $physicalConnectionMiddleToEnd;
 

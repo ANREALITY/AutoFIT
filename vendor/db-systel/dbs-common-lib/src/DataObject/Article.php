@@ -2,7 +2,7 @@
 namespace DbSystel\DataObject;
 
 use Doctrine\ORM\Mapping as ORM;
-use DbSystel\Annotation\Export;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Article
@@ -31,6 +31,8 @@ class Article extends AbstractDataObject
      * @ORM\Column(name="sku", type="string", length=16, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     *
+     * @Groups({"export"})
      */
     protected $sku;
 
