@@ -35,15 +35,8 @@ class FileTransferRequestMapperFactory implements FactoryInterface
             $entityManager
         );
 
-        $service->setUserPrototype(new User());
-        $service->setLogicalConnectionPrototype(new LogicalConnection());
-        $service->setNotificationPrototype(new Notification());
-
         $service->setLogicalConnectionMapper($container->get('Order\Mapper\LogicalConnectionMapper'));
-        $service->setServiceInvoicePositionMapper($container->get('Order\Mapper\ServiceInvoicePositionMapper'));
         $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
-
-        $service->setRequestModifier($container->get('Order\Mapper\RequestModifier\FileTransferRequestRequestModifier'));
 
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
         $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));

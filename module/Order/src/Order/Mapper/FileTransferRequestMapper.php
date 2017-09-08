@@ -2,14 +2,10 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\Notification;
-use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use InvalidArgumentException;
-use Order\Mapper\RequestModifier\FileTransferRequestRequestModifier;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Sql;
@@ -20,104 +16,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @var FileTransferRequest
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @var User
-     */
-    protected $userPrototype;
-
-    /**
-     *
-     * @var LogicalConnection
-     */
-    protected $logicalConnectionPrototype;
-
-    /**
-     *
-     * @var Notification
-     */
-    protected $notificationPrototype;
-
-    /**
-     *
      * @var LogicalConnectionMapperInterface
      */
     protected $logicalConnectionMapper;
 
     /**
      *
-     * @var ServiceInvoicePositionMapperInterface
-     */
-    protected $serviceInvoicePositionMapper;
-
-    /**
-     *
      * @var UserMapperInterface
      */
     protected $userMapper;
-
-    /**
-     * @var FileTransferRequestRequestModifier
-     */
-    protected $requestModifier;
-
-    /**
-     *
-     * @return User $userPrototype
-     */
-    public function getUserPrototype()
-    {
-        return clone $this->userPrototype;
-    }
-
-    /**
-     *
-     * @param User $userPrototype
-     */
-    public function setUserPrototype($userPrototype)
-    {
-        $this->userPrototype = $userPrototype;
-    }
-
-    /**
-     *
-     * @return LogicalConnection $logicalConnectionPrototype
-     */
-    public function getLogicalConnectionPrototype()
-    {
-        return clone $this->logicalConnectionPrototype;
-    }
-
-    /**
-     *
-     * @param LogicalConnection $logicalConnectionPrototype
-     */
-    public function setLogicalConnectionPrototype($logicalConnectionPrototype)
-    {
-        $this->logicalConnectionPrototype = $logicalConnectionPrototype;
-    }
-
-    /**
-     *
-     * @return Notification $notificationPrototype
-     */
-    public function getNotificationPrototype()
-    {
-        return clone $this->notificationPrototype;
-    }
-
-    /**
-     *
-     * @param Notification $notoficationPrototype
-     */
-    public function setNotificationPrototype($notoficationPrototype)
-    {
-        $this->notificationPrototype = $notoficationPrototype;
-    }
 
     /**
      *
@@ -130,29 +37,11 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @param ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper
-     */
-    public function setServiceInvoicePositionMapper(ServiceInvoicePositionMapperInterface $serviceInvoicePositionMapper)
-    {
-        $this->serviceInvoicePositionMapper = $serviceInvoicePositionMapper;
-    }
-
-    /**
-     *
      * @param UserMapperInterface $userMapper
      */
     public function setUserMapper(UserMapperInterface $userMapper)
     {
         $this->userMapper = $userMapper;
-    }
-
-    /**
-     *
-     * @param FileTransferRequestRequestModifier $fileTransferRequestRequestModifier
-     */
-    public function setRequestModifier(FileTransferRequestRequestModifier $fileTransferRequestRequestModifier)
-    {
-        $this->requestModifier = $fileTransferRequestRequestModifier;
     }
 
     /**
