@@ -244,10 +244,10 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->createOrder('ftgw', 'ftgwcdtandem');
         $this->reset();
 
-        $changeNumber = 'undefined2';
+        $newUsername = 'undefined2';
         $oldUsername = isset($_SERVER['AUTH_USER']) ? $_SERVER['AUTH_USER'] : null;
-        if ($changeNumber) {
-            $_SERVER['AUTH_USER'] = $changeNumber;
+        if ($newUsername) {
+            $_SERVER['AUTH_USER'] = $newUsername;
         }
 
         // change_number's are C00000011, C00000013 and C00000022, s. the fixture JSONs
