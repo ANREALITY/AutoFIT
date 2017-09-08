@@ -25,18 +25,6 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
 
     /**
      *
-     * @param int|string $severity
-     *
-     * @return Environment
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($severity)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Environment[]
      */
     public function findAll(array $criteria = [])

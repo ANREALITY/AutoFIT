@@ -5,7 +5,6 @@ use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\Paginator\Paginator;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
-use InvalidArgumentException;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Insert;
 use Zend\Db\Sql\Sql;
@@ -13,6 +12,9 @@ use Zend\Db\Sql\Update;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
+
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = FileTransferRequest::class;
 
     /**
      *
@@ -42,22 +44,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function setUserMapper(UserMapperInterface $userMapper)
     {
         $this->userMapper = $userMapper;
-    }
-
-    /**
-     * @param $id
-     * @return FileTransferRequest
-     * @throws InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        $repository = $this->entityManager->getRepository(FileTransferRequest::class);
-        $entity = $repository->find($id);
-        if (! $entity) {
-            throw new InvalidArgumentException("FileTransferRequest with given ID:{$id} not found.");
-        }
-        /** @var FileTransferRequest $entity */
-        return $entity;
     }
 
     /**

@@ -24,18 +24,6 @@ class AccessConfigMapper extends AbstractMapper implements AccessConfigMapperInt
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return AccessConfig
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|AccessConfig[]
      */
     public function findAll(array $criteria = [])

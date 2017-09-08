@@ -24,18 +24,6 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
 
     /**
      *
-     * @param int|string $technicalShortName
-     *
-     * @return Application
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($technicalShortName)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Application[]
      */
     public function findAll(array $criteria = [])

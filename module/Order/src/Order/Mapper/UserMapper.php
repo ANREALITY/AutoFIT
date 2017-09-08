@@ -15,36 +15,14 @@ use Zend\Hydrator\HydratorInterface;
 class UserMapper extends AbstractMapper implements UserMapperInterface
 {
 
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = User::class;
+
     /**
      *
      * @var User
      */
     protected $prototype;
-
-    /**
-     *
-     * @param int|string $id
-     *
-     * @return User
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('user');
-        $select->where([
-            'id = ?' => $id
-        ]);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            return $this->hydrator->hydrate($result->current(), $this->getPrototype());
-        }
-
-        throw new \InvalidArgumentException("User with given ID:{$id} not found.");
-    }
 
     /**
      *

@@ -7,9 +7,14 @@ use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
 use DbSystel\Utility\TableDataProcessor;
 use DbSystel\Utility\StringUtility;
+use InvalidArgumentException;
+use ReflectionClass;
 
 class AbstractMapper
 {
+
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = AbstractDataObject::class;
 
     /**
      * @var integer
@@ -148,6 +153,24 @@ class AbstractMapper
     public function setStringUtility(StringUtility $stringUtility)
     {
         $this->stringUtility = $stringUtility;
+    }
+
+    /**
+     * @param $id
+     * @return AbstractDataObject
+     * @throws InvalidArgumentException
+     */
+    public function findOne($id)
+    {
+        $repository = $this->entityManager->getRepository(static::ENTITY_TYPE);
+        $entity = $repository->find($id);
+        if (! $entity) {
+            $reflection = new ReflectionClass(static::ENTITY_TYPE);
+            $entityClassName = $reflection->getShortName();
+            throw new InvalidArgumentException($entityClassName . " with given ID:{$id} not found.");
+        }
+        /** @var AbstractDataObject $entity */
+        return $entity;
     }
 
     public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,

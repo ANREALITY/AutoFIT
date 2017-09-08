@@ -25,18 +25,6 @@ class FileParameterMapper extends AbstractMapper implements FileParameterMapperI
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return FileParameter
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|FileParameter[]
      */
     public function findAll(array $criteria = [])

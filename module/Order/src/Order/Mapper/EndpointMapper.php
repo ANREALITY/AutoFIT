@@ -220,17 +220,6 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
     /**
      *
-     * {@inheritDoc}
-     *
-     * @see AbstractEndpointMapper::find()
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return AbstractEndpoint
      */
     public function findWithBuldledData($id)

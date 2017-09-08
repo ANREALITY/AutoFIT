@@ -24,18 +24,6 @@ class ExternalServerMapper extends AbstractMapper implements ExternalServerMappe
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return ExternalServer
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|ExternalServer[]
      */
     public function findAll(array $criteria = [])

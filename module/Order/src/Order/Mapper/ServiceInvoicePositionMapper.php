@@ -38,18 +38,6 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
 
     /**
      *
-     * @param int|string $number
-     *
-     * @return ServiceInvoicePosition
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($number)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|ServiceInvoicePosition[]
      */
     public function findAll(array $criteria = [])

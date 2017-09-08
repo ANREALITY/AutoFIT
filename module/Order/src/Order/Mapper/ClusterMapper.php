@@ -41,18 +41,6 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return Cluster
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Cluster[]
      */
     public function findAll(array $criteria = [])

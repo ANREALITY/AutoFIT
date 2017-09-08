@@ -52,17 +52,6 @@ class PhysicalConnectionMapper extends AbstractMapper implements PhysicalConnect
 
     /**
      *
-     * {@inheritDoc}
-     *
-     * @see AbstractPhysicalConnectionMapper::find()
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return AbstractPhysicalConnection
      */
     public function findWithBuldledData($id)

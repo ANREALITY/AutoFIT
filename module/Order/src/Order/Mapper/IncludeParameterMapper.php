@@ -24,18 +24,6 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return IncludeParameter
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|IncludeParameter[]
      */
     public function findAll(array $criteria = [])

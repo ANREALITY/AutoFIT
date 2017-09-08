@@ -24,18 +24,6 @@ class ProtocolMapper extends AbstractMapper implements ProtocolMapperInterface
 
     /**
      *
-     * @param int|string $name
-     *
-     * @return Protocol
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($name)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Protocol[]
      */
     public function findAll(array $criteria = [])

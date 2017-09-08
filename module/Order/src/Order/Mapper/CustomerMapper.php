@@ -23,18 +23,6 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return Customer
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Customer[]
      */
     public function findAll(array $criteria = [])

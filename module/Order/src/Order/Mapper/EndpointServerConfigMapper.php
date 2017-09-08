@@ -40,18 +40,6 @@ class EndpointServerConfigMapper extends AbstractMapper implements EndpointServe
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return EndpointServerConfig
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|EndpointServerConfig[]
      */
     public function findAll(array $criteria = [])

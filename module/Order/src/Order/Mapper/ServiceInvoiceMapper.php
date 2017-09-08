@@ -51,18 +51,6 @@ class ServiceInvoiceMapper extends AbstractMapper implements ServiceInvoiceMappe
 
     /**
      *
-     * @param int|string $number
-     *
-     * @return ServiceInvoice
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($number)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|ServiceInvoice[]
      */
     public function findAll(array $criteria = [])

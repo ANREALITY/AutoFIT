@@ -24,18 +24,6 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return Notification
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Notification[]
      */
     public function findAll(array $criteria = [])

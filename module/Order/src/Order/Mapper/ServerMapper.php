@@ -25,18 +25,6 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
 
     /**
      *
-     * @param int|string $name
-     *
-     * @return Server
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($name)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|Server[]
      */
     public function findAll(array $criteria = [])

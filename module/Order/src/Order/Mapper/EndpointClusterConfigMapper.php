@@ -40,18 +40,6 @@ class EndpointClusterConfigMapper extends AbstractMapper implements EndpointClus
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return EndpointClusterConfig
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|EndpointClusterConfig[]
      */
     public function findAll(array $criteria = [])

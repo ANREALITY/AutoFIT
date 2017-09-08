@@ -48,18 +48,6 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return ProtocolSet
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|ProtocolSet[]
      */
     public function findAll(array $criteria = [])

@@ -47,18 +47,6 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return IncludeParameterSet
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|IncludeParameterSet[]
      */
     public function findAll(array $criteria = [])

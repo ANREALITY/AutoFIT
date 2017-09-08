@@ -66,18 +66,6 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @param int|string $id
-     *
-     * @return LogicalConnection
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id)
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @return array|LogicalConnection[]
      */
     public function findAll(array $criteria = [])
