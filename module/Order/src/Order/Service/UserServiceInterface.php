@@ -15,8 +15,8 @@ interface UserServiceInterface
     public function findOneByUsername(string $username);
 
     /**
-     *
-     * @param string $username
+     * @param string|null $changeNumber
+     * @return User[]
      */
     public function findAllForAutocomplete(string $username = null);
 

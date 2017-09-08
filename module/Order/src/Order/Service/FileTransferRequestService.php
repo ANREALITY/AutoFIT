@@ -45,9 +45,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
     }
 
     /**
-     *
      * {@inheritDoc}
-     *
      */
     public function findAllForAutocomplete(string $changeNumber = null)
     {

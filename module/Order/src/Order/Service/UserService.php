@@ -42,9 +42,7 @@ class UserService extends AbstractService implements UserServiceInterface
     }
 
     /**
-     *
      * {@inheritDoc}
-     *
      */
     public function findAllForAutocomplete(string $username = null)
     {

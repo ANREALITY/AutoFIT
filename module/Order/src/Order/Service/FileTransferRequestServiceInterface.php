@@ -31,7 +31,7 @@ interface FileTransferRequestServiceInterface
 
     /**
      * @param string|null $changeNumber
-     * @return Paginator
+     * @return FileTransferRequest[]
      */
     public function findAllForAutocomplete(string $changeNumber = null);
 
