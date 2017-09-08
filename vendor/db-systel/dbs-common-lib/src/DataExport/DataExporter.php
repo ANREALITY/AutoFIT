@@ -5,6 +5,9 @@ use DbSystel\DataObject\AbstractDataObject;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 
 class DataExporter
 {
@@ -23,7 +26,8 @@ class DataExporter
 
     public function __construct()
     {
-        $normalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $normalizer = new ObjectNormalizer($classMetadataFactory, new CamelCaseToSnakeCaseNameConverter());
         $normalizer->setCircularReferenceLimit(1);
         $normalizer->setIgnoredAttributes(['__initializer__', '__cloner__', '__isInitialized__']);
         $normalizer->setCircularReferenceHandler(function ($object) {
@@ -47,14 +51,14 @@ class DataExporter
 
     public function exportToJson(AbstractDataObject $dataObject)
     {
-        $data = $this->serializer->normalize($dataObject);
+        $data = $this->serializer->normalize($dataObject, null, ['groups' => ['export']]);
         $data = $this->utf8ize($data);
         return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
     public function exportToXml(AbstractDataObject $dataObject)
     {
-        $data = $this->serializer->normalize($dataObject);
+        $data = $this->serializer->normalize($dataObject, null, ['groups' => ['export']]);
         $data = $this->utf8ize($data);
         $xml = new \SimpleXMLElement('<' . self::XML_DEFAULT_ROOT_ELEMENT . ' />');
         $this->arrayToXml($data, $xml);
