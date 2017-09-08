@@ -33,13 +33,8 @@ class DataExporter
         $normalizer->setCircularReferenceLimit(1);
         $normalizer->setIgnoredAttributes(['__initializer__', '__cloner__', '__isInitialized__']);
         $normalizer->setCircularReferenceHandler(function ($object) {
-            try {
-                $return = $object->getId();
-            } catch (\Error $exception) {
-                $return = null;
-            }
-            $return = null;
-            return $return;
+            // @todo A cleaner solution would be nice.
+            return null;
         });
         $callbackDateTime = function ($dateTime) {
             $return = null;
