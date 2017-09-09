@@ -2,27 +2,16 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\User;
-use Doctrine\ORM\EntityManager;
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Db\Sql\Sql;
-use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Insert;
+use Zend\Db\Sql\Sql;
 use Zend\Db\Sql\Update;
-use Zend\Hydrator\HydratorInterface;
 
 class UserMapper extends AbstractMapper implements UserMapperInterface
 {
 
     /** @var string for the findOne(...) */
     const ENTITY_TYPE = User::class;
-
-    /**
-     *
-     * @var User
-     */
-    protected $prototype;
 
     /**
      * @param string $username
@@ -82,15 +71,12 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         // none
 
         $sql = new Sql($this->dbAdapter);
-        $select = $select = $sql->select('user');
-        $select->where([
-            'username = ?' => $data['username']
-        ]);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
 
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $dataObject = $this->hydrator->hydrate($result->current(), $this->getPrototype());
+        $currentUser = $this->findOneByUsername($data['username']);
+        $this->entityManager->refresh($currentUser);
+
+        if ($currentUser instanceof User) {
+            $dataObject = $currentUser;
             $action = new Update('user');
             $action->set($data);
             $action->where([
