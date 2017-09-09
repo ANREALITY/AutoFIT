@@ -1,6 +1,7 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
 use Order\Mapper\ServerMapperInterface;
 use DbSystel\DataObject\Server;
 use Zend\Db\Sql\Expression;
@@ -39,10 +40,12 @@ class ServerService extends AbstractService implements ServerServiceInterface
                 [
                     'name' => $name,
                     'active' => true,
-                    'endpoint_type_name' => $endpointTypeName,
-                    'limit' => self::LIMIT_AUTOCOMPLETE
+                    'endpoint_type_name' => $endpointTypeName
                 ]
-            ]);
+            ],
+            self::LIMIT_AUTOCOMPLETE,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**
@@ -59,10 +62,12 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'active' => true,
                     'node_name' => null,
                     'virtual_node_name' => null,
-                    'cluster_id' => null,
-                    'limit' => self::LIMIT_AUTOCOMPLETE
+                    'cluster_id' => null
                 ]
-            ]);
+            ],
+            self::LIMIT_AUTOCOMPLETE,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**
@@ -79,10 +84,12 @@ class ServerService extends AbstractService implements ServerServiceInterface
                     'active' => true,
                     'node_name' => null,
                     'virtual_node_name' => null,
-                    'cluster_id' => null,
-                    'limit' => self::LIMIT_AUTOCOMPLETE
+                    'cluster_id' => null
                 ]
-            ]);
+            ],
+            self::LIMIT_AUTOCOMPLETE,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**

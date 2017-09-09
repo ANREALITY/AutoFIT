@@ -100,7 +100,7 @@ class AjaxController extends AbstractActionController
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             $data['endpoint_type_name'] = isset($data['endpoint_type_name']) ? $data['endpoint_type_name'] : null;
-            $dataList = $this->serverService->findAllForAutocomplete($data['name'], $data['endpoint_type_name'])->toArray();
+            $dataList = $this->serverService->findAllForAutocomplete($data['name'], $data['endpoint_type_name']);
             $dataList = array_column($dataList, 'name');
         }
 
@@ -114,7 +114,7 @@ class AjaxController extends AbstractActionController
 
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            $dataList = $this->serverService->findAllNotInCdUseForAutocomplete($data['name'])->toArray();
+            $dataList = $this->serverService->findAllNotInCdUseForAutocomplete($data['name']);
             $dataList = array_column($dataList, 'name');
         }
 
@@ -128,7 +128,7 @@ class AjaxController extends AbstractActionController
 
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
-            $dataList = $this->serverService->findAllNotInClusterForAutocomplete($data['name'])->toArray();
+            $dataList = $this->serverService->findAllNotInClusterForAutocomplete($data['name']);
             $dataList = array_column($dataList, 'name');
         }
 

@@ -7,18 +7,9 @@ interface ServerMapperInterface
 {
 
     /**
-     *
-     * @param int|string $name
-     * @return Server
-     * @throws \InvalidArgumentException
+     * @return Server[]
      */
-    public function findOne($name);
-
-    /**
-     *
-     * @return array|Server[]
-     */
-    public function findAll(array $criteria = []);
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
     /**
      *

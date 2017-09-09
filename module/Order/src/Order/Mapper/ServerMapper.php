@@ -17,85 +17,66 @@ use Zend\Db\Sql\Expression;
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
 
-    /**
-     *
-     * @var Server
-     */
-    protected $prototype;
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = Server::class;
 
     /**
-     *
-     * @return array|Server[]
+     * @inheritdoc
      */
-    public function findAll(array $criteria = [])
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('server');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('s')->from(static::ENTITY_TYPE, 's');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('name', $condition)) {
-                    $select->where(
-                        [
-                            'server.name LIKE ?' => '%' . $condition['name'] . '%'
-                        ]);
+                    $queryBuilder
+                        ->andWhere('s.name LIKE :name')
+                        ->setParameter('name', '%' . $condition['name'] . '%')
+                    ;
                 }
                 if (array_key_exists('active', $condition)) {
-                    $select->where(
-                        [
-                            'server.active = ?' => $condition['active']
-                        ]);
+                    $queryBuilder
+                        ->andWhere('s.active LIKE :active')
+                        ->setParameter('active', '%' . $condition['active'] . '%')
+                    ;
                 }
                 if (array_key_exists('node_name', $condition)) {
-                    if ($condition['node_name'] === null) {
-                        $select->where(
-                            [
-                                'server.node_name IS ?' => new Expression('NULL')
-                            ]);
-                    }
+                    $queryBuilder
+                        ->andWhere('s.nodeName IS NULL')
+                    ;
                 }
                 if (array_key_exists('virtual_node_name', $condition)) {
-                    if ($condition['virtual_node_name'] === null) {
-                        $select->where(
-                            [
-                                'server.virtual_node_name IS ?' => new Expression('NULL')
-                            ]);
-                    }
+                    $queryBuilder
+                        ->andWhere('s.virtualNodeName IS NULL')
+                    ;
                 }
                 if (array_key_exists('cluster_id', $condition)) {
                     if ($condition['cluster_id'] === null) {
-                        $select->where(
-                            [
-                                'server.cluster_id IS ?' => new Expression('NULL')
-                            ]);
+                        $queryBuilder
+                            ->andWhere('s.cluster IS NULL')
+                        ;
                     }
                 }
-                if (array_key_exists('endpoint_type_name', $condition) && ! empty($condition['endpoint_type_name'])) {
-                    $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],
-                        Select::JOIN_INNER);
-                    $select->join('endpoint_type', 'endpoint_type.id = endpoint_type_server_type.endpoint_type_id', [
-                        'endpoint_type_name' => 'name'
-                    ], Select::JOIN_INNER);
-                    $select->where->expression(
-                        'LOWER(endpoint_type.name) = LOWER(?)', $condition['endpoint_type_name']
-                    );
-                }
-                if (array_key_exists('limit', $condition)) {
-                    $select->limit($condition['limit']);
+                if (array_key_exists('endpoint_type_name', $condition)) {
+                    $queryBuilder->join('s.serverType', 'set');
+                    $queryBuilder->join('set.endpointTypes', 'et');
+                    $queryBuilder
+                        ->andWhere('et.name = :endpointTypeName')
+                        ->setParameter('endpointTypeName', $condition['endpoint_type_name'])
+                    ;
+                    $queryBuilder->distinct();
                 }
             }
         }
 
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
+        $queryBuilder->setMaxResults($limit ?: null);
 
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
+        $query = $queryBuilder->getQuery();
+        $result = $query->execute(null, $hydrationMode);
 
-            return $resultSet->initialize($result);
-        }
-
-        return [];
+        return $result;
     }
 
     /**
