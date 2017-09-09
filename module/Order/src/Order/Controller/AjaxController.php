@@ -83,7 +83,7 @@ class AjaxController extends AbstractActionController
                 $data['name'] = isset($data['name']) ? $data['name'] : null;
                 $dataList = $this->environmentService->findAllForAutocomplete(
                     $data['application_technical_short_name'], $data['name']
-                )->toArray();
+                );
             } else {
                 $dataList = [];
             }

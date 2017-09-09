@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -37,6 +38,13 @@ class Environment extends AbstractDataObject
      * @ORM\Column(name="short_name", type="string", length=1, nullable=false)
      */
     protected $shortName;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ServiceInvoice", mappedBy="environment")
+     */
+    protected $serviceInvoices;
 
     /**
      * @param integer $severity
@@ -96,6 +104,45 @@ class Environment extends AbstractDataObject
     public function getShortName()
     {
         return $this->shortName;
+    }
+
+    /**
+     * @param ServiceInvoice[] $serviceInvoices
+     *
+     * @return Environment
+     */
+    public function setServiceInvoices($serviceInvoices)
+    {
+        $this->serviceInvoices = $serviceInvoices;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection $serviceInvoices
+     */
+    public function getServiceInvoices()
+    {
+        return $this->serviceInvoices;
+    }
+
+    /**
+     * @param ServiceInvoice $serviceInvoice
+     * @return Environment
+     */
+    public function addServiceInvoice(ServiceInvoice $serviceInvoice)
+    {
+        $this->serviceInvoices->add($serviceInvoice);
+        return $this;
+    }
+
+    /**
+     * @param ServiceInvoice $serviceInvoice
+     * @return Environment
+     */
+    public function removeServiceInvoice(ServiceInvoice $serviceInvoice)
+    {
+        $this->serviceInvoices->removeElement($serviceInvoice);
+        return $this;
     }
 
 }

@@ -1,6 +1,8 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
+use Order\Mapper\AbstractMapper;
 use Order\Mapper\EnvironmentMapperInterface;
 use DbSystel\DataObject\Environment;
 
@@ -36,7 +38,10 @@ class EnvironmentService extends AbstractService implements EnvironmentServiceIn
                     'name' => $name,
                     'with_invoice_positions_only' => false
                 ]
-            ]);
+            ],
+            AbstractMapper::DEFAULT_QUERY_LIMIT,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**

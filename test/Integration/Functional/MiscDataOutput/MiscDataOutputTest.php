@@ -56,7 +56,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
             0 => [
                 'severity' => 5,
                 'name' => 'Entwicklung',
-                'short_name' => 'E'
+                'shortName' => 'E'
             ]
         ];
         $this->assertEquals($expectedResultsList, $actualResultsList);
