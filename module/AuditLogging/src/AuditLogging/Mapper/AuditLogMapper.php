@@ -18,13 +18,16 @@ use Zend\Db\Sql\Sql;
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
 
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = AuditLog::class;
+
     /**
      * @param $id
      * @return AuditLog
      */
     public function findOne($id)
     {
-        $repository = $this->entityManager->getRepository(AuditLog::class);
+        $repository = $this->entityManager->getRepository(static::ENTITY_TYPE);
         $entity = $repository->find($id);
         /** @var AuditLog $entity */
         return $entity;
