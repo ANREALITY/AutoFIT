@@ -7,10 +7,8 @@ interface SynchronizationMapperInterface
 {
 
     /**
-     *
      * @return Synchronization
-     * @throws \InvalidArgumentException
      */
-    public function findAll();
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
 }
