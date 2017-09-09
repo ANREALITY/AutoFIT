@@ -27,17 +27,14 @@ class EndpointMapperFactory implements FactoryInterface
             $entityManager
         );
 
-        $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
         $service->setEndpointServerConfigMapper($container->get('Order\Mapper\EndpointServerConfigMapper'));
         $service->setExternalServerMapper($container->get('Order\Mapper\ExternalServerMapper'));
-        $service->setApplicationMapper($container->get('Order\Mapper\ApplicationMapper'));
         $service->setCustomerMapper($container->get('Order\Mapper\CustomerMapper'));
         $service->setIncludeParameterSetMapper($container->get('Order\Mapper\IncludeParameterSetMapper'));
         $service->setProtocolSetMapper($container->get('Order\Mapper\ProtocolSetMapper'));
         $service->setFileParameterSetMapper($container->get('Order\Mapper\FileParameterSetMapper'));
         $service->setAccessConfigSetMapper($container->get('Order\Mapper\AccessConfigSetMapper'));
         $service->setProtocolMapper($container->get('Order\Mapper\ProtocolMapper'));
-        $service->setClusterMapper($container->get('Order\Mapper\ClusterMapper'));
         $service->setEndpointClusterConfigMapper($container->get('Order\Mapper\EndpointClusterConfigMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
         $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));

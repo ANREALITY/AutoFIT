@@ -39,29 +39,14 @@ use DbSystel\DataObject\ProtocolSetForProtocolServer;
 class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 {
 
-    /**
-     *
-     * @var AbstractEndpoint
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @var ServerMapperInterface
-     */
-    protected $serverMapper;
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = EndpointMapper::class;
 
     /**
      *
      * @var ExternalServerMapperInterface
      */
     protected $externalServerMapper;
-
-    /**
-     *
-     * @var ApplicationMapperInterface
-     */
-    protected $applicationMapper;
 
     /**
      *
@@ -101,24 +86,9 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
     /**
      *
-     * @var ClusterMapperInterface
-     */
-    protected $clusterMapper;
-
-    /**
-     *
      * @var EndpointClusterConfigMapperInterface
      */
     protected $endpointClusterConfigMapper;
-
-    /**
-     *
-     * @param ServerMapperInterface $serverMapper
-     */
-    public function setServerMapper(ServerMapperInterface $serverMapper)
-    {
-        $this->serverMapper = $serverMapper;
-    }
 
     /**
      *
@@ -136,15 +106,6 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
     public function setExternalServerMapper(ExternalServerMapperInterface $externalServerMapper)
     {
         $this->externalServerMapper = $externalServerMapper;
-    }
-
-    /**
-     *
-     * @param ApplicationMapperInterface $applicationMapper
-     */
-    public function setApplicationMapper(ApplicationMapperInterface $applicationMapper)
-    {
-        $this->applicationMapper = $applicationMapper;
     }
 
     /**
@@ -202,92 +163,11 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
 
     /**
      *
-     * @param ClusterMapperInterface $clusterMapper
-     */
-    public function setClusterMapper(ClusterMapperInterface $clusterMapper)
-    {
-        $this->clusterMapper = $clusterMapper;
-    }
-
-    /**
-     *
      * @param EndpointClusterConfigMapperInterface $endpointClusterConfigMapper
      */
     public function setEndpointClusterConfigMapper(EndpointClusterConfigMapperInterface $endpointClusterConfigMapper)
     {
         $this->endpointClusterConfigMapper = $endpointClusterConfigMapper;
-    }
-
-    /**
-     *
-     * @return AbstractEndpoint
-     */
-    public function findWithBuldledData($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint');
-        $select->where([
-            'endpoint.id = ?' => $id
-        ]);
-
-        $select->join('server', 'server.name = endpoint.server_name', [
-            'server_name' => 'name'
-        ], Select::JOIN_LEFT);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $data = $result->current();
-            if (! empty($data['type'])) {
-                if (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_AS400) === 0) {
-                    $this->prototype = new EndpointCdAs400();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_TANDEM) === 0) {
-                    $this->prototype = new EndpointCdTandem();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_LINUX_UNIX) === 0) {
-                    $this->prototype = new EndpointCdLinuxUnix();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_ZOS) === 0) {
-                    $this->prototype = new EndpointCdZos();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS) === 0) {
-                    $this->prototype = new EndpointCdWindows();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_CD_WINDOWS_SHARE) === 0) {
-                    $this->prototype = new EndpointCdWindowsShare();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_SELF_SERVICE) === 0) {
-                    $this->prototype = new EndpointFtgwSelfService();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS) === 0) {
-                    $this->prototype = new EndpointFtgwWindows();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER) === 0) {
-                    $this->prototype = new EndpointFtgwProtocolServer();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE) === 0) {
-                    $this->prototype = new EndpointFtgwWindowsShare();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_LINUX_UNIX) === 0) {
-                    $this->prototype = new EndpointFtgwLinuxUnix();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_ZOS) === 0) {
-                    $this->prototype = new EndpointFtgwCdZos();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_TANDEM) === 0) {
-                    $this->prototype = new EndpointFtgwCdTandem();
-                } elseif (strcasecmp($data['type'], AbstractEndpoint::TYPE_FTGW_CD_AS400) === 0) {
-                    $this->prototype = new EndpointFtgwCdAs400();
-                }
-                $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
-
-                $return->setServer(new Server());
-                $return->getServer()->setName($data['server_name']);
-            } else {
-                $return = null;
-            }
-
-            return $return;
-        }
-    }
-
-    /**
-     *
-     * @return array|AbstractEndpoint[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
     }
 
     /**
@@ -1045,170 +925,6 @@ class EndpointMapper extends AbstractMapper implements EndpointMapperInterface
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        $applicationDataObjects = $this->applicationMapper->createDataObjects($resultSetArray, null, null,
-            'technical_short_name', 'endpoint_application__', 'id', 'endpoint__');
-        $customerDataObjects = $this->customerMapper->createDataObjects($resultSetArray, null, null,
-            'id', 'customer__', 'id', 'endpoint__');
-        $endpointServerConfigDataObjects = $this->endpointServerConfigMapper->createDataObjects($resultSetArray, null, null,
-            'id', 'endpoint_server_config__', 'id', 'endpoint__');        
-        $externalServerDataObjects = $this->externalServerMapper->createDataObjects($resultSetArray, null, null,
-            'name', 'external_server__', 'id', 'endpoint__');
-        $cdLinuxUnixClusterConfigDataObjects = $this->endpointClusterConfigMapper->createDataObjects($resultSetArray,
-            null, null, ['id', 'id', 'role'], ['cd_linux_unix_cluster_config__', 'endpoint__', 'endpoint__'], 'id', 'endpoint__', null,
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
-                $endpointClusterConfigExists = array_key_exists('cd_linux_unix_cluster_config' . '__' . 'id', $row) && !empty($row['cd_linux_unix_cluster_config' . '__' . 'id']);
-                return $typeIsOk && $endpointClusterConfigExists;
-            }, false);
-        $cdLinuxUnixIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_linux_unix_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
-                $protocolExists = array_key_exists('endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_linux_unix_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $cdWindowsIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS;
-                $protocolExists = array_key_exists('endpoint_cd_windows_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $cdZosFileParameterSetDataObjects = $this->fileParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_zos_file_parameter_set__', 'id',
-            'endpoint__', new FileParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_ZOS;
-                $protocolExists = array_key_exists('endpoint_cd_zos_file_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_zos_file_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $cdWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
-                $protocolExists = array_key_exists('endpoint_cd_windows_share_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_share_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $cdWindowsShareAccessConfigSetDataObjects = $this->accessConfigSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_cd_windows_share_access_config_set__', 'id',
-            'endpoint__', new AccessConfigSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_WINDOWS_SHARE;
-                $protocolExists = array_key_exists('endpoint_cd_windows_share_access_config_set' . '__' . 'id', $row) && !empty($row['endpoint_cd_windows_share_access_config_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwWindowsIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS;
-                $protocolExists = array_key_exists('endpoint_ftgw_windows_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwSelfServiceProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_self_service_protocol_set__', 'id',
-            'endpoint__', new ProtocolSetForSelfService(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_SELF_SERVICE;
-                $protocolExists = array_key_exists('endpoint_ftgw_self_service_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_self_service_protocol_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwProtocolServerIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_protocol_server_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
-                $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwProtocolServerProtocolSetDataObjects = $this->protocolSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_protocol_server_protocol_set__', 'id',
-            'endpoint__', new ProtocolSetForProtocolServer(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_PROTOCOL_SERVER;
-                $protocolExists = array_key_exists('endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_protocol_server_protocol_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwWindowsShareIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_share_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
-                $protocolExists = array_key_exists('endpoint_ftgw_windows_share_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_share_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwWindowsShareAccessConfigSetDataObjects = $this->accessConfigSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_windows_share_access_config_set__', 'id',
-            'endpoint__', new AccessConfigSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_WINDOWS_SHARE;
-                $protocolExists = array_key_exists('endpoint_ftgw_windows_share_access_config_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_windows_share_access_config_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwLinuxUnixClusterConfigDataObjects = $this->endpointClusterConfigMapper->createDataObjects($resultSetArray,
-            null, null, ['id', 'id', 'role'], ['ftgw_linux_unix_cluster_config__', 'endpoint__', 'endpoint__'], 'id', 'endpoint__', null,
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
-                $endpointClusterConfigExists = array_key_exists('ftgw_linux_unix_cluster_config' . '__' . 'id', $row) && !empty($row['ftgw_linux_unix_cluster_config' . '__' . 'id']);
-                return $typeIsOk && $endpointClusterConfigExists;
-            }, false);
-        $ftgwLinuxUnixIncludeParameterSetDataObjects = $this->includeParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_linux_unix_include_parameter_set__', 'id',
-            'endpoint__', new IncludeParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_LINUX_UNIX;
-                $protocolExists = array_key_exists('endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_linux_unix_include_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-        $ftgwCdZosFileParameterSetDataObjects = $this->fileParameterSetMapper->createDataObjects($resultSetArray, null, null, 'id', 'endpoint_ftgw_cd_zos_file_parameter_set__', 'id',
-            'endpoint__', new FileParameterSet(),
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_FTGW_CD_ZOS;
-                $protocolExists = array_key_exists('endpoint_ftgw_cd_zos_file_parameter_set' . '__' . 'id', $row) && !empty($row['endpoint_ftgw_cd_zos_file_parameter_set' . '__' . 'id']);
-                return $typeIsOk && $protocolExists;
-            }, false);
-
-        foreach ($dataObjects as $key => $dataObject) {
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $applicationDataObjects,
-                'setApplication', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $customerDataObjects,
-                'setCustomer', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $endpointServerConfigDataObjects,
-                'setEndpointServerConfig', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $externalServerDataObjects,
-                'setExternalServer', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixClusterConfigDataObjects,
-                'setEndpointClusterConfig', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolSetDataObjects,
-                'setProtocolSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdZosFileParameterSetDataObjects,
-                'setFileParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigSetDataObjects,
-                'setAccessConfigSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerProtocolSetDataObjects,
-                'setProtocolSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareAccessConfigSetDataObjects,
-                'setAccessConfigSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixClusterConfigDataObjects,
-                'setEndpointClusterConfig', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwLinuxUnixIncludeParameterSetDataObjects,
-                'setIncludeParameterSet', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwCdZosFileParameterSetDataObjects,
-                'setFileParameterSet', 'getId');
-        }
-
-        return $dataObjects;
     }
 
 }
