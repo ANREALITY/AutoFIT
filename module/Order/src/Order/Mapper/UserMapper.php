@@ -31,7 +31,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
     public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('u')->from(User::class, 'u');
+        $queryBuilder->select('u')->from(static::ENTITY_TYPE, 'u');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
@@ -70,8 +70,6 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         // data from the recently persisted objects
         // none
 
-        $sql = new Sql($this->dbAdapter);
-
         $currentUser = $this->findOneByUsername($data['username']);
         $this->entityManager->refresh($currentUser);
 
@@ -87,6 +85,7 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
             $action->values($data);
         }
 
+        $sql = new Sql($this->dbAdapter);
         $statement = $sql->prepareStatementForSqlObject($action);
         $result = $statement->execute();
 
