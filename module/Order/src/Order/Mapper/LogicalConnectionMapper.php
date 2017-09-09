@@ -24,12 +24,6 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
 
     /**
      *
-     * @var LogicalConnection
-     */
-    protected $prototype;
-
-    /**
-     *
      * @var PhysicalConnectionMapperInterface
      */
     protected $physicalConnectionMapper;
@@ -39,12 +33,6 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
      * @var NotificationMapperInterface
      */
     protected $notificationMapper;
-
-    /**
-     *
-     * @var string
-     */
-    protected $type;
 
     /**
      *
@@ -62,83 +50,6 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
     public function setNotificationMapper(NotificationMapperInterface $notificationMapper)
     {
         $this->notificationMapper = $notificationMapper;
-    }
-
-    /**
-     *
-     * @return array|LogicalConnection[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
-     * @return LogicalConnection
-     */
-    public function findWithBuldledData($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('logical_connection');
-        $select->where([
-            'logical_connection.id = ?' => $id
-        ]);
-
-        $select->join([
-            'physical_connection_end_to_end' => 'physical_connection'
-        ],
-            new Expression(
-                'physical_connection_end_to_end.logical_connection_id = logical_connection.id AND physical_connection_end_to_end.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_END_TO_END . '"'),
-            [
-                'physical_connection_end_to_end_id' => 'id'
-            ], Select::JOIN_LEFT);
-
-        $select->join([
-            'physical_connection_end_to_middle' => 'physical_connection'
-        ],
-            new Expression(
-                'physical_connection_end_to_middle.logical_connection_id = logical_connection.id AND physical_connection_end_to_middle.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_END_TO_MIDDLE . '"'),
-            [
-                'physical_connection_end_to_middle_id' => 'id'
-            ], Select::JOIN_LEFT);
-
-        $select->join([
-            'physical_connection_middle_to_end' => 'physical_connection'
-        ],
-            new Expression(
-                'physical_connection_middle_to_end.logical_connection_id = logical_connection.id AND physical_connection_middle_to_end.role = ' .
-                     '"' . AbstractPhysicalConnection::ROLE_MIDDLE_TO_END . '"'),
-            [
-                'physical_connection_middle_to_end_id' => 'id'
-            ], Select::JOIN_LEFT);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
-            $data = $result->current();
-
-            if (! empty($data['physical_connection_end_to_end_id'])) {
-                $return->setPhysicalConnectionEndToEnd(
-                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_end_to_end_id']));
-            }
-            if (! empty($data['physical_connection_end_to_middle_id'])) {
-                $return->setPhysicalConnectionEndToMiddle(
-                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_end_to_middle_id']));
-            }
-            if (! empty($data['physical_connection_middle_to_end_id'])) {
-                $return->setPhysicalConnectionMiddleToEnd(
-                    $this->physicalConnectionMapper->findWithBuldledData($data['physical_connection_middle_to_end_id']));
-            }
-
-            return $return;
-        }
-
-        throw new \InvalidArgumentException("LogicalConnection with given ID:{$id} not found.");
     }
 
     /**
@@ -211,47 +122,6 @@ class LogicalConnectionMapper extends AbstractMapper implements LogicalConnectio
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        $physicalConnectionEndToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'id'], ['physical_connection__', 'physical_connection_cd_end_to_end__'], null, null, new PhysicalConnectionCdEndToEnd(),
-                function (array $row) {
-                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_END;
-                });
-        $physicalConnectionMiddleToEndDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'id'], ['physical_connection__', 'physical_connection_ftgw_end_to_middle__'], null, null, new PhysicalConnectionFtgwEndToMiddle(),
-                function (array $row) {
-                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_END_TO_MIDDLE;
-                });
-        $physicalConnectionEndToMiddleDataObjects = $this->physicalConnectionMapper->createDataObjects($resultSetArray,
-            $identifier, $prefix, ['id', 'id'], ['physical_connection__', 'physical_connection_ftgw_middle_to_end__'], null, null, new PhysicalConnectionFtgwMiddleToEnd(),
-                function (array $row) {
-                    return array_key_exists('physical_connection' . '__' . 'role', $row) && $row['physical_connection' . '__' . 'role'] === AbstractPhysicalConnection::ROLE_MIDDLE_TO_END;
-                });
-        $notificationDataObjects = $this->notificationMapper->createDataObjects($resultSetArray, $identifier, $prefix,
-            'id', 'notification__', null, null, null, null, true);
-
-        foreach ($dataObjects as $key => $dataObject) {
-            // DANGEROUS!!!
-            // Array key of a common element (created like myArray[] = new Element();)
-            // can though equal to the $dataObject->getId()!!!!!
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToEndDataObjects,
-                'setPhysicalConnectionEndToEnd', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionMiddleToEndDataObjects,
-                'setPhysicalConnectionEndToMiddle', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $physicalConnectionEndToMiddleDataObjects,
-                'setPhysicalConnectionMiddleToEnd', 'getId');
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $notificationDataObjects, 'setNotifications',
-                'getId');
-        }
-
-        return $dataObjects;
     }
 
 }
