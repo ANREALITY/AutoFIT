@@ -8,20 +8,6 @@ interface PhysicalConnectionMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return AbstractPhysicalConnection
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|AbstractPhysicalConnection[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param AbstractPhysicalConnection $dataObject
      * @return AbstractPhysicalConnection
      * @throws \Exception
