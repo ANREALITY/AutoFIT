@@ -8,20 +8,6 @@ interface NotificationMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return Notification
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|Notification[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param Notification $dataObject
      * @param boolean $updateIfIdSet
      * @return Notification

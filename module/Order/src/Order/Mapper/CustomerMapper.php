@@ -17,21 +17,6 @@ class CustomerMapper extends AbstractMapper implements CustomerMapperInterface
 
     /**
      *
-     * @var Customer
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|Customer[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param Customer $dataObject
      *
      * @return Customer

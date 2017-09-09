@@ -8,20 +8,6 @@ interface CustomerMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return Customer
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|Customer[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param Customer $dataObject
      * @return Customer
      * @throws \Exception

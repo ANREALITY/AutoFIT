@@ -20,21 +20,9 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
 
     /**
      *
-     * @var FileParameterSet
-     */
-    protected $prototype;
-
-    /**
-     *
      * @var FileParameterMapperInterface
      */
     protected $fileParameterMapper;
-
-    /**
-     *
-     * @var string
-     */
-    protected $type;
 
     /**
      *
@@ -43,40 +31,6 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
     public function setFileParameterMapper(FileParameterMapperInterface $fileParameterMapper)
     {
         $this->fileParameterMapper = $fileParameterMapper;
-    }
-
-    /**
-     *
-     * @return array|FileParameterSet[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
-     * @return FileParameterSet
-     */
-    public function findWithBuldledData($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_parameter_set');
-        $select->where([
-            'file_parameter_set.id = ?' => $id
-        ]);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
-            $data = $result->current();
-
-            return $return;
-        }
-
-        throw new \InvalidArgumentException("FileParameterSet with given ID:{$id} not found.");
     }
 
     /**
@@ -152,40 +106,6 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
         $return = (bool) $result->getAffectedRows();
 
         return $return;
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null, $identifier = null,
-        $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null, callable $dataObjectCondition = null,
-        bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier,
-            $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        // @todo It's a hack! Find a clean solution!
-        if ($prefix === 'endpoint_cd_zos_file_parameter_set__') {
-            $cdZosFileParameterDataObjects = $this->fileParameterMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_zos_file_parameter__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_ftgw_cd_zos_file_parameter_set__') {
-            $ftgwCdZosFileParameterDataObjects = $this->fileParameterMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_cd_zos_file_parameter__', null, null, null, null, true);
-        }
-
-        foreach ($dataObjects as $key => $dataObject) {
-            // DANGEROUS!!!
-            // Array key of a common element (created like myArray[] = new Element();)
-            // can though equal to the $dataObject->getId()!!!!!
-            if ($prefix === 'endpoint_cd_zos_file_parameter_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdZosFileParameterDataObjects,
-                    'setFileParameters', 'getId');
-            }
-            if ($prefix === 'endpoint_ftgw_cd_zos_file_parameter_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwCdZosFileParameterDataObjects,
-                    'setFileParameters', 'getId');
-            }
-        }
-
-        return $dataObjects;
     }
 
 }

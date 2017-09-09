@@ -19,65 +19,6 @@ class EndpointServerConfigMapper extends AbstractMapper implements EndpointServe
 
     /**
      *
-     * @var EndpointServerConfig
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @var ServerMapperInterface
-     */
-    protected $serverMapper;
-
-    /**
-     *
-     * @param ServerMapperInterface $serverMapper
-     */
-    public function setServerMapper(ServerMapperInterface $serverMapper)
-    {
-        $this->serverMapper = $serverMapper;
-    }
-
-    /**
-     *
-     * @return array|EndpointServerConfig[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('endpoint_server_config');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (array_key_exists('id', $condition)) {
-                    $select->where(
-                        [
-                            'id = ?' => $condition['id']
-                        ]);
-                }
-                if (array_key_exists('dns_address', $condition)) {
-                    $select->where(
-                        [
-                            'endpoint_server_config.dns_address LIKE ?' => '%' . $condition['dns_address'] . '%'
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-    }
-
-    /**
-     *
      * @param EndpointServerConfig $dataObject
      * @param boolean $updateIfIdSet
      *
@@ -117,23 +58,6 @@ class EndpointServerConfigMapper extends AbstractMapper implements EndpointServe
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        $serverDataObjects = $this->serverMapper->createDataObjects($resultSetArray, null, null,
-            'name', 'server__', 'id', 'endpoint_server_config__');
-    
-        foreach ($dataObjects as $key => $dataObject) {
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $serverDataObjects,
-                'setServer', 'getId');
-        }
-    
-        return $dataObjects;
     }
 
 }

@@ -18,21 +18,6 @@ class ProtocolMapper extends AbstractMapper implements ProtocolMapperInterface
 
     /**
      *
-     * @var Protocol
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|Protocol[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param Protocol $dataObject
      * @param boolean $updateIfIdSet
      *

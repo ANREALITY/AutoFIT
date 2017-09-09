@@ -8,20 +8,6 @@ interface ExternalServerMapperInterface
 
     /**
      *
-     * @param int|string $name
-     * @return ExternalServer
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($name);
-
-    /**
-     *
-     * @return array|ExternalServer[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param ExternalServer $dataObject
      * @return ExternalServer
      * @throws \Exception

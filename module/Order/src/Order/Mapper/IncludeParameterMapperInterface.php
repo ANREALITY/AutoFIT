@@ -8,20 +8,6 @@ interface IncludeParameterMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return IncludeParameter
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|IncludeParameter[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param IncludeParameter $dataObject
      * @param boolean $updateIfIdSet
      * @return IncludeParameter

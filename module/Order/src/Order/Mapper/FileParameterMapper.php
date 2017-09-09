@@ -19,45 +19,6 @@ class FileParameterMapper extends AbstractMapper implements FileParameterMapperI
 
     /**
      *
-     * @var FileParameter
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|FileParameter[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('file_parameter');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (! empty($condition['file_parameter_set_id'])) {
-                    $select->where(
-                        [
-                            'file_parameter_set_id = ?' => $condition['file_parameter_set_id']
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param FileParameter $dataObject
      * @param boolean $updateIfIdSet
      *

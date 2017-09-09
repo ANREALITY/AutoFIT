@@ -21,21 +21,9 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
 
     /**
      *
-     * @var ProtocolSet
-     */
-    protected $prototype;
-
-    /**
-     *
      * @var ProtocolMapperInterface
      */
     protected $protocolMapper;
-
-    /**
-     *
-     * @var string
-     */
-    protected $type;
 
     /**
      *
@@ -44,40 +32,6 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
     public function setProtocolMapper(ProtocolMapperInterface $protocolMapper)
     {
         $this->protocolMapper = $protocolMapper;
-    }
-
-    /**
-     *
-     * @return array|ProtocolSet[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
-     * @return ProtocolSet
-     */
-    public function findWithBuldledData($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('protocol_set');
-        $select->where([
-            'protocol_set.id = ?' => $id
-        ]);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
-            $data = $result->current();
-
-            return $return;
-        }
-
-        throw new \InvalidArgumentException("ProtocolSet with given ID:{$id} not found.");
     }
 
     /**
@@ -153,40 +107,6 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
         $return = (bool) $result->getAffectedRows();
 
         return $return;
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null, $identifier = null,
-        $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null, callable $dataObjectCondition = null,
-        bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier,
-            $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        // @todo It's a hack! Find a clean solution!
-        if ($prefix === 'endpoint_ftgw_self_service_protocol_set__') {
-            $ftgwSelfServiceProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_self_service_protocol__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_ftgw_protocol_server_protocol_set__') {
-            $ftgwProtocolServerProtocolDataObjects = $this->protocolMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_protocol_server_protocol__', null, null, null, null, true);
-        }
-
-        foreach ($dataObjects as $key => $dataObject) {
-            // DANGEROUS!!!
-            // Array key of a common element (created like myArray[] = new Element();)
-            // can though equal to the $dataObject->getId()!!!!!
-            if ($prefix === 'endpoint_ftgw_self_service_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwSelfServiceProtocolDataObjects,
-                    'setProtocols', 'getId');
-            }
-            if ($prefix === 'endpoint_ftgw_protocol_server_protocol_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwProtocolServerProtocolDataObjects,
-                    'setProtocols', 'getId');
-            }
-        }
-
-        return $dataObjects;
     }
 
 }

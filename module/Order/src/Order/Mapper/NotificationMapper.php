@@ -18,45 +18,6 @@ class NotificationMapper extends AbstractMapper implements NotificationMapperInt
 
     /**
      *
-     * @var Notification
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|Notification[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('notification');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (! empty($condition['logical_connection_id'])) {
-                    $select->where(
-                        [
-                            'logical_connection_id = ?' => $condition['logical_connection_id']
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param Notification $dataObject
      * @param boolean $updateIfIdSet
      *

@@ -18,45 +18,6 @@ class IncludeParameterMapper extends AbstractMapper implements IncludeParameterM
 
     /**
      *
-     * @var IncludeParameter
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|IncludeParameter[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('include_parameter');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (! empty($condition['include_parameter_set_id'])) {
-                    $select->where(
-                        [
-                            'include_parameter_set_id = ?' => $condition['include_parameter_set_id']
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param IncludeParameter $dataObject
      * @param boolean $updateIfIdSet
      *

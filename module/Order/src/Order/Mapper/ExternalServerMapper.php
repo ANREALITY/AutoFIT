@@ -18,44 +18,6 @@ class ExternalServerMapper extends AbstractMapper implements ExternalServerMappe
 
     /**
      *
-     * @var ExternalServer
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|ExternalServer[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('external_server');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (array_key_exists('id', $condition)) {
-                    $select->where(
-                        [
-                            'id = ?' => $condition['id']
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-    }
-
-    /**
-     *
      * @param ExternalServer $dataObject
      * @param boolean $updateIfIdSet
      *

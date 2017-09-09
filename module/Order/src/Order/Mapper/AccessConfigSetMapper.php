@@ -19,12 +19,6 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
 
     /**
      *
-     * @var AccessConfigSet
-     */
-    protected $prototype;
-
-    /**
-     *
      * @var AccessConfigMapperInterface
      */
     protected $accessConfigMapper;
@@ -42,40 +36,6 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
     public function setAccessConfigMapper(AccessConfigMapperInterface $accessConfigMapper)
     {
         $this->accessConfigMapper = $accessConfigMapper;
-    }
-
-    /**
-     *
-     * @return array|AccessConfigSet[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
-     * @return AccessConfigSet
-     */
-    public function findWithBuldledData($id)
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('access_config_set');
-        $select->where([
-            'access_config_set.id = ?' => $id
-        ]);
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-            $return = $this->hydrator->hydrate($result->current(), $this->getPrototype());
-            $data = $result->current();
-
-            return $return;
-        }
-
-        throw new \InvalidArgumentException("AccessConfigSet with given ID:{$id} not found.");
     }
 
     /**
@@ -151,40 +111,6 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
         $return = (bool) $result->getAffectedRows();
 
         return $return;
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null, $identifier = null,
-        $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null, callable $dataObjectCondition = null,
-        bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, null, null, $identifier, $prefix, $childIdentifier,
-            $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        // @todo It's a hack! Find a clean solution!
-        if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
-            $cdWindowsShareAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_cd_windows_share_access_config__', null, null, null, null, true);
-        }
-        if ($prefix === 'endpoint_ftgw_windows_share_access_config_set__') {
-            $ftgwWindowsShareAccessConfigDataObjects = $this->accessConfigMapper->createDataObjects($resultSetArray,
-                $identifier, $prefix, 'id', 'endpoint_ftgw_windows_share_access_config__', null, null, null, null, true);
-        }
-
-        foreach ($dataObjects as $key => $dataObject) {
-            // DANGEROUS!!!
-            // Array key of a common element (created like myArray[] = new Element();)
-            // can though equal to the $dataObject->getId()!!!!!
-            if ($prefix === 'endpoint_cd_windows_share_access_config_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdWindowsShareAccessConfigDataObjects,
-                    'setAccessConfigs', 'getId');
-            }
-            if ($prefix === 'endpoint_ftgw_windows_share_access_config_set__') {
-                $this->appendSubDataObject($dataObject, $dataObject->getId(), $ftgwWindowsShareAccessConfigDataObjects,
-                    'setAccessConfigs', 'getId');
-            }
-        }
-
-        return $dataObjects;
     }
 
 }

@@ -8,20 +8,6 @@ interface FileParameterMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return FileParameter
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|FileParameter[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param FileParameter $dataObject
      * @param boolean $updateIfIdSet
      * @return FileParameter

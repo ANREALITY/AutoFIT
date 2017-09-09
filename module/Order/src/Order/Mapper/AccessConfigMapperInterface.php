@@ -8,20 +8,6 @@ interface AccessConfigMapperInterface
 
     /**
      *
-     * @param int|string $id
-     * @return AccessConfig
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($id);
-
-    /**
-     *
-     * @return array|AccessConfig[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
      * @param AccessConfig $dataObject
      * @param boolean $updateIfIdSet
      * @return AccessConfig

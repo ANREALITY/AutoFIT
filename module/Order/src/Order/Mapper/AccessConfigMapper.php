@@ -18,45 +18,6 @@ class AccessConfigMapper extends AbstractMapper implements AccessConfigMapperInt
 
     /**
      *
-     * @var AccessConfig
-     */
-    protected $prototype;
-
-    /**
-     *
-     * @return array|AccessConfig[]
-     */
-    public function findAll(array $criteria = [])
-    {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('access_config');
-
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (! empty($condition['access_config_set_id'])) {
-                    $select->where(
-                        [
-                            'access_config_set_id = ?' => $condition['access_config_set_id']
-                        ]);
-                }
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
-            return $resultSet->initialize($result);
-        }
-
-        return [];
-
-        throw new \Exception('Method not implemented: ' . __METHOD__);
-    }
-
-    /**
-     *
      * @param AccessConfig $dataObject
      * @param boolean $updateIfIdSet
      *
