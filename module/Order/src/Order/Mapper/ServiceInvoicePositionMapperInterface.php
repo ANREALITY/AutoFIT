@@ -7,25 +7,8 @@ interface ServiceInvoicePositionMapperInterface
 {
 
     /**
-     *
-     * @param int|string $number
-     * @return ServiceInvoicePosition
-     * @throws \InvalidArgumentException
+     * @return ServiceInvoicePosition[]
      */
-    public function findOne($number);
-
-    /**
-     *
-     * @return array|ServiceInvoicePosition[]
-     */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
-     * @param ServiceInvoicePosition $dataObject
-     * @return ServiceInvoicePosition
-     * @throws \Exception
-     */
-    public function save(ServiceInvoicePosition $dataObject);
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
 }

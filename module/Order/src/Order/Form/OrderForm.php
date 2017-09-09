@@ -189,7 +189,7 @@ class OrderForm extends Form
                 $environmentSeverity,
                 $connectionType,
                 $articleType
-            )->toArray();
+            );
             $isValid = ! empty($validServiceInvoicePositions);
 
             if (! $isValid) {

@@ -28,7 +28,6 @@ class ServiceInvoicePositionMapperFactory implements FactoryInterface
             $entityManager
         );
 
-        $service->setServiceInvoiceMapper($container->get('Order\Mapper\ServiceInvoiceMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
         $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 

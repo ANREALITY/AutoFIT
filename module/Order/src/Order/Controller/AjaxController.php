@@ -148,7 +148,7 @@ class AjaxController extends AbstractActionController
                     $data['application_technical_short_name'],
                     $data['environment_severity'],
                     $data['connection_type']
-                )->toArray();
+                );
                 $dataList = array_column($dataList, 'number');
             } else {
                 $dataList = [];
@@ -171,7 +171,7 @@ class AjaxController extends AbstractActionController
                     $data['application_technical_short_name'],
                     $data['environment_severity'],
                     $data['connection_type']
-                )->toArray();
+                );
                 $dataList = array_column($dataList, 'number');
             } else {
                 $dataList = [];

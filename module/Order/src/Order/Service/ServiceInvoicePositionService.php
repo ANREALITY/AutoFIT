@@ -1,6 +1,7 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
 use Order\Mapper\ServiceInvoicePositionMapperInterface;
 use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\Article;
@@ -45,7 +46,10 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
                     'article_type' => Article::TYPE_BASIC
                 ]
-            ]);
+            ],
+            null,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**
@@ -68,7 +72,10 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
                     'article_type' => Article::TYPE_PERSONAL
                 ]
-            ]);
+            ],
+            null,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**
