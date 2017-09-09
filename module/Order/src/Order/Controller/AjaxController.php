@@ -62,8 +62,8 @@ class AjaxController extends AbstractActionController
         if ($request->isXmlHttpRequest()) {
             $data = $request->getQuery('data');
             if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
-                $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name'])->toArray();
-                $dataList = array_column($dataList, 'technical_short_name');
+                $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name']);
+                $dataList = array_column($dataList, 'technicalShortName');
             } else {
                 $dataList = [];
             }

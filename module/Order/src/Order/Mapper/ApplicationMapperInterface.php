@@ -8,24 +8,8 @@ interface ApplicationMapperInterface
 
     /**
      *
-     * @param int|string $technicalShortName
-     * @return Application
-     * @throws \InvalidArgumentException
-     */
-    public function findOne($technicalShortName);
-
-    /**
-     *
      * @return array|Application[]
      */
-    public function findAll(array $criteria = []);
-
-    /**
-     *
-     * @param Application $dataObject
-     * @return ServiceInvoicePosition
-     * @throws \Exception
-     */
-    public function save(Application $dataObject);
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
 }

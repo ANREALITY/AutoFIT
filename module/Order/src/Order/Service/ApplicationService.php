@@ -1,6 +1,8 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
+use Order\Mapper\AbstractMapper;
 use Order\Mapper\ApplicationMapperInterface;
 use DbSystel\DataObject\Application;
 
@@ -36,7 +38,10 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
                     'active' => true,
                     'with_invoice_positions_only' => false
                 ]
-            ]);
+            ],
+            AbstractMapper::DEFAULT_QUERY_LIMIT,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**
