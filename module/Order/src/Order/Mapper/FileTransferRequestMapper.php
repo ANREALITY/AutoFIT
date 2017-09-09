@@ -53,19 +53,19 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function findAllPaginated(array $criteria = [], $page = null)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
+        $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
                 if (array_key_exists('user_id', $condition)) {
                     $queryBuilder
-                        ->where('ftr.user = :userId')
+                        ->andWhere('ftr.user = :userId')
                         ->setParameter('userId', $condition['user_id'])
                     ;
                 }
                 if (array_key_exists('change_number', $condition)) {
                     $queryBuilder
-                        ->where('ftr.changeNumber LIKE :changeNumber')
+                        ->andWhere('ftr.changeNumber LIKE :changeNumber')
                         ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
                     ;
                 }
@@ -87,7 +87,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
     {
         $queryBuilder = $this->entityManager->createQueryBuilder();
-        $queryBuilder->select('ftr')->from(FileTransferRequest::class, 'ftr');
+        $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
