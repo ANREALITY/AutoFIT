@@ -1,6 +1,7 @@
 <?php
 namespace Order\Service;
 
+use Doctrine\ORM\Query;
 use Order\Mapper\ClusterMapperInterface;
 use DbSystel\DataObject\Cluster;
 
@@ -34,7 +35,10 @@ class ClusterService extends AbstractService implements ClusterServiceInterface
                 [
                     'virtual_node_name' => $virtualNodeName
                 ]
-            ]);
+            ],
+            null,
+            Query::HYDRATE_ARRAY
+        );
     }
 
     /**

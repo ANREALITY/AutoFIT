@@ -140,14 +140,14 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $expectedResultsList = [
             [
                 'id' => 1,
-                'virtual_node_name' => 'foo',
+                'virtualNodeName' => 'foo',
 //                'servers' => null, // empty ArrayCollection
 //                'endpoints' => null, // empty ArrayCollection
 //                'endpoint_cluster_configs' => null, // empty ArrayCollection
             ]
         ];
         $this->assertEquals($expectedResultsList[0]['id'], $actualResultsList[0]['id']);
-        $this->assertEquals($expectedResultsList[0]['virtual_node_name'], $actualResultsList[0]['virtual_node_name']);
+        $this->assertEquals($expectedResultsList[0]['virtualNodeName'], $actualResultsList[0]['virtualNodeName']);
     }
 
     public function testProvideServersNotInCdUse()

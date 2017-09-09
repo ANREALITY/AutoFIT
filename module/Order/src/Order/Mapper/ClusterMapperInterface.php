@@ -7,18 +7,9 @@ interface ClusterMapperInterface
 {
 
     /**
-     *
-     * @param int|string $name
-     * @return Cluster
-     * @throws \InvalidArgumentException
+     * @return Cluster[]
      */
-    public function findOne($name);
-
-    /**
-     *
-     * @return array|Cluster[]
-     */
-    public function findAll(array $criteria = []);
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
     /**
      *

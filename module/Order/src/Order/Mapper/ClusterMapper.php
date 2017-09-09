@@ -18,11 +18,8 @@ use DbSystel\DataObject\AbstractEndpoint;
 class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
 {
 
-    /**
-     *
-     * @var Cluster
-     */
-    protected $prototype;
+    /** @var string for the findOne(...) */
+    const ENTITY_TYPE = Cluster::class;
 
     /**
      *
@@ -40,41 +37,30 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
     }
 
     /**
-     *
-     * @return array|Cluster[]
+     * @inheritdoc
      */
-    public function findAll(array $criteria = [])
+    public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null)
     {
-        $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('cluster');
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('c')->from(static::ENTITY_TYPE, 'c');
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (array_key_exists('id', $condition)) {
-                    $select->where(
-                        [
-                            'id = ?' => $condition['id']
-                        ]);
-                }
                 if (array_key_exists('virtual_node_name', $condition)) {
-                    $select->where(
-                        [
-                            'cluster.virtual_node_name LIKE ?' => '%' . $condition['virtual_node_name'] . '%'
-                        ]);
+                    $queryBuilder
+                        ->andWhere('c.virtualNodeName LIKE :virtualNodeName')
+                        ->setParameter('virtualNodeName', '%' . $condition['virtual_node_name'] . '%')
+                    ;
                 }
             }
         }
 
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
+        $queryBuilder->setMaxResults($limit ?: null);
 
-        if ($result instanceof ResultInterface && $result->isQueryResult()) {
-            $resultSet = new HydratingResultSet($this->hydrator, $this->getPrototype());
+        $query = $queryBuilder->getQuery();
+        $result = $query->execute(null, $hydrationMode);
 
-            return $resultSet->initialize($result);
-        }
-
-        return [];
+        return $result;
     }
 
     /**
@@ -124,32 +110,6 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
             return $dataObject;
         }
         throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    public function createDataObjects(array $resultSetArray, $parentIdentifier = null, $parentPrefix = null,
-        $identifier = null, $prefix = null, $childIdentifier = null, $childPrefix = null, $prototype = null,
-        callable $dataObjectCondition = null, bool $isCollection = false)
-    {
-        $dataObjects = parent::createDataObjects($resultSetArray, $parentIdentifier, $parentPrefix, $identifier, $prefix, $childIdentifier, $childPrefix, $prototype, $dataObjectCondition, $isCollection);
-
-        $cdLinuxUnixServerDataObjects = $this->serverMapper->createDataObjects($resultSetArray,
-            'id', 'cd_linux_unix_cluster__', 'name', 'cd_linux_unix_server__', null, null, null,
-            function (array $row) {
-                $typeIsOk = array_key_exists('endpoint' . '__' . 'type', $row) && $row['endpoint' . '__' . 'type'] === AbstractEndpoint::TYPE_CD_LINUX_UNIX;
-                $serverExists = array_key_exists('cd_linux_unix_server' . '__' . 'name', $row) && !empty($row['cd_linux_unix_server' . '__' . 'name']);
-                return $typeIsOk && $serverExists;
-            }, true);
-    
-        foreach ($dataObjects as $key => $dataObject) {
-            $this->appendSubDataObject($dataObject, $dataObject->getId(), $cdLinuxUnixServerDataObjects,
-                'setServers', 'getId');
-        }
-
-        if (!empty($cdLinuxUnixServerDataObjects)) {
-            $breakboint = null;
-        }
-
-        return $dataObjects;
     }
 
 }

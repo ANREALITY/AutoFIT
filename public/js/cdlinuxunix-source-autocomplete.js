@@ -15,7 +15,7 @@ $(function() {
 					function(data) {
 						response($.map(data, function(item) {
 							return {
-								label : item.virtual_node_name,
+								label : item.virtualNodeName,
 								value : item.id
 							}
 						}));
