@@ -301,7 +301,6 @@ return [
             'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier' => 'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier',
             // utilities
             'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
-            'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\TableDataProcessor',
             'DbSystel\DataExport\DataExporter' => 'DbSystel\DataExport\DataExporter'
         ],
         'abstract_factories' => [

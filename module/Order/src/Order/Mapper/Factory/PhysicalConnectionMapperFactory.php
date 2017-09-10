@@ -28,7 +28,6 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
         );
 
         $service->setEndpointMapper($container->get('Order\Mapper\EndpointMapper'));
-        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

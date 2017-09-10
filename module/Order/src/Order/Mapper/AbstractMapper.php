@@ -1,13 +1,12 @@
 <?php
 namespace Order\Mapper;
 
-use Doctrine\ORM\EntityManager;
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
-use DbSystel\Utility\TableDataProcessor;
+use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use ReflectionClass;
+use Zend\Db\Adapter\AdapterInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class AbstractMapper
 {
@@ -41,11 +40,6 @@ class AbstractMapper
      * @var integer
      */
     protected $itemCountPerPage;
-
-    /**
-     * @var TableDataProcessor
-     */
-    protected $tableDataProcessor;
 
     /**
      * @var EntityManager
@@ -122,22 +116,6 @@ class AbstractMapper
     public function setPrototype(AbstractDataObject $prototype)
     {
         $this->prototype = $prototype;
-    }
-
-    /**
-     * @return TableDataProcessor $tableDataProcessor
-     */
-    public function getTableDataProcessor()
-    {
-        return $this->tableDataProcessor;
-    }
-
-    /**
-     * @param TableDataProcessor $tableDataProcessor
-     */
-    public function setTableDataProcessor(TableDataProcessor $tableDataProcessor)
-    {
-        $this->tableDataProcessor = $tableDataProcessor;
     }
 
     /**

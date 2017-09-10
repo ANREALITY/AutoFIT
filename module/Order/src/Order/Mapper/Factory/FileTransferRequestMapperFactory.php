@@ -38,8 +38,6 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $service->setLogicalConnectionMapper($container->get('Order\Mapper\LogicalConnectionMapper'));
         $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
 
-        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-
         return $service;
     }
 

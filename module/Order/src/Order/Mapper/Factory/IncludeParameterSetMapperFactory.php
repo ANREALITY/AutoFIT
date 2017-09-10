@@ -29,7 +29,6 @@ class IncludeParameterSetMapperFactory implements FactoryInterface
         );
 
         $service->setIncludeParameterMapper($container->get('Order\Mapper\IncludeParameterMapper'));
-        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
 
         return $service;
     }

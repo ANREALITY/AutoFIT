@@ -68,8 +68,6 @@ class AbstractMapperFactory implements AbstractFactoryInterface
             $entityManager
         );
 
-        $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-
         return $service;
     }
 
