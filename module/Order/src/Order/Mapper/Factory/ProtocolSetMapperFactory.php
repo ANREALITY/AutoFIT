@@ -30,7 +30,6 @@ class ProtocolSetMapperFactory implements FactoryInterface
 
         $service->setProtocolMapper($container->get('Order\Mapper\ProtocolMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

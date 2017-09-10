@@ -37,7 +37,6 @@ class EndpointMapperFactory implements FactoryInterface
         $service->setProtocolMapper($container->get('Order\Mapper\ProtocolMapper'));
         $service->setEndpointClusterConfigMapper($container->get('Order\Mapper\EndpointClusterConfigMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

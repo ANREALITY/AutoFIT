@@ -31,7 +31,6 @@ class LogicalConnectionMapperFactory implements FactoryInterface
         $service->setPhysicalConnectionMapper($container->get('Order\Mapper\PhysicalConnectionMapper'));
         $service->setNotificationMapper($container->get('Order\Mapper\NotificationMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

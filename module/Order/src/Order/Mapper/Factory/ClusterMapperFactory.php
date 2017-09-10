@@ -30,7 +30,6 @@ class ClusterMapperFactory implements FactoryInterface
 
         $service->setServerMapper($container->get('Order\Mapper\ServerMapper'));
         $service->setTableDataProcessor($container->get('DbSystel\Utility\TableDataProcessor'));
-        $service->setStringUtility($container->get('DbSystel\Utility\StringUtility'));
 
         return $service;
     }

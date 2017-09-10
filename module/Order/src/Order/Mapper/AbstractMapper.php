@@ -6,7 +6,6 @@ use Zend\Db\Adapter\AdapterInterface;
 use Zend\Hydrator\HydratorInterface;
 use DbSystel\DataObject\AbstractDataObject;
 use DbSystel\Utility\TableDataProcessor;
-use DbSystel\Utility\StringUtility;
 use InvalidArgumentException;
 use ReflectionClass;
 
@@ -47,11 +46,6 @@ class AbstractMapper
      * @var TableDataProcessor
      */
     protected $tableDataProcessor;
-
-    /**
-     * @var StringUtility
-     */
-    protected $stringUtility;
 
     /**
      * @var EntityManager
@@ -144,14 +138,6 @@ class AbstractMapper
     public function setTableDataProcessor(TableDataProcessor $tableDataProcessor)
     {
         $this->tableDataProcessor = $tableDataProcessor;
-    }
-
-    /**
-     * @param StringUtility $stringUtility
-     */
-    public function setStringUtility(StringUtility $stringUtility)
-    {
-        $this->stringUtility = $stringUtility;
     }
 
     /**

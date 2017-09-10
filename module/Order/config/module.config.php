@@ -300,7 +300,6 @@ return [
             // database request modifiers
             'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier' => 'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier',
             // utilities
-            'DbSystel\Utility\StringUtility' => 'DbSystel\Utility\StringUtility',
             'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
             'DbSystel\Utility\TableDataProcessor' => 'DbSystel\Utility\TableDataProcessor',
             'DbSystel\DataExport\DataExporter' => 'DbSystel\DataExport\DataExporter'
