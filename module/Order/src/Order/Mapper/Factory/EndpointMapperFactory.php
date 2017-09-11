@@ -23,7 +23,6 @@ class EndpointMapperFactory implements FactoryInterface
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
-            null,
             $entityManager
         );
 

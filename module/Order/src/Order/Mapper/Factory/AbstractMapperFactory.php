@@ -55,15 +55,11 @@ class AbstractMapperFactory implements AbstractFactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $mapperClassName = str_replace(self::NAMESPACE_MAPPER . '\\', '', $requestedName);
-        $prototypeClassName = str_replace(self::NAME_PART_MAPPER, '', $mapperClassName);
-        $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new $requestedName(
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new $prototypeQualifiedClassName(),
             null,
             $entityManager
         );

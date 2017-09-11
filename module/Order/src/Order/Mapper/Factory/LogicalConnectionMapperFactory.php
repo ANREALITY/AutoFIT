@@ -23,7 +23,6 @@ class LogicalConnectionMapperFactory implements FactoryInterface
         $service = new LogicalConnectionMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new LogicalConnection(),
             null,
             $entityManager
         );

@@ -30,7 +30,6 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $service = new FileTransferRequestMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
             $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
-            new FileTransferRequest(),
             $itemCountPerPage,
             $entityManager
         );
