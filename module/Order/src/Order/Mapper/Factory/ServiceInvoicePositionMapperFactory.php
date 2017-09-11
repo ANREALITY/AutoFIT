@@ -22,7 +22,6 @@ class ServiceInvoicePositionMapperFactory implements FactoryInterface
 
         $service = new ServiceInvoicePositionMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
             $entityManager
         );

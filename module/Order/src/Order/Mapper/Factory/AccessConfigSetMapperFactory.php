@@ -22,7 +22,6 @@ class AccessConfigSetMapperFactory implements FactoryInterface
 
         $service = new AccessConfigSetMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
             $entityManager
         );

@@ -25,12 +25,6 @@ class AbstractMapper
     protected $dbAdapter;
 
     /**
-     *
-     * @var HydratorInterface
-     */
-    protected $hydrator;
-
-    /**
      * @var integer
      */
     protected $itemCountPerPage;
@@ -42,14 +36,10 @@ class AbstractMapper
 
     public function __construct(
         AdapterInterface $dbAdapter,
-        HydratorInterface $hydrator = null,
         int $itemCountPerPage = null,
         EntityManager $entityManager
     ) {
         $this->setDbAdapter($dbAdapter);
-        if ($hydrator && $hydrator instanceof HydratorInterface) {
-            $this->setHydrator($hydrator);
-        }
         $this->itemCountPerPage = $itemCountPerPage ?: self::DEFAULT_ITEM_COUNT_PER_PAGE;
         $this->entityManager = $entityManager;
     }
@@ -70,24 +60,6 @@ class AbstractMapper
     public function setDbAdapter(AdapterInterface $dbAdapter)
     {
         $this->dbAdapter = $dbAdapter;
-    }
-
-    /**
-     *
-     * @return HydratorInterface $hydrator
-     */
-    public function getHydrator()
-    {
-        return $this->hydrator;
-    }
-
-    /**
-     *
-     * @param HydratorInterface $hydrator
-     */
-    public function setHydrator(HydratorInterface $hydrator)
-    {
-        $this->hydrator = $hydrator;
     }
 
     /**

@@ -22,7 +22,6 @@ class EndpointServerConfigMapperFactory implements FactoryInterface
 
         $service = new EndpointServerConfigMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
             $entityManager
         );

@@ -21,7 +21,6 @@ class PhysicalConnectionMapperFactory implements FactoryInterface
 
         $service = new PhysicalConnectionMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
             $entityManager
         );

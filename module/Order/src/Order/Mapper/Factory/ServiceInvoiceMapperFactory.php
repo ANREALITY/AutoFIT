@@ -22,7 +22,6 @@ class ServiceInvoiceMapperFactory implements FactoryInterface
 
         $service = new ServiceInvoiceMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $container->get('HydratorManager')->get('Zend\Hydrator\ClassMethods'),
             null,
             $entityManager
         );

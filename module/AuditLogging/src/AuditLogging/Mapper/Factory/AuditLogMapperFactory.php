@@ -26,7 +26,6 @@ class AuditLogMapperFactory implements FactoryInterface
 
         $service = new AuditLogMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $itemCountPerPage,
             $entityManager
         );
