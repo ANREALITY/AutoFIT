@@ -22,7 +22,6 @@ class ClusterMapperFactory implements FactoryInterface
 
         $service = new ClusterMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

@@ -22,7 +22,6 @@ class ProtocolSetMapperFactory implements FactoryInterface
 
         $service = new ProtocolSetMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

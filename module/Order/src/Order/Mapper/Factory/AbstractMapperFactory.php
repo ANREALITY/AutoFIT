@@ -59,7 +59,6 @@ class AbstractMapperFactory implements AbstractFactoryInterface
 
         $service = new $requestedName(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

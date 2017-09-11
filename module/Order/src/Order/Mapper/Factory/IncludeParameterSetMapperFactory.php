@@ -22,7 +22,6 @@ class IncludeParameterSetMapperFactory implements FactoryInterface
 
         $service = new IncludeParameterSetMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

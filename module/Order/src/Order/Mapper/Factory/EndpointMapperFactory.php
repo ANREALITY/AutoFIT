@@ -21,7 +21,6 @@ class EndpointMapperFactory implements FactoryInterface
 
         $service = new EndpointMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

@@ -22,7 +22,6 @@ class LogicalConnectionMapperFactory implements FactoryInterface
 
         $service = new LogicalConnectionMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            null,
             $entityManager
         );
 

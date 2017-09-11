@@ -29,10 +29,10 @@ class FileTransferRequestMapperFactory implements FactoryInterface
 
         $service = new FileTransferRequestMapper(
             $container->get('Zend\Db\Adapter\Adapter'),
-            $itemCountPerPage,
             $entityManager
         );
 
+        $service->setItemCountPerPage($itemCountPerPage);
         $service->setLogicalConnectionMapper($container->get('Order\Mapper\LogicalConnectionMapper'));
         $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
 

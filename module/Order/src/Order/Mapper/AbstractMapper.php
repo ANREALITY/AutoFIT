@@ -36,11 +36,9 @@ class AbstractMapper
 
     public function __construct(
         AdapterInterface $dbAdapter,
-        int $itemCountPerPage = null,
         EntityManager $entityManager
     ) {
         $this->setDbAdapter($dbAdapter);
-        $this->itemCountPerPage = $itemCountPerPage ?: self::DEFAULT_ITEM_COUNT_PER_PAGE;
         $this->entityManager = $entityManager;
     }
 
@@ -60,6 +58,14 @@ class AbstractMapper
     public function setDbAdapter(AdapterInterface $dbAdapter)
     {
         $this->dbAdapter = $dbAdapter;
+    }
+
+    /**
+     * @param int $itemCountPerPage
+     */
+    public function setItemCountPerPage(int $itemCountPerPage)
+    {
+        $this->itemCountPerPage = $itemCountPerPage;
     }
 
     /**
