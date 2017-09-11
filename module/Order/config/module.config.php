@@ -323,7 +323,12 @@ return [
             'Order\Form\Fieldset\LogicalConnectionFtgw' => 'Order\Form\Fieldset\Factory\LogicalConnectionFieldsetFactory',
             'Order\Form\Fieldset\ServerCommon' => 'Order\Form\Fieldset\Factory\ServerCommonFieldsetFactory',
             'Order\Form\Fieldset\ServerListItem' => 'Order\Form\Fieldset\Factory\ServerListItemFieldsetFactory',
-            'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory'
+            'Order\Form\Fieldset\User' => 'Order\Form\Fieldset\Factory\UserFieldsetFactory',
+
+            'Order\Form\Fieldset\ProtocolSetForProtocolServerSource' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
+            'Order\Form\Fieldset\ProtocolSetForProtocolServerTarget' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
+            'Order\Form\Fieldset\ProtocolSetForSelfService' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
+
         ],
         'abstract_factories' => [
             // fieldsets
@@ -414,8 +419,7 @@ return [
     ],
     'hydrators' => [
         'factories' => [
-            'DbSystel\Hydrator\ProtocolSetForSelfServiceHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
-            'DbSystel\Hydrator\ProtocolSetForProtocolServerHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
+            'DbSystel\Hydrator\ProtocolSetHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
             'DbSystel\Hydrator\ProtocolHydrator' => 'DbSystel\Hydrator\Factory\ProtocolHydratorFactory'
         ]
     ]

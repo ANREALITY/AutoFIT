@@ -23,9 +23,9 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         'EndpointServerConfig',
         'FileParameter',
         'FileParameterSet',
-        'ProtocolSetForSelfService',
-        'ProtocolSetForProtocolServerSource',
-        'ProtocolSetForProtocolServerTarget',
+//        'ProtocolSetForSelfService',
+//        'ProtocolSetForProtocolServerSource',
+//        'ProtocolSetForProtocolServerTarget',
     ];
 
     /**
@@ -85,6 +85,14 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $classNameRoot = str_ireplace([self::NAMESPACE_FIELDSET . '\\', 'Source', 'Target'], '', $requestedName);
         $prototypeClassName = $classNameRoot;
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
+
+        if (
+            strpos($prototypeClassName, 'ProtocolSetForProtocolServer') !== false
+            || strpos($prototypeClassName, 'ProtocolSetForSelfService') !== false
+        ) {
+            $prototypeClassName = 'ProtocolSet';
+        }
+
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
         $service = new $fieldsetQualifiedClassName();
