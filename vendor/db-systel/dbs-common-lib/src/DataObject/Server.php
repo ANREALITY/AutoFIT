@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *         @ORM\Index(name="fk_server_cluster_idx", columns={"cluster_id"})
  *     }
  * )
- * @ORM\Entity(readOnly=true)
+ * @ORM\Entity(readOnly=false)
  */
 class Server extends AbstractDataObject
 {
