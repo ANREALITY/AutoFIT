@@ -130,12 +130,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         // creating sub-objects
         // $newFoo = $this->fooMapper->save($dataObject->getFoo());
         $newLogicalConnection = $this->logicalConnectionMapper->save($dataObject->getLogicalConnection());
-        $dataObject->setLogicalConnection($newLogicalConnection);
         $newUser = $this->userMapper->save($dataObject->getUser());
-        $dataObject->setUser($newUser);
         // data from the recently persisted objects
         $data['logical_connection_id'] = $newLogicalConnection->getId();
         $data['user_id'] = $newUser->getId();
+
+        $dataObject->setLogicalConnection($newLogicalConnection);
+        $dataObject->setUser($newUser);
 
         if (! $data['id']) {
             $action = new Insert('file_transfer_request');
