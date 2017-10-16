@@ -135,6 +135,8 @@ class ProcessController extends AbstractActionController
             if ($this->orderForm->isValid()) {
                 $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
+                $role = $this->IdentityParam('role');
+                $this->fileTransferRequest->getUser()->setRole($role);
                 if(isset($request->getPost()->toArray()['submit'])) {
                     $status = FileTransferRequest::STATUS_PENDING;
                     $successAction = 'submitted';
@@ -201,6 +203,8 @@ class ProcessController extends AbstractActionController
             if ($this->orderForm->isValid()) {
                 $username = $this->IdentityParam('username');
                 $this->fileTransferRequest->getUser()->setUsername($username);
+                $role = $this->IdentityParam('role');
+                $this->fileTransferRequest->getUser()->setRole($role);
                 if(isset($request->getPost()->toArray()['submit'])) {
                     $status = FileTransferRequest::STATUS_PENDING;
                     $successAction = 'submitted';
