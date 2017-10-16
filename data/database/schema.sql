@@ -309,7 +309,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` ENUM('member', 'admin', 'guest') NOT NULL DEFAULT 'member',
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`))
   ENGINE = InnoDB;
 
 
