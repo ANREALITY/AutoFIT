@@ -71,9 +71,9 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         // none
 
         $currentUser = $this->findOneByUsername($data['username']);
-        $this->entityManager->refresh($currentUser);
 
         if ($currentUser instanceof User) {
+            $this->entityManager->refresh($currentUser);
             $dataObject = $currentUser;
             $action = new Update('user');
             $action->set($data);
