@@ -138,7 +138,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var Customer
      *
-     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\ManyToOne(targetEntity="Customer", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      * })
@@ -150,7 +150,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var EndpointServerConfig
      *
-     * @ORM\OneToOne(targetEntity="EndpointServerConfig", inversedBy="endpoint")
+     * @ORM\OneToOne(targetEntity="EndpointServerConfig", inversedBy="endpoint", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endpoint_server_config_id", referencedColumnName="id")
      * })
@@ -162,7 +162,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var ExternalServer
      *
-     * @ORM\ManyToOne(targetEntity="ExternalServer")
+     * @ORM\ManyToOne(targetEntity="ExternalServer", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="external_server_id", referencedColumnName="id")
      * })

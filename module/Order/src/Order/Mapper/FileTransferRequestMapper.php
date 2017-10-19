@@ -1,7 +1,12 @@
 <?php
 namespace Order\Mapper;
 
+use DbSystel\DataObject\Application;
+use DbSystel\DataObject\Customer;
+use DbSystel\DataObject\EndpointServerConfig;
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\Server;
 use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
@@ -113,6 +118,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     public function save(FileTransferRequest $dataObject)
     {
         $this->persistOrder($dataObject);
+        $this->persistEndpoints($dataObject);
 
         $this->entityManager->persist($dataObject);
         $this->entityManager->flush();
@@ -140,6 +146,37 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         } else {
             $this->entityManager->persist($dataObject->getUser());
         }
+    }
+
+    private function persistEndpoints(FileTransferRequest $dataObject)
+    {
+        $connectionType = $dataObject->getLogicalConnection()->getType();
+        if ($connectionType == LogicalConnection::TYPE_CD) {
+            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointSource();
+            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
+        } else {
+            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
+            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
+        }
+
+        $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
+            $endpointSource->getApplication()->getTechnicalShortName()
+        );
+        $endpointSource->setApplication($endpointSourceApplication);
+        $endpointTargetApplication = $this->entityManager->getRepository(Application::class)->find(
+            $endpointTarget->getApplication()->getTechnicalShortName()
+        );
+        $endpointTarget->setApplication($endpointTargetApplication);
+
+        $endpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
+            $endpointSource->getEndpointServerConfig()->getServer()->getName()
+        );
+        $endpointSource->getEndpointServerConfig()->setServer($endpointSourceServer);
+
+        $endpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
+            $endpointTarget->getEndpointServerConfig()->getServer()->getName()
+        );
+        $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
     }
 
     /**

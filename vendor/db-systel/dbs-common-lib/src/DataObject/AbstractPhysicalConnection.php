@@ -101,7 +101,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AbstractEndpoint", mappedBy="physicalConnection")
+     * @ORM\OneToMany(targetEntity="AbstractEndpoint", mappedBy="physicalConnection", cascade={"persist"})
      */
     protected $endpoints;
 
@@ -270,6 +270,13 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointSource($endpointSource)
     {
         $this->endpointSource = $endpointSource;
+        /** @var AbstractEndpoint $endpoint */
+        foreach ($this->endpoints as $endpoint) {
+            if (strtolower($endpoint->getRole()) == strtolower(AbstractEndpoint::ROLE_SOURCE)) {
+                $this->removeEndpoint($endpoint);
+            }
+        }
+        $this->addEndpoint($endpointSource);
         return $this;
     }
 
@@ -294,6 +301,13 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function setEndpointTarget($endpointTarget)
     {
         $this->endpointTarget = $endpointTarget;
+        /** @var AbstractEndpoint $endpoint */
+        foreach ($this->endpoints as $endpoint) {
+            if (strtolower($endpoint->getRole()) == strtolower(AbstractEndpoint::ROLE_TARGET)) {
+                $this->removeEndpoint($endpoint);
+            }
+        }
+        $this->addEndpoint($endpointTarget);
         return $this;
     }
 
@@ -314,9 +328,13 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      * @param AbstractEndpoint[] $endpoints
      * @return AbstractPhysicalConnection
      */
-    public function setEndpoints(array $endpoints)
+    public function setEndpoints($endpoints)
     {
-        $this->endpoints = $endpoints;
+        $this->endpoints = new ArrayCollection([]);
+        /** @var AbstractEndpoint $endpoint */
+        foreach ($endpoints as $endpoint) {
+            $this->addEndpoint($endpoint);
+        }
         return $this;
     }
 
@@ -335,6 +353,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     public function addEndpoint(AbstractEndpoint $endpoint)
     {
         $this->endpoints->add($endpoint);
+        $endpoint->setPhysicalConnection($this);
         return $this;
     }
 
