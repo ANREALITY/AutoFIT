@@ -95,7 +95,7 @@ class FileTransferRequest extends AbstractDataObject
     /**
      * @var LogicalConnection
      *
-     * @ORM\ManyToOne(targetEntity="LogicalConnection")
+     * @ORM\ManyToOne(targetEntity="LogicalConnection", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="logical_connection_id", referencedColumnName="id")
      * })

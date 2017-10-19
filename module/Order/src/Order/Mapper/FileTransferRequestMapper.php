@@ -2,8 +2,10 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\FileTransferRequest;
+use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
-use Doctrine\ORM\Query;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Zend\Db\Adapter\Driver\ResultInterface;
@@ -108,6 +110,44 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         return $result;
     }
 
+    public function save(FileTransferRequest $dataObject)
+    {
+        $this->persistOrder($dataObject);
+
+        $this->entityManager->persist($dataObject);
+        $this->entityManager->flush();
+
+        return $dataObject;
+    }
+
+    private function persistOrder(FileTransferRequest $dataObject)
+    {
+        // saving service invoice positions
+        $serviceInvoicePositionBasic = $this->entityManager->getRepository(ServiceInvoicePosition::class)->find(
+            $dataObject->getServiceInvoicePositionBasic()->getNumber()
+        );
+        $serviceInvoicePositionPersonal = $this->entityManager->getRepository(ServiceInvoicePosition::class)->find(
+            $dataObject->getServiceInvoicePositionPersonal()->getNumber()
+        );
+        $dataObject->setServiceInvoicePositionBasic($serviceInvoicePositionBasic);
+        $dataObject->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal);
+        // saving user
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(
+            ['username' => $dataObject->getUser()->getUsername()]
+        );
+        if ($user) {
+            $dataObject->setUser($user);
+        } else {
+            $this->entityManager->persist($dataObject->getUser());
+        }
+        // saving logical connection
+        // temporar elimination of notifications
+        $dataObject->getLogicalConnection()->setNotifications(new ArrayCollection([]));
+        // todo persist the physical connection(-s)
+        // todo add notifications to the logical connection
+//        $notifications = $dataObject->getLogicalConnection()->getNotifications();
+    }
+
     /**
      *
      * @param FileTransferRequest $dataObject
@@ -115,7 +155,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
      * @return FileTransferRequest
      * @throws \Exception
      */
-    public function save(FileTransferRequest $dataObject)
+    public function saveDataObject(FileTransferRequest $dataObject)
     {
         $data = [];
         // data retrieved directly from the input

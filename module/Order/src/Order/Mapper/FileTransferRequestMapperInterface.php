@@ -36,6 +36,12 @@ interface FileTransferRequestMapperInterface
      * @return FileTransferRequest
      * @throws \Exception
      */
+    public function saveDataObject(FileTransferRequest $dataObject);
+
+    /**
+     * @param FileTransferRequest $dataObject
+     * @return FileTransferRequest
+     */
     public function save(FileTransferRequest $dataObject);
 
 }

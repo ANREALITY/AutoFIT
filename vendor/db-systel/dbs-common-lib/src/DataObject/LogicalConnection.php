@@ -82,7 +82,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection")
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection", cascade={"persist"})
      *
      * @Groups({"export"})
      */
