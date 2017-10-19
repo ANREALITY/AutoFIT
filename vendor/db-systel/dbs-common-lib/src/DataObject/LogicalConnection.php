@@ -268,9 +268,13 @@ class LogicalConnection extends AbstractDataObject
      * @param AbstractPhysicalConnection[] $physicalConnections
      * @return LogicalConnection
      */
-    public function setPhysicalConnections(array $physicalConnections)
+    public function setPhysicalConnections($physicalConnections)
     {
-        $this->physicalConnections = $physicalConnections;
+        $this->physicalConnections = new ArrayCollection([]);
+        /** @var AbstractPhysicalConnection $physicalConnection */
+        foreach ($physicalConnections as $physicalConnection) {
+            $this->addPhysicalConnection($physicalConnection);
+        }
         return $this;
     }
 
