@@ -75,7 +75,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AbstractPhysicalConnection", mappedBy="logicalConnection")
+     * @ORM\OneToMany(targetEntity="AbstractPhysicalConnection", mappedBy="logicalConnection", cascade={"persist"})
      */
     protected $physicalConnections;
 
@@ -182,7 +182,12 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionEndToEnd($physicalConnectionEndToEnd)
     {
         $this->physicalConnectionEndToEnd = $physicalConnectionEndToEnd;
-
+        foreach ($this->physicalConnections as $physicalConnection) {
+            if ($physicalConnection instanceof PhysicalConnectionCdEndToEnd) {
+                $this->removePhysicalConnection($physicalConnection);
+            }
+        }
+        $this->addPhysicalConnection($physicalConnectionEndToEnd);
         return $this;
     }
 
@@ -207,7 +212,12 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionEndToMiddle($physicalConnectionEndToMiddle)
     {
         $this->physicalConnectionEndToMiddle = $physicalConnectionEndToMiddle;
-
+        foreach ($this->physicalConnections as $physicalConnection) {
+            if ($physicalConnection instanceof PhysicalConnectionFtgwEndToMiddle) {
+                $this->removePhysicalConnection($physicalConnection);
+            }
+        }
+        $this->addPhysicalConnection($physicalConnectionEndToMiddle);
         return $this;
     }
 
@@ -232,6 +242,12 @@ class LogicalConnection extends AbstractDataObject
     public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
     {
         $this->physicalConnectionMiddleToEnd = $physicalConnectionMiddleToEnd;
+        foreach ($this->physicalConnections as $physicalConnection) {
+            if ($physicalConnection instanceof PhysicalConnectionFtgwMiddleToEnd) {
+                $this->removePhysicalConnection($physicalConnection);
+            }
+        }
+        $this->addPhysicalConnection($physicalConnectionMiddleToEnd);
         return $this;
     }
 
@@ -273,6 +289,7 @@ class LogicalConnection extends AbstractDataObject
     public function addPhysicalConnection(AbstractPhysicalConnection $physicalConnection)
     {
         $this->physicalConnections->add($physicalConnection);
+        $physicalConnection->setLogicalConnection($this);
         return $this;
     }
 

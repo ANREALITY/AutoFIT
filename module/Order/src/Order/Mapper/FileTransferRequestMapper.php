@@ -140,8 +140,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         } else {
             $this->entityManager->persist($dataObject->getUser());
         }
-        // saving logical connection
-        // todo persist the physical connection(-s)
     }
 
     /**
