@@ -293,7 +293,11 @@ class LogicalConnection extends AbstractDataObject
      */
     public function setNotifications($notifications)
     {
-        $this->notifications = $notifications;
+        $this->notifications = new ArrayCollection([]);
+        /** @var Notification $notification */
+        foreach ($notifications as $notification) {
+            $this->addNotification($notification);
+        }
         return $this;
     }
 
@@ -312,6 +316,7 @@ class LogicalConnection extends AbstractDataObject
     public function addNotification(Notification $notification)
     {
         $this->notifications->add($notification);
+        $notification->setLogicalConnection($this);
         return $this;
     }
 
