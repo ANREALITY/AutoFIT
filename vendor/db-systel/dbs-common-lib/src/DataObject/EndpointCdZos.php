@@ -30,7 +30,7 @@ class EndpointCdZos extends AbstractEndpoint
     /**
      * @var FileParameterSet
      *
-     * @ORM\OneToOne(targetEntity="FileParameterSet")
+     * @ORM\OneToOne(targetEntity="FileParameterSet", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="file_parameter_set_id", referencedColumnName="id")
      * })

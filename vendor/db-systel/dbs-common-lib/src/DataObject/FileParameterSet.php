@@ -31,7 +31,7 @@ class FileParameterSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="FileParameter", mappedBy="fileParameterSet", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FileParameter", mappedBy="fileParameterSet", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"export"})
      */
