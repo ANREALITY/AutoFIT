@@ -82,7 +82,7 @@ class LogicalConnection extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="logicalConnection", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"export"})
      */
@@ -314,6 +314,7 @@ class LogicalConnection extends AbstractDataObject
      */
     public function setNotifications($notifications)
     {
+        $this->removeNotificationsNotInList($notifications);
         $this->notifications = new ArrayCollection([]);
         /** @var Notification $notification */
         foreach ($notifications as $notification) {
@@ -348,6 +349,7 @@ class LogicalConnection extends AbstractDataObject
     public function removeNotification(Notification $notification)
     {
         $this->notifications->removeElement($notification);
+        $notification->setLogicalConnection(null);
         return $this;
     }
 
@@ -369,6 +371,22 @@ class LogicalConnection extends AbstractDataObject
             }
         }
         return $return;
+    }
+
+    /**
+     * @param $notifications
+     * @return void
+     */
+    private function removeNotificationsNotInList($notifications)
+    {
+        if (is_array($notifications)) {
+            $notifications = new ArrayCollection($notifications);
+        }
+        foreach ($this->getNotifications() as $notification) {
+            if ($notifications->indexOf($notification) === false) {
+                $this->removeNotification($notification);
+            }
+        }
     }
 
 }
