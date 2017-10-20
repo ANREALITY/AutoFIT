@@ -31,7 +31,7 @@ class IncludeParameterSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="IncludeParameter", mappedBy="includeParameterSet")
+     * @ORM\OneToMany(targetEntity="IncludeParameter", mappedBy="includeParameterSet", orphanRemoval=true)
      *
      * @Groups({"export"})
      */
@@ -89,8 +89,12 @@ class IncludeParameterSet extends AbstractDataObject
      */
     public function setIncludeParameters($includeParameters)
     {
-        $this->includeParameters = $includeParameters;
-
+        $this->removeIncludeParametersNotInList($includeParameters);
+        $this->includeParameters = new ArrayCollection([]);
+        /** @var IncludeParameter $includeParameter */
+        foreach ($includeParameters as $includeParameter) {
+            $this->addIncludeParameter($includeParameter);
+        }
         return $this;
     }
 
@@ -119,7 +123,24 @@ class IncludeParameterSet extends AbstractDataObject
     public function removeIncludeParameter(IncludeParameter $includeParameter)
     {
         $this->includeParameters->removeElement($includeParameter);
+        $includeParameter->setIncludeParameterSet(null);
         return $this;
+    }
+
+    /**
+     * @param $includeParameters
+     * @return void
+     */
+    private function removeIncludeParametersNotInList($includeParameters)
+    {
+        if (is_array($includeParameters)) {
+            $includeParameters = new ArrayCollection($includeParameters);
+        }
+        foreach ($this->getIncludeParameters() as $includeParameter) {
+            if ($includeParameters->indexOf($includeParameter) === false) {
+                $this->removeIncludeParameter($includeParameter);
+            }
+        }
     }
 
 }

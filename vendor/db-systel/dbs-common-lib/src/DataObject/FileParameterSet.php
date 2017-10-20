@@ -31,7 +31,7 @@ class FileParameterSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="FileParameter", mappedBy="fileParameterSet")
+     * @ORM\OneToMany(targetEntity="FileParameter", mappedBy="fileParameterSet", orphanRemoval=true)
      *
      * @Groups({"export"})
      */
@@ -89,8 +89,12 @@ class FileParameterSet extends AbstractDataObject
      */
     public function setFileParameters($fileParameters)
     {
-        $this->fileParameters = $fileParameters;
-
+        $this->removeFileParametersNotInList($fileParameters);
+        $this->fileParameters = new ArrayCollection([]);
+        /** @var FileParameter $fileParameter */
+        foreach ($fileParameters as $fileParameter) {
+            $this->addFileParameter($fileParameter);
+        }
         return $this;
     }
 
@@ -119,7 +123,24 @@ class FileParameterSet extends AbstractDataObject
     public function removeFileParameter(FileParameter $fileParameter)
     {
         $this->fileParameters->removeElement($fileParameter);
+        $fileParameter->setFileParameterSet(null);
         return $this;
+    }
+
+    /**
+     * @param $fileParameters
+     * @return void
+     */
+    private function removeFileParametersNotInList($fileParameters)
+    {
+        if (is_array($fileParameters)) {
+            $fileParameters = new ArrayCollection($fileParameters);
+        }
+        foreach ($this->getFileParameters() as $fileParameter) {
+            if ($fileParameters->indexOf($fileParameter) === false) {
+                $this->removeFileParameter($fileParameter);
+            }
+        }
     }
 
 }

@@ -31,7 +31,7 @@ class ProtocolSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Protocol", mappedBy="protocolSet")
+     * @ORM\OneToMany(targetEntity="Protocol", mappedBy="protocolSet", orphanRemoval=true)
      *
      * @Groups({"export"})
      */
@@ -89,7 +89,12 @@ class ProtocolSet extends AbstractDataObject
      */
     public function setProtocols($protocols)
     {
-        $this->protocols = $protocols;
+        $this->removeProtocolsNotInList($protocols);
+        $this->protocols = new ArrayCollection([]);
+        /** @var Protocol $protocol */
+        foreach ($protocols as $protocol) {
+            $this->addProtocol($protocol);
+        }
         return $this;
     }
 
@@ -118,7 +123,24 @@ class ProtocolSet extends AbstractDataObject
     public function removeProtocol(Protocol $protocol)
     {
         $this->protocols->removeElement($protocol);
+        $protocol->setProtocolSet(null);
         return $this;
+    }
+
+    /**
+     * @param $protocols
+     * @return void
+     */
+    private function removeProtocolsNotInList($protocols)
+    {
+        if (is_array($protocols)) {
+            $protocols = new ArrayCollection($protocols);
+        }
+        foreach ($this->getProtocols() as $protocol) {
+            if ($protocols->indexOf($protocol) === false) {
+                $this->removeProtocol($protocol);
+            }
+        }
     }
 
 }

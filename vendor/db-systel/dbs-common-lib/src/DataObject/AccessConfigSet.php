@@ -31,7 +31,7 @@ class AccessConfigSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet")
+     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet", orphanRemoval=true)
      *
      * @Groups({"export"})
      */
@@ -89,8 +89,12 @@ class AccessConfigSet extends AbstractDataObject
      */
     public function setAccessConfigs($accessConfigs)
     {
-        $this->accessConfigs = $accessConfigs;
-
+        $this->removeAccessConfigsNotInList($accessConfigs);
+        $this->accessConfigs = new ArrayCollection([]);
+        /** @var AccessConfig $accessConfig */
+        foreach ($accessConfigs as $accessConfig) {
+            $this->addAccessConfig($accessConfig);
+        }
         return $this;
     }
 
@@ -119,7 +123,24 @@ class AccessConfigSet extends AbstractDataObject
     public function removeAccessConfig(AccessConfig $accessConfig)
     {
         $this->accessConfigs->removeElement($accessConfig);
+        $accessConfig->setAccessConfigSet(null);
         return $this;
+    }
+
+    /**
+     * @param $accessConfigs
+     * @return void
+     */
+    private function removeAccessConfigsNotInList($accessConfigs)
+    {
+        if (is_array($accessConfigs)) {
+            $accessConfigs = new ArrayCollection($accessConfigs);
+        }
+        foreach ($this->getAccessConfigs() as $accessConfig) {
+            if ($accessConfigs->indexOf($accessConfig) === false) {
+                $this->removeAccessConfig($accessConfig);
+            }
+        }
     }
 
 }
