@@ -113,6 +113,7 @@ class ProtocolSet extends AbstractDataObject
     public function addProtocol(Protocol $protocol)
     {
         $this->protocols->add($protocol);
+        $protocol->setProtocolSet($this);
         return $this;
     }
 

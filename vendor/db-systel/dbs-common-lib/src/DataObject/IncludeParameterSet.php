@@ -113,6 +113,7 @@ class IncludeParameterSet extends AbstractDataObject
     public function addIncludeParameter(IncludeParameter $includeParameter)
     {
         $this->includeParameters->add($includeParameter);
+        $includeParameter->setIncludeParameterSet($this);
         return $this;
     }
 

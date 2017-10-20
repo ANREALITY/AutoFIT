@@ -113,6 +113,7 @@ class FileParameterSet extends AbstractDataObject
     public function addFileParameter(FileParameter $fileParameter)
     {
         $this->fileParameters->add($fileParameter);
+        $fileParameter->setFileParameterSet($this);
         return $this;
     }
 
