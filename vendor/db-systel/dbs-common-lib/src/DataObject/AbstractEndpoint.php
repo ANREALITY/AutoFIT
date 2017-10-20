@@ -392,7 +392,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
      *
      * @return AbstractEndpoint
      */
-    public function setExternalServer(ExternalServer $externalServer)
+    public function setExternalServer(ExternalServer $externalServer = null)
     {
         $this->externalServer = $externalServer;
 

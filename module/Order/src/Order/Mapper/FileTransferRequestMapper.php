@@ -117,6 +117,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     public function save(FileTransferRequest $dataObject)
     {
+        $this->cleanDataObject($dataObject);
         $this->persistOrder($dataObject);
         $this->persistEndpoints($dataObject);
 
@@ -177,6 +178,25 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTarget->getEndpointServerConfig()->getServer()->getName()
         );
         $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
+    }
+
+    private function cleanDataObject(FileTransferRequest $dataObject)
+    {
+        $connectionType = $dataObject->getLogicalConnection()->getType();
+        if ($connectionType == LogicalConnection::TYPE_CD) {
+            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointSource();
+            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
+        } else {
+            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
+            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
+        }
+
+        if(! $endpointSource->getExternalServer() || ! $endpointSource->getExternalServer()->getName()) {
+            $endpointSource->setExternalServer(null);
+        }
+        if(! $endpointTarget->getExternalServer() || ! $endpointTarget->getExternalServer()->getName()) {
+            $endpointTarget->setExternalServer(null);
+        }
     }
 
     /**
