@@ -31,7 +31,7 @@ class IncludeParameterSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="IncludeParameter", mappedBy="includeParameterSet", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="IncludeParameter", mappedBy="includeParameterSet", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"export"})
      */

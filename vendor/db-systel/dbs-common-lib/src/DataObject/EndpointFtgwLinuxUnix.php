@@ -63,7 +63,7 @@ class EndpointFtgwLinuxUnix extends AbstractEndpoint
     /**
      * @var IncludeParameterSet
      *
-     * @ORM\OneToOne(targetEntity="IncludeParameterSet")
+     * @ORM\OneToOne(targetEntity="IncludeParameterSet", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="include_parameter_set_id", referencedColumnName="id")
      * })
