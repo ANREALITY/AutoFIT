@@ -31,7 +31,7 @@ class ProtocolSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Protocol", mappedBy="protocolSet", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Protocol", mappedBy="protocolSet", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"export"})
      */

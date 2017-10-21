@@ -93,7 +93,7 @@ class EndpointFtgwProtocolServer extends AbstractEndpoint
     /**
      * @var ProtocolSet
      *
-     * @ORM\OneToOne(targetEntity="ProtocolSet")
+     * @ORM\OneToOne(targetEntity="ProtocolSet", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="protocol_set_id", referencedColumnName="id")
      * })
