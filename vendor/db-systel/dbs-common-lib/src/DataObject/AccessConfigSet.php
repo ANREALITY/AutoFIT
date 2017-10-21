@@ -31,7 +31,7 @@ class AccessConfigSet extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="AccessConfig", mappedBy="accessConfigSet", cascade={"persist"}, orphanRemoval=true)
      *
      * @Groups({"export"})
      */

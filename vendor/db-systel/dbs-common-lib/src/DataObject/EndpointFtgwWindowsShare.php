@@ -52,7 +52,7 @@ class EndpointFtgwWindowsShare extends AbstractEndpoint
     /**
      * @var AccessConfigSet
      *
-     * @ORM\OneToOne(targetEntity="AccessConfigSet")
+     * @ORM\OneToOne(targetEntity="AccessConfigSet", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="access_config_set_id", referencedColumnName="id")
      * })
