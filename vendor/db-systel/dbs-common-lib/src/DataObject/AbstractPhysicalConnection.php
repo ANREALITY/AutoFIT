@@ -85,6 +85,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     protected $logicalConnection;
 
     /**
+     * for export only
+     *
      * @var AbstractEndpoint #relationshipInversion
      *
      * @Groups({"export"})
@@ -92,6 +94,8 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     protected $endpointSource;
 
     /**
+     * for export only
+     *
      * @var AbstractEndpoint #relationshipInversion
      *
      * @Groups({"export"})
@@ -269,7 +273,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function setEndpointSource($endpointSource)
     {
-        $this->endpointSource = $endpointSource;
         /** @var AbstractEndpoint $endpoint */
         foreach ($this->endpoints as $endpoint) {
             if (strtolower($endpoint->getRole()) == strtolower(AbstractEndpoint::ROLE_SOURCE)) {
@@ -285,12 +288,10 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function getEndpointSource()
     {
-        if (! $this->endpointSource) {
-            $this->endpointSource = $this->getFirstInstanceByDiscriminator(
-                $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_SOURCE
-            );
-        }
-        return $this->endpointSource;
+        $endpointSource = $this->getFirstInstanceByDiscriminator(
+            $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_SOURCE
+        );
+        return $endpointSource;
     }
 
     /**
@@ -300,7 +301,6 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function setEndpointTarget($endpointTarget)
     {
-        $this->endpointTarget = $endpointTarget;
         /** @var AbstractEndpoint $endpoint */
         foreach ($this->endpoints as $endpoint) {
             if (strtolower($endpoint->getRole()) == strtolower(AbstractEndpoint::ROLE_TARGET)) {
@@ -316,12 +316,10 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
      */
     public function getEndpointTarget()
     {
-        if (! $this->endpointTarget) {
-            $this->endpointTarget = $this->getFirstInstanceByDiscriminator(
-                $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_TARGET
-            );
-        }
-        return $this->endpointTarget;
+        $endpointTarget = $this->getFirstInstanceByDiscriminator(
+            $this->getEndpoints(), 'getRole', AbstractEndpoint::ROLE_TARGET
+        );
+        return $endpointTarget;
     }
 
     /**

@@ -52,6 +52,8 @@ class LogicalConnection extends AbstractDataObject
     protected $updated;
 
     /**
+     * for export only
+     *
      * @var AbstractPhysicalConnection #relationshipInversion
      *
      * @Groups({"export_cd"})
@@ -59,6 +61,8 @@ class LogicalConnection extends AbstractDataObject
     protected $physicalConnectionEndToEnd;
 
     /**
+     * for export only
+     *
      * @var AbstractPhysicalConnection #relationshipInversion
      *
      * @Groups({"export_ftgw"})
@@ -66,6 +70,8 @@ class LogicalConnection extends AbstractDataObject
     protected $physicalConnectionEndToMiddle;
 
     /**
+     * for export only
+     *
      * @var AbstractPhysicalConnection #relationshipInversion
      *
      * @Groups({"export_ftgw"})
@@ -181,7 +187,6 @@ class LogicalConnection extends AbstractDataObject
      */
     public function setPhysicalConnectionEndToEnd($physicalConnectionEndToEnd)
     {
-        $this->physicalConnectionEndToEnd = $physicalConnectionEndToEnd;
         foreach ($this->physicalConnections as $physicalConnection) {
             if ($physicalConnection instanceof PhysicalConnectionCdEndToEnd) {
                 $this->removePhysicalConnection($physicalConnection);
@@ -196,12 +201,10 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionEndToEnd()
     {
-        if (! $this->physicalConnectionEndToEnd) {
-            $this->physicalConnectionEndToEnd = $this->getFirstInstanceOf(
-                $this->getPhysicalConnections(), PhysicalConnectionCdEndToEnd::class
-            );
-        }
-        return $this->physicalConnectionEndToEnd;
+        $physicalConnectionEndToEnd = $this->getFirstInstanceOf(
+            $this->getPhysicalConnections(), PhysicalConnectionCdEndToEnd::class
+        );
+        return $physicalConnectionEndToEnd;
     }
 
     /**
@@ -211,7 +214,6 @@ class LogicalConnection extends AbstractDataObject
      */
     public function setPhysicalConnectionEndToMiddle($physicalConnectionEndToMiddle)
     {
-        $this->physicalConnectionEndToMiddle = $physicalConnectionEndToMiddle;
         foreach ($this->physicalConnections as $physicalConnection) {
             if ($physicalConnection instanceof PhysicalConnectionFtgwEndToMiddle) {
                 $this->removePhysicalConnection($physicalConnection);
@@ -226,12 +228,10 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionEndToMiddle()
     {
-        if (! $this->physicalConnectionEndToMiddle) {
-            $this->physicalConnectionEndToMiddle = $this->getFirstInstanceOf(
-                $this->getPhysicalConnections(), PhysicalConnectionFtgwEndToMiddle::class
-            );
-        }
-        return $this->physicalConnectionEndToMiddle;
+        $physicalConnectionEndToMiddle = $this->getFirstInstanceOf(
+            $this->getPhysicalConnections(), PhysicalConnectionFtgwEndToMiddle::class
+        );
+        return $physicalConnectionEndToMiddle;
     }
 
     /**
@@ -241,7 +241,6 @@ class LogicalConnection extends AbstractDataObject
      */
     public function setPhysicalConnectionMiddleToEnd($physicalConnectionMiddleToEnd)
     {
-        $this->physicalConnectionMiddleToEnd = $physicalConnectionMiddleToEnd;
         foreach ($this->physicalConnections as $physicalConnection) {
             if ($physicalConnection instanceof PhysicalConnectionFtgwMiddleToEnd) {
                 $this->removePhysicalConnection($physicalConnection);
@@ -256,12 +255,10 @@ class LogicalConnection extends AbstractDataObject
      */
     public function getPhysicalConnectionMiddleToEnd()
     {
-        if (! $this->physicalConnectionMiddleToEnd) {
-            $this->physicalConnectionMiddleToEnd = $this->getFirstInstanceOf(
-                $this->getPhysicalConnections(), PhysicalConnectionFtgwMiddleToEnd::class
-            );
-        }
-        return $this->physicalConnectionMiddleToEnd;
+        $physicalConnectionMiddleToEnd = $this->getFirstInstanceOf(
+            $this->getPhysicalConnections(), PhysicalConnectionFtgwMiddleToEnd::class
+        );
+        return $physicalConnectionMiddleToEnd;
     }
 
     /**
