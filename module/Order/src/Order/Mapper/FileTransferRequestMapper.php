@@ -114,7 +114,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     public function save(FileTransferRequest $dataObject)
     {
-        $this->cleanDataObject($dataObject);
         $this->persistOrder($dataObject);
         $this->persistEndpoints($dataObject);
 
@@ -157,6 +156,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
         }
 
+        // Endpoint.Application
         $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
             $endpointSource->getApplication()->getTechnicalShortName()
         );
@@ -166,34 +166,31 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         );
         $endpointTarget->setApplication($endpointTargetApplication);
 
-        $endpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
-            $endpointSource->getEndpointServerConfig()->getServer()->getName()
-        );
-        $endpointSource->getEndpointServerConfig()->setServer($endpointSourceServer);
-
-        $endpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
-            $endpointTarget->getEndpointServerConfig()->getServer()->getName()
-        );
-        $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
-    }
-
-    private function cleanDataObject(FileTransferRequest $dataObject)
-    {
-        $connectionType = $dataObject->getLogicalConnection()->getType();
-        if ($connectionType == LogicalConnection::TYPE_CD) {
-            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointSource();
-            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
-        } else {
-            $endpointSource = $dataObject->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
-            $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
-        }
-
+        // Endpoint.ExternalServer
         if(! $endpointSource->getExternalServer() || ! $endpointSource->getExternalServer()->getName()) {
-            $endpointSource->setExternalServer(null);
+                $endpointSource->setExternalServer(null);
         }
         if(! $endpointTarget->getExternalServer() || ! $endpointTarget->getExternalServer()->getName()) {
             $endpointTarget->setExternalServer(null);
         }
+
+        // Endpoint.EndpointServerConfig
+        if ($endpointSource->getEndpointServerConfig()->getServer() && $endpointSource->getEndpointServerConfig()->getServer()->getName()) {
+            $endpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
+                $endpointSource->getEndpointServerConfig()->getServer()->getName()
+            );
+        } else {
+            $endpointSourceServer = null;
+        }
+        $endpointSource->getEndpointServerConfig()->setServer($endpointSourceServer);
+        if ($endpointTarget->getEndpointServerConfig()->getServer() && $endpointTarget->getEndpointServerConfig()->getServer()->getName()) {
+            $endpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
+                $endpointTarget->getEndpointServerConfig()->getServer()->getName()
+            );
+        } else {
+            $endpointTargetServer = null;
+        }
+        $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
     }
 
     /**
