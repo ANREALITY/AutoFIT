@@ -88,6 +88,8 @@ class Server extends AbstractDataObject
     protected $cluster;
 
     /**
+     * Not relevant for ORM. Should become obsolete after and be removed after the migration to Doctrine.
+     *
      * @var EndpointServerConfig[]
      */
     protected $endpointServerConfigs;
