@@ -2,15 +2,12 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Application;
-use DbSystel\DataObject\Customer;
-use DbSystel\DataObject\EndpointServerConfig;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
 use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Zend\Db\Adapter\Driver\ResultInterface;
@@ -122,7 +119,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $this->persistEndpoints($dataObject);
 
         $this->entityManager->persist($dataObject);
-        $this->entityManager->flush();
+        $this->entityManager->flush($dataObject);
 
         return $dataObject;
     }
