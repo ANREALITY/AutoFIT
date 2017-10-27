@@ -162,7 +162,7 @@ abstract class AbstractEndpoint extends AbstractDataObject
     /**
      * @var ExternalServer
      *
-     * @ORM\ManyToOne(targetEntity="ExternalServer", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ExternalServer", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="external_server_id", referencedColumnName="id")
      * })

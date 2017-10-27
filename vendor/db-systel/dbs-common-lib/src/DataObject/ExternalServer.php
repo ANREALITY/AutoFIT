@@ -32,6 +32,13 @@ class ExternalServer extends AbstractDataObject
     protected $name;
 
     /**
+     * @var AbstractEndpoint
+     *
+     * @ORM\OneToOne(targetEntity="AbstractEndpoint", mappedBy="externalServer")
+     */
+    protected $endpoint;
+
+    /**
      * @param integer $id
      *
      * @return ExternalServer
@@ -69,6 +76,26 @@ class ExternalServer extends AbstractDataObject
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param AbstractEndpoint $endpoint
+     *
+     * @return ExternalServer
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
+     * @return AbstractEndpoint
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
     }
 
 }
