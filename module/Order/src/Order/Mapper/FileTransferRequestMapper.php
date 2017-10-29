@@ -160,8 +160,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $this->prepareEndpointsApplications($endpointSource, $endpointTarget);
         $this->prepareEndpointsExternalServers($endpointSource, $endpointTarget);
         $this->prepareEndpointsEndpointServerConfigs($endpointSource, $endpointTarget);
-
-        $this->entityManager->persist($endpointSource);
     }
 
     private function prepareEndpointsApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
