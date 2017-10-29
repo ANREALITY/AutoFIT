@@ -1,6 +1,7 @@
 <?php
 namespace Order\Mapper;
 
+use DbSystel\DataObject\AbstractEndpoint;
 use DbSystel\DataObject\Application;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\LogicalConnection;
@@ -156,7 +157,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
         }
 
-        // Endpoint.Application
+        $this->prepareEndpointsApplications($endpointSource, $endpointTarget);
+        $this->prepareEndpointsExternalServers($endpointSource, $endpointTarget);
+        $this->prepareEndpointsEndpointServerConfigs($endpointSource, $endpointTarget);
+
+        $this->entityManager->persist($endpointSource);
+    }
+
+    private function prepareEndpointsApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    {
         $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
             $endpointSource->getApplication()->getTechnicalShortName()
         );
@@ -169,8 +178,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTarget->getApplication()->getTechnicalShortName()
         );
         $endpointTarget->setApplication($endpointTargetApplication);
+    }
 
-        // Endpoint.ExternalServer
+    private function prepareEndpointsExternalServers(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    {
         if(! $endpointSource->getExternalServer() || ! $endpointSource->getExternalServer()->getName()) {
             if ($endpointSource->getExternalServer()) {
                 $this->entityManager->remove($endpointSource->getExternalServer());
@@ -183,8 +194,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
             $endpointTarget->setExternalServer(null);
         }
+    }
 
-        // Endpoint.EndpointServerConfig
+    private function prepareEndpointsEndpointServerConfigs(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    {
         $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
         $newEndpointSourceServer = null;
         if ($endpointSourceServer) {
@@ -203,8 +216,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             );
         }
         $endpointTarget->getEndpointServerConfig()->setServer($newEndpointTargetServer);
-
-        $this->entityManager->persist($endpointSource);
     }
 
     /**
