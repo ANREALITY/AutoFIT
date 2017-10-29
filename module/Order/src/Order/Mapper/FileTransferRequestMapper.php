@@ -118,7 +118,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $this->persistEndpoints($dataObject);
 
         $this->entityManager->persist($dataObject);
-        $this->entityManager->flush($dataObject);
+        $this->entityManager->flush();
 
         return $dataObject;
     }
@@ -160,7 +160,11 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
             $endpointSource->getApplication()->getTechnicalShortName()
         );
-        $endpointSource->setApplication($endpointSourceApplication);
+        if ($endpointSourceApplication) {
+            $endpointSource->setApplication($endpointSourceApplication);
+        } else {
+            $endpointSource->setApplication(null);
+        }
         $endpointTargetApplication = $this->entityManager->getRepository(Application::class)->find(
             $endpointTarget->getApplication()->getTechnicalShortName()
         );
@@ -168,9 +172,15 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
         // Endpoint.ExternalServer
         if(! $endpointSource->getExternalServer() || ! $endpointSource->getExternalServer()->getName()) {
-                $endpointSource->setExternalServer(null);
+            if ($endpointSource->getExternalServer()) {
+                $this->entityManager->remove($endpointSource->getExternalServer());
+            }
+            $endpointSource->setExternalServer(null);
         }
         if(! $endpointTarget->getExternalServer() || ! $endpointTarget->getExternalServer()->getName()) {
+            if ($endpointTarget->getExternalServer()) {
+                $this->entityManager->remove($endpointTarget->getExternalServer());
+            }
             $endpointTarget->setExternalServer(null);
         }
 
@@ -181,6 +191,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             );
         } else {
             $endpointSourceServer = null;
+            if ($endpointSource->getEndpointServerConfig()->getServer()) {
+                $this->entityManager->detach($endpointSource->getEndpointServerConfig()->getServer());
+            }
         }
         $endpointSource->getEndpointServerConfig()->setServer($endpointSourceServer);
         if ($endpointTarget->getEndpointServerConfig()->getServer() && $endpointTarget->getEndpointServerConfig()->getServer()->getName()) {
@@ -189,8 +202,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             );
         } else {
             $endpointTargetServer = null;
+            if ($endpointTarget->getEndpointServerConfig()->getServer()) {
+                $this->entityManager->detach($endpointTarget->getEndpointServerConfig()->getServer());
+            }
         }
         $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
+
+        $this->entityManager->persist($endpointSource);
     }
 
     /**
