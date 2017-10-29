@@ -185,28 +185,24 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         }
 
         // Endpoint.EndpointServerConfig
-        if ($endpointSource->getEndpointServerConfig()->getServer() && $endpointSource->getEndpointServerConfig()->getServer()->getName()) {
-            $endpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
-                $endpointSource->getEndpointServerConfig()->getServer()->getName()
+        $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
+        $newEndpointSourceServer = null;
+        if ($endpointSourceServer) {
+            $this->entityManager->detach($endpointSourceServer);
+            $newEndpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
+                $endpointSourceServer->getName()
             );
-        } else {
-            $endpointSourceServer = null;
-            if ($endpointSource->getEndpointServerConfig()->getServer()) {
-                $this->entityManager->detach($endpointSource->getEndpointServerConfig()->getServer());
-            }
         }
-        $endpointSource->getEndpointServerConfig()->setServer($endpointSourceServer);
-        if ($endpointTarget->getEndpointServerConfig()->getServer() && $endpointTarget->getEndpointServerConfig()->getServer()->getName()) {
-            $endpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
-                $endpointTarget->getEndpointServerConfig()->getServer()->getName()
+        $endpointSource->getEndpointServerConfig()->setServer($newEndpointSourceServer);
+        $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
+        $newEndpointTargetServer = null;
+        if ($endpointTargetServer) {
+            $this->entityManager->detach($endpointTargetServer);
+            $newEndpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
+                $endpointTargetServer->getName()
             );
-        } else {
-            $endpointTargetServer = null;
-            if ($endpointTarget->getEndpointServerConfig()->getServer()) {
-                $this->entityManager->detach($endpointTarget->getEndpointServerConfig()->getServer());
-            }
         }
-        $endpointTarget->getEndpointServerConfig()->setServer($endpointTargetServer);
+        $endpointTarget->getEndpointServerConfig()->setServer($newEndpointTargetServer);
 
         $this->entityManager->persist($endpointSource);
     }
