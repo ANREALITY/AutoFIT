@@ -31,7 +31,8 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
                         ->setParameter('active', $condition['active'])
                     ;
                 }
-                // Lagacy (nor ORM driven) part. Not migrated to Doctrine, since not used for now.
+                // Lagacy (not ORM driven) part. Not migrated to Doctrine, since not used for now.
+                // Related to the question: "What is a valid InvoicePosition/Appliacation?"
 //                if (array_key_exists('with_invoice_positions_only', $condition) && $condition['with_invoice_positions_only'] === true) {
 //                    $select->join('service_invoice', 'service_invoice.application_technical_short_name = application.technical_short_name');
 //                    $select->join(['service_invoice_position_basic' => 'service_invoice_position'], new Expression('service_invoice_position_basic.service_invoice_number = service_invoice.number AND service_invoice_position_basic.order_quantity > 0 AND service_invoice_position_basic.status <> "Beendet"'));
