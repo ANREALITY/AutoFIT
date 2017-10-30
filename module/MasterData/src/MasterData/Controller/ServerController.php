@@ -57,7 +57,7 @@ class ServerController extends AbstractActionController
         if ($request->isPost()) {
             $this->serverForm->setData($request->getPost());
             if ($this->serverForm->isValid()) {
-                $this->server = $this->serverService->saveOne($this->server);
+                $this->server = $this->serverService->updateVirtualNodeName($this->server);
                 if(isset($request->getPost()->toArray()['server']['virtual_node_name'])) {
                     $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_SERVER, $this->server->getName(), AuditLog::ACTION_SERVER_VIRTUAL_NODE_NAME_ADDED);
                 }

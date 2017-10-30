@@ -57,7 +57,7 @@ class ClusterController extends AbstractActionController
         if ($request->isPost()) {
             $this->clusterForm->setData($request->getPost());
             if ($this->clusterForm->isValid()) {
-                $this->cluster = $this->clusterService->saveOne($this->cluster);
+                $this->cluster = $this->clusterService->create($this->cluster);
                 $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_CLUSTER, $this->cluster->getId(), AuditLog::ACTION_CLUSTER_CREATED);
                 return $this->forward()->dispatch('MasterData\Controller\Cluster',
                     [

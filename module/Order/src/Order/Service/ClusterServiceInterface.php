@@ -25,6 +25,6 @@ interface ClusterServiceInterface
      * @param Cluster $cluster
      * @return Cluster
      */
-    public function saveOne(Cluster $clusterRequest);
+    public function create(Cluster $clusterRequest);
 
 }

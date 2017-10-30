@@ -97,9 +97,9 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
-    public function saveOne(Server $server)
+    public function updateVirtualNodeName(Server $server)
     {
-        return $this->mapper->save($server);
+        return $this->mapper->updateVirtualNodeName($server);
     }
 
 }

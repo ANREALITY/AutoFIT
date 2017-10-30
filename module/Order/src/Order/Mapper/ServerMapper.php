@@ -2,10 +2,6 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Server;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\Sql\Expression;
-use Zend\Db\Sql\Sql;
-use Zend\Db\Sql\Update;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
@@ -79,39 +75,20 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
      * @return Server
      * @throws \Exception
      */
-    public function save(Server $dataObject)
+    public function updateVirtualNodeName(Server $dataObject)
     {
-        $data = [];
-        // data retrieved directly from the input
-        $data['name'] = $dataObject->getName();
-        $data['virtual_node_name'] = $dataObject->getVirtualNodeName();
-        $data['cluster_id'] = $dataObject->getCluster() && $dataObject->getCluster()->getId() ? $dataObject->getCluster()->getId() : new Expression('NULL');
-        // creating sub-objects
-        // data from the recently persisted objects
+        /** @var Server $currentServer */
+        $currentServer = $this->entityManager->getRepository(Server::class)->find(
+            $dataObject->getName()
+        );
 
-        if (empty($data['name'])) {
-            // No INSERT functionality!
-            // $action = new Insert('server');
-            // $action->values($data);
-        } else {
-            $action = new Update('server');
-            $action->where(['name' => $data['name']]);
-            unset($data['name']);
-            $action->set($data);
+        if ($currentServer) {
+            $currentServer->setVirtualNodeName($dataObject->getVirtualNodeName());
+            $this->entityManager->persist($currentServer);
+            $this->entityManager->flush();
         }
 
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface) {
-            $newName = $result->getGeneratedValue() ?: $dataObject->getName();
-            if ($newName) {
-                $dataObject->setName($newName);
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
+        return $dataObject;
     }
 
 }

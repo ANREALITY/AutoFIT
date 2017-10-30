@@ -46,9 +46,9 @@ class ClusterService extends AbstractService implements ClusterServiceInterface
      * {@inheritDoc}
      *
      */
-    public function saveOne(Cluster $cluster)
+    public function create(Cluster $cluster)
     {
-        return $this->mapper->save($cluster);
+        return $this->mapper->create($cluster);
     }
 
 }

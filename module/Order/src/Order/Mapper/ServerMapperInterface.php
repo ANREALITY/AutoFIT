@@ -17,6 +17,6 @@ interface ServerMapperInterface
      * @return Server
      * @throws \Exception
      */
-    public function save(Server $dataObject);
+    public function updateVirtualNodeName(Server $dataObject);
 
 }

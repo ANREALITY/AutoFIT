@@ -26,6 +26,6 @@ interface ServerServiceInterface
      * @param Server $server
      * @return Server
      */
-    public function saveOne(Server $serverRequest);
+    public function updateVirtualNodeName(Server $serverRequest);
 
 }

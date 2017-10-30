@@ -17,6 +17,6 @@ interface ClusterMapperInterface
      * @return Cluster
      * @throws \Exception
      */
-    public function save(Cluster $dataObject);
+    public function create(Cluster $dataObject);
 
 }

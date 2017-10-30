@@ -105,19 +105,23 @@ class Cluster extends AbstractDataObject
     }
 
     /**
-     * @param AbstractEndpoint[] $servers
+     * @param ArrayCollection $servers
      *
      * @return Cluster
      */
-    public function setServers(array $servers)
+    public function setServers($servers)
     {
-        $this->servers = $servers;
-
+        $this->removeServersNotInList($servers);
+        $this->servers = new ArrayCollection([]);
+        /** @var Server $server */
+        foreach ($servers as $server) {
+            $this->addServer($server);
+        }
         return $this;
     }
 
     /**
-     * @return Server[] $servers
+     * @return ArrayCollection $servers
      */
     public function getServers()
     {
@@ -131,6 +135,7 @@ class Cluster extends AbstractDataObject
     public function addServer(Server $server)
     {
         $this->servers->add($server);
+        $server->setCluster($this);
         return $this;
     }
 
@@ -141,6 +146,7 @@ class Cluster extends AbstractDataObject
     public function removeServer(Server $server)
     {
         $this->servers->removeElement($server);
+        $server->setCluster(null);
         return $this;
     }
 
@@ -202,6 +208,22 @@ class Cluster extends AbstractDataObject
     {
         $this->endpointClusterConfigs->removeElement($endpointClusterConfig);
         return $this;
+    }
+
+    /**
+     * @param $servers
+     * @return void
+     */
+    private function removeServersNotInList($servers)
+    {
+        if (is_array($servers)) {
+            $servers = new ArrayCollection($servers);
+        }
+        foreach ($this->getServers() as $server) {
+            if ($servers->indexOf($server) === false) {
+                $this->removeServer($server);
+            }
+        }
     }
 
 }
