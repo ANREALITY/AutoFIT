@@ -2,10 +2,6 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\User;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\Sql\Insert;
-use Zend\Db\Sql\Sql;
-use Zend\Db\Sql\Update;
 
 class UserMapper extends AbstractMapper implements UserMapperInterface
 {

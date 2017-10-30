@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use ReflectionClass;
 use Zend\Db\Adapter\AdapterInterface;
-use Zend\Hydrator\HydratorInterface;
 
 class AbstractMapper
 {

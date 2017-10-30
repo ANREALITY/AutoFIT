@@ -14,10 +14,6 @@ use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\Sql\Insert;
-use Zend\Db\Sql\Sql;
-use Zend\Db\Sql\Update;
 
 class FileTransferRequestMapper extends AbstractMapper implements FileTransferRequestMapperInterface
 {
@@ -27,24 +23,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     /**
      *
-     * @var LogicalConnectionMapperInterface
-     */
-    protected $logicalConnectionMapper;
-
-    /**
-     *
      * @var UserMapperInterface
      */
     protected $userMapper;
-
-    /**
-     *
-     * @param LogicalConnectionMapperInterface $logicalConnectionMapper
-     */
-    public function setLogicalConnectionMapper(LogicalConnectionMapperInterface $logicalConnectionMapper)
-    {
-        $this->logicalConnectionMapper = $logicalConnectionMapper;
-    }
 
     /**
      *
