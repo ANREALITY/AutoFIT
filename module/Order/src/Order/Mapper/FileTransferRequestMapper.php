@@ -203,6 +203,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
         $newEndpointSourceServer = null;
         if ($endpointSourceServer) {
+            // The detach(...) has to be made here. Otherwise Doctrine tries to INSERT.
+            // Exception: "A new entity was found through the relationship..."
             $this->entityManager->detach($endpointSourceServer);
             $newEndpointSourceServer = $this->entityManager->getRepository(Server::class)->find(
                 $endpointSourceServer->getName()
@@ -212,6 +214,8 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
         $newEndpointTargetServer = null;
         if ($endpointTargetServer) {
+            // The detach(...) has to be made here. Otherwise Doctrine tries to INSERT.
+            // Exception: "A new entity was found through the relationship..."
             $this->entityManager->detach($endpointTargetServer);
             $newEndpointTargetServer = $this->entityManager->getRepository(Server::class)->find(
                 $endpointTargetServer->getName()
@@ -227,10 +231,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointSourceCluster = $endpointSource->getEndpointClusterConfig()->getCluster();
             $newEndpointSourceCluster = null;
             if ($endpointSourceCluster) {
+                // The detach(...) has to be made here. Otherwise Doctrine tries to INSERT.
+                // Exception: "A new entity was found through the relationship..."
+                $this->entityManager->detach($endpointSourceCluster);
                 $newEndpointSourceCluster = $this->entityManager->getRepository(Cluster::class)->find(
                     $endpointSource->getEndpointClusterConfig()->getCluster()->getId()
                 );
-                $this->entityManager->detach($endpointSourceCluster);
             }
             $endpointSource->getEndpointClusterConfig()->setCluster($newEndpointSourceCluster);
         }
@@ -239,10 +245,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTargetCluster = $endpointTarget->getEndpointClusterConfig()->getCluster();
             $newEndpointTargetCluster = null;
             if ($endpointTargetCluster) {
+                // The detach(...) has to be made here. Otherwise Doctrine tries to INSERT.
+                // Exception: "A new entity was found through the relationship..."
+                $this->entityManager->detach($endpointTargetCluster);
                 $newEndpointTargetCluster = $this->entityManager->getRepository(Cluster::class)->find(
                     $endpointTarget->getEndpointClusterConfig()->getCluster()->getId()
                 );
-                $this->entityManager->detach($endpointTargetCluster);
             }
             $endpointTarget->getEndpointClusterConfig()->setCluster($newEndpointTargetCluster);
         }
