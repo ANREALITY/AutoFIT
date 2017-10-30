@@ -275,7 +275,6 @@ return [
             // services
             // mappers
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
-            'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             // data preparators
             // adapters
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
@@ -286,8 +285,6 @@ return [
             'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
         ],
         'invokables' => [
-            // database request modifiers
-            'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier' => 'Order\Mapper\RequestModifier\FileTransferRequestRequestModifier',
             // utilities
             'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
             'DbSystel\DataExport\DataExporter' => 'DbSystel\DataExport\DataExporter'
