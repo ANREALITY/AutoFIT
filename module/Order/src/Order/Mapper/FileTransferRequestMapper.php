@@ -157,12 +157,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             $endpointTarget = $dataObject->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
         }
 
-        $this->prepareEndpointsApplications($endpointSource, $endpointTarget);
-        $this->prepareEndpointsExternalServers($endpointSource, $endpointTarget);
-        $this->prepareEndpointsEndpointServerConfigs($endpointSource, $endpointTarget);
+        $this->prepareEndpointApplications($endpointSource, $endpointTarget);
+        $this->prepareEndpointExternalServers($endpointSource, $endpointTarget);
+        $this->prepareEndpointEndpointServerConfigs($endpointSource, $endpointTarget);
     }
 
-    private function prepareEndpointsApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    private function prepareEndpointApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
     {
         $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
             $endpointSource->getApplication()->getTechnicalShortName()
@@ -178,7 +178,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $endpointTarget->setApplication($endpointTargetApplication);
     }
 
-    private function prepareEndpointsExternalServers(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    private function prepareEndpointExternalServers(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
     {
         if(! $endpointSource->getExternalServer() || ! $endpointSource->getExternalServer()->getName()) {
             if ($endpointSource->getExternalServer()) {
@@ -194,7 +194,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         }
     }
 
-    private function prepareEndpointsEndpointServerConfigs(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    private function prepareEndpointEndpointServerConfigs(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
     {
         $endpointSourceServer = $endpointSource->getEndpointServerConfig()->getServer();
         $newEndpointSourceServer = null;
