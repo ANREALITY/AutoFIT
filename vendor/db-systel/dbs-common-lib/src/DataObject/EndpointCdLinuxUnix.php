@@ -63,7 +63,7 @@ class EndpointCdLinuxUnix extends AbstractEndpoint
     /**
      * @var EndpointClusterConfig
      *
-     * @ORM\OneToOne(targetEntity="EndpointClusterConfig")
+     * @ORM\OneToOne(targetEntity="EndpointClusterConfig", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="endpoint_cluster_config_id", referencedColumnName="id")
      * })

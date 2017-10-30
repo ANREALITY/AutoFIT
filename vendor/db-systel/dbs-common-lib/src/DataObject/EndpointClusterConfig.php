@@ -39,7 +39,7 @@ class EndpointClusterConfig extends AbstractDataObject
     /**
      * @var Cluster
      *
-     * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="endpointClusterConfigs")
+     * @ORM\ManyToOne(targetEntity="Cluster", inversedBy="endpointClusterConfigs", cascade={"persist"})
      *
      * @Groups({"export"})
      */

@@ -3,6 +3,9 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\AbstractEndpoint;
 use DbSystel\DataObject\Application;
+use DbSystel\DataObject\Cluster;
+use DbSystel\DataObject\EndpointCdLinuxUnix;
+use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
@@ -160,6 +163,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $this->prepareEndpointApplications($endpointSource, $endpointTarget);
         $this->prepareEndpointExternalServers($endpointSource, $endpointTarget);
         $this->prepareEndpointEndpointServerConfigs($endpointSource, $endpointTarget);
+        $this->prepareEndpointEndpointClusterConfigs($endpointSource, $endpointTarget);
     }
 
     private function prepareEndpointApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
@@ -214,6 +218,34 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             );
         }
         $endpointTarget->getEndpointServerConfig()->setServer($newEndpointTargetServer);
+    }
+
+    private function prepareEndpointEndpointClusterConfigs(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
+    {
+        if ($endpointSource instanceof EndpointCdLinuxUnix || $endpointSource instanceof EndpointFtgwLinuxUnix) {
+            /** @var EndpointCdLinuxUnix|EndpointFtgwLinuxUnix $endpointSource */
+            $endpointSourceCluster = $endpointSource->getEndpointClusterConfig()->getCluster();
+            $newEndpointSourceCluster = null;
+            if ($endpointSourceCluster) {
+                $newEndpointSourceCluster = $this->entityManager->getRepository(Cluster::class)->find(
+                    $endpointSource->getEndpointClusterConfig()->getCluster()->getId()
+                );
+                $this->entityManager->detach($endpointSourceCluster);
+            }
+            $endpointSource->getEndpointClusterConfig()->setCluster($newEndpointSourceCluster);
+        }
+        if ($endpointTarget instanceof EndpointCdLinuxUnix || $endpointTarget instanceof EndpointFtgwLinuxUnix) {
+            /** @var EndpointCdLinuxUnix|EndpointFtgwLinuxUnix $endpointTarget */
+            $endpointTargetCluster = $endpointTarget->getEndpointClusterConfig()->getCluster();
+            $newEndpointTargetCluster = null;
+            if ($endpointTargetCluster) {
+                $newEndpointTargetCluster = $this->entityManager->getRepository(Cluster::class)->find(
+                    $endpointTarget->getEndpointClusterConfig()->getCluster()->getId()
+                );
+                $this->entityManager->detach($endpointTargetCluster);
+            }
+            $endpointTarget->getEndpointClusterConfig()->setCluster($newEndpointTargetCluster);
+        }
     }
 
     /**
