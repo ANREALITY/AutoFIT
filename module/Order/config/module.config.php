@@ -274,18 +274,8 @@ return [
         'factories' => [
             // services
             // mappers
-            'Order\Mapper\EndpointMapper' => 'Order\Mapper\Factory\EndpointMapperFactory',
             'Order\Mapper\ClusterMapper' => 'Order\Mapper\Factory\ClusterMapperFactory',
-            'Order\Mapper\EndpointClusterConfigMapper' => 'Order\Mapper\Factory\EndpointClusterConfigMapperFactory',
-            'Order\Mapper\EndpointServerConfigMapper' => 'Order\Mapper\Factory\EndpointServerConfigMapperFactory',
-            'Order\Mapper\FileParameterSetMapper' => 'Order\Mapper\Factory\FileParameterSetMapperFactory',
-            'Order\Mapper\IncludeParameterSetMapper' => 'Order\Mapper\Factory\IncludeParameterSetMapperFactory',
-            'Order\Mapper\ProtocolSetMapper' => 'Order\Mapper\Factory\ProtocolSetMapperFactory',
-            'Order\Mapper\AccessConfigSetMapper' => 'Order\Mapper\Factory\AccessConfigSetMapperFactory',
             'Order\Mapper\FileTransferRequestMapper' => 'Order\Mapper\Factory\FileTransferRequestMapperFactory',
-            'Order\Mapper\LogicalConnectionMapper' => 'Order\Mapper\Factory\LogicalConnectionMapperFactory',
-            'Order\Mapper\PhysicalConnectionMapper' => 'Order\Mapper\Factory\PhysicalConnectionMapperFactory',
-            'Order\Mapper\ServiceInvoiceMapper' => 'Order\Mapper\Factory\ServiceInvoiceMapperFactory',
             'Order\Mapper\ServiceInvoicePositionMapper' => 'Order\Mapper\Factory\ServiceInvoicePositionMapperFactory',
             // data preparators
             // adapters
