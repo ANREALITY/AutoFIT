@@ -16,50 +16,6 @@ use Zend\Db\Sql\Delete;
 class IncludeParameterMapper extends AbstractMapper implements IncludeParameterMapperInterface
 {
 
-    /**
-     *
-     * @param IncludeParameter $dataObject
-     * @param boolean $updateIfIdSet
-     *
-     * @return IncludeParameter
-     * @throws \Exception
-     */
-    public function save(IncludeParameter $dataObject, bool $updateIfIdSet = true)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        $data['id'] = $dataObject->getId();
-        $data['expression'] = $dataObject->getExpression();
-        $data['include_parameter_set_id'] = $dataObject->getIncludeParameterSet()->getId();
-        // creating sub-objects
-        // none
-        // data from the recently persisted objects
-        // none
-
-        if ($data['id'] && $updateIfIdSet) {
-            $action = new Update('include_parameter');
-            $action->where(['id' => $data['id']]);
-            unset($data['id']);
-            $action->set($data);
-        } else {
-            $action = new Insert('include_parameter');
-            $action->values($data);
-        }
-
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
     public function deleteAll(array $criteria)
     {
         $action = new Delete('include_parameter');

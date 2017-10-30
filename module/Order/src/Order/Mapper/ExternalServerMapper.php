@@ -17,49 +17,6 @@ class ExternalServerMapper extends AbstractMapper implements ExternalServerMappe
 {
 
     /**
-     *
-     * @param ExternalServer $dataObject
-     * @param boolean $updateIfIdSet
-     *
-     * @return ExternalServer
-     * @throws \Exception
-     */
-    public function save(ExternalServer $dataObject, bool $updateIfIdSet = true)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        $data['id'] = $dataObject->getId() ?: null;
-        $data['name'] = $dataObject->getName() ?: null;
-        // creating sub-objects
-        // none
-        // data from the recently persisted objects
-        // none
-
-        if ($data['id'] && $updateIfIdSet) {
-            $action = new Update('external_server');
-            $action->where(['id' => $data['id']]);
-            unset($data['id']);
-            $action->set($data);
-        } else {
-            $action = new Insert('external_server');
-            $action->values($data);
-        }
-
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    /**
      * 
      * {@inheritDoc}
      * @see ExternalServerMapperInterface::deleteOneByEndpointId()

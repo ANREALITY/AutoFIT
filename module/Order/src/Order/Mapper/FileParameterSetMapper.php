@@ -35,53 +35,6 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
 
     /**
      *
-     * @param FileParameterSet $dataObject
-     *
-     * @return FileParameterSet
-     * @throws \Exception
-     */
-    public function save(FileParameterSet $dataObject)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        // creating sub-objects
-        // data from the recently persisted objects
-
-        if (! $dataObject->getId()) {
-            $sql = 'INSERT INTO file_parameter_set VALUES ();';
-        } else {
-            $sql = 'UPDATE file_parameter_set SET id = ' . $dataObject->getId() . ' WHERE id = ' . $dataObject->getId() .';';
-        }
-        $result = $this->dbAdapter->getDriver()
-            ->getConnection()
-            ->execute($sql);
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-                // creating sub-objects: in this case only now possible, since the $newId is needed
-                $this->fileParameterMapper->deleteAll(
-                    [
-                        [
-                            'file_parameter_set_id' => $dataObject->getId()
-                        ]
-                    ]);
-                $newFileParameters = [];
-                foreach ($dataObject->getFileParameters() ?: [] as $fileParameter) {
-                    if ($fileParameter->getFilename()) {
-                        $fileParameter->setFileParameterSet($dataObject);
-                        $newFileParameters[] = $this->fileParameterMapper->save($fileParameter, false);
-                    }
-                }
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    /**
-     *
      * {@inheritDoc}
      *
      * @see FileParameterSetMapperInterface#delete()

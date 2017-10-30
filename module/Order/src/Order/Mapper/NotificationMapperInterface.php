@@ -8,15 +8,6 @@ interface NotificationMapperInterface
 
     /**
      *
-     * @param Notification $dataObject
-     * @param boolean $updateIfIdSet
-     * @return Notification
-     * @throws \Exception
-     */
-    public function save(Notification $dataObject, bool $updateIfIdSet = false);
-
-    /**
-     *
      * @param array $criteria
      * @throws \Exception
      */

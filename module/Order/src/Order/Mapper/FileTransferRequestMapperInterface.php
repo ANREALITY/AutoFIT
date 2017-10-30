@@ -31,14 +31,6 @@ interface FileTransferRequestMapperInterface
     public function findAllPaginated(array $criteria = [], $page = null);
 
     /**
-     *
-     * @param FileTransferRequest $dataObject
-     * @return FileTransferRequest
-     * @throws \Exception
-     */
-    public function saveDataObject(FileTransferRequest $dataObject);
-
-    /**
      * @param FileTransferRequest $dataObject
      * @return FileTransferRequest
      */

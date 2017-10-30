@@ -36,53 +36,6 @@ class ProtocolSetMapper extends AbstractMapper implements ProtocolSetMapperInter
 
     /**
      *
-     * @param ProtocolSet $dataObject
-     *
-     * @return ProtocolSet
-     * @throws \Exception
-     */
-    public function save(ProtocolSet $dataObject)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        // creating sub-objects
-        // data from the recently persisted objects
-
-        if (! $dataObject->getId()) {
-            $sql = 'INSERT INTO protocol_set VALUES ();';
-        } else {
-            $sql = 'UPDATE protocol_set SET id = ' . $dataObject->getId() . ' WHERE id = ' . $dataObject->getId() .';';
-        }
-        $result = $this->dbAdapter->getDriver()
-            ->getConnection()
-            ->execute($sql);
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-                // creating sub-objects: in this case only now possible, since the $newId is needed
-                $this->protocolMapper->deleteAll(
-                    [
-                        [
-                            'protocol_set_id' => $dataObject->getId()
-                        ]
-                    ]);
-                $newProtocols = [];
-                foreach ($dataObject->getProtocols() ?: [] as $protocol) {
-                    if ($protocol->getName()) {
-                        $protocol->setProtocolSet($dataObject);
-                        $newProtocols[] = $this->protocolMapper->save($protocol, false);
-                    }
-                }
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    /**
-     *
      * {@inheritDoc}
      *
      * @see ProtocolSetMapperInterface#delete()

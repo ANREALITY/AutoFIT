@@ -16,52 +16,6 @@ use Zend\Db\Sql\Delete;
 class NotificationMapper extends AbstractMapper implements NotificationMapperInterface
 {
 
-    /**
-     *
-     * @param Notification $dataObject
-     * @param boolean $updateIfIdSet
-     *
-     * @return Notification
-     * @throws \Exception
-     */
-    public function save(Notification $dataObject, bool $updateIfIdSet = true)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        $data['id'] = $dataObject->getId();
-        $data['email'] = $dataObject->getEmail();
-        $data['success'] = $dataObject->getSuccess();
-        $data['failure'] = $dataObject->getFailure();
-        $data['logical_connection_id'] = $dataObject->getLogicalConnection()->getId();
-        // creating sub-objects
-        // none
-        // data from the recently persisted objects
-        // none
-
-        if ($data['id'] && $updateIfIdSet) {
-            $action = new Update('notification');
-            $action->where(['id' => $data['id']]);
-            unset($data['id']);
-            $action->set($data);
-        } else {
-            $action = new Insert('notification');
-            $action->values($data);
-        }
-
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
     public function deleteAll(array $criteria)
     {
         $action = new Delete('notification');

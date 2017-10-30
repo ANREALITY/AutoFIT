@@ -40,53 +40,6 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
 
     /**
      *
-     * @param AccessConfigSet $dataObject
-     *
-     * @return AccessConfigSet
-     * @throws \Exception
-     */
-    public function save(AccessConfigSet $dataObject)
-    {
-        $data = [];
-        // data retrieved directly from the input
-        // creating sub-objects
-        // data from the recently persisted objects
-
-        if (! $dataObject->getId()) {
-            $sql = 'INSERT INTO access_config_set VALUES ();';
-        } else {
-            $sql = 'UPDATE access_config_set SET id = ' . $dataObject->getId() . ' WHERE id = ' . $dataObject->getId() .';';
-        }
-        $result = $this->dbAdapter->getDriver()
-            ->getConnection()
-            ->execute($sql);
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-                // creating sub-objects: in this case only now possible, since the $newId is needed
-                $this->accessConfigMapper->deleteAll(
-                    [
-                        [
-                            'access_config_set_id' => $dataObject->getId()
-                        ]
-                    ]);
-                $newAccessConfigs = [];
-                foreach ($dataObject->getAccessConfigs() ?: [] as $accessConfig) {
-                    if ($accessConfig->getUsername()) {
-                        $accessConfig->setAccessConfigSet($dataObject);
-                        $newAccessConfigs[] = $this->accessConfigMapper->save($accessConfig, false);
-                    }
-                }
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
-    }
-
-    /**
-     *
      * {@inheritDoc}
      *
      * @see AccessConfigSetMapperInterface#delete()
