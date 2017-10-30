@@ -29,7 +29,6 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         );
 
         $service->setItemCountPerPage($itemCountPerPage);
-        $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
 
         return $service;
     }

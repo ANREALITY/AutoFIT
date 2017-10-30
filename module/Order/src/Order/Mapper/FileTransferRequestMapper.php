@@ -22,21 +22,6 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     const ENTITY_TYPE = FileTransferRequest::class;
 
     /**
-     *
-     * @var UserMapperInterface
-     */
-    protected $userMapper;
-
-    /**
-     *
-     * @param UserMapperInterface $userMapper
-     */
-    public function setUserMapper(UserMapperInterface $userMapper)
-    {
-        $this->userMapper = $userMapper;
-    }
-
-    /**
      * @inheritdoc
      */
     public function findAllPaginated(array $criteria = [], $page = null)
