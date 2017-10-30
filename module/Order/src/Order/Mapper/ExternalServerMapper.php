@@ -16,27 +16,4 @@ use Zend\Hydrator\HydratorInterface;
 class ExternalServerMapper extends AbstractMapper implements ExternalServerMapperInterface
 {
 
-    /**
-     * 
-     * {@inheritDoc}
-     * @see ExternalServerMapperInterface::deleteOneByEndpointId()
-     */
-    public function deleteOneByEndpointId(int $endpointId)
-    {
-        $action = new Delete('external_server');
-
-        $return = false;
-
-        $sql = <<<SQL
-DELETE `external_server` FROM `external_server`
-INNER JOIN `endpoint` ON `endpoint`.`external_server_id` = `external_server`.`id`
-WHERE `endpoint`.`id` = {$endpointId}
-SQL;
-
-        $result = $this->dbAdapter->getDriver()->getConnection()->execute($sql);
-        $return = (bool) $result->getAffectedRows();
-
-        return $return;
-    }
-
 }

@@ -16,34 +16,4 @@ use Zend\Db\Sql\Delete;
 class NotificationMapper extends AbstractMapper implements NotificationMapperInterface
 {
 
-    public function deleteAll(array $criteria)
-    {
-        $action = new Delete('notification');
-
-        $return = false;
-        $conditionGiven = false;
-
-        if (! empty($criteria)) {
-            foreach ($criteria as $condition) {
-                if (is_array($condition)) {
-                    if (! empty($condition['logical_connection_id'])) {
-                        $action->where(
-                            [
-                                'logical_connection_id = ?' => $condition['logical_connection_id']
-                            ]);
-                        $conditionGiven = true;
-                    }
-                }
-            }
-        }
-        if ($conditionGiven) {
-            $sql = new Sql($this->dbAdapter);
-            $statement = $sql->prepareStatementForSqlObject($action);
-            $result = $statement->execute();
-            $return = (bool) $result->getAffectedRows();
-        }
-
-        return $return;
-    }
-
 }

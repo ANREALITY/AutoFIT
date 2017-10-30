@@ -38,32 +38,4 @@ class AccessConfigSetMapper extends AbstractMapper implements AccessConfigSetMap
         $this->accessConfigMapper = $accessConfigMapper;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     *
-     * @see AccessConfigSetMapperInterface#delete()
-     * @throws \Exception
-     */
-    public function delete($id)
-    {
-        $this->accessConfigMapper->deleteAll(
-            [
-                [
-                    'access_config_set_id' => $id
-                ]
-            ]);
-
-        $action = new Delete('access_config_set');
-        $action->where([
-            'id = ?' => $id
-        ]);
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-        $return = (bool) $result->getAffectedRows();
-
-        return $return;
-    }
-
 }

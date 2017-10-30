@@ -33,32 +33,4 @@ class FileParameterSetMapper extends AbstractMapper implements FileParameterSetM
         $this->fileParameterMapper = $fileParameterMapper;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     *
-     * @see FileParameterSetMapperInterface#delete()
-     * @throws \Exception
-     */
-    public function delete($id)
-    {
-        $this->fileParameterMapper->deleteAll(
-            [
-                [
-                    'file_parameter_set_id' => $id
-                ]
-            ]);
-
-        $action = new Delete('file_parameter_set');
-        $action->where([
-            'id = ?' => $id
-        ]);
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-        $return = (bool) $result->getAffectedRows();
-
-        return $return;
-    }
-
 }

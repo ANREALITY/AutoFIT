@@ -33,32 +33,4 @@ class IncludeParameterSetMapper extends AbstractMapper implements IncludeParamet
         $this->includeParameterMapper = $includeParameterMapper;
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     *
-     * @see IncludeParameterSetMapperInterface#delete()
-     * @throws \Exception
-     */
-    public function delete($id)
-    {
-        $this->includeParameterMapper->deleteAll(
-            [
-                [
-                    'include_parameter_set_id' => $id
-                ]
-            ]);
-
-        $action = new Delete('include_parameter_set');
-        $action->where([
-            'id = ?' => $id
-        ]);
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-        $return = (bool) $result->getAffectedRows();
-
-        return $return;
-    }
-
 }

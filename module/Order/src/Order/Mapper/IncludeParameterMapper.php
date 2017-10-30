@@ -16,34 +16,4 @@ use Zend\Db\Sql\Delete;
 class IncludeParameterMapper extends AbstractMapper implements IncludeParameterMapperInterface
 {
 
-    public function deleteAll(array $criteria)
-    {
-        $action = new Delete('include_parameter');
-
-        $return = false;
-        $conditionGiven = false;
-
-        if (! empty($criteria)) {
-            foreach ($criteria as $condition) {
-                if (is_array($condition)) {
-                    if (! empty($condition['include_parameter_set_id'])) {
-                        $action->where(
-                            [
-                                'include_parameter_set_id = ?' => $condition['include_parameter_set_id']
-                            ]);
-                        $conditionGiven = true;
-                    }
-                }
-            }
-        }
-        if ($conditionGiven) {
-            $sql = new Sql($this->dbAdapter);
-            $statement = $sql->prepareStatementForSqlObject($action);
-            $result = $statement->execute();
-            $return = (bool) $result->getAffectedRows();
-        }
-
-        return $return;
-    }
-
 }
