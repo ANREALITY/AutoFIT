@@ -1,10 +1,9 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Order\Mapper\ServiceInvoicePositionMapper;
-use DbSystel\DataObject\ServiceInvoicePosition;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ServiceInvoicePositionMapperFactory implements FactoryInterface
 {

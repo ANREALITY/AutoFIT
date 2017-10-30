@@ -1,13 +1,9 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Order\Mapper\FileTransferRequestMapper;
-use DbSystel\DataObject\FileTransferRequest;
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\User;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\Notification;
+use Order\Mapper\FileTransferRequestMapper;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class FileTransferRequestMapperFactory implements FactoryInterface
 {
@@ -33,7 +29,6 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         );
 
         $service->setItemCountPerPage($itemCountPerPage);
-        $service->setLogicalConnectionMapper($container->get('Order\Mapper\LogicalConnectionMapper'));
         $service->setUserMapper($container->get('Order\Mapper\UserMapper'));
 
         return $service;

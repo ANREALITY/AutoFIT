@@ -1,10 +1,9 @@
 <?php
 namespace Order\Mapper\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Order\Mapper\ClusterMapper;
-use DbSystel\DataObject\Cluster;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ClusterMapperFactory implements FactoryInterface
 {
