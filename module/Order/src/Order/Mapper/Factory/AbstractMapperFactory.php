@@ -7,26 +7,14 @@ use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 class AbstractMapperFactory implements AbstractFactoryInterface
 {
 
-    /**
-     *
-     * @var string
-     */
+    /** @var string */
     const NAME_PART_MAPPER = 'Mapper';
-
-    /**
-     *
-     * @var string
-     */
+    /** @var string */
     const NAMESPACE_MAPPER = 'Order\Mapper';
-
-    /**
-     *
-     * @var string
-     */
+    /** @var string */
     const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
 
     /**
-     *
      * {@inheritDoc}
      *
      * @see AbstractFactoryInterface::canCreateServiceWithName()
@@ -48,7 +36,6 @@ class AbstractMapperFactory implements AbstractFactoryInterface
     }
 
     /**
-     *
      * {@inheritDoc}
      *
      * @see AbstractFactoryInterface::createServiceWithName()
