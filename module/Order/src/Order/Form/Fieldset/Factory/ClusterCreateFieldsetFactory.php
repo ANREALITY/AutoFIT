@@ -1,10 +1,10 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Order\Form\Fieldset\ClusterCreateFieldset;
 use DbSystel\DataObject\Cluster;
 use Interop\Container\ContainerInterface;
+use Order\Form\Fieldset\ClusterCreateFieldset;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ClusterCreateFieldsetFactory implements FactoryInterface
 {
@@ -18,9 +18,8 @@ class ClusterCreateFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new Cluster();
         $fieldset->setObject($prototype);
-
-        $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
-        $fieldset->setDbAdapter($dbAdapter);
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $fieldset->setEntityManager($entityManager);
 
         return $fieldset;
     }

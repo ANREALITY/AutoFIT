@@ -1,17 +1,15 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use Doctrine\ORM\EntityManager;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Db\Adapter\AdapterInterface;
 
 abstract class AbstractClusterFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    /**
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
+    /** @var EntityManager */
+    protected $entityManager;
 
     public function __construct($name = null, $options = [])
     {
@@ -19,11 +17,11 @@ abstract class AbstractClusterFieldset extends Fieldset implements InputFilterPr
     }
 
     /**
-     * @param AdapterInterface $dbAdapter
+     * @param EntityManager $entityManager
      */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
+    public function setEntityManager(EntityManager $entityManager)
     {
-        $this->dbAdapter = $dbAdapter;
+        $this->entityManager = $entityManager;
     }
 
     public function init()

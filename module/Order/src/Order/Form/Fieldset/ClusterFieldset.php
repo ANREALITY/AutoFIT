@@ -1,7 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use Zend\Form\Fieldset;
+use DbSystel\DataObject\Cluster;
+use DoctrineModule\Validator\ObjectExists;
 
 class ClusterFieldset extends AbstractClusterFieldset
 {
@@ -43,11 +44,10 @@ class ClusterFieldset extends AbstractClusterFieldset
                 'required' => false,
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'name' => ObjectExists::class,
                         'options' => [
-                            'table' => 'cluster',
-                            'field' => 'virtual_node_name',
-                            'adapter' => $this->dbAdapter
+                            'object_repository' => $this->entityManager->getRepository(Cluster::class),
+                            'fields' => 'virtualNodeName'
                         ]
                     ]
                 ]
