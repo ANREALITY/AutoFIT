@@ -101,16 +101,19 @@ class AuditLog extends AbstractDataObject
 
     /**
      * @var FileTransferRequest
+     * @todo Remove this property as soon as the migration to Doctrine is completed!
      */
     protected $fileTransferRequest;
 
     /**
      * @var Server
+     * @todo Remove this property as soon as the migration to Doctrine is completed!
      */
     protected $server;
 
     /**
      * @var Cluster
+     * @todo Remove this property as soon as the migration to Doctrine is completed!
      */
     protected $cluster;
 
@@ -223,7 +226,7 @@ class AuditLog extends AbstractDataObject
      */
     public function getDatetime()
     {
-        // @todo Change later back to DateTime!
+        // @todo Change later (when the migration to Doctrine is completed) back to DateTime!
         return is_string($this->datetime) || empty($this->datetime)
             ? $this->datetime : $this->datetime->format(self::DATETIME_FORMAT)
         ;
