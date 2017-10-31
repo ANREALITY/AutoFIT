@@ -20,7 +20,16 @@ class AuditLoggerFactory implements FactoryInterface
         $user = new User();
         $userId = $container->get(PluginManager::class)->get('IdentityParam')('id');
         $user->setId($userId);
-        $service = new AuditLogger($auditLogService, $user);
+        $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
+        $serverService = $container->get('Order\Service\ServerService');
+        $clusterService = $container->get('Order\Service\ClusterService');
+        $service = new AuditLogger(
+            $auditLogService,
+            $user,
+            $fileTransferRequestService,
+            $serverService,
+            $clusterService
+        );
 
         return $service;
     }

@@ -5,6 +5,7 @@ use DbSystel\DataObject\AuditLog;
 use DbSystel\DataObject\AuditLogCluster;
 use DbSystel\DataObject\AuditLogFileTransferRequest;
 use DbSystel\DataObject\AuditLogServer;
+use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
@@ -97,35 +98,15 @@ class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
      * @return AuditLog
      * @throws \Exception
      */
-    public function save(AuditLog $dataObject)
+    public function create(AuditLog $dataObject)
     {
-        $data = [];
-        // data retrieved directly from the input
-        $data['resource_type'] = $dataObject->getResourceType();
-        $data['resource_id'] = $dataObject->getResourceId();
-        $data['action'] = $dataObject->getAction();
-        $data['datetime'] = $dataObject->getDatetime();
-        $data['user_id'] = $dataObject->getUser() ? $dataObject->getUser()->getId() : new Expression('NULL');
-        // creating sub-objects
-        // $newFoo = $this->fooMapper->save($dataObject->getFoo());
-        // data from the recently persisted objects
-
-        $action = new Insert('audit_log');
-        unset($data['id']);
-        $action->values($data);
-
-        $sql = new Sql($this->dbAdapter);
-        $statement = $sql->prepareStatementForSqlObject($action);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface) {
-            $newId = $result->getGeneratedValue() ?: $dataObject->getId();
-            if ($newId) {
-                $dataObject->setId($newId);
-            }
-            return $dataObject;
-        }
-        throw new \Exception('Database error in ' . __METHOD__);
+        $currentUser = $this->entityManager->getRepository(User::class)->find(
+            $dataObject->getUser()->getId()
+        );
+        $dataObject->setUser($currentUser);
+        $this->entityManager->persist($dataObject);
+        $this->entityManager->flush();
+        return $dataObject;
     }
 
 }

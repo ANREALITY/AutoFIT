@@ -39,9 +39,9 @@ class AuditLogService extends AbstractService implements AuditLogServiceInterfac
      * {@inheritDoc}
      *
      */
-    public function saveOne(AuditLog $auditLog)
+    public function create(AuditLog $auditLog)
     {
-        return $this->mapper->save($auditLog);
+        return $this->mapper->create($auditLog);
     }
 
 }

@@ -27,6 +27,6 @@ interface AuditLogMapperInterface
      * @return AuditLog
      * @throws \Exception
      */
-    public function save(AuditLog $dataObject);
+    public function create(AuditLog $dataObject);
 
 }

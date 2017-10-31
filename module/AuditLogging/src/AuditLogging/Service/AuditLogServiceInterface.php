@@ -26,6 +26,6 @@ interface AuditLogServiceInterface
      * @param AuditLog $auditLog
      * @return AuditLog
      */
-    public function saveOne(AuditLog $auditLog);
+    public function create(AuditLog $auditLog);
 
 }
