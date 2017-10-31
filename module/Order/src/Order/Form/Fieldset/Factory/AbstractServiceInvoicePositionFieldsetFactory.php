@@ -74,11 +74,6 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
         $prototype = new $prototypeQualifiedClassName();
         $service->setObject($prototype);
 
-        if (method_exists($service, 'setDbAdapter')) {
-            $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
-            $service->setDbAdapter($dbAdapter);
-        }
-
         return $service;
     }
 

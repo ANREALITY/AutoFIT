@@ -2,8 +2,8 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
 class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
 {
@@ -105,11 +105,6 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
         $service->setHydrator($hydrator);
         $prototype = new $prototypeQualifiedClassName();
         $service->setObject($prototype);
-
-        if (method_exists($service, 'setDbAdapter')) {
-            $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
-            $service->setDbAdapter($dbAdapter);
-        }
 
         if (method_exists($service, 'setEntityManager')) {
             $entityManager = $container->get('doctrine.entitymanager.orm_default');

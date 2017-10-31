@@ -6,15 +6,9 @@ use Doctrine\ORM\EntityManager;
 use DoctrineModule\Validator\ObjectExists;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Db\Adapter\AdapterInterface;
 
 class ApplicationFieldset extends Fieldset implements InputFilterProviderInterface
 {
-
-    /**
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
 
     /**
      * @var EntityManager
@@ -24,14 +18,6 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
-    }
-
-    /**
-     * @param AdapterInterface $dbAdapter
-     */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
-    {
-        $this->dbAdapter = $dbAdapter;
     }
 
     /**
