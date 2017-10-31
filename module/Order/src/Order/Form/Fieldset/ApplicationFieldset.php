@@ -1,6 +1,9 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\Application;
+use Doctrine\ORM\EntityManager;
+use DoctrineModule\Validator\ObjectExists;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Db\Adapter\AdapterInterface;
@@ -13,6 +16,11 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
      */
     protected $dbAdapter;
 
+    /**
+     * @var EntityManager
+     */
+    protected $entityManager;
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
@@ -24,6 +32,14 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
     public function setDbAdapter(AdapterInterface $dbAdapter)
     {
         $this->dbAdapter = $dbAdapter;
+    }
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
 
     public function init()
@@ -46,16 +62,16 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function getInputFilterSpecification()
     {
+        $breakpoint = null;
         return [
             'technical_short_name' => [
                 'required' => false,
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'name' => ObjectExists::class,
                         'options' => [
-                            'table' => 'application',
-                            'field' => 'technical_short_name',
-                            'adapter' => $this->dbAdapter
+                            'object_repository' => $this->entityManager->getRepository(Application::class),
+                            'fields' => ['technicalShortName'],
                         ]
                     ]
                 ]
