@@ -62,7 +62,6 @@ class ApplicationFieldset extends Fieldset implements InputFilterProviderInterfa
 
     public function getInputFilterSpecification()
     {
-        $breakpoint = null;
         return [
             'technical_short_name' => [
                 'required' => false,
