@@ -1,10 +1,10 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Order\Form\Fieldset\ServerListItemFieldset;
 use DbSystel\DataObject\Server;
 use Interop\Container\ContainerInterface;
+use Order\Form\Fieldset\ServerListItemFieldset;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ServerListItemFieldsetFactory implements FactoryInterface
 {
@@ -18,9 +18,10 @@ class ServerListItemFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new Server();
         $fieldset->setObject($prototype);
-
         $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $fieldset->setDbAdapter($dbAdapter);
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $fieldset->setEntityManager($entityManager);
 
         return $fieldset;
     }

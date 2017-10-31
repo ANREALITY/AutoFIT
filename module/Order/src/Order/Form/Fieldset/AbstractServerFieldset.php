@@ -1,17 +1,20 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\Server;
+use Doctrine\ORM\EntityManager;
+use DoctrineModule\Validator\ObjectExists;
+use Zend\Db\Adapter\AdapterInterface;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Db\Adapter\AdapterInterface;
 
 abstract class AbstractServerFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    /**
-     * @var AdapterInterface
-     */
+    /** @var AdapterInterface */
     protected $dbAdapter;
+    /** @var EntityManager */
+    protected $entityManager;
 
     public function __construct($name = null, $options = [])
     {
@@ -24,6 +27,14 @@ abstract class AbstractServerFieldset extends Fieldset implements InputFilterPro
     public function setDbAdapter(AdapterInterface $dbAdapter)
     {
         $this->dbAdapter = $dbAdapter;
+    }
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
 
     public function init()
@@ -51,11 +62,10 @@ abstract class AbstractServerFieldset extends Fieldset implements InputFilterPro
                 'required' => false,
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'name' => ObjectExists::class,
                         'options' => [
-                            'table' => 'server',
-                            'field' => 'name',
-                            'adapter' => $this->dbAdapter
+                            'object_repository' => $this->entityManager->getRepository(Server::class),
+                            'fields' => ['name']
                         ]
                     ]
                 ]

@@ -1,10 +1,10 @@
 <?php
 namespace MasterData\Form\Fieldset\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
-use MasterData\Form\Fieldset\ServerAdditionalNameFieldset;
 use DbSystel\DataObject\Server;
 use Interop\Container\ContainerInterface;
+use MasterData\Form\Fieldset\ServerAdditionalNameFieldset;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class ServerAdditionalNameFieldsetFactory implements FactoryInterface
 {
@@ -18,9 +18,10 @@ class ServerAdditionalNameFieldsetFactory implements FactoryInterface
         $fieldset->setHydrator($hydrator);
         $prototype = new Server();
         $fieldset->setObject($prototype);
-
         $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $fieldset->setDbAdapter($dbAdapter);
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $fieldset->setEntityManager($entityManager);
 
         return $fieldset;
     }
