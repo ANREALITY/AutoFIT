@@ -111,6 +111,11 @@ class AbstractCommonFieldsetFactory implements AbstractFactoryInterface
             $service->setDbAdapter($dbAdapter);
         }
 
+        if (method_exists($service, 'setEntityManager')) {
+            $entityManager = $container->get('doctrine.entitymanager.orm_default');
+            $service->setEntityManager($entityManager);
+        }
+
         return $service;
     }
 
