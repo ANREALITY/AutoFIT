@@ -4,7 +4,6 @@ namespace AuditLogging\Service;
 use AuditLogging\Mapper\AuditLogMapperInterface;
 use DbSystel\DataObject\AuditLog;
 use Order\Service\AbstractService;
-use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 
 class AuditLogService extends AbstractService implements AuditLogServiceInterface
 {

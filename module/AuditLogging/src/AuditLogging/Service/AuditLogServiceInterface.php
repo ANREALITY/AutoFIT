@@ -2,7 +2,6 @@
 namespace AuditLogging\Service;
 
 use DbSystel\DataObject\AuditLog;
-use AuditLogging\Mapper\RequestModifier\AuditLogRequestModifier;
 use DbSystel\Paginator\Paginator;
 
 interface AuditLogServiceInterface
