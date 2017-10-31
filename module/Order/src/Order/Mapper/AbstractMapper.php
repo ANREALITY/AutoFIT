@@ -5,7 +5,6 @@ use DbSystel\DataObject\AbstractDataObject;
 use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use ReflectionClass;
-use Zend\Db\Adapter\AdapterInterface;
 
 class AbstractMapper
 {
@@ -18,12 +17,6 @@ class AbstractMapper
     const DEFAULT_QUERY_LIMIT = 25;
 
     /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
-
-    /**
      * @var integer
      */
     protected $itemCountPerPage;
@@ -34,29 +27,9 @@ class AbstractMapper
     protected $entityManager;
 
     public function __construct(
-        AdapterInterface $dbAdapter,
         EntityManager $entityManager
     ) {
-        $this->setDbAdapter($dbAdapter);
         $this->entityManager = $entityManager;
-    }
-
-    /**
-     *
-     * @return AdapterInterface $dbAdapter
-     */
-    public function getDbAdapter()
-    {
-        return $this->dbAdapter;
-    }
-
-    /**
-     *
-     * @param AdapterInterface $dbAdapter
-     */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
-    {
-        $this->dbAdapter = $dbAdapter;
     }
 
     /**

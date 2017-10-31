@@ -58,7 +58,6 @@ class AbstractMapperFactory implements AbstractFactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new $requestedName(
-            $container->get('Zend\Db\Adapter\Adapter'),
             $entityManager
         );
 

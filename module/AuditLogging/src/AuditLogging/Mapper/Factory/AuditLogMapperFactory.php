@@ -2,9 +2,8 @@
 namespace AuditLogging\Mapper\Factory;
 
 use AuditLogging\Mapper\AuditLogMapper;
-use DbSystel\DataObject\AuditLog;
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class AuditLogMapperFactory implements FactoryInterface
 {
@@ -25,7 +24,6 @@ class AuditLogMapperFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new AuditLogMapper(
-            $container->get('Zend\Db\Adapter\Adapter'),
             $entityManager
         );
 

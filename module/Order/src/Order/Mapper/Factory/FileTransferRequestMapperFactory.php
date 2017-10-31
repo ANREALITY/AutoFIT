@@ -24,7 +24,6 @@ class FileTransferRequestMapperFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $service = new FileTransferRequestMapper(
-            $container->get('Zend\Db\Adapter\Adapter'),
             $entityManager
         );
 

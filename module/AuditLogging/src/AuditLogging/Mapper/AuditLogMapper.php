@@ -11,10 +11,6 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 use Order\Mapper\AbstractMapper;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\Sql\Expression;
-use Zend\Db\Sql\Insert;
-use Zend\Db\Sql\Sql;
 
 class AuditLogMapper extends AbstractMapper implements AuditLogMapperInterface
 {
