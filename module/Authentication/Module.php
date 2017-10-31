@@ -33,7 +33,6 @@ class Module
                     return new Session('auth');
                 },
                 'AuthenticationService' => function ($serviceManager) {
-                    $dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
                     $userService = $serviceManager->get('Order\Service\UserService');
                     if (! empty($_SERVER['AUTH_USER'])) {
                         $username = strrchr($_SERVER['AUTH_USER'], "\\") ? str_ireplace("\\", '',
