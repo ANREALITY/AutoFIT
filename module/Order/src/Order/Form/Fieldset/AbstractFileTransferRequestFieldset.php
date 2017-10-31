@@ -1,21 +1,21 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\Application;
+use DbSystel\DataObject\FileTransferRequest;
+use Doctrine\ORM\EntityManager;
+use DoctrineModule\Validator\NoObjectExists;
+use DoctrineModule\Validator\ObjectExists;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Validator\Db\NoRecordExists;
 
 abstract class AbstractFileTransferRequestFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
     const COMMENT_MAX_LENGTH = 140;
 
-    /**
-     *
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
+    /** @var EntityManager */
+    protected $entityManager;
 
     public function __construct($name = null, $options = [])
     {
@@ -23,12 +23,11 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
     }
 
     /**
-     *
-     * @param AdapterInterface $dbAdapter
+     * @param EntityManager $entityManager
      */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
+    public function setEntityManager(EntityManager $entityManager)
     {
-        $this->dbAdapter = $dbAdapter;
+        $this->entityManager = $entityManager;
     }
 
     public function init()
@@ -143,10 +142,9 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                             'callback' => function($value, $context = []) {
                                 $return = true;
                                 if (empty($context['id'])) {
-                                    $noRecordExistsValidator = new NoRecordExists([
-                                        'table' => 'file_transfer_request',
-                                        'field' => 'change_number',
-                                        'adapter' => $this->dbAdapter
+                                    $noRecordExistsValidator = new NoObjectExists([
+                                        'object_repository' => $this->entityManager->getRepository(FileTransferRequest::class),
+                                        'fields' => 'changeNumber'
                                     ]);
                                     $return = $noRecordExistsValidator->isValid($value);
                                 }
@@ -160,11 +158,10 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'name' => ObjectExists::class,
                         'options' => [
-                            'table' => 'application',
-                            'field' => 'technical_short_name',
-                            'adapter' => $this->dbAdapter
+                            'object_repository' => $this->entityManager->getRepository(Application::class),
+                            'fields' => 'technicalShortName'
                         ]
                     ]
                 ],
