@@ -1,6 +1,9 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use DbSystel\DataObject\Environment;
+use Doctrine\ORM\EntityManager;
+use DoctrineModule\Validator\ObjectExists;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Db\Adapter\AdapterInterface;
@@ -8,10 +11,8 @@ use Zend\Db\Adapter\AdapterInterface;
 class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    /**
-     * @var AdapterInterface
-     */
-    protected $dbAdapter;
+    /** @var EntityManager */
+    protected $entityManager;
 
     public function __construct($name = null, $options = [])
     {
@@ -19,11 +20,11 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
     }
 
     /**
-     * @param AdapterInterface $dbAdapter
+     * @param EntityManager $entityManager
      */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
+    public function setEntityManager(EntityManager $entityManager)
     {
-        $this->dbAdapter = $dbAdapter;
+        $this->entityManager = $entityManager;
     }
 
     public function init()
@@ -65,11 +66,10 @@ class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterfa
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'Zend\Validator\Db\RecordExists',
+                        'name' => ObjectExists::class,
                         'options' => [
-                            'table' => 'environment',
-                            'field' => 'severity',
-                            'adapter' => $this->dbAdapter
+                            'object_repository' => $this->entityManager->getRepository(Environment::class),
+                            'fields' => 'severity'
                         ]
                     ]
                 ]
