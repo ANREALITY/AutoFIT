@@ -11,7 +11,7 @@ use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
 
 error_reporting(E_ALL | E_STRICT);
-ini_set('memory_limit', '1920M');
+ini_set('memory_limit', '2048M');
 chdir(__DIR__);
 
 /**
