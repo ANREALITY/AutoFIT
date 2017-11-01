@@ -4,12 +4,12 @@ namespace Order\Validator\Db;
 use DbSystel\DataObject\Server;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
-use Zend\Validator\Db\AbstractDb;
+use Zend\Validator\AbstractValidator;
 
 /**
  * Checks, the server matches to the given endpoint type.
  */
-class ServerMatchesEndpointType extends AbstractDb
+class ServerMatchesEndpointType extends AbstractValidator
 {
 
     /**
@@ -33,9 +33,8 @@ class ServerMatchesEndpointType extends AbstractDb
      *  Options: array elements Fieldst to be validated.
      *  [endpoint_type]
      */
-    public function __construct(EntityManager $entityManager, $options = null) {
-        $options['table'] = null;
-        $options['field'] = null;
+    public function __construct(EntityManager $entityManager, $options = null)
+    {
         parent::__construct($options);
         $this->entityManager = $entityManager;
     }

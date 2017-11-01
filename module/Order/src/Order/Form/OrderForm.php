@@ -389,7 +389,6 @@ class OrderForm extends Form
         $validator = new ServerMatchesEndpointType(
             $this->entityManager,
             [
-                'adapter' => $this->dbAdapter,
                 'endpoint_type_name' => $endpointType
             ]
         );
@@ -412,7 +411,6 @@ class OrderForm extends Form
         $validator = new ServerMatchesEndpointType(
             $this->entityManager,
             [
-                'adapter' => $this->dbAdapter,
                 'endpoint_type_name' => $endpointType
             ]
         );
