@@ -1,11 +1,11 @@
 <?php
 namespace Order\Validator\Db;
 
+use Doctrine\ORM\EntityManager;
+use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Sql;
 use Zend\Validator\Db\AbstractDb;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
 
 /**
  * Checks, the server matches to the given endpoint type.
@@ -17,6 +17,9 @@ class ServerMatchesEndpointType extends AbstractDb
      * Error constants
      */
     const ERROR_SERVER_DOES_NOT_MATCH_ENDPOINT_TYPE = 'serverDoesNotMatchEndpointType';
+
+    /** @var EntityManager */
+    protected $entityManager;
 
     /**
      * @var array Message templates
@@ -31,10 +34,11 @@ class ServerMatchesEndpointType extends AbstractDb
      *  Options: array elements Fieldst to be validated.
      *  [endpoint_type]
      */
-    public function __construct($options = null) {
+    public function __construct(EntityManager $entityManager, $options = null) {
         $options['table'] = null;
         $options['field'] = null;
         parent::__construct($options);
+        $this->entityManager = $entityManager;
     }
 
     public function isValid($value)

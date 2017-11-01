@@ -6,6 +6,7 @@ use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
 use DbSystel\Validator\MaxOneNotEmpty;
 use DbSystel\Validator\MinOneNotEmpty;
+use Doctrine\ORM\EntityManager;
 use Order\Form\Fieldset\AbstractEndpointFieldset;
 use Order\Form\Fieldset\AbstractFileTransferRequestFieldset;
 use Order\Form\Fieldset\AbstractServiceInvoicePositionFieldset;
@@ -41,18 +42,23 @@ class OrderForm extends Form
     /** @var ServiceInvoicePositionServiceInterface */
     protected $serviceInvoicePositionService;
 
+    /** @var EntityManager */
+    protected $entityManager;
+
     public function __construct(
         $name = null,
         $options = [],
         string $fileTransferRequestFieldsetServiceName,
         $dbAdapter,
-        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService
+        ServiceInvoicePositionServiceInterface $serviceInvoicePositionService,
+        EntityManager $entityManager
     ) {
         parent::__construct('create_file_transfer_request');
 
         $this->fileTransferRequestFieldsetServiceName = $fileTransferRequestFieldsetServiceName;
         $this->dbAdapter = $dbAdapter;
         $this->serviceInvoicePositionService = $serviceInvoicePositionService;
+        $this->entityManager = $entityManager;
     }
 
     public function init()
@@ -380,10 +386,13 @@ class OrderForm extends Form
 
         $reflection = new \ReflectionClass($endpointSourceFieldset);
         $endpointType = str_ireplace(['Endpoint', 'SourceFieldset'], '', $reflection->getShortName());
-        $validator = new ServerMatchesEndpointType([
-            'adapter' => $this->dbAdapter,
-            'endpoint_type_name' => $endpointType
-        ]);
+        $validator = new ServerMatchesEndpointType(
+            $this->entityManager,
+            [
+                'adapter' => $this->dbAdapter,
+                'endpoint_type_name' => $endpointType
+            ]
+        );
         $serverNameField = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
         $serverName = $serverNameField->getValue();
         $isValid = $validator->isValid($serverName);
@@ -400,10 +409,13 @@ class OrderForm extends Form
 
         $reflection = new \ReflectionClass($endpointTargetFieldset);
         $endpointType = str_ireplace(['Endpoint', 'TargetFieldset'], '', $reflection->getShortName());
-        $validator = new ServerMatchesEndpointType([
-            'adapter' => $this->dbAdapter,
-            'endpoint_type_name' => $endpointType
-        ]);
+        $validator = new ServerMatchesEndpointType(
+            $this->entityManager,
+            [
+                'adapter' => $this->dbAdapter,
+                'endpoint_type_name' => $endpointType
+            ]
+        );
         $serverNameField = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
         $serverName = $serverNameField->getValue();
         $isValid = $validator->isValid($serverName);

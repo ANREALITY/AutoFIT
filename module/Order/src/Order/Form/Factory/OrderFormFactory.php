@@ -17,13 +17,15 @@ class OrderFormFactory implements FactoryInterface
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
         $dbAdapter = $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $serviceInvoicePositionService = $container->get('Order\Service\ServiceInvoicePositionService');
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
         $form = new OrderForm(
             null,
             [],
             $fileTransferRequestFieldsetServiceName,
             $dbAdapter,
-            $serviceInvoicePositionService
+            $serviceInvoicePositionService,
+            $entityManager
         );
         $form->setAttribute('method', 'post')
             ->setHydrator(new ClassMethods())
