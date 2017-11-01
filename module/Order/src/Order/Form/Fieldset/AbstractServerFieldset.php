@@ -4,29 +4,18 @@ namespace Order\Form\Fieldset;
 use DbSystel\DataObject\Server;
 use Doctrine\ORM\EntityManager;
 use DoctrineModule\Validator\ObjectExists;
-use Zend\Db\Adapter\AdapterInterface;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
 abstract class AbstractServerFieldset extends Fieldset implements InputFilterProviderInterface
 {
 
-    /** @var AdapterInterface */
-    protected $dbAdapter;
     /** @var EntityManager */
     protected $entityManager;
 
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
-    }
-
-    /**
-     * @param AdapterInterface $dbAdapter
-     */
-    public function setDbAdapter(AdapterInterface $dbAdapter)
-    {
-        $this->dbAdapter = $dbAdapter;
     }
 
     /**
