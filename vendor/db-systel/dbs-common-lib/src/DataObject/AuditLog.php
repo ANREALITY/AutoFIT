@@ -226,10 +226,7 @@ class AuditLog extends AbstractDataObject
      */
     public function getDatetime()
     {
-        // @todo Change later (when the migration to Doctrine is completed) back to DateTime!
-        return is_string($this->datetime) || empty($this->datetime)
-            ? $this->datetime : $this->datetime->format(self::DATETIME_FORMAT)
-        ;
+        return $this->datetime;
     }
 
     /**

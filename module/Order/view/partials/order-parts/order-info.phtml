@@ -1,5 +1,6 @@
 <?php
 use DbSystel\DataObject\FileTransferRequest;
+
 /**
  *
  * @var FileTransferRequest $fileTransferRequest
@@ -20,7 +21,7 @@ $orderPartTitle = $this->translate('Order info');
 $orderPartAttributes = [
     [
         'label' => ucfirst($this->translate('created on')),
-        'value' => $fileTransferRequest->getCreated() ? strftime('%e.%m.%Y', strtotime($fileTransferRequest->getCreated())) : '&nbsp;'
+        'value' => $fileTransferRequest->getCreated()->format('d.m.Y') ?: '-'
     ],
     [
         'label' => $this->translate('status'),

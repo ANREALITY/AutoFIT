@@ -1,4 +1,5 @@
 <?php
+use DbSystel\DataObject\AbstractDataObject;
 use DbSystel\DataObject\AuditLog;
 ?>
 
@@ -41,7 +42,7 @@ echo $this->paginationControl(
     <?php foreach ($paginator->getCurrentItems() as $auditLog) : ?>
     <tr>
         <td>#<?php echo $auditLog->getId(); ?></td>
-        <td><?php echo $auditLog->getDatetime(); ?></td>
+        <td><?php echo $auditLog->getDatetime()->format(AbstractDataObject::DATETIME_FORMAT); ?></td>
         <td><?php echo $auditLog->getUser() ? $auditLog->getUser()->getUsername() : null; ?></td>
         <td><?php echo $auditLog->getResourceType(); ?></td>
         <td><?php
