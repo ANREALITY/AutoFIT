@@ -383,10 +383,10 @@ class OrderForm extends Form
         $reflection = new \ReflectionClass($endpointSourceFieldset);
         $endpointType = str_ireplace(['Endpoint', 'SourceFieldset'], '', $reflection->getShortName());
         $validator = new ServerMatchesEndpointType(
-            $this->entityManager,
             [
                 'endpoint_type_name' => $endpointType
-            ]
+            ],
+            $this->entityManager
         );
         $serverNameField = $endpointSourceFieldset->get('endpoint_server_config')->get('server')->get('name');
         $serverName = $serverNameField->getValue();
@@ -405,10 +405,10 @@ class OrderForm extends Form
         $reflection = new \ReflectionClass($endpointTargetFieldset);
         $endpointType = str_ireplace(['Endpoint', 'TargetFieldset'], '', $reflection->getShortName());
         $validator = new ServerMatchesEndpointType(
-            $this->entityManager,
             [
                 'endpoint_type_name' => $endpointType
-            ]
+            ],
+            $this->entityManager
         );
         $serverNameField = $endpointTargetFieldset->get('endpoint_server_config')->get('server')->get('name');
         $serverName = $serverNameField->getValue();

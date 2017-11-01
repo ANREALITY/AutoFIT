@@ -28,12 +28,14 @@ class ServerMatchesEndpointType extends AbstractValidator
     ];
 
     /**
+     * ServerMatchesEndpointType constructor.
      * 
      * @param array $options
      *  Options: array elements Fieldst to be validated.
      *  [endpoint_type]
+     * @param EntityManager $entityManager
      */
-    public function __construct(EntityManager $entityManager, $options = null)
+    public function __construct($options = null, EntityManager $entityManager)
     {
         parent::__construct($options);
         $this->entityManager = $entityManager;
