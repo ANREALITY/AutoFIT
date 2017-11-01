@@ -1,10 +1,9 @@
 <?php
 namespace Order\Validator\Db;
 
+use DbSystel\DataObject\Server;
 use Doctrine\ORM\EntityManager;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\Sql\Select;
-use Zend\Db\Sql\Sql;
+use Doctrine\ORM\QueryBuilder;
 use Zend\Validator\Db\AbstractDb;
 
 /**
@@ -43,36 +42,29 @@ class ServerMatchesEndpointType extends AbstractDb
 
     public function isValid($value)
     {
-        $isValid = false;
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('s')->from(Server::class, 's');
+        $queryBuilder->join('s.serverType', 'st');
+        $queryBuilder->join('st.endpointTypes', 'et');
+        $queryBuilder->andWhere('s.name = :serverName');
+        $queryBuilder->andWhere(
+            $queryBuilder->expr()->eq(
+                'LOWER(et.name)', ':endpointTypeName'
+            )
+        );
+        $queryBuilder->setParameter('serverName', $value);
+        $queryBuilder->setParameter('endpointTypeName', strtolower($this->getOption('endpoint_type_name')));
+        $query = $queryBuilder->getQuery();
 
-        $sql = new Sql($this->getAdapter());
-        $select = new Select();
-        $select = $sql->select('server');
-        // filtering by name
-        $select->where(
-            [
-                'server.name = ?' => $value
-            ]);
-        // filtering by endpoint type
-        $select->join('endpoint_type_server_type', 'endpoint_type_server_type.server_type_id = server.server_type_id', [],
-            Select::JOIN_INNER);
-        $select->join('endpoint_type', 'endpoint_type.id = endpoint_type_server_type.endpoint_type_id', [
-            'endpoint_type_name' => 'name'
-        ], Select::JOIN_INNER);
-        $select->where->expression(
-            'LOWER(endpoint_type.name) = LOWER(?)', $this->getOption('endpoint_type_name')
-            );
+        $result = $query->execute();
 
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if ($result instanceof ResultInterface && $result->count() > 0) {
-            $isValid = true;
-        }
+        $isValid = ! empty($result);
 
         if (! $isValid) {
             $this->error($this->getMessageTemplates()[self::ERROR_SERVER_DOES_NOT_MATCH_ENDPOINT_TYPE]);
         }
+
         return $isValid;
     }
 
