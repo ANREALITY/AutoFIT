@@ -37,6 +37,7 @@ class ServerAdditionalNameFieldset extends AbstractServerFieldset
     {
         $ServerNotInUseForCdValidator = new ServerNotInUseForCd([
             'adapter' => $this->dbAdapter,
+            'entityManager' => $this->entityManager,
         ]);
 
         $inputFilterSpecification = [

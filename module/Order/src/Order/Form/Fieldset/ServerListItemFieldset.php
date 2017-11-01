@@ -9,7 +9,8 @@ class ServerListItemFieldset extends AbstractServerFieldset
     public function getInputFilterSpecification()
     {
         $ServerNotInUseForCdValidator = new ServerNotInUseForCd([
-            'adapter' => $this->dbAdapter
+            'adapter' => $this->dbAdapter,
+            'entityManager' => $this->entityManager
         ]);
 
         $inputFilterSpecification = [
