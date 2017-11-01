@@ -219,7 +219,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -239,7 +239,7 @@ abstract class AbstractPhysicalConnection extends AbstractDataObject
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getUpdated()
     {
