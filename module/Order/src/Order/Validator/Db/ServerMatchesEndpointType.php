@@ -17,9 +17,6 @@ class ServerMatchesEndpointType extends AbstractValidator
      */
     const ERROR_SERVER_DOES_NOT_MATCH_ENDPOINT_TYPE = 'serverDoesNotMatchEndpointType';
 
-    /** @var EntityManager */
-    protected $entityManager;
-
     /**
      * @var array Message templates
      */
@@ -27,18 +24,29 @@ class ServerMatchesEndpointType extends AbstractValidator
         self::ERROR_SERVER_DOES_NOT_MATCH_ENDPOINT_TYPE => 'The server name does not match the endpoint type.'
     ];
 
+    /** @var EntityManager */
+    protected $entityManager;
+
     /**
      * ServerMatchesEndpointType constructor.
-     * 
+     *
      * @param array $options
      *  Options: array elements Fieldst to be validated.
      *  [endpoint_type]
-     * @param EntityManager $entityManager
      */
-    public function __construct($options = null, EntityManager $entityManager)
+    public function __construct($options = null)
     {
         parent::__construct($options);
+    }
+
+    /**
+     * @param EntityManager $entityManager
+     * @return $this
+     */
+    public function setEntityManager(EntityManager $entityManager)
+    {
         $this->entityManager = $entityManager;
+        return $this;
     }
 
     public function isValid($value)
