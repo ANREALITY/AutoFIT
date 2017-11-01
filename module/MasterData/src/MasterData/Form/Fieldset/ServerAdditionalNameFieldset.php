@@ -1,7 +1,7 @@
 <?php
 namespace MasterData\Form\Fieldset;
 
-use Zend\Form\Fieldset;
+use MasterData\Validator\Db\ServerNotInUseForCd;
 use Order\Form\Fieldset\AbstractServerFieldset;
 
 class ServerAdditionalNameFieldset extends AbstractServerFieldset
@@ -35,16 +35,15 @@ class ServerAdditionalNameFieldset extends AbstractServerFieldset
 
     public function getInputFilterSpecification()
     {
+        $ServerNotInUseForCdValidator = new ServerNotInUseForCd([
+            'adapter' => $this->dbAdapter,
+        ]);
+
         $inputFilterSpecification = [
             'name' => [
                 'required' => true,
                 'validators' => [
-                    [
-                        'name' => 'MasterData\Validator\Db\ServerNotInUseForCd',
-                        'options' => [
-                            'adapter' => $this->dbAdapter,
-                        ],
-                    ]
+                    $ServerNotInUseForCdValidator
                 ]
             ],
             'virtual_node_name' => [

@@ -1,22 +1,23 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use MasterData\Validator\Db\ServerNotInUseForCd;
+
 class ServerListItemFieldset extends AbstractServerFieldset
 {
 
     public function getInputFilterSpecification()
     {
+        $ServerNotInUseForCdValidator = new ServerNotInUseForCd([
+            'adapter' => $this->dbAdapter
+        ]);
+
         $inputFilterSpecification = [
             'name' => [
                 'required' => false,
                 'allow_empty' => true,
                 'validators' => [
-                    [
-                        'name' => 'MasterData\Validator\Db\ServerNotInUseForCd',
-                        'options' => [
-                            'adapter' => $this->dbAdapter,
-                        ],
-                    ]
+                    $ServerNotInUseForCdValidator
                 ]
             ]
         ];
