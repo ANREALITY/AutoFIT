@@ -1,11 +1,11 @@
 <?php
 namespace Order\Form\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Order\Form\OrderForm;
 use Zend\Hydrator\ClassMethods;
 use Zend\InputFilter\InputFilter;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class OrderFormFactory implements FactoryInterface
 {
@@ -15,7 +15,6 @@ class OrderFormFactory implements FactoryInterface
         $properServiceNameDetector = $container->get(
             'Order\Utility\ProperServiceNameDetector');
         $fileTransferRequestFieldsetServiceName = $properServiceNameDetector->getFileTransferRequestFieldsetServiceName();
-        $dbAdapter = $dbAdapter = $container->get('Zend\Db\Adapter\Adapter');
         $serviceInvoicePositionService = $container->get('Order\Service\ServiceInvoicePositionService');
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
 
@@ -23,7 +22,6 @@ class OrderFormFactory implements FactoryInterface
             null,
             [],
             $fileTransferRequestFieldsetServiceName,
-            $dbAdapter,
             $serviceInvoicePositionService,
             $entityManager
         );

@@ -37,8 +37,6 @@ class OrderForm extends Form
 
     protected $errorMessages = [];
 
-    protected $dbAdapter;
-
     /** @var ServiceInvoicePositionServiceInterface */
     protected $serviceInvoicePositionService;
 
@@ -49,14 +47,12 @@ class OrderForm extends Form
         $name = null,
         $options = [],
         string $fileTransferRequestFieldsetServiceName,
-        $dbAdapter,
         ServiceInvoicePositionServiceInterface $serviceInvoicePositionService,
         EntityManager $entityManager
     ) {
         parent::__construct('create_file_transfer_request');
 
         $this->fileTransferRequestFieldsetServiceName = $fileTransferRequestFieldsetServiceName;
-        $this->dbAdapter = $dbAdapter;
         $this->serviceInvoicePositionService = $serviceInvoicePositionService;
         $this->entityManager = $entityManager;
     }
