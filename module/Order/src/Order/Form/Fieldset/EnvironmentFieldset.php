@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManager;
 use DoctrineModule\Validator\ObjectExists;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Db\Adapter\AdapterInterface;
 
 class EnvironmentFieldset extends Fieldset implements InputFilterProviderInterface
 {
