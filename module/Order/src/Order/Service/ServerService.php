@@ -1,12 +1,9 @@
 <?php
 namespace Order\Service;
 
+use DbSystel\DataObject\Server;
 use Doctrine\ORM\Query;
 use Order\Mapper\ServerMapperInterface;
-use DbSystel\DataObject\Server;
-use Zend\Db\Sql\Expression;
-use Zend\Db\Sql\Predicate\Predicate;
-use Zend\Db\Sql\Where;
 
 class ServerService extends AbstractService implements ServerServiceInterface
 {
