@@ -65,7 +65,9 @@ return [
     'service_manager' => [
         'invokables' => [],
         'factories' => [
-            'TranslatorInterface' => MvcTranslator::class
+            'TranslatorInterface' => MvcTranslator::class,
+            // adapters
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         ],
         'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
