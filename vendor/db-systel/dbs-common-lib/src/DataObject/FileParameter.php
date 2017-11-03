@@ -125,7 +125,7 @@ class FileParameter extends AbstractDataObject
      */
     public function setRecordLength($recordLength)
     {
-        $this->recordLength = $recordLength;
+        $this->recordLength = intval($recordLength);
 
         return $this;
     }
@@ -165,7 +165,7 @@ class FileParameter extends AbstractDataObject
      */
     public function setBlockSize($blockSize)
     {
-        $this->blockSize = $blockSize;
+        $this->blockSize = intval($blockSize);
 
         return $this;
     }
