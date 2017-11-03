@@ -134,17 +134,23 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
 
     private function prepareEndpointApplications(AbstractEndpoint $endpointSource, AbstractEndpoint $endpointTarget)
     {
-        $endpointSourceApplication = $this->entityManager->getRepository(Application::class)->find(
-            $endpointSource->getApplication()->getTechnicalShortName()
-        );
+        $endpointSourceApplication = $endpointSource->getApplication()
+            ? $this->entityManager->getRepository(Application::class)->find(
+                $endpointSource->getApplication()->getTechnicalShortName()
+            )
+            : null
+        ;
         if ($endpointSourceApplication) {
             $endpointSource->setApplication($endpointSourceApplication);
         } else {
             $endpointSource->setApplication(null);
         }
-        $endpointTargetApplication = $this->entityManager->getRepository(Application::class)->find(
-            $endpointTarget->getApplication()->getTechnicalShortName()
-        );
+        $endpointTargetApplication = $endpointTarget->getApplication()
+            ? $this->entityManager->getRepository(Application::class)->find(
+                $endpointTarget->getApplication()->getTechnicalShortName()
+            )
+            : null
+        ;
         $endpointTarget->setApplication($endpointTargetApplication);
     }
 
