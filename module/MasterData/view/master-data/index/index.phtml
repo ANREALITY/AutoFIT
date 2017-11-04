@@ -27,4 +27,11 @@
         <span><?php echo $this->translate('Only those servers can be chosen, that have not yet been being in use for Connect:rirect.'); ?></span>
         <a class="btn btn-default" href="<?php echo $this->url('master-data/create-cluster') ?>"role="button"><span><?php echo $this->translate('to the cluster master data form'); ?></span> <span class="glyphicon glyphicon-circle-arrow-right"></a>
     </div>
+    <div class="col-md-12">
+        <h4>
+            <span><?php echo $this->translate('Cluster-server assignments'); ?></span>
+        </h4>
+        <span><?php echo $this->translate('Here you can see the relationships between the clusters and the servers.'); ?></span><br />
+        <a class="btn btn-default" href="<?php echo $this->url('master-data/show-overview') ?>"role="button"><span><?php echo $this->translate('to the cluster-server assignments over'); ?></span> <span class="glyphicon glyphicon-circle-arrow-right"></a>
+    </div>
 </div>
