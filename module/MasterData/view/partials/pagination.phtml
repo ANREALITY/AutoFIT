@@ -1,0 +1,30 @@
+<?php if ($this->pageCount): ?>
+    <div class="pagination-container">
+        <ul class="pagination pagination-centered">
+            <!-- First page link -->
+            <li <?php echo !isset($this->previous) ? 'class="disabled"' : ''; ?>>
+                <a href="<?php echo $this->url($routeName, array('page' => $this->first), ['query' => $query]); ?>">&laquo;</a>
+            </li>
+            <!-- Previous page link -->
+            <li <?php echo !isset($this->previous) ? 'class="disabled"' : ''; ?>>
+                <a href="<?php echo $this->url($routeName, array('page' => $this->previous), ['query' => $query]); ?>">&lsaquo;</a>
+            </li>
+
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <li <?php echo $page == $this->current ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo $this->url($routeName, array('page' => $page), ['query' => $query]); ?>"><?php echo $page; ?></a>
+                </li>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <li <?php echo !isset($this->next) ? 'class="disabled"' : ''; ?>>
+                <a href="<?php echo $this->url($routeName, array('page' => $this->next), ['query' => $query]); ?>">&rsaquo;</a>
+            </li>
+            <!-- Last page link -->
+            <li <?php echo !isset($this->next) ? 'class="disabled"' : ''; ?>>
+                <a href="<?php echo $this->url($routeName, array('page' => $this->last), ['query' => $query]); ?>">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>
