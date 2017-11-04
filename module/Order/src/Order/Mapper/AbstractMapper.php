@@ -35,7 +35,7 @@ class AbstractMapper
     /**
      * @param int $itemCountPerPage
      */
-    public function setItemCountPerPage(int $itemCountPerPage)
+    public function setItemCountPerPage(int $itemCountPerPage = null)
     {
         $this->itemCountPerPage = $itemCountPerPage;
     }
