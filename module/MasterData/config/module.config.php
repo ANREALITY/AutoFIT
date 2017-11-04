@@ -33,6 +33,17 @@ return [
                             ]
                         ]
                     ],
+                    'show-overview' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/overview/show[/page/:page]',
+                            'defaults' => [
+                                'controller' => 'MasterData\Controller\Overview',
+                                'action' => 'show',
+                                'page' => 1
+                            ]
+                        ]
+                    ],
                 ]
             ],
             'provide-servers-not-in-cd-use' => [
@@ -63,7 +74,8 @@ return [
         ],
         'factories' => [
             'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory',
-            'MasterData\Controller\Cluster' => 'MasterData\Controller\Factory\ClusterControllerFactory'
+            'MasterData\Controller\Cluster' => 'MasterData\Controller\Factory\ClusterControllerFactory',
+            'MasterData\Controller\Overview' => 'MasterData\Controller\Factory\OverviewControllerFactory'
         ]
     ],
     'form_elements' => [
@@ -81,6 +93,9 @@ return [
         ],
         'strategies' => [
             'ViewJsonStrategy'
+        ],
+        'template_map' => [
+            'pagination_overview' => __DIR__ . '/../view/partials/pagination.phtml',
         ]
     ],
 ];

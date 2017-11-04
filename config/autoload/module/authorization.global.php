@@ -68,6 +68,9 @@ return [
                 'MasterData\Controller\Cluster' => [
                     'all' => 'member'
                 ],
+                'MasterData\Controller\Overview' => [
+                    'all' => 'member'
+                ],
                 'AuditLogging\Controller\Index' => [
                     'all' => 'admin'
                 ],
