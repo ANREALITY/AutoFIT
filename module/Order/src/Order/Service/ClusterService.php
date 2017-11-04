@@ -28,6 +28,16 @@ class ClusterService extends AbstractService implements ClusterServiceInterface
      * {@inheritDoc}
      *
      */
+    public function findAllPaginated(array $criteria = [], $page = null)
+    {
+        return $this->mapper->findAllPaginated($criteria, $page);
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function findAllForAutocomplete(string $virtualNodeName = null)
     {
         return $this->mapper->findAll(

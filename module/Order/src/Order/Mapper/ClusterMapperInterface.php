@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Cluster;
+use DbSystel\Paginator\Paginator;
 
 interface ClusterMapperInterface
 {
@@ -10,6 +11,13 @@ interface ClusterMapperInterface
      * @return Cluster[]
      */
     public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
+
+    /**
+     * @param array $criteria
+     * @param int $page
+     * @return Paginator
+     */
+    public function findAllPaginated(array $criteria = [], $page = null);
 
     /**
      *

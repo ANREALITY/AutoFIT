@@ -2,12 +2,12 @@
 namespace Order\Service;
 
 use DbSystel\DataObject\Cluster;
+use DbSystel\Paginator\Paginator;
 
 interface ClusterServiceInterface
 {
 
     /**
-     *
      * @param int $id
      *            Identifier of the Cluster that should be returned
      * @return Cluster
@@ -15,14 +15,19 @@ interface ClusterServiceInterface
     public function findOne($id);
 
     /**
-     *
+     * @param array $criteria
+     * @param int $page
+     * @return Paginator
+     */
+    public function findAllPaginated(array $criteria = [], $page = null);
+
+    /**
      * @param string $virtualNodeName
      */
     public function findAllForAutocomplete(string $virtualNodeName);
 
     /**
-     *
-     * @param Cluster $cluster
+     * @param Cluster $clusterRequest
      * @return Cluster
      */
     public function create(Cluster $clusterRequest);

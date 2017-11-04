@@ -3,7 +3,10 @@ namespace Order\Mapper;
 
 use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Server;
+use DbSystel\Paginator\Paginator;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 
 class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
 {
@@ -36,6 +39,23 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
         $result = $query->execute(null, $hydrationMode);
 
         return $result;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function findAllPaginated(array $criteria = [], $page = null)
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder->select('c')->from(static::ENTITY_TYPE, 'c');
+
+        $query = $queryBuilder->getQuery();
+
+        $paginator = new Paginator(new PaginatorAdapter(new ORMPaginator($query)));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($this->itemCountPerPage);
+
+        return $paginator;
     }
 
     /**
