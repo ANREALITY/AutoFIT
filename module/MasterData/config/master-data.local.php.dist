@@ -1,0 +1,10 @@
+<?php
+return [
+    'module' => [
+        'master_data' => [
+            'pagination' => [
+                'items_per_page' => 10
+            ]
+        ]
+    ]
+];
