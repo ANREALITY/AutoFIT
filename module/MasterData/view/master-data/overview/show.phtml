@@ -5,11 +5,8 @@ use DbSystel\DataObject\Server;
 
 <div class="row">
     <h3>
-        <span><?php echo $this->translate('Cluster-server assignments'); ?></span>
+        <span><?php echo $this->translate('Server-cluster assignments'); ?></span>
     </h3>
-    <div class="col-md-12">
-        <p><?php echo $this->translate('Here you can see, which servers cluster to which clusters.'); ?></p>
-    </div>
     <?php
     echo $this->paginationControl(
         $paginator, 'Sliding', 'pagination_overview', ['routeName' => 'master-data/show-overview', 'query' => $query]

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 12:20+0100\n"
-"PO-Revision-Date: 2017-11-05 12:20+0100\n"
+"POT-Creation-Date: 2017-11-05 12:41+0100\n"
+"PO-Revision-Date: 2017-11-05 12:41+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -91,7 +91,7 @@ msgstr "alle Ressource-Typen"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
-#: module/MasterData/view/master-data/overview/show.phtml:27
+#: module/MasterData/view/master-data/overview/show.phtml:24
 #: module/Order/view/partials/list/summary.phtml:108
 #: module/Order/view/partials/list/summary.phtml:124
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
@@ -994,7 +994,6 @@ msgid "to the cluster master data form"
 msgstr "zum Cluster-Stammdaten-Formular"
 
 #: module/MasterData/view/master-data/index/index.phtml:32
-#: module/MasterData/view/master-data/overview/show.phtml:8
 msgid "Cluster-server assignments"
 msgstr ""
 
@@ -1009,11 +1008,11 @@ msgstr ""
 msgid "to the cluster-server assignments over"
 msgstr "zum Cluster-Stammdaten-Formular"
 
-#: module/MasterData/view/master-data/overview/show.phtml:11
-msgid "Here you can see, which servers cluster to which clusters."
-msgstr ""
+#: module/MasterData/view/master-data/overview/show.phtml:8
+msgid "Server-cluster assignments"
+msgstr "Übersicht über die Server-Cluster-Zuordnungen"
 
-#: module/MasterData/view/master-data/overview/show.phtml:26
+#: module/MasterData/view/master-data/overview/show.phtml:23
 msgid "virtual node name"
 msgstr "Virtueller Knotenname"
 
@@ -1409,7 +1408,7 @@ msgstr ""
 msgid "The new cluster is then immediately available."
 msgstr "Der neue Cluster ist dann sofort verfügbar."
 
-#: module/Order/view/partials/info-boxes/hint-cluster.phtml:15
+#: module/Order/view/partials/info-boxes/hint-cluster.phtml:16
 #, php-format
 msgid ""
 "The information about already existing cluster and server assigned to them "
