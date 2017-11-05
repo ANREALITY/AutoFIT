@@ -31,8 +31,9 @@ class OverviewController extends AbstractActionController
     public function showAction()
     {
         $page = $this->params()->fromRoute('page');
+        $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
         $paginator = $this->clusterService->findAllPaginated(
-            [],
+            $criteria,
             $page
         );
 
