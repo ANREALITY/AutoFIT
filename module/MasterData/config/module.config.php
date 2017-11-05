@@ -44,6 +44,16 @@ return [
                             ]
                         ]
                     ],
+                    'provide-clusters' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-clusters',
+                            'defaults' => [
+                                'controller' => 'MasterData\Controller\Ajax',
+                                'action' => 'provideclusters'
+                            ]
+                        ]
+                    ],
                     'provide-servers' => [
                         'type' => 'Zend\Router\Http\Literal',
                         'options' => [

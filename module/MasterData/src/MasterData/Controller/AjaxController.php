@@ -29,6 +29,22 @@ class AjaxController extends AbstractActionController
         $this->clusterService = $clusterService;
     }
 
+    public function provideClustersAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $data['virtual_node_name'] = isset($data['virtual_node_name']) ? $data['virtual_node_name'] : null;
+            $dataList = $this->clusterService->findAllForAutocomplete($data['virtual_node_name']);
+        } else {
+            $dataList = [];
+        }
+
+        return new JsonModel($dataList);
+    }
+
     public function provideServersAction()
     {
         $request = $this->getRequest();

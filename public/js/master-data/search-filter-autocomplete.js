@@ -12,7 +12,7 @@ var initAutocompleteClusterVirtualNodeName = function() {
             minLength : 0,
             source : function(request, response) {
                 $.get(
-                    "/order/ajax/provide-clusters?"
+                    "/master-data/ajax/provide-clusters?"
                     + "&data[virtual_node_name]=" + request.term,
                     {},
                     function(data) {
