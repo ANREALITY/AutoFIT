@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 12:41+0100\n"
-"PO-Revision-Date: 2017-11-05 12:41+0100\n"
+"POT-Creation-Date: 2017-11-05 22:08+0100\n"
+"PO-Revision-Date: 2017-11-05 22:10+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -42,6 +42,7 @@ msgid "audit log"
 msgstr "Audit-Log"
 
 #: module/AuditLogging/src/AuditLogging/Form/AuditLogForm.php:32
+#: module/MasterData/src/MasterData/Form/SearchForm.php:25
 msgid "show"
 msgstr "anzeigen"
 
@@ -91,7 +92,7 @@ msgstr "alle Ressource-Typen"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
-#: module/MasterData/view/master-data/overview/show.phtml:24
+#: module/MasterData/view/master-data/overview/show.phtml:35
 #: module/Order/view/partials/list/summary.phtml:108
 #: module/Order/view/partials/list/summary.phtml:124
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
@@ -133,6 +134,18 @@ msgstr "Fehler-Referenz: %s."
 #: module/MasterData/src/MasterData/Form/ClusterForm.php:32
 msgid "create cluster"
 msgstr "Cluster erstellen"
+
+#: module/MasterData/src/MasterData/Form/Fieldset/FilterFieldset.php:30
+#: module/MasterData/view/master-data/overview/show.phtml:34
+msgid "virtual node name"
+msgstr "Virtueller Knotenname"
+
+#: module/MasterData/src/MasterData/Form/Fieldset/FilterFieldset.php:45
+#: module/Order/src/Order/Form/Fieldset/AbstractServerFieldset.php:36
+#: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:31
+#: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:31
+msgid "server name"
+msgstr "Servername"
 
 #: module/MasterData/src/MasterData/Form/Fieldset/ServerAdditionalNameFieldset.php:24
 msgid "server's virtual node name"
@@ -367,12 +380,6 @@ msgstr "Protokoll"
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
 msgid "protocols"
 msgstr "Protokolle"
-
-#: module/Order/src/Order/Form/Fieldset/AbstractServerFieldset.php:36
-#: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:31
-#: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:31
-msgid "server name"
-msgstr "Servername"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
@@ -876,6 +883,7 @@ msgid "No settings needed for this area."
 msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: module/AuditLogging/view/partials/list/form/fieldgroups/filter.phtml:4
+#: module/MasterData/view/partials/overview/form/fieldgroups/filter.phtml:4
 msgid "filtering"
 msgstr "Filterung"
 
@@ -994,27 +1002,17 @@ msgid "to the cluster master data form"
 msgstr "zum Cluster-Stammdaten-Formular"
 
 #: module/MasterData/view/master-data/index/index.phtml:32
-msgid "Cluster-server assignments"
-msgstr ""
-
-#: module/MasterData/view/master-data/index/index.phtml:34
-msgid ""
-"Here you can see the relationships between the clusters and the servers."
-msgstr ""
-
-#: module/MasterData/view/master-data/index/index.phtml:35
-#, fuzzy
-#| msgid "to the cluster master data form"
-msgid "to the cluster-server assignments over"
-msgstr "zum Cluster-Stammdaten-Formular"
-
-#: module/MasterData/view/master-data/overview/show.phtml:8
+#: module/MasterData/view/master-data/overview/show.phtml:9
 msgid "Server-cluster assignments"
 msgstr "Übersicht über die Server-Cluster-Zuordnungen"
 
-#: module/MasterData/view/master-data/overview/show.phtml:23
-msgid "virtual node name"
-msgstr "Virtueller Knotenname"
+#: module/MasterData/view/master-data/index/index.phtml:34
+msgid "Overview of the clusters and the servers assigned to them."
+msgstr "Übersicht über die Cluster and die ihnen zugeordneten Server."
+
+#: module/MasterData/view/master-data/index/index.phtml:35
+msgid "to the server-cluster assignments table"
+msgstr "zur Server-Cluster-Zuordnungstabelle"
 
 #: module/MasterData/view/master-data/server/edit.phtml:9
 #: module/MasterData/view/partials/fieldgroups/server.phtml:4
@@ -1412,7 +1410,7 @@ msgstr "Der neue Cluster ist dann sofort verfügbar."
 #, php-format
 msgid ""
 "The information about already existing cluster and server assigned to them "
-"you can find in the %scluster-server assignment table%s."
+"you can find in the %sserver-cluster assignment table%s."
 msgstr ""
 "Die Informationen über die bereits existierenden Cluster und ihnen "
 "zugeordneten Server finden Sie in der %sServer-Cluster-Zuordnungestabelle%s."
