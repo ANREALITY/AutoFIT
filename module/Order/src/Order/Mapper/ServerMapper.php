@@ -57,6 +57,11 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                     ;
                     $queryBuilder->distinct();
                 }
+                if (array_key_exists('having_cluster', $condition)) {
+                    $queryBuilder
+                        ->andWhere('s.cluster IS NOT NULL')
+                    ;
+                }
             }
         }
 

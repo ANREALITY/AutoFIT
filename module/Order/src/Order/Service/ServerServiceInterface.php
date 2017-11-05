@@ -22,6 +22,12 @@ interface ServerServiceInterface
     public function findAllForAutocomplete(string $name, string $endpointTypeName = null);
 
     /**
+     * @param string $name
+     * @return Server[]
+     */
+    public function findAllHavingClusterForAutocomplete(string $name);
+
+    /**
      *
      * @param Server $server
      * @return Server

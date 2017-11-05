@@ -71,6 +71,9 @@ return [
                 'MasterData\Controller\Overview' => [
                     'all' => 'member'
                 ],
+                'MasterData\Controller\Ajax' => [
+                    'all' => 'member'
+                ],
                 'AuditLogging\Controller\Index' => [
                     'all' => 'admin'
                 ],

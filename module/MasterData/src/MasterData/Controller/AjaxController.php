@@ -1,0 +1,46 @@
+<?php
+namespace MasterData\Controller;
+
+use Order\Service\ClusterServiceInterface;
+use Order\Service\ServerServiceInterface;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
+
+class AjaxController extends AbstractActionController
+{
+
+    /**
+     *
+     * @var ServerServiceInterface
+     */
+    protected $serverService;
+
+    /**
+     *
+     * @var ClusterServiceInterface
+     */
+    protected $clusterService;
+
+    public function __construct(
+        ServerServiceInterface $serverService,
+        ClusterServiceInterface $clusterService
+    ) {
+        $this->serverService = $serverService;
+        $this->clusterService = $clusterService;
+    }
+
+    public function provideServersAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $dataList = $this->serverService->findAllHavingClusterForAutocomplete($data['name']);
+            $dataList = array_column($dataList, 'name');
+        }
+
+        return new JsonModel($dataList);
+    }
+
+}

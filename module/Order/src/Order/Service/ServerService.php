@@ -94,6 +94,26 @@ class ServerService extends AbstractService implements ServerServiceInterface
      * {@inheritDoc}
      *
      */
+    public function findAllHavingClusterForAutocomplete(string $name)
+    {
+        $criteria = [];
+        $criteria[] = ['active' => true];
+        $criteria[] = ['having_cluster' => true];
+        if ($name) {
+            $criteria[] = ['name' => $name];
+        }
+        return $this->mapper->findAll(
+            $criteria,
+            self::LIMIT_AUTOCOMPLETE,
+            Query::HYDRATE_ARRAY
+        );
+    }
+
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
     public function updateVirtualNodeName(Server $server)
     {
         return $this->mapper->updateVirtualNodeName($server);

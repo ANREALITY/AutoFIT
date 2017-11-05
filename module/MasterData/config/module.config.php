@@ -44,6 +44,16 @@ return [
                             ]
                         ]
                     ],
+                    'provide-servers' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-servers',
+                            'defaults' => [
+                                'controller' => 'MasterData\Controller\Ajax',
+                                'action' => 'provideServers'
+                            ]
+                        ]
+                    ],
                 ]
             ],
             'provide-servers-not-in-cd-use' => [
@@ -75,7 +85,8 @@ return [
         'factories' => [
             'MasterData\Controller\Server' => 'MasterData\Controller\Factory\ServerControllerFactory',
             'MasterData\Controller\Cluster' => 'MasterData\Controller\Factory\ClusterControllerFactory',
-            'MasterData\Controller\Overview' => 'MasterData\Controller\Factory\OverviewControllerFactory'
+            'MasterData\Controller\Overview' => 'MasterData\Controller\Factory\OverviewControllerFactory',
+            'MasterData\Controller\Ajax' => 'MasterData\Controller\Factory\AjaxControllerFactory'
         ]
     ],
     'form_elements' => [
