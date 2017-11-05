@@ -83,8 +83,10 @@ return [
             // forms
             'MasterData\Form\ServerForm' => 'MasterData\Form\Factory\ServerFormFactory',
             'MasterData\Form\ClusterForm' => 'MasterData\Form\Factory\ClusterFormFactory',
+            'MasterData\Form\SearchForm' => 'MasterData\Form\Factory\SearchFormFactory',
             // fieldsets
-            'MasterData\Form\Fieldset\ServerAdditionalName' => 'MasterData\Form\Fieldset\Factory\ServerAdditionalNameFieldsetFactory'
+            'MasterData\Form\Fieldset\ServerAdditionalName' => 'MasterData\Form\Fieldset\Factory\ServerAdditionalNameFieldsetFactory',
+            'MasterData\Form\Fieldset\Filter' => 'MasterData\Form\Fieldset\Factory\FilterFieldsetFactory'
         ],
     ],
     'view_manager' => [

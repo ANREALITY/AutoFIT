@@ -1,0 +1,19 @@
+<?php
+$fieldgroupName = 'filter';
+$fieldgroupCssClass = 'col-md-11 fieldgroup-filter';
+$fieldgroupTitle = $this->translate('filtering');
+$fieldgroupFormRows = [
+    $this->formRow($filterFieldset->get('virtual_node_name')),
+    $this->formRow($filterFieldset->get('server_name')),
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+
+<?php /*$this->inlineScript()->appendFile('/js/audit-log-filter-autocomplete.js');*/ ?>
