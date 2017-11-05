@@ -50,12 +50,12 @@ class ClusterMapper extends AbstractMapper implements ClusterMapperInterface
         $queryBuilder->select('c')->from(static::ENTITY_TYPE, 'c');
 
         foreach ($criteria as $key => $condition) {
-            if ($key === 'virtual_node_name') {
+            if ($key === 'virtual_node_name' && ! empty($criteria['virtual_node_name'])) {
                 $queryBuilder
                     ->andWhere('c.virtualNodeName = :virtualNodeName')
                     ->setParameter('virtualNodeName', $condition);
             }
-            if ($key === 'server_name') {
+            if ($key === 'server_name' && ! empty($criteria['server_name'])) {
                 $queryBuilder->join('c.servers', 's');
                 $queryBuilder
                     ->andWhere('s.name = :serverName')
