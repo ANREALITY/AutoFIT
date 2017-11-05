@@ -4,13 +4,19 @@
             <span><?php echo $this->translate('New cluster'); ?></span>
         </div>
         <div class="body"><p><?php
-            echo sprintf($this->translate(
-                'You can choose an already defined cluster from the list or create a new one with the %sclusetr master data form%s.'),
+            echo sprintf(
+                $this->translate('You can choose an already defined cluster from the list or create a new one with the %sclusetr master data form%s.'),
                 '<a href="' . $this->url('master-data/create-cluster') . '" target="_blank">', '</a>'
             );
             ?></p>
             <p><?php echo $this->translate('To do this please open the cluster form in a new window/tab, create a cluster, and come back to the order form.'); ?></p>
             <p><?php echo $this->translate('The new cluster is then immediately available.'); ?></p>
+            <p><?php
+            echo sprintf(
+                $this->translate('The information about already existing cluster and server assigned to them you can find in the %scluster-server assignment table%s.'),
+                '<a href="' . $this->url('master-data/show-overview') . '" target="_blank">', '</a>'
+            );
+            ?></p>
         </div>
     </div>
 </div>

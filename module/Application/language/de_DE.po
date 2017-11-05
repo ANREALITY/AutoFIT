@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 13:14+0100\n"
-"PO-Revision-Date: 2016-11-23 13:14+0100\n"
+"POT-Creation-Date: 2017-11-05 12:20+0100\n"
+"PO-Revision-Date: 2017-11-05 12:20+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate;gettext;_\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-SearchPath-0: module/Application\n"
 "X-Poedit-SearchPath-1: module\n"
 "X-Poedit-SearchPath-2: module/Order\n"
@@ -31,7 +31,7 @@ msgstr "Meine Bestellungen"
 msgid "master data"
 msgstr "Stammdaten"
 
-#: config/autoload/navigation.global.php:20
+#: config/autoload/navigation.global.php:18
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:58
 #: module/Order/view/order/process/list-orders.phtml:6
 msgid "orders"
@@ -48,6 +48,7 @@ msgstr "anzeigen"
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:19
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdZosFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:28
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
 #: module/Order/src/Order/Form/Fieldset/UserFieldset.php:35
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
@@ -72,7 +73,7 @@ msgid "username"
 msgstr "Benutzername"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
-#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:70
+#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:69
 #: module/Order/view/order/process/list-my-orders.phtml:34
 #: module/Order/view/order/process/list-orders.phtml:24
 #: module/Order/view/partials/order-parts/billing.phtml:30
@@ -80,7 +81,7 @@ msgid "change number"
 msgstr "Change-Nummer"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:49
-#: module/AuditLogging/view/audit-logging/index/list.phtml:36
+#: module/AuditLogging/view/audit-logging/index/list.phtml:37
 msgid "resource type"
 msgstr "Ressource-Typ"
 
@@ -89,7 +90,8 @@ msgid "all resource types"
 msgstr "alle Ressource-Typen"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
-#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:36
+#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
+#: module/MasterData/view/master-data/overview/show.phtml:27
 #: module/Order/view/partials/list/summary.phtml:108
 #: module/Order/view/partials/list/summary.phtml:124
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:73
@@ -151,7 +153,6 @@ msgstr ""
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdAs400Fieldset.php:27
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdTandemFieldset.php:27
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:28
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:28
 msgid "application user"
 msgstr "Verfahrensuser"
 
@@ -161,14 +162,41 @@ msgid "LinuxUnix"
 msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:44
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:60
+msgid "server variant"
+msgstr "Server-Vatiante"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:48
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:64
+msgid "single server (s. basic settings)"
+msgstr "einziger Server (s. Basis-Einstellungen)"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:53
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:69
+msgid "multiple servers"
+msgstr "mehrere Server"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdTandemFieldset.php:15
+msgid "Tandem"
+msgstr ""
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:16
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
+msgid "Windows"
+msgstr ""
+
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:44
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:44
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:25
 #: module/Order/src/Order/Form/Fieldset/EndpointCdTandemTargetFieldset.php:25
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdAs400TargetFieldset.php:25
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdTandemTargetFieldset.php:25
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:26
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerTargetFieldset.php:25
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:23
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:61
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:44
@@ -189,31 +217,6 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-target.phtml:51
 msgid "folder"
 msgstr "Verzeichnis"
-
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:60
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:60
-msgid "server variant"
-msgstr "Server-Vatiante"
-
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:64
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:64
-msgid "single server (s. basic settings)"
-msgstr "einziger Server (s. Basis-Einstellungen)"
-
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdLinuxUnixFieldset.php:69
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:69
-msgid "multiple servers"
-msgstr "mehrere Server"
-
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdTandemFieldset.php:15
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdTandemFieldset.php:15
-msgid "Tandem"
-msgstr ""
-
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:16
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:16
-msgid "Windows"
-msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:16
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsShareFieldset.php:16
@@ -252,12 +255,12 @@ msgid "server place"
 msgstr "Serverstandort"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:47
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:78
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:76
 msgid "internal"
 msgstr "intern"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFieldset.php:52
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:83
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:81
 msgid "external"
 msgstr "extern"
 
@@ -265,32 +268,32 @@ msgstr "extern"
 msgid "ProtocolServer"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:60
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:44
 msgid "address type"
 msgstr "Adresstyp"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:64
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:86
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:48
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:70
 #: module/Order/src/Order/Form/Fieldset/EndpointServerConfigFieldset.php:37
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:48
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:48
 msgid "DNS address"
 msgstr "DNS-Adresse"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:69
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:101
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:53
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:85
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:52
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:52
 msgid "IP"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:116
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:100
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:56
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:56
 msgid "port"
 msgstr "Port"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:154
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:128
 msgid "The input does not match against the DNS pattern"
 msgstr "Die Eingabe entspricht nicht dem DNS-Muster."
 
@@ -302,45 +305,45 @@ msgstr ""
 msgid "FTWG user"
 msgstr "FTGW User"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:58
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:57
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:43
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:43
 msgid "mailbox"
 msgstr "Mailbox"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:74
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:72
 #: module/Order/view/partials/list/summary.phtml:101
 msgid "connection type"
 msgstr "Verbindungstyp"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:87
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:85
 msgid "internal and external"
 msgstr "intern und extern"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:46
+#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:45
 msgid "application according to TransICT"
 msgstr "Verfahren laut TransICT"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:137
+#: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:136
 msgid ""
 "Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
 msgstr ""
 "Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
 
-#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:81
+#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:82
 #: module/Order/view/partials/order-parts/logical-connection.phtml:51
 msgid "notifications"
 msgstr "Benachrichtigungen"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:100
+#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:101
 #: module/Order/src/Order/Form/Fieldset/AccessConfigSetFieldset.php:41
-#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:55
+#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:56
 #: module/Order/src/Order/Form/Fieldset/FileParameterSetFieldset.php:41
 #: module/Order/src/Order/Form/Fieldset/IncludeParameterSetFieldset.php:41
 msgid "+"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:105
+#: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:106
 msgid "add a notification"
 msgstr "Benachrichtigung hinzufügen"
 
@@ -351,13 +354,27 @@ msgstr "Benachrichtigung hinzufügen"
 msgid "Secure Plus"
 msgstr ""
 
+#: module/Order/src/Order/Form/Fieldset/AbstractProtocolSetForProtocolServerFieldset.php:11
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
+msgid "protocol"
+msgstr "Protokoll"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractProtocolSetForProtocolServerFieldset.php:23
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:11
+#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:23
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
+msgid "protocols"
+msgstr "Protokolle"
+
 #: module/Order/src/Order/Form/Fieldset/AbstractServerFieldset.php:36
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:31
 #: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:31
 msgid "server name"
 msgstr "Servername"
 
-#: module/Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:36
+#: module/Order/src/Order/Form/Fieldset/AbstractServiceInvoicePositionFieldset.php:22
 msgid "service invoice position number"
 msgstr "LSP"
 
@@ -389,7 +406,7 @@ msgstr "Zugriffseinstellungen"
 msgid "add an access config"
 msgstr "Zugriffseinstellungssatz hinzufügen"
 
-#: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:36
+#: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:38
 #: module/Order/view/partials/list/summary.phtml:102
 #: module/Order/view/partials/order-parts/billing.phtml:16
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:23
@@ -397,8 +414,8 @@ msgstr "Zugriffseinstellungssatz hinzufügen"
 msgid "application"
 msgstr "Verfahren"
 
-#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:20
-#: module/Order/src/Order/Form/Fieldset/ClusterFieldset.php:28
+#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:21
+#: module/Order/src/Order/Form/Fieldset/ClusterFieldset.php:29
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:77
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:52
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:77
@@ -406,7 +423,7 @@ msgstr "Verfahren"
 msgid "cluster's virtual node name"
 msgstr "Virtueller Knotenname des Clusters"
 
-#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:60
+#: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:61
 msgid "add a server"
 msgstr "Server hinzufügen"
 
@@ -431,11 +448,11 @@ msgstr "Zielsystem - AS400"
 msgid "Source - LinuxUnix"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:26
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:41
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsSourceFieldset.php:26
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:26
-#: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:26
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:41
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:65
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:47
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:72
@@ -445,14 +462,14 @@ msgstr ""
 msgid "transmission type"
 msgstr "Übertragungsart"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:53
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:67
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:53
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:69
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:69
 msgid "transmission interval"
 msgstr "Sendeintervall"
 
-#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:96
+#: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:121
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:96
 msgid "The input does not match against the crontab pattern"
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
@@ -533,7 +550,7 @@ msgstr "Zielsystem - Self-Service"
 msgid "environment"
 msgstr "Umgebung"
 
-#: module/Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:36
+#: module/Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:22
 #: module/Order/view/partials/list/summary.phtml:116
 #: module/Order/view/partials/list/summary.phtml:132
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:47
@@ -575,7 +592,7 @@ msgstr "Dateiparameter hinzufügen"
 msgid "expression"
 msgstr "Ausdruck"
 
-#: module/Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:45
+#: module/Order/src/Order/Form/Fieldset/IncludeParameterFieldset.php:44
 msgid "remove an include parameter"
 msgstr ""
 
@@ -610,20 +627,6 @@ msgstr "fehlgeschlagen"
 msgid "remove a notification"
 msgstr ""
 
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:11
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-source.phtml:68
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwprotocolserver-target.phtml:64
-msgid "protocol"
-msgstr "Protokoll"
-
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetForProtocolServerFieldset.php:23
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:11
-#: module/Order/src/Order/Form/Fieldset/ProtocolSetForSelfServiceFieldset.php:23
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-source.phtml:35
-#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwselfservice-target.phtml:35
-msgid "protocols"
-msgstr "Protokolle"
-
 #: module/Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
 #: module/Order/view/partials/order-parts/billing.phtml:34
 msgid "service invoice position (basic)"
@@ -634,11 +637,11 @@ msgstr "LSP-S"
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
 
-#: module/Order/src/Order/Form/OrderForm.php:54
+#: module/Order/src/Order/Form/OrderForm.php:77
 msgid "save"
 msgstr "speichern"
 
-#: module/Order/src/Order/Form/OrderForm.php:64
+#: module/Order/src/Order/Form/OrderForm.php:87
 msgid "binding order"
 msgstr "verbindlich bestellen"
 
@@ -832,36 +835,36 @@ msgstr "Es ist keine Ausnahme verfügbar"
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: module/Application/view/layout/layout.phtml:17
+#: module/Application/view/layout/layout.phtml:19
 msgid "AutoFIT"
 msgstr ""
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:6
+#: module/AuditLogging/view/audit-logging/index/list.phtml:7
 msgid "Audit log"
 msgstr "Audit-Log"
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:33
+#: module/AuditLogging/view/audit-logging/index/list.phtml:34
 msgid "ID"
 msgstr ""
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:34
+#: module/AuditLogging/view/audit-logging/index/list.phtml:35
 msgid "time"
 msgstr "Zeit"
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:35
+#: module/AuditLogging/view/audit-logging/index/list.phtml:36
 #: module/Order/view/partials/order-parts/billing.phtml:38
 msgid "user"
 msgstr "Benutzer"
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:37
+#: module/AuditLogging/view/audit-logging/index/list.phtml:38
 msgid "resource ID"
 msgstr "Ressource-ID"
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:38
+#: module/AuditLogging/view/audit-logging/index/list.phtml:39
 msgid "action"
 msgstr "Aktion"
 
-#: module/AuditLogging/view/audit-logging/index/list.phtml:38
+#: module/AuditLogging/view/audit-logging/index/list.phtml:39
 msgid "event"
 msgstr "Ereignis"
 
@@ -990,6 +993,30 @@ msgstr ""
 msgid "to the cluster master data form"
 msgstr "zum Cluster-Stammdaten-Formular"
 
+#: module/MasterData/view/master-data/index/index.phtml:32
+#: module/MasterData/view/master-data/overview/show.phtml:8
+msgid "Cluster-server assignments"
+msgstr ""
+
+#: module/MasterData/view/master-data/index/index.phtml:34
+msgid ""
+"Here you can see the relationships between the clusters and the servers."
+msgstr ""
+
+#: module/MasterData/view/master-data/index/index.phtml:35
+#, fuzzy
+#| msgid "to the cluster master data form"
+msgid "to the cluster-server assignments over"
+msgstr "zum Cluster-Stammdaten-Formular"
+
+#: module/MasterData/view/master-data/overview/show.phtml:11
+msgid "Here you can see, which servers cluster to which clusters."
+msgstr ""
+
+#: module/MasterData/view/master-data/overview/show.phtml:26
+msgid "virtual node name"
+msgstr "Virtueller Knotenname"
+
 #: module/MasterData/view/master-data/server/edit.phtml:9
 #: module/MasterData/view/partials/fieldgroups/server.phtml:4
 msgid "Server settings"
@@ -1022,7 +1049,7 @@ msgid "accepted"
 msgstr "angenommen"
 
 #: module/Order/view/order/process/canceled.phtml:3
-#: module/Order/view/partials/order-parts/order-info.phtml:13
+#: module/Order/view/partials/order-parts/order-info.phtml:14
 msgid "canceled"
 msgstr "storniert"
 
@@ -1041,8 +1068,15 @@ msgstr "in Überprüfung"
 msgid "completed"
 msgstr "fertiggestellt"
 
-#: module/Order/view/order/process/create.phtml:172
-#: module/Order/view/order/process/edit.phtml:206
+#: module/Order/view/order/process/create.phtml:22
+#: module/Order/view/order/process/edit.phtml:23
+#: module/Order/view/order/process/show-order.phtml:27
+#: module/Order/view/partials/start/ftgw.phtml:5
+msgid "Protocol Server"
+msgstr "Protokoll-Server"
+
+#: module/Order/view/order/process/create.phtml:221
+#: module/Order/view/order/process/edit.phtml:248
 #, php-format
 msgid "The fields marked with %s are mandatory."
 msgstr "Die mit %s markierten Felder sind Pflicht-Felder."
@@ -1112,7 +1146,7 @@ msgstr ""
 "im Status \"%s\" oder \"%s\" befindet."
 
 #: module/Order/view/order/process/operation-denied-for-status.phtml:19
-#: module/Order/view/partials/order-parts/order-info.phtml:12
+#: module/Order/view/partials/order-parts/order-info.phtml:13
 msgid "new"
 msgstr "neu"
 
@@ -1375,6 +1409,15 @@ msgstr ""
 msgid "The new cluster is then immediately available."
 msgstr "Der neue Cluster ist dann sofort verfügbar."
 
+#: module/Order/view/partials/info-boxes/hint-cluster.phtml:15
+#, php-format
+msgid ""
+"The information about already existing cluster and server assigned to them "
+"you can find in the %scluster-server assignment table%s."
+msgstr ""
+"Die Informationen über die bereits existierenden Cluster und ihnen "
+"zugeordneten Server finden Sie in der %sServer-Cluster-Zuordnungestabelle%s."
+
 #: module/Order/view/partials/info-boxes/hint-server.phtml:5
 msgid "Servers' virtual node name"
 msgstr "Virtueller Knotename des Servers"
@@ -1562,15 +1605,15 @@ msgstr "bei erfolgreicher Übertragung"
 msgid "on failed transfer"
 msgstr "bei fehlgeschlagener Übertragung"
 
-#: module/Order/view/partials/order-parts/order-info.phtml:19
+#: module/Order/view/partials/order-parts/order-info.phtml:20
 msgid "Order info"
 msgstr "Informationen zur Bestellung"
 
-#: module/Order/view/partials/order-parts/order-info.phtml:22
+#: module/Order/view/partials/order-parts/order-info.phtml:23
 msgid "created on"
 msgstr "erstellt am"
 
-#: module/Order/view/partials/order-parts/order-info.phtml:26
+#: module/Order/view/partials/order-parts/order-info.phtml:27
 msgid "status"
 msgstr "Status"
 
@@ -1594,53 +1637,40 @@ msgstr ""
 msgid "to the order"
 msgstr "zur Bestellung"
 
-#: module/Order/view/partials/start/cd.phtml:50
-#: module/Order/view/partials/start/ftgw.phtml:52
+#: module/Order/view/partials/start/cd.phtml:51
+#: module/Order/view/partials/start/ftgw.phtml:53
 #, php-format
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
 "Musterchanges zum Beantragen von %s-Filetransfer-Schnittstellen im PSC:"
 
-#: module/Order/view/partials/start/cd.phtml:52
-#, php-format
-msgid "%s for creating a new C:D file transfer"
-msgstr "%s zur Einrichtung eines neuen C:D-Filetransfers"
+#~ msgid "%s for creating a new C:D file transfer"
+#~ msgstr "%s zur Einrichtung eines neuen C:D-Filetransfers"
 
-#: module/Order/view/partials/start/cd.phtml:53
-#, php-format
-msgid ""
-"%s for the customization of access rights to a ConnectDirect Windows SHARE"
-msgstr ""
-"%s für die Anpassung der Zugriffsrechte auf ein ConnectDirect Windows SHARE"
+#~ msgid ""
+#~ "%s for the customization of access rights to a ConnectDirect Windows SHARE"
+#~ msgstr ""
+#~ "%s für die Anpassung der Zugriffsrechte auf ein ConnectDirect Windows "
+#~ "SHARE"
 
-#: module/Order/view/partials/start/cd.phtml:54
-#, php-format
-msgid ""
-"%s for a relocation of n existing C:D file transfer due to a relocation of "
-"the application to a new server"
-msgstr ""
-"%s für den Umzug eines bestehenden C:D-Filetransfers wegen Umzug des "
-"Verfahrens auf neuen Server"
+#~ msgid ""
+#~ "%s for a relocation of n existing C:D file transfer due to a relocation "
+#~ "of the application to a new server"
+#~ msgstr ""
+#~ "%s für den Umzug eines bestehenden C:D-Filetransfers wegen Umzug des "
+#~ "Verfahrens auf neuen Server"
 
-#: module/Order/view/partials/start/cd.phtml:55
-#, php-format
-msgid ""
-"%s for the cancelation of all the channels of an application on a server / "
-"server cluster (for the teardown of all SSTs running on a node / shutting "
-"down C:D)"
-msgstr ""
-"%s für die Abbestellung aller C:D-Filetransfer-Channels eines Verfahrens auf "
-"einem Server bzw. Cluster-Server (für den Abbau aller auf einem Knoten "
-"laufenden SST / Stoppen von C:D)"
+#~ msgid ""
+#~ "%s for the cancelation of all the channels of an application on a "
+#~ "server / server cluster (for the teardown of all SSTs running on a node / "
+#~ "shutting down C:D)"
+#~ msgstr ""
+#~ "%s für die Abbestellung aller C:D-Filetransfer-Channels eines Verfahrens "
+#~ "auf einem Server bzw. Cluster-Server (für den Abbau aller auf einem "
+#~ "Knoten laufenden SST / Stoppen von C:D)"
 
-#: module/Order/view/partials/start/ftgw.phtml:5
-msgid "Protocol Server"
-msgstr "Protokoll-Server"
-
-#: module/Order/view/partials/start/ftgw.phtml:54
-#, php-format
-msgid "%s Initial setup of a FileGateway interface"
-msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
+#~ msgid "%s Initial setup of a FileGateway interface"
+#~ msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 
 #~ msgid "For the field \"transmission interval\" is"
 #~ msgstr "Für das Feld \"Sendeintervall\" ist"
@@ -1721,9 +1751,6 @@ msgstr "%s Neukonfiguration FileGateway-Schnittstelle"
 #~ msgstr ""
 #~ "Es ist weder ein Server (intern/extern), noch ein Cluster für den "
 #~ "Zielendpoint angegeben."
-
-#~ msgid "virtual node name"
-#~ msgstr "Virtueller Knotenname"
 
 #~ msgid "server's node name"
 #~ msgstr "Knotenname des Servers"
