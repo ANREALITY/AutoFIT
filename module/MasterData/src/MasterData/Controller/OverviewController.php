@@ -1,12 +1,12 @@
 <?php
 namespace MasterData\Controller;
 
+use MasterData\Form\ClusterForm;
+use MasterData\Form\SearchForm;
+use Order\Service\ClusterService;
+use Zend\Form\FormInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use DbSystel\DataObject\Cluster;
-use Order\Service\ClusterService;
-use MasterData\Form\ClusterForm;
-use DbSystel\DataObject\AuditLog;
 
 class OverviewController extends AbstractActionController
 {
@@ -16,6 +16,11 @@ class OverviewController extends AbstractActionController
      * @var ClusterService
      */
     protected $clusterService;
+
+    /**
+     * @var SearchForm
+     */
+    protected $searchForm;
 
     /**
      * 
@@ -28,6 +33,14 @@ class OverviewController extends AbstractActionController
         $this->clusterService = $clusterService;
     }
 
+    /**
+     * @param FormInterface $searchForm
+     */
+    public function setSearchForm(FormInterface $searchForm)
+    {
+        $this->searchForm = $searchForm;
+    }
+
     public function showAction()
     {
         $page = $this->params()->fromRoute('page');
@@ -37,9 +50,12 @@ class OverviewController extends AbstractActionController
             $page
         );
 
+        $this->searchForm->setData($this->getRequest()->getQuery());
+
         return new ViewModel([
             'paginator' => $paginator,
             'query' => $this->params()->fromQuery(),
+            'form' => $this->searchForm,
         ]);
     }
 

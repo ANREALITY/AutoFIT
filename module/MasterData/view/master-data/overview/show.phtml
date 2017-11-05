@@ -1,12 +1,23 @@
 <?php
+
 use DbSystel\DataObject\Cluster;
 use DbSystel\DataObject\Server;
+
+?>
+
+<h3>
+    <span><?php echo $this->translate('Server-cluster assignments'); ?></span>
+</h3>
+
+<?php
+// form
+echo $this->partial('/partials/overview/form/form',
+    [
+        'form' => $form,
+    ]);
 ?>
 
 <div class="row">
-    <h3>
-        <span><?php echo $this->translate('Server-cluster assignments'); ?></span>
-    </h3>
     <?php
     echo $this->paginationControl(
         $paginator, 'Sliding', 'pagination_overview', ['routeName' => 'master-data/show-overview', 'query' => $query]

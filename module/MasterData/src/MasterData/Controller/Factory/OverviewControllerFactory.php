@@ -12,7 +12,11 @@ class OverviewControllerFactory implements FactoryInterface
     {
         $clusterService = $container->get('Order\Service\ClusterService');
 
+        $formElementManager = $container->get('FormElementManager');
+        $searchForm = $formElementManager->get('MasterData\Form\SearchForm');
+
         $service = new OverviewController($clusterService);
+        $service->setSearchForm($searchForm);
 
         return $service;
     }
