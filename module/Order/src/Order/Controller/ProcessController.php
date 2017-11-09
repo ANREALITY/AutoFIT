@@ -417,6 +417,7 @@ class ProcessController extends AbstractActionController
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
+            'query' => $this->params()->fromQuery(),
         ]);
     }
 
@@ -431,6 +432,7 @@ class ProcessController extends AbstractActionController
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
+            'query' => $this->params()->fromQuery(),
         ]);
     }
 
