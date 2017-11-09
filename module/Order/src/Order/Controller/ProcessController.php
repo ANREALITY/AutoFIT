@@ -408,14 +408,9 @@ class ProcessController extends AbstractActionController
     {
         $userId = $this->IdentityParam('id');
         $page = $this->params()->fromRoute('page');
-        $paginator = $this->fileTransferRequestService->findAll(
-            [
-                [
-                    'user_id' => $userId
-                ]
-            ],
-            $page
-        );
+        $criteria = [];
+        $criteria[] = ['user_id' => $userId];
+        $paginator = $this->fileTransferRequestService->findAll($criteria, $page);
 
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),
