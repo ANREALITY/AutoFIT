@@ -406,11 +406,11 @@ class ProcessController extends AbstractActionController
 
     public function listMyOrdersAction()
     {
-        $userId = $this->IdentityParam('id');
         $page = $this->params()->fromRoute('page');
+        $userId = $this->IdentityParam('id');
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
-        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $criteria[] = ['user_id' => $userId];
+        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
         return new ViewModel([
