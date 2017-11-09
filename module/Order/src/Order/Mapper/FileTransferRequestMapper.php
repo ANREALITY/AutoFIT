@@ -43,6 +43,18 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                         ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
                     ;
                 }
+                if (is_array($condition)) {
+                    if (array_key_exists('application_technical_short_name', $condition)) {
+                        $queryBuilder
+                            // JOINing of the serviceInvoicePositionPersonal would also be possible.
+                            ->join('ftr.serviceInvoicePositionBasic', 'sip')
+                            ->join('sip.serviceInvoice', 'si')
+                            ->join('si.application', 'a')
+                            ->where('a.technicalShortName = :technicalShortName')
+                            ->setParameter('technicalShortName', $condition['application_technical_short_name'])
+                        ;
+                    }
+                }
             }
         }
 
