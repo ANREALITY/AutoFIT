@@ -408,9 +408,10 @@ class ProcessController extends AbstractActionController
     {
         $userId = $this->IdentityParam('id');
         $page = $this->params()->fromRoute('page');
-        $criteria = [];
+        $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
+        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $criteria[] = ['user_id' => $userId];
-        $paginator = $this->fileTransferRequestService->findAll($criteria, $page);
+        $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),
@@ -422,7 +423,9 @@ class ProcessController extends AbstractActionController
     public function listOrdersAction()
     {
         $page = $this->params()->fromRoute('page');
-        $paginator = $this->fileTransferRequestService->findAll([], $page);
+        $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
+        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
+        $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),

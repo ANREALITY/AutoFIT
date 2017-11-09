@@ -18,9 +18,10 @@ interface FileTransferRequestServiceInterface
     /**
      * @param array $criteria
      * @param int $page
+     * @param array $sorting
      * @return Paginator
      */
-    public function findAll(array $criteria = [], $page = null);
+    public function findAll(array $criteria = [], $page = null, array $sorting = []);
 
     /**
      *
