@@ -51,9 +51,7 @@ class FileTransferRequestService extends AbstractService implements FileTransfer
     {
         return $this->mapper->findAll(
             [
-                [
-                    'change_number' => $changeNumber
-                ]
+                'change_number' => $changeNumber
             ],
             AbstractMapper::DEFAULT_QUERY_LIMIT,
             Query::HYDRATE_ARRAY

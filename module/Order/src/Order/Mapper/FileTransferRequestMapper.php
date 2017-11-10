@@ -29,32 +29,28 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (array_key_exists('user_id', $condition)) {
-                    $queryBuilder
-                        ->andWhere('ftr.user = :userId')
-                        ->setParameter('userId', $condition['user_id'])
-                    ;
-                }
-                if (array_key_exists('change_number', $condition)) {
-                    $queryBuilder
-                        ->andWhere('ftr.changeNumber LIKE :changeNumber')
-                        ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
-                    ;
-                }
-                if (is_array($condition)) {
-                    if (array_key_exists('application_technical_short_name', $condition)) {
-                        $queryBuilder
-                            // JOINing of the serviceInvoicePositionPersonal would also be possible.
-                            ->join('ftr.serviceInvoicePositionBasic', 'sip')
-                            ->join('sip.serviceInvoice', 'si')
-                            ->join('si.application', 'a')
-                            ->where('a.technicalShortName = :technicalShortName')
-                            ->setParameter('technicalShortName', $condition['application_technical_short_name'])
-                        ;
-                    }
-                }
+        foreach ($criteria as $key => $condition) {
+            if ($key === 'user_id') {
+                $queryBuilder
+                    ->andWhere('ftr.user = :userId')
+                    ->setParameter('userId', $condition)
+                ;
+            }
+            if ($key === 'change_number') {
+                $queryBuilder
+                    ->andWhere('ftr.changeNumber LIKE :changeNumber')
+                    ->setParameter('changeNumber', '%' . $condition . '%')
+                ;
+            }
+            if ($key === 'application_technical_short_name') {
+                $queryBuilder
+                    // JOINing of the serviceInvoicePositionPersonal would also be possible.
+                    ->join('ftr.serviceInvoicePositionBasic', 'sip')
+                    ->join('sip.serviceInvoice', 'si')
+                    ->join('si.application', 'a')
+                    ->where('a.technicalShortName = :technicalShortName')
+                    ->setParameter('technicalShortName', $condition)
+                ;
             }
         }
 
@@ -75,14 +71,12 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
-        foreach ($criteria as $condition) {
-            if (is_array($condition)) {
-                if (array_key_exists('change_number', $condition)) {
-                    $queryBuilder
-                        ->where('ftr.changeNumber LIKE :changeNumber')
-                        ->setParameter('changeNumber', '%' . $condition['change_number'] . '%')
-                    ;
-                }
+        foreach ($criteria as $key => $condition) {
+            if ($key === 'change_number') {
+                $queryBuilder
+                    ->where('ftr.changeNumber LIKE :changeNumber')
+                    ->setParameter('changeNumber', '%' . $condition . '%')
+                ;
             }
         }
 

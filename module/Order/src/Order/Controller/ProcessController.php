@@ -409,7 +409,7 @@ class ProcessController extends AbstractActionController
         $page = $this->params()->fromRoute('page');
         $userId = $this->IdentityParam('id');
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
-        $criteria[] = ['user_id' => $userId];
+        $criteria['user_id'] = $userId;
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
