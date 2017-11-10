@@ -250,7 +250,7 @@ return [
                         'action' => 'provideServers'
                     ]
                 ]
-            ]
+            ],
         ]
     ],
     'controllers' => [
@@ -295,9 +295,15 @@ return [
         ]
     ],
     'form_elements' => [
+        'invokables' => [
+            // fieldsets
+            'Order\Form\Fieldset\Filter' => 'Order\Form\Fieldset\FilterFieldset',
+            'Order\Form\Fieldset\Sort' => 'Order\Form\Fieldset\SortFieldset',
+        ],
         'factories' => [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
+            'Order\Form\OrderSearchForm' => 'Order\Form\Factory\OrderSearchFormFactory',
             // fieldsets
             'Order\Form\Fieldset\Cluster' => 'Order\Form\Fieldset\Factory\ClusterFieldsetFactory',
             'Order\Form\Fieldset\ClusterCreate' => 'Order\Form\Fieldset\Factory\ClusterCreateFieldsetFactory',

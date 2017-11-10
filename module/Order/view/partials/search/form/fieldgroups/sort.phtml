@@ -1,0 +1,17 @@
+<?php
+$fieldgroupName = 'sort';
+$fieldgroupCssClass = 'col-md-4 fieldgroup-sort';
+$fieldgroupTitle = $this->translate('sorting');
+$fieldgroupFormRows = [
+    $this->formRow($sortFieldset->get('datetime')),
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+<?php /*$this->inlineScript()->appendFile('/js/audit-log-sort-autocomplete.js');*/ ?>

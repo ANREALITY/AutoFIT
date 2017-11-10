@@ -2,6 +2,7 @@
 
 namespace Order\Controller;
 
+use Order\Form\OrderSearchForm;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\Parameters;
@@ -59,6 +60,11 @@ class ProcessController extends AbstractActionController
      */
     protected $exportFolder;
 
+    /**
+     * @var OrderSearchForm
+     */
+    protected $orderSearchForm;
+
     public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestServiceInterface $fileTransferRequestService)
     {
         $this->fileTransferRequest = $fileTransferRequest;
@@ -111,6 +117,14 @@ class ProcessController extends AbstractActionController
     public function setExportFolder(string $exportFolder)
     {
         $this->exportFolder = $exportFolder;
+    }
+
+    /**
+     * @param FormInterface $orderSearchForm
+     */
+    public function setOrderSearchForm(FormInterface $orderSearchForm)
+    {
+        $this->orderSearchForm = $orderSearchForm;
     }
 
     public function startAction()
@@ -418,6 +432,7 @@ class ProcessController extends AbstractActionController
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
             'query' => $this->params()->fromQuery(),
+            'form' => $this->orderSearchForm,
         ]);
     }
 
@@ -433,6 +448,7 @@ class ProcessController extends AbstractActionController
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
             'query' => $this->params()->fromQuery(),
+            'form' => $this->orderSearchForm,
         ]);
     }
 

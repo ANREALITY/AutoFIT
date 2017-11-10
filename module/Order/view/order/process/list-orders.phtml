@@ -7,6 +7,14 @@ use DbSystel\DataObject\FileTransferRequest;
 </h3>
 
 <?php
+// form
+echo $this->partial('/partials/search/form/form',
+    [
+        'form' => $form,
+    ]);
+?>
+
+<?php
 echo $this->paginationControl(
     $paginator, 'Sliding', 'pagination', ['routeName' => 'list-orders']
 );

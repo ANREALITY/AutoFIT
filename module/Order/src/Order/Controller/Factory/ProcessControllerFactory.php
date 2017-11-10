@@ -41,6 +41,9 @@ class ProcessControllerFactory implements FactoryInterface
             $config = $container->get('Config');
             $exportFolder = $config['export']['folder'];
             $service->setExportFolder($exportFolder);
+            $formElementManager = $container->get('FormElementManager');
+            $orderSearchForm = $formElementManager->get('Order\Form\OrderSearchForm');
+            $service->setOrderSearchForm($orderSearchForm);
         }
 
         return $service;

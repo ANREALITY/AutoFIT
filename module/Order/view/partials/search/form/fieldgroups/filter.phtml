@@ -1,0 +1,19 @@
+<?php
+$fieldgroupName = 'filter';
+$fieldgroupCssClass = 'col-md-7 fieldgroup-filter';
+$fieldgroupTitle = $this->translate('filtering');
+$fieldgroupFormRows = [
+    $this->formRow($filterFieldset->get('username')),
+    $this->formRow($filterFieldset->get('change_number')),
+];
+echo $this->partial('/partials/fieldgroup',
+    [
+        'fieldgroupName' => $fieldgroupName,
+        'fieldgroupCssClass' => $fieldgroupCssClass,
+        'fieldgroupTitle' => $fieldgroupTitle,
+        'formRows' => $fieldgroupFormRows,
+        'emptyView' => false
+    ]);
+?>
+
+<?php /* $this->inlineScript()->appendFile('/js/order/search-filter-autocomplete.js'); */ ?>
