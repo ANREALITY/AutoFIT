@@ -198,7 +198,7 @@ class ProcessController extends AbstractActionController
         }
 
         if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('order/operation-denied-for-status',
+            return $this->redirect()->toRoute('operation-denied-for-status',
                 [
                     'operation' => 'edit',
                     'status' => $this->fileTransferRequest->getStatus()
@@ -336,7 +336,7 @@ class ProcessController extends AbstractActionController
 
         if (! $this->OrderStatusChecker()->isAllowedOperationForStatus($operation,
             $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('order/operation-denied-for-status',
+            return $this->redirect()->toRoute('operation-denied-for-status',
                 [
                     'operation' => $operation,
                     'status' => $this->fileTransferRequest->getStatus()
@@ -420,8 +420,8 @@ class ProcessController extends AbstractActionController
 
     public function listMyOrdersAction()
     {
-        $page = $this->params()->fromRoute('page');
         $userId = $this->IdentityParam('id');
+        $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
         $criteria['user_id'] = $userId;
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
@@ -438,16 +438,21 @@ class ProcessController extends AbstractActionController
 
     public function listOrdersAction()
     {
-        $page = $this->params()->fromRoute('page');
+        $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
+
+        $this->orderSearchForm->setData($this->getRequest()->getQuery());
+
+        $queryParams = $this->params()->fromQuery();
+        unset($queryParams['submit']);
 
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
-            'query' => $this->params()->fromQuery(),
+            'query' => $queryParams,
             'form' => $this->orderSearchForm,
         ]);
     }

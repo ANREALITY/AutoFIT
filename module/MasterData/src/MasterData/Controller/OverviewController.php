@@ -43,7 +43,7 @@ class OverviewController extends AbstractActionController
 
     public function showAction()
     {
-        $page = $this->params()->fromRoute('page');
+        $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
         $paginator = $this->clusterService->findAllPaginated(
             $criteria,
@@ -52,9 +52,12 @@ class OverviewController extends AbstractActionController
 
         $this->searchForm->setData($this->getRequest()->getQuery());
 
+        $queryParams = $this->params()->fromQuery();
+        unset($queryParams['submit']);
+
         return new ViewModel([
             'paginator' => $paginator,
-            'query' => $this->params()->fromQuery(),
+            'query' => $queryParams,
             'form' => $this->searchForm,
         ]);
     }
