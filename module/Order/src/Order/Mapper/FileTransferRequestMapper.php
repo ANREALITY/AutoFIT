@@ -36,6 +36,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->setParameter('userId', $condition)
                 ;
             }
+            if ($key === 'username') {
+                $queryBuilder
+                    ->join('ftr.user', 'u')
+                    ->andWhere('u.username = :username')
+                    ->setParameter('username', $condition)
+                ;
+            }
             if ($key === 'change_number') {
                 $queryBuilder
                     ->andWhere('ftr.changeNumber LIKE :changeNumber')
