@@ -214,7 +214,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('AuditLogging');
         $this->assertControllerName('AuditLogging\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-users');
+        $this->assertMatchedRouteName('audit-logging/provide-users');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
@@ -261,7 +261,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('AuditLogging');
         $this->assertControllerName('AuditLogging\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-file-transfer-requests');
+        $this->assertMatchedRouteName('audit-logging/provide-file-transfer-requests');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();

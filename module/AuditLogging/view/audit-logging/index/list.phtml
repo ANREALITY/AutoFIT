@@ -17,7 +17,7 @@ echo $this->partial('/partials/list/form/form',
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list', 'query' => $query]
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'audit-logging/list', 'query' => $query]
 );
 ?>
 
@@ -58,6 +58,6 @@ echo $this->paginationControl(
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'list', 'query' => $query]
+    $paginator, 'Sliding', 'pagination_audit_logging', ['routeName' => 'audit-logging/list', 'query' => $query]
 );
 ?>

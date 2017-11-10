@@ -21,9 +21,10 @@ class AjaxController extends AbstractActionController
      */
     protected $fileTransferRequestService;
 
-    public function __construct(UserServiceInterface $userService,
-        FileTransferRequestServiceInterface $fileTransferRequestService)
-    {
+    public function __construct(
+        UserServiceInterface $userService,
+        FileTransferRequestServiceInterface $fileTransferRequestService
+    ) {
         $this->userService = $userService;
         $this->fileTransferRequestService = $fileTransferRequestService;
     }

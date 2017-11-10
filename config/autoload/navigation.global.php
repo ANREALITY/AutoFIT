@@ -22,7 +22,7 @@ return [
         'admin' => [
             [
                 'label' => _('audit log'),
-                'route' => 'list',
+                'route' => 'audit-logging/list',
             ],
         ]
     ],

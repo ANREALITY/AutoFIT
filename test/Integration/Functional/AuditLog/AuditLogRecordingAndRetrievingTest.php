@@ -100,7 +100,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
         $this->assertModuleName('AuditLogging');
         $this->assertControllerName('AuditLogging\Controller\Index');
         $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('list');
+        $this->assertMatchedRouteName('audit-logging/list');
 
         // list audit log entries
         $this->reset();

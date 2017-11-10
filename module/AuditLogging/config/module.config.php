@@ -2,36 +2,45 @@
 return [
     'router' => [
         'routes' => [
-            'list' => [
+            'audit-logging' => [
                 'type' => 'Zend\Router\Http\Segment',
                 'options' => [
-                    'route' => '/audit-logging/list[/page/:page]',
-                    'defaults' => [
-                        'controller' => 'AuditLogging\Controller\Index',
-                        'action' => 'list',
-                        'page' => 1
-                    ]
-                ]
-            ],
-            'provide-users' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/audit-logging/ajax/provide-users',
-                    'defaults' => [
-                        'controller' => 'AuditLogging\Controller\Ajax',
-                        'action' => 'provideUsers'
-                    ]
-                ]
-            ],
-            'provide-file-transfer-requests' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/audit-logging/ajax/provide-file-transfer-requests',
-                    'defaults' => [
-                        'controller' => 'AuditLogging\Controller\Ajax',
-                        'action' => 'provideFileTransferRequests'
-                    ]
-                ]
+                    'route' => '/audit-logging',
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'list' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/list[/page/:page]',
+                            'defaults' => [
+                                'controller' => 'AuditLogging\Controller\Index',
+                                'action' => 'list',
+                                'page' => 1
+                            ]
+                        ]
+                    ],
+                    'provide-users' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-users',
+                            'defaults' => [
+                                'controller' => 'AuditLogging\Controller\Ajax',
+                                'action' => 'provideUsers'
+                            ]
+                        ]
+                    ],
+                    'provide-file-transfer-requests' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-file-transfer-requests',
+                            'defaults' => [
+                                'controller' => 'AuditLogging\Controller\Ajax',
+                                'action' => 'provideFileTransferRequests'
+                            ]
+                        ]
+                    ],
+                ],
             ],
         ]
     ],
