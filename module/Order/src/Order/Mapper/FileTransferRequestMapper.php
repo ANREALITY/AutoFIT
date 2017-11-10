@@ -36,20 +36,20 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->setParameter('userId', $condition)
                 ;
             }
-            if ($key === 'username') {
+            if ($key === 'username' && $condition) {
                 $queryBuilder
                     ->join('ftr.user', 'u')
                     ->andWhere('u.username = :username')
                     ->setParameter('username', $condition)
                 ;
             }
-            if ($key === 'change_number') {
+            if ($key === 'change_number' && $condition) {
                 $queryBuilder
                     ->andWhere('ftr.changeNumber LIKE :changeNumber')
                     ->setParameter('changeNumber', '%' . $condition . '%')
                 ;
             }
-            if ($key === 'application_technical_short_name') {
+            if ($key === 'application_technical_short_name' && $condition) {
                 $queryBuilder
                     // JOINing of the serviceInvoicePositionPersonal would also be possible.
                     ->join('ftr.serviceInvoicePositionBasic', 'sip')
