@@ -24,13 +24,13 @@ class ListOrdersTest extends AbstractOrderOutputTest
         $username = 'foo';
         $_SERVER['AUTH_USER'] = $username;
 
-        $listUrl = '/list-my-orders';
+        $listUrl = '/order/list-own';
         $this->dispatch($listUrl);
         $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('list-my-orders');
+        $this->assertMatchedRouteName('order/list-own');
 
         /** @var Paginator $paginator */
         $paginator = $this->getApplication()->getMvcEvent()->getResult()->getVariable('paginator', null);
@@ -67,13 +67,13 @@ class ListOrdersTest extends AbstractOrderOutputTest
         $username = 'foo';
         $_SERVER['AUTH_USER'] = $username;
 
-        $listUrl = '/list-orders';
+        $listUrl = '/order/list';
         $this->dispatch($listUrl);
         $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('list-orders');
+        $this->assertMatchedRouteName('order/list');
 
         /** @var Paginator $paginator */
         $paginator = $this->getApplication()->getMvcEvent()->getResult()->getVariable('paginator', null);
@@ -110,13 +110,13 @@ class ListOrdersTest extends AbstractOrderOutputTest
         $username = 'foo';
         $_SERVER['AUTH_USER'] = $username;
 
-        $listUrl = '/list-orders/page/2';
+        $listUrl = '/order/list/page/2';
         $this->dispatch($listUrl);
         $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('list-orders');
+        $this->assertMatchedRouteName('order/list');
 
         /** @var Paginator $paginator */
         $paginator = $this->getApplication()->getMvcEvent()->getResult()->getVariable('paginator', null);

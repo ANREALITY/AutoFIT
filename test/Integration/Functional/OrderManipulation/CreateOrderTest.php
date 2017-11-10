@@ -20,7 +20,7 @@ class CreateOrderTest extends AbstractOrderManipulationTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('create-order');
+        $this->assertMatchedRouteName('order/create');
         // checking the form
         /** @var OrderForm $orderForm */
         $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);

@@ -24,7 +24,7 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
         $this->reset();
 
         $orderId = 1;
-        $exportOrderUrl = '/export-order/' . $orderId;
+        $exportOrderUrl = '/order/export/' . $orderId;
 
         $_SERVER['AUTH_USER'] = 'undefined2';
         $this->dispatch($exportOrderUrl, null, ['format' => $format]);
@@ -32,7 +32,7 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('export-order');
+        $this->assertMatchedRouteName('order/export');
 
 
         /** @var Stream $stream */
@@ -58,7 +58,7 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
         $this->reset();
 
         $orderId = 1;
-        $exportOrderUrl = '/export-order/' . $orderId;
+        $exportOrderUrl = '/order/export/' . $orderId;
         $this->dispatch($exportOrderUrl, null, ['format' => $format]);
 
         // checking rouintg

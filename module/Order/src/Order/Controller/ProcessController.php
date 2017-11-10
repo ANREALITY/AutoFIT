@@ -198,7 +198,7 @@ class ProcessController extends AbstractActionController
         }
 
         if (! $this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('operation-denied-for-status',
+            return $this->redirect()->toRoute('order/operation-denied-for-status',
                 [
                     'operation' => 'edit',
                     'status' => $this->fileTransferRequest->getStatus()
@@ -336,7 +336,7 @@ class ProcessController extends AbstractActionController
 
         if (! $this->OrderStatusChecker()->isAllowedOperationForStatus($operation,
             $this->fileTransferRequest->getStatus())) {
-            return $this->redirect()->toRoute('operation-denied-for-status',
+            return $this->redirect()->toRoute('order/operation-denied-for-status',
                 [
                     'operation' => $operation,
                     'status' => $this->fileTransferRequest->getStatus()

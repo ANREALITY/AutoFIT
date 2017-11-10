@@ -10,4 +10,4 @@ $fileTransferRequest = $auditLog->getFileTransferRequest();
 
 #<?php echo $fileTransferRequest->getId(); ?>
 
-(<a href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>)
+(<a href='<?php echo $this->url('order/show', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>)

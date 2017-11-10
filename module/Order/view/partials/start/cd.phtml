@@ -52,7 +52,7 @@ $endpointTypes = [
 </div>
 
 <script type="text/javascript">
-linkHref = '<?php echo $this->url('create-order', ['connectionType' => 'cd', 'endpointSourceType' => 'endpointSourceType', 'endpointTargetType' => 'endpointTargetType']); ?>';
+linkHref = '<?php echo $this->url('order/create', ['connectionType' => 'cd', 'endpointSourceType' => 'endpointSourceType', 'endpointTargetType' => 'endpointTargetType']); ?>';
 $(document).ready(function(){
     $('select').change(function() {
         if ($('#endpoint-source').val() === '' || $('#endpoint-target').val() === '') {

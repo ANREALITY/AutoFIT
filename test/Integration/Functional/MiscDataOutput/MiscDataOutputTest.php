@@ -22,7 +22,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-applications');
+        $this->assertMatchedRouteName('order/provide-applications');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
@@ -47,7 +47,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-environments');
+        $this->assertMatchedRouteName('order/provide-environments');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
@@ -84,7 +84,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-service-invoice-positions-' . strtolower($articleType));
+        $this->assertMatchedRouteName('order/provide-service-invoice-positions-' . strtolower($articleType));
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
@@ -109,7 +109,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-servers');
+        $this->assertMatchedRouteName('order/provide-servers');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();
@@ -132,7 +132,7 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Ajax');
         $this->assertControllerClass('AjaxController');
-        $this->assertMatchedRouteName('provide-clusters');
+        $this->assertMatchedRouteName('order/provide-clusters');
 
         /** @var JsonModel $jsonModel */
         $jsonModel = $this->getApplication()->getMvcEvent()->getResult();

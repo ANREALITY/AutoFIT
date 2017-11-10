@@ -9,31 +9,31 @@ $fileTransferRequest;
 ?>
 <?php if ($userId == $fileTransferRequest->getUser()->getId()) : ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('startEditing', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('start-editing-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('start editing'); ?> <span class="glyphicon glyphicon-pencil"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/start-editing', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('start editing'); ?> <span class="glyphicon glyphicon-pencil"></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('edit', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('edit-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('update'); ?> <span class="glyphicon glyphicon-edit"></span></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/edit', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('update'); ?> <span class="glyphicon glyphicon-edit"></span></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('submit', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('submit-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('submit'); ?> <span class="glyphicon glyphicon-file"></span></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/submit', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('submit'); ?> <span class="glyphicon glyphicon-file"></span></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('cancel', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('cancel-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('cancel'); ?> <span class="glyphicon glyphicon-remove-sign"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/cancel', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('cancel'); ?> <span class="glyphicon glyphicon-remove-sign"></a>
     <?php endif; ?>
 <?php endif; ?>
 <?php if ($userRole === User::ROLE_ADMIN) : ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('accept', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('accept-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('accept'); ?> <span class="glyphicon glyphicon-check"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/accept', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('accept'); ?> <span class="glyphicon glyphicon-check"></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('decline', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('decline-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('decline'); ?> <span class="glyphicon glyphicon-minus-sign"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/decline', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('decline'); ?> <span class="glyphicon glyphicon-minus-sign"></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('startChecking', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('start-checking-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('start check'); ?> <span class="glyphicon glyphicon-scale"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/start-checking', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('start check'); ?> <span class="glyphicon glyphicon-scale"></a>
     <?php endif; ?>
     <?php if($this->OrderStatusChecker()->isAllowedOperationForStatus('complete', $fileTransferRequest->getStatus())) : ?>
-    <a class="btn btn-default" href="<?php echo $this->url('complete-order', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('complete'); ?> <span class="glyphicon glyphicon-ok-sign"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/complete', ['id' => $fileTransferRequest->getId()]); ?>"><?php echo $this->translate('complete'); ?> <span class="glyphicon glyphicon-ok-sign"></a>
     <?php endif; ?>
-    <a class="btn btn-default" href="<?php echo $this->url('export-order', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'json']]); ?>"><?php echo $this->translate('JSON export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-json"></a>
-    <a class="btn btn-default" href="<?php echo $this->url('export-order', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'xml']]); ?>"><?php echo $this->translate('XML export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-xml"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/export', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'json']]); ?>"><?php echo $this->translate('JSON export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-json"></a>
+    <a class="btn btn-default" href="<?php echo $this->url('order/export', ['id' => $fileTransferRequest->getId()], ['query' => ['format' => 'xml']]); ?>"><?php echo $this->translate('XML export'); ?> <span class="glyphicon glyphicon-export glyphicon-export-xml"></a>
 <?php endif; ?>

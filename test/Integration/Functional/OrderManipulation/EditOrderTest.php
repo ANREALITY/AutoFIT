@@ -26,7 +26,7 @@ class EditOrderTest extends AbstractOrderManipulationTest
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('edit-order');
+        $this->assertMatchedRouteName('order/edit');
 
         /** @var OrderForm $orderForm */
         $orderForm = $this->getApplication()->getMvcEvent()->getResult()->getVariable('form', null);

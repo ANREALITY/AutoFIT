@@ -5,269 +5,278 @@ use Order\Mvc\Controller\Plugin\IdentityParam;
 return [
     'router' => [
         'routes' => [
-            'start-order' => [
+            'order' => [
                 'type' => 'Zend\Router\Http\Segment',
                 'options' => [
-                    'route' => '/order/process/start-order[/:connectionType]',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'start',
-                        'connectionType' => ''
-                    ]
-                ]
-            ],
-            'create-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/create/:connectionType/:endpointSourceType/:endpointTargetType',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'create',
-                        'connectionType' => '',
-                        'endpointSourceType' => '',
-                        'endpointTargetType' => ''
-                    ]
-                ]
-            ],
-            'start-editing-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/start-editing/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'startEditing',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'edit-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/edit/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'edit',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'submit-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/submit/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'submit',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'cancel-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/cancel/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'cancel',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'accept-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/accept/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'accept',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'decline-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/decline/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'decline',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'start-checking-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/start-checking/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'startChecking',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'complete-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/complete/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'complete',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'show-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/show-order/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'showOrder',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'export-order' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/export-order/:id',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'exportOrder',
-                        'id' => ''
-                    ]
-                ]
-            ],
-            'sync-in-progress' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/sync-in-progress',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'syncInProgress',
-                    ]
-                ]
-            ],
-            'operation-denied-for-status' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/order/process/operation-denied-for-status[/:operation][/:status]',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'operationDeniedForStatus',
-                    ]
-                ]
-            ],
-            'list-orders' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/list-orders[/page/:page]',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'listOrders',
-                        'page' => 1
-                    ]
-                ]
-            ],
-            'list-my-orders' => [
-                'type' => 'Zend\Router\Http\Segment',
-                'options' => [
-                    'route' => '/list-my-orders[/page/:page]',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Process',
-                        'action' => 'listMyOrders',
-                        'page' => 1
-                    ]
-                ]
-            ],
-            'provide-applications' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-applications',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideApplications'
-                    ]
-                ]
-            ],
-            'provide-service-invoice-positions' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-service-invoice-positions',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServiceInvoicePositions'
-                    ]
-                ]
-            ],
-            'provide-service-invoice-positions-basic' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-service-invoice-positions-basic',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServiceInvoicePositionsBasic'
-                    ]
-                ]
-            ],
-            'provide-service-invoice-positions-personal' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-service-invoice-positions-personal',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServiceInvoicePositionsPersonal'
-                    ]
-                ]
-            ],
-            'provide-environments' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-environments',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideEnvironments'
-                    ]
-                ]
-            ],
-            'provide-clusters' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-clusters',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideclusters'
-                    ]
-                ]
-            ],
-            'provide-servers' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-servers',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideServers'
-                    ]
-                ]
-            ],
-            'provide-users' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-users',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideUsers'
-                    ]
-                ]
-            ],
-            'provide-file-transfer-requests' => [
-                'type' => 'Zend\Router\Http\Literal',
-                'options' => [
-                    'route' => '/order/ajax/provide-file-transfer-requests',
-                    'defaults' => [
-                        'controller' => 'Order\Controller\Ajax',
-                        'action' => 'provideFileTransferRequests'
+                    'route' => '/order',
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'start' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/start[/:connectionType]',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'start',
+                                'connectionType' => ''
+                            ]
+                        ]
+                    ],
+                    'create' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/create/:connectionType/:endpointSourceType/:endpointTargetType',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'create',
+                                'connectionType' => '',
+                                'endpointSourceType' => '',
+                                'endpointTargetType' => ''
+                            ]
+                        ]
+                    ],
+                    'start-editing' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/start-editing/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'startEditing',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'edit' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/edit/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'edit',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'submit' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/submit/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'submit',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'cancel' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/cancel/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'cancel',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'accept' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/accept/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'accept',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'decline' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/decline/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'decline',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'start-checking' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/start-checking/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'startChecking',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'complete' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/complete/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'complete',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'show' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/show/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'showOrder',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'export' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/export/:id',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'exportOrder',
+                                'id' => ''
+                            ]
+                        ]
+                    ],
+                    'sync-in-progress' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/sync-in-progress',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'syncInProgress',
+                            ]
+                        ]
+                    ],
+                    'operation-denied-for-status' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/operation-denied-for-status[/:operation][/:status]',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'operationDeniedForStatus',
+                            ]
+                        ]
+                    ],
+                    'list' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/list[/page/:page]',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'listOrders',
+                                'page' => 1
+                            ]
+                        ]
+                    ],
+                    'list-own' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/list-own[/page/:page]',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'listMyOrders',
+                                'page' => 1
+                            ]
+                        ]
+                    ],
+                    'provide-applications' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-applications',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideApplications'
+                            ]
+                        ]
+                    ],
+                    'provide-service-invoice-positions' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-service-invoice-positions',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideServiceInvoicePositions'
+                            ]
+                        ]
+                    ],
+                    'provide-service-invoice-positions-basic' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-service-invoice-positions-basic',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideServiceInvoicePositionsBasic'
+                            ]
+                        ]
+                    ],
+                    'provide-service-invoice-positions-personal' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-service-invoice-positions-personal',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideServiceInvoicePositionsPersonal'
+                            ]
+                        ]
+                    ],
+                    'provide-environments' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-environments',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideEnvironments'
+                            ]
+                        ]
+                    ],
+                    'provide-clusters' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-clusters',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideclusters'
+                            ]
+                        ]
+                    ],
+                    'provide-servers' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-servers',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideServers'
+                            ]
+                        ]
+                    ],
+                    'provide-users' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-users',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideUsers'
+                            ]
+                        ]
+                    ],
+                    'provide-file-transfer-requests' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-file-transfer-requests',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideFileTransferRequests'
+                            ]
+                        ]
                     ]
                 ]
             ]

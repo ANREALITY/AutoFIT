@@ -6,9 +6,9 @@ return [
                 'label' => _('home'),
                 'route' => 'home',
             ],
-            'list-my-orders' => [
+            'order/list-own' => [
                 'label' => _('my orders'),
-                'route' => 'list-my-orders',
+                'route' => 'order/list-own',
             ],
             'master-data' => [
                 'label' => _('master data'),
@@ -16,7 +16,7 @@ return [
             ],
             [
                 'label' => _('orders'),
-                'route' => 'list-orders',
+                'route' => 'order/list',
             ],
         ],
         'admin' => [

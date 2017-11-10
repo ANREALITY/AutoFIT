@@ -16,7 +16,7 @@ echo $this->partial('/partials/search/form/form',
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination', ['routeName' => 'list-orders']
+    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list']
 );
 ?>
 
@@ -37,7 +37,7 @@ echo $this->paginationControl(
     <tr>
         <td>#<?php echo $fileTransferRequest->getId(); ?></td>
         <td><a
-            href='<?php echo $this->url('show-order', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>
+            href='<?php echo $this->url('order/show', ['id' => $fileTransferRequest->getId()]); ?>'><?php echo $fileTransferRequest->getChangeNumber(); ?></a>
             <br />
             <small><?php echo $this->translate($fileTransferRequest->getStatus()); ?></small>
         </td>
@@ -57,6 +57,6 @@ echo $this->paginationControl(
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination', ['routeName' => 'list-orders']
+    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list']
 );
 ?>

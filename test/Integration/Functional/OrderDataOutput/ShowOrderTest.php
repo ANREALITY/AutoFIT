@@ -26,13 +26,13 @@ class ShowOrderTest extends AbstractOrderOutputTest
 
         // testing the access by the owner
         $orderId = 1;
-        $showUrl = '/show-order/' . $orderId;
+        $showUrl = '/order/show/' . $orderId;
         $this->dispatch($showUrl);
         $this->assertResponseStatusCode(Response::STATUS_CODE_200);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('show-order');
+        $this->assertMatchedRouteName('order/show');
 
         /** @var FileTransferRequest $fileTransferRequest */
         $fileTransferRequest = $this->getApplication()->getMvcEvent()->getResult()->getVariable('fileTransferRequest', null);
@@ -82,13 +82,13 @@ class ShowOrderTest extends AbstractOrderOutputTest
 
         // testing the access by the owner
         $orderId = 2;
-        $showUrl = '/show-order/' . $orderId;
+        $showUrl = '/order/show/' . $orderId;
         $this->dispatch($showUrl);
         $this->assertResponseStatusCode(Response::STATUS_CODE_404);
         $this->assertModuleName('Order');
         $this->assertControllerName('Order\Controller\Process');
         $this->assertControllerClass('ProcessController');
-        $this->assertMatchedRouteName('show-order');
+        $this->assertMatchedRouteName('order/show');
     }
 
     public function provideDataForShowOrder()
