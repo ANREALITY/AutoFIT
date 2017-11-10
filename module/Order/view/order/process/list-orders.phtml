@@ -16,7 +16,7 @@ echo $this->partial('/partials/search/form/form',
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list']
+    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list', 'query' => $query]
 );
 ?>
 
@@ -57,6 +57,6 @@ echo $this->paginationControl(
 
 <?php
 echo $this->paginationControl(
-    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list']
+    $paginator, 'Sliding', 'pagination', ['routeName' => 'order/list', 'query' => $query]
 );
 ?>
