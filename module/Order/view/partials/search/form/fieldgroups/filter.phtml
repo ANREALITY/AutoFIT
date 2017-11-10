@@ -5,6 +5,7 @@ $fieldgroupTitle = $this->translate('filtering');
 $fieldgroupFormRows = [
     $this->formRow($filterFieldset->get('username')),
     $this->formRow($filterFieldset->get('change_number')),
+    $this->formRow($filterFieldset->get('application_technical_short_name'))
 ];
 echo $this->partial('/partials/fieldgroup',
     [

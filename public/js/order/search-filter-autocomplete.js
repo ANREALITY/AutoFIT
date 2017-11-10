@@ -50,3 +50,30 @@ $(function() {
         $(this).autocomplete("search", this.value);
     });
 });
+/**
+ * Autocompletion for the field order-application-number.
+ */
+// @todo After removing the autocomplete.js of the order creation/editing from the global space change the constant's name to AUTOCOMPLETE_APPLICATIONS_LIMIT!
+const AUTOCOMPLETE_ORDER_SEARCH_APPLICATIONS_LIMIT = 25;
+$(function() {
+    $(".order-search-autocomplete-application")
+        .autocomplete({
+            autoFocus : true,
+            delay : 500,
+            minLength : 3,
+            source : function(request, response) {
+                $.get(
+                    "/order/ajax/provide-applications?"
+                    + "data[technical_short_name]=" + request.term,
+                    {},
+                    function(data) {
+                        response(data.slice(0, AUTOCOMPLETE_ORDER_SEARCH_APPLICATIONS_LIMIT));
+                    }
+                );
+            }
+        }).on('focus', function(event) {
+        console.log(new Date());
+        console.log($(this));
+        $(this).autocomplete("search", this.value);
+    });
+});
