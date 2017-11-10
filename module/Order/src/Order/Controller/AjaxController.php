@@ -1,6 +1,8 @@
 <?php
 namespace Order\Controller;
 
+use Order\Service\FileTransferRequestServiceInterface;
+use Order\Service\UserServiceInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 use Order\Service\ApplicationServiceInterface;
@@ -42,16 +44,34 @@ class AjaxController extends AbstractActionController
      */
     protected $clusterService;
 
-    public function __construct(ApplicationServiceInterface $applicationService,
-        EnvironmentServiceInterface $environmentService, ServerServiceInterface $serverService,
+    /**
+     *
+     * @var UserServiceInterface
+     */
+    protected $userService;
+
+    /**
+     *
+     * @var FileTransferRequestServiceInterface
+     */
+    protected $fileTransferRequestService;
+
+    public function __construct(
+        ApplicationServiceInterface $applicationService,
+        EnvironmentServiceInterface $environmentService,
+        ServerServiceInterface $serverService,
         ServiceInvoicePositionServiceInterface $serviceInvoicePositionService,
-        ClusterServiceInterface $clusterService)
-    {
+        ClusterServiceInterface $clusterService,
+        UserServiceInterface $userService,
+        FileTransferRequestServiceInterface $fileTransferRequestService
+        ) {
         $this->applicationService = $applicationService;
         $this->environmentService = $environmentService;
         $this->serverService = $serverService;
         $this->serviceInvoicePositionService = $serviceInvoicePositionService;
         $this->clusterService = $clusterService;
+        $this->userService = $userService;
+        $this->fileTransferRequestService = $fileTransferRequestService;
     }
 
     public function provideApplicationsAction()
@@ -193,6 +213,39 @@ class AjaxController extends AbstractActionController
         } else {
             $dataList = [];
         }
+
+        return new JsonModel($dataList);
+    }
+
+    public function provideUsersAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $username = isset($data['username']) ? $data['username'] : null;
+
+            $result = $this->userService->findAllForAutocomplete($username);
+            $dataList = array_column($result, 'username');
+        }
+
+        return new JsonModel($dataList);
+    }
+
+    public function provideFileTransferRequestsAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $changeNumber = isset($data['change_number']) ? $data['change_number'] : null;
+
+            $result = $this->fileTransferRequestService->findAllForAutocomplete($changeNumber);
+            $dataList = array_column($result, 'changeNumber');
+        }
+
 
         return new JsonModel($dataList);
     }

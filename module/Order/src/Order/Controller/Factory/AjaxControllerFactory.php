@@ -16,9 +16,18 @@ class AjaxControllerFactory implements FactoryInterface
         $serverService = $container->get('Order\Service\ServerService');
         $serviceInvoicePositionService = $container->get('Order\Service\ServiceInvoicePositionService');
         $clusterService = $container->get('Order\Service\ClusterService');
+        $userService = $container->get('Order\Service\UserService');
+        $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
 
-        $service = new AjaxController($applicationService, $environmentService, $serverService,
-            $serviceInvoicePositionService, $clusterService);
+        $service = new AjaxController(
+            $applicationService,
+            $environmentService,
+            $serverService,
+            $serviceInvoicePositionService,
+            $clusterService,
+            $userService,
+            $fileTransferRequestService
+        );
 
         return $service;
     }

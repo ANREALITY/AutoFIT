@@ -251,6 +251,26 @@ return [
                     ]
                 ]
             ],
+            'provide-users' => [
+                'type' => 'Zend\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-users',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideUsers'
+                    ]
+                ]
+            ],
+            'provide-file-transfer-requests' => [
+                'type' => 'Zend\Router\Http\Literal',
+                'options' => [
+                    'route' => '/order/ajax/provide-file-transfer-requests',
+                    'defaults' => [
+                        'controller' => 'Order\Controller\Ajax',
+                        'action' => 'provideFileTransferRequests'
+                    ]
+                ]
+            ]
         ]
     ],
     'controllers' => [
