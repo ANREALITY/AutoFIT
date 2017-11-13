@@ -427,11 +427,16 @@ class ProcessController extends AbstractActionController
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
+        $this->orderSearchForm->setData($this->getRequest()->getQuery());
+
+        $queryParams = $this->params()->fromQuery();
+        unset($queryParams['submit']);
+
         return new ViewModel([
             'userId' => $this->IdentityParam('id'),
             'userRole' => $this->IdentityParam('role'),
             'paginator' => $paginator,
-            'query' => $this->params()->fromQuery(),
+            'query' => $queryParams,
             'form' => $this->orderSearchForm,
         ]);
     }
