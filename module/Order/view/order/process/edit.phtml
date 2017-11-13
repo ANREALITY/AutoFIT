@@ -10,7 +10,6 @@ $connectionTypes = [
 ];
 ?>
 <?php
-
 $endpointTypes = [
     'cdlinuxunix' => 'Linux/Unix',
     'cdtandem' => 'Tandem',
@@ -101,6 +100,10 @@ if (! empty($getHelperFieldsValuesFromObject)) {
     $environmentFieldset->get('name')->setValue($environmentName);
 }
 ?>
+
+<?php $this->inlineScript()->appendFile('/js/order/order-form/autocomplete.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/fields-dependency-management.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/input-lists-management.js'); ?>
 
 <?php
 // billing

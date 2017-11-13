@@ -9,7 +9,6 @@ $connectionTypes = [
 ];
 ?>
 <?php
-
 $endpointTypes = [
     'cdlinuxunix' => 'Linux/Unix',
     'cdtandem' => 'Tandem',
@@ -82,6 +81,10 @@ $customerForTargetFieldset = $endpointTargetFieldset->get('customer');
 $endpointServerConfigForTargetFieldset = $endpointTargetFieldset->get('endpoint_server_config');
 $externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server');
 ?>
+
+<?php $this->inlineScript()->appendFile('/js/order/order-form/autocomplete.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/order/order-form/fields-dependency-management.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/order/order-form/input-lists-management.js'); ?>
 
 <?php
 // billing
