@@ -406,10 +406,12 @@ table.list td {
   width: 55px;
   height: 55px;
 }
-form#audit_log #fieldgroup-sort .panel.panel-default {
+form#audit_log #fieldgroup-sort .panel.panel-default,
+form#order_search #fieldgroup-sort .panel.panel-default {
   min-height: 130px;
 }
-form#audit_log .btn {
+form#audit_log .btn,
+form#order_search .btn {
   margin-top: 0;
 }
 form.cd label.required:before,

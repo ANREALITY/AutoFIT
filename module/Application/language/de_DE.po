@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 22:08+0100\n"
-"PO-Revision-Date: 2017-11-05 22:10+0100\n"
+"POT-Creation-Date: 2017-11-14 16:00+0100\n"
+"PO-Revision-Date: 2017-11-14 16:01+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -43,6 +43,7 @@ msgstr "Audit-Log"
 
 #: module/AuditLogging/src/AuditLogging/Form/AuditLogForm.php:32
 #: module/MasterData/src/MasterData/Form/SearchForm.php:25
+#: module/Order/src/Order/Form/OrderSearchForm.php:37
 msgid "show"
 msgstr "anzeigen"
 
@@ -51,6 +52,7 @@ msgstr "anzeigen"
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwCdZosFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
+#: module/Order/src/Order/Form/Fieldset/FilterFieldset.php:32
 #: module/Order/src/Order/Form/Fieldset/UserFieldset.php:35
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:19
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:19
@@ -75,8 +77,9 @@ msgstr "Benutzername"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:69
-#: module/Order/view/order/process/list-my-orders.phtml:34
-#: module/Order/view/order/process/list-orders.phtml:24
+#: module/Order/src/Order/Form/Fieldset/FilterFieldset.php:51
+#: module/Order/view/order/process/list-my-orders.phtml:42
+#: module/Order/view/order/process/list-orders.phtml:32
 #: module/Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
 msgstr "Change-Nummer"
@@ -111,10 +114,12 @@ msgid "date and time"
 msgstr "Datum und Zeit"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:21
+#: module/Order/src/Order/Form/Fieldset/SortFieldset.php:22
 msgid "descending"
 msgstr "absteigend"
 
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/SortFieldset.php:26
+#: module/Order/src/Order/Form/Fieldset/SortFieldset.php:27
 msgid "ascending"
 msgstr "aufsteigend"
 
@@ -414,6 +419,7 @@ msgid "add an access config"
 msgstr "Zugriffseinstellungssatz hinzufügen"
 
 #: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:38
+#: module/Order/src/Order/Form/Fieldset/FilterFieldset.php:66
 #: module/Order/view/partials/list/summary.phtml:102
 #: module/Order/view/partials/order-parts/billing.phtml:16
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:23
@@ -643,6 +649,10 @@ msgstr "LSP-S"
 #: module/Order/view/partials/order-parts/billing.phtml:42
 msgid "service invoice position (personal)"
 msgstr "LSP-P"
+
+#: module/Order/src/Order/Form/Fieldset/SortFieldset.php:18
+msgid "date and time of the ordering"
+msgstr "Datum und Zeit der Bestellung"
 
 #: module/Order/src/Order/Form/OrderForm.php:77
 msgid "save"
@@ -884,10 +894,12 @@ msgstr "Für diesen Bereich sind keine Einstellungen vorzunehmen."
 
 #: module/AuditLogging/view/partials/list/form/fieldgroups/filter.phtml:4
 #: module/MasterData/view/partials/overview/form/fieldgroups/filter.phtml:4
+#: module/Order/view/partials/search/form/fieldgroups/filter.phtml:4
 msgid "filtering"
 msgstr "Filterung"
 
 #: module/AuditLogging/view/partials/list/form/fieldgroups/sort.phtml:4
+#: module/Order/view/partials/search/form/fieldgroups/sort.phtml:4
 msgid "sorting"
 msgstr "Sortierung"
 
@@ -1041,7 +1053,7 @@ msgid "The order has been %s successfully."
 msgstr "Die Bestellung wurde erfolgreich %s."
 
 #: module/Order/view/order/process/accepted.phtml:3
-#: module/Order/view/order/process/list-my-orders.phtml:19
+#: module/Order/view/order/process/list-my-orders.phtml:27
 msgid "accepted"
 msgstr "angenommen"
 
@@ -1061,19 +1073,19 @@ msgid "in check"
 msgstr "in Überprüfung"
 
 #: module/Order/view/order/process/completed.phtml:3
-#: module/Order/view/order/process/list-my-orders.phtml:21
+#: module/Order/view/order/process/list-my-orders.phtml:29
 msgid "completed"
 msgstr "fertiggestellt"
 
-#: module/Order/view/order/process/create.phtml:22
-#: module/Order/view/order/process/edit.phtml:23
+#: module/Order/view/order/process/create.phtml:21
+#: module/Order/view/order/process/edit.phtml:22
 #: module/Order/view/order/process/show-order.phtml:27
 #: module/Order/view/partials/start/ftgw.phtml:5
 msgid "Protocol Server"
 msgstr "Protokoll-Server"
 
-#: module/Order/view/order/process/create.phtml:221
-#: module/Order/view/order/process/edit.phtml:248
+#: module/Order/view/order/process/create.phtml:224
+#: module/Order/view/order/process/edit.phtml:251
 #, php-format
 msgid "The fields marked with %s are mandatory."
 msgstr "Die mit %s markierten Felder sind Pflicht-Felder."
@@ -1096,25 +1108,25 @@ msgstr "abgelehnt"
 msgid "in edit"
 msgstr "in Bearbeitung"
 
-#: module/Order/view/order/process/list-my-orders.phtml:18
+#: module/Order/view/order/process/list-my-orders.phtml:26
 msgid "check"
 msgstr "in Überprüfung"
 
-#: module/Order/view/order/process/list-my-orders.phtml:20
+#: module/Order/view/order/process/list-my-orders.phtml:28
 msgid "processing"
 msgstr "in Bearbeitung"
 
-#: module/Order/view/order/process/list-my-orders.phtml:22
+#: module/Order/view/order/process/list-my-orders.phtml:30
 msgid "pending"
 msgstr "eingereicht"
 
-#: module/Order/view/order/process/list-my-orders.phtml:33
-#: module/Order/view/order/process/list-orders.phtml:23
+#: module/Order/view/order/process/list-my-orders.phtml:41
+#: module/Order/view/order/process/list-orders.phtml:31
 msgid "request ID"
 msgstr "Antrag-ID"
 
-#: module/Order/view/order/process/list-my-orders.phtml:35
-#: module/Order/view/order/process/list-orders.phtml:25
+#: module/Order/view/order/process/list-my-orders.phtml:43
+#: module/Order/view/order/process/list-orders.phtml:33
 msgid "request summary"
 msgstr "Anfragszusammenfassung"
 

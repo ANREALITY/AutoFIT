@@ -1,6 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
+use Doctrine\Common\Collections\Criteria;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 
@@ -14,15 +15,15 @@ class SortFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'radio',
                 'name' => 'datetime',
                 'options' => [
-                    'label' => _('date and time'),
+                    'label' => _('date and time of the ordering'),
                     'value_options' => [
                         [
-                            'value' => 'desc',
+                            'value' => Criteria::DESC,
                             'label' => _('descending'),
                             'selected' => true
                         ],
                         [
-                            'value' => 'asc',
+                            'value' => Criteria::ASC,
                             'label' => _('ascending')
                         ]
                     ],
