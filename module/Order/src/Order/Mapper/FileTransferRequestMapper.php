@@ -12,6 +12,7 @@ use DbSystel\DataObject\Server;
 use DbSystel\DataObject\ServiceInvoicePosition;
 use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
 
@@ -29,6 +30,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
+        // filtering
         foreach ($criteria as $key => $condition) {
             if ($key === 'user_id') {
                 $queryBuilder
@@ -60,6 +62,13 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 ;
             }
         }
+
+        // sorting
+        $direction = key_exists('datetime', $sorting)
+            ? strtoupper($sorting['datetime'])
+            : Criteria::DESC
+        ;
+        $queryBuilder->addOrderBy('ftr.created', $direction);
 
         $query = $queryBuilder->getQuery();
 
