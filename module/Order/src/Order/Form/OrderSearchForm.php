@@ -6,6 +6,11 @@ use Zend\Form\Form;
 class OrderSearchForm extends Form
 {
 
+    /** @var string */
+    const SEARCH_TYPE_ALL = 'all_orders';
+    /** @var string */
+    const SEARCH_TYPE_OWN = 'own_orders';
+
     protected $errorMessages = [];
 
     public function init()

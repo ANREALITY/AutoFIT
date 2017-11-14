@@ -326,7 +326,6 @@ return [
     'form_elements' => [
         'invokables' => [
             // fieldsets
-            'Order\Form\Fieldset\Filter' => 'Order\Form\Fieldset\FilterFieldset',
             'Order\Form\Fieldset\Sort' => 'Order\Form\Fieldset\SortFieldset',
         ],
         'factories' => [
@@ -348,6 +347,7 @@ return [
             'Order\Form\Fieldset\ProtocolSetForProtocolServerTarget' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
             'Order\Form\Fieldset\ProtocolSetForSelfService' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
 
+            'Order\Form\Fieldset\Filter' => 'Order\Form\Fieldset\Factory\FilterFieldsetFactory',
         ],
         'abstract_factories' => [
             // fieldsets
