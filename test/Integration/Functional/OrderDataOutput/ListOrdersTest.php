@@ -1,9 +1,9 @@
 <?php
 namespace Test\Integration\Functional\OrderDataOutput;
 
-use DbSystel\DataObject\AbstractEndpoint;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\LogicalConnection;
+use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
 use Zend\Http\PhpEnvironment\Response;
 
@@ -48,12 +48,17 @@ class ListOrdersTest extends AbstractOrderOutputTest
         foreach ($currentItems as $currentItem) {
             $this->assertInstanceOf(FileTransferRequest::class, $currentItem);
         }
-        $createParamsForCdAs400 = $this->getCreateParams(
-            strtolower(LogicalConnection::TYPE_CD),
-            strtolower(AbstractEndpoint::TYPE_CD_AS400)
-        );
+
+        /** @var User $currentUser */
+        $currentUser = $this->entityManager->getRepository(User::class)
+            ->findOneBy(['username' => $username])
+        ;
+        /** @var FileTransferRequest $latestOrder */
+        $latestOrder = $this->entityManager->getRepository(FileTransferRequest::class)
+            ->findOneBy(['user' => $currentUser], ['created' => 'DESC'])
+        ;
         $this->assertEquals(
-            $createParamsForCdAs400['file_transfer_request']['change_number'],
+            $latestOrder->getChangeNumber(),
             $currentItems[0]->getChangeNumber()
         );
     }
@@ -91,12 +96,12 @@ class ListOrdersTest extends AbstractOrderOutputTest
         foreach ($currentItems as $currentItem) {
             $this->assertInstanceOf(FileTransferRequest::class, $currentItem);
         }
-        $createParamsForCdAs400 = $this->getCreateParams(
-            strtolower(LogicalConnection::TYPE_CD),
-            strtolower(AbstractEndpoint::TYPE_CD_AS400)
-        );
+        /** @var FileTransferRequest $latestOrder */
+        $latestOrder = $this->entityManager->getRepository(FileTransferRequest::class)
+            ->findOneBy([], ['created' => 'DESC'])
+        ;
         $this->assertEquals(
-            $createParamsForCdAs400['file_transfer_request']['change_number'],
+            $latestOrder->getChangeNumber(),
             $currentItems[0]->getChangeNumber()
         );
     }
@@ -134,12 +139,16 @@ class ListOrdersTest extends AbstractOrderOutputTest
         foreach ($currentItems as $currentItem) {
             $this->assertInstanceOf(FileTransferRequest::class, $currentItem);
         }
-        $createParamsForFtgwCdWindows = $this->getCreateParams(
-            strtolower(LogicalConnection::TYPE_FTGW),
-            strtolower(AbstractEndpoint::TYPE_FTGW_CD_AS400)
-        );
+        /** @var FileTransferRequest[] $latestOrders */
+        $latestOrders = $this->entityManager->getRepository(FileTransferRequest::class)
+            ->findBy(
+                [], ['created' => 'DESC']
+            )
+        ;
+        // second page and then "-1" for the array index
+        $neededOrderIndex = ($paginator->getItemCountPerPage() + 1) - 1;
         $this->assertEquals(
-            $createParamsForFtgwCdWindows['file_transfer_request']['change_number'],
+            $latestOrders[$neededOrderIndex]->getChangeNumber(),
             $currentItems[0]->getChangeNumber()
         );
     }
@@ -151,6 +160,11 @@ class ListOrdersTest extends AbstractOrderOutputTest
             foreach ($orderTypes as $connectionType => $endpointTypes) {
                 foreach ($endpointTypes as $endpointType) {
                     parent::createOrder($connectionType, $endpointType, null);
+                    /*
+                     * Otherwise it was not possible to guarantee the comparing of orders for tests.
+                     * @todo This solution makes the tests much slowlier ans should be reviewed.
+                     */
+                    sleep(1);
                 }
             }
         }
