@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\Test;
 
+use Doctrine\ORM\EntityManager;
 use PDO;
 use PHPUnit\DbUnit\Database\DefaultConnection;
 use Zend\Db\Adapter\Adapter;
@@ -25,12 +26,16 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
     /** @var Adapter */
     protected $dbAdapter;
 
+    /** @var EntityManager */
+    protected $entityManager;
+
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
 
         $this->setApplicationConfig(include self::$applicationConfigPath);
         $this->dbAdapter = $this->getApplicationServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $this->entityManager = $this->getApplicationServiceLocator()->get('doctrine.entitymanager.orm_default');
     }
 
     /**
