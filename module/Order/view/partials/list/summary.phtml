@@ -34,6 +34,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
+    try {
+        $endpointSourceFolder = $endpointSource->getFolder();
+    } catch (Error $e) {
+        $endpointSourceFolder = null;
+    }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToEnd()->getEndpointTarget();
     try {
         $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
@@ -53,6 +58,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         $endpointTargetServers = $endpointTarget->getEndpointClusterConfig()->getCluster()->getServers();
     } catch (Error $e) {
         $endpointTargetServers = [];
+    }
+    try {
+        $endpointTargetFolder = $endpointTarget->getFolder();
+    } catch (Error $e) {
+        $endpointTargetFolder = null;
     }
 } elseif (strcasecmp($connectionType, LogicalConnection::TYPE_FTGW) === 0) {
     $endpointSource = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionEndToMiddle()->getEndpointSource();
@@ -75,6 +85,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointSourceServers = [];
     }
+    try {
+        $endpointSourceFolder = $endpointSource->getFolder();
+    } catch (Error $e) {
+        $endpointSourceFolder = null;
+    }
     $endpointTarget = $fileTransferRequest->getLogicalConnection()->getPhysicalConnectionMiddleToEnd()->getEndpointTarget();
     try {
         $endpointTargetServer = $endpointTarget->getEndpointServerConfig()->getServer();
@@ -95,6 +110,11 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     } catch (Error $e) {
         $endpointTargetServers = [];
     }
+    try {
+        $endpointTargetFolder = $endpointTarget->getFolder();
+    } catch (Error $e) {
+        $endpointTargetFolder = null;
+    }
 }
 ?>
 <ul>
@@ -105,15 +125,20 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('source') . ')'; ?>
         <ul>
             <?php if($endpointSourceServers) : ?>
-            <span><?php echo $this->translate('servers') . ':'; ?></span>
-                <?php foreach ($endpointSourceServers as $endpointSourceServer) : ?>
-                <li><?php echo $endpointSourceServer->getName(); ?></li>
-                <?php endforeach; ?>
+                <li><?php echo $this->translate('servers') . ':'; ?></li>
+                <ul>
+                    <?php foreach ($endpointSourceServers as $endpointSourceServer) : ?>
+                    <li><?php echo $endpointSourceServer->getName(); ?></li>
+                    <?php endforeach; ?>
+                </ul>
             <?php elseif ($endpointSourceServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointSourceServerName; ?></li>
             <?php endif; ?>
             <?php if ($endpointSourceExternalServerName) : ?>
                 <li><?php echo $this->translate('external server') . ': ' . $endpointSourceExternalServerName; ?></li>
+            <?php endif; ?>
+            <?php if ($endpointSourceFolder !== null) : ?>
+                <li><?php echo $this->translate('folder') . ': ' . ($endpointSourceFolder ?: '-'); ?></li>
             <?php endif; ?>
         </ul>
     </li>
@@ -121,15 +146,20 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
         <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('target') . ')'; ?>
         <ul>
             <?php if($endpointTargetServers) : ?>
-            <span><?php echo $this->translate('servers') . ':'; ?></span>
-                <?php foreach ($endpointTargetServers as $endpointTargetServer) : ?>
-                <li><?php echo $endpointTargetServer->getName(); ?></li>
-                <?php endforeach; ?>
+                <li><?php echo $this->translate('servers') . ':'; ?></li>
+                <ul>
+                    <?php foreach ($endpointTargetServers as $endpointTargetServer) : ?>
+                    <li><?php echo $endpointTargetServer->getName(); ?></li>
+                    <?php endforeach; ?>
+                </ul>
             <?php elseif ($endpointTargetServerName) : ?>
                 <li><?php echo $this->translate('server') . ': ' . $endpointTargetServerName; ?></li>
             <?php endif; ?>
             <?php if ($endpointTargetExternalServerName) : ?>
                 <li><?php echo $this->translate('external server') . ': ' . $endpointTargetExternalServerName; ?></li>
+            <?php endif; ?>
+            <?php if ($endpointTargetFolder !== null) : ?>
+                <li><?php echo $this->translate('folder') . ': ' . ($endpointTargetFolder ?: '-'); ?></li>
             <?php endif; ?>
         </ul>
     </li>
