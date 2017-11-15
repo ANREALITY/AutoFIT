@@ -4,7 +4,24 @@ use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\EndpointCdLinuxUnix;
 ?>
 <?php
-
+$endpointTypes = [
+    'cdlinuxunix' => 'Linux/Unix',
+    'cdtandem' => 'Tandem',
+    'cdas400' => 'AS400',
+    'cdwindows' => 'Windows',
+    'cdwindowsshare' => 'Share',
+    'cdzos' => 'ZOS',
+    'ftgwwindows' => 'Windows',
+    'ftgwselfservice' => 'Self-Service',
+    'ftgwprotocolserver' => $this->translate('Protocol Server'),
+    'ftgwwindowsshare' => 'Share',
+    'ftgwlinuxunix' => 'Linux/Unix',
+    'ftgwcdzos' => 'CD Zos',
+    'ftgwcdtandem' => 'CD Tandem',
+    'ftgwcdas400' => 'CD AS400',
+];
+?>
+<?php
 /**
  *
  * @var FileTransferRequest $fileTransferRequest
@@ -135,7 +152,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     <!-- endpoint source -->
     <div class="col-md-5">
         <dl class="order-summary-endpoint-source">
-            <div class="endpoint-block-header"><?php echo $endpointSource->getType(); ?></div>
+            <div class="endpoint-block-header"><?php echo $endpointTypes[strtolower($endpointSource->getType())]; ?></div>
             <?php if($endpointSourceServers) : ?>
                 <div class="attribute-row">
                     <dt><?php echo $this->translate('servers'); ?></dt>
@@ -171,7 +188,7 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     <div class="col-md-5">
         <!-- endpoint target -->
         <dl class="order-summary-endpoint-target">
-            <div class="endpoint-block-header"><?php echo $endpointTarget->getType(); ?></div>
+            <div class="endpoint-block-header"><?php echo $endpointTypes[strtolower($endpointTarget->getType())]; ?></div>
             <?php if($endpointTargetServers) : ?>
                 <div class="attribute-row">
                     <dt><?php echo $this->translate('servers'); ?></dt>
