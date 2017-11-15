@@ -212,6 +212,9 @@ form #fieldgroup-logical_connection .notification-checkbox {
 form input.input-error {
   color: #ff0000;
 }
+form .field-prefix {
+  padding-top: 23px;
+}
 /* order form #stop# */
 .appNamePartAuto {
   color: #ff0000;
