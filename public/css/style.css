@@ -443,3 +443,19 @@ form legend.required-conditionally:before {
 .mandatory-ftgw {
   color: #0099ff;
 }
+.connectionTypeLabel {
+  display: inline-block;
+  margin: 20px 0 0 0;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 35px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.connectionTypeLabel.cd {
+  background: #ffcc33;
+}
+.connectionTypeLabel.ftgw {
+  background: #0099ff;
+}

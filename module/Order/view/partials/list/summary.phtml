@@ -118,7 +118,6 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
 }
 ?>
 <ul>
-    <li><?php echo $this->translate('connection type') . ': ' . $fileTransferRequest->getLogicalConnection()->getType(); ?></li>
     <li><?php echo $this->translate('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>
     <li><?php echo $this->translate('environment') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></li>
     <li>
