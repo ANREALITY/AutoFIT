@@ -111,6 +111,7 @@ $endpointSourceType = strtolower($endpointSource->getType());
 echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointSourceType . '-source',
 [
     'dataObject' => $endpointSource,
+    'endpointTypes' => $endpointTypes,
 ]);
 ?>
 
@@ -121,6 +122,7 @@ $endpointTargetType = strtolower($endpointTarget->getType());
 echo $this->partial('/partials/order-parts/endpoints/' . $connectionType . '/' . $endpointTargetType . '-target',
     [
         'dataObject' => $endpointTarget,
+        'endpointTypes' => $endpointTypes,
     ]);
 ?>
 

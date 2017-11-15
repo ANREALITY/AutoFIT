@@ -7,6 +7,8 @@ use DbSystel\DataObject\FileParameter;
  * @var EndpointFtgwCdZos $dataObject
  */
 $dataObject;
+/** @var array $endpointTypes; */
+$endpointTypes;
 ?>
 <?php
 // for translations (workaround)
@@ -55,7 +57,7 @@ $orderPartTitle = $this->translate('Target - specific settings');
 $orderPartAttributes = [
     [
         'label' => $this->translate('type'),
-        'value' => $dataObject->getType() ?: '-'
+        'value' => $endpointTypes[strtolower($dataObject->getType())]
     ],
     [
         'label' => $this->translate('username'),

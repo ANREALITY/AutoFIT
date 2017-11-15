@@ -5,6 +5,8 @@ use DbSystel\DataObject\EndpointFtgwLinuxUnix;
  * @var EndpointFtgwLinuxUnix $dataObject
  */
 $dataObject;
+/** @var array $endpointTypes; */
+$endpointTypes;
 ?>
 <?php
 // servers
@@ -34,7 +36,7 @@ $orderPartTitle = $this->translate('Target - specific settings');
 $orderPartAttributes = [
     [
         'label' => $this->translate('type'),
-        'value' => $dataObject->getType() ?: '-'
+        'value' => $endpointTypes[strtolower($dataObject->getType())]
     ],
     [
         'label' => $this->translate('username'),

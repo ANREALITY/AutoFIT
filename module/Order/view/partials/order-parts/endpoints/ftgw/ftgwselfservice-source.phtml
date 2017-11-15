@@ -5,6 +5,8 @@ use DbSystel\DataObject\EndpointFtgwSelfService;
  * @var EndpointFtgwSelfService $dataObject
  */
 $dataObject;
+/** @var array $endpointTypes; */
+$endpointTypes;
 ?>
 <?php
 // protocols
@@ -29,7 +31,7 @@ $orderPartTitle = $this->translate('Source - specific settings');
 $orderPartAttributes = [
     [
         'label' => $this->translate('type'),
-        'value' => $dataObject->getType() ?: '-'
+        'value' => $endpointTypes[strtolower($dataObject->getType())]
     ],
     [
         'label' => $this->translate('protocols'),
