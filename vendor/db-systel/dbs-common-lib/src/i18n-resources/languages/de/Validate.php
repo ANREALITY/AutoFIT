@@ -17,5 +17,9 @@ return [
     'The server for the target endpoint does not match the endpoint type.' => 'Der Server für den Zielendpoint entspricht nicht dem Typ des Zielendpoints.',
     'The basic service invoice position is invalid.' => 'Die Basis-LSP ist ungültig.',
     'The personal service invoice position is invalid.' => 'Die Personal-LSP ist ungültig.',
+    'The basic service invoice position is invalid at least due to one of the following reasons: 1. The service invoice position has not been found. 2. The service invoice position does not belon to the chosen application and/or environment. 3. The service invoice position is not available, that means, it has the status ´Beendet´ or the contingent is exhausted.' =>
+    'Die Basis-LSP ist aus mindestens einem der folgenden Gründe ungültig: 1. Die LSP wurde nicht gefunden. 2. Die LSP gehört nicht zum ausgewählten Verfahren bzw. der Umgebung. 3. Die LSP ist nicht verfügbar, also hat den Status "Beendet" oder das Kontingent ist aufgebraucht).',
+    'The personal service invoice position is invalid at least due to one of the following reasons: 1. The service invoice position has not been found. 2. The service invoice position does not belon to the chosen application and/or environment. 3. The service invoice position is not available, that means, it has the status ´Beendet´ or the contingent is exhausted.' =>
+        'Die Personal-LSP ist aus mindestens einem der folgenden Gründe ungültig: 1. Die LSP wurde nicht gefunden. 2. Die LSP gehört nicht zum ausgewählten Verfahren bzw. der Umgebung. 3. Die LSP ist nicht verfügbar, also hat den Status "Beendet" oder das Kontingent ist aufgebraucht).'
     // ...
 ];

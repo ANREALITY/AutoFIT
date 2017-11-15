@@ -195,11 +195,8 @@ class OrderForm extends Form
             $isValid = ! empty($validServiceInvoicePositions);
 
             if (! $isValid) {
-                $errorMessage = $articleType === Article::TYPE_BASIC
-                    ? sprintf('The basic service invoice position is invalid.', strtolower($articleType))
-                    : sprintf('The personal service invoice position is invalid.', strtolower($articleType))
-                ;
-                $this->addErrorMessage($errorMessage);
+                $errorMessage = 'The %s service invoice position is invalid at least due to one of the following reasons: 1. The service invoice position has not been found. 2. The service invoice position does not belon to the chosen application and/or environment. 3. The service invoice position is not available, that means, it has the status ´Beendet´ or the contingent is exhausted.';
+                $this->addErrorMessage(sprintf($errorMessage, strtolower($articleType)));
             }
         }
         return $isValid;
