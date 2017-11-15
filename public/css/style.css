@@ -459,3 +459,22 @@ form legend.required-conditionally:before {
 .connectionTypeLabel.ftgw {
   background: #0099ff;
 }
+.order-summary.jumbotron {
+  overflow: auto;
+  padding: 5px 10px;
+  background: #fefefe;
+}
+.order-summary .col-md-5,
+.order-summary .col-md-6,
+.order-summary .col-md-12 {
+  padding: 0;
+  overflow: auto;
+}
+.order-summary dl {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.order-summary .endpoint-block-header {
+  font-weight: bold;
+  text-align: center;
+}

@@ -117,49 +117,90 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
     }
 }
 ?>
-<ul>
-    <li><?php echo $this->translate('application') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?></li>
-    <li><?php echo $this->translate('environment') . ': ' . $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></li>
-    <li>
-        <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('source') . ')'; ?>
-        <ul>
+
+<div class="order-summary jumbotron">
+    <div class="col-md-12">
+        <!-- general information -->
+        <dl class="order-summary-general-information">
+            <div class="attribute-row">
+                <dt><?php echo $this->translate('application'); ?></dt>
+                <dd><?php echo $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getApplication()->getTechnicalShortName(); ?>
+            </div>
+            <div>
+                <dt><?php echo $this->translate('environment'); ?></dt>
+                <dd><?php echo $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></dd>
+            </div>
+        </dl>
+    </div>
+    <!-- endpoint source -->
+    <div class="col-md-5">
+        <dl class="order-summary-endpoint-source">
+            <div class="endpoint-block-header"><?php echo $endpointSource->getType(); ?></div>
             <?php if($endpointSourceServers) : ?>
-                <li><?php echo $this->translate('servers') . ':'; ?></li>
-                <ul>
-                    <?php foreach ($endpointSourceServers as $endpointSourceServer) : ?>
-                    <li><?php echo $endpointSourceServer->getName(); ?></li>
-                    <?php endforeach; ?>
-                </ul>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('servers'); ?></dt>
+                    <dd>
+                        <ul>
+                            <?php foreach ($endpointSourceServers as $endpointSourceServer) : ?>
+                                <li><?php echo $endpointSourceServer->getName(); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </dd>
+                </div>
             <?php elseif ($endpointSourceServerName) : ?>
-                <li><?php echo $this->translate('server') . ': ' . $endpointSourceServerName; ?></li>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('server'); ?></dt>
+                    <dd><?php echo $endpointSourceServerName; ?></dd>
+                </div>
             <?php endif; ?>
             <?php if ($endpointSourceExternalServerName) : ?>
-                <li><?php echo $this->translate('external server') . ': ' . $endpointSourceExternalServerName; ?></li>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('external server'); ?></dt>
+                    <dd><?php echo $endpointSourceExternalServerName; ?></dd>
+                </div>
             <?php endif; ?>
             <?php if ($endpointSourceFolder !== null) : ?>
-                <li><?php echo $this->translate('folder') . ': ' . ($endpointSourceFolder ?: '-'); ?></li>
+            <div class="attribute-row">
+                <dt><?php echo $this->translate('folder'); ?></dt>
+                <dd><?php echo ($endpointSourceFolder ?: '-'); ?></dd>
+            </div>
             <?php endif; ?>
-        </ul>
-    </li>
-    <li>
-        <?php echo $this->translate('endpoint') . ' ' . '(' . $this->translate('target') . ')'; ?>
-        <ul>
+        </dl>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+    <div class="col-md-5">
+        <!-- endpoint target -->
+        <dl class="order-summary-endpoint-target">
+            <div class="endpoint-block-header"><?php echo $endpointTarget->getType(); ?></div>
             <?php if($endpointTargetServers) : ?>
-                <li><?php echo $this->translate('servers') . ':'; ?></li>
-                <ul>
-                    <?php foreach ($endpointTargetServers as $endpointTargetServer) : ?>
-                    <li><?php echo $endpointTargetServer->getName(); ?></li>
-                    <?php endforeach; ?>
-                </ul>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('servers'); ?></dt>
+                    <dd>
+                        <ul>
+                            <?php foreach ($endpointTargetServers as $endpointTargetServer) : ?>
+                                <li><?php echo $endpointTargetServer->getName(); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </dd>
+                </div>
             <?php elseif ($endpointTargetServerName) : ?>
-                <li><?php echo $this->translate('server') . ': ' . $endpointTargetServerName; ?></li>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('server'); ?></dt>
+                    <dd><?php echo $endpointTargetServerName; ?></dd>
+                </div>
             <?php endif; ?>
             <?php if ($endpointTargetExternalServerName) : ?>
-                <li><?php echo $this->translate('external server') . ': ' . $endpointTargetExternalServerName; ?></li>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('external server'); ?></dt>
+                    <dd><?php echo $endpointTargetExternalServerName; ?></dd>
+                </div>
             <?php endif; ?>
             <?php if ($endpointTargetFolder !== null) : ?>
-                <li><?php echo $this->translate('folder') . ': ' . ($endpointTargetFolder ?: '-'); ?></li>
+                <div class="attribute-row">
+                    <dt><?php echo $this->translate('folder'); ?></dt>
+                    <dd><?php echo ($endpointTargetFolder ?: '-'); ?></dd>
+                </div>
             <?php endif; ?>
-        </ul>
-    </li>
-</ul>
+        </dl>
+    </div>
+</div>
