@@ -57,7 +57,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->join('ftr.serviceInvoicePositionBasic', 'sip')
                     ->join('sip.serviceInvoice', 'si')
                     ->join('si.application', 'a')
-                    ->where('a.technicalShortName = :technicalShortName')
+                    ->andWhere('a.technicalShortName = :technicalShortName')
                     ->setParameter('technicalShortName', $condition)
                 ;
             }
