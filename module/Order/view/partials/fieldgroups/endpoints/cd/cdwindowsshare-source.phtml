@@ -7,8 +7,8 @@ $fieldgroupCssClass = 'col-md-6 fieldgroup-source';
 $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
-    '<div class="field-prefix col-md-1">\\daten\\</div>' . '<div class="form-field-wrapper col-md-11 add-button-container">' . $this->formRow($endpointSourceFieldset->get('sharename')) . '</div>',
-    '<div class="field-prefix col-md-1">\\out\\</div>' . '<div class="form-field-wrapper col-md-11 add-button-container">' . $this->formRow($endpointSourceFieldset->get('folder')) . '</div>',
+    $this->formRow($endpointSourceFieldset->get('sharename')),
+    $this->formRow($endpointSourceFieldset->get('folder')),
     '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('transmission_type')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
         $this->formRadio($endpointSourceFieldset->get('transmission_type'), FormMultiCheckbox::LABEL_APPEND) .
