@@ -43,7 +43,7 @@ if ($dataObject->getAccessConfigSet() && $dataObject->getAccessConfigSet() insta
 <li>
     <span>{$accessConfig->getUsername()}<span>
     <ul>
-    <li>{$this->translate('read')}: {$accessConfig->getPermissionRead()}</li>
+    <li>{$this->translate('read')}: {$flags[$accessConfig->getPermissionRead()]}</li>
     <li>{$this->translate('write')}: {$flags[$accessConfig->getPermissionWrite()]}</li>
     <li>{$this->translate('delete')}: {$flags[$accessConfig->getPermissionDelete()]}</li>
     </ul>
