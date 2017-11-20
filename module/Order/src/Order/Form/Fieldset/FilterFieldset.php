@@ -63,7 +63,7 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'text',
                 'name' => 'application_technical_short_name',
                 'options' => [
-                    'label' => _('application'),
+                    'label' => _('application according to the SI'),
                     'label_attributes' => [
                         'class' => 'col-md-4'
                     ]
