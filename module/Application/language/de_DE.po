@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-20 18:39+0100\n"
-"PO-Revision-Date: 2017-11-20 18:41+0100\n"
+"POT-Creation-Date: 2017-11-20 19:16+0100\n"
+"PO-Revision-Date: 2017-11-20 19:17+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1448,12 +1448,20 @@ msgstr ""
 "%sServer-Stammdaten-Formular%s."
 
 #: module/Order/view/partials/info-boxes/include-parameter-info.phtml:4
+#: module/Order/view/partials/info-boxes/share-folder-info.phtml:4
+#: module/Order/view/partials/info-boxes/sharename-info.phtml:4
 msgid "Hint to the input"
 msgstr "Hinweis zur Eingabe"
 
 #: module/Order/view/partials/info-boxes/include-parameter-info.phtml:7
 msgid "filename / sample"
 msgstr "Dateiname / -muster"
+
+#: module/Order/view/partials/info-boxes/share-folder-info.phtml:8
+#: module/Order/view/partials/info-boxes/sharename-info.phtml:8
+#, php-format
+msgid "Input without the prefix \"%s\"."
+msgstr "Eingabe ohne das Präfix \"%s\"."
 
 #: module/Order/view/partials/list/summary.phtml:169
 #: module/Order/view/partials/list/summary.phtml:205

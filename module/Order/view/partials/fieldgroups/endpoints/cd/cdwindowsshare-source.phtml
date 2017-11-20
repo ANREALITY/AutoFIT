@@ -8,7 +8,9 @@ $fieldgroupTitle = $this->translate('Source - specific settings');
 $fieldgroupFormRows = [
     $this->formRow($endpointSourceFieldset->get('type')),
     $this->formRow($endpointSourceFieldset->get('sharename')),
+    $this->partial('/partials/info-boxes/sharename-info'),
     $this->formRow($endpointSourceFieldset->get('folder')),
+    $this->partial('/partials/info-boxes/share-folder-info'),
     '<fieldset>' . '<legend class="required">' . $this->translate($endpointSourceFieldset->get('transmission_type')
         ->getLabel()) . '</legend>' . '<div class="clearer"></div>' .
         $this->formRadio($endpointSourceFieldset->get('transmission_type'), FormMultiCheckbox::LABEL_APPEND) .
