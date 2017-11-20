@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-20 17:59+0100\n"
-"PO-Revision-Date: 2017-11-20 18:02+0100\n"
+"POT-Creation-Date: 2017-11-20 18:39+0100\n"
+"PO-Revision-Date: 2017-11-20 18:41+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -345,9 +345,12 @@ msgstr "Verfahren laut TransICT"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:136
 msgid ""
-"Change numbers have the format 1 capital letter and 8 digits (\"C12345678\")."
+"Change numbers have the format 1 capital letter and 8 digits "
+"(\"C12345678\"). Additionally a sub-number can be specified "
+"(\"C12345678.1\")."
 msgstr ""
-"Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\")."
+"Change-Nummern haben das Format 1 Buchstabe und 8 Ziffern (\"C12345678\"). "
+"Zusätzlich kann eine Sub-Change-Nummer angegeben werden (\"C12345678.1\")."
 
 #: module/Order/src/Order/Form/Fieldset/AbstractLogicalConnectionFieldset.php:82
 #: module/Order/view/partials/order-parts/logical-connection.phtml:51

@@ -131,9 +131,9 @@ abstract class AbstractFileTransferRequestFieldset extends Fieldset implements I
                     [
                         'name' => 'Regex',
                         'options' => [
-                            'pattern' => '/^[A-Z][0-9]{8}$/',
+                            'pattern' => '/^[A-Z][0-9]{8}(\.[1-9])?$/',
                             'message' => _(
-                                'Change numbers have the format 1 capital letter and 8 digits ("C12345678").')
+                                'Change numbers have the format 1 capital letter and 8 digits ("C12345678"). Additionally a sub-number can be specified ("C12345678.1").')
                         ]
                     ],
                     [
