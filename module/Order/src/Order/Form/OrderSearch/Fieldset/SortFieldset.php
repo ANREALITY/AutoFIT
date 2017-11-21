@@ -1,5 +1,5 @@
 <?php
-namespace Order\Form\Fieldset;
+namespace Order\Form\OrderSearch\Fieldset;
 
 use Doctrine\Common\Collections\Criteria;
 use Zend\Form\Fieldset;

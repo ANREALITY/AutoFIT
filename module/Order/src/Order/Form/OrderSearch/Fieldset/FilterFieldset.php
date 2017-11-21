@@ -1,7 +1,7 @@
 <?php
-namespace Order\Form\Fieldset;
+namespace Order\Form\OrderSearch\Fieldset;
 
-use Order\Form\OrderSearchForm;
+use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 

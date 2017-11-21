@@ -1,8 +1,8 @@
 <?php
-namespace Order\Form\Factory;
+namespace Order\Form\OrderSearch\Factory;
 
 use Interop\Container\ContainerInterface;
-use Order\Form\OrderSearchForm;
+use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\InputFilter\InputFilter;
 use Zend\ServiceManager\Factory\FactoryInterface;
 

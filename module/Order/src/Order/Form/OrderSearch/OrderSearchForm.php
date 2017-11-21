@@ -1,5 +1,5 @@
 <?php
-namespace Order\Form;
+namespace Order\Form\OrderSearch;
 
 use Zend\Form\Form;
 
@@ -18,14 +18,14 @@ class OrderSearchForm extends Form
         $this->add(
             [
                 'name' => 'filter',
-                'type' => 'Order\Form\Fieldset\Filter',
+                'type' => 'Order\Form\OrderSearch\Fieldset\Filter',
                 'options' => []
             ]);
 
         $this->add(
             [
                 'name' => 'sort',
-                'type' => 'Order\Form\Fieldset\Sort',
+                'type' => 'Order\Form\OrderSearch\Fieldset\Sort',
                 'options' => []
             ]);
 

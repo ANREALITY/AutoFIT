@@ -1,9 +1,9 @@
 <?php
-namespace Order\Form\Fieldset\Factory;
+namespace Order\Form\OrderSearch\Fieldset\Factory;
 
 use Interop\Container\ContainerInterface;
-use Order\Form\Fieldset\FilterFieldset;
-use Order\Form\OrderSearchForm;
+use Order\Form\OrderSearch\Fieldset\FilterFieldset;
+use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\Router\Http\RouteMatch;
 use Zend\ServiceManager\Factory\FactoryInterface;
 

@@ -326,12 +326,12 @@ return [
     'form_elements' => [
         'invokables' => [
             // fieldsets
-            'Order\Form\Fieldset\Sort' => 'Order\Form\Fieldset\SortFieldset',
+            'Order\Form\OrderSearch\Fieldset\Sort' => 'Order\Form\OrderSearch\Fieldset\SortFieldset',
         ],
         'factories' => [
             // forms
             'Order\Form\OrderForm' => 'Order\Form\Factory\OrderFormFactory',
-            'Order\Form\OrderSearchForm' => 'Order\Form\Factory\OrderSearchFormFactory',
+            'Order\Form\OrderSearch\OrderSearchForm' => 'Order\Form\OrderSearch\Factory\OrderSearchFormFactory',
             // fieldsets
             'Order\Form\Fieldset\Cluster' => 'Order\Form\Fieldset\Factory\ClusterFieldsetFactory',
             'Order\Form\Fieldset\ClusterCreate' => 'Order\Form\Fieldset\Factory\ClusterCreateFieldsetFactory',
@@ -347,7 +347,7 @@ return [
             'Order\Form\Fieldset\ProtocolSetForProtocolServerTarget' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
             'Order\Form\Fieldset\ProtocolSetForSelfService' => 'Order\Form\Fieldset\Factory\ProtocolSetFieldsetFactory',
 
-            'Order\Form\Fieldset\Filter' => 'Order\Form\Fieldset\Factory\FilterFieldsetFactory',
+            'Order\Form\OrderSearch\Fieldset\Filter' => 'Order\Form\OrderSearch\Fieldset\Factory\FilterFieldsetFactory',
         ],
         'abstract_factories' => [
             // fieldsets
