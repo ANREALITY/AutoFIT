@@ -1,6 +1,7 @@
 <?php
 namespace Order\Form\OrderSearch\Fieldset;
 
+use DbSystel\DataObject\LogicalConnection;
 use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
@@ -85,6 +86,33 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'server',
                 'type' => 'Order\Form\OrderSearch\Fieldset\ServerCommon',
                 'options' => []
+            ]);
+
+        $this->add(
+            [
+                'type' => 'MultiCheckbox',
+                'name' => 'connection_type',
+                'options' => [
+                    'label' => _('connection type'),
+                    'label_attributes' => [
+                        'class' => 'col-md-6'
+                    ],
+                    'value_options' => [
+                        [
+                            'value' => LogicalConnection::TYPE_CD,
+                            'label' => LogicalConnection::TYPE_CD,
+                        ],
+                        [
+                            'value' => LogicalConnection::TYPE_FTGW,
+                            'label' => LogicalConnection::TYPE_FTGW,
+                        ],
+                    ],
+                    'value' => [
+                        LogicalConnection::TYPE_CD,
+                        LogicalConnection::TYPE_FTGW
+                    ],
+                    'checked_value' => LogicalConnection::TYPE_CD,
+                ]
             ]);
     }
 

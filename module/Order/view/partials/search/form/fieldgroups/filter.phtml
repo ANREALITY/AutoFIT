@@ -9,6 +9,7 @@ $fieldgroupFormRows = [
     $this->formRow($environmentFieldset->get('severity'), null, false),
     '<div class="form-field-wrapper col-md-4">' . $this->formRow($environmentFieldset->get('name')) . '</div>',
     $this->formRow($serverFieldset->get('name')),
+    $this->formRow($filterFieldset->get('connection_type')),
 ];
 echo $this->partial('/partials/fieldgroup',
     [
