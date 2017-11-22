@@ -430,6 +430,11 @@ class ProcessController extends AbstractActionController
             : null
         ;
         unset($criteria['environment']);
+        $criteria['server_name'] = isset($criteria['server']['name'])
+            ? $criteria['server']['name']
+            : null
+        ;
+        unset($criteria['server']);
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
