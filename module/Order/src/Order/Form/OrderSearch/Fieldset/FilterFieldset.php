@@ -98,20 +98,15 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                         'class' => 'col-md-6'
                     ],
                     'value_options' => [
-                        [
-                            'value' => LogicalConnection::TYPE_CD,
-                            'label' => LogicalConnection::TYPE_CD,
-                        ],
-                        [
-                            'value' => LogicalConnection::TYPE_FTGW,
-                            'label' => LogicalConnection::TYPE_FTGW,
-                        ],
+                        LogicalConnection::TYPE_CD => LogicalConnection::TYPE_CD,
+                        LogicalConnection::TYPE_FTGW => LogicalConnection::TYPE_FTGW,
                     ],
+                ],
+                'attributes' => [
                     'value' => [
                         LogicalConnection::TYPE_CD,
-                        LogicalConnection::TYPE_FTGW
-                    ],
-                    'checked_value' => LogicalConnection::TYPE_CD,
+                        LogicalConnection::TYPE_FTGW,
+                    ]
                 ]
             ]);
     }
