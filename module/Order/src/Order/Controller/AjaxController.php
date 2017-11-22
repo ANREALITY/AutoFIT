@@ -266,4 +266,12 @@ class AjaxController extends AbstractActionController
         return new JsonModel($dataList);
     }
 
+    public function provideServersForOrderSearchAction()
+    {
+        return $this->forward()->dispatch('Order\Controller\Ajax',
+            [
+                'action' => 'provideServers'
+            ]);
+    }
+
 }

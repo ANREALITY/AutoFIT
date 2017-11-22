@@ -298,6 +298,16 @@ return [
                             ]
                         ]
                     ],
+                    'provide-servers-for-order-search' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-servers-for-order-search',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideServersForOrderSearch'
+                            ]
+                        ]
+                    ],
                 ]
             ]
         ]
