@@ -58,4 +58,9 @@ class AbstractMapper
         return $entity;
     }
 
+    protected function checkCriterium($key, array $criteria = [])
+    {
+        return key_exists($key, $criteria) && $criteria[$key] !== null && $criteria[$key] !== '';
+    }
+
 }
