@@ -76,6 +76,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                     ->setParameter('severity', $condition)
                 ;
             }
+            if ($key === 'server_name' && $condition) {
+                $queryBuilder
+                    ->join('ftr.logicalConnection', 'lc')
+                    ->join('lc.physicalConnections', 'pc')
+                    ->join('pc.endpoints', 'ep')
+                    ->join('ep.endpointServerConfig', 'epsc')
+                    ->join('epsc.server', 's')
+                    ->andWhere('s.name = :serverName')
+                    ->setParameter('serverName', $condition)
+                ;
+            }
         }
 
         // sorting
