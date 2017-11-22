@@ -19,7 +19,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (array_key_exists('name', $condition)) {
+                if (array_key_exists('name', $condition) && $condition['name']) {
                     $queryBuilder
                         ->andWhere('s.name LIKE :name')
                         ->setParameter('name', '%' . $condition['name'] . '%')
@@ -48,7 +48,7 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                         ;
                     }
                 }
-                if (array_key_exists('endpoint_type_name', $condition)) {
+                if (array_key_exists('endpoint_type_name', $condition) && $condition['endpoint_type_name']) {
                     $queryBuilder->join('s.serverType', 'set');
                     $queryBuilder->join('set.endpointTypes', 'et');
                     $queryBuilder
