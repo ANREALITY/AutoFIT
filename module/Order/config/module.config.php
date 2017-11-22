@@ -268,6 +268,16 @@ return [
                             ]
                         ]
                     ],
+                    'provide-environments' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-environments',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideEnvironments'
+                            ]
+                        ]
+                    ],
                     'provide-file-transfer-requests' => [
                         'type' => 'Zend\Router\Http\Literal',
                         'options' => [
@@ -277,7 +287,17 @@ return [
                                 'action' => 'provideFileTransferRequests'
                             ]
                         ]
-                    ]
+                    ],
+                    'provide-environments-for-order-search' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-environments-for-order-search',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideEnvironmentsForOrderSearch'
+                            ]
+                        ]
+                    ],
                 ]
             ]
         ]
@@ -327,6 +347,7 @@ return [
         'invokables' => [
             // fieldsets
             'Order\Form\OrderSearch\Fieldset\Sort' => 'Order\Form\OrderSearch\Fieldset\SortFieldset',
+            'Order\Form\OrderSearch\Fieldset\Environment' => 'Order\Form\OrderSearch\Fieldset\EnvironmentFieldset',
         ],
         'factories' => [
             // forms

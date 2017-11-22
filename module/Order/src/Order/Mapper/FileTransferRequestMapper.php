@@ -30,6 +30,17 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
+        if (
+            $this->checkCriterium('application_technical_short_name', $criteria)
+            || $this->checkCriterium('environment_severity', $criteria)
+        ) {
+            $queryBuilder
+                // JOINing of the serviceInvoicePositionPersonal would also be possible.
+                ->join('ftr.serviceInvoicePositionBasic', 'sip')
+                ->join('sip.serviceInvoice', 'si')
+            ;
+        }
+
         // filtering
         foreach ($criteria as $key => $condition) {
             if ($key === 'user_id') {
@@ -53,12 +64,16 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
             if ($key === 'application_technical_short_name' && $condition) {
                 $queryBuilder
-                    // JOINing of the serviceInvoicePositionPersonal would also be possible.
-                    ->join('ftr.serviceInvoicePositionBasic', 'sip')
-                    ->join('sip.serviceInvoice', 'si')
                     ->join('si.application', 'a')
                     ->andWhere('a.technicalShortName = :technicalShortName')
                     ->setParameter('technicalShortName', $condition)
+                ;
+            }
+            if ($key === 'environment_severity' && $condition) {
+                $queryBuilder
+                    ->join('si.environment', 'e')
+                    ->andWhere('e.severity = :severity')
+                    ->setParameter('severity', $condition)
                 ;
             }
         }

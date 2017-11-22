@@ -5,7 +5,9 @@ $fieldgroupTitle = $this->translate('filtering');
 $fieldgroupFormRows = [
     $this->formRow($filterFieldset->get('username')),
     $this->formRow($filterFieldset->get('change_number')),
-    $this->formRow($filterFieldset->get('application_technical_short_name'))
+    $this->formRow($filterFieldset->get('application_technical_short_name')),
+    $this->formRow($environmentFieldset->get('severity'), null, false),
+    '<div class="form-field-wrapper col-md-4">' . $this->formRow($environmentFieldset->get('name')) . '</div>'
 ];
 echo $this->partial('/partials/fieldgroup',
     [
@@ -18,3 +20,4 @@ echo $this->partial('/partials/fieldgroup',
 ?>
 
 <?php $this->inlineScript()->appendFile('/js/order/search/search-filter-autocomplete.js'); ?>
+<?php $this->inlineScript()->appendFile('/js/order/search/fields-dependency-management.js'); ?>

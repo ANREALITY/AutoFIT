@@ -250,4 +250,20 @@ class AjaxController extends AbstractActionController
         return new JsonModel($dataList);
     }
 
+    public function provideEnvironmentsForOrderSearchAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $data['name'] = isset($data['name']) ? $data['name'] : null;
+            $dataList = $this->environmentService->findAllForAutocomplete(
+                null, $data['name']
+            );
+        }
+
+        return new JsonModel($dataList);
+    }
+
 }

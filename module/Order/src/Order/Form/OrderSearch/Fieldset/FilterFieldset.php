@@ -72,6 +72,13 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                     'class' => 'form-control field-application-number order-search-autocomplete-application'
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'environment',
+                'type' => 'Order\Form\OrderSearch\Fieldset\Environment',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()

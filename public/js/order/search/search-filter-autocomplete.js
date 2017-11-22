@@ -77,3 +77,43 @@ $(function() {
         $(this).autocomplete("search", this.value);
     });
 });
+/**
+ * Autocompletion for the field order-environment-name.
+ */
+const AUTOCOMPLETE_ENVIRONMENTS_LIMIT = 25;
+$(function() {
+    $("#order-environment-name")
+        .autocomplete({
+            autoFocus : true,
+            delay : 500,
+            minLength : 0,
+            source : function(request, response) {
+                $.get(
+                    "/order/ajax/provide-environments-for-order-search?"
+                    + "&data[name]=" + request.term,
+                    {},
+                    function(data) {
+                        response($.map(data, function(item) {
+                            return {
+                                label : item.name,
+                                value : item.severity
+                            }
+                        }));
+                    }
+                );
+            },
+            select: function (event, ui) {
+                $('#order-environment-name').val(ui.item.label);
+                $('#order-environment-severity').val(ui.item.value);
+                return false;
+            },
+            focus: function (event, ui) {
+                this.value = ui.item.label;
+                return false;
+            },
+        }).on('focus', function(event) {
+        console.log(new Date());
+        console.log($(this));
+        $(this).autocomplete("search", this.value);
+    });
+});

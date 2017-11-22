@@ -425,6 +425,11 @@ class ProcessController extends AbstractActionController
         $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
         $criteria['username'] = $this->IdentityParam('username');
+        $criteria['environment_severity'] = isset($criteria['environment']['severity'])
+            ? $criteria['environment']['severity']
+            : null
+        ;
+        unset($criteria['environment']);
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
@@ -447,6 +452,11 @@ class ProcessController extends AbstractActionController
     {
         $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
         $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
+        $criteria['environment_severity'] = isset($criteria['environment']['severity'])
+            ? $criteria['environment']['severity']
+            : null
+        ;
+        unset($criteria['environment']);
         $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
         $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
 
