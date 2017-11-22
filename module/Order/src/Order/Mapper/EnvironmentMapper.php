@@ -20,13 +20,13 @@ class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInter
 
         foreach ($criteria as $condition) {
             if (is_array($condition)) {
-                if (array_key_exists('name', $condition)) {
+                if (array_key_exists('name', $condition) && ! empty($condition['name'])) {
                     $queryBuilder
                         ->andWhere('e.name LIKE :name')
                         ->setParameter('name', '%' . $condition['name'] . '%')
                     ;
                 }
-                if (array_key_exists('application_technical_short_name', $condition)) {
+                if (array_key_exists('application_technical_short_name', $condition) && ! empty($condition['application_technical_short_name'])) {
                     $queryBuilder->join('e.serviceInvoices', 'si');
                     $queryBuilder->join('si.application', 'a');
                     $queryBuilder
