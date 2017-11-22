@@ -21,6 +21,7 @@ echo $this->form()->openTag($form);
 <?php
 $filterFieldset = $form->get('filter');
 $environmentFieldset = $filterFieldset->get('environment');
+$serverFieldset = $filterFieldset->get('server');
 $sortFieldset = $form->get('sort');
 ?>
 
@@ -31,6 +32,7 @@ echo $this->partial('/partials/search/form/fieldgroups/filter',
         // Fieldsets
         'filterFieldset' => $filterFieldset,
         'environmentFieldset' => $environmentFieldset,
+        'serverFieldset' => $serverFieldset,
         // DataObjects
         // no DataObjects
         // misc values

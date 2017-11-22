@@ -79,6 +79,13 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'Order\Form\OrderSearch\Fieldset\Environment',
                 'options' => []
             ]);
+
+        $this->add(
+            [
+                'name' => 'server',
+                'type' => 'Order\Form\OrderSearch\Fieldset\ServerCommon',
+                'options' => []
+            ]);
     }
 
     public function getInputFilterSpecification()

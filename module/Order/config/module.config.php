@@ -348,6 +348,7 @@ return [
             // fieldsets
             'Order\Form\OrderSearch\Fieldset\Sort' => 'Order\Form\OrderSearch\Fieldset\SortFieldset',
             'Order\Form\OrderSearch\Fieldset\Environment' => 'Order\Form\OrderSearch\Fieldset\EnvironmentFieldset',
+            'Order\Form\OrderSearch\Fieldset\ServerCommon' => 'Order\Form\OrderSearch\Fieldset\ServerCommonFieldset',
         ],
         'factories' => [
             // forms
