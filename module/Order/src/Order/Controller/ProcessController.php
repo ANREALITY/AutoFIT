@@ -2,6 +2,7 @@
 
 namespace Order\Controller;
 
+use DbSystel\DataObject\LogicalConnection;
 use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -473,6 +474,10 @@ class ProcessController extends AbstractActionController
         $this->orderSearchForm->setData($this->getRequest()->getQuery());
 
         $queryParams = $this->params()->fromQuery();
+        $queryParams['connection_type'] = ! empty($queryParams['connection_type'])
+            ? $queryParams['connection_type']
+            : [LogicalConnection::TYPE_CD, LogicalConnection::TYPE_FTGW]
+        ;
         unset($queryParams['submit']);
 
         return new ViewModel([
