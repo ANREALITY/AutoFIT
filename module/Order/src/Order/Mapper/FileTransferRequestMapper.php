@@ -30,6 +30,7 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         $queryBuilder = $this->entityManager->createQueryBuilder();
         $queryBuilder->select('ftr')->from(static::ENTITY_TYPE, 'ftr');
 
+        // shared JOINs
         if (
             $this->checkCriterium('application_technical_short_name', $criteria)
             || $this->checkCriterium('environment_severity', $criteria)
@@ -38,6 +39,14 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
                 // JOINing of the serviceInvoicePositionPersonal would also be possible.
                 ->join('ftr.serviceInvoicePositionBasic', 'sip')
                 ->join('sip.serviceInvoice', 'si')
+            ;
+        }
+        if (
+            $this->checkCriterium('server_name', $criteria)
+            || $this->checkCriterium('connection_type', $criteria)
+        ) {
+            $queryBuilder
+                ->join('ftr.logicalConnection', 'lc')
             ;
         }
 
@@ -78,13 +87,18 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
             }
             if ($key === 'server_name' && $condition) {
                 $queryBuilder
-                    ->join('ftr.logicalConnection', 'lc')
                     ->join('lc.physicalConnections', 'pc')
                     ->join('pc.endpoints', 'ep')
                     ->join('ep.endpointServerConfig', 'epsc')
                     ->join('epsc.server', 's')
                     ->andWhere('s.name = :serverName')
                     ->setParameter('serverName', $condition)
+                ;
+            }
+            if ($key === 'connection_type' && $condition) {
+                $queryBuilder
+                    ->andWhere('lc.type IN (:connectionType)')
+                    ->setParameter('connectionType', $condition)
                 ;
             }
         }
