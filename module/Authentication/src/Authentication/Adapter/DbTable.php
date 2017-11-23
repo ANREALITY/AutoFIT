@@ -1,6 +1,7 @@
 <?php
 namespace Authentication\Adapter;
 
+use Authorization\Acl\Acl;
 use Order\Service\UserServiceInterface;
 use Zend\Authentication\Adapter\AbstractAdapter;
 use Zend\Authentication\Result;
@@ -35,16 +36,18 @@ class DbTable extends AbstractAdapter
      */
     public function authenticate()
     {
+        $user = $this->userService->findOneByUsername($this->username);
+        if (! $user) {
+            $user = new User();
+            $user->setRole(Acl::DEFAULT_ROLE);
+            $user->setUsername($this->username);
+            $user = $this->userService->saveOne($user);
+        }
         $identity = [
-            'id' => null,
-            'username' => $this->username,
-            'role' => User::ROLE_MEMBER
+            'id' => $user->getId(),
+            'username' => $user->getUsername(),
+            'role' => $user->getRole()
         ];
-        try {
-            $user = $this->userService->findOneByUsername($this->username);
-            $identity['id'] = $user->getId();
-            $identity['role'] = $user->getRole();
-        } catch (\Error $e) {} // Fatal error: Uncaught Error: Call to a member function getId() on null
         $this->setIdentity($identity);
         $authResult = new Result(Result::SUCCESS, $identity);
         return $authResult;

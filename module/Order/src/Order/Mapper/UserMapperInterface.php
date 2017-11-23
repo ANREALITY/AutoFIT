@@ -30,4 +30,10 @@ interface UserMapperInterface
      */
     public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 
+    /**
+     * @param User $dataObject
+     * @return User
+     */
+    public function save(User $dataObject);
+
 }

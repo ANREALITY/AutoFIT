@@ -20,4 +20,10 @@ interface UserServiceInterface
      */
     public function findAllForAutocomplete(string $username = null);
 
+    /**
+     * @param User $user
+     * @return User
+     */
+    public function saveOne(User $user);
+
 }

@@ -48,4 +48,16 @@ class UserMapper extends AbstractMapper implements UserMapperInterface
         return $result;
     }
 
+    /**
+     * @param User $dataObject
+     * @return User
+     */
+    public function save(User $dataObject)
+    {
+        $this->entityManager->persist($dataObject);
+        $this->entityManager->flush();
+
+        return $dataObject;
+    }
+
 }

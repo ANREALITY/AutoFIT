@@ -57,4 +57,14 @@ class UserService extends AbstractService implements UserServiceInterface
         );
     }
 
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function saveOne(User $user)
+    {
+        return $this->mapper->save($user);
+    }
+
 }
