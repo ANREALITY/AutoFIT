@@ -20,11 +20,4 @@ interface ApplicationServiceInterface
      */
     public function findAllForAutocomplete(string $technicalShortName);
 
-    /**
-     *
-     * @param Application $application
-     * @return Application
-     */
-    public function saveOne(Application $applicationRequest);
-
 }
