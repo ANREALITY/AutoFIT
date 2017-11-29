@@ -15,20 +15,20 @@ class SortFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'radio',
                 'name' => 'datetime',
                 'options' => [
-                    'label' => _('date and time of the ordering'),
+                    'label' => _('date of the ordering'),
                     'value_options' => [
                         [
                             'value' => Criteria::DESC,
-                            'label' => _('descending'),
+                            'label' => _('▲'),
                             'selected' => true
                         ],
                         [
                             'value' => Criteria::ASC,
-                            'label' => _('ascending')
+                            'label' => _('▼')
                         ]
                     ],
                     'label_attributes' => [
-                        'class' => 'col-md-6'
+                        'class' => 'col-md-12'
                     ]
                 ],
                 'attributes' => [
