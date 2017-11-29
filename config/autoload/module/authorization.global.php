@@ -51,7 +51,6 @@ return [
                         'member' => null
                     ],
                     'exportOrder' => 'admin',
-                    'listMyOrders' => 'member',
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',
                     'listOrders' => 'member',

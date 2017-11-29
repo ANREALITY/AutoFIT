@@ -6,10 +6,6 @@ return [
                 'label' => _('home'),
                 'route' => 'home',
             ],
-            'order/list-own' => [
-                'label' => _('my orders'),
-                'route' => 'order/list-own',
-            ],
             'master-data' => [
                 'label' => _('master data'),
                 'route' => 'master-data',

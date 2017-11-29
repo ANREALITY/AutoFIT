@@ -177,17 +177,6 @@ return [
                             ]
                         ]
                     ],
-                    'list-own' => [
-                        'type' => 'Zend\Router\Http\Segment',
-                        'options' => [
-                            'route' => '/list-own[/page/:page]',
-                            'defaults' => [
-                                'controller' => 'Order\Controller\Process',
-                                'action' => 'listMyOrders',
-                                'page' => 1
-                            ]
-                        ]
-                    ],
                     'provide-applications' => [
                         'type' => 'Zend\Router\Http\Literal',
                         'options' => [
