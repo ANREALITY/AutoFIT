@@ -76,8 +76,8 @@ abstract class AbstractEndpointFtgwWindowsShareFieldset extends AbstractEndpoint
                     [
                         'name' => 'DbSystel\Validator\Regex',
                         'options' => [
-                            'pattern' => '/^[a-zA-Z0-9\-]*$/',
-                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", "-"'
+                            'pattern' => '/^[a-zA-Z0-9_]*$/',
+                            'patternUserFriendly' => '"a-z", "A-Z", "0-9", "_"'
                         ]
                     ],
                 ]
