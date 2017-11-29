@@ -1,4 +1,6 @@
 <?php
+use Order\Controller\OwnershipController;
+
 return [
     'acl' => [
         'roles' => [
@@ -57,6 +59,9 @@ return [
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'
+                ],
+                OwnershipController::class => [
+                    'all' => 'member'
                 ],
                 'MasterData\Controller\Index' => [
                     'all' => 'member'
