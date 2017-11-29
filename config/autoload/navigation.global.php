@@ -14,6 +14,10 @@ return [
                 'label' => _('orders'),
                 'route' => 'order/list',
             ],
+            [
+                'label' => _('assignments'),
+                'route' => 'ownership/list',
+            ],
         ],
         'admin' => [
             [

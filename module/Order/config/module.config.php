@@ -1,10 +1,87 @@
 <?php
+use Order\Controller\Factory\OwnershipControllerFactory;
+use Order\Controller\OwnershipController;
 use Order\Mvc\Controller\Plugin\Factory\IdentityParamFactory;
 use Order\Mvc\Controller\Plugin\IdentityParam;
 
 return [
     'router' => [
         'routes' => [
+            'ownership' => [
+                'type' => 'Zend\Router\Http\Segment',
+                'options' => [
+                    'route' => '/ownership',
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'create' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/create[/:orderId]',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'create',
+                                'orderId' => '',
+                            ]
+                        ]
+                    ],
+                    'recall' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/recall/:orderId',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'recall',
+                                'orderId' => '',
+                            ]
+                        ]
+                    ],
+                    'accept' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/accept/:orderId',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'accept',
+                                'orderId' => '',
+                            ]
+                        ]
+                    ],
+                    'decline' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/decline/:orderId',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'decline',
+                                'orderId' => '',
+                            ]
+                        ]
+                    ],
+                    'show' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/show/:orderId',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'show',
+                                'orderId' => '',
+                            ]
+                        ]
+                    ],
+                    'list' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/list[/page/:page]',
+                            'defaults' => [
+                                'controller' => OwnershipController::class,
+                                'action' => 'list',
+                                'page' => 1,
+                            ]
+                        ]
+                    ],
+                ],
+            ],
             'order' => [
                 'type' => 'Zend\Router\Http\Segment',
                 'options' => [
@@ -305,7 +382,8 @@ return [
         'invokables' => [],
         'factories' => [
             'Order\Controller\Process' => 'Order\Controller\Factory\ProcessControllerFactory',
-            'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory'
+            'Order\Controller\Ajax' => 'Order\Controller\Factory\AjaxControllerFactory',
+            OwnershipController::class => OwnershipControllerFactory::class,
         ]
     ],
     'controller_plugins' => [
