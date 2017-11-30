@@ -30,7 +30,7 @@ class FilterFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'username',
                 'type' => 'text',
                 'options' => [
-                    'label' => _('username'),
+                    'label' => _('purchaser'),
                     'label_attributes' => [
                         'class' => 'col-md-4'
                     ]

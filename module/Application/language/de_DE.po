@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-29 19:24+0100\n"
-"PO-Revision-Date: 2017-11-29 19:32+0100\n"
+"POT-Creation-Date: 2017-11-30 15:56+0100\n"
+"PO-Revision-Date: 2017-11-30 15:56+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -52,7 +52,6 @@ msgstr "anzeigen"
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AccessConfigFieldset.php:22
 #: module/Order/src/Order/Form/Fieldset/UserFieldset.php:35
-#: module/Order/src/Order/Form/OrderSearch/Fieldset/FilterFieldset.php:33
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-source.phtml:21
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:21
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:59
@@ -657,6 +656,10 @@ msgstr "speichern"
 #: module/Order/src/Order/Form/OrderForm.php:87
 msgid "binding order"
 msgstr "verbindlich bestellen"
+
+#: module/Order/src/Order/Form/OrderSearch/Fieldset/FilterFieldset.php:33
+msgid "purchaser"
+msgstr "Besteller"
 
 #: module/Order/src/Order/Form/OrderSearch/Fieldset/FilterFieldset.php:67
 msgid "application according to the SI"
