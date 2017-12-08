@@ -85,7 +85,6 @@ $externalServerForTargetFieldset = $endpointTargetFieldset->get('external_server
 <?php $this->inlineScript()->appendFile('/js/order/order-form/autocomplete.js'); ?>
 <?php $this->inlineScript()->appendFile('/js/order/order-form/fields-dependency-management.js'); ?>
 <?php $this->inlineScript()->appendFile('/js/order/order-form/input-lists-management.js'); ?>
-<?php $this->inlineScript()->appendFile('/components/jquery-serialize-object/jquery.serialize-object.js'); ?>
 
 <?php
 // billing
@@ -228,13 +227,9 @@ echo $this->partial('/partials/fieldgroups/comment',
 
 <div class="form-group">
 	<div class="controls"><?php echo $this->formElement($form->get('save')); ?>
-    <?php echo $this->formElement($form->get('submit')); ?>
+    <?php echo $this->formElement($form->get('submit')); ?></div>
 </div>
 
 <?php
 echo $this->form()->closeTag();
 ?>
-
-<input name="serialize" id="serialize" class="btn btn-default" value="serialize" type="button">
-<textarea id="formData" class="form-control" rows="20"></textarea>
-<?php $this->inlineScript()->appendFile('/js/order/storing/serialization.js'); ?>
