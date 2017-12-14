@@ -88,6 +88,16 @@ class OrderForm extends Form
                     'class' => 'btn btn-default'
                 ]
             ]);
+
+        $this->add(
+            [
+                'name' => 'store',
+                'attributes' => [
+                    'type' => 'submit',
+                    'value' => _('store'),
+                    'class' => 'btn btn-default'
+                ]
+            ]);
     }
 
     public function getErrorMessages()
