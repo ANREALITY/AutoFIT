@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 19:45+0100\n"
-"PO-Revision-Date: 2017-12-08 19:46+0100\n"
+"POT-Creation-Date: 2017-12-15 13:34+0100\n"
+"PO-Revision-Date: 2017-12-15 13:36+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -1163,6 +1163,15 @@ msgstr "gespeichert"
 #: module/Order/view/order/process/start.phtml:11
 msgid "Please choose a file transfer product"
 msgstr "Bitte wählen Sie das ein Filetransfer-Produkt aus"
+
+#: module/Order/view/order/process/stored.phtml:3
+#, php-format
+msgid "The draft has been %s successfully."
+msgstr "Der Entwurf wurde erfolgreich %s."
+
+#: module/Order/view/order/process/stored.phtml:3
+msgid "stored"
+msgstr "zwischengepeichert"
 
 #: module/Order/view/order/process/submitted.phtml:3
 msgid "submitted"

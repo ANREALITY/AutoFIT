@@ -183,6 +183,7 @@ class ProcessController extends AbstractActionController
                     ->setContent($formDataJson)
                 ;
                 $this->draftService->save($draft);
+                $successAction = 'stored';
             } else {
                 if ($this->orderForm->isValid()) {
                     $username = $this->IdentityParam('username');
@@ -202,12 +203,12 @@ class ProcessController extends AbstractActionController
                     if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
                         $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
                     }
-                    return $this->forward()->dispatch('Order\Controller\Process',
-                        [
-                            'action' => $successAction
-                        ]);
                 }
             }
+            return $this->forward()->dispatch('Order\Controller\Process',
+                [
+                    'action' => $successAction
+                ]);
         }
 
         return [
@@ -393,6 +394,11 @@ class ProcessController extends AbstractActionController
             [
                 'action' => $confirmationAction
             ]);
+    }
+
+    public function storedAction()
+    {
+        return new ViewModel();
     }
 
     public function savedAction()
