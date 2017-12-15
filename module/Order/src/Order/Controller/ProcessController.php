@@ -2,8 +2,12 @@
 
 namespace Order\Controller;
 
+use DbSystel\DataObject\Draft;
 use DbSystel\DataObject\LogicalConnection;
 use Order\Form\OrderSearch\OrderSearchForm;
+use Order\Service\DraftServiceInterface;
+use Order\Service\UserServiceInterface;
+use Zend\Http\PhpEnvironment\Request;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Router\Http\RouteMatch;
@@ -32,6 +36,16 @@ class ProcessController extends AbstractActionController
      * @var FileTransferRequestServiceInterface
      */
     protected $fileTransferRequestService;
+
+    /**
+     * @var UserServiceInterface
+     */
+    protected $userService;
+
+    /**
+     * @var DraftServiceInterface
+     */
+    protected $draftService;
 
     /**
      * @var OrderForm
@@ -68,10 +82,16 @@ class ProcessController extends AbstractActionController
      */
     protected $orderSearchForm;
 
-    public function __construct(FileTransferRequest $fileTransferRequest, FileTransferRequestServiceInterface $fileTransferRequestService)
-    {
+    public function __construct(
+        FileTransferRequest $fileTransferRequest,
+        FileTransferRequestServiceInterface $fileTransferRequestService,
+        UserServiceInterface $userService,
+        DraftServiceInterface $draftService
+    ) {
         $this->fileTransferRequest = $fileTransferRequest;
         $this->fileTransferRequestService = $fileTransferRequestService;
+        $this->userService = $userService;
+        $this->draftService = $draftService;
     }
 
     /**
@@ -145,32 +165,48 @@ class ProcessController extends AbstractActionController
 
         $this->orderForm->bind($this->fileTransferRequest);
 
+        /** @var Request $request */
         $request = $this->getRequest();
 
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
-            if ($this->orderForm->isValid()) {
+            if(isset($request->getPost()->toArray()['store'])) {
+                $formDataJson = json_encode($request->getPost(), JSON_UNESCAPED_SLASHES);
+                $draft = new Draft();
                 $username = $this->IdentityParam('username');
-                $this->fileTransferRequest->getUser()->setUsername($username);
-                $role = $this->IdentityParam('role');
-                $this->fileTransferRequest->getUser()->setRole($role);
-                if(isset($request->getPost()->toArray()['submit'])) {
-                    $status = FileTransferRequest::STATUS_PENDING;
-                    $successAction = 'submitted';
-                } else {
-                    $status = FileTransferRequest::STATUS_EDIT;
-                    $successAction = 'saved';
+                $currentUser = $this->userService->findOneByUsername($username);
+                $draft
+                    ->setUser($currentUser)
+                    ->setConnectionType($this->connectionType)
+                    ->setEndpointSourceType($this->endpointSourceType)
+                    ->setEndpointTargetType($this->endpointTargetType)
+                    ->setContent($formDataJson)
+                ;
+                $this->draftService->save($draft);
+            } else {
+                if ($this->orderForm->isValid()) {
+                    $username = $this->IdentityParam('username');
+                    $this->fileTransferRequest->getUser()->setUsername($username);
+                    $role = $this->IdentityParam('role');
+                    $this->fileTransferRequest->getUser()->setRole($role);
+                    if (isset($request->getPost()->toArray()['submit'])) {
+                        $status = FileTransferRequest::STATUS_PENDING;
+                        $successAction = 'submitted';
+                    } else {
+                        $status = FileTransferRequest::STATUS_EDIT;
+                        $successAction = 'saved';
+                    }
+                    $this->fileTransferRequest->setStatus($status);
+                    $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_CREATED);
+                    if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
+                        $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
+                    }
+                    return $this->forward()->dispatch('Order\Controller\Process',
+                        [
+                            'action' => $successAction
+                        ]);
                 }
-                $this->fileTransferRequest->setStatus($status);
-                $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
-                $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_CREATED);
-                if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
-                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
-                }
-                return $this->forward()->dispatch('Order\Controller\Process',
-                    [
-                        'action' => $successAction
-                    ]);
             }
         }
 

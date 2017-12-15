@@ -24,8 +24,10 @@ class ProcessControllerFactory implements FactoryInterface
         $dataExporter = $container->get('DbSystel\DataExport\DataExporter');
 
         $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
+        $userService = $container->get('Order\Service\UserService');
+        $draftService = $container->get('Order\Service\DraftService');
         $fileTransferRequest = $container->get('DbSystel\DataObject\FileTransferRequest');
-        $service = new ProcessController($fileTransferRequest, $fileTransferRequestService);
+        $service = new ProcessController($fileTransferRequest, $fileTransferRequestService, $userService, $draftService);
 
         if ($isOrderRequest || $isOrderEditRequest) {
             $formElementManager = $container->get('FormElementManager');
