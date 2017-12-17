@@ -184,6 +184,10 @@ class ProcessController extends AbstractActionController
                 ;
                 $this->draftService->save($draft);
                 $successAction = 'stored';
+                return $this->forward()->dispatch('Order\Controller\Process',
+                    [
+                        'action' => $successAction
+                    ]);
             } else {
                 if ($this->orderForm->isValid()) {
                     $username = $this->IdentityParam('username');
@@ -203,12 +207,15 @@ class ProcessController extends AbstractActionController
                     if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
                         $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
                     }
+                    return $this->forward()->dispatch('Order\Controller\Process',
+                        [
+                            'action' => $successAction
+                        ]);
                 }
             }
-            return $this->forward()->dispatch('Order\Controller\Process',
-                [
-                    'action' => $successAction
-                ]);
+        } elseif (! empty($request->getQuery()->toArray()['restore'])) {
+            $this->enrichRequestWithDataFromDraft();
+            $this->orderForm->setData($request->getPost());
         }
 
         return [
@@ -552,6 +559,28 @@ class ProcessController extends AbstractActionController
         $response->setHeaders($headers);
 
         return $response;
+    }
+
+    /**
+     * If the user has a Draft,
+     * sets the request's method to POST and pass the draft's data as POST data.
+     *
+     * @return void
+     */
+    protected function enrichRequestWithDataFromDraft()
+    {
+        /** @var Request $request */
+        $request = $this->getRequest();
+        $username = $this->IdentityParam('username');
+        $currentUser = $this->userService->findOneByUsername($username);
+        $draft = $this->draftService->findOneByUser($currentUser);
+        if ($draft) {
+            $formDataJson = $draft->getContent();
+            $formDataArray = json_decode($formDataJson, true);
+            $parameters = new Parameters($formDataArray);
+            $request->setPost($parameters);
+            $request->setMethod(Request::METHOD_POST);
+        }
     }
 
 }
