@@ -171,7 +171,9 @@ class ProcessController extends AbstractActionController
         if ($request->isPost()) {
             $this->orderForm->setData($request->getPost());
             if(isset($request->getPost()->toArray()['store'])) {
-                $formDataJson = json_encode($request->getPost(), JSON_UNESCAPED_SLASHES);
+                $formDataArray = $request->getPost()->toArray();
+                unset($formDataArray['file_transfer_request']['id']);
+                $formDataJson = json_encode($formDataArray, JSON_UNESCAPED_SLASHES);
                 $draft = new Draft();
                 $username = $this->IdentityParam('username');
                 $currentUser = $this->userService->findOneByUsername($username);
