@@ -157,6 +157,29 @@ class ProcessController extends AbstractActionController
         ];
     }
 
+    public function restoreAction()
+    {
+        /** @var Request $request */
+        $request = $this->getRequest();
+        $username = $this->IdentityParam('username');
+        $currentUser = $this->userService->findOneByUsername($username);
+        $draft = $this->draftService->findOneByUser($currentUser);
+        if ($draft) {
+            return $this->redirect()->toRoute('order/create', [
+                'connectionType' => strtolower($draft->getConnectionType()),
+                'endpointSourceType' => strtolower($draft->getEndpointSourceType()),
+                'endpointTargetType' => strtolower($draft->getEndpointTargetType()),
+                'restore' => 1
+            ]);
+        } else {
+            $successAction = 'no-draft-available';
+            return $this->forward()->dispatch('Order\Controller\Process',
+                [
+                    'action' => $successAction
+                ]);
+        }
+    }
+
     public function createAction()
     {
         if ($this->IsInSync()) {
@@ -426,6 +449,11 @@ class ProcessController extends AbstractActionController
     }
 
     public function storedAction()
+    {
+        return new ViewModel();
+    }
+
+    public function noDraftAvailableAction()
     {
         return new ViewModel();
     }

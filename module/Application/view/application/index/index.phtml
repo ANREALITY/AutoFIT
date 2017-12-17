@@ -96,7 +96,7 @@
             <h3 class="block-title">
                 <span><?php echo $this->translate('Select the desired product now'); ?></span>
             </h3>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="start-link-container">
                     <a id="start-link-cd"
                         class="btn btn-default start-link"
@@ -104,12 +104,20 @@
                         role="button"><span><b>C</b>onnect:<b>D</b>irect</span></a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="start-link-container">
                     <a id="start-link-ftgw"
                         class="btn btn-default start-link"
                         href="<?php echo $this->url('order/start', ['connectionType' => 'ftgw']); ?>"
                         role="button"><span><b>F</b>iletransfer<b>G</b>ate<b>W</b>ay</span></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="start-link-container">
+                    <a id="start-link-draft"
+                       class="btn btn-default start-link"
+                       href="<?php echo $this->url('order/restore'); ?>"
+                       role="button"><span><?php echo $this->translate('draft'); ?></span></a>
                 </div>
             </div>
         </div>

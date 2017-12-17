@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-15 13:34+0100\n"
-"PO-Revision-Date: 2017-12-15 13:36+0100\n"
+"POT-Creation-Date: 2017-12-17 12:54+0100\n"
+"PO-Revision-Date: 2017-12-17 12:54+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -781,6 +781,10 @@ msgstr "finden Sie in der TDV"
 msgid "Select the desired product now"
 msgstr "Wählen Sie nun das gewünschte Filetransfer-Produkt aus"
 
+#: module/Application/view/application/index/index.phtml:120
+msgid "draft"
+msgstr "Entwurf"
+
 #: module/Application/view/error/404.phtml:2
 msgid "The page you requested is not available."
 msgstr "Die Seite, die Sie angefragt haben, ist nicht verfügbar."
@@ -1126,6 +1130,10 @@ msgstr "Antrag-ID"
 #: module/Order/view/order/process/list-orders.phtml:33
 msgid "request summary"
 msgstr "Anfragszusammenfassung"
+
+#: module/Order/view/order/process/no-draft-available.phtml:3
+msgid "There is no draft available."
+msgstr "Es ist kein Entwurf verfügbar."
 
 #: module/Order/view/order/process/operation-denied-for-status.phtml:4
 msgid "edit"

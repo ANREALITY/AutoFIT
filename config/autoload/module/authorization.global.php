@@ -54,6 +54,8 @@ return [
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',
                     'listOrders' => 'member',
+                    'restore' => 'member',
+                    'noDraftAvailable' => 'member',
                 ],
                 'Order\Controller\Ajax' => [
                     'all' => 'guest'

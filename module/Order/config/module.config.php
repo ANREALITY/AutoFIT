@@ -23,6 +23,16 @@ return [
                             ]
                         ]
                     ],
+                    'restore' => [
+                        'type' => 'Zend\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/process/restore',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Process',
+                                'action' => 'restore',
+                            ]
+                        ]
+                    ],
                     'create' => [
                         'type' => 'Zend\Router\Http\Segment',
                         'options' => [
