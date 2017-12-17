@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-17 12:54+0100\n"
-"PO-Revision-Date: 2017-12-17 12:54+0100\n"
+"POT-Creation-Date: 2017-12-17 15:01+0100\n"
+"PO-Revision-Date: 2017-12-17 15:02+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -90,8 +90,8 @@ msgstr "alle Ressource-Typen"
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
 #: module/MasterData/view/master-data/overview/show.phtml:35
-#: module/Order/view/partials/list/summary.phtml:158
-#: module/Order/view/partials/list/summary.phtml:194
+#: module/Order/view/partials/list/summary.phtml:162
+#: module/Order/view/partials/list/summary.phtml:198
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:76
@@ -207,8 +207,8 @@ msgstr ""
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdTandemTargetFieldset.php:25
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:26
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerTargetFieldset.php:25
-#: module/Order/view/partials/list/summary.phtml:181
-#: module/Order/view/partials/list/summary.phtml:217
+#: module/Order/view/partials/list/summary.phtml:185
+#: module/Order/view/partials/list/summary.phtml:221
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:25
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:63
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:46
@@ -560,8 +560,8 @@ msgid "environment"
 msgstr "Umgebung"
 
 #: module/Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:22
-#: module/Order/view/partials/list/summary.phtml:175
-#: module/Order/view/partials/list/summary.phtml:211
+#: module/Order/view/partials/list/summary.phtml:179
+#: module/Order/view/partials/list/summary.phtml:215
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:47
 #: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:47
 msgid "external server"
@@ -1469,8 +1469,12 @@ msgstr "Dateiname / -muster"
 msgid "Input without the prefix \"%s\"."
 msgstr "Eingabe ohne das Präfix \"%s\"."
 
-#: module/Order/view/partials/list/summary.phtml:169
-#: module/Order/view/partials/list/summary.phtml:205
+#: module/Order/view/partials/list/summary.phtml:151
+msgid "creator"
+msgstr "Ersteller"
+
+#: module/Order/view/partials/list/summary.phtml:173
+#: module/Order/view/partials/list/summary.phtml:209
 msgid "server"
 msgstr "Server"
 

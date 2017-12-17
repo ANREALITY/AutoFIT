@@ -147,6 +147,10 @@ if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) {
                 <dt><?php echo $this->translate('environment'); ?></dt>
                 <dd><?php echo $fileTransferRequest->getServiceInvoicePositionBasic()->getServiceInvoice()->getEnvironment()->getName(); ?></dd>
             </div>
+            <div>
+                <dt><?php echo $this->translate('creator'); ?></dt>
+                <dd><?php echo $fileTransferRequest->getUser()->getUsername(); ?></dd>
+            </div>
         </dl>
     </div>
     <!-- endpoint source -->
