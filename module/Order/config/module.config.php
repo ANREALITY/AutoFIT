@@ -26,13 +26,14 @@ return [
                     'create' => [
                         'type' => 'Zend\Router\Http\Segment',
                         'options' => [
-                            'route' => '/process/create/:connectionType/:endpointSourceType/:endpointTargetType',
+                            'route' => '/process/create/:connectionType/:endpointSourceType/:endpointTargetType[?restore=:restore]',
                             'defaults' => [
                                 'controller' => 'Order\Controller\Process',
                                 'action' => 'create',
                                 'connectionType' => '',
                                 'endpointSourceType' => '',
-                                'endpointTargetType' => ''
+                                'endpointTargetType' => '',
+                                'restore' => '',
                             ]
                         ]
                     ],

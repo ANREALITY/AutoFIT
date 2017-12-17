@@ -104,4 +104,13 @@ class RequestAnalyzer
         return $allParamsCorrectForOrderCancel;
     }
 
+    public function isRestoreRequest()
+    {
+        $isRestoreRequest =
+            $this->isOrderRequest()
+            && ! empty($this->requestQuery['restore'])
+        ;
+        return $isRestoreRequest;
+    }
+
 }
