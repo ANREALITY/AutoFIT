@@ -261,28 +261,48 @@ class ProcessController extends AbstractActionController
         if ($request->isPost()) {
             $getHelperFieldsValuesFromObject = false;
             $this->orderForm->setData($request->getPost());
-            if ($this->orderForm->isValid()) {
+            if(isset($request->getPost()->toArray()['store'])) {
+                $formDataJson = json_encode($request->getPost(), JSON_UNESCAPED_SLASHES);
+                $draft = new Draft();
                 $username = $this->IdentityParam('username');
-                $this->fileTransferRequest->getUser()->setUsername($username);
-                $role = $this->IdentityParam('role');
-                $this->fileTransferRequest->getUser()->setRole($role);
-                if(isset($request->getPost()->toArray()['submit'])) {
-                    $status = FileTransferRequest::STATUS_PENDING;
-                    $successAction = 'submitted';
-                } else {
-                    $status = FileTransferRequest::STATUS_EDIT;
-                    $successAction = 'updated';
-                }
-                $this->fileTransferRequest->setStatus($status);
-                $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
-                $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_UPDATED);
-                if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
-                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
-                }
+                $currentUser = $this->userService->findOneByUsername($username);
+                $draft
+                    ->setUser($currentUser)
+                    ->setConnectionType($this->connectionType)
+                    ->setEndpointSourceType($this->endpointSourceType)
+                    ->setEndpointTargetType($this->endpointTargetType)
+                    ->setContent($formDataJson)
+                ;
+                $this->draftService->save($draft);
+                $successAction = 'stored';
                 return $this->forward()->dispatch('Order\Controller\Process',
                     [
                         'action' => $successAction
                     ]);
+            } else {
+                if ($this->orderForm->isValid()) {
+                    $username = $this->IdentityParam('username');
+                    $this->fileTransferRequest->getUser()->setUsername($username);
+                    $role = $this->IdentityParam('role');
+                    $this->fileTransferRequest->getUser()->setRole($role);
+                    if(isset($request->getPost()->toArray()['submit'])) {
+                        $status = FileTransferRequest::STATUS_PENDING;
+                        $successAction = 'submitted';
+                    } else {
+                        $status = FileTransferRequest::STATUS_EDIT;
+                        $successAction = 'updated';
+                    }
+                    $this->fileTransferRequest->setStatus($status);
+                    $this->fileTransferRequest = $this->fileTransferRequestService->saveOne($this->fileTransferRequest);
+                    $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_UPDATED);
+                    if ($this->fileTransferRequest->getStatus() === FileTransferRequest::STATUS_PENDING) {
+                        $this->AuditLogger()->log(AuditLog::RESSOURCE_TYPE_ORDER, $this->fileTransferRequest->getId(), AuditLog::ACTION_ORDER_SUBMITTED);
+                    }
+                    return $this->forward()->dispatch('Order\Controller\Process',
+                        [
+                            'action' => $successAction
+                        ]);
+                }
             }
         }
 
