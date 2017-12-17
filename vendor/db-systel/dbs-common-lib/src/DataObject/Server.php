@@ -91,6 +91,8 @@ class Server extends AbstractDataObject
      * Not relevant for ORM. Should become obsolete after and be removed after the migration to Doctrine.
      *
      * @var EndpointServerConfig[]
+     *
+     * @ORM\OneToMany(targetEntity="EndpointServerConfig", mappedBy="server")
      */
     protected $endpointServerConfigs;
 

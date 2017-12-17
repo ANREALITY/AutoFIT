@@ -34,4 +34,11 @@ interface ServerServiceInterface
      */
     public function updateVirtualNodeName(Server $serverRequest);
 
+    /**
+     *
+     * @param string $name
+     * @return Server[]
+     */
+    public function findAllInUseForAutocomplete(string $name);
+
 }

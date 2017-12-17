@@ -119,4 +119,25 @@ class ServerService extends AbstractService implements ServerServiceInterface
         return $this->mapper->updateVirtualNodeName($server);
     }
 
+
+    /**
+     *
+     * @param string $name
+     * @return Server[]
+     */
+    public function findAllInUseForAutocomplete(string $name)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'name' => $name,
+                    'active' => true,
+                    'is_in_use' => true
+                ]
+            ],
+            self::LIMIT_AUTOCOMPLETE,
+            Query::HYDRATE_ARRAY
+        );
+    }
+
 }

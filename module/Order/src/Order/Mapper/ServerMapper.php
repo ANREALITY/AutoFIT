@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Server;
+use Doctrine\ORM\Query\Expr\Join;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface
 {
@@ -61,6 +62,10 @@ class ServerMapper extends AbstractMapper implements ServerMapperInterface
                     $queryBuilder
                         ->andWhere('s.cluster IS NOT NULL')
                     ;
+                }
+                if (array_key_exists('is_in_use', $condition)) {
+                    $queryBuilder->join('s.endpointServerConfigs', 'esc', Join::WITH);
+                    $queryBuilder->distinct();
                 }
             }
         }
