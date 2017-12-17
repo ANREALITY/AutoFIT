@@ -268,10 +268,17 @@ class AjaxController extends AbstractActionController
 
     public function provideServersForOrderSearchAction()
     {
-        return $this->forward()->dispatch('Order\Controller\Ajax',
-            [
-                'action' => 'provideServers'
-            ]);
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            $data['endpoint_type_name'] = isset($data['endpoint_type_name']) ? $data['endpoint_type_name'] : null;
+            $dataList = $this->serverService->findAllForAutocomplete($data['name'], $data['endpoint_type_name']);
+            $dataList = array_column($dataList, 'name');
+        }
+
+        return new JsonModel($dataList);
     }
 
 }
