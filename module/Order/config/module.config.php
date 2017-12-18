@@ -308,6 +308,16 @@ return [
                             ]
                         ]
                     ],
+                    'provide-applications-for-order-search' => [
+                        'type' => 'Zend\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ajax/provide-applications-for-order-search',
+                            'defaults' => [
+                                'controller' => 'Order\Controller\Ajax',
+                                'action' => 'provideApplicationsForOrderSearch'
+                            ]
+                        ]
+                    ],
                 ]
             ]
         ]

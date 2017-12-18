@@ -280,4 +280,22 @@ class AjaxController extends AbstractActionController
         return new JsonModel($dataList);
     }
 
+    public function provideApplicationsForOrderSearchAction()
+    {
+        $request = $this->getRequest();
+        $dataList = ['error' => 'Acces only for AJAX requests!'];
+
+        if ($request->isXmlHttpRequest()) {
+            $data = $request->getQuery('data');
+            if (isset($data['technical_short_name']) && $data['technical_short_name'] != null) {
+                $dataList = $this->applicationService->findAllForAutocomplete($data['technical_short_name']);
+                $dataList = array_column($dataList, 'technicalShortName');
+            } else {
+                $dataList = [];
+            }
+        }
+
+        return new JsonModel($dataList);
+    }
+
 }

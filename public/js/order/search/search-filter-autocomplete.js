@@ -63,7 +63,7 @@ $(function() {
             minLength : 3,
             source : function(request, response) {
                 $.get(
-                    "/order/ajax/provide-applications?"
+                    "/order/ajax/provide-applications-for-order-search?"
                     + "data[technical_short_name]=" + request.term,
                     {},
                     function(data) {
