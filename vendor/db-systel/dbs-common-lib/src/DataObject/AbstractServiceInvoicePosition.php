@@ -116,7 +116,7 @@ abstract class AbstractServiceInvoicePosition extends AbstractDataObject
     /**
      * @ORM\ManyToMany(targetEntity="FileTransferRequest", mappedBy="serviceInvoicePositions")
      */
-    private $fileTransferRequests;
+    protected $fileTransferRequests;
 
     /**
      * @var \DateTime
