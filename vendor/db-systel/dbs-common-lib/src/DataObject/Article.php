@@ -14,8 +14,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(readOnly=true)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "basic" = "ArticleBasic",
+ *     "personal" = "ArticlePersonal",
+ *     "on-demand" = "ArticleOnDemand"
+ * })
  */
-class Article extends AbstractDataObject
+abstract class Article extends AbstractDataObject
 {
 
     /** @var string */
@@ -45,8 +52,6 @@ class Article extends AbstractDataObject
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="type", type="string", nullable=true)
      */
     protected $type;
 
@@ -117,7 +122,19 @@ class Article extends AbstractDataObject
      */
     public function getType()
     {
-        return $this->type;
+        $type = $this->type ?: null;
+        switch(get_class($this)) {
+            case ArticleBasic::class:
+                $type = self::TYPE_BASIC;
+                break;
+            case ArticlePersonal::class:
+                $type = self::TYPE_PERSONAL;
+                break;
+            case ArticleOnDemand::class:
+                $type = self::TYPE_ON_DEMAND;
+                break;
+        }
+        return $type;
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 namespace Order\Mapper;
 
+use DbSystel\DataObject\Article;
+use DbSystel\DataObject\ArticleBasic;
+use DbSystel\DataObject\ArticleOnDemand;
+use DbSystel\DataObject\ArticlePersonal;
 use DbSystel\DataObject\ServiceInvoicePosition;
 
 class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvoicePositionMapperInterface
@@ -40,9 +44,16 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
             ) {
                 $queryBuilder->join('sip.article', 'ar');
                 if (array_key_exists('article_type', $condition)) {
+                    $typeToClassMap = [
+                        Article::TYPE_BASIC => ArticleBasic::class,
+                        Article::TYPE_PERSONAL => ArticlePersonal::class,
+                        Article::TYPE_ON_DEMAND => ArticleOnDemand::class,
+                    ];
                     $queryBuilder
-                        ->andWhere('ar.type = :articleType')
-                        ->setParameter('articleType', $condition['article_type'])
+                        ->andWhere($queryBuilder->expr()->isInstanceOf(
+                            'ar',
+                            $typeToClassMap[$condition['article_type']]
+                        ))
                     ;
                 }
                 if (array_key_exists('product_type_name', $condition)) {
