@@ -2,6 +2,7 @@
 namespace Order\Mapper;
 
 use DbSystel\DataObject\Application;
+use Doctrine\ORM\Query\Expr\Join;
 
 class ApplicationMapper extends AbstractMapper implements ApplicationMapperInterface
 {
@@ -30,6 +31,12 @@ class ApplicationMapper extends AbstractMapper implements ApplicationMapperInter
                         ->andWhere('a.active = :active')
                         ->setParameter('active', $condition['active'])
                     ;
+                }
+                if (array_key_exists('is_in_use', $condition)) {
+                    $queryBuilder->join('a.serviceInvoices', 'si', Join::WITH);
+                    $queryBuilder->join('si.serviceInvoicePositions', 'sip', Join::WITH);
+                    $queryBuilder->join('sip.fileTransferRequests', 'ftr', Join::WITH);
+                    $queryBuilder->distinct();
                 }
                 // Lagacy (not ORM driven) part. Not migrated to Doctrine, since not used for now.
                 // Related to the question: "What is a valid InvoicePosition/Application?"
