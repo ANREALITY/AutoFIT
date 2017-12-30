@@ -166,6 +166,9 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
         );
         $dataObject->setServiceInvoicePositionBasic($serviceInvoicePositionBasic);
         $dataObject->setServiceInvoicePositionPersonal($serviceInvoicePositionPersonal);
+        $dataObject->setServiceInvoicePositions([
+            $serviceInvoicePositionBasic, $serviceInvoicePositionPersonal
+        ]);
         // saving user
         $user = $this->entityManager->getRepository(User::class)->findOneBy(
             ['username' => $dataObject->getUser()->getUsername()]
