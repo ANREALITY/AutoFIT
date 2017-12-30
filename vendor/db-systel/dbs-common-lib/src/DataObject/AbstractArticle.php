@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "on-demand" = "ArticleOnDemand"
  * })
  */
-abstract class Article extends AbstractDataObject
+abstract class AbstractArticle extends AbstractDataObject
 {
 
     /** @var string */
@@ -68,7 +68,7 @@ abstract class Article extends AbstractDataObject
     /**
      * @param string $sku
      *
-     * @return Article
+     * @return AbstractArticle
      */
     public function setSku($sku)
     {
@@ -88,7 +88,7 @@ abstract class Article extends AbstractDataObject
     /**
      * @param string $description
      *
-     * @return Article
+     * @return AbstractArticle
      */
     public function setDescription($description)
     {
@@ -108,7 +108,7 @@ abstract class Article extends AbstractDataObject
     /**
      * @param string $type
      *
-     * @return Article
+     * @return AbstractArticle
      */
     public function setType($type)
     {
@@ -140,7 +140,7 @@ abstract class Article extends AbstractDataObject
     /**
      * @param ProductType $productType
      *
-     * @return Article
+     * @return AbstractArticle
      */
     public function setProductType(ProductType $productType)
     {

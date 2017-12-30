@@ -1,7 +1,7 @@
 <?php
 namespace Test\Integration\Functional\MiscDataOutput;
 
-use DbSystel\DataObject\Article;
+use DbSystel\DataObject\AbstractArticle;
 use DbSystel\DataObject\LogicalConnection;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\PhpEnvironment\Response;
@@ -284,12 +284,12 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
     {
         return [
             [
-                'articleType' => Article::TYPE_BASIC,
+                'articleType' => AbstractArticle::TYPE_BASIC,
                 'serviceInvoicePositionNumber' => 'p340',
                 'expectedResult' => 'LSP3407738',
             ],
             [
-                'articleType' => Article::TYPE_PERSONAL,
+                'articleType' => AbstractArticle::TYPE_PERSONAL,
                 'serviceInvoicePositionNumber' => 'p340',
                 'expectedResult' => 'LSP3407744',
             ],

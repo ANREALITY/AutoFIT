@@ -4,7 +4,7 @@ namespace Order\Service;
 use Doctrine\ORM\Query;
 use Order\Mapper\ServiceInvoicePositionMapperInterface;
 use DbSystel\DataObject\ServiceInvoicePosition;
-use DbSystel\DataObject\Article;
+use DbSystel\DataObject\AbstractArticle;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ProductType;
 
@@ -44,7 +44,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'application_technical_short_name' => $applicationTechnicalShortName,
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
-                    'article_type' => Article::TYPE_BASIC
+                    'article_type' => AbstractArticle::TYPE_BASIC
                 ]
             ],
             null,
@@ -70,7 +70,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
                     'application_technical_short_name' => $applicationTechnicalShortName,
                     'environment_severity' => $environmentSeverity,
                     'product_type_name' => $this->translateConnectionTypeToProductType($connectionType),
-                    'article_type' => Article::TYPE_PERSONAL
+                    'article_type' => AbstractArticle::TYPE_PERSONAL
                 ]
             ],
             null,

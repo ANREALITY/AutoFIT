@@ -83,9 +83,9 @@ class ServiceInvoicePosition extends AbstractDataObject
     protected $serviceInvoice;
 
     /**
-     * @var Article
+     * @var AbstractArticle
      *
-     * @ORM\ManyToOne(targetEntity="Article")
+     * @ORM\ManyToOne(targetEntity="AbstractArticle")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="article_sku", referencedColumnName="sku")
      * })
@@ -197,18 +197,18 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @param Article $article
+     * @param AbstractArticle $article
      *
      * @return ServiceInvoicePosition
      */
-    public function setArticle(Article $article = null)
+    public function setArticle(AbstractArticle $article = null)
     {
         $this->article = $article;
         return $this;
     }
 
     /**
-     * @return Article
+     * @return AbstractArticle
      */
     public function getArticle()
     {

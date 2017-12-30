@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form;
 
-use DbSystel\DataObject\Article;
+use DbSystel\DataObject\AbstractArticle;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
 use DbSystel\Validator\MaxOneNotEmpty;
@@ -141,12 +141,12 @@ class OrderForm extends Form
         $serviceInvoicePositionBasicIsValid = $this->validateServiceInvoicePosition(
             $this->get('file_transfer_request'),
             $connectionType,
-            Article::TYPE_BASIC
+            AbstractArticle::TYPE_BASIC
         );
         $serviceInvoicePositionPersonalIsValid = $this->validateServiceInvoicePosition(
             $this->get('file_transfer_request'),
             $connectionType,
-            Article::TYPE_PERSONAL
+            AbstractArticle::TYPE_PERSONAL
         );
         $isValidBilling = $serviceInvoicePositionBasicIsValid && $serviceInvoicePositionPersonalIsValid;
 
@@ -190,7 +190,7 @@ class OrderForm extends Form
         $isValid = false;
         $applicationTechnicalShortName = $fileTransferRequestFieldset->get('application_technical_short_name')->getValue();
         $environmentSeverity = $fileTransferRequestFieldset->get('environment')->get('severity')->getValue();
-        $serviceInvoicePositionFieldset = $articleType === Article::TYPE_BASIC
+        $serviceInvoicePositionFieldset = $articleType === AbstractArticle::TYPE_BASIC
             ? $fileTransferRequestFieldset->get('service_invoice_position_basic')
             : $fileTransferRequestFieldset->get('service_invoice_position_personal')
         ;

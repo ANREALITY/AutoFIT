@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="article")
  * @ORM\Entity
  */
-class ArticlePersonal extends Article
+class ArticlePersonal extends AbstractArticle
 {
 
 }
