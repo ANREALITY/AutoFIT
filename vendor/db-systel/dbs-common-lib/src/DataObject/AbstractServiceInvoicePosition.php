@@ -16,10 +16,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(readOnly=true)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "basic" = "ServiceInvoicePositionBasic",
+ *     "personal" = "ServiceInvoicePositionPersonal",
+ *     "on-demand" = "ServiceInvoicePositionOnDemand"
+ * })
  */
-class ServiceInvoicePosition extends AbstractDataObject
+abstract class AbstractServiceInvoicePosition extends AbstractDataObject
 {
 
+    /** @var string */
+    const TYPE_BASIC = 'basic';
+    /** @var string */
+    const TYPE_PERSONAL = 'personal';
+    /** @var string */
+    const TYPE_ON_DEMAND = 'on-demand';
     /** @var string */
     const STATUS_ACTIVE = 'Aktiv';
     /** @var string */
@@ -72,6 +85,11 @@ class ServiceInvoicePosition extends AbstractDataObject
     protected $status;
 
     /**
+     * @var string
+     */
+    protected $type;
+
+    /**
      * @var ServiceInvoice
      *
      * @ORM\ManyToOne(targetEntity="ServiceInvoice", inversedBy="serviceInvoicePositions")
@@ -114,7 +132,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     /**
      * @param string $number
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setNumber($number)
     {
@@ -133,7 +151,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     /**
      * @param string $orderQuantity
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setOrderQuantity($orderQuantity)
     {
@@ -152,7 +170,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     /**
      * @param string $description
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setDescription($description)
     {
@@ -171,7 +189,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     /**
      * @param string $status
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setStatus($status)
     {
@@ -188,9 +206,41 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
+     * @param string $type
+     *
+     * @return AbstractServiceInvoicePosition
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        $type = $this->type ?: null;
+        switch(get_class($this)) {
+            case ServiceInvoicePositionBasic::class:
+                $type = self::TYPE_BASIC;
+                break;
+            case ServiceInvoicePositionPersonal::class:
+                $type = self::TYPE_PERSONAL;
+                break;
+            case ServiceInvoicePositionOnDemand::class:
+                $type = self::TYPE_ON_DEMAND;
+                break;
+        }
+        return $type;
+    }
+
+    /**
      * @param ServiceInvoice $serviceInvoice
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setServiceInvoice(ServiceInvoice $serviceInvoice = null)
     {
@@ -207,27 +257,8 @@ class ServiceInvoicePosition extends AbstractDataObject
     }
 
     /**
-     * @param AbstractArticle $article
-     *
-     * @return ServiceInvoicePosition
-     */
-    public function setArticle(AbstractArticle $article = null)
-    {
-        $this->article = $article;
-        return $this;
-    }
-
-    /**
-     * @return AbstractArticle
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
-
-    /**
      * @param FileTransferRequest[] $fileTransferRequests
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setFileTransferRequests($fileTransferRequests)
     {
@@ -249,7 +280,7 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      * @param FileTransferRequest $fileTransferRequest
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function addFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
@@ -259,7 +290,7 @@ class ServiceInvoicePosition extends AbstractDataObject
 
     /**
      * @param FileTransferRequest $fileTransferRequest
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function removeFileTransferRequest(FileTransferRequest $fileTransferRequest)
     {
@@ -270,7 +301,7 @@ class ServiceInvoicePosition extends AbstractDataObject
     /**
      * @param \DateTime $updated
      *
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function setUpdated($updated)
     {

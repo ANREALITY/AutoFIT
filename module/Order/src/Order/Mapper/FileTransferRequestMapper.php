@@ -9,7 +9,7 @@ use DbSystel\DataObject\EndpointFtgwLinuxUnix;
 use DbSystel\DataObject\FileTransferRequest;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\Server;
-use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\AbstractServiceInvoicePosition;
 use DbSystel\DataObject\User;
 use DbSystel\Paginator\Paginator;
 use Doctrine\Common\Collections\Criteria;
@@ -158,10 +158,10 @@ class FileTransferRequestMapper extends AbstractMapper implements FileTransferRe
     private function persistOrder(FileTransferRequest $dataObject)
     {
         // saving service invoice positions
-        $serviceInvoicePositionBasic = $this->entityManager->getRepository(ServiceInvoicePosition::class)->find(
+        $serviceInvoicePositionBasic = $this->entityManager->getRepository(AbstractServiceInvoicePosition::class)->find(
             $dataObject->getServiceInvoicePositionBasic()->getNumber()
         );
-        $serviceInvoicePositionPersonal = $this->entityManager->getRepository(ServiceInvoicePosition::class)->find(
+        $serviceInvoicePositionPersonal = $this->entityManager->getRepository(AbstractServiceInvoicePosition::class)->find(
             $dataObject->getServiceInvoicePositionPersonal()->getNumber()
         );
         $dataObject->setServiceInvoicePositionBasic($serviceInvoicePositionBasic);

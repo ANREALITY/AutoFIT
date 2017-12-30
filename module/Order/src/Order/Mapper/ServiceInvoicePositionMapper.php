@@ -5,13 +5,16 @@ use DbSystel\DataObject\AbstractArticle;
 use DbSystel\DataObject\ArticleBasic;
 use DbSystel\DataObject\ArticleOnDemand;
 use DbSystel\DataObject\ArticlePersonal;
-use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\AbstractServiceInvoicePosition;
+use DbSystel\DataObject\ServiceInvoicePositionBasic;
+use DbSystel\DataObject\ServiceInvoicePositionOnDemand;
+use DbSystel\DataObject\ServiceInvoicePositionPersonal;
 
 class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvoicePositionMapperInterface
 {
 
     /** @var string for the findOne(...) */
-    const ENTITY_TYPE = ServiceInvoicePosition::class;
+    const ENTITY_TYPE = AbstractServiceInvoicePosition::class;
 
     /**
      * @inheritdoc
@@ -34,7 +37,7 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                 if (array_key_exists('active', $condition)) {
                     $queryBuilder
                         ->andWhere('sip.status <> :status')
-                        ->setParameter('status', ServiceInvoicePosition::STATUS_COMPLETED)
+                        ->setParameter('status', AbstractServiceInvoicePosition::STATUS_COMPLETED)
                     ;
                 }
             }
@@ -42,21 +45,21 @@ class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvo
                 array_key_exists('article_type', $condition)
                 || array_key_exists('product_type_name', $condition)
             ) {
-                $queryBuilder->join('sip.article', 'ar');
                 if (array_key_exists('article_type', $condition)) {
                     $typeToClassMap = [
-                        AbstractArticle::TYPE_BASIC => ArticleBasic::class,
-                        AbstractArticle::TYPE_PERSONAL => ArticlePersonal::class,
-                        AbstractArticle::TYPE_ON_DEMAND => ArticleOnDemand::class,
+                        AbstractServiceInvoicePosition::TYPE_BASIC => ServiceInvoicePositionBasic::class,
+                        AbstractServiceInvoicePosition::TYPE_PERSONAL => ServiceInvoicePositionPersonal::class,
+                        AbstractServiceInvoicePosition::TYPE_ON_DEMAND => ServiceInvoicePositionOnDemand::class,
                     ];
                     $queryBuilder
                         ->andWhere($queryBuilder->expr()->isInstanceOf(
-                            'ar',
+                            'sip',
                             $typeToClassMap[$condition['article_type']]
                         ))
                     ;
                 }
                 if (array_key_exists('product_type_name', $condition)) {
+                    $queryBuilder->join('sip.article', 'ar');
                     $queryBuilder
                         ->andWhere('ar.productType = :productTypeName')
                         ->setParameter('productTypeName', $condition['product_type_name'])

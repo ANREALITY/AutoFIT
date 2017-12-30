@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\AbstractServiceInvoicePosition;
 
 interface ServiceInvoicePositionServiceInterface
 {
@@ -10,7 +10,7 @@ interface ServiceInvoicePositionServiceInterface
      *
      * @param int $id
      *            Identifier of the ServiceInvoicePosition that should be returned
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function findOne($id);
 
@@ -50,9 +50,9 @@ interface ServiceInvoicePositionServiceInterface
 
     /**
      *
-     * @param ServiceInvoicePosition $serviceInvoicePosition
-     * @return ServiceInvoicePosition
+     * @param AbstractServiceInvoicePosition $serviceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
-    public function saveOne(ServiceInvoicePosition $serviceInvoicePositionRequest);
+    public function saveOne(AbstractServiceInvoicePosition $serviceInvoicePositionRequest);
 
 }

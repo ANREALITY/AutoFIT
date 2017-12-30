@@ -1,13 +1,13 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\AbstractServiceInvoicePosition;
 
 interface ServiceInvoicePositionMapperInterface
 {
 
     /**
-     * @return ServiceInvoicePosition[]
+     * @return AbstractServiceInvoicePosition[]
      */
     public function findAll(array $criteria = [], int $limit = null, int $hydrationMode = null);
 

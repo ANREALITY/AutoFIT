@@ -67,7 +67,7 @@ class ServiceInvoice extends AbstractDataObject
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="ServiceInvoicePosition", mappedBy="serviceInvoice")
+     * @ORM\OneToMany(targetEntity="AbstractServiceInvoicePosition", mappedBy="serviceInvoice")
      */
     protected $serviceInvoicePositions;
 
@@ -157,7 +157,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition[] $serviceInvoicePositions
+     * @param AbstractServiceInvoicePosition[] $serviceInvoicePositions
      *
      * @return ServiceInvoice
      */
@@ -168,7 +168,7 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @return ServiceInvoicePosition[] $serviceInvoicePositions
+     * @return AbstractServiceInvoicePosition[] $serviceInvoicePositions
      */
     public function getServiceInvoicePositions()
     {
@@ -176,20 +176,20 @@ class ServiceInvoice extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @param AbstractServiceInvoicePosition $serviceInvoicePosition
      * @return ServiceInvoice
      */
-    public function addServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    public function addServiceInvoicePosition(AbstractServiceInvoicePosition $serviceInvoicePosition)
     {
         $this->serviceInvoicePositions->add($serviceInvoicePosition);
         return $this;
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @param AbstractServiceInvoicePosition $serviceInvoicePosition
      * @return ServiceInvoice
      */
-    public function removeServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    public function removeServiceInvoicePosition(AbstractServiceInvoicePosition $serviceInvoicePosition)
     {
         $this->serviceInvoicePositions->removeElement($serviceInvoicePosition);
         return $this;

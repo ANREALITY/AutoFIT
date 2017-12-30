@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use ArrayAccess;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -106,9 +107,9 @@ class FileTransferRequest extends AbstractDataObject
     protected $logicalConnection;
 
     /**
-     * @var ServiceInvoicePosition
+     * @var AbstractServiceInvoicePosition
      *
-     * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
+     * @ORM\ManyToOne(targetEntity="ServiceInvoicePositionBasic")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="service_invoice_position_basic_number", referencedColumnName="number")
      * })
@@ -118,9 +119,9 @@ class FileTransferRequest extends AbstractDataObject
     protected $serviceInvoicePositionBasic;
 
     /**
-     * @var ServiceInvoicePosition
+     * @var AbstractServiceInvoicePosition
      *
-     * @ORM\ManyToOne(targetEntity="ServiceInvoicePosition")
+     * @ORM\ManyToOne(targetEntity="ServiceInvoicePositionPersonal")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="service_invoice_position_personal_number", referencedColumnName="number")
      * })
@@ -130,7 +131,7 @@ class FileTransferRequest extends AbstractDataObject
     protected $serviceInvoicePositionPersonal;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ServiceInvoicePosition", inversedBy="fileTransferRequests")
+     * @ORM\ManyToMany(targetEntity="AbstractServiceInvoicePosition", inversedBy="fileTransferRequests")
      * @ORM\JoinTable(
      *     name="file_transfer_request_service_invoice_position",
      *     joinColumns={
@@ -297,43 +298,53 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePositionBasic
+     * @param AbstractServiceInvoicePosition $serviceInvoicePositionBasic
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionBasic(ServiceInvoicePosition $serviceInvoicePositionBasic = null)
+    public function setServiceInvoicePositionBasic(AbstractServiceInvoicePosition $serviceInvoicePositionBasic = null)
     {
-        $this->serviceInvoicePositionBasic = $serviceInvoicePositionBasic;
-
+        if ($serviceInvoicePositionBasic) {
+            $this->removeServiceInvoicePositionByType(AbstractServiceInvoicePosition::TYPE_BASIC);
+            $this->addServiceInvoicePosition($serviceInvoicePositionBasic);
+        }
         return $this;
     }
 
     /**
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function getServiceInvoicePositionBasic()
     {
-        return $this->serviceInvoicePositionBasic;
+        $serviceInvoicePositionBasic = $this->getFirstInstanceOf(
+            $this->getServiceInvoicePositions(), ServiceInvoicePositionBasic::class
+        );
+        return $serviceInvoicePositionBasic;
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePositionPersonal
+     * @param AbstractServiceInvoicePosition $serviceInvoicePositionPersonal
      *
      * @return FileTransferRequest
      */
-    public function setServiceInvoicePositionPersonal(ServiceInvoicePosition $serviceInvoicePositionPersonal = null)
+    public function setServiceInvoicePositionPersonal(AbstractServiceInvoicePosition $serviceInvoicePositionPersonal = null)
     {
-        $this->serviceInvoicePositionPersonal = $serviceInvoicePositionPersonal;
-
+        if ($serviceInvoicePositionPersonal) {
+            $this->removeServiceInvoicePositionByType(AbstractServiceInvoicePosition::TYPE_PERSONAL);
+            $this->addServiceInvoicePosition($serviceInvoicePositionPersonal);
+        }
         return $this;
     }
 
     /**
-     * @return ServiceInvoicePosition
+     * @return AbstractServiceInvoicePosition
      */
     public function getServiceInvoicePositionPersonal()
     {
-        return $this->serviceInvoicePositionPersonal;
+        $serviceInvoicePositionPersonal = $this->getFirstInstanceOf(
+            $this->getServiceInvoicePositions(), ServiceInvoicePositionPersonal::class
+        );
+        return $serviceInvoicePositionPersonal;
     }
 
     /**
@@ -357,7 +368,7 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition[] $serviceInvoicePositions
+     * @param AbstractServiceInvoicePosition[] $serviceInvoicePositions
      * @return FileTransferRequest
      */
     public function setServiceInvoicePositions($serviceInvoicePositions)
@@ -379,10 +390,10 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @param AbstractServiceInvoicePosition $serviceInvoicePosition
      * @return FileTransferRequest
      */
-    public function addServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    public function addServiceInvoicePosition(AbstractServiceInvoicePosition $serviceInvoicePosition)
     {
         $serviceInvoicePosition->addFileTransferRequest($this);
         $this->serviceInvoicePositions->add($serviceInvoicePosition);
@@ -390,10 +401,10 @@ class FileTransferRequest extends AbstractDataObject
     }
 
     /**
-     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @param AbstractServiceInvoicePosition $serviceInvoicePosition
      * @return FileTransferRequest
      */
-    public function removeServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    public function removeServiceInvoicePosition(AbstractServiceInvoicePosition $serviceInvoicePosition)
     {
         $serviceInvoicePosition->removeFileTransferRequest($this);
         $this->serviceInvoicePositions->removeElement($serviceInvoicePosition);
@@ -403,6 +414,41 @@ class FileTransferRequest extends AbstractDataObject
     public function exchangeArray()
     {
         return get_object_vars($this);
+    }
+
+    /**
+     * Iterates over the given array and
+     * returns the first instance of the given type found.
+     *
+     * @param AbstractServiceInvoicePosition[]|ArrayAccess $list
+     * @param string $className
+     * @return null
+     */
+    protected function getFirstInstanceOf($list, $className)
+    {
+        $return = null;
+        foreach ($list as $element) {
+            if ($element instanceof $className) {
+                $return = $element;
+                break;
+            }
+        }
+        return $return;
+    }
+
+    /**
+     * @param string $typeToRemove
+     */
+    protected function removeServiceInvoicePositionByType(string $typeToRemove)
+    {
+        /** @var AbstractServiceInvoicePosition $serviceInvoicePosition */
+        foreach ($this->serviceInvoicePositions as $serviceInvoicePosition) {
+            if (
+                $serviceInvoicePosition->getType() === $typeToRemove
+            ) {
+                $this->removeServiceInvoicePosition($serviceInvoicePosition);
+            }
+        }
     }
 
 }

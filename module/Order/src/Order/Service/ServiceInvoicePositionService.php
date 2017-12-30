@@ -3,7 +3,7 @@ namespace Order\Service;
 
 use Doctrine\ORM\Query;
 use Order\Mapper\ServiceInvoicePositionMapperInterface;
-use DbSystel\DataObject\ServiceInvoicePosition;
+use DbSystel\DataObject\AbstractServiceInvoicePosition;
 use DbSystel\DataObject\AbstractArticle;
 use DbSystel\DataObject\LogicalConnection;
 use DbSystel\DataObject\ProductType;
@@ -84,7 +84,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * @param int $environmentSeverity
      * @param string $connectionType
      * @param string $articleType
-     * @return array|ServiceInvoicePosition[]
+     * @return array|AbstractServiceInvoicePosition[]
      */
     public function findValidForOrder(
         string $number,
@@ -112,7 +112,7 @@ class ServiceInvoicePositionService extends AbstractService implements ServiceIn
      * {@inheritDoc}
      *
      */
-    public function saveOne(ServiceInvoicePosition $serviceInvoicePosition)
+    public function saveOne(AbstractServiceInvoicePosition $serviceInvoicePosition)
     {
         return $this->mapper->save($serviceInvoicePosition);
     }

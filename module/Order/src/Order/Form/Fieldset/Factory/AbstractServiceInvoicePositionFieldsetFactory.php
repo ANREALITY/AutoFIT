@@ -62,7 +62,7 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $fieldsetName = str_replace(self::NAMESPACE_FIELDSET . '\\', '', $requestedName);
-        $prototypeClassName = preg_replace('/(Basic|Personal)$/i', '', $fieldsetName);
+        $prototypeClassName = $fieldsetName;
         $prototypeQualifiedClassName = self::NAMESPACE_PROTOTYPE . '\\' . $prototypeClassName;
         $fieldsetQualifiedClassName = $requestedName . self::NAME_PART_FIEDLSET;
 
