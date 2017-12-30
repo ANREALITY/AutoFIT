@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -43,11 +44,23 @@ class Application extends AbstractDataObject
     protected $active;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ServiceInvoice", mappedBy="application")
+     */
+    protected $serviceInvoices;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     protected $updated;
+
+    public function __construct()
+    {
+        $this->serviceInvoices = new ArrayCollection();
+    }
 
     /**
      * @param string $technicalShortName
@@ -107,6 +120,45 @@ class Application extends AbstractDataObject
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * @param ArrayCollection $serviceInvoices
+     *
+     * @return Application
+     */
+    public function setServiceInvoices($serviceInvoices)
+    {
+        $this->serviceInvoices = $serviceInvoices;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection $serviceInvoices
+     */
+    public function getServiceInvoices()
+    {
+        return $this->serviceInvoices;
+    }
+
+    /**
+     * @param ServiceInvoice $serviceInvoice
+     * @return Application
+     */
+    public function addServiceInvoice(ServiceInvoice $serviceInvoice)
+    {
+        $this->serviceInvoices->add($serviceInvoice);
+        return $this;
+    }
+
+    /**
+     * @param ServiceInvoice $serviceInvoice
+     * @return Application
+     */
+    public function removeServiceInvoice(ServiceInvoice $serviceInvoice)
+    {
+        $this->serviceInvoices->removeElement($serviceInvoice);
+        return $this;
     }
 
     /**
