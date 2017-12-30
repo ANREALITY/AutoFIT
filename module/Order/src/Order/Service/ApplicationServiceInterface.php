@@ -20,4 +20,10 @@ interface ApplicationServiceInterface
      */
     public function findAllForAutocomplete(string $technicalShortName);
 
+    /**
+     *
+     * @param string $technicalShortName
+     */
+    public function findAllInUseForAutocomplete(string $technicalShortName);
+
 }

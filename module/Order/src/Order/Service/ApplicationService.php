@@ -44,4 +44,25 @@ class ApplicationService extends AbstractService implements ApplicationServiceIn
         );
     }
 
+    /**
+     *
+     * {@inheritDoc}
+     *
+     */
+    public function findAllInUseForAutocomplete(string $technicalShortName)
+    {
+        return $this->mapper->findAll(
+            [
+                [
+                    'technical_short_name' => $technicalShortName,
+                    'active' => true,
+                    'with_invoice_positions_only' => false,
+                    'is_in_use' => true,
+                ]
+            ],
+            AbstractMapper::DEFAULT_QUERY_LIMIT,
+            Query::HYDRATE_ARRAY
+        );
+    }
+
 }
