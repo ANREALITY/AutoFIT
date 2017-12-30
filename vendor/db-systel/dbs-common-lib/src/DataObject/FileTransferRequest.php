@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -127,6 +128,24 @@ class FileTransferRequest extends AbstractDataObject
      * @Groups({"export"})
      */
     protected $serviceInvoicePositionPersonal;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ServiceInvoicePosition", inversedBy="fileTransferRequests")
+     * @ORM\JoinTable(
+     *     name="file_transfer_request_service_invoice_position",
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="file_Transfer_request_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="service_invoice_position_number", referencedColumnName="number")
+     *     }
+     * )
+     */
+    protected $serviceInvoicePositions;
+
+    public function __construct() {
+        $this->serviceInvoicePositions = new ArrayCollection();
+    }
 
     /**
      * @var User
@@ -335,6 +354,50 @@ class FileTransferRequest extends AbstractDataObject
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @param ServiceInvoicePosition[] $serviceInvoicePositions
+     * @return FileTransferRequest
+     */
+    public function setServiceInvoicePositions($serviceInvoicePositions)
+    {
+        $this->serviceInvoicePositions = new ArrayCollection([]);
+        /** @var AbstractEndpoint $endpoint */
+        foreach ($serviceInvoicePositions as $serviceInvoicePosition) {
+            $this->addServiceInvoicePosition($serviceInvoicePosition);
+        }
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection $serviceInvoicePositions
+     */
+    public function getServiceInvoicePositions()
+    {
+        return $this->serviceInvoicePositions;
+    }
+
+    /**
+     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @return FileTransferRequest
+     */
+    public function addServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    {
+        $serviceInvoicePosition->addFileTransferRequest($this);
+        $this->serviceInvoicePositions->add($serviceInvoicePosition);
+        return $this;
+    }
+
+    /**
+     * @param ServiceInvoicePosition $serviceInvoicePosition
+     * @return FileTransferRequest
+     */
+    public function removeServiceInvoicePosition(ServiceInvoicePosition $serviceInvoicePosition)
+    {
+        $serviceInvoicePosition->removeFileTransferRequest($this);
+        $this->serviceInvoicePositions->removeElement($serviceInvoicePosition);
+        return $this;
     }
 
     public function exchangeArray()

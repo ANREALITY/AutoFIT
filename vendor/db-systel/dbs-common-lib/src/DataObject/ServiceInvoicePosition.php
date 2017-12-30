@@ -1,6 +1,7 @@
 <?php
 namespace DbSystel\DataObject;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -95,11 +96,20 @@ class ServiceInvoicePosition extends AbstractDataObject
     protected $article;
 
     /**
+     * @ORM\ManyToMany(targetEntity="FileTransferRequest", mappedBy="serviceInvoicePositions")
+     */
+    private $fileTransferRequests;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     protected $updated;
+
+    public function __construct() {
+        $this->fileTransferRequests = new ArrayCollection();
+    }
 
     /**
      * @param string $number
@@ -213,6 +223,48 @@ class ServiceInvoicePosition extends AbstractDataObject
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * @param FileTransferRequest[] $fileTransferRequests
+     * @return ServiceInvoicePosition
+     */
+    public function setFileTransferRequests($fileTransferRequests)
+    {
+        $this->fileTransferRequests = new ArrayCollection([]);
+        /** @var AbstractEndpoint $endpoint */
+        foreach ($fileTransferRequests as $fileTransferRequest) {
+            $this->addFileTransferRequest($fileTransferRequest);
+        }
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection $fileTransferRequests
+     */
+    public function getFileTransferRequests()
+    {
+        return $this->fileTransferRequests;
+    }
+
+    /**
+     * @param FileTransferRequest $fileTransferRequest
+     * @return ServiceInvoicePosition
+     */
+    public function addFileTransferRequest(FileTransferRequest $fileTransferRequest)
+    {
+        $this->fileTransferRequests->add($fileTransferRequest);
+        return $this;
+    }
+
+    /**
+     * @param FileTransferRequest $fileTransferRequest
+     * @return ServiceInvoicePosition
+     */
+    public function removeFileTransferRequest(FileTransferRequest $fileTransferRequest)
+    {
+        $this->fileTransferRequests->removeElement($fileTransferRequest);
+        return $this;
     }
 
     /**
