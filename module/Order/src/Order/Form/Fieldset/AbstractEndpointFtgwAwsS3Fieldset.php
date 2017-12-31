@@ -67,7 +67,7 @@ abstract class AbstractEndpointFtgwAwsS3Fieldset extends AbstractEndpointFieldse
 
     protected function getConcreteType()
     {
-        return AbstractEndpoint::TYPE_FTGW_CD_AS400;
+        return AbstractEndpoint::TYPE_FTGW_AWS_S3;
     }
 
 }
