@@ -435,6 +435,8 @@ return [
             'Order\Form\Fieldset\EndpointFtgwCdTandemTarget' => false,
             'Order\Form\Fieldset\EndpointFtgwCdAs400Source' => false,
             'Order\Form\Fieldset\EndpointFtgwCdAs400Target' => false,
+            'Order\Form\Fieldset\EndpointFtgwAwsS3Source' => false,
+            'Order\Form\Fieldset\EndpointFtgwAwsS3Target' => false,
             'Order\Form\Fieldset\EndpointServerConfig' => false,
             'Order\Form\Fieldset\Environment' => false,
             'Order\Form\Fieldset\ExternalServer' => false,
