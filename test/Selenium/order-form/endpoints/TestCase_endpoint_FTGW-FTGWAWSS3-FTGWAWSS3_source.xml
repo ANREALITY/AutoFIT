@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="null" />
+<title>FTGW-FTGWAWSS3-FTGWAWSS3</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">FTGW-FTGWAWSS3-FTGWAWSS3</td></tr>
+</thead><tbody>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][contact_person]</td>
+		<td>Howard Rockerduck</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][application][technical_short_name]</td>
+		<td>KM-SPI</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][server][name]</td>
+		<td>s3.amazonaws.com</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][endpoint_server_config][dns_address]</td>
+		<td>dnsaddresssource</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][bucket_name]</td>
+		<td>bucketsource</td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>name=file_transfer_request[logical_connection][physical_connection_end_to_middle][endpoint_source][folder]</td>
+		<td>/path/to/folder/source</td>
+	</tr>
+</tbody></table>
+</body>
+</html>
