@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-17 15:01+0100\n"
-"PO-Revision-Date: 2017-12-17 15:02+0100\n"
+"POT-Creation-Date: 2017-12-31 15:37+0100\n"
+"PO-Revision-Date: 2017-12-31 15:37+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -90,8 +90,8 @@ msgstr "alle Ressource-Typen"
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:63
 #: module/Order/src/Order/Form/Fieldset/ClusterCreateFieldset.php:37
 #: module/MasterData/view/master-data/overview/show.phtml:35
-#: module/Order/view/partials/list/summary.phtml:162
-#: module/Order/view/partials/list/summary.phtml:198
+#: module/Order/view/partials/list/summary.phtml:183
+#: module/Order/view/partials/list/summary.phtml:225
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:76
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:51
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:76
@@ -197,6 +197,7 @@ msgid "Windows"
 msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsFieldset.php:28
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwAwsS3Fieldset.php:43
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwLinuxUnixFieldset.php:44
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/EndpointCdAs400TargetFieldset.php:25
@@ -207,8 +208,8 @@ msgstr ""
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdTandemTargetFieldset.php:25
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:26
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerTargetFieldset.php:25
-#: module/Order/view/partials/list/summary.phtml:185
-#: module/Order/view/partials/list/summary.phtml:221
+#: module/Order/view/partials/list/summary.phtml:206
+#: module/Order/view/partials/list/summary.phtml:248
 #: module/Order/view/partials/order-parts/endpoints/cd/cdas400-target.phtml:25
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:63
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-target.phtml:46
@@ -217,6 +218,8 @@ msgstr ""
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:28
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:70
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:53
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-source.phtml:25
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-target.phtml:25
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-target.phtml:25
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:25
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwlinuxunix-source.phtml:63
@@ -237,6 +240,8 @@ msgstr ""
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointCdWindowsShareFieldset.php:28
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwWindowsShareFieldset.php:28
+#: module/Order/view/partials/list/summary.phtml:212
+#: module/Order/view/partials/list/summary.phtml:254
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:66
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:49
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwwindowsshare-source.phtml:66
@@ -275,6 +280,16 @@ msgstr "intern"
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:81
 msgid "external"
 msgstr "extern"
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwAwsS3Fieldset.php:15
+msgid "AWS S3"
+msgstr ""
+
+#: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwAwsS3Fieldset.php:27
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-source.phtml:21
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-target.phtml:21
+msgid "bucket name"
+msgstr "Bucketname"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:16
 msgid "ProtocolServer"
@@ -416,7 +431,7 @@ msgid "add an access config"
 msgstr "Zugriffseinstellungssatz hinzufügen"
 
 #: module/Order/src/Order/Form/Fieldset/ApplicationFieldset.php:38
-#: module/Order/view/partials/list/summary.phtml:143
+#: module/Order/view/partials/list/summary.phtml:164
 #: module/Order/view/partials/order-parts/billing.phtml:16
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:23
 #: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:23
@@ -536,6 +551,18 @@ msgstr ""
 msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
 
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwAwsS3SourceFieldset.php:13
+#, fuzzy
+#| msgid "Source - AS400"
+msgid "Source - AWS S3"
+msgstr "Quellsystem - AS400"
+
+#: module/Order/src/Order/Form/Fieldset/EndpointFtgwAwsS3TargetFieldset.php:13
+#, fuzzy
+#| msgid "Target - AS400"
+msgid "Target - AWS S3"
+msgstr "Zielsystem - AS400"
+
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:14
 msgid "Source - ProtocolServer"
 msgstr ""
@@ -554,14 +581,14 @@ msgstr "Zielsystem - Self-Service"
 
 #: module/Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:36
 #: module/Order/src/Order/Form/Fieldset/EnvironmentFieldset.php:48
-#: module/Order/view/partials/list/summary.phtml:147
+#: module/Order/view/partials/list/summary.phtml:168
 #: module/Order/view/partials/order-parts/billing.phtml:23
 msgid "environment"
 msgstr "Umgebung"
 
 #: module/Order/src/Order/Form/Fieldset/ExternalServerFieldset.php:22
-#: module/Order/view/partials/list/summary.phtml:179
-#: module/Order/view/partials/list/summary.phtml:215
+#: module/Order/view/partials/list/summary.phtml:200
+#: module/Order/view/partials/list/summary.phtml:242
 #: module/Order/view/partials/order-parts/endpoints/basic-source.phtml:47
 #: module/Order/view/partials/order-parts/endpoints/basic-target.phtml:47
 msgid "external server"
@@ -661,6 +688,12 @@ msgstr "zwischenpeichern"
 #: module/Order/src/Order/Form/OrderSearch/Fieldset/FilterFieldset.php:67
 msgid "application according to the SI"
 msgstr "Verfahren gemäß LS"
+
+#: module/Order/src/Order/Form/OrderSearch/Fieldset/ServerCommonFieldset.php:13
+#: module/Order/view/partials/list/summary.phtml:194
+#: module/Order/view/partials/list/summary.phtml:236
+msgid "server"
+msgstr "Server"
 
 #: module/Order/src/Order/Form/OrderSearch/Fieldset/SortFieldset.php:18
 msgid "date of the ordering"
@@ -1099,8 +1132,8 @@ msgstr "fertiggestellt"
 msgid "Protocol Server"
 msgstr "Protokoll-Server"
 
-#: module/Order/view/order/process/create.phtml:224
-#: module/Order/view/order/process/edit.phtml:251
+#: module/Order/view/order/process/create.phtml:225
+#: module/Order/view/order/process/edit.phtml:252
 #, php-format
 msgid "The fields marked with %s are mandatory."
 msgstr "Die mit %s markierten Felder sind Pflicht-Felder."
@@ -1254,6 +1287,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindows-source.phtml:7
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-source.phtml:7
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdzos-source.phtml:4
+#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwawss3-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdas400-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-source.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-source.phtml:4
@@ -1268,6 +1302,7 @@ msgstr "Zielsystem (Grundeinstellungen)"
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-source.phtml:38
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-source.phtml:59
 #: module/Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:20
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-source.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-source.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-source.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-source.phtml:20
@@ -1285,6 +1320,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindows-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdwindowsshare-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/cd/cdzos-target.phtml:4
+#: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwawss3-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdas400-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdtandem-target.phtml:4
 #: module/Order/view/partials/fieldgroups/endpoints/ftgw/ftgwcdzos-target.phtml:4
@@ -1299,6 +1335,7 @@ msgstr "Quellsystem (spezifische Einstellungen)"
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindows-target.phtml:21
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:42
 #: module/Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:56
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-target.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-target.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-target.phtml:14
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdzos-target.phtml:56
@@ -1469,14 +1506,9 @@ msgstr "Dateiname / -muster"
 msgid "Input without the prefix \"%s\"."
 msgstr "Eingabe ohne das Präfix \"%s\"."
 
-#: module/Order/view/partials/list/summary.phtml:151
+#: module/Order/view/partials/list/summary.phtml:172
 msgid "creator"
 msgstr "Ersteller"
-
-#: module/Order/view/partials/list/summary.phtml:173
-#: module/Order/view/partials/list/summary.phtml:209
-msgid "server"
-msgstr "Server"
 
 #: module/Order/view/partials/order-buttons/buttons.phtml:12
 msgid "start editing"
@@ -1575,6 +1607,8 @@ msgstr "Server-DNS-Adresse"
 #: module/Order/view/partials/order-parts/endpoints/cd/cdwindowsshare-target.phtml:45
 #: module/Order/view/partials/order-parts/endpoints/cd/cdzos-source.phtml:23
 #: module/Order/view/partials/order-parts/endpoints/cd/cdzos-target.phtml:59
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-source.phtml:17
+#: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwawss3-target.phtml:17
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-source.phtml:17
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdas400-target.phtml:17
 #: module/Order/view/partials/order-parts/endpoints/ftgw/ftgwcdtandem-source.phtml:17
@@ -1634,13 +1668,13 @@ msgid "status"
 msgstr "Status"
 
 #: module/Order/view/partials/start/cd.phtml:13
-#: module/Order/view/partials/start/ftgw.phtml:15
+#: module/Order/view/partials/start/ftgw.phtml:16
 #, php-format
 msgid "You chose file transfer interface via %s."
 msgstr "Sie haben sich für eine Filetransfer-Schnittstelle per %s entschieden."
 
 #: module/Order/view/partials/start/cd.phtml:14
-#: module/Order/view/partials/start/ftgw.phtml:16
+#: module/Order/view/partials/start/ftgw.phtml:17
 msgid ""
 "Please choose now the operating system plattform of the data source and of "
 "the file transfer target:"
@@ -1650,29 +1684,34 @@ msgstr ""
 
 #: module/Order/view/partials/start/cd.phtml:18
 #: module/Order/view/partials/start/cd.phtml:22
-#: module/Order/view/partials/start/ftgw.phtml:20
-#: module/Order/view/partials/start/ftgw.phtml:24
+#: module/Order/view/partials/start/ftgw.phtml:21
+#: module/Order/view/partials/start/ftgw.phtml:25
 msgid "source"
 msgstr "Quellsystem"
 
 #: module/Order/view/partials/start/cd.phtml:31
 #: module/Order/view/partials/start/cd.phtml:35
-#: module/Order/view/partials/start/ftgw.phtml:33
-#: module/Order/view/partials/start/ftgw.phtml:37
+#: module/Order/view/partials/start/ftgw.phtml:34
+#: module/Order/view/partials/start/ftgw.phtml:38
 msgid "target"
 msgstr "Zielsystem"
 
 #: module/Order/view/partials/start/cd.phtml:45
-#: module/Order/view/partials/start/ftgw.phtml:47
+#: module/Order/view/partials/start/ftgw.phtml:48
 msgid "to the order"
 msgstr "zur Bestellung"
 
 #: module/Order/view/partials/start/cd.phtml:51
-#: module/Order/view/partials/start/ftgw.phtml:53
+#: module/Order/view/partials/start/ftgw.phtml:54
 #, php-format
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
 "Musterchanges zum Beantragen von %s-Filetransfer-Schnittstellen im PSC:"
+
+#, fuzzy
+#~| msgid "username"
+#~ msgid "bucket_name"
+#~ msgstr "Benutzername"
 
 #~ msgid "my orders"
 #~ msgstr "Meine Bestellungen"
