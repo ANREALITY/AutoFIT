@@ -35,7 +35,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "FtgwLinuxUnix" = "EndpointFtgwLinuxUnix",
  *     "FtgwCdZos" = "EndpointFtgwCdZos",
  *     "FtgwCdTandem" = "EndpointFtgwCdTandem",
- *     "FtgwCdAs400" = "EndpointFtgwCdAs400"
+ *     "FtgwCdAs400" = "EndpointFtgwCdAs400",
+ *     "FtgwAwsS3" = "EndpointFtgwAwsS3"
  * })
  */
 abstract class AbstractEndpoint extends AbstractDataObject
@@ -69,6 +70,8 @@ abstract class AbstractEndpoint extends AbstractDataObject
     const TYPE_FTGW_CD_TANDEM = 'FtgwCdTandem';
     /** @var string */
     const TYPE_FTGW_CD_AS400 = 'FtgwCdAs400';
+    /** @var string */
+    const TYPE_FTGW_AWS_S3 = 'FtgwAwsS3';
 
     /** @var string */
     const ROLE_SOURCE = 'source';
