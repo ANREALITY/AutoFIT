@@ -10,6 +10,8 @@ class ServerCommonFieldset extends AbstractServerFieldset
     {
         parent::init();
 
+        $this->get('name')->setLabel(_('server'));
+
         $this->get('name')->setLabelAttributes([
             'class' => 'col-md-4'
         ]);
