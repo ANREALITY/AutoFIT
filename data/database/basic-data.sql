@@ -31,7 +31,8 @@ insert  into `endpoint_type`(`id`,`name`,`label`) values
 (13,'FtgwCdWindows','FTGW CD Windows'),
 (14,'FtgwCdTandem','FTGW CD Tandem'),
 (15,'FtgwCdAs400','FTGW CD AS400'),
-(16,'FtgwCdZos','FTGW CD ZOS');
+(16,'FtgwCdZos','FTGW CD ZOS'),
+(17,'FtgwAwsS3','FTGW AWS S3');
 
 /*Data for the table `endpoint_type_server_type` */
 
@@ -52,7 +53,8 @@ insert  into `endpoint_type_server_type`(`server_type_id`,`endpoint_type_id`) va
 (6,10),
 (6,12),
 (7,4),
-(7,8);
+(7,8),
+(8,17);
 
 /*Data for the table `environment` */
 
@@ -79,7 +81,8 @@ insert  into `server_type`(`id`,`name`) values
 (3,'tandem'),
 (6,'unix'),
 (4,'windows'),
-(7,'windowsshare');
+(7,'windowsshare'),
+(8,'awss3bucket');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

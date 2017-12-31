@@ -981,6 +981,22 @@ CREATE TABLE IF NOT EXISTS `endpoint_ftgw_cd_as400` (
 
 
 -- -----------------------------------------------------
+-- Table `endpoint_ftgw_aws_s3`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `endpoint_ftgw_aws_s3` (
+  `id` INT UNSIGNED NOT NULL,
+  `bucket_name` VARCHAR(50) NULL,
+  `folder` VARCHAR(200) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_endpoint_ftgw_aws_s3_endpoint`
+  FOREIGN KEY (`id`)
+  REFERENCES `endpoint` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `audit_log`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `audit_log` (
