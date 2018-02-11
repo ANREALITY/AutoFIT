@@ -367,6 +367,34 @@ class CreateOrderTest extends AbstractOrderManipulationTest
         );
     }
 
+    protected function assertEndpointFtgwAwsS3Source(array $createParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_aws_s3', 'id', 1);
+
+        $this->assertEquals(
+            $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['bucket_name'],
+            $actualData['bucket_name']
+        );
+        $this->assertEquals(
+            $createParams['file_transfer_request']['logical_connection']['physical_connection_end_to_middle']['endpoint_source']['folder'],
+            $actualData['folder']
+        );
+    }
+
+    protected function assertEndpointFtgwAwsS3Target(array $createParams)
+    {
+        $actualData = $this->retrieveActualData('endpoint_ftgw_aws_s3', 'id', 2);
+
+        $this->assertEquals(
+            $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['bucket_name'],
+            $actualData['bucket_name']
+        );
+        $this->assertEquals(
+            $createParams['file_transfer_request']['logical_connection']['physical_connection_middle_to_end']['endpoint_target']['folder'],
+            $actualData['folder']
+        );
+    }
+
     protected function assertEndpointFtgwCdAs400Source(array $createParams)
     {
         $actualData = $this->retrieveActualData('endpoint_ftgw_cd_as400', 'id', 1);
@@ -637,6 +665,10 @@ class CreateOrderTest extends AbstractOrderManipulationTest
             [
                 'connectionTypeLabel' => 'Cd',
                 'endpointSourceTypeLabel' => 'CdZos',
+            ],
+            [
+                'connectionTypeLabel' => 'Ftgw',
+                'endpointSourceTypeLabel' => 'FtgwAwsS3',
             ],
             [
                 'connectionTypeLabel' => 'Ftgw',
