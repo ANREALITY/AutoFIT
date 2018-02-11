@@ -32,3 +32,4 @@ INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_na
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('wincdabn.tech.rz.db.de', 1, '2017-03-23 09:26:31', NULL, NULL, 7, NULL);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('wincdprd', 0, '2016-11-10 09:53:32', NULL, NULL, 7, NULL);
 INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('wincdprd.tech.rz.db.de', 1, '2017-03-23 09:26:31', NULL, NULL, 7, NULL);
+INSERT INTO `server` (`name`, `active`, `updated`, `node_name`, `virtual_node_name`, `server_type_id`, `cluster_id`) VALUES ('s3.amazonaws.com', 1, '2017-03-23 09:26:31', NULL, NULL, 8, NULL);

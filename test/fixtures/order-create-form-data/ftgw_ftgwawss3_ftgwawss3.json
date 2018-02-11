@@ -37,7 +37,7 @@
           "external_server":{
             "name":""
           },
-          "type":"FtgwCdAs400",
+          "type":"FtgwAwsS3",
           "bucket_name":"bucketsource",
           "folder":"/path/to/folder/source"
         },
@@ -64,7 +64,7 @@
           "external_server":{
             "name":""
           },
-          "type":"FtgwCdAs400",
+          "type":"FtgwAwsS3",
           "bucket_name":"buckettarget",
           "folder":"/path/to/folder/target"
         },
