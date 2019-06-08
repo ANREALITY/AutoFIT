@@ -13,7 +13,8 @@
         "phpunit/dbunit": "^3.0",
         "doctrine/doctrine-orm-module": "^1.1",
         "symfony/serializer": "^3.3",
-        "symfony/property-access": "^3.3"
+        "symfony/property-access": "^3.3",
+        "ext-PDO": "^7.2"
     },
     "require-dev": {
     },
