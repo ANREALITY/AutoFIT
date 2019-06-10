@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `external_server` (
 CREATE TABLE IF NOT EXISTS `endpoint` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `role` ENUM('source', 'target') NULL,
-  `type` ENUM('CdAs400', 'CdTandem', 'CdLinuxUnix', 'CdWindows', 'CdWindowsShare', 'CdZos', 'FtgwLinuxUnix', 'FtgwWindows', 'FtgwWindowsShare', 'FtgwSelfService', 'FtgwProtocolServer', 'FtgwCdZos', 'FtgwCdTandem', 'FtgwCdAs400') NULL,
+  `type` ENUM('CdAs400', 'CdTandem', 'CdLinuxUnix', 'CdWindows', 'CdWindowsShare', 'CdZos', 'FtgwLinuxUnix', 'FtgwWindows', 'FtgwWindowsShare', 'FtgwSelfService', 'FtgwProtocolServer', 'FtgwCdZos', 'FtgwCdTandem', 'FtgwCdAs400', 'FtgwAwsS3') NULL,
   `server_place` ENUM('internal', 'external') NULL,
   `contact_person` VARCHAR(500) NULL,
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
