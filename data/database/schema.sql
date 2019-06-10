@@ -365,8 +365,8 @@ CREATE INDEX `fk_file_transfer_request_user_idx` ON `file_transfer_request` (`us
 -- Table `file_transfer_request_service_invoice_position`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `file_transfer_request_service_invoice_position` (
-  `file_transfer_request_id` INT UNSIGNED NULL,
-  `service_invoice_position_number` CHAR(12) NULL,
+  `file_transfer_request_id` INT UNSIGNED NOT NULL,
+  `service_invoice_position_number` CHAR(12) NOT NULL,
   PRIMARY KEY (`file_transfer_request_id`, `service_invoice_position_number`),
   CONSTRAINT `fk_file_transfer_request_service_invoice_position_ftr`
   FOREIGN KEY (`file_transfer_request_id`)
