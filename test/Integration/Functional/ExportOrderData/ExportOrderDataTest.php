@@ -2,6 +2,7 @@
 namespace Test\Integration\Functional\ExportOrderData;
 
 use DbSystel\DataExport\DataExporter;
+use Exception;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Test\Integration\Functional\OrderManipulation\AbstractOrderManipulationTest;
 use Zend\Http\PhpEnvironment\Response;
@@ -12,6 +13,7 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
 
     /**
      * @param string $format
+     * @throws Exception
      * @dataProvider provideDataOfFormats
      */
     public function testExportJson(string $format)
@@ -47,6 +49,7 @@ class ExportOrderDataTest extends AbstractOrderRelatedTest
 
     /**
      * @param string $format
+     * @throws Exception
      * @dataProvider provideDataOfFormats
      */
     public function testAccessDeniedForNonAdmin(string $format)
