@@ -3,6 +3,7 @@ namespace DbSystel\Test;
 
 use PDO;
 use Mysqli;
+use PHPUnit\DbUnit\Database\DefaultConnection;
 
 /**
  * Class DatabaseInitializer
@@ -12,10 +13,8 @@ use Mysqli;
 class DatabaseInitializer
 {
 
-    /**
-     * @var PDO
-     */
-    private $pdo;
+    use DatabaseConnectionTrait;
+
     /**
      * @var Mysqli
      */
@@ -24,25 +23,21 @@ class DatabaseInitializer
      * @var string
      */
     private $database;
-    /**
-     * @var array
-     */
-    private $dbConfigs;
 
     public function __construct(array $dbConfigs)
     {
         $this->database = $dbConfigs['database'];
-        $this->dbConfigs = $dbConfigs;
+        self::$dbConfigs = $dbConfigs;
     }
 
     public function setUp()
     {
-        $schemaSql = file_get_contents($this->dbConfigs['scripts']['schema']);
-        $storedProceduresSql = file_get_contents($this->dbConfigs['scripts']['stored-procedures']);
-        $basicDataSql = file_get_contents($this->dbConfigs['scripts']['basic-data']);
+        $schemaSql = file_get_contents(self::$dbConfigs['scripts']['schema']);
+        $storedProceduresSql = file_get_contents(self::$dbConfigs['scripts']['stored-procedures']);
+        $basicDataSql = file_get_contents(self::$dbConfigs['scripts']['basic-data']);
         $testDataSqlSet = array_map(function ($sqlFile) {
             return file_get_contents($sqlFile);
-        }, $this->dbConfigs['scripts']['test-data']);
+        }, self::$dbConfigs['scripts']['test-data']);
 
         $this->dropDatabase();
         $this->createDatabase();
@@ -55,7 +50,7 @@ class DatabaseInitializer
 
     public function tearDown()
     {
-        $this->pdo = null;
+        self::$pdo = null;
     }
 
     protected function createDatabase()
@@ -96,16 +91,24 @@ class DatabaseInitializer
         $this->getDatabaseConnection()->exec('DROP DATABASE IF EXISTS ' . $this->database . ';');
     }
 
-    protected function getDatabaseConnection() {
-
-        $this->pdo = $this->pdo ?: new PDO(
-            $this->dbConfigs['dsn'],
-            $this->dbConfigs['username'],
-            $this->dbConfigs['password'],
-            [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'']
-        );
-
-        return $this->pdo;
+    protected function getDatabaseConnection()
+    {
+        return $this->getConnection()->getConnection();
     }
 
+    /**
+     * Creates a new DefaultDatabaseConnection using the given PDO connection
+     * and database schema name.
+     *
+     * @see The original PHPUnit\DbUnit\TestCaseTrait#createDefaultDBConnection(...).
+     *
+     * @param PDO    $connection
+     * @param string $schema
+     *
+     * @return DefaultConnection
+     */
+    protected function createDefaultDBConnection(PDO $connection, $schema = '')
+    {
+        return new DefaultConnection($connection, $schema);
+    }
 }
