@@ -1,10 +1,6 @@
 <?php
 namespace DbSystel\Test;
 
-use PDO;
-use Mysqli;
-use PHPUnit\DbUnit\Database\DefaultConnection;
-
 /**
  * Class DatabaseInitializer
  *
@@ -15,10 +11,6 @@ class DatabaseInitializer
 
     use DatabaseConnectionTrait;
 
-    /**
-     * @var Mysqli
-     */
-    private $mysqli;
     /**
      * @var string
      */
