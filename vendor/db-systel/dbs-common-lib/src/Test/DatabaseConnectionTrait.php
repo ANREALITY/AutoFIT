@@ -3,6 +3,7 @@ namespace DbSystel\Test;
 
 use PDO;
 use PHPUnit\DbUnit\Database\Connection;
+use PHPUnit\DbUnit\Database\DefaultConnection;
 use PHPUnit\DbUnit\InvalidArgumentException;
 
 trait DatabaseConnectionTrait
@@ -56,6 +57,20 @@ trait DatabaseConnectionTrait
         self::$dbConfigs = $dbConfigs;
     }
 
-    abstract protected function createDefaultDBConnection(PDO $connection, $schema = '');
+    /**
+     * Creates a new DefaultDatabaseConnection using the given PDO connection
+     * and database schema name.
+     *
+     * @see The original PHPUnit\DbUnit\TestCaseTrait#createDefaultDBConnection(...).
+     *
+     * @param PDO    $connection
+     * @param string $schema
+     *
+     * @return DefaultConnection
+     */
+    protected function createDefaultDBConnection(PDO $connection, $schema = '')
+    {
+        return new DefaultConnection($connection, $schema);
+    }
 
 }

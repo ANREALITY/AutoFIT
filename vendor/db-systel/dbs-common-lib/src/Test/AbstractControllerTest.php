@@ -38,22 +38,6 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
         $this->entityManager = $this->getApplicationServiceLocator()->get('doctrine.entitymanager.orm_default');
     }
 
-    /**
-     * Creates a new DefaultDatabaseConnection using the given PDO connection
-     * and database schema name.
-     *
-     * @see The original PHPUnit\DbUnit\TestCaseTrait#createDefaultDBConnection(...).
-     *
-     * @param PDO    $connection
-     * @param string $schema
-     *
-     * @return DefaultConnection
-     */
-    protected function createDefaultDBConnection(PDO $connection, $schema = '')
-    {
-        return new DefaultConnection($connection, $schema);
-    }
-
     public static function setApplicationConfigPath(string $applicationConfigPath)
     {
         self::$applicationConfigPath = $applicationConfigPath;

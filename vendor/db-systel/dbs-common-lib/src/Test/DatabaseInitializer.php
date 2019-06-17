@@ -95,20 +95,4 @@ class DatabaseInitializer
     {
         return $this->getConnection()->getConnection();
     }
-
-    /**
-     * Creates a new DefaultDatabaseConnection using the given PDO connection
-     * and database schema name.
-     *
-     * @see The original PHPUnit\DbUnit\TestCaseTrait#createDefaultDBConnection(...).
-     *
-     * @param PDO    $connection
-     * @param string $schema
-     *
-     * @return DefaultConnection
-     */
-    protected function createDefaultDBConnection(PDO $connection, $schema = '')
-    {
-        return new DefaultConnection($connection, $schema);
-    }
 }
