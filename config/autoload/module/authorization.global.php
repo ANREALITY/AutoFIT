@@ -4,15 +4,15 @@ return [
         'roles' => [
             'guest' => null,
             'member' => 'guest',
-            'admin' => 'member'
+            'admin' => 'member',
         ],
         'resources' => [
             'allow' => [
                 'Application\Controller\Index' => [
-                    'all' => 'guest'
+                    'all' => 'guest',
                 ],
                 'Application\Controller\Error' => [
-                    'all' => 'guest'
+                    'all' => 'guest',
                 ],
                 'Order\Controller\Process' => [
                     'index' => 'member',
@@ -20,19 +20,19 @@ return [
                     'create' => 'member',
                     'startEditing' => [
                         'admin' => 'UserIsOwner',
-                        'member' => 'UserIsOwner'
+                        'member' => 'UserIsOwner',
                     ],
                     'edit' => [
                         'admin' => 'UserIsOwner',
-                        'member' => 'UserIsOwner'
+                        'member' => 'UserIsOwner',
                     ],
                     'submit' => [
                         'admin' => 'UserIsOwner',
-                        'member' => 'UserIsOwner'
+                        'member' => 'UserIsOwner',
                     ],
                     'cancel' => [
                         'admin' => 'UserIsOwner',
-                        'member' => 'UserIsOwner'
+                        'member' => 'UserIsOwner',
                     ],
                     'accept' => 'admin',
                     'decline' => 'admin',
@@ -47,7 +47,7 @@ return [
                     'completed' => 'admin',
                     'showOrder' => [
                         'admin' => null,
-                        'member' => null
+                        'member' => null,
                     ],
                     'exportOrder' => 'admin',
                     'syncInProgress' => 'member',
@@ -57,35 +57,35 @@ return [
                     'noDraftAvailable' => 'member',
                 ],
                 'Order\Controller\Ajax' => [
-                    'all' => 'guest'
+                    'all' => 'guest',
                 ],
                 'MasterData\Controller\Index' => [
-                    'all' => 'member'
+                    'all' => 'member',
                 ],
                 'MasterData\Controller\Server' => [
-                    'all' => 'member'
+                    'all' => 'member',
                 ],
                 'MasterData\Controller\Cluster' => [
-                    'all' => 'member'
+                    'all' => 'member',
                 ],
                 'MasterData\Controller\Overview' => [
-                    'all' => 'member'
+                    'all' => 'member',
                 ],
                 'MasterData\Controller\Ajax' => [
-                    'all' => 'member'
+                    'all' => 'member',
                 ],
                 'AuditLogging\Controller\Index' => [
-                    'all' => 'admin'
+                    'all' => 'admin',
                 ],
                 'AuditLogging\Controller\Ajax' => [
-                    'all' => 'admin'
+                    'all' => 'admin',
                 ],
             ]
         ],
         'redirect_route' => [
             'params' => [],
             'options' => [
-                'name' => 'error403'
+                'name' => 'error403',
             ]
         ]
     ]
