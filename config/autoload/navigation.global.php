@@ -14,12 +14,12 @@ return [
                 'label' => _('my orders'),
                 'route' => 'order/list-own',
             ],
+        ],
+        'admin' => [
             [
                 'label' => _('orders'),
                 'route' => 'order/list',
             ],
-        ],
-        'admin' => [
             [
                 'label' => _('audit log'),
                 'route' => 'audit-logging/list',
