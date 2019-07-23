@@ -10,6 +10,10 @@ return [
                 'label' => _('master data'),
                 'route' => 'master-data',
             ],
+            'order/list-own' => [
+                'label' => _('my orders'),
+                'route' => 'order/list-own',
+            ],
             [
                 'label' => _('orders'),
                 'route' => 'order/list',

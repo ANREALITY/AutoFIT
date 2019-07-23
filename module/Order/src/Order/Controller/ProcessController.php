@@ -520,6 +520,39 @@ class ProcessController extends AbstractActionController
         ]);
     }
 
+    public function listMyOrdersAction()
+    {
+        $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
+        $criteria = is_array($this->params()->fromQuery('filter')) ? $this->params()->fromQuery('filter') : [];
+        $criteria['username'] = $this->IdentityParam('username');
+        $criteria['environment_severity'] = isset($criteria['environment']['severity'])
+            ? $criteria['environment']['severity']
+            : null
+        ;
+        unset($criteria['environment']);
+        $criteria['server_name'] = isset($criteria['server']['name'])
+            ? $criteria['server']['name']
+            : null
+        ;
+        unset($criteria['server']);
+        $sorting = is_array($this->params()->fromQuery('sort')) ? $this->params()->fromQuery('sort') : [];
+        $paginator = $this->fileTransferRequestService->findAll($criteria, $page, $sorting);
+
+        $this->orderSearchForm->setData($this->getRequest()->getQuery());
+
+        $queryParams = $this->params()->fromQuery();
+        unset($queryParams['submit']);
+        $queryParams['filter']['username'] = $this->IdentityParam('username');
+
+        return new ViewModel([
+            'userId' => $this->IdentityParam('id'),
+            'userRole' => $this->IdentityParam('role'),
+            'paginator' => $paginator,
+            'query' => $queryParams,
+            'form' => $this->orderSearchForm,
+        ]);
+    }
+
     public function listOrdersAction()
     {
         $page = $this->params()->fromQuery('submit') === null ? $this->params()->fromRoute('page') : 1;
