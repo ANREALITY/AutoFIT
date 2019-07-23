@@ -47,7 +47,7 @@ return [
                     'completed' => 'admin',
                     'showOrder' => [
                         'admin' => null,
-                        'member' => null,
+                        'member' => 'UserIsOwner',
                     ],
                     'exportOrder' => 'admin',
                     'syncInProgress' => 'member',
