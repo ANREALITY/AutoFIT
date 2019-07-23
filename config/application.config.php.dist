@@ -21,6 +21,7 @@ return [
         'DoctrineModule',
         'DoctrineORMModule',
 
+        'Base',
         'Application',
         'Logging',
         'ErrorHandling',
