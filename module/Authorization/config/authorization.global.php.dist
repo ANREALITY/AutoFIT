@@ -39,12 +39,11 @@ return [
                     'startChecking' => 'admin',
                     'complete' => 'admin',
                     'created' => 'member',
-                    'checkingStarted' => 'member',
+                    'checkingStarted' => 'admin',
                     'edited' => 'member',
                     'canceled' => 'member',
                     'accepted' => 'admin',
                     'declined' => 'admin',
-                    'checkingStarted' => 'admin',
                     'completed' => 'admin',
                     'showOrder' => [
                         'admin' => null,
