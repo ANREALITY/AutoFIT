@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-31 15:37+0100\n"
-"PO-Revision-Date: 2017-12-31 15:37+0100\n"
+"POT-Creation-Date: 2019-07-23 20:24+0200\n"
+"PO-Revision-Date: 2019-07-23 20:24+0200\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -27,12 +27,17 @@ msgid "master data"
 msgstr "Stammdaten"
 
 #: config/autoload/navigation.global.php:14
+#: module/Order/view/order/process/list-my-orders.phtml:6
+msgid "my orders"
+msgstr "Meine Bestellungen"
+
+#: config/autoload/navigation.global.php:18
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:58
 #: module/Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
 
-#: config/autoload/navigation.global.php:20
+#: config/autoload/navigation.global.php:24
 msgid "audit log"
 msgstr "Audit-Log"
 
@@ -73,6 +78,7 @@ msgstr "Benutzername"
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:34
 #: module/Order/src/Order/Form/Fieldset/AbstractFileTransferRequestFieldset.php:69
 #: module/Order/src/Order/Form/OrderSearch/Fieldset/FilterFieldset.php:52
+#: module/Order/view/order/process/list-my-orders.phtml:42
 #: module/Order/view/order/process/list-orders.phtml:32
 #: module/Order/view/partials/order-parts/billing.phtml:30
 msgid "change number"
@@ -1102,6 +1108,7 @@ msgid "The order has been %s successfully."
 msgstr "Die Bestellung wurde erfolgreich %s."
 
 #: module/Order/view/order/process/accepted.phtml:3
+#: module/Order/view/order/process/list-my-orders.phtml:27
 msgid "accepted"
 msgstr "angenommen"
 
@@ -1121,6 +1128,7 @@ msgid "in check"
 msgstr "in Überprüfung"
 
 #: module/Order/view/order/process/completed.phtml:3
+#: module/Order/view/order/process/list-my-orders.phtml:29
 msgid "completed"
 msgstr "fertiggestellt"
 
@@ -1156,10 +1164,24 @@ msgstr "abgelehnt"
 msgid "in edit"
 msgstr "in Bearbeitung"
 
+#: module/Order/view/order/process/list-my-orders.phtml:26
+msgid "check"
+msgstr "in Überprüfung"
+
+#: module/Order/view/order/process/list-my-orders.phtml:28
+msgid "processing"
+msgstr "in Bearbeitung"
+
+#: module/Order/view/order/process/list-my-orders.phtml:30
+msgid "pending"
+msgstr "eingereicht"
+
+#: module/Order/view/order/process/list-my-orders.phtml:41
 #: module/Order/view/order/process/list-orders.phtml:31
 msgid "request ID"
 msgstr "Antrag-ID"
 
+#: module/Order/view/order/process/list-my-orders.phtml:43
 #: module/Order/view/order/process/list-orders.phtml:33
 msgid "request summary"
 msgstr "Anfragszusammenfassung"
@@ -1712,18 +1734,6 @@ msgstr ""
 #~| msgid "username"
 #~ msgid "bucket_name"
 #~ msgstr "Benutzername"
-
-#~ msgid "my orders"
-#~ msgstr "Meine Bestellungen"
-
-#~ msgid "check"
-#~ msgstr "in Überprüfung"
-
-#~ msgid "processing"
-#~ msgstr "in Bearbeitung"
-
-#~ msgid "pending"
-#~ msgstr "eingereicht"
 
 #~ msgid "date"
 #~ msgstr "Datum"

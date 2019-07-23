@@ -53,6 +53,7 @@ return [
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',
                     'listOrders' => 'member',
+                    'listMyOrders' => 'member',
                     'restore' => 'member',
                     'noDraftAvailable' => 'member',
                 ],
