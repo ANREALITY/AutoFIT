@@ -29,7 +29,7 @@ class AbstractServiceInvoicePositionFieldsetFactory implements AbstractFactoryIn
      *
      * @var string
      */
-    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
+    const NAMESPACE_PROTOTYPE = 'Base\DataObject';
 
     /**
      *

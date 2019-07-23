@@ -30,7 +30,7 @@
             "MasterData\\": "module/MasterData/src/",
             "Order\\": "module/Order/src/",
             "Application\\": "module/Application/src/",
-            "DbSystel\\": "vendor/db-systel/dbs-common-lib/src/"
+            "Base\\": "module/Base/src/"
         }
     }
 }

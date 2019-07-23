@@ -1,8 +1,8 @@
 <?php
 namespace Test\Integration\Functional\OrderDataOutput;
 
-use DbSystel\DataObject\EndpointCdLinuxUnix;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\EndpointCdLinuxUnix;
+use Base\DataObject\FileTransferRequest;
 use Order\Service\UserService;
 use Zend\Http\PhpEnvironment\Response;
 

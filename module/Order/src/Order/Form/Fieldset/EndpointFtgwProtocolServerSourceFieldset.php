@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\EndpointFtgwProtocolServer;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\EndpointFtgwProtocolServer;
 
 class EndpointFtgwProtocolServerSourceFieldset extends AbstractEndpointFtgwProtocolServerFieldset
 {

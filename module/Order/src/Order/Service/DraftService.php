@@ -1,8 +1,8 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Draft;
-use DbSystel\DataObject\User;
+use Base\DataObject\Draft;
+use Base\DataObject\User;
 use Order\Mapper\DraftMapperInterface;
 
 class DraftService extends AbstractService implements DraftServiceInterface

@@ -1,8 +1,8 @@
 <?php
 namespace Test\Integration\Functional\MiscDataOutput;
 
-use DbSystel\DataObject\AbstractArticle;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\AbstractArticle;
+use Base\DataObject\LogicalConnection;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\View\Model\JsonModel;

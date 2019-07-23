@@ -2,7 +2,7 @@
 namespace AuditLogging\Mvc\Controller\Plugin\Factory;
 
 use AuditLogging\Mvc\Controller\Plugin\AuditLogger;
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 use Interop\Container\ContainerInterface;
 use Zend\Mvc\Controller\PluginManager;
 use Zend\ServiceManager\Factory\FactoryInterface;

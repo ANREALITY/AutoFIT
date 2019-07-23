@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 use Interop\Container\ContainerInterface;
 use Order\Form\Fieldset\ClusterFieldset;
 use Zend\ServiceManager\Factory\FactoryInterface;

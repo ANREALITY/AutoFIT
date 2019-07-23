@@ -1,12 +1,12 @@
 <?php
 namespace AuditLogging\Mapper;
 
-use DbSystel\DataObject\AuditLog;
-use DbSystel\DataObject\AuditLogCluster;
-use DbSystel\DataObject\AuditLogFileTransferRequest;
-use DbSystel\DataObject\AuditLogServer;
-use DbSystel\DataObject\User;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\AuditLog;
+use Base\DataObject\AuditLogCluster;
+use Base\DataObject\AuditLogFileTransferRequest;
+use Base\DataObject\AuditLogServer;
+use Base\DataObject\User;
+use Base\Paginator\Paginator;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;

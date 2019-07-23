@@ -349,12 +349,12 @@ return [
             'Order\Utility\ProperServiceNameDetector' => 'Order\Utility\Factory\ProperServiceNameDetectorFactory',
             'Order\Utility\RequestAnalyzer' => 'Order\Utility\Factory\RequestAnalyzerFactory',
             // DataObjects
-            'DbSystel\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
+            'Base\DataObject\FileTransferRequest' => 'Order\DataObject\Factory\FileTransferRequestFactory'
         ],
         'invokables' => [
             // utilities
-            'DbSystel\Utility\ArrayProcessor' => 'DbSystel\Utility\ArrayProcessor',
-            'DbSystel\DataExport\DataExporter' => 'DbSystel\DataExport\DataExporter'
+            'Base\Utility\ArrayProcessor' => 'Base\Utility\ArrayProcessor',
+            'Base\DataExport\DataExporter' => 'Base\DataExport\DataExporter'
         ],
         'abstract_factories' => [
             // mappers
@@ -473,7 +473,7 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'formelementerrors' => 'DbSystel\Form\View\Helper\FormElementErrors',
+            'formelementerrors' => 'Base\Form\View\Helper\FormElementErrors',
             'orderTypeDetector' => 'Order\View\Helper\OrderTypeDetector',
         ],
         'factories' => [
@@ -482,8 +482,8 @@ return [
     ],
     'hydrators' => [
         'factories' => [
-            'DbSystel\Hydrator\ProtocolSetHydrator' => 'DbSystel\Hydrator\Factory\ProtocolSetHydratorFactory',
-            'DbSystel\Hydrator\ProtocolHydrator' => 'DbSystel\Hydrator\Factory\ProtocolHydratorFactory'
+            'Base\Hydrator\ProtocolSetHydrator' => 'Base\Hydrator\Factory\ProtocolSetHydratorFactory',
+            'Base\Hydrator\ProtocolHydrator' => 'Base\Hydrator\Factory\ProtocolHydratorFactory'
         ]
     ]
 ];

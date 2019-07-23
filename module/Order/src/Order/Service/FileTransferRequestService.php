@@ -4,7 +4,7 @@ namespace Order\Service;
 use Doctrine\ORM\Query;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\FileTransferRequestMapperInterface;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 
 class FileTransferRequestService extends AbstractService implements FileTransferRequestServiceInterface
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Environment;
+use Base\DataObject\Environment;
 
 interface EnvironmentServiceInterface
 {

@@ -3,10 +3,10 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 use Zend\Form\View\Helper\FormMultiCheckbox;
-use DbSystel\DataObject\Protocol;
-use DbSystel\DataObject\EndpointFtgwSelfService;
+use Base\DataObject\Protocol;
+use Base\DataObject\EndpointFtgwSelfService;
 
 abstract class AbstractEndpointFtgwSelfServiceFieldset extends AbstractEndpointFieldset implements
     InputFilterProviderInterface

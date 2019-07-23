@@ -59,7 +59,7 @@ class IncludeParameterFieldset extends Fieldset implements InputFilterProviderIn
                         ]
                     ],
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/[^<>%]$/',
                             'patternUserFriendlyNegative' => '"<", ">", "%"',

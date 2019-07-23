@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\AbstractDataObject;
+use Base\DataObject\AbstractDataObject;
 use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use ReflectionClass;

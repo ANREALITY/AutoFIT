@@ -4,7 +4,7 @@ namespace MasterData\Controller\Factory;
 use MasterData\Controller\ServerController;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 
 class ServerControllerFactory implements FactoryInterface
 {

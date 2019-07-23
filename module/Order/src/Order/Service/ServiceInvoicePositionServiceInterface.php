@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\AbstractServiceInvoicePosition;
+use Base\DataObject\AbstractServiceInvoicePosition;
 
 interface ServiceInvoicePositionServiceInterface
 {

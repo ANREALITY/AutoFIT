@@ -30,13 +30,13 @@ class AbstractEndpointFieldsetFactory implements AbstractFactoryInterface
      *
      * @var string
      */
-    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
+    const NAMESPACE_PROTOTYPE = 'Base\DataObject';
 
     /**
      *
      * @var string
      */
-    const NAMESPACE_HYDRATOR = 'DbSystel\Hydrator';
+    const NAMESPACE_HYDRATOR = 'Base\Hydrator';
 
     /**
      *

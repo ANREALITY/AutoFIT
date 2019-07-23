@@ -4,9 +4,9 @@ namespace Order\Form\Fieldset\Factory;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Order\Form\Fieldset\FileTransferRequestCdFieldset;
 use Order\Form\Fieldset\FileTransferRequestFtgwFieldset;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\LogicalConnection;
 
 class FileTransferRequestFieldsetFactory implements FactoryInterface
 {

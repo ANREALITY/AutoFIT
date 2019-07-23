@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Application;
+use Base\DataObject\Application;
 
 interface ApplicationServiceInterface
 {

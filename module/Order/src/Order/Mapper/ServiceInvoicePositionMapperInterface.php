@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\AbstractServiceInvoicePosition;
+use Base\DataObject\AbstractServiceInvoicePosition;
 
 interface ServiceInvoicePositionMapperInterface
 {

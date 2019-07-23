@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 
 interface UserServiceInterface
 {

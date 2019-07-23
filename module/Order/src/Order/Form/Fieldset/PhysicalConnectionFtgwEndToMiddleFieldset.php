@@ -2,8 +2,8 @@
 namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
-use DbSystel\DataObject\AbstractPhysicalConnection;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\AbstractPhysicalConnection;
+use Base\DataObject\LogicalConnection;
 
 class PhysicalConnectionFtgwEndToMiddleFieldset extends AbstractPhysicalConnectionFieldset
 {

@@ -1,8 +1,8 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Cluster;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\Cluster;
+use Base\Paginator\Paginator;
 
 interface ClusterServiceInterface
 {

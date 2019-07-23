@@ -1,11 +1,11 @@
 <?php
 namespace Order\DataObject\Factory;
 
-use DbSystel\Paginator\Paginator;
+use Base\Paginator\Paginator;
 use Order\Service\FileTransferRequestServiceInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 
 class FileTransferRequestFactory implements FactoryInterface
 {

@@ -1,14 +1,14 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use DbSystel\DataObject\ProtocolSet;
+use Base\DataObject\ProtocolSet;
 use Order\Form\Fieldset\ProtocolSetForProtocolServerSourceFieldset;
 use Order\Form\Fieldset\ProtocolSetForProtocolServerTargetFieldset;
 use Order\Form\Fieldset\ProtocolSetForSelfServiceFieldset;
 use Zend\ServiceManager\Exception\InvalidServiceException;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Order\Form\Fieldset\ClusterFieldset;
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 use Interop\Container\ContainerInterface;
 
 class ProtocolSetFieldsetFactory implements FactoryInterface
@@ -31,7 +31,7 @@ class ProtocolSetFieldsetFactory implements FactoryInterface
         }
         $hydrator = $container
             ->get('HydratorManager')
-            ->get('DbSystel\Hydrator\ProtocolSetHydrator');
+            ->get('Base\Hydrator\ProtocolSetHydrator');
         $fieldset->setHydrator($hydrator);
         $prototype = new ProtocolSet();
         $fieldset->setObject($prototype);

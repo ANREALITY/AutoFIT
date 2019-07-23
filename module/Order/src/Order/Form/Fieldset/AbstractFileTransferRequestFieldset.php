@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\Application;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\Application;
+use Base\DataObject\FileTransferRequest;
 use Doctrine\ORM\EntityManager;
 use DoctrineModule\Validator\NoObjectExists;
 use DoctrineModule\Validator\ObjectExists;

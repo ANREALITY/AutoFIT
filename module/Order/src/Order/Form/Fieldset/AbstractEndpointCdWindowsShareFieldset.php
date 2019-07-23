@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFieldset implements
     InputFilterProviderInterface
@@ -74,7 +74,7 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                         ]
                     ],
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9_]*$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "0-9", "_"'
@@ -93,7 +93,7 @@ abstract class AbstractEndpointCdWindowsShareFieldset extends AbstractEndpointFi
                         ]
                     ],
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9_\-]*$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "0-9", "_", "-"'

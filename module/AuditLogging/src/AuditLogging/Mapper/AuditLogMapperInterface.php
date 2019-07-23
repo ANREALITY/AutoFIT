@@ -1,8 +1,8 @@
 <?php
 namespace AuditLogging\Mapper;
 
-use DbSystel\DataObject\AuditLog;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\AuditLog;
+use Base\Paginator\Paginator;
 
 interface AuditLogMapperInterface
 {

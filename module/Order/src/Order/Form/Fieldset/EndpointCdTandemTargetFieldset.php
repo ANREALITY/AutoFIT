@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 class EndpointCdTandemTargetFieldset extends AbstractEndpointCdTandemFieldset
 {

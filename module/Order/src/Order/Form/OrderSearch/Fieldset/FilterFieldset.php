@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\OrderSearch\Fieldset;
 
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\LogicalConnection;
 use Order\Form\OrderSearch\OrderSearchForm;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;

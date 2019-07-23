@@ -1,9 +1,9 @@
 <?php
 namespace Test\Integration\Functional;
 
-use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\Test\AbstractControllerTest;
-use DbSystel\Test\DatabaseInitializer;
+use Base\DataObject\FileTransferRequest;
+use Base\Test\AbstractControllerTest;
+use Base\Test\DatabaseInitializer;
 use Zend\Http\PhpEnvironment\Request;
 
 abstract class AbstractOrderRelatedTest extends AbstractControllerTest

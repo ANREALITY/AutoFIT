@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Synchronization;
+use Base\DataObject\Synchronization;
 
 interface SynchronizationServiceInterface
 {

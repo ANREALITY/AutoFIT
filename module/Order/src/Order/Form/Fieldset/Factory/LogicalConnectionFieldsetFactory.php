@@ -2,7 +2,7 @@
 namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\LogicalConnection;
 use Interop\Container\ContainerInterface;
 use Order\Form\Fieldset\LogicalConnectionCdFieldset;
 use Order\Form\Fieldset\LogicalConnectionFtgwFieldset;

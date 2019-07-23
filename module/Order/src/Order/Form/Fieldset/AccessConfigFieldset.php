@@ -96,7 +96,7 @@ class AccessConfigFieldset extends Fieldset implements InputFilterProviderInterf
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'DbSystel\Validator\WindowsDomainUserName',
+                        'name' => 'Base\Validator\WindowsDomainUserName',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9]+\\\\[a-zA-Z0-9-]+$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "0-9", "\", "-"'

@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 
 class UserMapper extends AbstractMapper implements UserMapperInterface
 {

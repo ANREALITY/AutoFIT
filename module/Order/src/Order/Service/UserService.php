@@ -4,7 +4,7 @@ namespace Order\Service;
 use Doctrine\ORM\Query;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\UserMapperInterface;
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 
 class UserService extends AbstractService implements UserServiceInterface
 {

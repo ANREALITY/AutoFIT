@@ -3,10 +3,10 @@ namespace MasterData\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 use Order\Service\ClusterService;
 use MasterData\Form\ClusterForm;
-use DbSystel\DataObject\AuditLog;
+use Base\DataObject\AuditLog;
 
 class ClusterController extends AbstractActionController
 {

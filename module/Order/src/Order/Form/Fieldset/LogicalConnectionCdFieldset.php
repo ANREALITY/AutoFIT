@@ -2,7 +2,7 @@
 namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\LogicalConnection;
 
 class LogicalConnectionCdFieldset extends AbstractLogicalConnectionFieldset
 {

@@ -1,7 +1,7 @@
 <?php
 namespace MasterData\Form\Fieldset\Factory;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Interop\Container\ContainerInterface;
 use MasterData\Form\Fieldset\ServerAdditionalNameFieldset;
 use Zend\ServiceManager\Factory\FactoryInterface;

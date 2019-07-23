@@ -1,16 +1,16 @@
 <?php
 namespace AuditLogging\Mvc\Controller\Plugin;
 
-use DbSystel\DataObject\AuditLogCluster;
-use DbSystel\DataObject\AuditLogFileTransferRequest;
-use DbSystel\DataObject\AuditLogServer;
+use Base\DataObject\AuditLogCluster;
+use Base\DataObject\AuditLogFileTransferRequest;
+use Base\DataObject\AuditLogServer;
 use Order\Service\ClusterServiceInterface;
 use Order\Service\FileTransferRequestServiceInterface;
 use Order\Service\ServerServiceInterface;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
-use DbSystel\DataObject\AuditLog;
+use Base\DataObject\AuditLog;
 use AuditLogging\Service\AuditLogServiceInterface;
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 
 class AuditLogger extends AbstractPlugin
 {

@@ -1,8 +1,8 @@
 <?php
 namespace Tests\UnitTests\UnitTest;
 
-use DbSystel\Test\AbstractDbTest;
-use DbSystel\Test\ArrayDataSet;
+use Base\Test\AbstractDbTest;
+use Base\Test\ArrayDataSet;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 
 class DummyDbTest extends AbstractDbTest

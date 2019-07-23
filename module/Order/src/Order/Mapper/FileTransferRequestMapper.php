@@ -1,17 +1,17 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\Application;
-use DbSystel\DataObject\Cluster;
-use DbSystel\DataObject\EndpointCdLinuxUnix;
-use DbSystel\DataObject\EndpointFtgwLinuxUnix;
-use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\Server;
-use DbSystel\DataObject\AbstractServiceInvoicePosition;
-use DbSystel\DataObject\User;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\Application;
+use Base\DataObject\Cluster;
+use Base\DataObject\EndpointCdLinuxUnix;
+use Base\DataObject\EndpointFtgwLinuxUnix;
+use Base\DataObject\FileTransferRequest;
+use Base\DataObject\LogicalConnection;
+use Base\DataObject\Server;
+use Base\DataObject\AbstractServiceInvoicePosition;
+use Base\DataObject\User;
+use Base\Paginator\Paginator;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;

@@ -4,7 +4,7 @@ namespace Order\Utility\Factory;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Order\Utility\ProperServiceNameDetector;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 
 class ProperServiceNameDetectorFactory implements FactoryInterface
 {
@@ -17,7 +17,7 @@ class ProperServiceNameDetectorFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $fileTransferRequest = $container->get('DbSystel\DataObject\FileTransferRequest');
+        $fileTransferRequest = $container->get('Base\DataObject\FileTransferRequest');
 
         if (!$fileTransferRequest->getId()) {
             $router = $container->get('router');

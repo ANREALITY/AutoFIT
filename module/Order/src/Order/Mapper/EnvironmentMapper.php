@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Environment;
+use Base\DataObject\Environment;
 
 class EnvironmentMapper extends AbstractMapper implements EnvironmentMapperInterface
 {

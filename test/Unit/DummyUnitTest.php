@@ -1,7 +1,7 @@
 <?php
 namespace Tests\UnitTests\UnitTest;
 
-use DbSystel\Test\AbstractUnitTest;
+use Base\Test\AbstractUnitTest;
 
 class DummyUnitTest extends AbstractUnitTest
 {

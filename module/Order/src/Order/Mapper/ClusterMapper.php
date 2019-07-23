@@ -1,9 +1,9 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Cluster;
-use DbSystel\DataObject\Server;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\Cluster;
+use Base\DataObject\Server;
+use Base\Paginator\Paginator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;

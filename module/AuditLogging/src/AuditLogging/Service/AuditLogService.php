@@ -2,7 +2,7 @@
 namespace AuditLogging\Service;
 
 use AuditLogging\Mapper\AuditLogMapperInterface;
-use DbSystel\DataObject\AuditLog;
+use Base\DataObject\AuditLog;
 use Order\Service\AbstractService;
 
 class AuditLogService extends AbstractService implements AuditLogServiceInterface

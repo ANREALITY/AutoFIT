@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Environment;
+use Base\DataObject\Environment;
 
 interface EnvironmentMapperInterface
 {

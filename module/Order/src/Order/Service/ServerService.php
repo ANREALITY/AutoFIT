@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Doctrine\ORM\Query;
 use Order\Mapper\ServerMapperInterface;
 

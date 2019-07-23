@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFtgwCdZosFieldset extends AbstractEndpointFieldset implements
     InputFilterProviderInterface
@@ -50,7 +50,7 @@ abstract class AbstractEndpointFtgwCdZosFieldset extends AbstractEndpointFieldse
                         ]
                     ],
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9#]*$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "0-9", "#"'

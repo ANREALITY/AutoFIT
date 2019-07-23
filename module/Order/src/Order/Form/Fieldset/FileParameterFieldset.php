@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\FileParameter;
+use Base\DataObject\FileParameter;
 
 class FileParameterFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -110,7 +110,7 @@ class FileParameterFieldset extends Fieldset implements InputFilterProviderInter
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9\.]*$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "."'

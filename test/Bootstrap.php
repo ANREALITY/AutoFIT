@@ -1,9 +1,9 @@
 <?php
 namespace Test;
 
-use DbSystel\Test\AbstractControllerTest;
-use DbSystel\Test\AbstractDbTest;
-use DbSystel\Test\DatabaseInitializer;
+use Base\Test\AbstractControllerTest;
+use Base\Test\AbstractDbTest;
+use Base\Test\DatabaseInitializer;
 use Doctrine\ORM\EntityManager;
 use RuntimeException;
 use Zend\Loader\AutoloaderFactory;

@@ -3,10 +3,10 @@ namespace Order\Service;
 
 use Doctrine\ORM\Query;
 use Order\Mapper\ServiceInvoicePositionMapperInterface;
-use DbSystel\DataObject\AbstractServiceInvoicePosition;
-use DbSystel\DataObject\AbstractArticle;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\ProductType;
+use Base\DataObject\AbstractServiceInvoicePosition;
+use Base\DataObject\AbstractArticle;
+use Base\DataObject\LogicalConnection;
+use Base\DataObject\ProductType;
 
 class ServiceInvoicePositionService extends AbstractService implements ServiceInvoicePositionServiceInterface
 {

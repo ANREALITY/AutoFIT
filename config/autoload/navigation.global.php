@@ -25,7 +25,7 @@ return [
     'service_manager' => [
         'factories' => [
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'admin_navigation' => 'DbSystel\Navigation\Service\AdminNavigationFactory',
+            'admin_navigation' => 'Base\Navigation\Service\AdminNavigationFactory',
          ],
      ],
 ];

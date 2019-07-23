@@ -27,7 +27,7 @@ class Module
         $translator->addTranslationFile('phpArray',
             './vendor/zendframework/zend-i18n-resources/languages/de/Zend_Validate.php');
         $translator->addTranslationFile('phpArray',
-            './vendor/db-systel/dbs-common-lib/src/i18n-resources/languages/de/Validate.php');
+            './module/Base/src/i18n-resources/languages/de/Validate.php');
         AbstractValidator::setDefaultTranslator($translator);
 
         $serviceManager = $e->getApplication()->getServiceManager();
@@ -53,7 +53,6 @@ class Module
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'DbSystel' => __DIR__ . '/../../vendor/db-systel/dbs-common-lib/src'
                 ]
             ]
         ];

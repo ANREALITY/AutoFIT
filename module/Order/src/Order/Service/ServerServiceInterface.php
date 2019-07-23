@@ -1,7 +1,7 @@
 <?php
 namespace Order\Service;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 
 interface ServerServiceInterface
 {

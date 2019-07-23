@@ -3,10 +3,10 @@ namespace MasterData\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Order\Service\ServerService;
 use MasterData\Form\ServerForm;
-use DbSystel\DataObject\AuditLog;
+use Base\DataObject\AuditLog;
 
 class ServerController extends AbstractActionController
 {

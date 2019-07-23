@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\EndpointFtgwLinuxUnix;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\EndpointFtgwLinuxUnix;
 
 class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixFieldset
 {

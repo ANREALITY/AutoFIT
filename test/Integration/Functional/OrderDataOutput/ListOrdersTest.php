@@ -1,10 +1,10 @@
 <?php
 namespace Test\Integration\Functional\OrderDataOutput;
 
-use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\User;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\FileTransferRequest;
+use Base\DataObject\LogicalConnection;
+use Base\DataObject\User;
+use Base\Paginator\Paginator;
 use Zend\Http\PhpEnvironment\Response;
 
 class ListOrdersTest extends AbstractOrderOutputTest

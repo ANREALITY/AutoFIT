@@ -4,7 +4,7 @@ namespace Order\Controller\Factory;
 use Order\Controller\ProcessController;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 
 class ProcessControllerFactory implements FactoryInterface
 {
@@ -21,12 +21,12 @@ class ProcessControllerFactory implements FactoryInterface
         $connectionType = $properServiceNameDetector->getConnectionType();
         $endpointSourceType = $properServiceNameDetector->getEndpointSourceType();
         $endpointTargetType = $properServiceNameDetector->getEndpointTargetType();
-        $dataExporter = $container->get('DbSystel\DataExport\DataExporter');
+        $dataExporter = $container->get('Base\DataExport\DataExporter');
 
         $fileTransferRequestService = $container->get('Order\Service\FileTransferRequestService');
         $userService = $container->get('Order\Service\UserService');
         $draftService = $container->get('Order\Service\DraftService');
-        $fileTransferRequest = $container->get('DbSystel\DataObject\FileTransferRequest');
+        $fileTransferRequest = $container->get('Base\DataObject\FileTransferRequest');
         $service = new ProcessController($fileTransferRequest, $fileTransferRequestService, $userService, $draftService);
 
         if ($isOrderRequest || $isOrderEditRequest) {

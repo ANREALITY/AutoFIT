@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Synchronization;
+use Base\DataObject\Synchronization;
 
 class SynchronizationMapper extends AbstractMapper implements SynchronizationMapperInterface
 {

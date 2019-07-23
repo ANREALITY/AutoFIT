@@ -3,7 +3,7 @@ namespace Order\Service;
 
 use Doctrine\ORM\Query;
 use Order\Mapper\ClusterMapperInterface;
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 
 class ClusterService extends AbstractService implements ClusterServiceInterface
 {

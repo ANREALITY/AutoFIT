@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\EndpointFtgwWindowsShare;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\EndpointFtgwWindowsShare;
 
 class EndpointFtgwWindowsShareSourceFieldset extends AbstractEndpointFtgwWindowsShareFieldset
 {

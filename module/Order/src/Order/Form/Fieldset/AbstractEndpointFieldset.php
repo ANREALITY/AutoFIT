@@ -3,8 +3,8 @@ namespace Order\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\Server;
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\Server;
+use Base\DataObject\AbstractEndpoint;
 
 abstract class AbstractEndpointFieldset extends Fieldset implements InputFilterProviderInterface
 {

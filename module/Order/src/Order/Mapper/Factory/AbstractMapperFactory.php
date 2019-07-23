@@ -12,7 +12,7 @@ class AbstractMapperFactory implements AbstractFactoryInterface
     /** @var string */
     const NAMESPACE_MAPPER = 'Order\Mapper';
     /** @var string */
-    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
+    const NAMESPACE_PROTOTYPE = 'Base\DataObject';
 
     /**
      * {@inheritDoc}

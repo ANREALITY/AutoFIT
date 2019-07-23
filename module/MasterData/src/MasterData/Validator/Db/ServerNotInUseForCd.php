@@ -1,7 +1,7 @@
 <?php
 namespace MasterData\Validator\Db;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Zend\Validator\AbstractValidator;

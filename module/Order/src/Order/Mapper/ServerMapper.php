@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Doctrine\ORM\Query\Expr\Join;
 
 class ServerMapper extends AbstractMapper implements ServerMapperInterface

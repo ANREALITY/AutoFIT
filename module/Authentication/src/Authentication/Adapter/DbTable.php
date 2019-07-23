@@ -5,7 +5,7 @@ use Authorization\Acl\Acl;
 use Order\Service\UserServiceInterface;
 use Zend\Authentication\Adapter\AbstractAdapter;
 use Zend\Authentication\Result;
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 
 class DbTable extends AbstractAdapter
 {

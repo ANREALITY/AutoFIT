@@ -1,7 +1,7 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 use Order\Form\OrderForm;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Http\Request;

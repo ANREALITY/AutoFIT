@@ -1,8 +1,8 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\EndpointCdWindows;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\EndpointCdWindows;
 
 class EndpointCdWindowsSourceFieldset extends AbstractEndpointCdWindowsFieldset
 {

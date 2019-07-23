@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset\Factory;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 use Interop\Container\ContainerInterface;
 use Order\Form\Fieldset\ServerListItemFieldset;
 use Zend\ServiceManager\Factory\FactoryInterface;

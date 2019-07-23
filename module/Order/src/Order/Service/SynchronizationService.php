@@ -2,7 +2,7 @@
 namespace Order\Service;
 
 use Order\Mapper\SynchronizationMapperInterface;
-use DbSystel\DataObject\Synchronization;
+use Base\DataObject\Synchronization;
 
 class SynchronizationService extends AbstractService implements SynchronizationServiceInterface
 {

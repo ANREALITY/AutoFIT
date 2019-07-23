@@ -4,7 +4,7 @@ namespace MasterData\Controller\Factory;
 use MasterData\Controller\ClusterController;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 
 class ClusterControllerFactory implements FactoryInterface
 {

@@ -1,11 +1,11 @@
 <?php
 namespace Order\Form;
 
-use DbSystel\DataObject\AbstractArticle;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\Server;
-use DbSystel\Validator\MaxOneNotEmpty;
-use DbSystel\Validator\MinOneNotEmpty;
+use Base\DataObject\AbstractArticle;
+use Base\DataObject\LogicalConnection;
+use Base\DataObject\Server;
+use Base\Validator\MaxOneNotEmpty;
+use Base\Validator\MinOneNotEmpty;
 use Doctrine\ORM\EntityManager;
 use Order\Form\Fieldset\AbstractEndpointFieldset;
 use Order\Form\Fieldset\AbstractFileTransferRequestFieldset;

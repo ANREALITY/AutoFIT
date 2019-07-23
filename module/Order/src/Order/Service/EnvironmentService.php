@@ -4,7 +4,7 @@ namespace Order\Service;
 use Doctrine\ORM\Query;
 use Order\Mapper\AbstractMapper;
 use Order\Mapper\EnvironmentMapperInterface;
-use DbSystel\DataObject\Environment;
+use Base\DataObject\Environment;
 
 class EnvironmentService extends AbstractService implements EnvironmentServiceInterface
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\Cluster;
+use Base\DataObject\Cluster;
 use DoctrineModule\Validator\ObjectExists;
 
 class ClusterFieldset extends AbstractClusterFieldset

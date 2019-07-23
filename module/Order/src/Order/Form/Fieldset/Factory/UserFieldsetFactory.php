@@ -3,7 +3,7 @@ namespace Order\Form\Fieldset\Factory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Order\Form\Fieldset\UserFieldset;
-use DbSystel\DataObject\User;
+use Base\DataObject\User;
 use Interop\Container\ContainerInterface;
 
 class UserFieldsetFactory implements FactoryInterface

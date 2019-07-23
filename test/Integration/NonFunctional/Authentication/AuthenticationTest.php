@@ -2,8 +2,8 @@
 namespace Test\Integration\NonFunctional\Authentication;
 
 use Authorization\Acl\Acl;
-use DbSystel\DataObject\User;
-use DbSystel\Test\AbstractControllerTest;
+use Base\DataObject\User;
+use Base\Test\AbstractControllerTest;
 use Zend\Authentication\AuthenticationService;
 
 class AuthenticationTest extends AbstractControllerTest

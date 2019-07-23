@@ -1,5 +1,5 @@
 <?php
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\LogicalConnection;
 ?>
 <?php if (strcasecmp($connectionType, LogicalConnection::TYPE_CD) === 0) : ?>
 <?php echo $this->partial('/partials/start/cd', ['connectionType' => $connectionType]); ?>

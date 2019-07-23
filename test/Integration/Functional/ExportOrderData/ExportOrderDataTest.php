@@ -1,7 +1,7 @@
 <?php
 namespace Test\Integration\Functional\ExportOrderData;
 
-use DbSystel\DataExport\DataExporter;
+use Base\DataExport\DataExporter;
 use Exception;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Test\Integration\Functional\OrderManipulation\AbstractOrderManipulationTest;

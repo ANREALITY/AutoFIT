@@ -1,8 +1,8 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\FileTransferRequest;
+use Base\Paginator\Paginator;
 
 interface FileTransferRequestMapperInterface
 {

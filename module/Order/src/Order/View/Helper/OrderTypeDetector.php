@@ -2,9 +2,9 @@
 namespace Order\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
-use DbSystel\DataObject\FileTransferRequest;
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\LogicalConnection;
+use Base\DataObject\FileTransferRequest;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\LogicalConnection;
 
 class OrderTypeDetector extends AbstractHelper
 {

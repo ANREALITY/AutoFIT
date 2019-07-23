@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 class EndpointCdAs400SourceFieldset extends AbstractEndpointCdAs400Fieldset
 {

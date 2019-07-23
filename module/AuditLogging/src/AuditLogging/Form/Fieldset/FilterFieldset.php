@@ -3,7 +3,7 @@ namespace AuditLogging\Form\Fieldset;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DbSystel\DataObject\AuditLog;
+use Base\DataObject\AuditLog;
 
 class FilterFieldset extends Fieldset implements InputFilterProviderInterface
 {

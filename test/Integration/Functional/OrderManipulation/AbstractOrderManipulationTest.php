@@ -1,7 +1,7 @@
 <?php
 namespace Test\Integration\Functional\OrderManipulation;
 
-use DbSystel\DataObject\FileTransferRequest;
+use Base\DataObject\FileTransferRequest;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Http\Request;
 

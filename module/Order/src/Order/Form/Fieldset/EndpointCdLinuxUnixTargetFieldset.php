@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixFieldset
 {
@@ -41,7 +41,7 @@ class EndpointCdLinuxUnixTargetFieldset extends AbstractEndpointCdLinuxUnixField
                 'required' => true,
                 'validators' => [
                     [
-                        'name' => 'DbSystel\Validator\Regex',
+                        'name' => 'Base\Validator\Regex',
                         'options' => [
                             'pattern' => '/^[a-zA-Z0-9,_+\-\.\/]*$/',
                             'patternUserFriendly' => '"a-z", "A-Z", "0-9", ",", "_", "+", "-", ".", "/"'

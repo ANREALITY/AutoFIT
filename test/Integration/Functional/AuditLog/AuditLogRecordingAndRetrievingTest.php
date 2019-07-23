@@ -1,8 +1,8 @@
 <?php
 namespace Test\Integration\Functional\AuditLog;
 
-use DbSystel\DataObject\AuditLog;
-use DbSystel\Paginator\Paginator;
+use Base\DataObject\AuditLog;
+use Base\Paginator\Paginator;
 use Order\Service\UserService;
 use Test\Integration\Functional\AbstractOrderRelatedTest;
 use Zend\Db\ResultSet\HydratingResultSet;

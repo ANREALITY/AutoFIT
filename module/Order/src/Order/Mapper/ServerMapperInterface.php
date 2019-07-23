@@ -1,7 +1,7 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\Server;
+use Base\DataObject\Server;
 
 interface ServerMapperInterface
 {

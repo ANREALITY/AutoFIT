@@ -1,14 +1,14 @@
 <?php
 namespace Order\Mapper;
 
-use DbSystel\DataObject\AbstractArticle;
-use DbSystel\DataObject\ArticleBasic;
-use DbSystel\DataObject\ArticleOnDemand;
-use DbSystel\DataObject\ArticlePersonal;
-use DbSystel\DataObject\AbstractServiceInvoicePosition;
-use DbSystel\DataObject\ServiceInvoicePositionBasic;
-use DbSystel\DataObject\ServiceInvoicePositionOnDemand;
-use DbSystel\DataObject\ServiceInvoicePositionPersonal;
+use Base\DataObject\AbstractArticle;
+use Base\DataObject\ArticleBasic;
+use Base\DataObject\ArticleOnDemand;
+use Base\DataObject\ArticlePersonal;
+use Base\DataObject\AbstractServiceInvoicePosition;
+use Base\DataObject\ServiceInvoicePositionBasic;
+use Base\DataObject\ServiceInvoicePositionOnDemand;
+use Base\DataObject\ServiceInvoicePositionPersonal;
 
 class ServiceInvoicePositionMapper extends AbstractMapper implements ServiceInvoicePositionMapperInterface
 {

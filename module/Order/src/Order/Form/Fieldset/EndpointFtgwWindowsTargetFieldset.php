@@ -1,7 +1,7 @@
 <?php
 namespace Order\Form\Fieldset;
 
-use DbSystel\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractEndpoint;
 
 class EndpointFtgwWindowsTargetFieldset extends AbstractEndpointFtgwWindowsFieldset
 {

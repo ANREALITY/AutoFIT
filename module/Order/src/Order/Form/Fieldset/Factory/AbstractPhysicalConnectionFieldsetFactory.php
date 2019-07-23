@@ -3,9 +3,9 @@ namespace Order\Form\Fieldset\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\AbstractFactoryInterface;
-use DbSystel\DataObject\LogicalConnection;
-use DbSystel\DataObject\AbstractEndpoint;
-use DbSystel\DataObject\AbstractPhysicalConnection;
+use Base\DataObject\LogicalConnection;
+use Base\DataObject\AbstractEndpoint;
+use Base\DataObject\AbstractPhysicalConnection;
 
 class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterface
 {
@@ -32,7 +32,7 @@ class AbstractPhysicalConnectionFieldsetFactory implements AbstractFactoryInterf
      *
      * @var string
      */
-    const NAMESPACE_PROTOTYPE = 'DbSystel\DataObject';
+    const NAMESPACE_PROTOTYPE = 'Base\DataObject';
 
     /**
      *
