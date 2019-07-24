@@ -15,6 +15,11 @@ class UserService extends AbstractService implements UserServiceInterface
     const DEFAULT_MEMBER_USERNAME = 'undefined';
 
     /**
+     * @var string
+     */
+    const DEFAULT_ADMIN_USERNAME = 'undefined2';
+
+    /**
      *
      * @var UserMapperInterface
      */
