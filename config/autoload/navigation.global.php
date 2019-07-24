@@ -15,6 +15,8 @@ return [
                 'route' => 'order/list-own',
             ],
         ],
+        'power-user' => [
+        ],
         'admin' => [
             [
                 'label' => _('orders'),
@@ -24,11 +26,12 @@ return [
                 'label' => _('audit log'),
                 'route' => 'audit-logging/list',
             ],
-        ]
+        ],
     ],
     'service_manager' => [
         'factories' => [
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'power_user_navigation' => 'Base\Navigation\Service\PowerUserNavigationFactory',
             'admin_navigation' => 'Base\Navigation\Service\AdminNavigationFactory',
          ],
      ],

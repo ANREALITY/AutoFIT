@@ -81,6 +81,15 @@ $currentIdentity = $authenticationService->getIdentity();
                         ->renderMenu()
                     ;
                     ?>
+                    <?php if ($currentIdentity['role'] == User::ROLE_POWER_USER || $currentIdentity['role'] == User::ROLE_ADMIN): ?>
+                    <?php
+                    echo $this->navigation('power_user_navigation')
+                        ->menu()
+                        ->setUlClass('nav navbar-nav extended')
+                        ->renderMenu()
+                    ;
+                    ?>
+                    <?php endif; ?>
                     <?php if ($currentIdentity['role'] == User::ROLE_ADMIN): ?>
                     <?php
                     echo $this->navigation('admin_navigation')
