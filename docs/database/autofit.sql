@@ -305,7 +305,7 @@ CREATE INDEX `fk_endpoint_external_server_idx` ON `endpoint` (`external_server_i
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NULL,
-  `role` ENUM('member', 'admin', 'guest') NOT NULL DEFAULT 'member',
+  `role` ENUM('member', 'admin', 'guest', 'power-user') NOT NULL DEFAULT 'member',
   `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
