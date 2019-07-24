@@ -14,6 +14,8 @@ class User extends AbstractDataObject
 {
 
     /** @var string */
+    const ROLE_GUEST = 'guest';
+    /** @var string */
     const ROLE_MEMBER = 'member';
     /** @var string */
     const ROLE_POWER_USER = 'power-user';
