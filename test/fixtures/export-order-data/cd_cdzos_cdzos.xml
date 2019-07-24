@@ -154,6 +154,6 @@
   <user>
     <id>1</id>
     <username>undefined</username>
-    <role>admin</role>
+    <role>member</role>
   </user>
 </file_transfer_request>

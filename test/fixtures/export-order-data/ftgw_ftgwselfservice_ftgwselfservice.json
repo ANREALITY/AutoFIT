@@ -148,6 +148,6 @@
     "user": {
         "id": "1",
         "username": "undefined",
-        "role": "admin"
+        "role": "member"
     }
 }
