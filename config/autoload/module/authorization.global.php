@@ -4,7 +4,8 @@ return [
         'roles' => [
             'guest' => null,
             'member' => 'guest',
-            'admin' => 'member',
+            'power-user' => 'member',
+            'admin' => 'power-user',
         ],
         'resources' => [
             'allow' => [
