@@ -53,7 +53,7 @@ return [
                     'exportOrder' => 'admin',
                     'syncInProgress' => 'member',
                     'operationDeniedForStatus' => 'member',
-                    'listOrders' => 'admin',
+                    'listOrders' => 'power-user',
                     'listMyOrders' => 'member',
                     'restore' => 'member',
                     'noDraftAvailable' => 'member',

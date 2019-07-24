@@ -16,12 +16,12 @@ return [
             ],
         ],
         'power-user' => [
-        ],
-        'admin' => [
             [
                 'label' => _('orders'),
                 'route' => 'order/list',
             ],
+        ],
+        'admin' => [
             [
                 'label' => _('audit log'),
                 'route' => 'audit-logging/list',
