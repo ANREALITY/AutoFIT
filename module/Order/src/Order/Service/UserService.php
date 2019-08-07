@@ -12,7 +12,17 @@ class UserService extends AbstractService implements UserServiceInterface
     /**
      * @var string
      */
+    const DEFAULT_GUEST_USERNAME = 'asdf';
+
+    /**
+     * @var string
+     */
     const DEFAULT_MEMBER_USERNAME = 'undefined';
+
+    /**
+     * @var string
+     */
+    const DEFAULT_POWER_USER_USERNAME = 'qwer';
 
     /**
      * @var string

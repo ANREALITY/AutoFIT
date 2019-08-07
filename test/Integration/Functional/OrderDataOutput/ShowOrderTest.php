@@ -112,6 +112,37 @@ class ShowOrderTest extends AbstractOrderOutputTest
         }
     }
 
+    public function provideDataForShowOrderAccess()
+    {
+        return [
+            // owner
+            'owner' => [
+                'username' => UserService::DEFAULT_MEMBER_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_200,
+            ],
+            // non-owner
+            'guest' => [
+                'username' => UserService::DEFAULT_GUEST_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_302,
+            ],
+            // non-owner
+            'power-user' => [
+                'username' => UserService::DEFAULT_POWER_USER_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_200,
+            ],
+            // non-owner
+            'member' => [
+                'username' => 'bar',
+                'responseStatusCode' => Response::STATUS_CODE_302,
+            ],
+            // non-owner
+            'admin' => [
+                'username' => UserService::DEFAULT_ADMIN_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_200,
+            ],
+        ];
+    }
+
     public function provideDataForShowOrder()
     {
         return [

@@ -4,7 +4,9 @@ namespace Test\Integration\Functional\OrderDataOutput;
 use Base\DataObject\FileTransferRequest;
 use Base\DataObject\LogicalConnection;
 use Base\DataObject\User;
+use Exception;
 use Base\Paginator\Paginator;
+use Order\Service\UserService;
 use Zend\Http\PhpEnvironment\Response;
 
 class ListOrdersTest extends AbstractOrderOutputTest
@@ -63,18 +65,23 @@ class ListOrdersTest extends AbstractOrderOutputTest
         );
     }
 
-    public function testListOrdersAccessDeniedForNonAdmins()
+    /**
+     * @param string $username
+     * @param int $responseStatusCode
+     * @throws Exception
+     * @dataProvider provideDataForListOrdersAccess
+     */
+    public function testListOrdersAccess(string $username, int $responseStatusCode)
     {
         $this->createOrders();
 
         $this->reset();
 
-        $username = 'foo';
         $_SERVER['AUTH_USER'] = $username;
 
         $listUrl = '/order/list';
         $this->dispatch($listUrl);
-        $this->assertResponseStatusCode(Response::STATUS_CODE_302);
+        $this->assertResponseStatusCode($responseStatusCode);
     }
 
     public function testListOrders()
@@ -165,6 +172,28 @@ class ListOrdersTest extends AbstractOrderOutputTest
             $latestOrders[$neededOrderIndex]->getChangeNumber(),
             $currentItems[0]->getChangeNumber()
         );
+    }
+
+    public function provideDataForListOrdersAccess()
+    {
+        return [
+            'guest' => [
+                'username' => UserService::DEFAULT_GUEST_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_302,
+            ],
+            'power-user' => [
+                'username' => UserService::DEFAULT_POWER_USER_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_200,
+            ],
+            'member' => [
+                'username' => UserService::DEFAULT_MEMBER_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_302,
+            ],
+            'admin' => [
+                'username' => UserService::DEFAULT_ADMIN_USERNAME,
+                'responseStatusCode' => Response::STATUS_CODE_200,
+            ],
+        ];
     }
 
     protected function createOrders()

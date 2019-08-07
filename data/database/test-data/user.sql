@@ -10,3 +10,7 @@ INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('9','
 INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('10','JohnDoe2','admin','2016-10-17 17:41:52','2017-04-20 01:21:23');
 INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('11','JaneSmith','member','2016-10-17 17:41:52','2017-04-20 01:21:23');
 INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('12','JaneSmith2','admin','2016-10-17 17:41:52','2017-04-20 01:21:23');
+INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('13','asdf','guest','2016-10-17 17:41:52','2017-04-20 01:21:23');
+INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('14','asdf2','admin','2016-10-17 17:41:52','2017-04-20 01:21:23');
+INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('15','qwer','power-user','2016-10-17 17:41:52','2017-04-20 01:21:23');
+INSERT INTO `user` (`id`, `username`, `role`, `created`, `updated`) VALUES('16','qwer2','admin','2016-10-17 17:41:52','2017-04-20 01:21:23');

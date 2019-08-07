@@ -224,6 +224,8 @@ class MiscDataOutputTest extends AbstractOrderRelatedTest
             1 => 'undefined2',
             2 => 'foo',
             3 => 'foo2',
+            4 => 'asdf',
+            5 => 'asdf2',
         ];
         $this->assertEquals($expectedResultsList, $actualResultsList);
 
