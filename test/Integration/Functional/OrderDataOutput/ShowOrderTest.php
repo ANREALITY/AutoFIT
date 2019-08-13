@@ -17,15 +17,15 @@ class ShowOrderTest extends AbstractOrderOutputTest
      * @throws Exception
      * @dataProvider provideDataForShowOrderAccess
      */
-    public function testShowOrderAccess(string $ownerUsername, string $requesterUsername, int $responseStatusCode)
+    public function testShowOrderAccess(string $username, int $responseStatusCode)
     {
         $connectionType = 'cd';
         $endpointSourceType = 'cdlinuxunix';
-        $this->createOrder($connectionType, $endpointSourceType, null, true, $ownerUsername);
+        $this->createOrder($connectionType, $endpointSourceType);
 
         $this->reset();
 
-        $_SERVER['AUTH_USER'] = $requesterUsername;
+        $_SERVER['AUTH_USER'] = $username;
 
         $orderId = 1;
         $showUrl = '/order/show/' . $orderId;
@@ -140,32 +140,27 @@ class ShowOrderTest extends AbstractOrderOutputTest
         return [
             // owner
             'owner' => [
-                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
-                'requesterUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'username' => UserService::DEFAULT_MEMBER_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
             // non-owner guest
             'guest' => [
-                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
-                'requesterUsername' => UserService::DEFAULT_GUEST_USERNAME,
+                'username' => UserService::DEFAULT_GUEST_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_302,
             ],
             // non-owner member
             'member' => [
-                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
-                'requesterUsername' => 'foo', // another member
+                'username' => 'foo', // another member
                 'responseStatusCode' => Response::STATUS_CODE_302,
             ],
             // non-owner power user
             'power-user' => [
-                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
-                'requesterUsername' => UserService::DEFAULT_POWER_USER_USERNAME,
+                'username' => UserService::DEFAULT_POWER_USER_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
             // non-owner admin
             'admin' => [
-                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
-                'requesterUsername' => UserService::DEFAULT_ADMIN_USERNAME,
+                'username' => UserService::DEFAULT_ADMIN_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
         ];
