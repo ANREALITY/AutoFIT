@@ -26,8 +26,12 @@ abstract class AbstractOrderRelatedTest extends AbstractControllerTest
         'complete' => FileTransferRequest::STATUS_COMPLETED,
     ];
 
-    protected function getCreateParams(string $connectionType, string $endpointSourceType, string $endpointTargetType = null)
-    {
+    protected function getCreateParams(
+        string $connectionType,
+        string $endpointSourceType,
+        string $endpointTargetType = null,
+        string $username = null
+    ) {
         $endpointTargetType = $endpointTargetType ?: $endpointSourceType;
         $fixturesRootFolder = $this->getApplicationServiceLocator()->get('config')['fixtures']['folder'];
         $fixturesFolder = $fixturesRootFolder . '/' . 'order-create-form-data';
@@ -35,17 +39,24 @@ abstract class AbstractOrderRelatedTest extends AbstractControllerTest
         $fixtureFilePath = $fixturesFolder . '/' . $fixtureFile;
         $fixtureJson = file_get_contents($fixtureFilePath);
         $createParams = json_decode($fixtureJson, true);
+        if (! empty($username)) {
+            $createParams['file_transfer_request']['user']['username'] = $username;
+        }
         return $createParams;
     }
 
     protected function createOrder(
-        string $connectionType, string $endpointSourceType, string $endpointTargetType = null, $reset = true
+        string $connectionType,
+        string $endpointSourceType,
+        string $endpointTargetType = null,
+        $reset = true,
+        $username = null
     ) {
         if ($reset) {
             $this->reset();
         }
         $createUrl = $this->getCreateUrl($connectionType, $endpointSourceType, $endpointTargetType);
-        $createParams = $this->getCreateParams($connectionType, $endpointSourceType, $endpointTargetType);
+        $createParams = $this->getCreateParams($connectionType, $endpointSourceType, $endpointTargetType, $username);
         $this->dispatch($createUrl, Request::METHOD_POST, $createParams);
     }
 
