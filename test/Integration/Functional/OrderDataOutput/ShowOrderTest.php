@@ -3,12 +3,35 @@ namespace Test\Integration\Functional\OrderDataOutput;
 
 use Base\DataObject\EndpointCdLinuxUnix;
 use Base\DataObject\FileTransferRequest;
+use Base\DataObject\User;
 use Exception;
 use Order\Service\UserService;
 use Zend\Http\PhpEnvironment\Response;
 
 class ShowOrderTest extends AbstractOrderOutputTest
 {
+
+    /**
+     * @param string $username
+     * @param int $responseStatusCode
+     * @throws Exception
+     * @dataProvider provideDataForShowOrderAccess
+     */
+    public function testShowOrderAccess(string $ownerUsername, string $requesterUsername, int $responseStatusCode)
+    {
+        $connectionType = 'cd';
+        $endpointSourceType = 'cdlinuxunix';
+        $this->createOrder($connectionType, $endpointSourceType, null, true, $ownerUsername);
+
+        $this->reset();
+
+        $_SERVER['AUTH_USER'] = $requesterUsername;
+
+        $orderId = 1;
+        $showUrl = '/order/show/' . $orderId;
+        $this->dispatch($showUrl);
+        $this->assertResponseStatusCode($responseStatusCode);
+    }
 
     /**
      * @dataProvider provideDataForShowOrder
@@ -117,27 +140,32 @@ class ShowOrderTest extends AbstractOrderOutputTest
         return [
             // owner
             'owner' => [
-                'username' => UserService::DEFAULT_MEMBER_USERNAME,
+                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'requesterUsername' => UserService::DEFAULT_MEMBER_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
-            // non-owner
+            // non-owner guest
             'guest' => [
-                'username' => UserService::DEFAULT_GUEST_USERNAME,
+                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'requesterUsername' => UserService::DEFAULT_GUEST_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_302,
             ],
-            // non-owner
+            // non-owner member
+            'member' => [
+                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'requesterUsername' => 'foo', // another member
+                'responseStatusCode' => Response::STATUS_CODE_302,
+            ],
+            // non-owner power user
             'power-user' => [
-                'username' => UserService::DEFAULT_POWER_USER_USERNAME,
+                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'requesterUsername' => UserService::DEFAULT_POWER_USER_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
-            // non-owner
-            'member' => [
-                'username' => 'bar',
-                'responseStatusCode' => Response::STATUS_CODE_302,
-            ],
-            // non-owner
+            // non-owner admin
             'admin' => [
-                'username' => UserService::DEFAULT_ADMIN_USERNAME,
+                'ownerUsername' => UserService::DEFAULT_MEMBER_USERNAME,
+                'requesterUsername' => UserService::DEFAULT_ADMIN_USERNAME,
                 'responseStatusCode' => Response::STATUS_CODE_200,
             ],
         ];
