@@ -1,16 +1,22 @@
 {
   "name": "AutoFIT",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "devDependencies": {
     "gulp": "*",
-    "gulp-watch": "*",
-    "gulp-less": "*",
     "gulp-autoprefixer": "*",
+    "gulp-less": "*",
     "gulp-plumber": "*",
     "gulp-rename": "*",
+    "gulp-watch": "*",
     "path": "*"
   },
   "dependencies": {
     "gulp": "^3.9.1"
-  }
+  },
+  "description": "Order portal for file transfer interfaces.",
+  "main": "index.php",
+  "repository": "https://github.com/dbsystel/AutoFIT.git",
+  "author": "Ilya Khanataev",
+  "license": "proprietary",
+  "private": true
 }
