@@ -1,0 +1,2 @@
+--modules-folder ./public/components
+strict-ssl false
