@@ -9,6 +9,7 @@ nbproject
 .htpasswd
 build.xml
 .bowerrc
+.npmrc
 .yarnrc
 npm-debug.log*
 config/application.config.php
