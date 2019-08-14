@@ -8,7 +8,6 @@ nbproject
 .settings
 .htpasswd
 build.xml
-.bowerrc
 .npmrc
 .yarnrc
 npm-debug.log*
