@@ -40,3 +40,4 @@ build/phpdox.xml
 build/phploc.xml
 build/phpmd.xml
 test/Selenium/order-form/common/TestCase_SetUp.xml
+yarn-error.log
