@@ -37,7 +37,7 @@ var gulp = require('gulp'),
 
 // Compile LESS to CSS
 function buildLess(done) {
-	const fileFilter = filter(['**/*', '!**/mixins.less', '!**/variables.less']);
+    const fileFilter = filter(['**/*', '!**/mixins.less', '!**/variables.less']);
     gulp.src('./public/less/*.less') // path to less file
         .pipe(fileFilter)
         .pipe(plumber())
