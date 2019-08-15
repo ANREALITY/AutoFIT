@@ -2,7 +2,6 @@
   "name": "AutoFIT",
   "version": "1.0.0",
   "devDependencies": {
-    "gulp": "*",
     "gulp-autoprefixer": "*",
     "gulp-less": "*",
     "gulp-plumber": "*",
