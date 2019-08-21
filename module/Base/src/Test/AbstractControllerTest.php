@@ -75,6 +75,12 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
         // }
         // $this->entityManager->getConnection()->close();
 
+        // closing DB connections
+        if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
+            $this->dbAdapter->getDriver()->getConnection()->disconnect();
+        }
+        $this->entityManager->getConnection()->close();
+
         $reflectionObject = new \ReflectionObject($this);
         foreach ($reflectionObject->getProperties() as $prop) {
             if (!$prop->isStatic() && 0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_')) {
