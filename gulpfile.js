@@ -5,15 +5,14 @@
  */
 
 // Include Gulp plugins
-var gulp = require('gulp'),
-    less = require('gulp-less'),
-    watch = require('gulp-watch'),
-    prefix = require('gulp-autoprefixer'),
-    plumber = require('gulp-plumber'),
-    filter = require('gulp-filter'),
-    rename = require('gulp-rename'),
-    path = require('path')
-;
+var gulp = require('gulp');
+var less = require('gulp-less');
+var watch = require('gulp-watch');
+var prefix = require('gulp-autoprefixer');
+var plumber = require('gulp-plumber');
+var filter = require('gulp-filter');
+var rename = require('gulp-rename');
+var path = require('path');
 
 // paths
 // var paths = {
@@ -73,4 +72,3 @@ gulp.task('build-vendors', buildVendors);
 gulp.task('run', gulp.series('build-less', 'build-vendors'));
 gulp.task('watch-files', gulp.series(watchFiles));
 gulp.task('default', gulp.series('run', 'watch-files'));
-
