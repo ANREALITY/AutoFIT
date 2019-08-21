@@ -45,9 +45,35 @@ abstract class AbstractControllerTest extends AbstractHttpControllerTestCase
 
     protected function tearDown()
     {
-        if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
-            $this->dbAdapter->getDriver()->getConnection()->disconnect();
-        }
+        // Connections: 354
+        // Time: 5.7 minutes, Memory: 622.00MB
+        // OK (102 tests, 367 assertions)
+        // no optimization
+
+        // Connections: 326 (26 connections less)
+        // Time: 5.86 minutes, Memory: 620.00MB
+        // OK (102 tests, 367 assertions)
+        // if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
+        //     $this->dbAdapter->getDriver()->getConnection()->disconnect();
+        // }
+
+        // Connections: 354
+        // Time: 5.67 minutes, Memory: 620.00MB
+        // OK (102 tests, 367 assertions)
+        // $this->entityManager->close();
+
+        // Connections: 291 (63 connections less)
+        // Time: 5.63 minutes, Memory: 622.00MB
+        // OK (102 tests, 367 assertions)
+        // $this->entityManager->getConnection()->close();
+
+        // Connections: 264 (90 connections less)
+        // Time: 5.7 minutes, Memory: 620.00MB
+        // OK (102 tests, 367 assertions)
+        // if ($this->dbAdapter && $this->dbAdapter instanceof Adapter) {
+        //     $this->dbAdapter->getDriver()->getConnection()->disconnect();
+        // }
+        // $this->entityManager->getConnection()->close();
 
         $reflectionObject = new \ReflectionObject($this);
         foreach ($reflectionObject->getProperties() as $prop) {
