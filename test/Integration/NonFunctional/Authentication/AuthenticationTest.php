@@ -36,7 +36,7 @@ class AuthenticationTest extends AbstractControllerTest
         $this->dispatch('/');
 
         /** @var User $expectedUser */
-        $expectedUser = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $username]);
+        $expectedUser = $this->getEntityManager()->getRepository(User::class)->findOneBy(['username' => $username]);
 
         $this->assertEquals($expectedUser->getUsername(), $username);
         $this->assertEquals($expectedUser->getRole(), Acl::DEFAULT_ROLE);

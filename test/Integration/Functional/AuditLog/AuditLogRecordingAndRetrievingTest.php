@@ -29,7 +29,7 @@ class AuditLogRecordingAndRetrievingTest extends AbstractOrderRelatedTest
 
     protected function assertCreateLogEntryOnEvent(int $orderId)
     {
-        $sql = new Sql($this->dbAdapter);
+        $sql = new Sql($this->getDbAdapter());
         $select = $sql->select('audit_log');
         $select->where([
             'audit_log.resource_type = ?' => AuditLog::RESSOURCE_TYPE_ORDER,

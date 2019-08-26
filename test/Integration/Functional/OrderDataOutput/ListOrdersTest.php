@@ -52,11 +52,11 @@ class ListOrdersTest extends AbstractOrderOutputTest
         }
 
         /** @var User $currentUser */
-        $currentUser = $this->entityManager->getRepository(User::class)
+        $currentUser = $this->getEntityManager()->getRepository(User::class)
             ->findOneBy(['username' => $username])
         ;
         /** @var FileTransferRequest $latestOrder */
-        $latestOrder = $this->entityManager->getRepository(FileTransferRequest::class)
+        $latestOrder = $this->getEntityManager()->getRepository(FileTransferRequest::class)
             ->findOneBy(['user' => $currentUser], ['created' => 'DESC'])
         ;
         $this->assertEquals(
@@ -118,7 +118,7 @@ class ListOrdersTest extends AbstractOrderOutputTest
             $this->assertInstanceOf(FileTransferRequest::class, $currentItem);
         }
         /** @var FileTransferRequest $latestOrder */
-        $latestOrder = $this->entityManager->getRepository(FileTransferRequest::class)
+        $latestOrder = $this->getEntityManager()->getRepository(FileTransferRequest::class)
             ->findOneBy([], ['created' => 'DESC'])
         ;
         $this->assertEquals(
@@ -161,7 +161,7 @@ class ListOrdersTest extends AbstractOrderOutputTest
             $this->assertInstanceOf(FileTransferRequest::class, $currentItem);
         }
         /** @var FileTransferRequest[] $latestOrders */
-        $latestOrders = $this->entityManager->getRepository(FileTransferRequest::class)
+        $latestOrders = $this->getEntityManager()->getRepository(FileTransferRequest::class)
             ->findBy(
                 [], ['created' => 'DESC']
             )
