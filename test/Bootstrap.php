@@ -67,12 +67,6 @@ class Bootstrap
         $this->serviceManager->get('ModuleManager')->loadModules();
     }
 
-    protected function bootstrapApplication($listeners)
-    {
-        $application = $this->serviceManager->get('Application');
-        $application->bootstrap($listeners);
-    }
-
     protected function prepareListeners()
     {
         $listenersFromAppConfig     = [];
@@ -80,6 +74,12 @@ class Bootstrap
         $listenersFromConfigService = isset($config['listeners']) ? $config['listeners'] : [];
         $listeners = array_unique(array_merge($listenersFromConfigService, $listenersFromAppConfig));
         return $listeners;
+    }
+
+    protected function bootstrapApplication($listeners)
+    {
+        $application = $this->serviceManager->get('Application');
+        $application->bootstrap($listeners);
     }
 
     protected function setUpDatabase(array $dbConfigs)
