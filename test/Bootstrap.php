@@ -75,7 +75,7 @@ class Bootstrap
 
     protected function prepareListeners()
     {
-        $listenersFromAppConfig     = isset($configuration['listeners']) ? $configuration['listeners'] : [];
+        $listenersFromAppConfig     = [];
         $config                     = $this->serviceManager->get('config');
         $listenersFromConfigService = isset($config['listeners']) ? $config['listeners'] : [];
         $listeners = array_unique(array_merge($listenersFromConfigService, $listenersFromAppConfig));
