@@ -34,7 +34,7 @@ $currentIdentity = $authenticationService->getIdentity();
             ->prependStylesheet($this->basePath() . '/css/style.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap.css', ['screen', 'print'])
-            ->appendStylesheet($this->basePath() . '/components/jquery-ui/themes/smoothness/jquery-ui.css')?>
+            ->appendStylesheet($this->basePath() . '/components/jquery-ui-dist/jquery-ui.theme.css')?>
 
         <!-- Scripts -->
         <?php
@@ -50,7 +50,7 @@ $currentIdentity = $authenticationService->getIdentity();
                 'conditional' => 'lt IE 9'
             ));
 
-        $this->headScript()->appendFile('/components/jquery-ui/jquery-ui.js');
+        $this->headScript()->appendFile('/components/jquery-ui-dist/jquery-ui.js');
         $this->headScript()->appendFile('/js/globals.js');
         $this->headScript()->appendFile('/js/info-box.js');
         echo $this->headScript();
