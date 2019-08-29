@@ -1,7 +1,7 @@
 /**
  * Autocompletion for the field server-name.
  */
-const AUTOCOMPLETE_SERVERS_NOT_IN_USE_LIMIT = 25;
+const AUTOCOMPLETE_SERVERS_NOT_IN_CD_USE_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
 var initAutocompleteServerNotInCdUse = function() {
     var serverNotInCdUseName = $('.fieldgroup-server .autocomplete-server');
@@ -16,7 +16,7 @@ var initAutocompleteServerNotInCdUse = function() {
                     + "data[name]=" + request.term,
                     {},
                     function(data) {
-                        response(data.slice(0, AUTOCOMPLETE_SERVERS_NOT_IN_USE_LIMIT));
+                        response(data.slice(0, AUTOCOMPLETE_SERVERS_NOT_IN_CD_USE_LIMIT));
                     }
                 );
             }
