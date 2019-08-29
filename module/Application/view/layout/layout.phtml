@@ -34,7 +34,9 @@ $currentIdentity = $authenticationService->getIdentity();
             ->prependStylesheet($this->basePath() . '/css/style.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap.css', ['screen', 'print'])
-            ->appendStylesheet($this->basePath() . '/components/jquery-ui-dist/jquery-ui.theme.css')?>
+            ->appendStylesheet($this->basePath() . '/components/jquery-ui-dist/jquery-ui.css')
+        ;
+        ?>
 
         <!-- Scripts -->
         <?php
