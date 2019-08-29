@@ -1,12 +1,10 @@
 <?php
-
 use Base\DataObject\User;
 use Zend\Authentication\AuthenticationService;
 use Zend\View\Helper\Navigation\Menu;
 use Zend\View\Renderer\PhpRenderer;
-
-echo $this->doctype();
 ?>
+<?php echo $this->doctype(); ?>
 
 <?php
 /** @var AuthenticationService $authenticationService */
@@ -21,16 +19,17 @@ $currentIdentity = $authenticationService->getIdentity();
         <?php
         echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')?>
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ;
+        ?>
 
         <!-- Le styles -->
         <?php
-        echo $this->headLink(
-            array(
+        echo $this->headLink([
                 'rel' => 'shortcut icon',
                 'type' => 'image/vnd.microsoft.icon',
                 'href' => $this->basePath() . '/img/favicon.ico'
-            ))
+            ])
             ->prependStylesheet($this->basePath() . '/css/style.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.css', ['screen', 'print'])
             ->prependStylesheet($this->basePath() . '/css/bootstrap.css', ['screen', 'print'])
@@ -43,14 +42,13 @@ $currentIdentity = $authenticationService->getIdentity();
         echo $this->headScript()
             ->prependFile($this->basePath() . '/components/bootstrap/dist/js/bootstrap.js')
             ->prependFile($this->basePath() . '/components/jquery/dist/jquery.js')
-            ->prependFile($this->basePath() . '/components/respond/dest/respond.min.js', 'text/javascript',
-            array(
+            ->prependFile($this->basePath() . '/components/respond/dest/respond.min.js', 'text/javascript', [
                 'conditional' => 'lt IE 9'
-            ))
-            ->prependFile($this->basePath() . '/components/html5shiv/dist/html5shiv.js', 'text/javascript',
-            array(
+            ])
+            ->prependFile($this->basePath() . '/components/html5shiv/dist/html5shiv.js', 'text/javascript', [
                 'conditional' => 'lt IE 9'
-            ));
+            ])
+        ;
 
         $this->headScript()->appendFile('/components/jquery-ui-dist/jquery-ui.js');
         $this->headScript()->appendFile('/js/globals.js');
@@ -70,8 +68,8 @@ $currentIdentity = $authenticationService->getIdentity();
                         class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand"
-                    href="<?php echo $this->url('home') ?>"><img
-                    src="<?php echo $this->basePath('img/logo.png') ?>"
+                    href="<?php echo $this->url('home'); ?>"><img
+                    src="<?php echo $this->basePath('img/logo.png'); ?>"
                     alt="DB Systel Logo" /></a>
             </div>
             <div class="collapse navbar-collapse">
@@ -115,12 +113,12 @@ $currentIdentity = $authenticationService->getIdentity();
             <hr />
         <footer>
             <p>
-                &copy; 2016 - <?php echo date('Y') ?>
+                &copy; 2016 - <?php echo date('Y'); ?>
                 DB Systel
             </p>
         </footer>
     </div>
     <!-- /container -->
-        <?php echo $this->inlineScript()?>
+        <?php echo $this->inlineScript(); ?>
     </body>
 </html>
