@@ -97,7 +97,6 @@ class ServerService extends AbstractService implements ServerServiceInterface
     public function findAllHavingClusterForAutocomplete(string $name)
     {
         $criteria = [];
-        $criteria[] = ['active' => true];
         $criteria[] = ['having_cluster' => true];
         if ($name) {
             $criteria[] = ['name' => $name];
