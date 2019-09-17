@@ -47,7 +47,7 @@ $(document).ready(function() {
  */
 const AUTOCOMPLETE_SERVERS_LIMIT = 25;
 // Implemented this way for solving the issue with autocomplete for dynamically added fields (s. #120).
-var initAutocompleteServerSource = function() {
+var initAutocompleteServerName = function() {
     var serverServerName = $('#search #fieldgroup-filter .autocomplete-server-name');
     serverServerName
         .autocomplete({
@@ -70,3 +70,6 @@ var initAutocompleteServerSource = function() {
         $(this).autocomplete("search", this.value);
     });
 };
+$(document).ready(function() {
+    initAutocompleteServerName();
+});
