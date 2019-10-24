@@ -19,13 +19,13 @@ return [
             'application' . '_driver' => [
                 'class' => AnnotationDriver::class,
                 'cache' => 'array',
-                'paths' => [__DIR__ . '/../../vendor/db-systel/dbs-common-lib/src/DataObject']
+                'paths' => [__DIR__ . '/../../module/Base/src/DataObject']
             ],
             'orm_default' => [
                 'drivers' => [
-                    'DbSystel' . '\DataObject' => 'application' . '_driver'
+                    'Base' . '\DataObject' => 'application' . '_driver'
                 ]
             ]
-        ]
+        ],
     ],
 ];
