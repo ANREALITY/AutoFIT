@@ -43,7 +43,8 @@ class Module
                     $authenticationAdapter = new AuthenticationAdapter($userService, $username);
                     $authenticationService = new AuthenticationService();
                     $authenticationService->setAdapter($authenticationAdapter);
-                    $authenticationService->setStorage($serviceManager->get('AuthenticationStorage'));
+                    $authenticationStorage = $serviceManager->get('AuthenticationStorage');
+                    $authenticationService->setStorage($authenticationStorage);
                     $authenticationService->authenticate();
 
                     return $authenticationService;
