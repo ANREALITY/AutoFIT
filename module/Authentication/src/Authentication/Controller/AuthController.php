@@ -75,4 +75,14 @@ class AuthController extends AbstractActionController
         ]);
     }
 
+    /**
+     * @return Response
+     * @throws Exception
+     */
+    public function logoutAction()
+    {
+        $this->authManager->logout();
+        return $this->redirect()->toRoute('login');
+    }
+
 }
