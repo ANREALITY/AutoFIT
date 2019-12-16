@@ -63,6 +63,22 @@ class AuthManager
     }
 
     /**
+     * Performs user logout.
+     *
+     * @throws Exception
+     */
+    public function logout()
+    {
+        // Allow to log out only when user is logged in.
+        if ($this->authenticationService->getIdentity() == null) {
+            throw new Exception('The user is not logged in');
+        }
+
+        // Remove identity from session.
+        $this->authenticationService->clearIdentity();
+    }
+
+    /**
      * This is a simple access control filter.
      * It is able to restrict unauthorized users to visit certain pages.
      * This method uses the 'access_filter' key in the config file
