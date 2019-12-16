@@ -106,6 +106,9 @@ $currentIdentity = $authenticationService->getIdentity();
             <!--/.nav-collapse -->
             <div id="current-user" class="navbar-collapse collapse">
                 <span><?php echo $currentIdentity['username']; ?></span>
+                <?php if(! empty($currentIdentity) && ! empty($currentIdentity['username'])): ?>
+                    <span><a class="btn btn-default" id="log-out-link" href="<?php echo $this->url('logout'); ?>"><?php echo $this->translate('log out'); ?></a></span>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
