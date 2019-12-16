@@ -1,10 +1,11 @@
 <?php
 namespace Authentication;
 
-use Order\Service\UserService;
-use Zend\Authentication\AuthenticationService;
-use Authentication\Adapter\DbTable as AuthenticationAdapter;
-use Zend\Authentication\Storage\Session;
+use Authentication\Controller\AuthController;
+use Authentication\Service\AuthManager;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\MvcEvent;
+use Zend\Uri\Http as HttpUri;
 
 class Module
 {
@@ -14,6 +15,43 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
 
+    public function onBootstrap(MvcEvent $event)
+    {
+        $eventManager = $event->getApplication()->getEventManager();
+        $sharedEventManager = $eventManager->getSharedManager();
+        $sharedEventManager->attach(
+            AbstractActionController::class,
+            MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], 100
+        );
+    }
+
+    public function onDispatch(MvcEvent $event)
+    {
+        $controller = $event->getTarget();
+        $controllerName = $event->getRouteMatch()->getParam('controller', null);
+        // $controllerName = get_class($controller);
+        $actionName = $event->getRouteMatch()->getParam('action', null);
+
+        $actionName = str_replace('-', '', lcfirst(ucwords($actionName, '-')));
+
+        $authManager = $event->getApplication()->getServiceManager()->get(AuthManager::class);
+
+        // Remembering the URL of the page the user tried to access.
+        // The user will be redirected to that URL after successful login.
+        if ($controllerName != AuthController::class && ! $authManager->filterAccess($controllerName, $actionName)) {
+            /** @var HttpUri $uri */
+            $uri = $event->getApplication()->getRequest()->getUri();
+            // Making the URL relative (remove scheme, user info, host name and port)
+            // to avoid redirecting to other domain by a malicious user.
+            $uri->setScheme(null)
+                ->setHost(null)
+                ->setPort(null)
+                ->setUserInfo(null);
+            $redirectUrl = $uri->toString();
+            return $controller->redirect()->toRoute('login', [], ['query'=>['redirectUrl'=>$redirectUrl]]);
+        }
+    }
+
     public function getAutoloaderConfig()
     {
         return [
@@ -21,34 +59,6 @@ class Module
                 'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
                 ]
-            ]
-        ];
-    }
-
-    public function getServiceConfig()
-    {
-        return [
-            'factories' => [
-                'AuthenticationStorage' => function ($serviceManager) {
-                    return new Session('auth');
-                },
-                'AuthenticationService' => function ($serviceManager) {
-                    $userService = $serviceManager->get('Order\Service\UserService');
-                    if (! empty($_SERVER['AUTH_USER'])) {
-                        $username = strrchr($_SERVER['AUTH_USER'], "\\") ? str_ireplace("\\", '',
-                            strrchr($_SERVER['AUTH_USER'], "\\")) : $_SERVER['AUTH_USER'];
-                    } else {
-                        $username = UserService::DEFAULT_MEMBER_USERNAME;
-                    }
-                    $authenticationAdapter = new AuthenticationAdapter($userService, $username);
-                    $authenticationService = new AuthenticationService();
-                    $authenticationService->setAdapter($authenticationAdapter);
-                    $authenticationStorage = $serviceManager->get('AuthenticationStorage');
-                    $authenticationService->setStorage($authenticationStorage);
-                    $authenticationService->authenticate();
-
-                    return $authenticationService;
-                }
             ]
         ];
     }

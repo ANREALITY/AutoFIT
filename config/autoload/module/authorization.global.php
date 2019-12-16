@@ -83,6 +83,12 @@ return [
                 'AuditLogging\Controller\Ajax' => [
                     'all' => 'admin',
                 ],
+                'Authentication\Controller\Auth' => [
+                    'all' => 'guest',
+                ],
+                'Authentication\Controller\AuthController' => [
+                    'all' => 'guest',
+                ],
             ]
         ],
         'redirect_route' => [

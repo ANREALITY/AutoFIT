@@ -1,0 +1,39 @@
+<?php
+use Authentication\Form\LoginForm;
+?>
+
+<?php
+/** @var $form LoginForm */
+/** @var $isLoginError bool */
+?>
+
+<?php
+$this->headTitle('Sign in');
+
+$form->get('username')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'username',
+    'required' => true,
+    'autofocus' => true
+    ])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+?>
+
+<div class="row">
+    <div class="col-md-offset-4 col-md-3">
+        <form class="form-signin" method="post">
+            <?php if ($isLoginError): ?>
+            <div class="alert alert-warning" role="alert">
+                <span><?php echo $this->translate('incorrect username'); ?></span>
+            </div>
+            <?php endif; ?>
+            <?php echo $this->formLabel($form->get('username')); ?>
+            <?php echo $this->formElement($form->get('username')); ?>
+            <?php echo $this->formElement($form->get('redirect_url')); ?>
+            <?php echo $this->formElement($form->get('csrf')) ?>
+            <button class="btn btn-default btn-block" type="submit"><?php echo $this->translate('log in'); ?></button>
+        </form>
+    </div>
+</div>
