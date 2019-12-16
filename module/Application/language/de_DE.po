@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-16 15:34+0100\n"
-"PO-Revision-Date: 2019-12-16 15:34+0100\n"
+"POT-Creation-Date: 2019-12-16 16:03+0100\n"
+"PO-Revision-Date: 2019-12-16 16:03+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -907,6 +907,10 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
+#: module/Application/view/layout/layout.phtml:110
+msgid "log out"
+msgstr "abmelden"
+
 #: module/AuditLogging/view/audit-logging/index/list.phtml:7
 msgid "Audit log"
 msgstr "Audit-Log"
@@ -1733,9 +1737,6 @@ msgstr "zur Bestellung"
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
 "Musterchanges zum Beantragen von %s-Filetransfer-Schnittstellen im PSC:"
-
-#~ msgid "log out"
-#~ msgstr "abmelden"
 
 #, fuzzy
 #~| msgid "username"
