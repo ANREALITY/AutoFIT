@@ -73,6 +73,7 @@ $currentIdentity = $authenticationService->getIdentity();
                     alt="DB Systel Logo" /></a>
             </div>
             <div class="collapse navbar-collapse">
+                <?php if (!empty($currentIdentity) && !empty($currentIdentity['role'])): ?>
                 <ul class="nav navbar-nav">
                     <?php
                     echo $this->navigation('navigation')
@@ -100,6 +101,7 @@ $currentIdentity = $authenticationService->getIdentity();
                     ?>
                     <?php endif; ?>
                 </ul>
+                <?php endif; ?>
             </div>
             <!--/.nav-collapse -->
             <div id="current-user" class="navbar-collapse collapse">
