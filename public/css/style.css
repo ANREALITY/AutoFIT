@@ -72,6 +72,9 @@ a:focus {
   margin: 50px auto;
   line-height: 70px;
 }
+#log-out-link {
+  display: inline;
+}
 #start-link-cd,
 #create-link-cd {
   background: #ffcc33;
