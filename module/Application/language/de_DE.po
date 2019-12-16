@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-23 20:24+0200\n"
-"PO-Revision-Date: 2019-07-23 20:24+0200\n"
+"POT-Creation-Date: 2019-12-16 15:34+0100\n"
+"PO-Revision-Date: 2019-12-16 15:34+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate;gettext;_\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SearchPath-0: module/Application\n"
 "X-Poedit-SearchPath-1: module\n"
 "X-Poedit-SearchPath-2: module/Order\n"
@@ -31,13 +31,13 @@ msgstr "Stammdaten"
 msgid "my orders"
 msgstr "Meine Bestellungen"
 
-#: config/autoload/navigation.global.php:18
+#: config/autoload/navigation.global.php:20
 #: module/AuditLogging/src/AuditLogging/Form/Fieldset/FilterFieldset.php:58
 #: module/Order/view/order/process/list-orders.phtml:6
 msgid "orders"
 msgstr "Bestellungen"
 
-#: config/autoload/navigation.global.php:24
+#: config/autoload/navigation.global.php:26
 msgid "audit log"
 msgstr "Audit-Log"
 
@@ -476,7 +476,7 @@ msgstr "Zielsystem - AS400"
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:14
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:14
 msgid "Source - LinuxUnix"
-msgstr ""
+msgstr "Quellsystem - LinuxUnix"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:41
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:26
@@ -507,7 +507,7 @@ msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixTargetFieldset.php:13
 msgid "Target - LinuxUnix"
-msgstr ""
+msgstr "Zielsystem - LinuxUnix"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdTandemSourceFieldset.php:13
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdTandemSourceFieldset.php:13
@@ -522,12 +522,12 @@ msgstr "Zielsystem - Tandem"
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsShareSourceFieldset.php:14
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwWindowsShareSourceFieldset.php:14
 msgid "Source - WindowsShare"
-msgstr ""
+msgstr "Quellsystem - WindowsShare"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsShareTargetFieldset.php:13
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwWindowsShareTargetFieldset.php:13
 msgid "Target - WindowsShare"
-msgstr ""
+msgstr "Zielsystem - WindowsShare"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdWindowsSourceFieldset.php:14
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwWindowsSourceFieldset.php:13
@@ -542,12 +542,12 @@ msgstr "Zielsystem - Windows"
 #: module/Order/src/Order/Form/Fieldset/EndpointCdZosSourceFieldset.php:13
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdZosSourceFieldset.php:13
 msgid "Source - Zos"
-msgstr ""
+msgstr "Quellsystem - Zos"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdZosTargetFieldset.php:13
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwCdZosTargetFieldset.php:13
 msgid "Target - Zos"
-msgstr ""
+msgstr "Zielsystem - Zos"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointClusterConfigFieldset.php:36
 #: module/Order/view/partials/order-parts/endpoints/cd/cdlinuxunix-source.phtml:84
@@ -558,24 +558,20 @@ msgid "cluster's DNS address"
 msgstr "DNS-Adresse des Clusters"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwAwsS3SourceFieldset.php:13
-#, fuzzy
-#| msgid "Source - AS400"
 msgid "Source - AWS S3"
-msgstr "Quellsystem - AS400"
+msgstr "Quellsystem - AWS S3"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwAwsS3TargetFieldset.php:13
-#, fuzzy
-#| msgid "Target - AS400"
 msgid "Target - AWS S3"
-msgstr "Zielsystem - AS400"
+msgstr "Zielsystem - AWS S3"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerSourceFieldset.php:14
 msgid "Source - ProtocolServer"
-msgstr ""
+msgstr "Quellsystem - ProtocolServer"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwProtocolServerTargetFieldset.php:13
 msgid "Target - ProtocolServer"
-msgstr ""
+msgstr "Zielsystem - ProtocolServer"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwSelfServiceSourceFieldset.php:13
 msgid "Source - Self-Service"
@@ -907,7 +903,7 @@ msgstr "Es ist keine Ausnahme verfügbar"
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: module/Application/view/layout/layout.phtml:19
+#: module/Application/view/layout/layout.phtml:17
 msgid "AutoFIT"
 msgstr ""
 
@@ -957,6 +953,14 @@ msgstr "Filterung"
 #: module/Order/view/partials/search/form/fieldgroups/sort.phtml:4
 msgid "sorting"
 msgstr "Sortierung"
+
+#: module/Authentication/view/authentication/auth/login.phtml:29
+msgid "incorrect username"
+msgstr "ungültiger Benutzername"
+
+#: module/Authentication/view/authentication/auth/login.phtml:36
+msgid "log in"
+msgstr "anmelden"
 
 #: module/MasterData/view/master-data/cluster/create.phtml:9
 #: module/MasterData/view/partials/fieldgroups/cluster.phtml:4
@@ -1729,6 +1733,9 @@ msgstr "zur Bestellung"
 msgid "Example changes for ordering of %s file transfer interfaces in the PSC:"
 msgstr ""
 "Musterchanges zum Beantragen von %s-Filetransfer-Schnittstellen im PSC:"
+
+#~ msgid "log out"
+#~ msgstr "abmelden"
 
 #, fuzzy
 #~| msgid "username"
