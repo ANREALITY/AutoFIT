@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-16 16:03+0100\n"
-"PO-Revision-Date: 2019-12-16 16:03+0100\n"
+"POT-Creation-Date: 2019-12-17 17:21+0100\n"
+"PO-Revision-Date: 2019-12-17 17:44+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -907,7 +907,11 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: module/Application/view/layout/layout.phtml:110
+#: module/Application/view/layout/layout.phtml:111
+msgid "change identity to %"
+msgstr "Identität wechseln zu %"
+
+#: module/Application/view/layout/layout.phtml:114
 msgid "log out"
 msgstr "abmelden"
 
@@ -957,6 +961,14 @@ msgstr "Filterung"
 #: module/Order/view/partials/search/form/fieldgroups/sort.phtml:4
 msgid "sorting"
 msgstr "Sortierung"
+
+#: module/Authentication/view/authentication/auth/identity-changed.phtml:7
+msgid "The identity has been successfully changed."
+msgstr "Die Identität wurde erfolgreich geändert."
+
+#: module/Authentication/view/authentication/auth/identity-changed.phtml:9
+msgid "You are now logged in as %."
+msgstr "Sie sind nun als %s angemeldet."
 
 #: module/Authentication/view/authentication/auth/login.phtml:29
 msgid "incorrect username"
