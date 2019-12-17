@@ -2,8 +2,8 @@
 namespace Authentication\Service\Factory;
 
 use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
+use Authentication\Authentication\Service\AuthenticationService;
 use Interop\Container\ContainerInterface;
-use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Storage\Session as SessionStorage;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Session\SessionManager;
