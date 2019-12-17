@@ -26,4 +26,12 @@ interface UserServiceInterface
      */
     public function saveOne(User $user);
 
+    /**
+     * Retrieves the user related to the given one.
+     *
+     * @param string $username
+     * @return User
+     * @todo Introduce users/identities groups and replace this method by findRelatedUsers(...).
+     */
+    public function findRelatedUser(string $username);
 }
