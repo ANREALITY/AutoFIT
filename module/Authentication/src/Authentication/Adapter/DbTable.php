@@ -63,10 +63,12 @@ class DbTable extends AbstractAdapter
             $user->setUsername($this->username);
             $user = $this->userService->saveOne($user);
         }
+        $relatedUser = $this->userService->findRelatedUser($this->username);
         $identity = [
             'id' => $user->getId(),
             'username' => $user->getUsername(),
-            'role' => $user->getRole()
+            'role' => $user->getRole(),
+            'alternativeIdentityUsername' => ! empty($relatedUser) ? $relatedUser->getUsername() : null,
         ];
         $this->setIdentity($identity);
         $authResult = new Result(Result::SUCCESS, $identity);
