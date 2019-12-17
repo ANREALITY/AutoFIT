@@ -4,6 +4,7 @@ namespace Authentication\Controller;
 use Authentication\Form\LoginForm;
 use Authentication\Service\AuthManager;
 use Exception;
+use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Result;
 use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -16,11 +17,14 @@ use Zend\View\Model\ViewModel;
 class AuthController extends AbstractActionController
 {
 
+    /** @var AuthenticationService */
+    private $authenticationService;
     /** @var AuthManager */
     private $authManager;
 
-    public function __construct(AuthManager $authManager)
+    public function __construct(AuthenticationService $authenticationService, AuthManager $authManager)
     {
+        $this->authenticationService = $authenticationService;
         $this->authManager = $authManager;
     }
 
@@ -83,6 +87,28 @@ class AuthController extends AbstractActionController
     {
         $this->authManager->logout();
         return $this->redirect()->toRoute('login');
+    }
+
+    /**
+     * @return Response
+     * @throws Exception
+     */
+    public function changeIdentityAction()
+    {
+        $username = $this->authenticationService->getIdentity()['username'];
+        $this->authManager->changeIdentity($username);
+        return $this->redirect()->toRoute('identity-changed');
+    }
+
+    /**
+     * @return ViewModel
+     * @throws Exception
+     */
+    public function identityChangedAction()
+    {
+        return new ViewModel(
+            ['currentIdentityUsername' => $this->authenticationService->getIdentity()['username']]
+        );
     }
 
 }

@@ -38,6 +38,26 @@ return [
                     ],
                 ],
             ],
+            'change-identity' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/change-identity',
+                    'defaults' => [
+                        'controller' => Controller\AuthController::class,
+                        'action' => 'changeIdentity',
+                    ],
+                ],
+            ],
+            'identity-changed' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/identity-changed',
+                    'defaults' => [
+                        'controller' => Controller\AuthController::class,
+                        'action' => 'identityChanged',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [

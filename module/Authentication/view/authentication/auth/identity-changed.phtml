@@ -1,0 +1,12 @@
+<?php
+/** @var string $currentIdentityUsername */
+?>
+
+<div class="jumbotron">
+    <span><?php
+        echo $this->translate('The identity has been successfully changed.');
+        ?></span>
+    <span><?php echo sprintf($this->translate('You are now logged in as %.'), $currentIdentityUsername); ?></span>
+</div>
+
+<div class="row"></div>
