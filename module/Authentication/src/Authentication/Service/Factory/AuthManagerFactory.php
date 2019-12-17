@@ -17,12 +17,13 @@ class AuthManagerFactory implements FactoryInterface
     {
         $authenticationService = $container->get('AuthenticationService');
         $sessionManager = $container->get(SessionManager::class);
+        $userService = $container->get('Order\Service\UserService');
         $config = isset($container->get('config')['access_filter'])
             ? $container->get('config')['access_filter']
             : []
         ;
 
-        return new AuthManager($authenticationService, $sessionManager, $config);
+        return new AuthManager($authenticationService, $sessionManager, $userService, $config);
     }
 
 }

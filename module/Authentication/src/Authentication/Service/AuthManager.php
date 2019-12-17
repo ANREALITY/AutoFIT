@@ -1,8 +1,9 @@
 <?php
 namespace Authentication\Service;
 
+use Authentication\Authentication\Service\AuthenticationService;
 use Exception;
-use Zend\Authentication\AuthenticationService;
+use Order\Service\UserServiceInterface;
 use Zend\Authentication\Result;
 use Zend\Session\SessionManager;
 use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
@@ -19,6 +20,8 @@ class AuthManager
     private $authenticationService;
     /** @var SessionManager */
     private $sessionManager;
+    /** @var UserServiceInterface */
+    private $userService;
     /**
      * Contents of the 'access_filter' config key.
      * @var array 
@@ -32,10 +35,11 @@ class AuthManager
      * @param SessionManager $sessionManager
      * @param array $config
      */
-    public function __construct(AuthenticationService $authService, SessionManager $sessionManager, array $config)
+    public function __construct(AuthenticationService $authService, SessionManager $sessionManager, UserServiceInterface $userService, array $config)
     {
         $this->authenticationService = $authService;
         $this->sessionManager = $sessionManager;
+        $this->userService = $userService;
         $this->config = $config;
     }
 
@@ -76,6 +80,27 @@ class AuthManager
 
         // Remove identity from session.
         $this->authenticationService->clearIdentity();
+    }
+
+    /**
+     * Performs changing identity.
+     *
+     * @param string $username
+     * @throws Exception
+     */
+    public function changeIdentity(string $username)
+    {
+        $targetUser = $this->userService->findRelatedUser($username);
+        if ($targetUser == null) {
+            throw new Exception('There is no related user for the user ' . '"' . $username . '".');
+        }
+        $identity = [
+            'id' => $targetUser->getId(),
+            'username' => $targetUser->getUsername(),
+            'role' => $targetUser->getRole(),
+            'alternativeIdentityUsername' => $username,
+        ];
+        $this->authenticationService->replaceAuthenticatedIdentity($identity);
     }
 
     /**
