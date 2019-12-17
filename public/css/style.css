@@ -72,7 +72,8 @@ a:focus {
   margin: 50px auto;
   line-height: 70px;
 }
-#log-out-link {
+#log-out-link,
+#change-identity-link {
   display: inline;
 }
 #start-link-cd,
