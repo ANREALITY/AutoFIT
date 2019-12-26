@@ -7,7 +7,7 @@ class AuthenticationService extends ZendAuthenticationService
 {
 
     /**
-     * Takes the passed identity and replace the currently authenticated identity.
+     * Takes the passed identity and replaces the currently authenticated identity.
      *
      * @param array $identity
      */
