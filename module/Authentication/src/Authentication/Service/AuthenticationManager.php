@@ -6,7 +6,7 @@ use Exception;
 use Order\Service\UserServiceInterface;
 use Zend\Authentication\Result;
 use Zend\Session\SessionManager;
-use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
+use Authentication\Adapter\DbTableAuthenticationAdapter;
 
 /**
  * The AuthenticationManager service is responsible for user's login/logout and simple access filtering.

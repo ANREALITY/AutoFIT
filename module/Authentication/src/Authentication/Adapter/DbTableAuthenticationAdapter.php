@@ -8,7 +8,7 @@ use Zend\Authentication\Adapter\AbstractAdapter;
 use Zend\Authentication\Result;
 use Base\DataObject\User;
 
-class DbTable extends AbstractAdapter
+class DbTableAuthenticationAdapter extends AbstractAdapter
 {
 
     /**

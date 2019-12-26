@@ -2,7 +2,7 @@
 namespace Authentication;
 
 use Application\Controller\IndexController;
-use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
+use Authentication\Adapter\DbTableAuthenticationAdapter;
 use Authentication\Adapter\Factory\DbTableAuthenticationAdapterFactory;
 use Authentication\Authentication\Controller\Factory\AuthControllerFactory;
 use Authentication\Controller\AuthController;

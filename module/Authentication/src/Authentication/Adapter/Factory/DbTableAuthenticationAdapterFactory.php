@@ -1,7 +1,7 @@
 <?php
 namespace Authentication\Adapter\Factory;
 
-use Authentication\Adapter\DbTable as AuthenticationAdapter;
+use Authentication\Adapter\DbTableAuthenticationAdapter as AuthenticationAdapter;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
