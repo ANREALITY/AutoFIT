@@ -2,12 +2,12 @@
 namespace Authentication\Service\Factory;
 
 use Interop\Container\ContainerInterface;
-use Authentication\Service\AuthManager;
+use Authentication\Service\AuthenticationManager;
 use Zend\Authentication\AuthenticationService;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Session\SessionManager;
 
-class AuthManagerFactory implements FactoryInterface
+class AuthenticationManagerFactory implements FactoryInterface
 {
 
     /**
@@ -23,7 +23,7 @@ class AuthManagerFactory implements FactoryInterface
             : []
         ;
 
-        return new AuthManager($authenticationService, $sessionManager, $userService, $config);
+        return new AuthenticationManager($authenticationService, $sessionManager, $userService, $config);
     }
 
 }

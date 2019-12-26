@@ -18,7 +18,7 @@ class AuthenticationServiceFactory implements FactoryInterface
     {
         $sessionManager = $container->get(SessionManager::class);
         $authenticationStorage = new SessionStorage('auth', 'session', $sessionManager);
-        $authenticationAdapter = $container->get(DbTableAuthenticationAdapter::class);
+        $authenticationAdapter = $container->get('AuthenticationAdapter');
 
         return new AuthenticationService($authenticationStorage, $authenticationAdapter);
     }

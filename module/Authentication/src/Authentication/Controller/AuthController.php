@@ -2,7 +2,7 @@
 namespace Authentication\Controller;
 
 use Authentication\Form\LoginForm;
-use Authentication\Service\AuthManager;
+use Authentication\Service\AuthenticationManager;
 use Exception;
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Result;
@@ -19,10 +19,10 @@ class AuthController extends AbstractActionController
 
     /** @var AuthenticationService */
     private $authenticationService;
-    /** @var AuthManager */
+    /** @var AuthenticationManager */
     private $authManager;
 
-    public function __construct(AuthenticationService $authenticationService, AuthManager $authManager)
+    public function __construct(AuthenticationService $authenticationService, AuthenticationManager $authManager)
     {
         $this->authenticationService = $authenticationService;
         $this->authManager = $authManager;

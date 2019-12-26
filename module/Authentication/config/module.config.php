@@ -6,9 +6,9 @@ use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
 use Authentication\Adapter\Factory\DbTableAuthenticationAdapterFactory;
 use Authentication\Authentication\Controller\Factory\AuthControllerFactory;
 use Authentication\Controller\AuthController;
-use Authentication\Service\AuthManager;
+use Authentication\Service\AuthenticationManager;
 use Authentication\Service\Factory\AuthenticationServiceFactory;
-use Authentication\Service\Factory\AuthManagerFactory;
+use Authentication\Service\Factory\AuthenticationManagerFactory;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Authentication\AuthenticationService;
 use Zend\Router\Http\Literal;
@@ -82,8 +82,8 @@ return [
         'factories' => [
             // services
             'AuthenticationService' => AuthenticationServiceFactory::class,
-            DbTableAuthenticationAdapter::class => DbTableAuthenticationAdapterFactory::class,
-            AuthManager::class => AuthManagerFactory::class,
+            'AuthenticationAdapter' => DbTableAuthenticationAdapterFactory::class,
+            'AuthenticationManager' => AuthenticationManagerFactory::class,
             SessionManager::class => SessionManagerFactory::class,
         ],
     ],
@@ -92,7 +92,6 @@ return [
             __DIR__ . '/../view',
         ],
     ],
-    // We register module-provided view helpers under this key.
     'view_helpers' => [
         'factories' => [
 //            View\Helper\CurrentUser::class => View\Helper\Factory\CurrentUserFactory::class,

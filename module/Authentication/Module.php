@@ -2,7 +2,7 @@
 namespace Authentication;
 
 use Authentication\Controller\AuthController;
-use Authentication\Service\AuthManager;
+use Authentication\Service\AuthenticationManager;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\MvcEvent;
 use Zend\Uri\Http as HttpUri;
@@ -34,7 +34,7 @@ class Module
 
         $actionName = str_replace('-', '', lcfirst(ucwords($actionName, '-')));
 
-        $authManager = $event->getApplication()->getServiceManager()->get(AuthManager::class);
+        $authManager = $event->getApplication()->getServiceManager()->get('AuthenticationManager');
 
         // Remembering the URL of the page the user tried to access.
         // The user will be redirected to that URL after successful login.

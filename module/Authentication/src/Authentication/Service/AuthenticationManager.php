@@ -9,11 +9,11 @@ use Zend\Session\SessionManager;
 use Authentication\Adapter\DbTable as DbTableAuthenticationAdapter;
 
 /**
- * The AuthManager service is responsible for user's login/logout and simple access filtering.
+ * The AuthenticationManager service is responsible for user's login/logout and simple access filtering.
  * The access filtering feature checks whether the current visitor
  * is allowed to see the given page or not.  
  */
-class AuthManager
+class AuthenticationManager
 {
 
     /** @var AuthenticationService */
@@ -29,7 +29,7 @@ class AuthManager
     private $config;
 
     /**
-     * AuthManager constructor.
+     * AuthenticationManager constructor.
      *
      * @param AuthenticationService $authService
      * @param SessionManager $sessionManager
