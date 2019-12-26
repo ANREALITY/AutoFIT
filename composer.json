@@ -16,7 +16,8 @@
         "symfony/property-access": "^3.3",
         "ext-PDO": "^7.2",
         "ext-json": "^1.6",
-        "ext-SimpleXML": "^7.2"
+        "ext-SimpleXML": "^7.2",
+        "ext-gettext": "*"
     },
     "require-dev": {
     },
