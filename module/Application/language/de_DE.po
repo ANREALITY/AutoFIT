@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 17:21+0100\n"
-"PO-Revision-Date: 2019-12-17 17:44+0100\n"
+"POT-Creation-Date: 2019-12-26 18:21+0100\n"
+"PO-Revision-Date: 2019-12-26 18:26+0100\n"
 "Last-Translator: Evan Coury <me@evancoury.com>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: translate;gettext;_\n"
 "X-Poedit-Basepath: ../../..\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: module/Application\n"
 "X-Poedit-SearchPath-1: module\n"
 "X-Poedit-SearchPath-2: module/Order\n"
@@ -327,7 +327,9 @@ msgid "port"
 msgstr "Port"
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwProtocolServerFieldset.php:128
-msgid "The input does not match against the DNS pattern"
+#, fuzzy
+#| msgid "The input does not match against the DNS pattern"
+msgid "The input does not match against the DNS pattern."
 msgstr "Die Eingabe entspricht nicht dem DNS-Muster."
 
 #: module/Order/src/Order/Form/Fieldset/AbstractEndpointFtgwSelfServiceFieldset.php:23
@@ -501,7 +503,9 @@ msgstr "Sendeintervall"
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixSourceFieldset.php:121
 #: module/Order/src/Order/Form/Fieldset/EndpointFtgwLinuxUnixSourceFieldset.php:96
-msgid "The input does not match against the crontab pattern"
+#, fuzzy
+#| msgid "The input does not match against the crontab pattern"
+msgid "The input does not match against the crontab pattern."
 msgstr "Die Eingabe entspricht nicht dem Crontab-Muster."
 
 #: module/Order/src/Order/Form/Fieldset/EndpointCdLinuxUnixTargetFieldset.php:13
@@ -663,7 +667,7 @@ msgstr "fehlgeschlagen"
 
 #: module/Order/src/Order/Form/Fieldset/NotificationFieldset.php:71
 msgid "remove a notification"
-msgstr ""
+msgstr "Benachrichtigung"
 
 #: module/Order/src/Order/Form/Fieldset/ServiceInvoicePositionBasicFieldset.php:16
 #: module/Order/view/partials/order-parts/billing.phtml:34
@@ -782,7 +786,7 @@ msgstr ""
 
 #: module/Application/view/application/index/index.phtml:42
 msgid "and then provided by the FGW for the receiver (target)."
-msgstr "und vom FGW dann dem Empfänger (Ziel) bereitgestellt"
+msgstr "und vom FGW dann dem Empfänger (Ziel) bereitgestellt."
 
 #: module/Application/view/application/index/index.phtml:49
 msgid "Service description and prices"
@@ -907,11 +911,12 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "AutoFIT"
 msgstr ""
 
-#: module/Application/view/layout/layout.phtml:111
-msgid "change identity to %"
-msgstr "Identität wechseln zu %"
+#: module/Application/view/layout/layout.phtml:110
+#, php-format
+msgid "change identity to %s"
+msgstr "Identität wechseln zu %s"
 
-#: module/Application/view/layout/layout.phtml:114
+#: module/Application/view/layout/layout.phtml:113
 msgid "log out"
 msgstr "abmelden"
 

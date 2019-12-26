@@ -93,7 +93,7 @@ class EndpointFtgwLinuxUnixSourceFieldset extends AbstractEndpointFtgwLinuxUnixF
                                  '((0*([1-9]|1[0-2])|\*)(-0*([1-9]|1[0-2]))?(\/\d+)?,)*' .
                                  '(0*([1-9]|1[0-2])|\*)(-0*([1-9]|1[0-2]))?(\/\d+)?\s' .
                                  '((0*[0-7]|\*)(-0*[0-7])?(\/\d+)?,)*' . '(0*[0-7]|\*)(-0*[0-7])?(\/\d+)?$' . '/',
-                            'message' => _('The input does not match against the crontab pattern')
+                            'message' => _('The input does not match against the crontab pattern.')
                         ]
                     ]
                 ]
