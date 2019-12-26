@@ -11,16 +11,10 @@ use Base\DataObject\User;
 class DbTableAuthenticationAdapter extends AbstractAdapter
 {
 
-    /**
-     *
-     * @var UserServiceInterface
-     */
+    /** @var UserServiceInterface */
     protected $userService;
 
-    /**
-     *
-     * @var string
-     */
+    /** @var string */
     protected $username;
 
     public function __construct(UserServiceInterface $userService)
