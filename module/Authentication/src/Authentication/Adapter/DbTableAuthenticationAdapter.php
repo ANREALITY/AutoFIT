@@ -2,41 +2,11 @@
 namespace Authentication\Adapter;
 
 use Authorization\Acl\Acl;
-use Order\Service\UserService;
-use Order\Service\UserServiceInterface;
-use Zend\Authentication\Adapter\AbstractAdapter;
-use Zend\Authentication\Result;
 use Base\DataObject\User;
+use Zend\Authentication\Result;
 
-class DbTableAuthenticationAdapter extends AbstractAdapter
+class DbTableAuthenticationAdapter extends AbstractAuthenticationAdapter
 {
-
-    /** @var UserServiceInterface */
-    protected $userService;
-
-    /** @var string */
-    protected $username;
-
-    public function __construct(UserServiceInterface $userService)
-    {
-        $this->userService = $userService;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param string $username
-     */
-    public function setUsername(string $username)
-    {
-        $this->username = $username;
-    }
 
     /**
      * In this naïve implementation we simply reply on the data received from the user.
